@@ -1,27 +1,31 @@
-﻿ol.breadcrumb {
-    width: 100%;
-    padding: 0.5rem 45px;
-    margin: 0;
-    position: sticky;
+﻿.breadcrumb-container {
     background-color: white;
-    top: 100px;
 
-    @media(max-width: 1400px) {
-        padding-left: 15px;
-        padding-right: 15px;
+    @include media-breakpoint-up(xxl) {
+        padding-right: 45px;
+        padding-left: 45px;
     }
 
-    .breadcrumb-item {
-        a {
-            text-decoration: none;
-            color: #0060ac;
-            font-size: 14px;
+    ol.breadcrumb {
+        width: 100%;
+        padding: 0.5rem 0;
+        margin: 0;
+        position: sticky;
+        background-color: white;
+        top: 100px;
+
+        .breadcrumb-item {
+            a {
+                text-decoration: none;
+                color: #0060ac;
+                font-size: 14px;
+            }
         }
-    }
 
-    .breadcrumb-before {
-        &::before {
-            content: "›" !important;
+        .breadcrumb-before {
+            &::before {
+                content: "›" !important;
+            }
         }
     }
 }

@@ -4,14 +4,16 @@
 @inject NavigationManager NavigationManager
 
 <main role="main">
-    <header id="to-shine-page-header" class="container-fluid sticky">
+    <header id="to-shine-page-header" class="sticky">
         <NavigationWithOffcanvas></NavigationWithOffcanvas>
     </header>
-    <div id="to-shine-page-headerpane">
+    <div id="to-shine-page-headerpane" class="container">
         <Pane Name="Header"/>
     </div>
-    <div id="to-shine-page-main">
+    <div class="container breadcrumb-container">
         <ToShineBreadcrumbs/>
+    </div>
+    <div id="to-shine-page-main" class="container">
         @if (Name != "centered-submenu")
         {
             <Pane Name="@PaneNames.Admin" />

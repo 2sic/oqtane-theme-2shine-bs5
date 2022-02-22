@@ -4,6 +4,29 @@
         top: 0;
     }
 
+    .navbar-toggler {
+        margin: 0;
+    }
+
+    .app-logo {
+        width: 130px;
+
+        @media(min-width:992px) {
+            width: 170px;
+        }
+    }
+
+    .to-shine-login {
+        width: 10px;
+        margin-left: 15px;
+        margin-right: 10px;
+        margin-top: -2px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
     #to-shine-page-header {
         margin: 0;
         background-color: white;
@@ -18,29 +41,10 @@
             margin-left: auto;
             display: flex;
             align-content: center;
-            padding-left: 15px;
-            padding-right: 15px;
 
-            @media (min-width: 1400px) {
-                max-width: 1320px;
-                padding-left: 45px;
+            @include media-breakpoint-up(xxl) {
                 padding-right: 45px;
-            }
-
-            @media (min-width: 1200px) and (max-width:1399px) {
-                max-width: 1140px;
-            }
-
-            @media (min-width: 992px) and (max-width:1199px) {
-                max-width: 960px;
-            }
-
-            @media (min-width: 768px) and (max-width:991) {
-                max-width: 720px;
-            }
-
-            @media (min-width: 576px) and (max-width:767px) {
-                max-width: 540px;
+                padding-left: 45px;
             }
 
             app-menu {
@@ -66,6 +70,17 @@
                     width: 100%;
                     display: flex;
                     justify-content: end;
+
+                    .language-link {
+                        color: black;
+                        text-decoration: none;
+                        font-size: 14px;
+                        padding-right: 5px;
+
+                        &.active {
+                            color: blue !important;
+                        }
+                    }
                 }
             }
 
@@ -82,7 +97,7 @@
                 overflow: hidden;
                 border: none;
 
-                @media (min-width: 992px){
+                @media (min-width: 992px) {
                     display: none;
                 }
 
@@ -116,53 +131,5 @@
                 }
             }
         }
-    }
-
-    .navbar-toggler {
-        margin: 0;
-    }
-
-    .app-logo {
-        width: 130px;
-
-        @media(min-width:992px) {
-            width: 170px;
-        }
-    }
-}
-.to-shine-login{
-    width: 10px;
-    margin-left: 15px;
-    margin-right: 10px;
-    margin-top: -2px;
-
-    &:hover{
-        cursor: pointer;
-    }
-}
-
-.to-shine-ui-buttons {
-    margin-left: 15px;
-    margin-right: 10px;
-    margin-top: -2px;
-    
-    &:hover{
-        cursor: pointer;
-    }
-
-    svg{
-        display: inline;
-        height: 15px;
-    }
-}
-
-.language-link{
-    color: black;
-    text-decoration: none;
-    font-size:14px;
-    padding-right: 5px;
-    
-    &.active{
-        color: blue!important;
     }
 }
