@@ -1,0 +1,27 @@
+﻿ol.breadcrumb {
+    width: 100%;
+    padding: 0.5rem 45px;
+    margin: 0;
+    position: sticky;
+    background-color: white;
+    top: 100px;
+
+    @media(max-width: 1400px) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .breadcrumb-item {
+        a {
+            text-decoration: none;
+            color: #0060ac;
+            font-size: 14px;
+        }
+    }
+
+    .breadcrumb-before {
+        &::before {
+            content: "›" !important;
+        }
+    }
+}

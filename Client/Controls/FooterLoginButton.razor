@@ -1,0 +1,14 @@
+﻿@namespace Oqtane.Themes.Controls
+@using Microsoft.Extensions.Localization
+@inherits LoginBase
+@inject IStringLocalizer<Login> Localizer
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+
+@if ( this.PageState.User != null && this.PageState.User.IsAuthenticated)
+{
+    <a title="Logout" class="to-shine-page-login d-none d-lg-inline-flex" @onclick="LogoutUser">@Localizer["Logout"]</a>
+}
+else
+{
+    <a title="Login" class="to-shine-page-login d-none d-lg-inline-flex" @onclick="LoginUser">@SharedLocalizer["Login"]</a>
+}

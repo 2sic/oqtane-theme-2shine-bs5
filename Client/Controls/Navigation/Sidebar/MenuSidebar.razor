@@ -1,0 +1,9 @@
+@namespace Oqtane.Themes.Controls
+@inherits MenuBase
+
+@if (MenuPages.Any())
+{
+    <div id="centered-sidemenu">
+        <MenuItemsSidebar ParentPage="null" Pages="MenuPages"></MenuItemsSidebar>
+    </div>
+}

@@ -1,0 +1,74 @@
+﻿main {
+    #to-shine-page-footer {
+        background-image: linear-gradient(to right, rgba(1,131,201,255), rgba(27,149,197,255), rgba(49,164,193,255), rgba(71,179,190,255), rgba(87,189,187,255));
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+        padding: 15px 10px;
+        align-items: center;
+        display: flex;
+        color: white;
+
+        @media (min-width:1400px) {
+            max-width: 1320px;
+            margin-bottom: 60px;
+        }
+
+        a {
+            color: white;
+        }
+
+        .footer-content-wrapper {
+            height: 100%;
+            padding: 15px 15px;
+            display: flex;
+            width: 100%;
+            padding: 1.5rem !important 15px;
+
+            @media (min-width:1400px) {
+                max-width: 1320px;
+                padding-left: 45px;
+                padding-right: 45px;
+            }
+
+            @media (min-width: 1200px) and (max-width:1399px) {
+                max-width: 1140px;
+            }
+
+            @media (min-width: 992px) and (max-width:1199px) {
+                max-width: 960px;
+            }
+
+            @media (min-width: 768px) and (max-width:991) {
+                max-width: 720px;
+            }
+
+            @media (min-width: 576px) and (max-width:767px) {
+                max-width: 540px;
+            }
+
+            .to-shine-footer-adress {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+
+                li {
+                    display: inline;
+                    margin-right: 6px;
+                }
+            }
+
+            .to-shine-footer-imprint {
+                .to-shine-page-login {
+                    font-size: 12px;
+                    color: transparent;
+
+                    &:hover {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

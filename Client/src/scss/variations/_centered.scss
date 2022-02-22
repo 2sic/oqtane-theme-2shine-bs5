@@ -1,0 +1,41 @@
+﻿.to-shine-variation-centered {
+    main {
+
+        @media (min-width:1400px) {
+            background-color: lightgray;
+        }
+
+        #to-shine-page-footer {
+            margin-bottom: 0 !important;
+        }
+
+        #to-shine-page-header {
+            margin-right: auto;
+            margin-left: auto;
+
+            @media (min-width:1400px) {
+                max-width: 1320px;
+            }
+
+            @media (min-width: 1200px) and (max-width:1399px) {
+                max-width: 1140px;
+            }
+
+            @media (min-width: 992px) and (max-width:1199px) {
+                max-width: 960px;
+            }
+
+            @media (min-width: 768px) and (max-width:991) {
+                max-width: 720px;
+            }
+
+            @media (min-width: 576px) and (max-width:767px) {
+                max-width: 540px;
+            }
+        }
+
+        #to-shine-page-headerpane {
+            margin-top: 0 !important;
+        }
+    }
+}

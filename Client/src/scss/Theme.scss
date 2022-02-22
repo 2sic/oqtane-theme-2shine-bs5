@@ -1,0 +1,23 @@
+﻿//Import some basic oqtane styles
+@import "oqtane";
+
+//Import custom stylesheets
+@import "variables";
+
+//Import different layout varriations
+@import "variations/default";
+@import "variations/centered";
+@import "variations/centered-submenu";
+@import "variations/fullscreen";
+@import "variations/float-wideheader";
+
+
+//Import stylings for different components 
+@import "components/base-layout";
+@import "components/desktopnavbar";
+@import "components/mobileoffcanvas";
+@import "components/footer";
+@import "components/to-shine-to-top";
+@import "components/sidebar";
+@import "components/breadcrumb";
+@import "components/container";

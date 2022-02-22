@@ -1,0 +1,70 @@
+@namespace ToSic.Oqt.Themes.ToShineBs5
+@using Oqtane.Shared
+@inherits Oqtane.Themes.ThemeBase
+@inject NavigationManager NavigationManager
+
+<main role="main">
+    <header id="to-shine-page-header" class="container-fluid sticky">
+        <NavigationWithOffcanvas></NavigationWithOffcanvas>
+    </header>
+    <div id="to-shine-page-headerpane">
+        <Pane Name="Header"/>
+    </div>
+    <div id="to-shine-page-main">
+        <ToShineBreadcrumbs/>
+        @if (Name != "centered-submenu")
+        {
+            <Pane Name="@PaneNames.Admin" />
+            <Pane Name="Content"/>
+        }
+        else if (Name == "centered-submenu")
+        {
+            <div class="row">
+                <div class="col-xs-12 col-lg-9 order-lg-2 ly-col-contentpane">
+                    <Pane Name="@PaneNames.Admin" />
+                    <Pane Name="Content"/>
+                </div>
+                <div class="col-xs-12 col-lg-3 order-lg-1 ly-col-contentpane">
+                    <MenuSidebar></MenuSidebar>
+                </div>
+            </div>
+        }
+    </div>
+    <div id="to-shine-page-footer">
+        <div class="footer-content-wrapper d-flex justify-content-between flex-column flex-md-row text-white">
+            <ul class="to-shine-footer-adress" itemscope itemtype="http://schema.org/LocalBusiness">
+                <li>
+                    <strong>2shine Oqtane-Theme with Bootstrap 5</strong>
+                </li>
+                <li>
+                    <span itemprop="address">
+                        <span itemprop="streetAddress">Shine Road 77</span>
+                        <span itemprop="postalCode"></span>
+                        <span itemprop="addressLocality">Shine City</span>
+                        <span itemprop="adressCountry">ShineCountry</span>
+                    </span>
+                </li>
+                <li>
+                    <a href="tel:41817506777">+ 41 81 750 67 77</a>
+                </li>
+                <li>
+                    <span data-madr1="shine" data-madr2="example" data-madr3="com" data-linktext class="madr-done" style="display:none;"></span>
+                    <a href="mailto:shine@example.com">shine@example.com</a>
+                </li>
+            </ul>
+            <div class="to-shine-footer-imprint">
+                <FooterLoginButton></FooterLoginButton>
+                <a>Imprint</a> | <a>Privacy</a>
+            </div>
+        </div>
+    </div>
+    <a id="to-shine-to-top" title="Nach oben" onclick="topFunction()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.032" height="20.034" viewBox="0 0 19.032 20.034">
+            <g id="Group_2" data-name="Group 2" transform="translate(-1055.984 -551.276)">
+                <path id="Path_2" data-name="Path 2" d="M8.1,16.2,0,8.1,8.1,0" transform="translate(1073.602 552.69) rotate(90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+                <line id="Line_1" data-name="Line 1" y2="17.599" transform="translate(1065.481 552.711)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+            </g>
+        </svg>
+    </a>
+</main>
+

@@ -1,0 +1,12 @@
+C:\Projects\oqtane-tests\theme-tests\tosic.toshinebs5\Package\obj\Debug\net6.0\tosic.toshinebs5.Package.csproj.AssemblyReference.cache
+C:\Projects\oqtane-tests\theme-tests\tosic.toshinebs5\Package\obj\Debug\net6.0\tosic.toshinebs5.Package.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\oqtane-tests\theme-tests\tosic.toshinebs5\Package\obj\Debug\net6.0\tosic.toshinebs5.Package.AssemblyInfoInputs.cache
+C:\Projects\oqtane-tests\theme-tests\tosic.toshinebs5\Package\obj\Debug\net6.0\tosic.toshinebs5.Package.AssemblyInfo.cs
+C:\Projects\oqtane-tests\theme-tests\tosic.toshinebs5\Package\obj\Debug\net6.0\tosic.toshinebs5.Package.csproj.CoreCompileInputs.cache
+C:\Projects\oqtane-tests\theme-tests\tosic.toshinebs5\Package\bin\Debug\net6.0\tosic.toshinebs5.Package.deps.json
+C:\Projects\oqtane-tests\theme-tests\tosic.toshinebs5\Package\bin\Debug\net6.0\tosic.toshinebs5.Package.dll
+C:\Projects\oqtane-tests\theme-tests\tosic.toshinebs5\Package\bin\Debug\net6.0\tosic.toshinebs5.Package.pdb
+C:\Projects\oqtane-tests\theme-tests\tosic.toshinebs5\Package\obj\Debug\net6.0\tosic.toshinebs5.Package.dll
+C:\Projects\oqtane-tests\theme-tests\tosic.toshinebs5\Package\obj\Debug\net6.0\refint\tosic.toshinebs5.Package.dll
+C:\Projects\oqtane-tests\theme-tests\tosic.toshinebs5\Package\obj\Debug\net6.0\tosic.toshinebs5.Package.pdb
+C:\Projects\oqtane-tests\theme-tests\tosic.toshinebs5\Package\obj\Debug\net6.0\ref\tosic.toshinebs5.Package.dll

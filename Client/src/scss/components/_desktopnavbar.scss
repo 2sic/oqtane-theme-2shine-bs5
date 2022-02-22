@@ -1,0 +1,168 @@
+﻿main {
+    .sticky {
+        position: sticky;
+        top: 0;
+    }
+
+    #to-shine-page-header {
+        margin: 0;
+        background-color: white;
+        position: sticky;
+        z-index: 800;
+        display: flex;
+        align-items: center;
+
+        nav {
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+            display: flex;
+            align-content: center;
+            padding-left: 15px;
+            padding-right: 15px;
+
+            @media (min-width: 1400px) {
+                max-width: 1320px;
+                padding-left: 45px;
+                padding-right: 45px;
+            }
+
+            @media (min-width: 1200px) and (max-width:1399px) {
+                max-width: 1140px;
+            }
+
+            @media (min-width: 992px) and (max-width:1199px) {
+                max-width: 960px;
+            }
+
+            @media (min-width: 768px) and (max-width:991) {
+                max-width: 720px;
+            }
+
+            @media (min-width: 576px) and (max-width:767px) {
+                max-width: 540px;
+            }
+
+            app-menu {
+                justify-self: end;
+                justify-content: space-between;
+            }
+
+            .collapse {
+                justify-self: end;
+                justify-content: end;
+                flex-direction: column;
+
+                ul.navbar-nav {
+                    width: 100%;
+                    justify-content: end;
+
+                    a {
+                        color: blue;
+                    }
+                }
+
+                .navbar-language-controls {
+                    width: 100%;
+                    display: flex;
+                    justify-content: end;
+                }
+            }
+
+            .to-shine-mobile-hamburger {
+                position: absolute;
+                right: 15px;
+                top: 0px;
+                z-index: 1040;
+                width: 40px;
+                height: 100%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                border: none;
+
+                @media (min-width: 992px){
+                    display: none;
+                }
+
+                div {
+                    width: 100%;
+                    position: relative;
+                    height: 18px;
+
+                    span {
+                        position: absolute;
+                        background-color: blue;
+                        width: 30px;
+                        height: 2px;
+                        border-radius: 4px;
+
+                        &:nth-child(1) {
+                            top: 0px;
+                            left: 0px;
+                        }
+
+                        &:nth-child(2) {
+                            top: 8px;
+                            left: 0px;
+                        }
+
+                        &:nth-child(3) {
+                            top: 16px;
+                            left: 0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .navbar-toggler {
+        margin: 0;
+    }
+
+    .app-logo {
+        width: 130px;
+
+        @media(min-width:992px) {
+            width: 170px;
+        }
+    }
+}
+.to-shine-login{
+    width: 10px;
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: -2px;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.to-shine-ui-buttons {
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: -2px;
+    
+    &:hover{
+        cursor: pointer;
+    }
+
+    svg{
+        display: inline;
+        height: 15px;
+    }
+}
+
+.language-link{
+    color: black;
+    text-decoration: none;
+    font-size:14px;
+    padding-right: 5px;
+    
+    &.active{
+        color: blue!important;
+    }
+}

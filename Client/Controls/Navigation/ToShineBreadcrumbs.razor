@@ -1,0 +1,32 @@
+﻿@namespace Oqtane.Themes.Controls
+@inherits ThemeControlBase       
+
+@if (BreadCrumbPages.Any())
+{
+    <ol id="breadcrumbs" class="breadcrumb">
+        @foreach (var p in BreadCrumbPages)
+        {
+            <li class="breadcrumb-item @( PageState.Page.PageId == p.PageId ? "breadcrumb-item-active" :"") @(p.Level == 0 ? "" : "breadcrumb-before")">
+                <a href="@NavigateUrl(p.Path)">@p.Name</a>
+            </li>
+        }
+    </ol>
+
+}
+
+@code {
+
+    protected IEnumerable<Page> BreadCrumbPages => GetBreadCrumbPages().Reverse().ToList();
+
+    private IEnumerable<Page> GetBreadCrumbPages()
+    {
+        var homePage = this.PageState.Page.Path == "";
+
+        var page = PageState.Page;
+        do
+        {
+            yield return page;
+            page = PageState.Pages.FirstOrDefault(p => page != null && p.PageId == page.ParentId);
+        } while (page != null);
+    }
+}
