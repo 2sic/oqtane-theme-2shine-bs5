@@ -1,11 +1,10 @@
-﻿.to-shine-background-container {
-    .to-shine-container {
-        padding-right:45px;
-        padding-left: 45px;
-
-        @media(max-width: 1400px){
-            padding-left: 15px;
-            padding-right:15px;
+﻿@media all {
+    .to-shine-background-container {
+        .container {
+            @include media-breakpoint-up(xxl) {
+                padding-right: 45px;
+                padding-left: 45px;
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 module.exports = {
   entry: {
-    styles: './src/Scss/Theme.scss'
+    styles: './src/scss/theme.scss'
   },
   output: {
     path: path.resolve(__dirname, 'wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5'),
