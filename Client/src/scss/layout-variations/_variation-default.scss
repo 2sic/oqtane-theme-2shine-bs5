@@ -1,8 +1,27 @@
-﻿.to-shine-variation-default {
-    main {
-        @media (min-width:1400px) {
-            background-color: lightgray;
-        }
-
+@media all {
+  body.to-shine-variation-default {
+    #to-shine-page-header-pane {
+      margin-top:0px;
+      @include media-breakpoint-up(xxl) {
+        margin-top:50px;
+      }
     }
+    main#to-shine-page-main,
+    footer#to-shine-page-footer {
+      width:100%;
+      margin: 0 auto;
+      background-color:$white;
+      @include media-breakpoint-up(xxl) {
+        max-width: 1320px;
+      }
+    }
+    footer#to-shine-page-footer {
+      background: rgb(0,131,201);
+      background: linear-gradient(90deg, rgba(0,131,201,1) 0%, rgba(88,190,187,1) 100%);
+      
+      @include media-breakpoint-up(xxl) {
+        margin-bottom:60px;
+      }
+    }
+  }
 }

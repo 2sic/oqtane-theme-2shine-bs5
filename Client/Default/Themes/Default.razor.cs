@@ -12,6 +12,12 @@ namespace ToSic.Oqt.Themes.ToShineBs5
 {
     public partial class Default : Oqtane.Themes.ThemeBase
     {
+        protected virtual string ClassName => "default";
+
+        protected virtual bool ShowSidebarNavigation => false;
+
+        protected virtual bool ShowBreadcrumb => true;
+
         public override string Name => "default";
 
         public override string Panes => PaneNames.Admin + ",Header,Content";
@@ -97,7 +103,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5
             //4.3 Set the lang-neutral- class
 
             //5.1 Set the to-shine-variation- class
-            var layoutVarriationClass = "to-shine-variation-" + Name;
+            var layoutVarriationClass = "to-shine-variation-" + ClassName;
 
             //5.2 Set the to-shine-mainnav-variation- class
 

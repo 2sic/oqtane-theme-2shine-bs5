@@ -1,0 +1,31 @@
+﻿.breadcrumb-container {
+    background-color: white;
+
+    @include media-breakpoint-up(xxl) {
+        padding-right: 45px;
+        padding-left: 45px;
+    }
+
+    ol.breadcrumb {
+        width: 100%;
+        padding: 0.5rem 0;
+        margin: 0;
+        position: sticky;
+        background-color: white;
+        top: 100px;
+
+        .breadcrumb-item {
+            a {
+                text-decoration: none;
+                color: #0060ac;
+                font-size: 14px;
+            }
+        }
+
+        .breadcrumb-before {
+            &::before {
+                content: "›" !important;
+            }
+        }
+    }
+}

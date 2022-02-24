@@ -6,6 +6,11 @@
 }
 
 @code{
+    protected override bool ShowSidebarNavigation => false;
+
+    protected override bool ShowBreadcrumb => true;
+
+    protected override string ClassName => "centered";
 
     public override List<Resource> Resources => new List<Resource>()
     {

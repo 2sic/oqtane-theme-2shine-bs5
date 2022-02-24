@@ -23,16 +23,44 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2VudGVyZWRcVGhlbWVzXENlbnRlcmVkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/AdminControls/AdminControls.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQWRtaW5Db250cm9sc1xBZG1pbkNvbnRyb2xzLnJhem9y
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/admin/AdminButtons.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcYWRtaW5cQWRtaW5CdXR0b25zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/AdminControls/AdminControlsOffcanvas.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQWRtaW5Db250cm9sc1xBZG1pbkNvbnRyb2xzT2ZmY2FudmFzLnJhem9y
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/admin/AdminOffcanvas.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcYWRtaW5cQWRtaW5PZmZjYW52YXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/FooterLoginButton.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcRm9vdGVyTG9naW5CdXR0b24ucmF6b3I=
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/FooterLoginButton.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcRm9vdGVyTG9naW5CdXR0b24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/nav-items/LanguageNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XG5hdi1pdGVtc1xMYW5ndWFnZU5hdmlnYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/nav-items/NavItemsMain.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XG5hdi1pdGVtc1xOYXZJdGVtc01haW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/nav-items/NavItemsMobile.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XG5hdi1pdGVtc1xOYXZJdGVtc01vYmlsZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/nav-items/SubmenuItems.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XG5hdi1pdGVtc1xTdWJtZW51SXRlbXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/NavigationLoginButton.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XE5hdmlnYXRpb25Mb2dpbkJ1dHRvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/ToShineLogo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XFRvU2hpbmVMb2dvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/ToShineNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XFRvU2hpbmVOYXZpZ2F0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/LanguageChanger.razor]
@@ -45,10 +73,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/MenuItemsOffcanvas.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxNZW51SXRlbXNPZmZjYW52YXMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/NavigationLoginButton.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxOYXZpZ2F0aW9uTG9naW5CdXR0b24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/NavigationWithOffcanvas.razor]

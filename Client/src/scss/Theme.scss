@@ -9,31 +9,32 @@
 
 // ----------------------------------------------------------------------------------------------------
 // 3. Generate CSS for this theme / skin
-
-//Import some basic oqtane styles
-@import "oqtane";
-
-//Import stylings for different components 
 @import "components/base-layout";
+
+//Import some oqtane-specific styles
+@import "oqtane/oqtane-internal";
+@import "oqtane/oqtane-admin-buttons";
+
+//Import stylings for different components
+@import "components/header";
 @import "components/footer";
-@import "components/to-shine-to-top";
-@import "components/container";
 
 // Navigation / Menus
-@import "components/nav-desktop";
-@import "components/nav-offcanvas";
+@import "components/nav-desktop-main";
+@import "components/nav-desktop-sub";
+@import "components/nav-mobile";
+@import "components/nav-mobile-to-top";
 @import "components/nav-breadcrumb";
-@import "components/nav-sidebar";
 
 // ----------------------------------------------------------------------------------------------------
 // 4. Layout Variations
-
-//Import different layout varriations
 @import "layout-variations/variation-default";
 @import "layout-variations/variation-centered";
-@import "layout-variations/variation-centered-submenu";
-@import "layout-variations/variation-fullscreen";
 @import "layout-variations/variation-floatwideheader";
+@import "layout-variations/variation-fullscreen";
+@import "layout-variations/variation-header";
+@import "layout-variations/variation-landingpage";
+
 
 // ----------------------------------------------------------------------------------------------------
 // 5. Page Customizations

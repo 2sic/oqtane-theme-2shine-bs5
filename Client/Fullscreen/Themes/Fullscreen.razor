@@ -6,6 +6,12 @@
 }
 
 @code{
+    protected override bool ShowSidebarNavigation => false;
+
+    protected override bool ShowBreadcrumb => true;
+
+    protected override string ClassName => "fullscreen";
+
     public override List<Resource> Resources => new List<Resource>()
     {
         // Load Theme which contains Bootstrap with our customizations (generated with Sass using Webpack)

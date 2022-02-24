@@ -1,0 +1,43 @@
+﻿@namespace Oqtane.Themes.Controls
+@inherits MenuItemsBase
+
+@if(CountPages() > 0)
+{ 
+    <ul class="@(ParentPage == null ? "nav" : "dropdown-menu")">
+    @foreach (var Page in GetChildPagesToShine())
+    {
+        var cssClasses = new List<string>();
+        cssClasses.Add("nav-item");
+        cssClasses.Add("nav-" + Page.PageId);
+        if(Page.Order == 1){ cssClasses.Add("first"); }
+        if( Page.Order == CountPages() ){ cssClasses.Add("last"); }
+        if(Page.HasChildren == true){ cssClasses.Add("has-child dropdown"); }
+        if(PageState.Page.PageId == Page.PageId){ cssClasses.Add("active"); } else { cssClasses.Add("inactive"); }
+        if(Page.IsClickable == true){ cssClasses.Add("disabled"); }
+        var classString =  string.Join(" ", cssClasses);
+        <li class="@classString">
+            @if(Page.IsClickable == true)
+            {
+                var linkCssClasses = new List<string>();
+
+                @if (Page.HasChildren && Page.Level == 0){ linkCssClasses.Add("dropdown-toggle"); }
+                @if(Page.Level != 0){ linkCssClasses.Add("dropdown-item"); } else { linkCssClasses.Add("nav-link"); }
+                var linkClassString = string.Join(" ", linkCssClasses);
+
+                <a class="@linkClassString" target="" href="@GetUrl(Page)">@Page.Name</a>
+            } else {
+                @if (Page.HasChildren && Page.Level == 0)
+                {
+                    <span class="nav-link dropdown-toggle" data-bs-toggle="dropdown">@Page.Name</span>
+                } else {
+                    <span class="nav-link">@Page.Name</span>
+                }
+            }
+            @if(Page.Level == 0)
+            {
+                <NavItemsMain ParentPage="@Page" Pages="@GetChildrenOfPage(Page.PageId)"></NavItemsMain>
+            }
+        </li>
+    }
+</ul>
+}

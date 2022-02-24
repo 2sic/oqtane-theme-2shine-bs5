@@ -1,0 +1,28 @@
+﻿@media all {
+    a#to-shine-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 25px;
+        background-color: $primary;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        box-shadow: 0 0 4px rgba(0,0,0,.3);
+        opacity: 0;
+        z-index: 100;
+        transition: opacity 0.5s;
+        pointer-events: none;
+
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &.to-shine-top-visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+}

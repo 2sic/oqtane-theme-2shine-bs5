@@ -1,0 +1,42 @@
+﻿
+
+// 1. Initialize Theme styles and all default Bootstrap Variables
+@import "variables";
+
+// ----------------------------------------------------------------------------------------------------
+// 2. Generate all standard Bootstrap CSS
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// ----------------------------------------------------------------------------------------------------
+// 3. Generate CSS for this theme / skin
+
+//Import some basic oqtane styles
+@import "oqtane";
+
+//Import stylings for different components 
+/*@import "components/base-layout";
+@import "components/footer";
+@import "components/to-shine-to-top";
+@import "components/container";*/
+
+// Navigation / Menus
+/*@import "components/nav-desktop";
+@import "components/nav-offcanvas";
+@import "components/nav-breadcrumb";
+@import "components/nav-sidebar";
+@import "components/adminButtons";*/
+
+// ----------------------------------------------------------------------------------------------------
+// 4. Layout Variations
+
+//Import different layout varriations
+/*@import "layout-variations/variation-default";
+@import "layout-variations/variation-centered";
+@import "layout-variations/variation-centered-submenu";
+@import "layout-variations/variation-fullscreen";
+@import "layout-variations/variation-floatwideheader";*/
+
+// ----------------------------------------------------------------------------------------------------
+// 5. Page Customizations
+// This contains special overrides for specific pages
+@import "page-customizations";

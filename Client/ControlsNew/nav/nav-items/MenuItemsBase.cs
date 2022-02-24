@@ -23,7 +23,11 @@ namespace Oqtane.Themes.Controls
                 .OrderBy(e => e.Order)
                 .AsEnumerable();
         }
-
+        protected int CountPages()
+        {
+            int pageCount = GetChildPagesToShine().Count<Page>();
+            return pageCount;
+        }
         protected IEnumerable<Page> GetChildrenOfPage(int parentId)
         {
             return Pages

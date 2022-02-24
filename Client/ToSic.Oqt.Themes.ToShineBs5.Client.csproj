@@ -36,12 +36,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="src\scss\readme.md" />
-    <None Remove="src\scss\_page-customizations.scss" />
+    <None Remove="src\old scss\readme.md" />
+    <None Remove="src\old scss\_page-customizations.scss" />
+    <None Remove="src\scss\components\_page-customizations.scss" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="src\scss\readme.md" />
+    <Content Include="src\old scss\readme.md" />
+    <Content Include="src\old scss\_page-customizations.scss" />
     <Content Include="src\scss\_page-customizations.scss" />
   </ItemGroup>
 
@@ -61,6 +63,10 @@
   <ItemGroup>
     <PackageReference Include="Oqtane.Client" Version="3.0.2" />
     <PackageReference Include="Oqtane.Shared" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controls\AdminControls\" />
   </ItemGroup>
 
   <PropertyGroup>

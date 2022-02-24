@@ -1,0 +1,40 @@
+﻿@media all {
+    .role-admin .ly-header-pane-empty {
+        min-height: 50px
+    }
+
+    header#to-shine-page-header {
+        background: $tosic-header-background;
+        position: sticky;
+        top: 0;
+        z-index: 800;
+
+        .logo {
+            display: block;
+            width: 130px;
+            max-width: 80%;
+            height: auto;
+            transition: width 0.4s ease-in-out;
+
+            @include media-breakpoint-up(lg) {
+                width: 170px;
+            }
+
+            svg {
+                //If you use an SVG as Logo, you will have to give it a fixed height
+                //in this selector, orelse you may experience issues in IE */
+                height: 37px;
+
+                @include media-breakpoint-up(lg) {
+                    height: 53px;
+                }
+            }
+        }
+    }
+
+    .to-shine-login {
+        width: 10px;
+        margin-left: 15px;
+        margin-top: -2px;
+    }
+}

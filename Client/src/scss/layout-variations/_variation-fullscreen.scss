@@ -1,13 +1,17 @@
-﻿.to-shine-variation-fullscreen{
-    #to-shine-page-headerpane{
-        margin-top: 0;
-    }
-    #to-shine-page-footer{
-        margin: 0;
-        width: 100%;
-        max-width: 100%;
-        .footer-content-wrapper{
+/*layout fullscreen*/
+@media all {
+  html {
+    body.to-shine-variation-fullscreen {
+      background-color: $white;
+        #to-shine-page-header-pane {
             max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        footer#to-shine-page-footer {
+            background: rgb(0,131,201);
+            background: linear-gradient(90deg, rgba(0,131,201,1) 0%, rgba(88,190,187,1) 100%);
         }
     }
+  }
 }

@@ -1,31 +1,58 @@
-﻿.breadcrumb-container {
-    background-color: white;
+﻿/* ---------- Breadcrumbs ---------- */
+.page-is-home .to-shine-page-breadcrumb {
+    display: none;
+}
 
-    @include media-breakpoint-up(xxl) {
-        padding-right: 45px;
-        padding-left: 45px;
-    }
+.to-shine-page-breadcrumb {
+    position: sticky;
+    top: 97px;
+    z-index: 10;
+    background: $white;
 
-    ol.breadcrumb {
-        width: 100%;
-        padding: 0.5rem 0;
-        margin: 0;
-        position: sticky;
-        background-color: white;
-        top: 100px;
+    .to-shine-page-breadcrumb-link {
+        color: $gray-600;
+        white-space: pre-wrap; // ? //
+        font-size: 14px;
+        padding: 0 5px;
 
-        .breadcrumb-item {
-            a {
-                text-decoration: none;
-                color: #0060ac;
-                font-size: 14px;
-            }
+        &:hover {
+            color: $primary;
         }
 
-        .breadcrumb-before {
-            &::before {
-                content: "›" !important;
+        &.to-shine-page-breadcrumb-home {
+            display: inline;
+
+            @include media-breakpoint-up(md) {
+                display: inline;
             }
+        }
+    }
+
+    .last {
+        .to-shine-page-breadcrumb-link {
+            color: $primary;
+            display: inline-block;
+        }
+    }
+
+    &.to-shine-page-breadcrumb-shortened {
+        .to-shine-page-breadcrumb-link {
+            &.to-shine-page-breadcrumb-home {
+                display: none;
+
+                @include media-breakpoint-up(md) {
+                    display: inline;
+                }
+            }
+        }
+    }
+
+    .to-shine-page-breadcrumb-trigger {
+        cursor: pointer;
+        display: inline;
+
+        @include media-breakpoint-up(md) {
+            display: none;
         }
     }
 }

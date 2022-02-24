@@ -1,0 +1,34 @@
+﻿@namespace Oqtane.Themes.Controls
+@inherits MenuBase
+
+@if (MenuPages.Any())
+{
+    <div class="container d-flex justify-content-between align-items-center py-3">
+        <ToShineLogo></ToShineLogo>
+        <div class="to-shine-mobile-hamburger" data-bs-toggle="offcanvas" data-bs-target="#offcanvasStart" aria-controls="offcanvasStart" title="Menu">
+            <div>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasStart" aria-labelledby="offcanvasTopLabel">
+            <div class="offcanvas-header">
+                <ToShineLogo></ToShineLogo>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body bg-primary px-0">
+                <!--MenuItemsOffcanvas--><NavItemsMobile ParentPage="null" Pages="MenuPages"></NavItemsMobile>
+                <!--LanguageNavigation-->
+            </div>
+        </div>
+        <AdminOffcanvas></AdminOffcanvas>
+        <nav id="nav-desktop" class="d-none d-lg-flex flex-column align-items-end">
+            <div class="d-none d-lg-flex">
+                <!--LanguageNavigation-->
+                <NavigationLoginButton></NavigationLoginButton><AdminButtons></AdminButtons>
+            </div>
+            <!--NavItemsMain--><NavItemsMain ParentPage="null" Pages="MenuPages"></NavItemsMain>
+        </nav>
+    </div>
+}
