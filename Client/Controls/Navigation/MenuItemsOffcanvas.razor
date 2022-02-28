@@ -2,7 +2,7 @@
 @inherits MenuItemsBase
 
 <ul class="nav flex-column">
-    @foreach (var childPage in GetChildPagesToShine())
+    @foreach (var childPage in ToShineGetPages())
     {
         <li class="nav-item offcanvas-item-wrapper offcanvas-current">
             <span class="@childPage.Icon" aria-hidden="true" />
@@ -15,7 +15,7 @@
         if(childPage.HasChildren == true)
         {
             <div class="collapse" id="collapse-@childPage.PageId">
-                @foreach (var childPage2 in GetChildrenOfPage(childPage.PageId))
+                @foreach (var childPage2 in ToShineGetChildrenOfPage(childPage.PageId))
                 {
                     <li class="nav-item offcanvas-item-wrapper offcanvas-inner-item-wrapper">
                         <a class="nav-link ps-3 @(childPage2.PageId == PageState.Page.PageId ? "current-link" : "" )" href="@GetUrl(childPage2)">@childPage2.Name</a>

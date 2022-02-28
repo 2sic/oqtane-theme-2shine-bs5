@@ -5,7 +5,7 @@
 @if(CountPages() > 0)
 {
    <ul class="@(ParentPage != null ? "to-shine-nav to-shine-nav-sub" : "2shine-nav-child")">
-    @foreach (var Page in GetChildPagesToShine())
+    @foreach (var Page in ToShineGetPages())
     {
         var cssClasses = new List<string>();
         cssClasses.Add("nav-" + Page.PageId);
@@ -31,7 +31,7 @@
                         </div>
                     }
                 </div>
-                <NavItemsMobile ParentPage="@Page" Pages="@GetChildrenOfPage(Page.PageId)"></NavItemsMobile>
+                <NavItemsMobile ParentPage="@Page" Pages="@ToShineGetChildrenOfPage(Page.PageId)"></NavItemsMobile>
         </li>
     }
 </ul>

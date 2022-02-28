@@ -23,6 +23,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q2VudGVyZWRcVGhlbWVzXENlbnRlcmVkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Containers/Container.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udGFpbmVyc1xDb250YWluZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/admin/AdminButtons.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcYWRtaW5cQWRtaW5CdXR0b25zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -67,6 +71,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XFRvU2hpbmVOYXZpZ2F0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/ToShinePageFooter.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcVG9TaGluZVBhZ2VGb290ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/ToShineToTop.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcVG9TaGluZVRvVG9wLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/LanguageChanger.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxMYW5ndWFnZUNoYW5nZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -93,10 +105,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/ToShinePageBreadcrumbs.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxUb1NoaW5lUGFnZUJyZWFkY3J1bWJzLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Default/Containers/Container.razor]
-build_metadata.AdditionalFiles.TargetPath = RGVmYXVsdFxDb250YWluZXJzXENvbnRhaW5lci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Default/Themes/Default.razor]

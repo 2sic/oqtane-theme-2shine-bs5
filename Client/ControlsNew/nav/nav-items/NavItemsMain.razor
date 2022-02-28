@@ -4,7 +4,7 @@
 @if(CountPages() > 0)
 { 
     <ul class="@(ParentPage == null ? "nav" : "dropdown-menu")">
-    @foreach (var Page in GetChildPagesToShine())
+    @foreach (var Page in ToShineGetPages())
     {
         var cssClasses = new List<string>();
         cssClasses.Add("nav-item");
@@ -35,7 +35,7 @@
             }
             @if(Page.Level == 0)
             {
-                <NavItemsMain ParentPage="@Page" Pages="@GetChildrenOfPage(Page.PageId)"></NavItemsMain>
+                <NavItemsMain ParentPage="@Page" Pages="@ToShineGetChildrenOfPage(Page.PageId)"></NavItemsMain>
             }
         </li>
     }

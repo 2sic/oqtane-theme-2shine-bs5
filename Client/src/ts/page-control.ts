@@ -1,6 +1,6 @@
 ﻿//Functions to set body classes
 
-export function clearBodyClasses() {
+function clearBodyClasses() {
     var body = document.querySelector("body");
     body.removeAttribute("class");
 

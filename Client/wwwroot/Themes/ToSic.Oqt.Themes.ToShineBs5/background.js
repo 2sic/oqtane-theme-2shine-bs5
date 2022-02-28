@@ -90,7 +90,6 @@
 document.addEventListener("scroll", ToTopButton);
 function ToTopButton() {
     var toTopButton = document.getElementById("to-shine-to-top");
-    console.log(toTopButton);
     toTopButton.addEventListener("click", scrollTop);
     if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
         toTopButton.style["opacity"] = "1";

@@ -2,7 +2,7 @@
 @inherits MenuItemsBase
 
 <ul class="to-shine-nav to-shine-nav-sub">
-    @foreach(var Page in GetChildPagesToShine())
+    @foreach(var Page in ToShineGetPages())
     {
         var cssClasses = new List<string>();
         cssClasses.Add("nav-" + Page.PageId);

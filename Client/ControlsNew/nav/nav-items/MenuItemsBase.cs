@@ -16,7 +16,7 @@ namespace Oqtane.Themes.Controls
         [Parameter()]
         public IEnumerable<Page> Pages { get; set; }
 
-        protected IEnumerable<Page> GetChildPagesToShine()
+        protected IEnumerable<Page> ToShineGetPages()
         {
             return Pages
                 .Where(e => e.ParentId == ParentPage?.PageId)
@@ -25,10 +25,10 @@ namespace Oqtane.Themes.Controls
         }
         protected int CountPages()
         {
-            int pageCount = GetChildPagesToShine().Count<Page>();
+            int pageCount = ToShineGetPages().Count<Page>();
             return pageCount;
         }
-        protected IEnumerable<Page> GetChildrenOfPage(int parentId)
+        protected IEnumerable<Page> ToShineGetChildrenOfPage(int parentId)
         {
             return Pages
                 .Where(Pages => Pages.ParentId == parentId)
