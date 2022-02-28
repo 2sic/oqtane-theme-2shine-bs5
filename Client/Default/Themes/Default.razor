@@ -12,17 +12,7 @@
 <main id="to-shine-page-main">
     @if (ShowBreadcrumb)
     {
-        <div class="to-shine-page-breadcrumb" aria-label="breadcrumb">
-            <div class="container py-2">
-                <a class="to-shine-page-breadcrumb-link to-shine-page-breadcrumb-home" aria-current="page"><!--href="Home"-->
-                    <!--Breacrumb Home Text-->Home
-            </a>
-                <span>&nbsp;&rsaquo;&nbsp;</span><span class="to-shine-page-breadcrumb-trigger display-inline display-md-none">
-                    <a aria-current="page">...</a>
-                </span>
-                <!--Breadrumb Items--><a class="to-shine-page-breadcrumb-link">2shine</a>
-            </div>
-        </div>
+        <ToShineBreadcrumb></ToShineBreadcrumb>
     }
     @if (ShowSidebarNavigation)
     {

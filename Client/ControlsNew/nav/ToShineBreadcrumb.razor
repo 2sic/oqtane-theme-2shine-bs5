@@ -1,0 +1,38 @@
+﻿@namespace Oqtane.Themes.Controls
+@inherits MenuItemsBase
+
+<div class="to-shine-page-breadcrumb" aria-label="breadcrumb">
+    <div class="container py-2">
+        <a class="to-shine-page-breadcrumb-link to-shine-page-breadcrumb-home display-md-inline" aria-current="page" href="@NavigateUrl(GetHomePage().Path)">@GetHomePage().Name</a>
+        <span class="to-shine-page-breadcrumb-trigger display-inline display-md-none">
+            <a aria-current="page">...</a>
+        </span>
+        @foreach(var Page in BreadCrumbPages)
+        {
+            <span>&nbsp;&rsaquo;&nbsp;</span>
+
+            <a href="@NavigateUrl(Page.Path)" class="to-shine-page-breadcrumb-link">@Page.Name</a>
+        }
+    </div>
+</div>
+
+@code {
+    protected IEnumerable<Page> BreadCrumbPages => GetBreadCrumbPages().Reverse().ToList();
+
+    private IEnumerable<Page> GetBreadCrumbPages()
+    {
+        var page = PageState.Page;
+        do
+        {
+            yield return page;
+            page = PageState.Pages.FirstOrDefault(p => page != null && p.PageId == page.ParentId);
+
+        } while (page != null);
+    }
+
+    private Page GetHomePage()
+    {
+        var homePage = this.PageState.Pages.Find(p => p.Path == "");
+        return homePage;
+    }
+}

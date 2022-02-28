@@ -2,6 +2,11 @@
 //Those styles came with the skin and are needed for some oqtane internal stylings
 
 body {
+    >div:first-of-type{
+        min-height: 100vh;
+        display:flex;
+        flex-direction: column;
+    }
 }
 
 .table > :not(caption) > * > * {

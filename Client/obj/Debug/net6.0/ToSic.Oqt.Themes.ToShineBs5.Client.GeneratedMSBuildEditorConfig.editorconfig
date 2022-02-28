@@ -55,6 +55,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XE5hdmlnYXRpb25Mb2dpbkJ1dHRvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/ToShineBreadcrumb.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XFRvU2hpbmVCcmVhZGNydW1iLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/ToShineLogo.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XFRvU2hpbmVMb2dvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -87,8 +91,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxTaWRlYmFyXE1lbnVTaWRlYmFyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/ToShineBreadcrumbs.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxUb1NoaW5lQnJlYWRjcnVtYnMucmF6b3I=
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/ToShinePageBreadcrumbs.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxUb1NoaW5lUGFnZUJyZWFkY3J1bWJzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Default/Containers/Container.razor]

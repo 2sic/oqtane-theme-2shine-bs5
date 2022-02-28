@@ -44,6 +44,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5
         [Inject]
         protected ILanguageService LanguageService { get; set; }
 
+
         private IJSObjectReference BodyClassJS;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)

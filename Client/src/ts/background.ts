@@ -1,5 +1,5 @@
-﻿import { hide, show, toggle } from 'slidetoggle';
-const slidetoggle = require('slidetoggle');
+﻿//import { hide, show, toggle } from 'slidetoggle';
+//const slidetoggle = require('slidetoggle');
 
 /* Open all PDF links in a new window */
 //document.querySelectorAll('a').forEach((linkElem: Element, index) => {
