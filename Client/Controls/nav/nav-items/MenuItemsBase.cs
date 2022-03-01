@@ -35,5 +35,12 @@ namespace Oqtane.Themes.Controls
                 .OrderBy(Pages => Pages.Order)
                 .AsEnumerable();
         }
+        protected IEnumerable<Page> ToShineGetRootPages()
+        {
+            return Pages
+                .Where(e => e.Level == 0)
+                .OrderBy(e => e.Order)
+                .AsEnumerable();
+        }
     }
 }

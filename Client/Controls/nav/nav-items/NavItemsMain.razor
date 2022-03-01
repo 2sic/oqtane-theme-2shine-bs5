@@ -41,3 +41,13 @@
     }
 </ul>
 }
+
+@code{
+    [Parameter]
+    public string Nodes { get; set; }
+
+    private string[] _nodes;
+
+    protected string[] NodeSplitter => _nodes = Nodes
+        .Split(",");
+}

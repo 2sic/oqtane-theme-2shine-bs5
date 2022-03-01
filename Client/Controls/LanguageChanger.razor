@@ -8,11 +8,16 @@
 
 @if (_supportedCultures?.Count() > 1)
 {
-    @foreach (var culturePair in _supportedCultures)
+    @foreach (var culturePair in SupportedCultures)
     {
-@*        <a class="@(CultureInfo.CurrentUICulture.Name == culturePair.Culture.Name ? "active" : String.Empty) language-link"
-            href="#" @onclick="@(async e => await SetCultureAsync(culturePair.Culture.Name))">@culturePair.Label</a>*@
+        <ul class="to-shine-page-language">
+            <li class="@(CultureInfo.CurrentUICulture.Name == culturePair.Culture.Name ? "active" : String.Empty)">
+                <a class="language-link"
+                    href="#" @onclick="@(async e => await SetCultureAsync(culturePair.Culture.Name))">@culturePair.Label</a>
+            </li>
+        </ul>
     }
+
 }
 
 @code{
@@ -23,13 +28,21 @@
 
     private (string, string)[] _langFilters;
 
-    protected (string, string)[] LangFilters => _langFilters ??= Languages
-        .Split(",")
-        .Select(l => l.Split(":")).Select(set => (set[0], set[1]))
-        .ToArray();
+    //protected (string, string)[] LangFilters => _langFilters = new[] { ("en", "EN"), ("nl-NL", "NL") };
+    //Languages
+    //    .Split(",")
+    //    .Select(l => { var splittedLang = l.Split(":"); return (splittedLang[0], splittedLang[1]); }) 
+    //    .ToArray();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
 
 
-    //protected IEnumerable<(Culture Culture, string Label)> SupportedCultures
+
+    }
+
+    protected IEnumerable<(Culture Culture, string Label)> SupportedCultures;
     //{
     //    get
     //    {
@@ -37,18 +50,18 @@
     //    }
     //}
 
-    //public string FindCultureName(string CultureName)
-    //{
-    //    var ToShineDisplayName = "";
-    //    foreach (var lang in _langFilters)
-    //    {
-    //        if(lang.Item1 == CultureName && ToShineDisplayName == "")
-    //        {
-    //            ToShineDisplayName = lang.Item2;
-    //        }
-    //    }
-    //    return ToShineDisplayName;
-    //}
+    public string FindCultureName(string CultureName)
+    {
+        var ToShineDisplayName = "";
+        foreach (var lang in _langFilters)
+        {
+            if(lang.Item1 == CultureName && ToShineDisplayName == "")
+            {
+                ToShineDisplayName = lang.Item2;
+            }
+        }
+        return ToShineDisplayName;
+    }
 
     // _supportedCultures.Where(culture => culture[0].Code == ZIELCODE).FirstOrDefault();
     
@@ -60,6 +73,14 @@
         languages.Add(new Language { Code = defaultCulture.Name, Name = defaultCulture.DisplayName });
 
         _supportedCultures = languages.Select(l => new Culture { Name = l.Code, DisplayName = l.Name });
+
+        //To Shine methods
+        _langFilters ??= Languages
+            .Split(",")
+            .Select(l => { var splittedLang = l.Split(":"); return (splittedLang[0], splittedLang[1]); }) 
+            .ToArray();
+
+        SupportedCultures = _supportedCultures.Select(sc => (sc, FindCultureName(sc.Name)));
     }
 
     private async Task SetCultureAsync(string culture)
