@@ -3,7 +3,7 @@ using Oqtane.Themes;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.CenteredSubmenu
 {
-    public class ThemeInfo : ITheme
+    public class CenteredSubmenuThemeInfo : ITheme
     {
         public Theme Theme => new Theme
         {

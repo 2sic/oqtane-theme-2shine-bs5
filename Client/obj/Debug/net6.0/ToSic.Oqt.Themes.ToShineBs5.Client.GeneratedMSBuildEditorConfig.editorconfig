@@ -15,96 +15,72 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Projects\oqtane-tests\theme-tests\OqtToShineBs5\Client
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Centered-Submenu/Themes/Centered-Submenu.razor]
-build_metadata.AdditionalFiles.TargetPath = Q2VudGVyZWQtU3VibWVudVxUaGVtZXNcQ2VudGVyZWQtU3VibWVudS5yYXpvcg==
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Centered-Submenu/CenteredSubmenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2VudGVyZWQtU3VibWVudVxDZW50ZXJlZFN1Ym1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Centered/Themes/Centered.razor]
-build_metadata.AdditionalFiles.TargetPath = Q2VudGVyZWRcVGhlbWVzXENlbnRlcmVkLnJhem9y
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Centered/Centered.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2VudGVyZWRcQ2VudGVyZWQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Containers/Container.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29udGFpbmVyc1xDb250YWluZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/admin/AdminButtons.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcYWRtaW5cQWRtaW5CdXR0b25zLnJhem9y
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/admin/AdminButtons.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcYWRtaW5cQWRtaW5CdXR0b25zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/admin/AdminOffcanvas.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcYWRtaW5cQWRtaW5PZmZjYW52YXMucmF6b3I=
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/admin/AdminOffcanvas.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcYWRtaW5cQWRtaW5PZmZjYW52YXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/FooterLoginButton.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcRm9vdGVyTG9naW5CdXR0b24ucmF6b3I=
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/FooterLoginButton.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcRm9vdGVyTG9naW5CdXR0b24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/nav-items/LanguageNavigation.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XG5hdi1pdGVtc1xMYW5ndWFnZU5hdmlnYXRpb24ucmF6b3I=
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/LanguageChanger.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTGFuZ3VhZ2VDaGFuZ2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/nav-items/NavItemsMain.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XG5hdi1pdGVtc1xOYXZJdGVtc01haW4ucmF6b3I=
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/nav/nav-items/LanguageNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcbmF2XG5hdi1pdGVtc1xMYW5ndWFnZU5hdmlnYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/nav-items/NavItemsMobile.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XG5hdi1pdGVtc1xOYXZJdGVtc01vYmlsZS5yYXpvcg==
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/nav/nav-items/NavItemsMain.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcbmF2XG5hdi1pdGVtc1xOYXZJdGVtc01haW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/nav-items/SubmenuItems.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XG5hdi1pdGVtc1xTdWJtZW51SXRlbXMucmF6b3I=
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/nav/nav-items/NavItemsMobile.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcbmF2XG5hdi1pdGVtc1xOYXZJdGVtc01vYmlsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/NavigationLoginButton.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XE5hdmlnYXRpb25Mb2dpbkJ1dHRvbi5yYXpvcg==
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/nav/nav-items/SubmenuItems.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcbmF2XG5hdi1pdGVtc1xTdWJtZW51SXRlbXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/ToShineBreadcrumb.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XFRvU2hpbmVCcmVhZGNydW1iLnJhem9y
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/nav/NavigationLoginButton.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcbmF2XE5hdmlnYXRpb25Mb2dpbkJ1dHRvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/ToShineLogo.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XFRvU2hpbmVMb2dvLnJhem9y
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/nav/ToShineBreadcrumb.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcbmF2XFRvU2hpbmVCcmVhZGNydW1iLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/nav/ToShineNavigation.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcbmF2XFRvU2hpbmVOYXZpZ2F0aW9uLnJhem9y
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/nav/ToShineLogo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcbmF2XFRvU2hpbmVMb2dvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/ToShinePageFooter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcVG9TaGluZVBhZ2VGb290ZXIucmF6b3I=
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/nav/ToShineNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcbmF2XFRvU2hpbmVOYXZpZ2F0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/ControlsNew/ToShineToTop.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNOZXdcVG9TaGluZVRvVG9wLnJhem9y
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/ToShinePageFooter.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcVG9TaGluZVBhZ2VGb290ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/LanguageChanger.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxMYW5ndWFnZUNoYW5nZXIucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/MenuItemsNavigation.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxNZW51SXRlbXNOYXZpZ2F0aW9uLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/MenuItemsOffcanvas.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxNZW51SXRlbXNPZmZjYW52YXMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/NavigationWithOffcanvas.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxOYXZpZ2F0aW9uV2l0aE9mZmNhbnZhcy5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/Sidebar/MenuItemsSidebar.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxTaWRlYmFyXE1lbnVJdGVtc1NpZGViYXIucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/Sidebar/MenuSidebar.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxTaWRlYmFyXE1lbnVTaWRlYmFyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/Navigation/ToShinePageBreadcrumbs.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvblxUb1NoaW5lUGFnZUJyZWFkY3J1bWJzLnJhem9y
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/ToShineToTop.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcVG9TaGluZVRvVG9wLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Default/Themes/Default.razor]

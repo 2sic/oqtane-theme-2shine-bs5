@@ -1,0 +1,76 @@
+@namespace Oqtane.Themes.Controls
+@inherits ThemeControlBase
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@using Oqtane.Models
+@inject ILanguageService LanguageService
+@inject NavigationManager NavigationManager
+
+@if (_supportedCultures?.Count() > 1)
+{
+    @foreach (var culturePair in _supportedCultures)
+    {
+@*        <a class="@(CultureInfo.CurrentUICulture.Name == culturePair.Culture.Name ? "active" : String.Empty) language-link"
+            href="#" @onclick="@(async e => await SetCultureAsync(culturePair.Culture.Name))">@culturePair.Label</a>*@
+    }
+}
+
+@code{
+    private IEnumerable<Culture> _supportedCultures;
+
+    [Parameter]
+    public string Languages { get; set; } = "en: EN,nl-NL: NL"; // null; // "en=EN,de=DE"
+
+    private (string, string)[] _langFilters;
+
+    protected (string, string)[] LangFilters => _langFilters ??= Languages
+        .Split(",")
+        .Select(l => l.Split(":")).Select(set => (set[0], set[1]))
+        .ToArray();
+
+
+    //protected IEnumerable<(Culture Culture, string Label)> SupportedCultures
+    //{
+    //    get
+    //    {
+    //        return _supportedCultures.Select(sc => (sc, FindCultureName(sc.Name)));
+    //    }
+    //}
+
+    //public string FindCultureName(string CultureName)
+    //{
+    //    var ToShineDisplayName = "";
+    //    foreach (var lang in _langFilters)
+    //    {
+    //        if(lang.Item1 == CultureName && ToShineDisplayName == "")
+    //        {
+    //            ToShineDisplayName = lang.Item2;
+    //        }
+    //    }
+    //    return ToShineDisplayName;
+    //}
+
+    // _supportedCultures.Where(culture => culture[0].Code == ZIELCODE).FirstOrDefault();
+    
+    protected override async Task OnParametersSetAsync()
+    {
+        var languages = await LanguageService.GetLanguagesAsync(PageState.Site.SiteId);
+        var defaultCulture = CultureInfo.GetCultureInfo(Constants.DefaultCulture);
+
+        languages.Add(new Language { Code = defaultCulture.Name, Name = defaultCulture.DisplayName });
+
+        _supportedCultures = languages.Select(l => new Culture { Name = l.Code, DisplayName = l.Name });
+    }
+
+    private async Task SetCultureAsync(string culture)
+    {
+        if (culture != CultureInfo.CurrentUICulture.Name)
+        {
+            var interop = new Interop(JSRuntime);
+            var localizationCookieValue = CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture));
+            await interop.SetCookie(CookieRequestCultureProvider.DefaultCookieName, localizationCookieValue, 360);
+
+            NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+        }
+    }
+}

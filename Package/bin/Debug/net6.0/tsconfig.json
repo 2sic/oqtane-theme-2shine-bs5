@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "noEmitOnError": true,
     "removeComments": false,
     "module": "ES2015",
@@ -9,9 +9,9 @@
     "outDir": "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5",
     "allowJs": true,
     "moduleResolution": "Node"
+
   },
   "include": [
-    "src/ts/page-control.ts",
-    "src/ts/background.ts"
+    "src/ts/page-control.ts"
   ]
 }

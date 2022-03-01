@@ -1,6 +1,6 @@
 ﻿//Functions to set body classes
 
-function clearBodyClasses() {
+export function clearBodyClasses() {
     var body = document.querySelector("body");
     body.removeAttribute("class");
 
@@ -14,7 +14,8 @@ function clearBodyClasses() {
     //    body.style["overflow"] = "visible";
     //}
 }
-export function setBodyClass(bodyClass) {
+
+export function setBodyClass(bodyClass : string) {
     var body = document.querySelector("body");
     body.className = bodyClass;
 }
