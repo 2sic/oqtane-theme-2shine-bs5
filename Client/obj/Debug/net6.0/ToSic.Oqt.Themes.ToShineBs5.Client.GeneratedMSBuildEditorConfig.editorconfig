@@ -83,16 +83,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcVG9TaGluZVRvVG9wLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Default/Themes/Default.razor]
-build_metadata.AdditionalFiles.TargetPath = RGVmYXVsdFxUaGVtZXNcRGVmYXVsdC5yYXpvcg==
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Default/Default.razor]
+build_metadata.AdditionalFiles.TargetPath = RGVmYXVsdFxEZWZhdWx0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Float-Wide-Header/Themes/Float-Wide-Header.razor]
-build_metadata.AdditionalFiles.TargetPath = RmxvYXQtV2lkZS1IZWFkZXJcVGhlbWVzXEZsb2F0LVdpZGUtSGVhZGVyLnJhem9y
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Float-Wide-Header/Float-Wide-Header.razor]
+build_metadata.AdditionalFiles.TargetPath = RmxvYXQtV2lkZS1IZWFkZXJcRmxvYXQtV2lkZS1IZWFkZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Fullscreen/Themes/Fullscreen.razor]
-build_metadata.AdditionalFiles.TargetPath = RnVsbHNjcmVlblxUaGVtZXNcRnVsbHNjcmVlbi5yYXpvcg==
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Fullscreen/Fullscreen.razor]
+build_metadata.AdditionalFiles.TargetPath = RnVsbHNjcmVlblxGdWxsc2NyZWVuLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/_Imports.razor]
