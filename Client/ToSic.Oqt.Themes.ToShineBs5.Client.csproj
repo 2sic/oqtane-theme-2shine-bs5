@@ -68,7 +68,7 @@
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="npm run build-prod&#xD;&#xA;" />
+    <Exec Command="npm run build-prod" />
   </Target>
 
 </Project>
