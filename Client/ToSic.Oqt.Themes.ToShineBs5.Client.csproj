@@ -61,6 +61,10 @@
     <PackageReference Include="Oqtane.Shared" Version="3.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Themes\ToSic.Oqt.Themes.ToShineBs5\" />
+  </ItemGroup>
+
   <PropertyGroup>
     <!-- there may be other elements here -->
     <BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>

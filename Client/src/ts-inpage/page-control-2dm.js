@@ -1,5 +1,6 @@
 //Functions to set body classes
 export function clearBodyClasses() {
+    console.log("clearBodyClasses");
     var body = document.querySelector("body");
     body.removeAttribute("class");
     //var offcanvas = document.getElementById("toggleMobileMenu");
@@ -11,6 +12,7 @@ export function clearBodyClasses() {
     //}
 }
 export function setBodyClass(bodyClass) {
+    console.log("setBodyClass");
     var body = document.querySelector("body");
     body.className = bodyClass;
 }

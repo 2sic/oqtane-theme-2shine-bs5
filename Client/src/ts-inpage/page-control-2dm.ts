@@ -1,6 +1,7 @@
 ﻿//Functions to set body classes
-
 export function clearBodyClasses() {
+    console.log("clearBodyClasses");
+
     var body = document.querySelector("body");
     body.removeAttribute("class");
 
@@ -15,7 +16,9 @@ export function clearBodyClasses() {
     //}
 }
 
-export function setBodyClass(bodyClass : string) {
+export function setBodyClass(bodyClass: string) {
+    console.log("setBodyClass");
+
     var body = document.querySelector("body");
     body.className = bodyClass;
 }
