@@ -8,7 +8,8 @@ const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 module.exports = {
     entry: {
-        styles: './src/scss/theme.scss'
+        // styles: './src/scss/theme.scss',
+        ts: './src/ts-inpage/page-control-2dm.ts'
     },
     output: {
         path: path.resolve(__dirname, 'wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5'),
@@ -85,7 +86,16 @@ module.exports = {
             test: /\.ts$/,
             exclude: /node_modules/,
             use: {
-                loader: 'ts-loader'
+                loader: 'ts-loader',
+                // 2022-03-03 2dm - all not having an effect
+                // options: {
+                //   context: __dirname,
+                //   configFile: 'tsconfig.json',
+                //   compilerOptions: {
+                //     module: "ES6",
+                //     target: "ES6"
+                //   }
+                // }
             }
         },
         {
