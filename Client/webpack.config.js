@@ -4,7 +4,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const WebpackBar = require('webpackbar');
-/*const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");*/
+const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 module.exports = {
     entry: {
@@ -45,7 +45,7 @@ module.exports = {
         ],
     },
     plugins: [
-        /*new FixStyleOnlyEntriesPlugin(),*/
+        new FixStyleOnlyEntriesPlugin(),
         new MiniCssExtractPlugin({
             filename: 'theme.min.css',
         }),

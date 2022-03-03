@@ -1,0 +1,8 @@
+﻿.to-shine-page-breadcrumb {
+    .to-shine-page-breadcrumb-home {
+        @include media-breakpoint-down(md) {
+            display: none;
+            background-color: red;
+        }
+    }
+}

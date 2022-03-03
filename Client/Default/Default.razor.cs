@@ -6,12 +6,13 @@ using Oqtane.Services;
 using Oqtane.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 namespace ToSic.Oqt.Themes.ToShineBs5
 {
     public partial class Default : Oqtane.Themes.ThemeBase
     {
+
         protected virtual string ClassName => "default";
 
         protected virtual bool ShowSidebarNavigation => false;
@@ -32,6 +33,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5
             new Resource { ResourceType = ResourceType.Script, Url = ThemePath() + "background.js" },
         };
 
+
         [Inject]
         protected IPageService PageService { get; set; }
 
@@ -44,25 +46,28 @@ namespace ToSic.Oqt.Themes.ToShineBs5
         [Inject]
         protected ILanguageService LanguageService { get; set; }
 
+        [Inject]
+        protected IPageNavigator PageNavigator { get; set; }
 
         private IJSObjectReference BodyClassJS;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await base.OnAfterRenderAsync(firstRender);
-
+            await PageNavigator.Test();
             string bodyClasses = await DetermineBodyClasses();
             BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Themes/ToSic.Oqt.Themes.ToShineBs5/page-control.js");
             await BodyClassJS.InvokeAsync<string>("clearBodyClasses");
-            await BodyClassJS.InvokeAsync<string>("setBodyClass", bodyClasses);
+            await BodyClassJS.InvokeAsync<string>("setBodyClass", bodyClasses);           
         }
+        
 
         private async Task<string> DetermineBodyClasses()
         {
             var page = this.PageState.Page;
             //1.1 Set the page-is-home class
             var isHomeClass = page.Path == "" ? "page-is-home" : "";
-
+            
             //1.2 Set the page-### class
             var pageIdClass = "page-" + page.PageId;
 
@@ -80,7 +85,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5
             {
                 while (pageParentId != null)
                 {
-                    var parentPage = await PageService.GetPageAsync((int)pageParentId); ;
+                    var parentPage = await PageService.GetPageAsync((int)pageParentId);
                     pageParentId = parentPage.ParentId;
                     if (parentPage.ParentId == null)
                     {
