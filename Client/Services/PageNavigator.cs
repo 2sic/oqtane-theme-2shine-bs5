@@ -7,23 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Classes
 {
-    public class PageNavigator : IPageNavigator
+    public class PageNavigator
     {
-        public IPageService PageService;
-        public async Task<IEnumerable<Page>> Test()
+        public IEnumerable<Page> pages;
+
+        public IEnumerable<Page> subpages;
+
+        public IEnumerable<Page> levelZeroPages;
+
+        public Page PageNavigatorPage;
+        public PageNavigator(Page pageNavPage, IEnumerable<Page> Pages)
         {
-            return await PageService.GetPagesAsync(1);
+            pages = Pages;
+            PageNavigatorPage = pageNavPage;
         }
 
-
-        public string PageName = null;
-        
-        public PageNavigator(IPageService service)
+        public IEnumerable<PageNavigator> Children
         {
-            PageService = service;
+            get
+            {
+                IEnumerable<Page> subpages = pages.Where(pg => pg.ParentId == PageNavigatorPage.PageId);
+                return subpages.Select(sp => new PageNavigator(sp, subpages));
+            }
         }
-    };
+    }
 }

@@ -6,7 +6,7 @@ using Oqtane.Services;
 using Oqtane.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Classes;
 
 namespace ToSic.Oqt.Themes.ToShineBs5
 {
@@ -46,15 +46,12 @@ namespace ToSic.Oqt.Themes.ToShineBs5
         [Inject]
         protected ILanguageService LanguageService { get; set; }
 
-        [Inject]
-        protected IPageNavigator PageNavigator { get; set; }
-
         private IJSObjectReference BodyClassJS;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await base.OnAfterRenderAsync(firstRender);
-            await PageNavigator.Test();
+
             string bodyClasses = await DetermineBodyClasses();
             BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Themes/ToSic.Oqt.Themes.ToShineBs5/page-control.js");
             await BodyClassJS.InvokeAsync<string>("clearBodyClasses");

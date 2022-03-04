@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components;
 
 using Oqtane.Models;
 using Oqtane.UI;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Classes;
 
 namespace Oqtane.Themes.Controls
 {
@@ -41,6 +42,11 @@ namespace Oqtane.Themes.Controls
                 .Where(e => e.Level == 0)
                 .OrderBy(e => e.Order)
                 .AsEnumerable();
+        }
+
+        protected PageNavigator PageNav()
+        {
+            return new PageNavigator(this.PageState.Page, MenuPages);
         }
     }
 }

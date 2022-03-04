@@ -1,53 +1,43 @@
 ﻿@namespace Oqtane.Themes.Controls
 @inherits MenuItemsBase
 
-@if(CountPages() > 0)
-{ 
-    <ul class="@(ParentPage == null ? "nav" : "dropdown-menu")">
-    @foreach (var Page in ToShineGetPages())
+@*@if(PageNav().Children.Any())
+{ *@
+@*    <ul class="@(ParentPage == null ? "nav" : "dropdown-menu")">
+    @foreach (var pageNav in PageNav().Children)
     {
         var cssClasses = new List<string>();
         cssClasses.Add("nav-item");
-        cssClasses.Add("nav-" + Page.PageId);
-        if(Page.Order == 1){ cssClasses.Add("first"); }
-        if( Page.Order == CountPages() ){ cssClasses.Add("last"); }
-        if(Page.HasChildren == true){ cssClasses.Add("has-child dropdown"); }
-        if(PageState.Page.PageId == Page.PageId){ cssClasses.Add("active"); } else { cssClasses.Add("inactive"); }
-        if(Page.IsClickable == true){ cssClasses.Add("disabled"); }
+        cssClasses.Add("nav-" + pageNav.PageNavigatorPage.PageId);
+        if(pageNav.PageNavigatorPage.Order == 1){ cssClasses.Add("first"); }
+        //if( pageNav.PageNavigatorPage.Order == CountPages() ){ cssClasses.Add("last"); }
+        if(pageNav.PageNavigatorPage.HasChildren == true){ cssClasses.Add("has-child dropdown"); }
+        if(PageState.Page.PageId == pageNav.PageNavigatorPage.PageId){ cssClasses.Add("active"); } else { cssClasses.Add("inactive"); }
+        if(pageNav.PageNavigatorPage.IsClickable == true){ cssClasses.Add("disabled"); }
         var classString =  string.Join(" ", cssClasses);
         <li class="@classString">
-            @if(Page.IsClickable == true)
+            @if(pageNav.PageNavigatorPage.IsClickable == true)
             {
                 var linkCssClasses = new List<string>();
 
-                @if (Page.HasChildren && Page.Level == 0){ linkCssClasses.Add("dropdown-toggle"); }
-                @if(Page.Level != 0){ linkCssClasses.Add("dropdown-item"); } else { linkCssClasses.Add("nav-link"); }
+                @if (pageNav.PageNavigatorPage.HasChildren && pageNav.PageNavigatorPage.Level == 0){ linkCssClasses.Add("dropdown-toggle"); }
+                @if(pageNav.PageNavigatorPage.Level != 0){ linkCssClasses.Add("dropdown-item"); } else { linkCssClasses.Add("nav-link"); }
                 var linkClassString = string.Join(" ", linkCssClasses);
 
-                <a class="@linkClassString" target="" href="@GetUrl(Page)">@Page.Name</a>
+                <a class="@linkClassString" target="" href="@GetUrl(pageNav.PageNavigatorPage)">@pageNav.PageNavigatorPage.Name</a>
             } else {
-                @if (Page.HasChildren && Page.Level == 0)
+                @if (pageNav.PageNavigatorPage.HasChildren && pageNav.PageNavigatorPage.Level == 0)
                 {
-                    <span class="nav-link dropdown-toggle" data-bs-toggle="dropdown">@Page.Name</span>
+                    <span class="nav-link dropdown-toggle" data-bs-toggle="dropdown">@pageNav.PageNavigatorPage.Name</span>
                 } else {
-                    <span class="nav-link">@Page.Name</span>
+                    <span class="nav-link">@pageNav.PageNavigatorPage.Name</span>
                 }
             }
-            @if(Page.Level == 0)
+            @if(pageNav.subpages.Any())
             {
-                <NavItemsMain ParentPage="@Page" Pages="@ToShineGetChildrenOfPage(Page.PageId)"></NavItemsMain>
+                <NavItemsMain ParentPage="@pageNav.PageNavigatorPage" Pages="pageNav.subpages"></NavItemsMain>
             }
         </li>
     }
-</ul>
-}
-
-@code{
-    [Parameter]
-    public string Nodes { get; set; }
-
-    private string[] _nodes;
-
-    protected string[] NodeSplitter => _nodes = Nodes
-        .Split(",");
-}
+</ul>*@
+@*}*@

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Oqtane.Shared;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Classes;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client
 {
@@ -13,7 +13,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IPageNavigator, PageNavigator>();
+            //services.AddScoped<IPageNavigator, PageNavigator>();
         }
     }
 }
