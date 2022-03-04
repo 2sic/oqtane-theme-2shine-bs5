@@ -3,7 +3,7 @@
 
 @*@if(PageNav().Children.Any())
 { *@
-@*    <ul class="@(ParentPage == null ? "nav" : "dropdown-menu")">
+    <ul class="@">
     @foreach (var pageNav in PageNav().Children)
     {
         var cssClasses = new List<string>();
@@ -13,7 +13,7 @@
         //if( pageNav.PageNavigatorPage.Order == CountPages() ){ cssClasses.Add("last"); }
         if(pageNav.PageNavigatorPage.HasChildren == true){ cssClasses.Add("has-child dropdown"); }
         if(PageState.Page.PageId == pageNav.PageNavigatorPage.PageId){ cssClasses.Add("active"); } else { cssClasses.Add("inactive"); }
-        if(pageNav.PageNavigatorPage.IsClickable == true){ cssClasses.Add("disabled"); }
+        if(pageNav.PageNavigatorPage.IsClickable == false){ cssClasses.Add("disabled"); }
         var classString =  string.Join(" ", cssClasses);
         <li class="@classString">
             @if(pageNav.PageNavigatorPage.IsClickable == true)
@@ -33,11 +33,11 @@
                     <span class="nav-link">@pageNav.PageNavigatorPage.Name</span>
                 }
             }
-            @if(pageNav.subpages.Any())
+            @if(pageNav.PageNavigatorPage.Level == 0)
             {
                 <NavItemsMain ParentPage="@pageNav.PageNavigatorPage" Pages="pageNav.subpages"></NavItemsMain>
             }
         </li>
     }
-</ul>*@
+</ul>
 @*}*@
