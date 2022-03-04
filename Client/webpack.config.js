@@ -1,3 +1,4 @@
+const glob = require("glob");
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -9,6 +10,7 @@ const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 module.exports = {
     entry: {
         styles: './src/scss/theme.scss',
+        ambient: glob.sync("./src/ts-ambient/*.ts")
     },
     output: {
         path: path.resolve(__dirname, 'wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5'),
@@ -82,13 +84,13 @@ module.exports = {
                 }
             ],
         },
-        //{
-        //    test: /\.ts$/,
-        //    exclude: /node_modules/,
-        //    use: {
-        //        loader: 'ts-loader'
-        //    }
-        //},
+        {
+            test: /\.ts$/,
+            exclude: [/node_modules/, /ts-interop/],
+            use: {
+                loader: 'ts-loader'
+            }
+        },
         {
             test: /\.(png|jpe?g|gif)$/,
             use: [{
