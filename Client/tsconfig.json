@@ -6,12 +6,12 @@
     "module": "ES2015",
     "sourceMap": true,
     "target": "ES2015",
-    // "outDir": "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5",
+    "outDir": "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5",
     "allowJs": true,
     "moduleResolution": "Node",
     "lib": [ "es6", "dom" ]
   },
   "include": [
-    "./src/ts-inpage/page-control-2dm.ts"
+    "src/ts/*.ts"
   ]
 }

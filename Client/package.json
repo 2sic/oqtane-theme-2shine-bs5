@@ -4,7 +4,8 @@
   "description": "The default skin template for 2sic websites",
   "main": "(none)",
   "scripts": {
-    "build-prod": "webpack --verbose"
+    "clean": "shx rm -rf  wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/*",
+    "build-prod": "npm run clean && tsc && webpack --verbose"
   },
   "author": "2sic internet solutions",
   "license": "MIT",
@@ -19,6 +20,7 @@
     "postcss-loader": "^3.0.0",
     "sass": "^1.49.4",
     "sass-loader": "^7.3.1",
+    "shx": "^0.3.4",
     "terser-webpack-plugin": "^2.3.8",
     "ts-loader": "^8.2.0",
     "webpack": "^4.46.0",

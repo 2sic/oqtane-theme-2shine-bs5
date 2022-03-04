@@ -56,10 +56,10 @@ namespace ToSic.Oqt.Themes.ToShineBs5
             await base.OnAfterRenderAsync(firstRender);
             await PageNavigator.Test();
             string bodyClasses = await DetermineBodyClasses();
-            BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Themes/ToSic.Oqt.Themes.ToShineBs5/webpack-interop.js");
+            BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Themes/ToSic.Oqt.Themes.ToShineBs5/page-control.js");
 
-            await BodyClassJS.InvokeAsync<string>("MyLibWebPack.clearBodyClasses");
-            await BodyClassJS.InvokeAsync<string>("MyLibWebPack.setBodyClass", bodyClasses);           
+            await BodyClassJS.InvokeAsync<string>("clearBodyClasses");
+            await BodyClassJS.InvokeAsync<string>("setBodyClass", bodyClasses);           
         }
         
 

@@ -87,8 +87,8 @@
 ////}
 // -----------------------------------------------------------------------------------------------------------------------------
 //Before DNN copy rework
-var ToShineBody = document.querySelector("body");
-var observer = new MutationObserver(function (mutations) {
+const ToShineBody = document.querySelector("body");
+const observer = new MutationObserver(mutations => {
     //ToShineToTopButton
     var toTopButton = document.getElementById("to-shine-to-top");
     toTopButton.addEventListener("click", scrollTop);

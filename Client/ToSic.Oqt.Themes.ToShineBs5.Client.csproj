@@ -33,6 +33,12 @@
     <TypeScriptCompile Remove="Centered\Containers\**" />
     <TypeScriptCompile Remove="Float-Wide-Header\Containers\**" />
     <TypeScriptCompile Remove="Fullscreen\Containers\**" />
+    <TypeScriptCompile Remove="node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="package.json" />
+    <Content Remove="tsconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,10 +55,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.0" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.5.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
   </ItemGroup>
 
@@ -63,6 +65,11 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Themes\ToSic.Oqt.Themes.ToShineBs5\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="package.json" />
+    <None Include="tsconfig.json" />
   </ItemGroup>
 
   <PropertyGroup>
