@@ -22,22 +22,21 @@
     <Content Remove="Centered\Containers\**" />
     <Content Remove="Float-Wide-Header\Containers\**" />
     <Content Remove="Fullscreen\Containers\**" />
-    <Content Remove="src\ts-inpage\**" />
     <EmbeddedResource Remove="Centered-Submenu\Containers\**" />
     <EmbeddedResource Remove="Centered\Containers\**" />
     <EmbeddedResource Remove="Float-Wide-Header\Containers\**" />
     <EmbeddedResource Remove="Fullscreen\Containers\**" />
-    <EmbeddedResource Remove="src\ts-inpage\**" />
     <None Remove="Centered-Submenu\Containers\**" />
     <None Remove="Centered\Containers\**" />
     <None Remove="Float-Wide-Header\Containers\**" />
     <None Remove="Fullscreen\Containers\**" />
-    <None Remove="src\ts-inpage\**" />
     <TypeScriptCompile Remove="Centered-Submenu\Containers\**" />
     <TypeScriptCompile Remove="Centered\Containers\**" />
     <TypeScriptCompile Remove="Float-Wide-Header\Containers\**" />
     <TypeScriptCompile Remove="Fullscreen\Containers\**" />
     <TypeScriptCompile Remove="node_modules\**" />
+	<TypeScriptCompile Remove="src\ts-ambient\**" />
+	<TypeScriptCompile Remove="src\ts-interop\**" />
   </ItemGroup>
 
   <ItemGroup>

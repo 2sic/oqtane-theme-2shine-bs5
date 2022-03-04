@@ -105,7 +105,7 @@
 // -----------------------------------------------------------------------------------------------------------------------------
 //Before DNN copy rework
 
-
+import * as _ from "lodash";
 
 const ToShineBody = document.querySelector("body");
 
@@ -161,8 +161,11 @@ function BreadcrumbsAttributes() {
     var headerPaneMarginTop = parseInt(headerPaneStyle.marginBottom);
     var totalHeight = headerPaneMarginBottom + headerPaneMarginTop + headerPaneHeight;
     
-	var breadcrumbs = document.querySelector(".to-shine-page-breadcrumb");
-	console.log(breadcrumbs);
+    var breadcrumbs = document.querySelector(".to-shine-page-breadcrumb");
+
+    console.log(breadcrumbs);
+    console.log("lodash: " + _.now());
+
     (breadcrumbs as HTMLElement).style["top"] = headerHeight + "px";
     
     if (counter == 0 && scrollY > totalHeight) {
