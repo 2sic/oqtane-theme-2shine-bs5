@@ -11,38 +11,54 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Classes
 {
     public class PageNavigator
     {
-        public IEnumerable<Page> pages;
+        public IEnumerable<Page> Pages;
 
-        public IEnumerable<Page> subpages;
+        public Page CurrentPage;
 
-        //public IEnumerable<Page> levelZeroPages;
+        private int Levels;
 
-        public Page PageNavigatorPage;
-        public PageNavigator(Page pageNavPage, IEnumerable<Page> Pages)
+        public IEnumerable<Page>? Subpages;
+        public PageNavigator(Page _CurrentPage, IEnumerable<Page> _Pages, int _Levels)
         {
-            pages = Pages;
-            PageNavigatorPage = pageNavPage;
+            CurrentPage = _CurrentPage;
+            Pages = _Pages;
+            Levels = _Levels;
         }
 
         public IEnumerable<PageNavigator> Children
         {
             get
             {
-                if(PageNavigatorPage.ParentId != null)
+                if(Levels > 0)
                 {
-                    subpages = pages
-                        .Where(pg => pg.ParentId == PageNavigatorPage.PageId)
-                        .OrderBy(pg => pg.Order)
+                    Subpages = Pages
+                        .Where(p => p.ParentId == CurrentPage.PageId)
+                        .OrderBy(p => p.Order)
                         .AsEnumerable();
+
+                    Levels--;
+
+                    return Pages.Select(p => new PageNavigator(p, Pages, Levels));
                 }
                 else
                 {
-                    subpages = pages
-                        .Where(pg => pg.Level == 0)
-                        .OrderBy(pg => pg.Order)
-                        .AsEnumerable();
+                    Subpages = null;
                 }
-                return subpages.Select(sp => new PageNavigator(sp, subpages));
+
+                //if(parentPage == null)
+                //{
+                //    rootpages = pages
+                //        .Where(pg => pg.Level == 0)
+                //        .OrderBy(pg => pg.Order)
+                //        .AsEnumerable();
+
+                //    return rootpages.Select(rp => new PageNavigator(pages.Where(pg => pg.ParentId == rp.PageId), rp));
+                //} 
+                //else
+                //{
+                //    rootpages = pages; 
+                //    return rootpages.Select(rp => new PageNavigator(pages.Where(pg => pg.ParentId == rp.PageId), rp));
+                //}
             }
         }
     }

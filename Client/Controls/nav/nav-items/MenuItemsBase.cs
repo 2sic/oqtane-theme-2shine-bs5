@@ -44,9 +44,12 @@ namespace Oqtane.Themes.Controls
                 .AsEnumerable();
         }
 
-        protected PageNavigator PageNav()
+        public PageNavigatorFactory PageNavFactory()
         {
-            return new PageNavigator(this.PageState.Page, MenuPages);
+            Page CurrentPage = ParentPage;
+            int Levels = 2;
+
+            return new PageNavigatorFactory(MenuPages, Levels, CurrentPage);
         }
     }
 }

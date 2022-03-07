@@ -3,41 +3,44 @@
 
 @*@if(PageNav().Children.Any())
 { *@
-    <ul class="@">
-    @foreach (var pageNav in PageNav().Children)
+    @*<ul class="@(PageNav().parentPage.Level == 0 ? "navbar-nav" : "dropdown-menu")">*@
+    @foreach (var pageNav in PageNavFactory())
     {
         var cssClasses = new List<string>();
         cssClasses.Add("nav-item");
-        cssClasses.Add("nav-" + pageNav.PageNavigatorPage.PageId);
-        if(pageNav.PageNavigatorPage.Order == 1){ cssClasses.Add("first"); }
-        //if( pageNav.PageNavigatorPage.Order == CountPages() ){ cssClasses.Add("last"); }
-        if(pageNav.PageNavigatorPage.HasChildren == true){ cssClasses.Add("has-child dropdown"); }
-        if(PageState.Page.PageId == pageNav.PageNavigatorPage.PageId){ cssClasses.Add("active"); } else { cssClasses.Add("inactive"); }
-        if(pageNav.PageNavigatorPage.IsClickable == false){ cssClasses.Add("disabled"); }
+        cssClasses.Add("nav-" + pageNav.parentPage.PageId);
+        if(pageNav.parentPage.Order == 1){ cssClasses.Add("first"); }
+        //if( pageNav.parentPage.Order == CountPages() ){ cssClasses.Add("last"); }
+        if(pageNav.parentPage.HasChildren == true){ cssClasses.Add("has-child dropdown"); }
+
+        @cssClasses.Add((PageState.Page.PageId == pageNav.parentPage.PageId) ? "active" : ("inactive"));
+        if(PageState.Page.PageId == pageNav.parentPage.PageId){ cssClasses.Add("active"); } else { cssClasses.Add("inactive"); }
+
+        if(pageNav.parentPage.IsClickable == false){ cssClasses.Add("disabled"); }
         var classString =  string.Join(" ", cssClasses);
         <li class="@classString">
-            @if(pageNav.PageNavigatorPage.IsClickable == true)
+            @if(pageNav.parentPage.IsClickable == true)
             {
                 var linkCssClasses = new List<string>();
 
-                @if (pageNav.PageNavigatorPage.HasChildren && pageNav.PageNavigatorPage.Level == 0){ linkCssClasses.Add("dropdown-toggle"); }
-                @if(pageNav.PageNavigatorPage.Level != 0){ linkCssClasses.Add("dropdown-item"); } else { linkCssClasses.Add("nav-link"); }
+                @if (pageNav.parentPage.HasChildren && pageNav.parentPage.Level == 0){ linkCssClasses.Add("dropdown-toggle"); }
+                @linkCssClasses.Add((pageNav.parentPage.Level != 0) ? "dropdown-item" : "nav-link");
                 var linkClassString = string.Join(" ", linkCssClasses);
 
-                <a class="@linkClassString" target="" href="@GetUrl(pageNav.PageNavigatorPage)">@pageNav.PageNavigatorPage.Name</a>
+                <a class="@linkClassString" target="" href="@GetUrl(pageNav.parentPage)">@pageNav.parentPage.Name</a>
             } else {
-                @if (pageNav.PageNavigatorPage.HasChildren && pageNav.PageNavigatorPage.Level == 0)
+                @if (pageNav.parentPage.HasChildren && pageNav.parentPage.Level == 0)
                 {
-                    <span class="nav-link dropdown-toggle" data-bs-toggle="dropdown">@pageNav.PageNavigatorPage.Name</span>
+                    <span class="nav-link dropdown-toggle" data-bs-toggle="dropdown">@pageNav.parentPage.Name</span>
                 } else {
-                    <span class="nav-link">@pageNav.PageNavigatorPage.Name</span>
+                    <span class="nav-link">@pageNav.parentPage.Name</span>
                 }
             }
-            @if(pageNav.PageNavigatorPage.Level == 0)
+            @if(pageNav.parentPage.Level == 0)
             {
-                <NavItemsMain ParentPage="@pageNav.PageNavigatorPage" Pages="pageNav.subpages"></NavItemsMain>
+                <NavItemsMain ParentPage="@pageNav.parentPage" Pages="pageNav.subpages"></NavItemsMain>
             }
         </li>
     }
-</ul>
+@*</ul>*@
 @*}*@
