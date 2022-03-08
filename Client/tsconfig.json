@@ -5,14 +5,13 @@
     "removeComments": false,
     "module": "ES2015",
     "sourceMap": true,
-    "target": "es5",
-    "outDir": "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5",
+    "target": "ES2015",
+    "outDir": "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/interop",
     "allowJs": true,
-    "moduleResolution": "Node"
-
+    "moduleResolution": "Node",
+    "lib": [ "es6", "dom" ]
   },
   "include": [
-    "src/ts/page-control.ts",
-    "src/ts/background.ts"
+    "src/ts-interop/*.ts"
   ]
 }

@@ -5,6 +5,11 @@ using Oqtane.Services;
 using Oqtane.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+<<<<<<< HEAD
+=======
+using System.IO;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+>>>>>>> 94cd77ce6fc9548fa7a3021ac3e33c4d53de32a2
 
 namespace ToSic.Oqt.Themes.ToShineBs5
 {
@@ -28,7 +33,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5
             // Load the default BS JS
             new Resource { ResourceType = ResourceType.Script, Url = ThemePath() + "bootstrap.bundle.min.js" },
             // Our custom code which ensures page classes, Up-button etc.
-            new Resource { ResourceType = ResourceType.Script, Url = ThemePath() + "background.js" },
+            new Resource { ResourceType = ResourceType.Script, Url = ThemePath() + "ambient.js" },
         };
 
 
@@ -51,7 +56,9 @@ namespace ToSic.Oqt.Themes.ToShineBs5
             await base.OnAfterRenderAsync(firstRender);
 
             string bodyClasses = await DetermineBodyClasses();
-            BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Themes/ToSic.Oqt.Themes.ToShineBs5/page-control.js");
+
+            BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", Path.Combine("./", ThemePath(), "interop/page-control.js"));
+
             await BodyClassJS.InvokeAsync<string>("clearBodyClasses");
             await BodyClassJS.InvokeAsync<string>("setBodyClass", bodyClasses);           
         }
