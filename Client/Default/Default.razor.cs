@@ -31,7 +31,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5
             // Load the default BS JS
             new Resource { ResourceType = ResourceType.Script, Url = ThemePath() + "bootstrap.bundle.min.js" },
             // Our custom code which ensures page classes, Up-button etc.
-            new Resource { ResourceType = ResourceType.Script, Url = ThemePath() + "ambient.js" },
+            new Resource { ResourceType = ResourceType.Script, Url = ThemePath() + "ambient.mjs" },
         };
 
 
@@ -58,7 +58,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5
             await PageNavigator.Test();
             string bodyClasses = await DetermineBodyClasses();
 
-            BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", Path.Combine("./", ThemePath(), "interop/page-control.js"));
+            BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", Path.Combine("./", ThemePath(), "interop.mjs"));
 
             await BodyClassJS.InvokeAsync<string>("clearBodyClasses");
             await BodyClassJS.InvokeAsync<string>("setBodyClass", bodyClasses);           

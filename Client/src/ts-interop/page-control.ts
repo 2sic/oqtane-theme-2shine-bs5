@@ -1,11 +1,14 @@
-﻿//Functions to set body classes
+﻿import * as _ from "lodash";
 
-import * as _ from "lodash";
+export function setBodyClass(bodyClass: string): void {
+    let body = document.querySelector("body");
+    body.className = bodyClass;
+}
 
-export function clearBodyClasses() {
+export function clearBodyClasses(): void  {
     console.log("lodash2: " + _.now());
 
-    var body = document.querySelector("body");
+    let body = document.querySelector("body");
     body.removeAttribute("class");
 
     //var offcanvas = document.getElementById("toggleMobileMenu");
@@ -17,9 +20,4 @@ export function clearBodyClasses() {
     //    body.style["padding"] = "0";
     //    body.style["overflow"] = "visible";
     //}
-}
-
-export function setBodyClass(bodyClass : string) {
-    var body = document.querySelector("body");
-    body.className = bodyClass;
 }

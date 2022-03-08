@@ -8,12 +8,18 @@ const WebpackBar = require('webpackbar');
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 module.exports = {
+    experiments: {
+        outputModule: true,
+    },
     entry: {
         styles: './src/scss/theme.scss',
-        ambient: glob.sync("./src/ts-ambient/*.ts")
+        ambient: glob.sync("./src/ts-ambient/*.ts"),
+        interop: glob.sync("./src/ts-interop/*.ts")
     },
     output: {
         path: path.resolve(__dirname, 'wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5'),
+        module: true,
+        libraryTarget: 'module',
     },
     mode: 'production',
     devtool: 'source-map',
@@ -26,7 +32,7 @@ module.exports = {
         extensions: ['.scss']
     },
     optimization: {
-        minimize: true,
+        minimize: false,
         minimizer: [
             new TerserPlugin({
                 terserOptions: {

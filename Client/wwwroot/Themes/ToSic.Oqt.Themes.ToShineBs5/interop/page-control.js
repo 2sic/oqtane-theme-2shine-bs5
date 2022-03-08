@@ -12,8 +12,8 @@ export function clearBodyClasses() {
     //    body.style["overflow"] = "visible";
     //}
 }
-export function setBodyClass(bodyClass) {
-    var body = document.querySelector("body");
-    body.className = bodyClass;
-}
+// export function setBodyClass(bodyClass: string) {
+//    var body = document.querySelector("body");
+//    body.className = bodyClass;
+//}
 //# sourceMappingURL=page-control.js.map
