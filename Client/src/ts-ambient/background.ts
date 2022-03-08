@@ -105,8 +105,6 @@
 // -----------------------------------------------------------------------------------------------------------------------------
 //Before DNN copy rework
 
-import * as _ from "lodash";
-
 const ToShineBody = document.querySelector("body");
 
 const observer = new MutationObserver(mutations => {
@@ -164,7 +162,6 @@ function BreadcrumbsAttributes() {
     var breadcrumbs = document.querySelector(".to-shine-page-breadcrumb");
 
     console.log(breadcrumbs);
-    console.log("lodash: " + _.now());
 
     (breadcrumbs as HTMLElement).style["top"] = headerHeight + "px";
     
