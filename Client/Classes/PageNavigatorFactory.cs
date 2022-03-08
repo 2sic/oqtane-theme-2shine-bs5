@@ -20,36 +20,10 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Classes
             Levels = level;
         }
 
-        public PageNavigator Start(IEnumerable<Page> menuPages, int level, Page currentPage)
+        public PageNavigator Start()
         {
             return _start ??= new PageNavigator(MenuPages, Levels, null);
         }
         private PageNavigator _start;
-
-
-        //public IEnumerable<PageNavigator> PageNav()
-        //{
-        //    if (CurrentPage == null)
-        //    {
-        //        IEnumerable<Page> rootpages = MenuPages
-        //            .Where(pg => pg.Level == 0)
-        //            .OrderBy(pg => pg.Order)
-        //            .AsEnumerable();
-
-        //        return rootpages.Select(rp => new PageNavigator(MenuPages, Levels, rp));
-
-        //        //return new PageNavigator(null, MenuPages, Levels);
-
-        //        //return new PageNavigator(MenuPages, Levels, CurrentPage);
-        //    }
-        //    else if (MenuPages == null || Levels == 0)
-        //    {
-        //        return null;
-        //    }
-        //    else
-        //    {
-        //        return new[] { new PageNavigator(MenuPages, Levels, CurrentPage) };
-        //    }
-        //}
     }
 }

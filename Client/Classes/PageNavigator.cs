@@ -27,16 +27,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Classes
 
         private IEnumerable<PageNavigator> GetChildren()
         {
-            if (CurrentPage == null)
-            {
-                IEnumerable<Page> rootpages = Pages
-                    .Where(pg => pg.Level == 0)
-                    .OrderBy(pg => pg.Order)
-                    .AsEnumerable();
-
-                return rootpages.Select(rp => new PageNavigator(Pages, Levels, rp));
-            }
-            if (Levels > 0 && CurrentPage != null)
+            if(Levels > 0)
             {
                 var Subpages = Pages
                     .Where(p => p.ParentId == CurrentPage.PageId)
@@ -49,10 +40,8 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Classes
             }
             else
             {
-                //Subpages = null;
                 return null;
             }
         }
-
     }
 }
