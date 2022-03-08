@@ -5,11 +5,7 @@ using Oqtane.Services;
 using Oqtane.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-<<<<<<< HEAD
-=======
 using System.IO;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
->>>>>>> 94cd77ce6fc9548fa7a3021ac3e33c4d53de32a2
 
 namespace ToSic.Oqt.Themes.ToShineBs5
 {
