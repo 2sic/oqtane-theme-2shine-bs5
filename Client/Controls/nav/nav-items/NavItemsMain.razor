@@ -1,46 +1,52 @@
 ﻿@namespace Oqtane.Themes.Controls
 @inherits MenuItemsBase
 
-@*@if(PageNav().Children.Any())
-{ *@
-    @*<ul class="@(PageNav().parentPage.Level == 0 ? "navbar-nav" : "dropdown-menu")">*@
-    @foreach (var pageNav in PageNavFactory())
+@if(PageNavFactory().MenuPages.Any())
+{
+    int length = Start.Children.Count; // PageNavFactory().PageNav().Count();
+
+    //should get a list of page navigators and calls the li component for each pagenavigator 
+    <ul class="@(PageNavFactory().CurrentPage == null ? "navbar-nav" : "dropdown-menu")">
+    @foreach (var pageNav in Start.Children)
     {
         var cssClasses = new List<string>();
         cssClasses.Add("nav-item");
-        cssClasses.Add("nav-" + pageNav.parentPage.PageId);
-        if(pageNav.parentPage.Order == 1){ cssClasses.Add("first"); }
-        //if( pageNav.parentPage.Order == CountPages() ){ cssClasses.Add("last"); }
-        if(pageNav.parentPage.HasChildren == true){ cssClasses.Add("has-child dropdown"); }
+        cssClasses.Add("nav-" + pageNav.CurrentPage.PageId);
+        if(pageNav.CurrentPage.Order == 1){ cssClasses.Add("first"); }
+        if( pageNav.CurrentPage.Order == length ){ cssClasses.Add("last"); }
+        if(pageNav.CurrentPage.HasChildren == true){ cssClasses.Add("has-child dropdown"); }
 
-        @cssClasses.Add((PageState.Page.PageId == pageNav.parentPage.PageId) ? "active" : ("inactive"));
-        if(PageState.Page.PageId == pageNav.parentPage.PageId){ cssClasses.Add("active"); } else { cssClasses.Add("inactive"); }
+        if(this.PageState.Page.PageId == pageNav.CurrentPage.PageId){ cssClasses.Add("active"); } else { cssClasses.Add("inactive"); }
 
-        if(pageNav.parentPage.IsClickable == false){ cssClasses.Add("disabled"); }
+        if(pageNav.CurrentPage.IsClickable == false){ cssClasses.Add("disabled"); }
         var classString =  string.Join(" ", cssClasses);
+
+        //<li> should be in its own component should only handel one pagenavigator 
         <li class="@classString">
-            @if(pageNav.parentPage.IsClickable == true)
+            @if(pageNav.CurrentPage.IsClickable == true)
             {
                 var linkCssClasses = new List<string>();
 
-                @if (pageNav.parentPage.HasChildren && pageNav.parentPage.Level == 0){ linkCssClasses.Add("dropdown-toggle"); }
-                @linkCssClasses.Add((pageNav.parentPage.Level != 0) ? "dropdown-item" : "nav-link");
+                @if (pageNav.CurrentPage.HasChildren && pageNav.CurrentPage.Level == 0){ linkCssClasses.Add("dropdown-toggle"); }
+                
+                @if(pageNav.CurrentPage.Level != 0){ cssClasses.Add("dropdown-item"); } else { cssClasses.Add("nav-link"); }
+
                 var linkClassString = string.Join(" ", linkCssClasses);
 
-                <a class="@linkClassString" target="" href="@GetUrl(pageNav.parentPage)">@pageNav.parentPage.Name</a>
+                <a class="@linkClassString" target="" href="@GetUrl(pageNav.CurrentPage)">@pageNav.CurrentPage.Name</a>
             } else {
-                @if (pageNav.parentPage.HasChildren && pageNav.parentPage.Level == 0)
+                @if (pageNav.CurrentPage.HasChildren && pageNav.CurrentPage.Level == 0)
                 {
-                    <span class="nav-link dropdown-toggle" data-bs-toggle="dropdown">@pageNav.parentPage.Name</span>
+                    <span class="nav-link dropdown-toggle" data-bs-toggle="dropdown">@pageNav.CurrentPage.Name</span>
                 } else {
-                    <span class="nav-link">@pageNav.parentPage.Name</span>
+                    <span class="nav-link">@pageNav.CurrentPage.Name</span>
                 }
             }
-            @if(pageNav.parentPage.Level == 0)
+            @if(pageNav.Children.Any())
             {
-                <NavItemsMain ParentPage="@pageNav.parentPage" Pages="pageNav.subpages"></NavItemsMain>
+                <NavItemsMain ParentPage="@pageNav.CurrentPage" Pages="pageNav.Subpages"></NavItemsMain>
             }
         </li>
     }
-@*</ul>*@
-@*}*@
+    </ul>
+}
