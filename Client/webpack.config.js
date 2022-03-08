@@ -1,8 +1,8 @@
 const glob = require("glob");
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
@@ -42,8 +42,8 @@ module.exports = {
                 },
                 extractComments: false,
             }),
-            new OptimizeCSSAssetsPlugin({
-                cssProcessorOptions: {
+            new CssMinimizerPlugin({
+                minimizerOptions: {
                     map: {
                         inline: false,
                         annotation: true,

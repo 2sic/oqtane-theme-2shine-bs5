@@ -17298,14 +17298,17 @@ var __webpack_exports__ = {};
 /* harmony export */ });
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(486);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
-﻿//Functions to set body classes
+﻿
 
+//export function setBodyClass(bodyClass: string): void {
+//    let body = document.querySelector("body");
+//    body.className = bodyClass;
+//}
 
-
- function clearBodyClasses() {
+function clearBodyClasses() {
     console.log("lodash2: " + lodash__WEBPACK_IMPORTED_MODULE_0__.now());
 
-    var body = document.querySelector("body");
+    let body = document.querySelector("body");
     body.removeAttribute("class");
 
     //var offcanvas = document.getElementById("toggleMobileMenu");
@@ -17318,11 +17321,6 @@ var __webpack_exports__ = {};
     //    body.style["overflow"] = "visible";
     //}
 }
-
-// export function setBodyClass(bodyClass: string) {
-//    var body = document.querySelector("body");
-//    body.className = bodyClass;
-//}
 })();
 
 var __webpack_exports__clearBodyClasses = __webpack_exports__.$;

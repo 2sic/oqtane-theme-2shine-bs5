@@ -1,11 +1,11 @@
 ﻿import * as _ from "lodash";
 
-export function setBodyClass(bodyClass: string): void {
-    let body = document.querySelector("body");
-    body.className = bodyClass;
-}
+//export function setBodyClass(bodyClass: string): void {
+//    let body = document.querySelector("body");
+//    body.className = bodyClass;
+//}
 
-export function clearBodyClasses(): void  {
+export function clearBodyClasses() {
     console.log("lodash2: " + _.now());
 
     let body = document.querySelector("body");
