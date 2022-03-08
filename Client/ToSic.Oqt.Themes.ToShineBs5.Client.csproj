@@ -61,6 +61,10 @@
     <PackageReference Include="Oqtane.Shared" Version="3.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controls\nav\nav-main\" />
+  </ItemGroup>
+
   <PropertyGroup>
     <!-- there may be other elements here -->
     <BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>

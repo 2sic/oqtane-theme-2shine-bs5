@@ -1,5 +1,4 @@
-﻿@namespace Oqtane.Themes.Controls
-@inherits MenuItem
+﻿@inherits MenuBase;
 
 @if(PageNavigator != null)
 {
@@ -37,7 +36,7 @@
         }
         @if(PageNavigator.HasChildren)
         {
-            <NavItemListMain ParentPage="@PageNavigator.CurrentPage" Pages="PageNavigator.Children"></NavItemListMain>
+            <NavItemListMain ParentPage="@PageNavigator.CurrentPage" PageNavigators="PageNavigator.Children"></NavItemListMain>
         }
     </li>
 }

@@ -2,7 +2,7 @@
 @inherits MenuItemsBase
 
 
-@if(CountPages() > 0)
+@*@if(CountPages() > 0)
 {
    <ul class="@(ParentPage != null ? "to-shine-nav to-shine-nav-sub" : "2shine-nav-child")">
     @foreach (var Page in ToShineGetPages())
@@ -35,4 +35,4 @@
         </li>
     }
 </ul>
-}
+}*@

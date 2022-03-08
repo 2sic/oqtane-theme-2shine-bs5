@@ -1,0 +1,17 @@
+﻿@inherits NavEntryBase
+
+<NavItems PageNavigator="Start"></NavItems>
+@*if(PageNavFactory().CurrentPage.HasChildren)
+{
+    public int length = Start.Children.Count;
+
+    <ul class="@(PageNavFactory().CurrentPage == null ? "navbar-nav" : "dropdown-menu")">
+        if(Start.HasChildren)
+        {
+            @foreach(var pageNav in Start.Children)
+            {
+                <NavItem PageNavigator="pageNav"></NavItem>
+            }
+        }
+    </ul>
+}*@

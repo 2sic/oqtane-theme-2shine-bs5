@@ -55,14 +55,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcbmF2XG5hdi1pdGVtcy1zdWJtZW51XFN1Ym1lbnVJdGVtcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/nav/nav-main/NavItemListMain.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcbmF2XG5hdi1tYWluXE5hdkl0ZW1MaXN0TWFpbi5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/nav/nav-main/NavItemsMain.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcbmF2XG5hdi1tYWluXE5hdkl0ZW1zTWFpbi5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Controls/nav/NavigationLoginButton.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcbmF2XE5hdmlnYXRpb25Mb2dpbkJ1dHRvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -97,6 +89,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Fullscreen/Fullscreen.razor]
 build_metadata.AdditionalFiles.TargetPath = RnVsbHNjcmVlblxGdWxsc2NyZWVuLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Menu/NavEntry.razor]
+build_metadata.AdditionalFiles.TargetPath = TWVudVxOYXZFbnRyeS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Menu/NavItem.razor]
+build_metadata.AdditionalFiles.TargetPath = TWVudVxOYXZJdGVtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Menu/NavItems.razor]
+build_metadata.AdditionalFiles.TargetPath = TWVudVxOYXZJdGVtcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/_Imports.razor]

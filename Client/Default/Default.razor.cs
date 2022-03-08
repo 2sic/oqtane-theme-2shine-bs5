@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.JSInterop;
 using Oqtane.Models;
 using Oqtane.Services;
 using Oqtane.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Classes;
 
 namespace ToSic.Oqt.Themes.ToShineBs5
 {

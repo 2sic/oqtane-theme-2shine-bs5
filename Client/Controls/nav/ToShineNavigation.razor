@@ -1,4 +1,5 @@
 ﻿@namespace Oqtane.Themes.Controls
+@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu
 @inherits MenuBase
 
 @if (MenuPages.Any())
@@ -48,7 +49,7 @@
       <div class="offcanvas-body">
         <div class="d-flex flex-column justify-content-end align-items-end flex-grow-1">
           <div class="d-none d-lg-block">
-            <NavItemsMain ParentPage="null" Pages="MenuPages"></NavItemsMain>
+            <NavEntry ParentPage="null" PageNavigators="null"></NavEntry>
           </div>
 
           <div class="d-block d-lg-none w-100">

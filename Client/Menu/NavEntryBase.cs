@@ -1,21 +1,18 @@
 using System.Collections.Generic;
-using System.Linq;
-
 using Microsoft.AspNetCore.Components;
-
 using Oqtane.Models;
-using Oqtane.UI;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Classes;
+using Oqtane.Themes.Controls;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Navigator;
 
-namespace Oqtane.Themes.Controls
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu
 {
-    public abstract class MenuItemsBase : MenuBase
+    public abstract class NavEntryBase : MenuBase
     {
         [Parameter()]
         public Page ParentPage { get; set; }
 
         [Parameter()]
-        public IEnumerable<PageNavigator> Pages { get; set; }
+        public IEnumerable<PageNavigator> PageNavigators { get; set; }
 
         public int Levels { get; set; }
 
@@ -28,5 +25,7 @@ namespace Oqtane.Themes.Controls
 
             return new PageNavigatorFactory(MenuPages, Levels, CurrentPage);
         }
+
+
     }
 }
