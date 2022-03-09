@@ -1,7 +1,7 @@
 using Oqtane.Models;
 using Oqtane.Themes;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.CenteredSubmenu
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.CenteredSubmenu
 {
     public class CenteredSubmenuThemeInfo : ITheme
     {

@@ -5,9 +5,9 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Navigator
 {
     public class PageNavigatorFactory
     {
-        public readonly IEnumerable<Page> MenuPages;
-        public readonly int Levels;
-        public readonly Page CurrentPage;
+        private readonly IEnumerable<Page> MenuPages;
+        private readonly int Levels;
+        private readonly Page CurrentPage;
 
         public PageNavigatorFactory(IEnumerable<Page> menuPages, int level, Page currentPage)
         {

@@ -1,0 +1,35 @@
+﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu
+@inherits MenuBase
+
+<header id="to-shine-page-header">
+    <nav id="to-shine-page-navigation" class="navbar navbar-expand-lg bg-white">
+      <div class="container">
+        <ToShineLogo></ToShineLogo>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="offcanvas offcanvas-start border-0" id="offcanvasNavbar">
+          <div class="offcanvas-header">
+            <ToShineLogo></ToShineLogo>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+          </div>
+          <div class="offcanvas-body">
+            <div class="d-flex flex-column justify-content-end align-items-end flex-grow-1">
+              <div class="d-none d-lg-block">
+                <NavEntry ParentPage="null" PageNavigators="null"></NavEntry>
+              </div>
+
+              <div class="d-block d-lg-none w-100">
+                NavItemsMobile
+              </div>
+              <div class="d-flex order-lg-first">
+                <LanguageChanger></LanguageChanger><NavigationLoginButton></NavigationLoginButton><AdminButtons></AdminButtons>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <AdminOffcanvas></AdminOffcanvas>
+</header>

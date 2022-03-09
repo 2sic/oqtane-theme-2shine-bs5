@@ -1,7 +1,7 @@
 using Oqtane.Models;
 using Oqtane.Themes;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Fullscreen
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Fullscreen
 {
     public class ThemeInfo : ITheme
     {

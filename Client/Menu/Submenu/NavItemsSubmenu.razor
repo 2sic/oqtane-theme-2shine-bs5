@@ -1,0 +1,16 @@
+﻿@inherits MenuBase;
+
+if(PageNavigator.HasChildren)
+{
+    public int length = Start.Children.Count;
+
+    <ul class="@(PageNavigator.CurrentPage == null ? "navbar-nav" : "ul-collapse collapse collapse-" + PageNavigator.CurrentPage.ParentId)">
+        if(PageNavigator.HasChildren)
+        {
+            @foreach(var pageNav in PageNavigator.Children)
+            {
+                <NavItemSubmenu PageNavigator="pageNav"></NavItemSubmenu>
+            }
+        }
+    </ul>
+}

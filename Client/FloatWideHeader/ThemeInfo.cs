@@ -1,7 +1,7 @@
 using Oqtane.Models;
 using Oqtane.Themes;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.FloatWideHeader
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.FloatWideHeader
 {
     public class ThemeInfo : ITheme
     {

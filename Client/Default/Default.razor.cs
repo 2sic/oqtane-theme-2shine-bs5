@@ -6,6 +6,7 @@ using Oqtane.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.IO;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Controls;
 
 namespace ToSic.Oqt.Themes.ToShineBs5
 {
@@ -63,6 +64,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5
         private async Task<string> DetermineBodyClasses()
         {
             var page = this.PageState.Page;
+
             //1.1 Set the page-is-home class
             var isHomeClass = page.Path == "" ? "page-is-home" : "";
             
@@ -91,6 +93,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5
                     }
                 }
             }
+
             //1.5 Set the page-root-neutral-### class
 
             //2 Set site-### class

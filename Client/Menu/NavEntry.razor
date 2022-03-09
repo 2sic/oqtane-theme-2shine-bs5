@@ -1,17 +1,26 @@
 ﻿@inherits NavEntryBase
+@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Main;
+@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Mobile;
+@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Submenu;
 
-<NavItems PageNavigator="Start"></NavItems>
-@*if(PageNavFactory().CurrentPage.HasChildren)
+
+@switch (Variation)
 {
-    public int length = Start.Children.Count;
+    case "Submenu":
+        <NavItemsSubmenu PageNavigator="Start"></NavItemsSubmenu>
+        break;
 
-    <ul class="@(PageNavFactory().CurrentPage == null ? "navbar-nav" : "dropdown-menu")">
-        if(Start.HasChildren)
-        {
-            @foreach(var pageNav in Start.Children)
-            {
-                <NavItem PageNavigator="pageNav"></NavItem>
-            }
-        }
-    </ul>
-}*@
+    case "Mobile":
+        <NavItemsMobile PageNavigator="Start"></NavItemsMobile>
+        break;
+    default: //Main
+    {
+        <NavItems PageNavigator="Start"></NavItems>
+        break;
+    }
+}
+
+@code{
+    [Parameter]
+    public string Variation { get; set; }
+}

@@ -21,11 +21,9 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu
         protected PageNavigatorFactory PageNavFactory()
         {
             Page CurrentPage = ParentPage;
-            int Levels = 10;
+            int Levels = 2;
 
             return new PageNavigatorFactory(MenuPages, Levels, CurrentPage);
         }
-
-
     }
 }
