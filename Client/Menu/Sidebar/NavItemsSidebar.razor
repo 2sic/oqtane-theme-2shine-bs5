@@ -3,7 +3,7 @@
 
 @if(PageNavigator.HasChildren)
 {
-    <ul class="@(PageNavigator.CurrentPage == null ? "navbar-nav" : "ul-collapse collapse collapse-" + PageNavigator.CurrentPage.ParentId)">
+    <ul class="@(PageNavigator.CurrentPage == null ? "navbar-nav" : "ul-collapse collapse collapse-" + @PageNavigator.CurrentPage.ParentId)">
         @if (PageNavigator.HasChildren)
         {
             @foreach(var pageNav in PageNavigator.Children)

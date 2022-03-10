@@ -1,5 +1,4 @@
-﻿@namespace ToSic.Oqt.Themes.ToShineBs5.Fullscreen
-@inherits ToSic.Oqt.Themes.ToShineBs5.Default
+﻿@inherits ToSic.Oqt.Themes.ToShineBs5.Default
 
 @{ 
     base.BuildRenderTree(__builder);
@@ -15,11 +14,11 @@
     public override List<Resource> Resources => new List<Resource>()
     {
         // Load Theme which contains Bootstrap with our customizations (generated with Sass using Webpack)
-        new Resource { ResourceType = ResourceType.Stylesheet, Url = ThemePath().Replace(".Fullscreen", "") + "theme.min.css" },
+        new Resource { ResourceType = ResourceType.Stylesheet, Url = ThemePath().Replace(".Client.Fullscreen", "") + "theme.min.css" },
         // Load the default BS JS
-        new Resource { ResourceType = ResourceType.Script, Url = ThemePath().Replace(".Fullscreen", "") + "bootstrap.bundle.min.js" },
+        new Resource { ResourceType = ResourceType.Script, Url = ThemePath().Replace(".Client.Fullscreen", "") + "bootstrap.bundle.min.js" },
         // Our custom code which ensures page classes, Up-button etc.
-        new Resource { ResourceType = ResourceType.Script, Url = ThemePath().Replace(".Fullscreen", "") + "background.js" },
+        new Resource { ResourceType = ResourceType.Script, Url = ThemePath().Replace(".Client.Fullscreen", "") + "ambient.js" },
     };
 
     public override string Name => "fullscreen";

@@ -7,7 +7,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Fullscreen
     {
         public Theme Theme => new Theme
         {
-            Name = "2shine Oqtane theme with Bootstrap 5 - Fullscreen",
+            Name = "2shine Oqtane theme with Bootstrap 5",
             Version = "1.0.0",
             ContainerSettingsType = "Oqtane.Theme.tosic.toshine.ContainerSettings, Oqtane.Theme.tosic.toshine.Oqtane",
             PackageName = "ToSic.Oqt.Themes.ToShineBs5.Fullscreen"

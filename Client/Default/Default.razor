@@ -22,13 +22,13 @@
     @*Determins if the Sidebar should be inserted and where the Content pane should be inserted*@
     @if (ShowSidebarNavigation)
     {
-        <div>
+        <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-lg-9 order-lg-2 ly-col-contentpane">
                     <Pane Name="Content" />
                 </div>
                 <div class="col-xs-12 col-lg-3 order-lg-1 ly-col-leftpane">
-                    <div id="nav-sub" class="d-none d-sm-block">
+                    <div id="to-shine-nav-sub" class="d-none d-sm-block">
                         <NavEntry ParentPage="null" Variation="Sidebar" Levels="3"></NavEntry>
                 </div>
                 </div>
