@@ -19,11 +19,10 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Sidebar
         private string SubLinkClasses()
         {
             var linkCssClasses = new List<string>();
+
             linkCssClasses.Add("nav-link");
 
-
             var linkClassString = string.Join(" ", linkCssClasses);
-
             return linkClassString;
         }
 

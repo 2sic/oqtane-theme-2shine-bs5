@@ -10,10 +10,14 @@
 
         @if(PageNavigator.HasChildren)
         {
-            <span class="dropdown-toggle nav-item-sub-opener" 
+            <span class='nav-item-sub-opener @(PageNavigator.CurrentPage.PageId == this.PageState.Page.PageId ? "" : "collapsed")'
+                data-bs-toggle="@(PageNavigator.HasChildren ? "collapse"  : "")" 
+                data-bs-target="@(PageNavigator.HasChildren ? ".collapse-" + @PageNavigator.CurrentPage.PageId : "")" 
+            ></span>
+@*            <span class="dropdown-toggle nav-item-sub-opener" 
                 data-bs-toggle="@(PageNavigator.HasChildren ? "dropdown" : "")" 
                 data-bs-target="@(PageNavigator.HasChildren ? ".dropdown-" + @PageNavigator.CurrentPage.PageId : "")"
-            ></span>
+            ></span>*@
             <NavItemsMobile PageNavigator="PageNavigator"></NavItemsMobile>
         }
     </li>

@@ -11,10 +11,7 @@ public partial class NavItemMobile : NavItem
     {
         var cssClasses = new List<string>();
 
-        if (PageNavigator.HasChildren)
-        {
-            cssClasses.Add("dropdown");
-        }
+        cssClasses.Add("position-relative");
 
         var classString = string.Join(" ", cssClasses);
         return classString;
@@ -22,19 +19,8 @@ public partial class NavItemMobile : NavItem
     private string MobileLinkClasses()
     {
         var linkCssClasses = new List<string>();
-        if (PageNavigator.CurrentPage.HasChildren && PageNavigator.CurrentPage.Level == 0)
-        {
-            linkCssClasses.Add("dropdown-item");
-        }
 
-        if (PageNavigator.CurrentPage.Level != 0)
-        {
-            linkCssClasses.Add("dropdown-item");
-        }
-        else
-        {
-            linkCssClasses.Add("nav-link");
-        }
+        linkCssClasses.Add("nav-link");
 
         var linkClassString = string.Join(" ", linkCssClasses);
 
