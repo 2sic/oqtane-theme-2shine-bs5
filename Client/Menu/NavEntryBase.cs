@@ -12,18 +12,16 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu
         public Page ParentPage { get; set; }
 
         [Parameter()]
-        public IEnumerable<PageNavigator> PageNavigators { get; set; }
+        public string Variation { get; set; }
 
+        [Parameter()]
         public int Levels { get; set; }
 
         protected PageNavigator Start => PageNavFactory().Start();
 
         protected PageNavigatorFactory PageNavFactory()
         {
-            Page CurrentPage = ParentPage;
-            int Levels = 2;
-
-            return new PageNavigatorFactory(MenuPages, Levels, CurrentPage);
+            return new PageNavigatorFactory(MenuPages, Levels, ParentPage);
         }
     }
 }

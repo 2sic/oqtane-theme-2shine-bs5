@@ -1,15 +1,14 @@
-﻿@inherits MenuBase;
+﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Main;
+@inherits NavItems;
 
-if(PageNavigator.HasChildren)
+@if(PageNavigator.HasChildren)
 {
-    public int length = Start.Children.Count;
-
     <ul class="@(PageNavigator.CurrentPage == null ? "navbar-nav" : "ul-collapse collapse collapse-" + PageNavigator.CurrentPage.ParentId)">
-        if(PageNavigator.HasChildren)
+        @if (PageNavigator.HasChildren)
         {
             @foreach(var pageNav in PageNavigator.Children)
             {
-                <NavItemSubmenu PageNavigator="pageNav"></NavItemSubmenu>
+                <NavItemSidebar PageNavigator="pageNav"></NavItemSidebar>
             }
         }
     </ul>

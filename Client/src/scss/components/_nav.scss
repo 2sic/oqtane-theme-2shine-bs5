@@ -125,6 +125,7 @@
                     .dropdown-item {
                         color: rgba($white, 0.8);
                         font-size: 20px;
+                        padding: .5rem 1rem;
 
                         &.active {
                             background-color: rgba($black, 0.4);
@@ -173,6 +174,43 @@
             &:after {
                 content: "-";
             }
+        }
+    }
+}
+
+#to-shine-nav-sub {
+    .nav-item-sub-opener {
+        position: absolute;
+        top: 0px;
+        right: 0;
+        height: 46px;
+        width: 40px;
+        text-align: center;
+        cursor: pointer;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:not(.collapsed) {
+            &:after {
+                content: "–";
+            }
+        }
+
+        &:after {
+            content: "+";
+            color: $primary;
+        }
+    }
+
+    .ul-collapse {
+        background-color: rgba($primary, 0.1);
+        list-style: none;
+        padding-left: 0;
+
+        .nav-link {
+            padding-left: 15px;
         }
     }
 }

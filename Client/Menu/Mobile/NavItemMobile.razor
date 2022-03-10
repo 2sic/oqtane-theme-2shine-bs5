@@ -1,15 +1,19 @@
-﻿@inherits MenuBase;
+﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Main;
+@inherits NavItem;
 
 @if(PageNavigator != null)
 {
-    <li class="@liCLasses()">
-        <a class="@aClasses()" target="" data-bs-toggle="@aDataBsToggle()" href="@aHref()">
+    <li class="@LiClasses()">
+        <a class="@LinkClasses()" href="@LinkHref()">
             @PageNavigator.CurrentPage.Name
         </a>
 
         @if(PageNavigator.HasChildren)
         {
-            <span class="dropdown-toggle nav-item-sub-opener" ></span>
+            <span class="dropdown-toggle nav-item-sub-opener" 
+                data-bs-toggle="@(PageNavigator.HasChildren ? "dropdown" : "")" 
+                data-bs-target="@(PageNavigator.HasChildren ? ".dropdown-" + @PageNavigator.CurrentPage.PageId : "")"
+            ></span>
             <NavItemsMobile PageNavigator="PageNavigator"></NavItemsMobile>
         }
     </li>

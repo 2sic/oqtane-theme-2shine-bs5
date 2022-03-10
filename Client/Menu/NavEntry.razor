@@ -1,13 +1,13 @@
 ﻿@inherits NavEntryBase
 @using ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Main;
 @using ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Mobile;
-@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Submenu;
+@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Sidebar;
 
 
 @switch (Variation)
 {
-    case "Submenu":
-        <NavItemsSubmenu PageNavigator="Start"></NavItemsSubmenu>
+    case "Sidebar":
+        <NavItemsSidebar PageNavigator="Start"></NavItemsSidebar>
         break;
 
     case "Mobile":
@@ -18,9 +18,4 @@
         <NavItems PageNavigator="Start"></NavItems>
         break;
     }
-}
-
-@code{
-    [Parameter]
-    public string Variation { get; set; }
 }

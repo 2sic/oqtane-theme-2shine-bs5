@@ -13,23 +13,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="CenteredSubmenu\Containers\**" />
+    <Compile Remove="CenteredSidebar\Containers\**" />
     <Compile Remove="Centered\Containers\**" />
     <Compile Remove="FloatWideHeader\Containers\**" />
     <Compile Remove="Fullscreen\Containers\**" />
-    <Content Remove="CenteredSubmenu\Containers\**" />
+    <Content Remove="CenteredSidebar\Containers\**" />
     <Content Remove="Centered\Containers\**" />
     <Content Remove="FloatWideHeader\Containers\**" />
     <Content Remove="Fullscreen\Containers\**" />
-    <EmbeddedResource Remove="CenteredSubmenu\Containers\**" />
+    <EmbeddedResource Remove="CenteredSidebar\Containers\**" />
     <EmbeddedResource Remove="Centered\Containers\**" />
     <EmbeddedResource Remove="FloatWideHeader\Containers\**" />
     <EmbeddedResource Remove="Fullscreen\Containers\**" />
-    <None Remove="CenteredSubmenu\Containers\**" />
+    <None Remove="CenteredSidebar\Containers\**" />
     <None Remove="Centered\Containers\**" />
     <None Remove="FloatWideHeader\Containers\**" />
     <None Remove="Fullscreen\Containers\**" />
-    <TypeScriptCompile Remove="CenteredSubmenu\Containers\**" />
+    <TypeScriptCompile Remove="CenteredSidebar\Containers\**" />
     <TypeScriptCompile Remove="Centered\Containers\**" />
     <TypeScriptCompile Remove="FloatWideHeader\Containers\**" />
     <TypeScriptCompile Remove="Fullscreen\Containers\**" />
@@ -62,5 +62,9 @@
     <BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="npm run build-prod" />
+  </Target>
 
 </Project>

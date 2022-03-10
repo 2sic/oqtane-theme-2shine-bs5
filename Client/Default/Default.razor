@@ -2,6 +2,7 @@
 @inherits Oqtane.Themes.ThemeBase
 @inject NavigationManager NavigationManager
 @using ToSic.Oqt.Themes.ToShineBs5.Client.Controls
+@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 
 <ToShineHeader></ToShineHeader>
 <div id="to-shine-page-header-pane" class="container-xxl px-0">
@@ -28,7 +29,7 @@
                 </div>
                 <div class="col-xs-12 col-lg-3 order-lg-1 ly-col-leftpane">
                     <div id="nav-sub" class="d-none d-sm-block">
-                        @*MenuItemsSidebar*@
+                        <NavEntry ParentPage="null" Variation="Sidebar" Levels="3"></NavEntry>
                 </div>
                 </div>
             </div>

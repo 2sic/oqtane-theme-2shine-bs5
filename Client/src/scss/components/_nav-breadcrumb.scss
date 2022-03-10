@@ -5,9 +5,13 @@
 
 .to-shine-page-breadcrumb {
     position: sticky;
-    top: 97px;
+    top: 82px;
     z-index: 10;
     background: $white;
+
+    @include media-breakpoint-down(lg) {
+        top: 58px;
+    }
 
     .to-shine-page-breadcrumb-link {
         color: $gray-600;

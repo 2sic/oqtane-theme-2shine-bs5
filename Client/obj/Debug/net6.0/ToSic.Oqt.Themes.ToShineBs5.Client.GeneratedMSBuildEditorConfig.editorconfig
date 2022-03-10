@@ -15,8 +15,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Projects\oqtane-tests\theme-tests\OqtToShineBs5\Client
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/CenteredSubmenu/CenteredSubmenu.razor]
-build_metadata.AdditionalFiles.TargetPath = Q2VudGVyZWRTdWJtZW51XENlbnRlcmVkU3VibWVudS5yYXpvcg==
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/CenteredSidebar/CenteredSidebar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q2VudGVyZWRTaWRlYmFyXENlbnRlcmVkU2lkZWJhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Centered/Centered.razor]
@@ -103,12 +103,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = TWVudVxOYXZFbnRyeS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Menu/Submenu/NavItemsSubmenu.razor]
-build_metadata.AdditionalFiles.TargetPath = TWVudVxTdWJtZW51XE5hdkl0ZW1zU3VibWVudS5yYXpvcg==
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Menu/Sidebar/NavItemSidebar.razor]
+build_metadata.AdditionalFiles.TargetPath = TWVudVxTaWRlYmFyXE5hdkl0ZW1TaWRlYmFyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Menu/Submenu/NavItemSubmenu.razor]
-build_metadata.AdditionalFiles.TargetPath = TWVudVxTdWJtZW51XE5hdkl0ZW1TdWJtZW51LnJhem9y
+[C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/Menu/Sidebar/NavItemsSidebar.razor]
+build_metadata.AdditionalFiles.TargetPath = TWVudVxTaWRlYmFyXE5hdkl0ZW1zU2lkZWJhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/oqtane-tests/theme-tests/OqtToShineBs5/Client/_Imports.razor]
