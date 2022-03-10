@@ -1,4 +1,4 @@
-﻿////import { hide, show, toggle } from 'slidetoggle';
+﻿/*import { hide, show, toggle } from 'slidetoggle';*/
 ////import "bootstrap";
 
 ////const slidetoggle = require('slidetoggle');
