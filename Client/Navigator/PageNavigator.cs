@@ -11,12 +11,13 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Navigator
         public Page CurrentPage = null;
 
         private int Levels;
-
+        
         public PageNavigator(IEnumerable<Page> _Pages, int _Levels, Page _CurrentPage)
         {
             CurrentPage = _CurrentPage;
             Pages = _Pages;
             Levels = _Levels;
+                
         }
 
         public bool HasChildren => Children.Any();
@@ -34,7 +35,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Navigator
             }
             else
             {
-                return null;
+                return new List<PageNavigator>();
             }
         }
     }

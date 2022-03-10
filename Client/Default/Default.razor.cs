@@ -57,7 +57,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5
             BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", Path.Combine("./", ThemePath(), "interop/page-control.js"));
 
             await BodyClassJS.InvokeAsync<string>("clearBodyClasses");
-            await BodyClassJS.InvokeAsync<string>("setBodyClass", bodyClasses);           
+            await BodyClassJS.InvokeAsync<string>("setBodyClass", bodyClasses);    
         }
         
 

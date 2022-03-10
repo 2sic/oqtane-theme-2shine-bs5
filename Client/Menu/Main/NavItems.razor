@@ -1,11 +1,9 @@
 ﻿@inherits MenuBase;
 
-if(PageNavigator.HasChildren)
+@if(PageNavigator.HasChildren)
 {
-    public int length = Start.Children.Count;
-
     <ul class="@(PageNavigator.CurrentPage == null ? "navbar-nav" : "dropdown-menu")">
-        if(PageNavigator.HasChildren)
+        @if (PageNavigator.HasChildren)
         {
             @foreach(var pageNav in PageNavigator.Children)
             {

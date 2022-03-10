@@ -26,10 +26,10 @@ public partial class NavItem : MenuBase
         //    cssClasses.Add("last");
         //}
 
-        if (PageNavigator.HasChildren)
-        {
-            cssClasses.Add("has-child dropdown");
-        }
+        //if (PageNavigator.HasChildren)
+        //{
+        //    cssClasses.Add("has-child dropdown");
+        //}
 
         //Use ? : instead of if, else
         if (PageState.Page.PageId == PageNavigator.CurrentPage.PageId)
