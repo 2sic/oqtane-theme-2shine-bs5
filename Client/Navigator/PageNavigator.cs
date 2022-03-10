@@ -30,8 +30,17 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Navigator
             if (Levels > 0)
             {
                 Levels--;
+                IEnumerable<Page> childPages; 
+                if(CurrentPage != null)
+                {
+                    childPages = Pages.Where(p => p.ParentId == CurrentPage.PageId);
+                }
+                else
+                {
+                    childPages = Pages.Where(p => p.ParentId == null);
+                }
 
-                return Pages.Select(p => new PageNavigator(Pages, Levels, p));
+                return childPages.Select(p => new PageNavigator(Pages, Levels, p));
             }
             else
             {
