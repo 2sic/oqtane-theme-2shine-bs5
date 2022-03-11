@@ -1,0 +1,47 @@
+// Import fonts from google
+// 2016-12-05 2rm changed include to default.ascx (caused issues with ClientDependency)
+// @import url(https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700);
+
+@media all {
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: $font-family-sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        br {
+            @include media-breakpoint-down(md) {
+                content: "";
+            }
+
+            &:after {
+                @include media-breakpoint-down(md) {
+                    content: " ";
+                }
+            }
+        }
+    }
+
+    body {
+        strong {
+            font-weight: 700;
+        }
+
+        ul {
+            list-style-type: disc;
+
+            li {
+            }
+        }
+    }
+}

@@ -24,12 +24,20 @@
                 <NavEntry ParentPage="null" Levels="3" Variation="Mobile"></NavEntry>
               </div>
               <div class="d-flex order-lg-first">
-                <LanguageChanger></LanguageChanger><NavigationLoginButton></NavigationLoginButton><AdminButtons></AdminButtons>
+                <LanguageChanger Languages="en: EN,nl-NL: NL"></LanguageChanger><NavigationLoginButton></NavigationLoginButton><AdminButtons></AdminButtons>
               </div>
             </div>
           </div>
         </div>
       </div>
     </nav>
-    <AdminOffcanvas></AdminOffcanvas>
+
+    @*
+        This div is only here because the control panel can't be used without the 
+        buttons appearing and we need to be able to set the buttons to display:none
+        -> See in the _oqtane-admin-buttons.scss file
+    *@
+    <div id="oqtane-control-panel">
+        <ControlPanel ShowLanguageSwitcher="false"></ControlPanel>
+    </div>
 </header>

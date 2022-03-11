@@ -1,33 +1,73 @@
-﻿
+﻿/* ----------------------------------------------------------------------------------------------------
+          INFO: Here are some instructions that may help you
+          https://azing.org/2sxc/l/t8U9NMGu/theme-bootstrap-4-instant
+ ----------------------------------------------------------------------------------------------------*/
 
 // 1. Initialize Theme styles and all default Bootstrap Variables
 @import "variables";
 
 // ----------------------------------------------------------------------------------------------------
 // 2. Generate all standard Bootstrap CSS
+
 @import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/containers";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/tables";
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/button-group";
+@import "../../node_modules/bootstrap/scss/card";
+@import "../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../node_modules/bootstrap/scss/pagination";
+@import "../../node_modules/bootstrap/scss/badge";
+@import "../../node_modules/bootstrap/scss/alert";
+@import "../../node_modules/bootstrap/scss/list-group";
+@import "../../node_modules/bootstrap/scss/close";
+@import "../../node_modules/bootstrap/scss/offcanvas";
+@import "../../node_modules/bootstrap/scss/helpers";
+/*Add utilities*/
+@import "../../node_modules/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/utilities/api";
+
+// The following bootstrap parts are not used by the default setup
+// But in case you need them, just uncommented the lines
+// @import "../../node_modules/bootstrap/scss/toasts";
+// @import "../../node_modules/bootstrap/scss/accordion";
+@import "../../node_modules/bootstrap/scss/modal";
+// @import "../../node_modules/bootstrap/scss/tooltip";
+// @import "../../node_modules/bootstrap/scss/popover";
+// @import "../../node_modules/bootstrap/scss/carousel";
+// @import "../../node_modules/bootstrap/scss/spinners";
+// @import "../../node_modules/bootstrap/scss/progress";
+@import "../../node_modules/bootstrap/scss/nav";
+@import "../../node_modules/bootstrap/scss/navbar";
+@import "../../node_modules/bootstrap/scss/transitions";
+@import "../../node_modules/bootstrap/scss/dropdown";
 
 // ----------------------------------------------------------------------------------------------------
 // 3. Generate CSS for this theme / skin
+@import "components/typography";    
 @import "components/base-layout";
-
-//Import some oqtane-specific styles
-@import "oqtane/oqtane-internal";
-@import "oqtane/oqtane-admin-buttons";
-@import "oqtane/oqtane-breadcrumb";
-
-//Import stylings for different components
 @import "components/header";
 @import "components/footer";
 
+//Import some oqtane-specific styles
+@import "components/oqtane-internal";
+@import "components/oqtane-admin-buttons";
+@import "components/oqtane-breadcrumb";
+
 // Navigation / Menus
-@import "components/nav-desktop-main";
-@import "components/nav-desktop-sub";
-@import "components/nav-mobile";
+@import "components/nav";
 @import "components/nav-mobile-to-top";
 @import "components/nav-breadcrumb";
 @import "components/nav-language";
 
+// Other medias
+@import "components/print";
 
 // ----------------------------------------------------------------------------------------------------
 // 4. Layout Variations

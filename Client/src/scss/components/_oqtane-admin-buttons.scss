@@ -15,8 +15,14 @@
         padding-left: 0;
     }
 }
-.offcanvas-body{
-    .to-shine-ui-buttons{
-        padding-top: 1rem;
+
+/*
+    This css is only needed to set the buttons that 
+    automatically come with the oqtane control panel cannot be disabled
+    and have to be set to display none
+*/
+#oqtane-control-panel{
+    > button{
+        display: none;
     }
 }

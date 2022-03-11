@@ -6,13 +6,15 @@ using Oqtane.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.IO;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Controls;
+using ToSic.Oqt.Themes.ToShineBs5.Client;
+using System.Text.Json;
+using System.Net.Http;
+using System.Net.Http.Json;
 
 namespace ToSic.Oqt.Themes.ToShineBs5
 {
     public partial class Default : Oqtane.Themes.ThemeBase
     {
-
         protected virtual string ClassName => "default";
 
         protected virtual bool ShowSidebarNavigation => false;
@@ -33,6 +35,8 @@ namespace ToSic.Oqt.Themes.ToShineBs5
             new Resource { ResourceType = ResourceType.Script, Url = ThemePath() + "ambient.js" },
         };
 
+        [Inject]
+        protected HttpClient Http { get; set; }
 
         [Inject]
         protected IPageService PageService { get; set; }
@@ -48,6 +52,19 @@ namespace ToSic.Oqt.Themes.ToShineBs5
 
         private IJSObjectReference BodyClassJS;
 
+        protected override async Task OnInitializedAsync()
+        {
+            await base.OnInitializedAsync();
+
+            string fileName = "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/global-settings.json";
+
+            string jsonString = System.IO.File.ReadAllText(fileName);
+            JsonNav jsonNav = System.Text.Json.JsonSerializer.Deserialize<JsonNav>(jsonString)!;
+
+
+            //var employees = await Http.GetFromJsonAsync<Employee[]>("./Themes/ToSic.Oqt.Themes.ToShineBs5/global-settings.json");
+        }
+
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await base.OnAfterRenderAsync(firstRender);
@@ -57,9 +74,8 @@ namespace ToSic.Oqt.Themes.ToShineBs5
             BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", Path.Combine("./", "Themes/ToSic.Oqt.Themes.ToShineBs5/interop/page-control.js"));
 
             await BodyClassJS.InvokeAsync<string>("clearBodyClasses");
-            await BodyClassJS.InvokeAsync<string>("setBodyClass", bodyClasses);    
+            await BodyClassJS.InvokeAsync<string>("setBodyClass", bodyClasses);
         }
-        
 
         private async Task<string> DetermineBodyClasses()
         {

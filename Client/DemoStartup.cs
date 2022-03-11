@@ -6,7 +6,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddScoped<IPageNavigator, PageNavigator>();
+            //services.AddScoped<IPageNavigatorFactory, PageNavigatorFactory>();
         }
     }
 }

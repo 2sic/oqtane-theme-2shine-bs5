@@ -1,0 +1,9 @@
+@media print {
+    a[href]:after {
+        content: "" !important;
+    }
+
+    .to-shine-nav-mobile-trigger {
+        display: block;
+    }
+}

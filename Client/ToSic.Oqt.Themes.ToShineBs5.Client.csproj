@@ -37,9 +37,11 @@
 
   <ItemGroup>
     <None Remove="src\scss\components\_page-customizations.scss" />
+    <None Remove="src\scss\readme.md" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="src\scss\readme.md" />
     <Content Include="src\scss\_page-customizations.scss" />
   </ItemGroup>
 
@@ -55,6 +57,13 @@
   <ItemGroup>
     <PackageReference Include="Oqtane.Client" Version="3.0.2" />
     <PackageReference Include="Oqtane.Shared" Version="3.0.2" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\Themes\ToSic.Oqt.Themes.ToShineBs5\global-settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <PropertyGroup>

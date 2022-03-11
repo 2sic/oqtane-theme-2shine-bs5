@@ -1,0 +1,32 @@
+{
+  "NavConfigs": {
+    "Default": {
+
+    },
+    "Main": {
+      "Levels": 2,
+      "ParentPage": null,
+      "NavClasses" :  "Special"
+    },
+    "Mobile": {
+      "Levels": 3,
+      "ParentPage": null
+
+    },
+    "Sidebar": {
+      "Levels": 3,
+      "ParentPage": null,
+      "NavClasses": "Default"
+    }
+  },
+  "NavClasses": {
+    "Default": {
+      "MenuHover": "abcd-gef",
+      "Width" :  "100vh"
+    },
+    "Special": {
+      "Background": "bg-red",
+      "Color" :  "color-blue"
+    }
+  }
+}

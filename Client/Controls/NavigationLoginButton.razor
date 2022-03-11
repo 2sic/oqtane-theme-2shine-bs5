@@ -1,8 +1,7 @@
-﻿@namespace Oqtane.Themes.Controls
-@using Microsoft.Extensions.Localization
+﻿@using Microsoft.Extensions.Localization
 @inherits LoginBase
 @inject IStringLocalizer<Login> Localizer
-@inject IStringLocalizer<SharedResources> SharedLocalizer
+@inject IStringLocalizer<Oqtane.SharedResources> SharedLocalizer
 
 @if(this.PageState.User != null && this.PageState.User.IsAuthenticated)
 {
