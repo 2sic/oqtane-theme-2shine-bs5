@@ -6,12 +6,9 @@ using Oqtane.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.IO;
-using ToSic.Oqt.Themes.ToShineBs5.Client;
-using System.Text.Json;
 using System.Net.Http;
-using System.Net.Http.Json;
 
-namespace ToSic.Oqt.Themes.ToShineBs5
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Default
 {
     public partial class Default : Oqtane.Themes.ThemeBase
     {
@@ -21,6 +18,12 @@ namespace ToSic.Oqt.Themes.ToShineBs5
 
         protected virtual bool ShowBreadcrumb => true;
 
+        protected string ToShineThemePath()
+        {
+            string path = "Themes/ToSic.Oqt.Themes.ToShineBs5/";
+            return path;
+        }
+
         public override string Name => "default";
 
         public override string Panes => PaneNames.Admin + ",Header,Content";
@@ -28,11 +31,11 @@ namespace ToSic.Oqt.Themes.ToShineBs5
         public override List<Resource> Resources => new List<Resource>()
         {
 		    // Load Theme which contains Bootstrap with our customizations (generated with Sass using Webpack)
-            new Resource { ResourceType = ResourceType.Stylesheet, Url = ThemePath() + "theme.min.css" },
+            new Resource { ResourceType = ResourceType.Stylesheet, Url = ToShineThemePath() + "theme.min.css" },
             // Load the default BS JS
-            new Resource { ResourceType = ResourceType.Script, Url = ThemePath() + "bootstrap.bundle.min.js" },
+            new Resource { ResourceType = ResourceType.Script, Url = ToShineThemePath() + "bootstrap.bundle.min.js" },
             // Our custom code which ensures page classes, Up-button etc.
-            new Resource { ResourceType = ResourceType.Script, Url = ThemePath() + "ambient.js" },
+            new Resource { ResourceType = ResourceType.Script, Url = ToShineThemePath() + "ambient.js" },
         };
 
         [Inject]
@@ -50,19 +53,20 @@ namespace ToSic.Oqt.Themes.ToShineBs5
         [Inject]
         protected ILanguageService LanguageService { get; set; }
 
+        public JasonMenuConfig MainMenuConfig { get; set; }
+
         private IJSObjectReference BodyClassJS;
 
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
 
-            string fileName = "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/global-settings.json";
+            string fileName = "wwwroot/" + ToShineThemePath() + "global-settings.json";
 
             string jsonString = System.IO.File.ReadAllText(fileName);
             JsonNav jsonNav = System.Text.Json.JsonSerializer.Deserialize<JsonNav>(jsonString)!;
-
-
-            //var employees = await Http.GetFromJsonAsync<Employee[]>("./Themes/ToSic.Oqt.Themes.ToShineBs5/global-settings.json");
+            
+            MainMenuConfig = jsonNav.NavConfigs["Main"];
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -71,7 +75,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5
 
             string bodyClasses = await DetermineBodyClasses();
 
-            BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", Path.Combine("./", "Themes/ToSic.Oqt.Themes.ToShineBs5/interop/page-control.js"));
+            BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", Path.Combine("./", ToShineThemePath() ,"interop/page-control.js"));
 
             await BodyClassJS.InvokeAsync<string>("clearBodyClasses");
             await BodyClassJS.InvokeAsync<string>("setBodyClass", bodyClasses);

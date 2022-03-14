@@ -163,16 +163,16 @@
 
 
         &:after {
-            content: "+";
+            content: "-";
             border: none;
             font-size: 20px;
             font-family: sans-serif;
             color: hsla(0,0%,100%,.8);
         }
 
-        &.show {
+        &.collapsed {
             &:after {
-                content: "-";
+                content: "+";
             }
         }
     }

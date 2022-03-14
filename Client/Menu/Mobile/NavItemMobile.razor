@@ -10,7 +10,7 @@
 
         @if(PageNavigator.HasChildren)
         {
-            <span class='nav-item-sub-opener @(PageNavigator.CurrentPage.PageId == this.PageState.Page.PageId ? "" : "collapsed")'
+            <span class='nav-item-sub-opener collapsed'
                 data-bs-toggle="@(PageNavigator.HasChildren ? "collapse"  : "")" 
                 data-bs-target="@(PageNavigator.HasChildren ? ".collapse-" + @PageNavigator.CurrentPage.PageId : "")" 
             ></span>

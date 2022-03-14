@@ -48,13 +48,13 @@ observer.observe(ToShineBody, {
 });
 
 //To-shine-to-top button
-document.addEventListener("scroll", toTopButton);
-function toTopButton() {
+document.addEventListener("scroll", toTopButtonVisibility);
+function toTopButtonVisibility() {
     var toTopButton = document.getElementById("to-shine-to-top");
-    if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
-        toTopButton.style["opacity"] = "1";
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        toTopButton.classList.add("to-shine-top-visible");
     } else {
-        toTopButton.style["opacity"] = "0";
+        toTopButton.classList.remove("to-shine-to-visible");
     }
 }
 
