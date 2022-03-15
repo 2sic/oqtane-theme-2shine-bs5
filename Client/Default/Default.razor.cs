@@ -125,6 +125,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Default
             var layoutVarriationClass = "to-shine-variation-" + ClassName;
 
             //5.2 Set the to-shine-mainnav-variation- class
+            var navigationVariationClass = "to-shine-mainnav-variation-right";
 
             string[] classes =
             {
@@ -135,6 +136,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Default
                 siteIdClass,
                 navLevelClass,
                 layoutVarriationClass,
+                navigationVariationClass,
             };
 
             string bodyClasses = string.Join(" ", classes);

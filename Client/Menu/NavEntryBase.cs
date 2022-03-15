@@ -34,7 +34,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu
             string jsonString = System.IO.File.ReadAllText(fileName);
             JsonNav jsonNav = System.Text.Json.JsonSerializer.Deserialize<JsonNav>(jsonString)!;
 
-            if (JsonConfigName == null || JsonConfigName == "")
+            if (jsonNav.NavConfigs.ContainsKey(JsonConfigName) == false)
             {
                 Start = await new PageNavigatorFactory(MenuPages, Levels, ParentPage).Start();
             }

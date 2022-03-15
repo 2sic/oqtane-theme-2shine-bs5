@@ -31,7 +31,8 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Navigator
             }
             else if(int.TryParse(StartingPoint, out int pageId))
             {
-                return await PageService.GetPageAsync(pageId);
+                var page = await PageService.GetPageAsync(pageId);
+                return page;
             }
             else
             {

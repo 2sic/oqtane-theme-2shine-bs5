@@ -37,8 +37,6 @@ const observer = new MutationObserver(mutations => {
 
     //ToShineBreadcrumbTrigger
     var breadcrumbTrigger = document.querySelector(".to-shine-page-breadcrumb-trigger");
-    breadcrumbTrigger.addEventListener("click", breadcrumbButtonDisplay);
-    breadcrumbTrigger.addEventListener("click", breadcrumbButtonDisplay);
     //ToShineBreadcrumbTrigger end
     
 });
@@ -95,22 +93,18 @@ function breadcrumbsAttributes() {
         breadcrumbs.classList.remove("bg-light", "shadow");
         counter = 0;
     }
-}
 
-//Breadcrumb button
-function breadcrumbButtonDisplay() {
-    var bcHomeLink: HTMLElement = document.querySelector(".to-shine-page-breadcrumb-home")
-    bcHomeLink.style["display"] = "inline!important";
-}
-
-if (document.querySelector('.to-shine-page-breadcrumb') != null) {
-    document.querySelector('.to-shine-page-breadcrumb span a:last-child').classList.add('last');
-    document.querySelector('.to-shine-page-breadcrumb span:last-child').classList.add('last');
-    if (document.querySelector('.to-shine-page-breadcrumb span .to-shine-page-breadcrumb-link:nth-last-child(3)') != null) {
-        document.querySelector('.to-shine-page-breadcrumb span .to-shine-page-breadcrumb-link:nth-last-child(3)').classList.add('second-last');
-    }
-    document.querySelector('.to-shine-page-breadcrumb').classList.toggle('to-shine-page-breadcrumb-shortened', (document.querySelector('.to-shine-page-breadcrumb-link') != null || document.querySelectorAll('.to-shine-page-breadcrumb-link').length > 2))
     document.querySelector('.to-shine-page-breadcrumb-trigger').addEventListener('click', () => {
         document.querySelector('.to-shine-page-breadcrumb').classList.toggle('to-shine-page-breadcrumb-shortened')
     })
+}
+
+if (document.querySelector('.to-shine-page-breadcrumb') != null) {
+    //document.querySelector('.to-shine-page-breadcrumb span a:last-child').classList.add('last');
+    //document.querySelector('.to-shine-page-breadcrumb span:last-child').classList.add('last');
+    //if (document.querySelector('.to-shine-page-breadcrumb span .to-shine-page-breadcrumb-link:nth-last-child(3)') != null) {
+    //    document.querySelector('.to-shine-page-breadcrumb span .to-shine-page-breadcrumb-link:nth-last-child(3)').classList.add('second-last');
+    //}
+    document.querySelector('.to-shine-page-breadcrumb').classList.toggle('to-shine-page-breadcrumb-shortened', (document.querySelector('.to-shine-page-breadcrumb-link') != null || document.querySelectorAll('.to-shine-page-breadcrumb-link').length > 2))
+
 }
