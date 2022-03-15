@@ -1,38 +1,28 @@
-﻿using Microsoft.AspNetCore.Components;
-using System.Collections.Generic;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Navigator;
+﻿using System.Collections.Generic;
+using System.Linq;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Main;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Mobile;
 
 public partial class NavItemMobile : NavItem
 {
-    private string MobileLiClasses()
+    private IList<string> MobileLiClasses()
     {
-        var cssClasses = new List<string>();
-
-        cssClasses.Add("position-relative");
-
-        var classString = string.Join(" ", cssClasses);
-        return classString;
+        var cssClasses = new List<string>
+        {
+            "position-relative"
+        };
+        return cssClasses;
     }
-    private string MobileLinkClasses()
+    private IList<string> MobileAClasses()
     {
-        var linkCssClasses = new List<string>();
-
-        linkCssClasses.Add("nav-link");
-
-        var linkClassString = string.Join(" ", linkCssClasses);
-
-        return linkClassString;
+        var linkCssClasses = new List<string>
+        {
+            "nav-link"
+        };
+        return linkCssClasses;
     }
 
-    private string LiClasses()
-    {
-        return CommonLiClasses() + " " + MobileLiClasses();
-    }
-    private string LinkClasses()
-    {
-        return CommonLinkClasses() + " " + MobileLinkClasses();
-    }
+    private string LiClasses() => ToClasses(CommonLiClasses().Concat(MobileLiClasses()));
+    private string AClasses() => ToClasses(CommonAClasses().Concat(MobileAClasses()));
 }

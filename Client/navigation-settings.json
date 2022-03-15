@@ -5,16 +5,16 @@
     },
     "Main": {
       "Levels": 2,
-      "ParentPage": null,
+      "ParentPage": "*",
       "NavClasses" :  "Special"
     },
     "Mobile": {
       "Levels": 3,
-      "ParentPage": null
+      "ParentPage": "*"
     },
     "Sidebar": {
       "Levels": 3,
-      "ParentPage": null,
+      "ParentPage": "*",
       "NavClasses": "Default"
     }
   },

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Oqtane.Themes.Controls;
 using System.Collections.Generic;
+using System.Linq;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Navigator;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Main
@@ -11,113 +12,81 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Main
         public PageNavigator PageNavigator { get; set; }
 
         public string LinkHref()
+            => PageNavigator.CurrentPage.IsClickable
+                ? PageNavigator.CurrentPage.Path
+                : "javascript:void(0)";
+
+        protected static string ToClasses(IEnumerable<string> original) => string.Join(" ", original);
+
+        public IList<string> CommonLiClasses()
         {
-            string href = "";
-
-            if (PageNavigator.CurrentPage.IsClickable)
+            var commonClasses = new List<string>
             {
-                href = PageNavigator.CurrentPage.Path;
-            }
-            else
-            {
-                href = "javascript:void(0)";
-            }
-
-            return href;
-        }
-
-        public string CommonLiClasses()
-        {
-            var commonClasses = new List<string>();
-
-            commonClasses.Add("nav-item");
-            commonClasses.Add("nav-" + PageNavigator.CurrentPage.PageId);
+                "nav-item",
+                "nav-" + PageNavigator.CurrentPage.PageId
+            };
 
             if (PageNavigator.CurrentPage.Order == 1)
-            {
                 commonClasses.Add("first");
-            }
 
             //if (PageNavigator.CurrentPage.Order == length)
-            //{
             //    commonClasses.Add("last");
-            //}
 
             if (PageState.Page.PageId == PageNavigator.CurrentPage.PageId)
-            {
                 commonClasses.Add("active");
-            }
             else
-            {
                 commonClasses.Add("inactive");
-            }
+
+            //Should replace the code above but won't work
+            //this.PageState.Page.PageId == PageNavigator.CurrentPage.PageId
+            //    ? commonClasses.Add("active")
+            //    : commonClasses.Add("inactive");
 
             if (PageNavigator.HasChildren)
-            {
                 commonClasses.Add("has-child");
-            }
 
             if (PageNavigator.CurrentPage.IsClickable == false)
-            {
                 commonClasses.Add("disabled");
-            }
 
-            var commonClassesString = string.Join(" ", commonClasses);
-            return commonClassesString;
+            return commonClasses;
         }
-        public string CommonLinkClasses()
-        {
-            var commonClasses = new List<string>();
 
-            if (PageNavigator.CurrentPage.PageId == PageState.Page.PageId)
-            {
-                commonClasses.Add("active");
-            }
-
-            var commonClassesString = string.Join(" ", commonClasses);
-            return commonClassesString;
-        }
-        private string MainLiCLasses()
+        public IList<string> CommonAClasses()
         {
             var cssClasses = new List<string>();
-
-            if (PageNavigator.HasChildren)
-            {
-                cssClasses.Add("dropdown");
-            }
-
-            var classString = string.Join(" ", cssClasses);
-            return classString;
+            if (PageNavigator.CurrentPage.PageId == PageState.Page.PageId)
+                cssClasses.Add("active");
+            return cssClasses;
         }
-        private string MainLinkClasses()
+
+        private IList<string> MainLiCLasses()
         {
-            var linkCssClasses = new List<string>();
+            var cssClasses = new List<string>();
+            if (PageNavigator.HasChildren) 
+                cssClasses.Add("dropdown");
+            return cssClasses;
+        }
+
+        private IList<string> MainAClasses()
+        {
+            var cssClasses = new List<string>();
             if (PageNavigator.CurrentPage.HasChildren && PageNavigator.CurrentPage.Level < 1)
-            {
-                linkCssClasses.Add("dropdown-toggle");
-            }
+                cssClasses.Add("dropdown-toggle");
 
             if (PageNavigator.CurrentPage.Level != 0)
-            {
-                linkCssClasses.Add("dropdown-item");
-            }
+                cssClasses.Add("dropdown-item");
             else
-            {
-                linkCssClasses.Add("nav-link");
-            }
+                cssClasses.Add("nav-link");
 
-            var linkClassString = string.Join(" ", linkCssClasses);
+            //Should replace code above but won't work
+            //PageNavigator.CurrentPage.Level != 0
+            //    ? cssClasses.Add("dropdown-item")
+            //    : cssClasses.Add("nav-link");
 
-            return linkClassString;
+            return cssClasses;
         }
 
-        private string LiClasses()
-        {
-            return CommonLiClasses() + " " + MainLiCLasses();
-        }
-        private string LinkClasses()
-        {
-            return CommonLinkClasses() + " " + MainLinkClasses();
-        }
+        private string LiClasses() => ToClasses(CommonLiClasses().Concat(MainLiCLasses())); 
+        private string AClasses() => ToClasses(CommonAClasses().Concat(MainAClasses())); 
     }
 }

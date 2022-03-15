@@ -1,38 +1,30 @@
 ﻿using System.Collections.Generic;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Navigator;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Main;
+using System.Linq;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Sidebar
 {
     public partial class NavItemSidebar : NavItem
     {
-        private string SubLiClasses()
+        private IList<string> SubLiClasses()
         {
-            var cssClasses = new List<string>();
-
-            cssClasses.Add("position-relative");
-
-
-            var classString = string.Join(" ", cssClasses);
-            return classString;
+            var cssClasses = new List<string>
+            {
+                "position-relative"
+            };
+            return cssClasses;
         }
-        private string SubLinkClasses()
+        private IList<string> SubAClasses()
         {
-            var linkCssClasses = new List<string>();
-
-            linkCssClasses.Add("nav-link");
-
-            var linkClassString = string.Join(" ", linkCssClasses);
-            return linkClassString;
+            var cssClasses = new List<string>
+            {
+                "nav-link"
+            };
+            return cssClasses;
         }
 
-        private string LiClasses()
-        {
-            return CommonLiClasses() + " " + SubLiClasses();
-        }
-        private string LinkClasses()
-        {
-            return CommonLinkClasses() + " " + SubLinkClasses();
-        }
+        private string LiClasses() => ToClasses(CommonLiClasses().Concat(SubLiClasses()));
+        private string AClasses() => ToClasses(CommonAClasses().Concat(SubAClasses()));
     }
 }

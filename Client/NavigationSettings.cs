@@ -13,7 +13,7 @@ public class JsonNav
 public class JasonMenuConfig
 {
     public int? Levels { get; set; }
-    public Page ParentPage { get; set; }
+    public string ParentPage { get; set; }
 
     public string NavClasses { get; set; }
 }

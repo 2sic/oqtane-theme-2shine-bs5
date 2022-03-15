@@ -3,7 +3,7 @@
 @if(PageNavigator != null)
 {
     <li class="@LiClasses()">
-        <a class="@LinkClasses()" href="@LinkHref()" 
+        <a class="@AClasses()" href="@LinkHref()" 
             data-bs-toggle="@(PageNavigator.CurrentPage.HasChildren && PageNavigator.CurrentPage.IsClickable == false ? "dropdown" : "")"
         >
             @PageNavigator.CurrentPage.Name

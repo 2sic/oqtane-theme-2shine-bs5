@@ -18,17 +18,20 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Default
 
         protected virtual bool ShowBreadcrumb => true;
 
-        protected string ToShineThemePath()
+        public static string ToShineThemePath()
         {
             string path = "Themes/ToSic.Oqt.Themes.ToShineBs5/";
             return path;
+
+            //string[] strings = ThemePath().Split("ToShineBs5/");
+            //return strings[0];
         }
 
         public override string Name => "default";
 
         public override string Panes => PaneNames.Admin + ",Header,Content";
 
-        public override List<Resource> Resources => new List<Resource>()
+        public override List<Resource> Resources => new()
         {
 		    // Load Theme which contains Bootstrap with our customizations (generated with Sass using Webpack)
             new Resource { ResourceType = ResourceType.Stylesheet, Url = ToShineThemePath() + "theme.min.css" },
@@ -52,22 +55,11 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Default
 
         [Inject]
         protected ILanguageService LanguageService { get; set; }
-
         public JasonMenuConfig MainMenuConfig { get; set; }
+        public JasonMenuConfig MobileMenuConfig { get; set; }
+        public JasonMenuConfig SidebarMenuConfig { get; set; }
 
         private IJSObjectReference BodyClassJS;
-
-        protected override async Task OnInitializedAsync()
-        {
-            await base.OnInitializedAsync();
-
-            string fileName = "wwwroot/" + ToShineThemePath() + "global-settings.json";
-
-            string jsonString = System.IO.File.ReadAllText(fileName);
-            JsonNav jsonNav = System.Text.Json.JsonSerializer.Deserialize<JsonNav>(jsonString)!;
-            
-            MainMenuConfig = jsonNav.NavConfigs["Main"];
-        }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
