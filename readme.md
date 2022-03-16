@@ -31,7 +31,7 @@ This parameter expects an int value. If the value is set to one it will only dis
 #### Variation: 
 This parameter expects a string. It can choose between the three available Layouts, Main (default), Mobile and Sidebar (This is Managed in the NavEntry.razor).
 
-#### JsonConfigName:
+### JsonConfigName:
 This parameter expects a string. If left empty the settings from the parameters will be used for the navigation. If a name is defined which can be found in the navigation-config.json the settings defined there will be used.
 
 To implement all this we used a PageNavigator class which takes the given Parameters and creates PageNavigator classes for the pages which match the given criteria and also defines relations between the PageNavigators. The initial PageNavigator class is created with the PageNavigatorFactory class. 
