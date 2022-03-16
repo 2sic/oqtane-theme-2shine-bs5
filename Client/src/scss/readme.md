@@ -8,6 +8,7 @@
 ## How to use
 
 1. First make sure you can build. That means make sure you already did `npm install` 
-1. To compile the CSS, use `npm run develop` or `npm run build`. Build will also minify the files.
+1. Webpack will always be run on build of the solution 
+1. You can also run webpack with 'npm run build-prod'
 
 Then make changes to the `_variables.scss` as you need. In case you need more bootstrap parts like _jumbotron_ just activate them in the `theme.scss`.

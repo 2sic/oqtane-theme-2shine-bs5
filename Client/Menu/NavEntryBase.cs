@@ -2,14 +2,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Oqtane.Themes.Controls;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Navigator;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Default;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu
 {
     public abstract class NavEntryBase : MenuBase
     {
-        //[Parameter()]
-        //public Page ParentPage { get; set; }
+        [Inject]
+        public PageNavigatorService Navigator { get; set; }
 
         [Parameter()]
         public string ParentPage { get; set; }
@@ -36,12 +35,12 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu
 
             if (jsonNav.NavConfigs.ContainsKey(JsonConfigName) == false)
             {
-                Start = await new PageNavigatorFactory(MenuPages, Levels, ParentPage).Start();
+                Start = await Navigator.Init(MenuPages, Levels, ParentPage).Start();
             }
             else
             {
                 var navConfig = jsonNav.NavConfigs[JsonConfigName];
-                Start = await new PageNavigatorFactory(MenuPages, navConfig.Levels, navConfig.ParentPage).Start();
+                Start = await Navigator.Init(MenuPages, navConfig.Levels, navConfig.ParentPage).Start();
             }
         }
     }
