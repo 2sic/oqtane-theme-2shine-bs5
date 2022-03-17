@@ -18,7 +18,7 @@ Those will be added as soon as Oqtane implments that feature.
 
 # Documentation
 ## Controls
----
+
 ### 1. Navigation Controls:
 To achieve the most customizable Navigation we implemented a "NavEntry" control which can be given three Parameters.
 
