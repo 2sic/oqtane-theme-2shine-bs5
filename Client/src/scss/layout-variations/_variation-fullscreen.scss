@@ -3,15 +3,17 @@
   html {
     body.to-shine-variation-fullscreen {
       background-color: $white;
+      form {
         #to-shine-page-header-pane {
-            max-width: 100%;
-            padding-left: 0;
-            padding-right: 0;
+          max-width: 100%;
+          padding-left: 0;
+          padding-right: 0;
         }
         footer#to-shine-page-footer {
-            background: rgb(0,131,201);
-            background: linear-gradient(90deg, rgba(0,131,201,1) 0%, rgba(88,190,187,1) 100%);
+          background: rgb(0,131,201);
+          background: linear-gradient(90deg, rgba(0,131,201,1) 0%, rgba(88,190,187,1) 100%);
         }
+      }
     }
   }
 }

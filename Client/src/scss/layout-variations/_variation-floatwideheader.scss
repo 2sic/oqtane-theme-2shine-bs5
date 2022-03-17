@@ -24,19 +24,20 @@
         max-width: 1320px;
       }
     }
-    header#to-shine-page-header,
+    nav#to-shine-page-navigation,
     #to-shine-page-header-pane {
       max-width: 1600px;
       width: 100%;
       margin: 0 auto;
       background: $white;
-    }
-    #to-shine-page-header-pane{
+
+      &.to-shine-header-pane-empty {
         @include media-breakpoint-up(lg) {
-            min-height: 300px;
-            background: $secondary;
-            background: linear-gradient(0deg, rgba($secondary, 0) 0%, rgba($secondary, 1) 100%);
+          min-height: 300px;
+          background: $secondary;
+          background: linear-gradient(0deg, rgba($secondary, 0) 0%, rgba($secondary, 1) 100%);
         }
+      }
     }
     footer#to-shine-page-footer {
       background: rgb(0,131,201);

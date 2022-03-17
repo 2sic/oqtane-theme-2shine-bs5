@@ -22,9 +22,6 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Default
         {
             string path = "Themes/ToSic.Oqt.Themes.ToShineBs5/";
             return path;
-
-            //string[] strings = ThemePath().Split("ToShineBs5/");
-            //return strings[0];
         }
 
         public override string Name => "default";
@@ -55,9 +52,6 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Default
 
         [Inject]
         protected ILanguageService LanguageService { get; set; }
-        public JasonMenuConfig MainMenuConfig { get; set; }
-        public JasonMenuConfig MobileMenuConfig { get; set; }
-        public JasonMenuConfig SidebarMenuConfig { get; set; }
 
         private IJSObjectReference BodyClassJS;
 

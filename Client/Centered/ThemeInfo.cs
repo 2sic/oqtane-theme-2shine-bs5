@@ -12,6 +12,5 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Centered
             ContainerSettingsType = "Oqtane.Theme.tosic.ContainerSettings, Oqtane.Theme.tosic.Oqtane",
             PackageName = "ToSic.Oqt.Themes.ToShineBs5",
         };
-
     }
 }

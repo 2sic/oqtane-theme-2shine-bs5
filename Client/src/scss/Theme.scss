@@ -51,13 +51,13 @@
 // ----------------------------------------------------------------------------------------------------
 // 3. Generate CSS for this theme / skin
 @import "components/typography";    
-@import "components/base-layout";
 @import "components/header";
 @import "components/footer";
 
 //Import some oqtane-specific styles
 @import "components/oqtane-internal";
 @import "components/oqtane-admin-buttons";
+@import "components/oqtane-base-layout";
 
 // Navigation / Menus
 @import "components/nav";

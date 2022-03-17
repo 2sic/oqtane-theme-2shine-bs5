@@ -1,29 +1,32 @@
 @media all {
   /* Logo left */ /* Logo right */
   body.to-shine-mainnav-variation-left {
-    header#to-shine-page-header .container{
-      @include media-breakpoint-up(lg) {
-        flex-direction: row-reverse;
+    nav#to-shine-page-navigation {
+      .container {
+        @include media-breakpoint-up(lg) {
+          flex-direction: row-reverse;
+        }
       }
-    }
+    } 
   }
   /* header centered */
   body.to-shine-mainnav-variation-center {
-    header {
-      &#to-shine-page-header {
-        > .container {
-          @include media-breakpoint-up(lg) {
-            flex-direction: column !important;
-            justify-content: center !important;
-            padding-bottom: 0px;
-          }
+    nav#to-shine-page-navigation {
+      > .container {
+        @include media-breakpoint-up(lg) {
+          flex-direction: column !important;
+          justify-content: center !important;
+          padding-bottom: 0px;
         }
-        
-        .logo {
-          @include media-breakpoint-up(lg) {
-            margin-bottom: 10px;
-          }
-        }
+      }
+
+      .offcanvas-start {
+        width: auto;
+      }
+      
+      .nav-brand {
+        margin-right: 0;
+        margin-bottom: 10px;
       }
     }
   }

@@ -35,12 +35,12 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu
 
             if (jsonNav.NavConfigs.ContainsKey(JsonConfigName) == false)
             {
-                Start = await Navigator.Start(MenuPages, Levels, ParentPage);
+                Start = Navigator.Start(MenuPages, Levels, ParentPage);
             }
             else
             {
                 var navConfig = jsonNav.NavConfigs[JsonConfigName];
-                Start = await Navigator.Start(MenuPages, (int)navConfig.Levels, navConfig.ParentPage);
+                Start = Navigator.Start(MenuPages, (int)navConfig.Levels, navConfig.ParentPage);
             }
         }
     }

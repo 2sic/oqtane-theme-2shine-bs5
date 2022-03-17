@@ -13,29 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="CenteredSidebar\Containers\**" />
-    <Compile Remove="Centered\Containers\**" />
-    <Compile Remove="FloatWideHeader\Containers\**" />
-    <Compile Remove="Fullscreen\Containers\**" />
-    <Content Remove="CenteredSidebar\Containers\**" />
-    <Content Remove="Centered\Containers\**" />
-    <Content Remove="FloatWideHeader\Containers\**" />
-    <Content Remove="Fullscreen\Containers\**" />
-    <EmbeddedResource Remove="CenteredSidebar\Containers\**" />
-    <EmbeddedResource Remove="Centered\Containers\**" />
-    <EmbeddedResource Remove="FloatWideHeader\Containers\**" />
-    <EmbeddedResource Remove="Fullscreen\Containers\**" />
-    <None Remove="CenteredSidebar\Containers\**" />
-    <None Remove="Centered\Containers\**" />
-    <None Remove="FloatWideHeader\Containers\**" />
-    <None Remove="Fullscreen\Containers\**" />
-    <TypeScriptCompile Remove="CenteredSidebar\Containers\**" />
-    <TypeScriptCompile Remove="Centered\Containers\**" />
-    <TypeScriptCompile Remove="FloatWideHeader\Containers\**" />
-    <TypeScriptCompile Remove="Fullscreen\Containers\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="src\scss\components\_page-customizations.scss" />
     <None Remove="src\scss\readme.md" />
   </ItemGroup>
