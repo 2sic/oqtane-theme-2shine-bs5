@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Navigator;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client
 {
@@ -6,7 +7,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddScoped<IPageNavigatorFactory, PageNavigatorFactory>();
+            services.AddTransient<PageNavigatorService>();
         }
     }
 }

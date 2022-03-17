@@ -2,7 +2,7 @@
 
 @if(PageNavigator.HasChildren)
 {
-    <ul class="@(PageNavigator.CurrentPage == null ? "navbar-nav" : "dropdown-menu")">
+    <ul class="@(PageNavigator.CurrentPage == null || PageNavigator.First == true ? "navbar-nav" : "dropdown-menu")">
         @if (PageNavigator.HasChildren)
         {
             @foreach(var pageNav in PageNavigator.Children)

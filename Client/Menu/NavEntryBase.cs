@@ -24,9 +24,9 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu
 
         protected PageNavigator Start { get; private set; }
 
-        protected override async Task OnInitializedAsync()
+        protected override async Task OnParametersSetAsync()
         {
-            await base.OnInitializedAsync();
+            await base.OnParametersSetAsync();
 
             string fileName = "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/navigation-settings.json";
 
@@ -35,12 +35,12 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu
 
             if (jsonNav.NavConfigs.ContainsKey(JsonConfigName) == false)
             {
-                Start = await Navigator.Init(MenuPages, Levels, ParentPage).Start();
+                Start = await Navigator.Start(MenuPages, Levels, ParentPage);
             }
             else
             {
                 var navConfig = jsonNav.NavConfigs[JsonConfigName];
-                Start = await Navigator.Init(MenuPages, navConfig.Levels, navConfig.ParentPage).Start();
+                Start = await Navigator.Start(MenuPages, (int)navConfig.Levels, navConfig.ParentPage);
             }
         }
     }

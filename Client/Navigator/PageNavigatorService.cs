@@ -2,31 +2,20 @@
 using System.Collections.Generic;
 using Oqtane.Services;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Navigator
 {
     public class PageNavigatorService
     {
         protected IPageService PageService { get; set; }
-
-        private IEnumerable<Page> MenuPages;
-        private int Levels;
-        private string StartingPoint;
         
         public PageNavigatorService(IPageService pageService)
         {
             PageService = pageService;
         }
 
-        public PageNavigatorService Init(IEnumerable<Page> menuPages, int? level, string startingPoint)
-        {
-            MenuPages = menuPages;
-            Levels = (int)level;
-            StartingPoint = startingPoint;
-            return this;
-        }
-
-        private async Task<Page> DetermineStartPage()
+        private async Task<Page> DetermineStartPage(string StartingPoint, IEnumerable<Page> menuPages)
         {
             if (StartingPoint == null || StartingPoint == "*")
             {
@@ -36,12 +25,10 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Navigator
             {
                 try
                 {
-                    Page currentPage;
+                    var page = menuPages.SingleOrDefault(p => p.PageId == pageId);
+                    //var page = await PageService.GetPageAsync(id);
 
-                    int id =pageId;
-                    currentPage = await PageService.GetPageAsync(id);
-
-                    return currentPage;
+                    return page;
                 }
                 catch
                 {
@@ -53,11 +40,12 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Navigator
                 return null;
             }
         }
-        public async Task<PageNavigator> Start()
+
+        public async Task<PageNavigator> Start(IEnumerable<Page> menuPages, int level, string startingPoint)
         {
             if (_start != null) return _start;
-            var startPage = await DetermineStartPage();
-            return new PageNavigator(MenuPages, Levels, startPage);
+            var startPage = await DetermineStartPage(startingPoint, menuPages);
+            return new PageNavigator(menuPages, level, startPage, true);
         }
         private PageNavigator _start;
     }
