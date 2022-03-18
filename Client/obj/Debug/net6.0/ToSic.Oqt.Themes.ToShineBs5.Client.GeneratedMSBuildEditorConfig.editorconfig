@@ -15,22 +15,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Projects\oqtane-theme-tests\oqt-theme-2shine-bs5\Client
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/CenteredSidebar/CenteredSidebar.razor]
-build_metadata.AdditionalFiles.TargetPath = Q2VudGVyZWRTaWRlYmFyXENlbnRlcmVkU2lkZWJhci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/CenteredSidebar/Containers/Container.razor]
-build_metadata.AdditionalFiles.TargetPath = Q2VudGVyZWRTaWRlYmFyXENvbnRhaW5lcnNcQ29udGFpbmVyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Centered/Centered.razor]
-build_metadata.AdditionalFiles.TargetPath = Q2VudGVyZWRcQ2VudGVyZWQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Centered/Containers/Container.razor]
-build_metadata.AdditionalFiles.TargetPath = Q2VudGVyZWRcQ29udGFpbmVyc1xDb250YWluZXIucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Controls/AdminButtons.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcQWRtaW5CdXR0b25zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -67,6 +51,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcVG9TaGluZVRvVG9wLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Default/Centered.razor]
+build_metadata.AdditionalFiles.TargetPath = RGVmYXVsdFxDZW50ZXJlZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Default/CenteredSidebar.razor]
+build_metadata.AdditionalFiles.TargetPath = RGVmYXVsdFxDZW50ZXJlZFNpZGViYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Default/Containers/Container.razor]
 build_metadata.AdditionalFiles.TargetPath = RGVmYXVsdFxDb250YWluZXJzXENvbnRhaW5lci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -75,20 +67,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = RGVmYXVsdFxEZWZhdWx0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/FloatWideHeader/Containers/Container.razor]
-build_metadata.AdditionalFiles.TargetPath = RmxvYXRXaWRlSGVhZGVyXENvbnRhaW5lcnNcQ29udGFpbmVyLnJhem9y
+[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Default/FloatWideHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = RGVmYXVsdFxGbG9hdFdpZGVIZWFkZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/FloatWideHeader/FloatWideHeader.razor]
-build_metadata.AdditionalFiles.TargetPath = RmxvYXRXaWRlSGVhZGVyXEZsb2F0V2lkZUhlYWRlci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Fullscreen/Containers/Container.razor]
-build_metadata.AdditionalFiles.TargetPath = RnVsbHNjcmVlblxDb250YWluZXJzXENvbnRhaW5lci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Fullscreen/Fullscreen.razor]
-build_metadata.AdditionalFiles.TargetPath = RnVsbHNjcmVlblxGdWxsc2NyZWVuLnJhem9y
+[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Default/Fullscreen.razor]
+build_metadata.AdditionalFiles.TargetPath = RGVmYXVsdFxGdWxsc2NyZWVuLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Menu/Main/NavItem.razor]

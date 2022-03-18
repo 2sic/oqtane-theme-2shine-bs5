@@ -1,14 +1,11 @@
 ﻿@inherits ToSic.Oqt.Themes.ToShineBs5.Client.Default.Default
+
 @{ 
     base.BuildRenderTree(__builder);
 }
 
 @code{
-    protected override bool ShowSidebarNavigation => true;
-
-    protected override bool ShowBreadcrumb => true;
-
-    protected override string ClassName => "centered";
+    public override string Name => "Centered";
 
     public override List<Resource> Resources => new List<Resource>()
     {
@@ -16,9 +13,18 @@
         new Resource { ResourceType = ResourceType.Stylesheet, Url = ToShineThemePath() + "theme.min.css" },
         // Load the default BS JS
         new Resource { ResourceType = ResourceType.Script, Url = ToShineThemePath() + "bootstrap.bundle.min.js" },
-        // Our custom code which ensures page classes, Up-button etc.
+        //// Our custom code which ensures page classes, Up-button etc.
         new Resource { ResourceType = ResourceType.Script, Url = ToShineThemePath() + "ambient.js" },
     };
 
-    public override string Name => "centered-sidebar";
+
+    //Set 2shine variables to define some settings for this layout
+    //------------------------------------------------------------
+    
+    //ClassName variable is used to set the body class which sets the css for this specific layout 
+    protected override string ClassName => "centered";
+    
+    protected override bool ShowSidebarNavigation => false;
+
+    protected override bool ShowBreadcrumb => true;
 }

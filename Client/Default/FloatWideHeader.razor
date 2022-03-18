@@ -5,11 +5,7 @@
 }
 
 @code{
-    protected override bool ShowSidebarNavigation => false;
-
-    protected override bool ShowBreadcrumb => true;
-
-    protected override string ClassName => "floatwideheader";
+    public override string Name => "Floatwideheader";
 
     public override List<Resource> Resources => new List<Resource>()
     {
@@ -20,6 +16,15 @@
         // Our custom code which ensures page classes, Up-button etc.
         new Resource { ResourceType = ResourceType.Script, Url = ToShineThemePath() + "ambient.js" },
     };
+
+
+    //Set 2shine variables to define some settings for this layout
+    //------------------------------------------------------------
     
-    public override string Name => "floatwideheader";
+    //ClassName variable is used to set the body class which sets the css for this specific layout
+    protected override string ClassName => "floatwideheader";
+
+    protected override bool ShowSidebarNavigation => false;
+
+    protected override bool ShowBreadcrumb => true;
 }

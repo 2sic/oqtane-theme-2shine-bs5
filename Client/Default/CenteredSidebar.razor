@@ -5,11 +5,7 @@
 }
 
 @code{
-    protected override bool ShowSidebarNavigation => false;
-
-    protected override bool ShowBreadcrumb => true;
-
-    protected override string ClassName => "fullscreen";
+    public override string Name => "Centered-Sidebar";
 
     public override List<Resource> Resources => new List<Resource>()
     {
@@ -21,5 +17,14 @@
         new Resource { ResourceType = ResourceType.Script, Url = ToShineThemePath() + "ambient.js" },
     };
 
-    public override string Name => "fullscreen";
+
+    //Set 2shine variables to define some settings for this layout
+    //------------------------------------------------------------
+    
+    //ClassName variable is used to set the body class which sets the css for this specific layout 
+    protected override string ClassName => "centered";
+
+    protected override bool ShowSidebarNavigation => true;
+
+    protected override bool ShowBreadcrumb => true;
 }
