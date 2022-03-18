@@ -23,12 +23,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcRm9vdGVyTG9naW5CdXR0b24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Controls/LanguageChanger.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTGFuZ3VhZ2VDaGFuZ2VyLnJhem9y
+[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Controls/HeaderLoginButton.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcSGVhZGVyTG9naW5CdXR0b24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Controls/NavigationLoginButton.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTmF2aWdhdGlvbkxvZ2luQnV0dG9uLnJhem9y
+[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Controls/LanguageChanger.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29udHJvbHNcTGFuZ3VhZ2VDaGFuZ2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/Controls/ToShineBreadcrumb.razor]

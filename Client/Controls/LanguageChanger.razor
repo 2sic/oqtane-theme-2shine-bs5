@@ -16,7 +16,6 @@
             </li>
         </ul>
     }
-
 }
 
 @code{
@@ -27,10 +26,6 @@
 
     private (string, string)[] _langFilters;
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnAfterRenderAsync(firstRender);
-    }
 
     protected IEnumerable<(Culture Culture, string Label)> SupportedCultures;
 
@@ -56,7 +51,6 @@
 
         _supportedCultures = languages.Select(l => new Culture { Name = l.Code, DisplayName = l.Name });
 
-        //To Shine methods
         _langFilters ??= Languages
             .Split(",")
             .Select(l => { var splittedLang = l.Split(":"); return (splittedLang[0], splittedLang[1]); }) 

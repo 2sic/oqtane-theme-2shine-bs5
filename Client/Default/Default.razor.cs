@@ -52,7 +52,7 @@ public partial class Default : Oqtane.Themes.ThemeBase
     [Inject]
     protected ILanguageService LanguageService { get; set; }
 
-
+  
     public static string ToShineThemePath()
     {
         string path = "Themes/ToSic.Oqt.Themes.ToShineBs5/";

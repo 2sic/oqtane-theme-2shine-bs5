@@ -5,27 +5,27 @@
     },
     "Main": {
       "Levels": 2,
-      "ParentPage": "*",
-      "NavClasses" :  "Special"
+      "ParentPage": "*"
     },
     "Mobile": {
       "Levels": 3,
-      "ParentPage": "*"
+      "ParentPage": "*",
+      "Variation": "Mobile"
     },
     "Sidebar": {
       "Levels": 3,
       "ParentPage": "*",
-      "NavClasses": "Default"
+      "Variation": "Sidebar"
     }
   },
   "NavClasses": {
     "Default": {
       "MenuHover": "abcd-gef",
-      "Width" :  "100vh"
+      "Width": "100vh"
     },
     "Special": {
       "Background": "bg-red",
-      "Color" :  "color-blue"
+      "Color": "color-blue"
     }
   }
 }

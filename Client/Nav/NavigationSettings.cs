@@ -22,10 +22,12 @@ public class MenuConfig
 
     public string NavClasses { get; set; }
 
+    public string Variation { get; set; }
     public MenuConfig(MenuConfig original)
     {
         Levels = original.Levels;
         NavClasses = original.NavClasses;
         ParentPage = original.ParentPage;
+        Variation = original.Variation;
     }
 }
