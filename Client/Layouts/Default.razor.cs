@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net.Http;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Default;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
 
 public partial class Default : Oqtane.Themes.ThemeBase
 {
@@ -52,7 +52,7 @@ public partial class Default : Oqtane.Themes.ThemeBase
     [Inject]
     protected ILanguageService LanguageService { get; set; }
 
-  
+
     public static string ToShineThemePath()
     {
         string path = "Themes/ToSic.Oqt.Themes.ToShineBs5/";
@@ -67,7 +67,7 @@ public partial class Default : Oqtane.Themes.ThemeBase
 
         string bodyClasses = await DetermineBodyClasses();
 
-        BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", Path.Combine("./", ToShineThemePath() ,"interop/page-control.js"));
+        BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", Path.Combine("./", ToShineThemePath(), "interop/page-control.js"));
 
         await BodyClassJS.InvokeAsync<string>("clearBodyClasses");
         await BodyClassJS.InvokeAsync<string>("setBodyClass", bodyClasses);
@@ -75,11 +75,11 @@ public partial class Default : Oqtane.Themes.ThemeBase
 
     private async Task<string> DetermineBodyClasses()
     {
-        var page = this.PageState.Page;
+        var page = PageState.Page;
 
         //1.1 Set the page-is-home class
         var isHomeClass = page.Path == "" ? "page-is-home" : "";
-        
+
         //1.2 Set the page-### class
         var pageIdClass = "page-" + page.PageId;
 

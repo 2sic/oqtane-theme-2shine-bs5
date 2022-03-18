@@ -3,7 +3,7 @@ using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 
-public class DemoStartup : Oqtane.Services.IClientStartup
+public class ServiceRegister : Oqtane.Services.IClientStartup
 {
     public void ConfigureServices(IServiceCollection services)
     {

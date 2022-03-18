@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Main;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu.Mobile;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 
 public partial class NavItemMobile : NavItem
 {

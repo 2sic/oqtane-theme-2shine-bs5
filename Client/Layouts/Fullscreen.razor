@@ -1,11 +1,11 @@
-﻿@inherits ToSic.Oqt.Themes.ToShineBs5.Client.Default.Default
+﻿@inherits ToSic.Oqt.Themes.ToShineBs5.Client.Layouts.Default
 
 @{ 
     base.BuildRenderTree(__builder);
 }
 
 @code{
-    public override string Name => "Floatwideheader";
+    public override string Name => "Fullscreen";
 
     public override List<Resource> Resources => new List<Resource>()
     {
@@ -22,7 +22,7 @@
     //------------------------------------------------------------
     
     //ClassName variable is used to set the body class which sets the css for this specific layout
-    protected override string ClassName => "floatwideheader";
+    protected override string ClassName => "fullscreen";
 
     protected override bool ShowSidebarNavigation => false;
 

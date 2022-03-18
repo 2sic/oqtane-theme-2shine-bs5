@@ -1,11 +1,11 @@
-﻿@inherits ToSic.Oqt.Themes.ToShineBs5.Client.Default.Default
+﻿@inherits ToSic.Oqt.Themes.ToShineBs5.Client.Layouts.Default
 
 @{ 
     base.BuildRenderTree(__builder);
 }
 
 @code{
-    public override string Name => "Centered-Sidebar";
+    public override string Name => "Floatwideheader";
 
     public override List<Resource> Resources => new List<Resource>()
     {
@@ -21,10 +21,10 @@
     //Set 2shine variables to define some settings for this layout
     //------------------------------------------------------------
     
-    //ClassName variable is used to set the body class which sets the css for this specific layout 
-    protected override string ClassName => "centered";
+    //ClassName variable is used to set the body class which sets the css for this specific layout
+    protected override string ClassName => "floatwideheader";
 
-    protected override bool ShowSidebarNavigation => true;
+    protected override bool ShowSidebarNavigation => false;
 
     protected override bool ShowBreadcrumb => true;
 }
