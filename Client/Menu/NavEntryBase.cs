@@ -52,7 +52,6 @@ public abstract class NavEntryBase : MenuBase
                 else if (ParentPage == null && navConfig.ParentPage != null)
                     ParentPage = "*";
 
-
                 if(Variation == null && navConfig.Variation != null)
                     Variation = navConfig.Variation;
                         
