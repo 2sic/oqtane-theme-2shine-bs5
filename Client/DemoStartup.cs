@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Navigator;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client
+namespace ToSic.Oqt.Themes.ToShineBs5.Client;
+
+public class DemoStartup : Oqtane.Services.IClientStartup
 {
-    public class DemoStartup : Oqtane.Services.IClientStartup
+    public void ConfigureServices(IServiceCollection services)
     {
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddTransient<PageNavigatorService>();
-        }
+        services.AddTransient<PageNavigatorService>();
     }
 }

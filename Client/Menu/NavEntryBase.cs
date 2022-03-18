@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Oqtane.Themes.Controls;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Navigator;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu
 {

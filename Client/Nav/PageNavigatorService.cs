@@ -1,10 +1,8 @@
 ﻿using Oqtane.Models;
 using System.Collections.Generic;
-using Oqtane.Services;
-using System.Threading.Tasks;
 using System.Linq;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Navigator
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav
 {
     public class PageNavigatorService
     {
