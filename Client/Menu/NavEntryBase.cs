@@ -24,14 +24,19 @@ public abstract class NavEntryBase : MenuBase
 
     protected PageNavigator Start { get; private set; }
 
+    protected JsonNav jsonNav;
+
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
 
         string fileName = "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/navigation-settings.json";
 
-        string jsonString = System.IO.File.ReadAllText(fileName);
-        JsonNav jsonNav = System.Text.Json.JsonSerializer.Deserialize<JsonNav>(jsonString)!;
+        if(jsonNav == null)
+        {
+            string jsonString = System.IO.File.ReadAllText(fileName);
+            jsonNav = System.Text.Json.JsonSerializer.Deserialize<JsonNav>(jsonString)!;
+        }
 
         if (JsonConfigName == null)
         {
