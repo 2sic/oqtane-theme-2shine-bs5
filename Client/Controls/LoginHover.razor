@@ -5,9 +5,9 @@
 
 @if ( this.PageState.User != null && this.PageState.User.IsAuthenticated)
 {
-    <a title="Logout" class="to-shine-page-login d-none d-lg-inline-flex" @onclick="LogoutUser">@Localizer["Logout"]</a>
+    <a class="to-shine-page-login d-none d-lg-inline-flex" @onclick="LogoutUser">@Localizer["Logout"]</a>
 }
 else
 {
-    <a title="Login" class="to-shine-page-login d-none d-lg-inline-flex" @onclick="LoginUser">@SharedLocalizer["Login"]</a>
+    <a class="to-shine-page-login d-none d-lg-inline-flex" @onclick="LoginUser">@SharedLocalizer["Login"]</a>
 }

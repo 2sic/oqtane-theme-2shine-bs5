@@ -39,7 +39,7 @@ C:\Projects\oqtane-tests\theme-tests\OqtToShineBs5\Client\obj\Debug\net6.0\ToSic
 C:\Projects\oqtane-tests\theme-tests\OqtToShineBs5\Client\obj\Debug\net6.0\ref\ToSic.Oqt.Themes.ToShineBs5.Client.Oqtane.dll
 C:\Projects\oqtane-theme-tests\oqt-theme-2shine-bs5\Client\bin\Debug\net6.0\package-lock.json
 C:\Projects\oqtane-theme-tests\oqt-theme-2shine-bs5\Client\bin\Debug\net6.0\package.json
-C:\Projects\oqtane-theme-tests\oqt-theme-2shine-bs5\Client\bin\Debug\net6.0\src\navigation-settings.json
+C:\Projects\oqtane-theme-tests\oqt-theme-2shine-bs5\Client\bin\Debug\net6.0\src\navigation.json
 C:\Projects\oqtane-theme-tests\oqt-theme-2shine-bs5\Client\bin\Debug\net6.0\tsconfig.json
 C:\Projects\oqtane-theme-tests\oqt-theme-2shine-bs5\Client\bin\Debug\net6.0\ToSic.Oqt.Themes.ToShineBs5.Client.Oqtane.staticwebassets.runtime.json
 C:\Projects\oqtane-theme-tests\oqt-theme-2shine-bs5\Client\bin\Debug\net6.0\ToSic.Oqt.Themes.ToShineBs5.Client.Oqtane.deps.json

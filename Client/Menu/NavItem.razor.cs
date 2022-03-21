@@ -37,11 +37,6 @@ public partial class NavItem : MenuBase
         else
             commonClasses.Add("inactive");
 
-        //Should replace the code above but won't work
-        //this.PageState.Page.PageId == PageNavigator.CurrentPage.PageId
-        //    ? commonClasses.Add("active")
-        //    : commonClasses.Add("inactive");
-
         if (PageNavigator.HasChildren)
             commonClasses.Add("has-child");
 
@@ -70,18 +65,13 @@ public partial class NavItem : MenuBase
     private IList<string> MainAClasses()
     {
         var cssClasses = new List<string>();
-        if (PageNavigator.CurrentPage.HasChildren && PageNavigator.CurrentPage.Level < 1)
+        if (PageNavigator.CurrentPage.HasChildren)
             cssClasses.Add("dropdown-toggle");
 
-        if (PageNavigator.CurrentPage.Level != 0)
-            cssClasses.Add("dropdown-item");
-        else
+        if (PageNavigator.First == true)
             cssClasses.Add("nav-link");
-
-        //Should replace code above but won't work
-        //PageNavigator.CurrentPage.Level != 0
-        //    ? cssClasses.Add("dropdown-item")
-        //    : cssClasses.Add("nav-link");
+        else
+            cssClasses.Add("dropdown-item");
 
         return cssClasses;
     }

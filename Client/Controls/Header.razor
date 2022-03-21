@@ -1,5 +1,5 @@
 ﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu
-@using ToSic.Oqt.Themes.ToShineBs5.Client.Layouts.Default 
+@using ToSic.Oqt.Themes.ToShineBs5.Client.Layouts 
 
 @inherits MenuBase
 
@@ -39,10 +39,10 @@
         buttons appearing and we need to be able to set the buttons to display:none
         -> See in the _oqtane-admin-buttons.scss file
     *@
-    @if(this.PageState.User.IsAuthenticated == true)
-    {
+@*    @if(this.PageState.User.IsAuthenticated == true)
+    {*@
         <div id="oqtane-control-panel">
             <ControlPanel ShowLanguageSwitcher="false"></ControlPanel>
         </div>
-    }
+@*    }*@
 </header>

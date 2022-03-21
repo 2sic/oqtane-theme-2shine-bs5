@@ -10,7 +10,7 @@ public class PageNavigator
 
     public Page CurrentPage = null;
 
-    private int Levels;
+    public int Levels;
 
     public bool First;
 
@@ -27,7 +27,7 @@ public class PageNavigator
     public IList<PageNavigator> Children => _children ??= GetChildren().ToList();
     private IList<PageNavigator> _children;
 
-    private IEnumerable<PageNavigator> GetChildren()
+    private IEnumerable<PageNavigator> GetChildren() 
     {
         if (Levels > 0)
         {
