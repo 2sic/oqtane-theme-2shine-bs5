@@ -5,7 +5,7 @@
     },
     "Main": {
       "Levels": 2,
-      "ParentPage": "*"
+      "ParentPage": "28"
     },
     "Mobile": {
       "Levels": 3,

@@ -14,14 +14,13 @@ public class PageNavigator
 
     public bool First;
 
-    public PageNavigator(IEnumerable<Page> _Pages, int _Levels, Page _CurrentPage, bool first)
+    public PageNavigator(IEnumerable<Page> _Pages, int _Levels, Page _CurrentPage, bool _First)
     {
         CurrentPage = _CurrentPage;
         Pages = _Pages;
         Levels = _Levels;
-        First = first;
+        First = _First;
     }
-
     public bool HasChildren => Children.Any();
 
     public IList<PageNavigator> Children => _children ??= GetChildren().ToList();

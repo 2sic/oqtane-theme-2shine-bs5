@@ -31,7 +31,7 @@ public partial class NavItem : MenuBase
 
         //if (PageNavigator.CurrentPage.Order == length)
         //    commonClasses.Add("last");
-
+        
         if (PageState.Page.PageId == PageNavigator.CurrentPage.PageId)
             commonClasses.Add("active");
         else

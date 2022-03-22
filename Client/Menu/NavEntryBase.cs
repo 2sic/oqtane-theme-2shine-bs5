@@ -22,6 +22,9 @@ public abstract class NavEntryBase : MenuBase
     [Parameter()]
     public string ConfigName{ get; set; }
 
+    [Parameter()]
+    public int StartLevel { get; set; }
+
     protected PageNavigator Start { get; private set; }
 
     protected JsonNav jsonNav;
