@@ -2,7 +2,8 @@
   "NavConfigs": {
     "Main": {
       "LevelDepth": 1,
-      "StartLevel": 1
+      "StartingPage": "28",
+      "LevelSkip":  1
     },
     "Mobile": {
       "LevelDepth": 2,
@@ -15,11 +16,10 @@
       "Variation": "Sidebar"
     },
     "ImprintPrivacy": {
-      "LevelDepth": 1,
-      "StartingPage": null,
+      "LevelDepth": 0,
       "PageList": [
         28,
-        29
+        31
       ]
     }
   }

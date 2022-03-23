@@ -1,4 +1,5 @@
 ﻿using Oqtane.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,10 +11,16 @@ public class PageNavigatorService
 
     private int LevelDepth;
 
-    public PageNavigator Start(IEnumerable<Page> menupages, int leveldepth, string startingpoint = null, int? startlevel = null, List<int> pagelist = null)
+    private int LevelSkip;
+
+    private bool Display;
+
+    public PageNavigator Start(IEnumerable<Page> menupages, int leveldepth, bool display, int levelskip, string startingpoint = null, int? startlevel = null, List<int> pagelist = null)
     {
         MenuPages = menupages;
         LevelDepth = leveldepth;
+        LevelSkip = levelskip;
+        Display = display;
 
         var Children = DetermineChildren(startingpoint, startlevel, pagelist);
         return new PageNavigator(MenuPages, 0, leveldepth, null, Children);
@@ -28,37 +35,42 @@ public class PageNavigatorService
         {
             if(startingpoint == "*")
             {
-                childPages = MenuPages.Where(p => p.Level == 0).ToList();
+                childPages = MenuPages.Where(p => p.Level == LevelSkip).ToList();
             }
             else if (int.TryParse(startingpoint, out int pageId))
             {
                 try
                 {
-                    var page = MenuPages.Single(p => p.PageId == pageId);
+                    Page page; 
+                    if(LevelSkip == 0)
+                    {
+                        page = MenuPages.Single(p => p.PageId == pageId);
+                    }
+                    else
+                    {
+                        page = MenuPages.Single(p => p.PageId == pageId);
+
+                        var targetLevel = page.Level + LevelSkip;
+
+                        childPages = MenuPages.Where(p => p.Level == targetLevel).ToList();
+                    }
 
                     childPages.Add(page);
                 }
                 catch
                 {
-                    childPages = null;
+                    throw new ArgumentException("The parameter StartingPoint was given an invalid PageId:" + pageId);
                 }
             }
             else
             {
-                childPages = null;
+                throw new ArgumentException("The parameter StartingPoint was given an invalid input" + startingpoint);
             }
         }
 
         if(startlevel != null)
         {
-            try
-            {
-                childPages = MenuPages.Where(p => p.Level == startlevel).ToList();
-            }
-            catch
-            {
-                childPages = null;
-            }
+            childPages = MenuPages.Where(p => p.Level == startlevel).ToList();
         }
 
         if(pagelist != null)
@@ -71,7 +83,7 @@ public class PageNavigatorService
                 }
                 catch
                 {
-                    continue;
+                    throw new ArgumentException("The parameter PageList was given an invalid PageId:" + pageId);
                 }
             }
         }
@@ -81,6 +93,13 @@ public class PageNavigatorService
             childNavigators.Add(new PageNavigator(MenuPages, 1, LevelDepth, childPage));
         }
 
-        return childNavigators;
+        if(Display == true)
+        {
+            return childNavigators;
+        }
+        else
+        {
+            return new List<PageNavigator>();
+        }
     }
 }

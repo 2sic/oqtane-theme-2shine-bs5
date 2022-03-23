@@ -18,11 +18,13 @@ public abstract class NavEntryBase : MenuBase
     [Parameter()]
     public List<int> PageList { get; set; } = null;
 
-
+    [Parameter()]
+    public int LevelSkip { get; set; } = 0;
     [Parameter()]
     public int LevelDepth { get; set; }
 
-
+    [Parameter()]
+    public bool Display { get; set; } = true;
     [Parameter()]
     public string Variation { get; set; }
     [Parameter()]
@@ -49,7 +51,7 @@ public abstract class NavEntryBase : MenuBase
         //isn't contained in the json file the normal parameter are given to the service
         if (ConfigName == null || jsonNav.NavConfigs.ContainsKey(ConfigName) == false)
         {
-            Start = Navigator.Start(MenuPages, LevelDepth, StartingPage);
+            Start = Navigator.Start(MenuPages, LevelDepth, Display, LevelSkip, StartingPage);
         }
         else
         {
@@ -66,13 +68,19 @@ public abstract class NavEntryBase : MenuBase
             if(PageList == null)
                 PageList = navConfig.PageList;
 
+            if(LevelSkip == 0)
+                LevelSkip = navConfig.LevelSkip;
+
             if(Variation == null && navConfig.Variation != null)
                 Variation = navConfig.Variation;
                 
             if (LevelDepth == 0 && navConfig.LevelDepth != null)
                 LevelDepth = (int)navConfig.LevelDepth;
 
-            Start = Navigator.Start(MenuPages, LevelDepth, StartingPage, StartLevel, PageList);
+            if(Display == true)
+                Display = navConfig.Display;
+
+            Start = Navigator.Start(MenuPages, LevelDepth, Display, LevelSkip, StartingPage, StartLevel, PageList);
         }
     }
 }
