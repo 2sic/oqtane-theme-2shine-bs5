@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Oqtane.Themes.Controls;
@@ -11,19 +12,22 @@ public abstract class NavEntryBase : MenuBase
     public PageNavigatorService Navigator { get; set; }
 
     [Parameter()]
-    public string ParentPage { get; set; }
+    public string StartingPage { get; set; } = null; 
+    [Parameter()]
+    public int? StartLevel { get; set; } = null!;
+    [Parameter()]
+    public List<int> PageList { get; set; } = null;
+
+
+    [Parameter()]
+    public int LevelDepth { get; set; }
+
 
     [Parameter()]
     public string Variation { get; set; }
-
-    [Parameter()]
-    public int Levels { get; set; }
-
     [Parameter()]
     public string ConfigName{ get; set; }
 
-    [Parameter()]
-    public int StartLevel { get; set; }
 
     protected PageNavigator Start { get; private set; }
 
@@ -41,33 +45,34 @@ public abstract class NavEntryBase : MenuBase
             jsonNav = System.Text.Json.JsonSerializer.Deserialize<JsonNav>(jsonString)!;
         }
 
-        if (ConfigName == null)
+        //If the user didn't specify a config name in the Parameters or the config name
+        //isn't contained in the json file the normal parameter are given to the service
+        if (ConfigName == null || jsonNav.NavConfigs.ContainsKey(ConfigName) == false)
         {
-            Start = Navigator.Start(MenuPages, Levels, ParentPage);
+            Start = Navigator.Start(MenuPages, LevelDepth, StartingPage);
         }
         else
         {
-            if (jsonNav.NavConfigs.ContainsKey(ConfigName) == false)
-            {
-                Start = Navigator.Start(MenuPages, Levels, ParentPage);
-            }
-            else
-            {
-                var navConfig = jsonNav.NavConfigs[ConfigName];
+            var navConfig = jsonNav.NavConfigs[ConfigName];
 
-                if (ParentPage == null && navConfig.ParentPage != null)
-                    ParentPage = navConfig.ParentPage;
-                else if (ParentPage == null && navConfig.ParentPage != null)
-                    ParentPage = "*";
+            if (StartingPage == null && navConfig.StartingPage != null)
+                StartingPage = navConfig.StartingPage;
+            else if (StartingPage == null && navConfig.StartingPage != null)
+                StartingPage = "*";
 
-                if(Variation == null && navConfig.Variation != null)
-                    Variation = navConfig.Variation;
-                        
-                if (Levels == 0 && navConfig.Levels != null)
-                    Levels = (int)navConfig.Levels;
+            if(StartLevel == null)
+                StartLevel = navConfig.StartLevel;
 
-                Start = Navigator.Start(MenuPages, Levels, ParentPage);
-            }
+            if(PageList == null)
+                PageList = navConfig.PageList;
+
+            if(Variation == null && navConfig.Variation != null)
+                Variation = navConfig.Variation;
+                
+            if (LevelDepth == 0 && navConfig.LevelDepth != null)
+                LevelDepth = (int)navConfig.LevelDepth;
+
+            Start = Navigator.Start(MenuPages, LevelDepth, StartingPage, StartLevel, PageList);
         }
     }
 }

@@ -65,14 +65,13 @@ public partial class NavItem : MenuBase
     private IList<string> MainAClasses()
     {
         var cssClasses = new List<string>();
-        if (PageNavigator.CurrentPage.HasChildren)
+        if (PageNavigator.HasChildren)
             cssClasses.Add("dropdown-toggle");
 
-        if (PageNavigator.First == true)
+        if (PageNavigator.NavigationLevel == 1)
             cssClasses.Add("nav-link");
         else
             cssClasses.Add("dropdown-item");
-
         return cssClasses;
     }
 

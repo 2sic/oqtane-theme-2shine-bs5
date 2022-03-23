@@ -10,27 +10,31 @@ public class PageNavigator
 
     public Page CurrentPage = null;
 
-    public int Levels;
+    public int NavigationLevel; 
 
-    public bool First;
+    public int LevelCounter;
 
-    public PageNavigator(IEnumerable<Page> _Pages, int _Levels, Page _CurrentPage, bool _First)
+    public PageNavigator(IEnumerable<Page> pages, int navigationlevel, int leveldepth, Page currentpage, IList<PageNavigator> children = null)
     {
-        CurrentPage = _CurrentPage;
-        Pages = _Pages;
-        Levels = _Levels;
-        First = _First;
+        CurrentPage = currentpage;
+        Pages = pages;
+        LevelCounter = leveldepth;
+        NavigationLevel = navigationlevel;
+        _children = children;
     }
-    public bool HasChildren => Children.Any();
 
+    public bool HasChildren => Children.Any();
+   
     public IList<PageNavigator> Children => _children ??= GetChildren().ToList();
     private IList<PageNavigator> _children;
 
-    private IEnumerable<PageNavigator> GetChildren() 
+    private IEnumerable<PageNavigator> GetChildren()
     {
-        if (Levels > 0)
+        if (LevelCounter > 0)
         {
-            Levels--;
+            var level = NavigationLevel + 1;
+            LevelCounter--;
+
             IEnumerable<Page> childPages;
             if (CurrentPage != null)
             {
@@ -41,7 +45,7 @@ public class PageNavigator
                 childPages = Pages.Where(p => p.ParentId == null);
             }
 
-            return childPages.Select(p => new PageNavigator(Pages, Levels, p, false));
+            return childPages.Select(p => new PageNavigator(Pages, level, LevelCounter, p));
         }
         else
         {

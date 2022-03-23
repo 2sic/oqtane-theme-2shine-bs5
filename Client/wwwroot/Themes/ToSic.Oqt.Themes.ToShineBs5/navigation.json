@@ -1,31 +1,26 @@
 {
   "NavConfigs": {
-    "Default": {
-
-    },
     "Main": {
-      "Levels": 2,
-      "ParentPage": "28"
+      "LevelDepth": 1,
+      "StartLevel": 1
     },
     "Mobile": {
-      "Levels": 3,
-      "ParentPage": "*",
+      "LevelDepth": 2,
+      "StartingPage": "*",
       "Variation": "Mobile"
     },
     "Sidebar": {
-      "Levels": 3,
-      "ParentPage": "*",
+      "LevelDepth": 2,
+      "StartingPage": "*",
       "Variation": "Sidebar"
-    }
-  },
-  "NavClasses": {
-    "Default": {
-      "MenuHover": "abcd-gef",
-      "Width": "100vh"
     },
-    "Special": {
-      "Background": "bg-red",
-      "Color": "color-blue"
+    "ImprintPrivacy": {
+      "LevelDepth": 1,
+      "StartingPage": null,
+      "PageList": [
+        28,
+        29
+      ]
     }
   }
 }

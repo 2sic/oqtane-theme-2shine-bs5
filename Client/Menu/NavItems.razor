@@ -5,7 +5,7 @@
 
 @if(PageNavigator.HasChildren)
 {
-    <ul class="@(PageNavigator.CurrentPage == null || PageNavigator.First == true ? "navbar-nav" : "dropdown-menu")">
+    <ul class="@(PageNavigator.NavigationLevel == 0 ? "navbar-nav" : "dropdown-menu")">
         @if (PageNavigator.HasChildren)
         {
             @foreach(var pageNav in PageNavigator.Children)

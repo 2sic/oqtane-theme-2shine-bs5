@@ -111,8 +111,8 @@
         .offcanvas-body {
             background-color: $primary;
             padding: 0;
-
-            .dropdown-menu {
+            //Changed from 2shine DNN (.dropdown-menu -> .ul-collapse)
+            .ul-collapse {
                 background-color: rgba($black, 0.4);
                 border-radius: 0;
                 border-left: none;
@@ -140,7 +140,7 @@
     .to-shine-login {
         width: 10px;
         margin-left: 15px;
-        margin-top: -4px;
+        margin-top: -2px;
 
         @include media-breakpoint-down(lg) {
             padding-top: 1rem;
@@ -151,7 +151,7 @@
         position: absolute;
         top: 0px;
         right: 0;
-        height: 46px;
+        height: 100%;
         width: 40px;
         text-align: center;
         cursor: pointer;
@@ -161,18 +161,19 @@
         align-items: center;
         justify-content: center;
 
-
+        //Slight changes from DNN for new Mobile structure
         &:after {
-            content: "+";
+            content: "-";
             border: none;
             font-size: 20px;
             font-family: sans-serif;
             color: hsla(0,0%,100%,.8);
         }
 
-        &.show {
+        //Slight changes from DNN for new Mobile structure
+        &.collapsed {
             &:after {
-                content: "-";
+                content: "+";
             }
         }
     }

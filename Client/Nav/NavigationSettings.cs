@@ -16,18 +16,20 @@ public class MenuConfig
     /// </summary>
     public MenuConfig() { }
 
-    public int? Levels { get; set; }
+    public List<int> PageList { get; set; }
+    public string StartingPage { get; set; }
+    public int? StartLevel { get; set; }
 
-    public string ParentPage { get; set; }
-
-    public string NavClasses { get; set; }
-
+    public int? LevelDepth { get; set; }
     public string Variation { get; set; }
+    public string NavClasses { get; set; }
+    
     public MenuConfig(MenuConfig original)
     {
-        Levels = original.Levels;
+        LevelDepth = original.LevelDepth;
         NavClasses = original.NavClasses;
-        ParentPage = original.ParentPage;
+        StartingPage = original.StartingPage;
         Variation = original.Variation;
+        PageList = original.PageList;
     }
 }

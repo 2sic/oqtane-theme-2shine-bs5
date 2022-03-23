@@ -3,7 +3,7 @@
 
 @if(PageNavigator.HasChildren)
 {
-    <ul class="@(PageNavigator.CurrentPage == null || PageNavigator.First == true ? "navbar-nav" : @UlClasses())">
+    <ul class="@(PageNavigator.NavigationLevel == 0 ? "navbar-nav" : @UlClasses())">
         @if (PageNavigator.HasChildren)
         {
             @foreach(var pageNav in PageNavigator.Children)
