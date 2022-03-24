@@ -18,29 +18,61 @@ Those will be added as soon as Oqtane implments that feature.
 
 # Documentation
 ## Controls
+---
+### 1. Navigation:
 
-### 1. Navigation Controls:
-To achieve the most customizable Navigation we implemented a "NavEntry" control which can be given three Parameters.
+You can either manage the navigation configurations with the parameters that you can give to the razor control **NavEntry** 
+or you can give them to the **navigation.json** file, which is located in the src folder.
 
-#### ParentPage: 
-This parameter expects a string. If the navigation should start from the root level you can put "*" as the value or set it to null. The second option is to put the pageId of the page you want to start inside the parameter.
+If you want the configurations from the config file to be used you just have to write the Key from the "NavConfigs" array which you want to use in the **ConfigName** parameter.
+The parameters defined with the razor control have priority and will override anything defined in the config file. So if you want to use the config file it is best to only define the ConfigName
+in the Blazor Component. 
 
-#### Levels: 
-This parameter expects an int value. If the value is set to one it will only display the pages that are one level below the "ParentPage" (so if the ParentPage is "null" only the root level and if the specified page is on level 3 only the 4th level). 
+### Those three parameters define the starting point for the navigation and you should only use one at a time the other two should just not be defined:
 
-#### Variation: 
-This parameter expects a string. It can choose between the three available Layouts, Main (default), Mobile and Sidebar (This is Managed in the NavEntry.razor).
+1. **StartingPage:**  
+This parameter expects a string.  
+You can either give a "*" to start from the root level or you can give a pageId to start from that specific page (Tip: To start with the children of a specific page put the pageId here and set the **LevelSkip** parameter to 1).  
 
-### JsonConfigName:
-This parameter expects a string. If left empty the settings from the parameters will be used for the navigation. If a name is defined which can be found in the navigation-config.json the settings defined there will be used.
+2. **StartLevel:**    
+This parameter expects an integer.  
+This parameter expects a specific Level and will display anything on that level
 
-To implement all this we used a PageNavigator class which takes the given Parameters and creates PageNavigator classes for the pages which match the given criteria and also defines relations between the PageNavigators. The initial PageNavigator class is created with the PageNavigatorFactory class. 
+3. **PageList:**  
+This parameter expects a List if integers.  
+You can put pageId's in the list and the pages will be displayed 
 
-### 2. LanguageChanger Control: 
+### These parameters are used to define more settings:
+
+1. **ConfigName:**
+This parameter expects a string.  
+Makes the link between a certain control and the defined settings in the config file.
+
+
+2. **LevelDepth:**  
+This parameter expects an integer.  
+Is used to define how many levels the navigation should go down in the page tree from the defined starting point. 
+The value 0 means that only the starting point will be displayed 1 means the children of the starting point will also be in the navigation.
+
+
+3. **LevelSkip (optional):**  
+This parameter expects an integer (Default: 0).    
+Skips the defined number of levels if given 0 wont skip anything if given 1 skips one level
+
+4. **Display (optional):**  
+This parameter expects a boolean (Default: true).    
+Deactivates the generation of HTML for this navigation
+
+5. **Variation (optional):**   
+This parameter expects a string (Default: "Main").  
+Choosing between the different layout options defined in ***Menu/NavEntry.razor***.
+
+### 2. LanguageNav: 
 
 The LanguageChanger control can be used to display Links to switch between different Languages change the names with are used to display these Links. This is done with the Languages Parameter.
 
-#### Languages: 
-This parameter expects a string and manages the display names of the languages. To change the display name of english which has the language code "en" you will need to write "en: yourName". To change the names of multiple languages you can write "en: yourName, nl-NL: yourName".
+1 . **Languages:**   
+This parameter expects a string.  
+This parameter manages the display names of the languages. To change the display name of english which has the language code "en" you will need to write "en: *yourName*". To change the names of multiple languages you can write "en: *yourName*, nl-NL: *yourName*".
 
 # History

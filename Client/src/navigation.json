@@ -2,8 +2,8 @@
   "NavConfigs": {
     "Main": {
       "LevelDepth": 1,
-      "StartingPage": "28",
-      "LevelSkip":  1
+      "StartingPage": "*",
+        "Variation":  "Main"
     },
     "Mobile": {
       "LevelDepth": 2,
