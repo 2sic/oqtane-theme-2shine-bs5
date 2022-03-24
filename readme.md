@@ -17,8 +17,9 @@ That means the 2shine language classes and the page-root-neutral class are still
 Those will be added as soon as Oqtane implments that feature.
 
 # Documentation
+
 ## Controls
----
+
 ### 1. Navigation:
 
 You can either manage the navigation configurations with the parameters that you can give to the razor control **NavEntry** 
@@ -28,7 +29,7 @@ If you want the configurations from the config file to be used you just have to 
 The parameters defined with the razor control have priority and will override anything defined in the config file. So if you want to use the config file it is best to only define the ConfigName
 in the Blazor Component. 
 
-### Those three parameters define the starting point for the navigation and you should only use one at a time the other two should just not be defined:
+**Those three parameters define the starting point for the navigation and you should only use one at a time the other two should just not be defined:**
 
 1. **StartingPage:**  
 This parameter expects a string.  
@@ -42,7 +43,7 @@ This parameter expects a specific Level and will display anything on that level
 This parameter expects a List if integers.  
 You can put pageId's in the list and the pages will be displayed 
 
-### These parameters are used to define more settings:
+**These parameters are used to define more settings:**
 
 1. **ConfigName:**
 This parameter expects a string.  
@@ -71,7 +72,7 @@ Choosing between the different layout options defined in ***Menu/NavEntry.razor*
 
 The LanguageChanger control can be used to display Links to switch between different Languages change the names with are used to display these Links. This is done with the Languages Parameter.
 
-1 . **Languages:**   
+1. **Languages:**   
 This parameter expects a string.  
 This parameter manages the display names of the languages. To change the display name of english which has the language code "en" you will need to write "en: *yourName*". To change the names of multiple languages you can write "en: *yourName*, nl-NL: *yourName*".
 
