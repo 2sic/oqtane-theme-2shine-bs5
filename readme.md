@@ -40,16 +40,31 @@ Those will be added as soon as Oqtane implments that feature.
     3. Click on **Existing Project**
     4. Navigate to: *YourProjectFolder/Oqtane.Client/Oqtane.Client.csproj*
     5. Repeat steps 1 - 4 for this file: *YourProjectFolder/Oqtane.Client/Oqtane.Shared.csproj*
-6. Build the solution 
-7. Start **Oqtane.Server** in **Debug** mode
-8. If you just want to develop 2shine and don't need full functionallity from oqtane you can just leave the database settings as is
-9. Fill out the **Application Administrator** registration 
-10. Log in and Navigate to **Theme Management** if **2shine Oqtane theme with Bootstrap 5** isn't listed you may need to close the browser and rebuild the solution 
-11. Apply the theme to the whole site: 
+6. Rename:
+      1. Make a Find and Replace in the entire solution:  
+      Find: **ToSic.Oqt.Themes.ToShineBs5**  
+      Replace it with something like: **[YourOrganization].Oqt.Themes.[ThemeName]**  
+      (It's important that your new Namespace doesn't contain **Oqtane**)
+      - You need to replace one instance manually:  
+      Go to *YourProjectFolder/Package/release.cmd*
+      On the first line there is a reference to *ToSic.Oqt.Themes.ToShineBs5.nuspec* which you need to replace
+      2. Replace some Filenames with the same name as you used for the find and replace (Only replace the **ToSic.Oqt.Themes.ToShineBs5**):  
+
+                YourProjectFolder/ToSic.Oqt.Themes.ToShineBs5.sln
+                YourProjectFolder/Client/ToSic.Oqt.Themes.ToShineBs5.Client.csproj
+                YourProjectFolder/Package/ToSic.Oqt.Themes.ToShineBs5.Package.csproj
+                YourProjectFolder/Package/ToSic.Oqt.Themes.ToShineBs5.nuspec
+
+7. Build the solution 
+8. Start **Oqtane.Server** in **Debug** mode
+9. If you just want to develop 2shine and don't need full functionallity from oqtane you can just leave the database settings as is
+10. Fill out the **Application Administrator** registration 
+11. Log in and Navigate to **Theme Management** if **2shine Oqtane theme with Bootstrap 5** isn't listed you may need to close the browser and rebuild the solution 
+12. Apply the theme to the whole site: 
       1. Navigate to **Site Settings** 
       2. Change the **Default Theme** setting to the layout you wan't to apply 
       3. Change the **Default Container** setting to the available container
-12. Apply the theme to a single page: 
+13. Apply the theme to a single page: 
       1. Navigate to **Page Management** 
       2. Choose the page you want to apply a layout to and click on **Edit** 
       3. Under **Appearance** chage the **Theme** setting to the layout you want to apply
