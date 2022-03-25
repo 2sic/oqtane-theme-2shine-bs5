@@ -45,10 +45,10 @@ Those will be added as soon as Oqtane implments that feature.
       Find: **ToSic.Oqt.Themes.ToShineBs5**  
       Replace it with something like: **[YourOrganization].Oqt.Themes.[ThemeName]**  
       (It's important that your new Namespace doesn't contain **Oqtane**)
-      - You need to replace one instance manually:  
+      2. You need to replace one instance manually:  
       Go to *YourProjectFolder/Package/release.cmd*
       On the first line there is a reference to *ToSic.Oqt.Themes.ToShineBs5.nuspec* which you need to replace
-      2. Replace some Filenames with the same name as you used for the find and replace (Only replace the **ToSic.Oqt.Themes.ToShineBs5**):  
+      3. Replace some Filenames with the same name as you used for the find and replace (Only replace the **ToSic.Oqt.Themes.ToShineBs5**):  
 
                 YourProjectFolder/ToSic.Oqt.Themes.ToShineBs5.sln
                 YourProjectFolder/Client/ToSic.Oqt.Themes.ToShineBs5.Client.csproj
