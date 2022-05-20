@@ -1,0 +1,17 @@
+﻿@using Microsoft.Extensions.Localization
+@using Oqtane
+@inherits ModuleBase
+@inject ISettingService SettingService
+@inject IStringLocalizer<ThemeDisplaySettings> Localizer
+@inject IStringLocalizer<SharedResources> SharedLocalizer
+@attribute [OqtaneIgnore]
+
+<div class="container">
+
+    <p><h2>Navigations</h2></p> 
+    
+    <MenuSettings ConfigName="Main"></MenuSettings>
+    <MenuSettings ConfigName="Mobile"></MenuSettings>
+    <MenuSettings ConfigName="Sidebar"></MenuSettings>
+
+</div>

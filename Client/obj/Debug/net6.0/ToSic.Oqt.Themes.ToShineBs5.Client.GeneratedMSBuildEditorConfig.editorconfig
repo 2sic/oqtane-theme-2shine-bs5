@@ -103,6 +103,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = TWVudVxOYXZJdGVtc1NpZGViYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/ThemeSettings/MenuSettings.razor]
+build_metadata.AdditionalFiles.TargetPath = VGhlbWVTZXR0aW5nc1xNZW51U2V0dGluZ3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/ThemeSettings/ThemeSettings.razor]
+build_metadata.AdditionalFiles.TargetPath = VGhlbWVTZXR0aW5nc1xUaGVtZVNldHRpbmdzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/oqtane-theme-tests/oqt-theme-2shine-bs5/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
