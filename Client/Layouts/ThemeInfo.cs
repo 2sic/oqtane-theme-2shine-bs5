@@ -10,6 +10,6 @@ public class ThemeInfo : ITheme
         Name = "2shine Oqtane theme with Bootstrap 5",
         Version = "1.0.0",
         ContainerSettingsType = "Oqtane.Theme.tosic.ContainerSettings, Oqtane.Theme.tosic.Oqtane",
-        PackageName = "ToSic.Oqt.Themes.ToShineBs5"
+        PackageName = "ToSic.Oqt.Themes.ToSicStatus"
     };
 }

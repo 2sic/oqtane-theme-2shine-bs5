@@ -39,7 +39,7 @@ public abstract class NavEntryBase : MenuBase
     {
         await base.OnParametersSetAsync();
 
-        string fileName = "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/navigation.json";
+        string fileName = "wwwroot/Themes/ToSic.Oqt.Themes.ToSicStatus/navigation.json";
 
         if (jsonNav == null)
         {
