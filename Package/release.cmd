@@ -1,2 +1,2 @@
 "..\NugetCLI\nuget.exe" pack ToSic.Oqt.Themes.ToSicStatus.nuspec 
-XCOPY "*.nupkg" "..\..\oqtane.framework\Oqtane.Server\wwwroot\Themes\" /Y
+XCOPY "*.nupkg" "..\..\website\wwwroot\Themes\" /Y
