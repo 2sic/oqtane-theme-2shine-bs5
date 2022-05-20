@@ -70,6 +70,9 @@ Those will be added as soon as Oqtane implments that feature.
       3. Under **Appearance** chage the **Theme** setting to the layout you want to apply
       4. Change the **Default Container** setting to the 2shine container
 
+### Visual Studio Code development
+To develop in VS Code just open the **oqt-theme-2shine-bs5** folder with VS Code. Once VS Code has opened click on **Debug** and then click on **Start Without Debugging**.
+
 # Documentation
 
 ## Controls
