@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Components;
 using Oqtane.Themes.Controls;
 using System.Collections.Generic;
 using System.Linq;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
+using ToSic.Oqt.Themes.ToSicStatus.Client.Nav;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 
