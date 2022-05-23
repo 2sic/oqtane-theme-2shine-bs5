@@ -1,24 +1,31 @@
 {
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
-  "version": "0.1.0",
+  "version": "2.0.0",
   "command": "dotnet",
-  "isShellCommand": true,
   "args": [],
   "tasks": [
     {
-      "taskName": "build",
-      "args": ["-c", "release"],
-      "isBuildCommand": true,
-      "showOutput": "always",
-      "problemMatcher": "$msCompile"
+      "label": "build",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["build", "-c", "release"],
+      "problemMatcher": "$msCompile",
+      "group": {
+        "_id": "build",
+        "isDefault": false
+      }
     },
     {
-      "taskName": "test",
-      "args": [],
-      "isTestCommand": true,
-      "showOutput": "always",
-      "problemMatcher": "$msCompile"
+      "label": "test",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["test"],
+      "problemMatcher": "$msCompile",
+      "group": {
+        "_id": "test",
+        "isDefault": false
+      }
     }
   ]
 }
