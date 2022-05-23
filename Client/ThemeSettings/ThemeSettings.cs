@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
 {
-    public partial class ThemeDisplaySettings
+    public partial class ThemeSettings
     {
         public string StartingPage = null;
 

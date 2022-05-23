@@ -11,24 +11,24 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
 {
     public sealed class ThemeSettingsService
     {
-        Dictionary<string, ThemeDisplaySettings> CombinedSettings;
+        Dictionary<string, ThemeSettings> CombinedSettings;
 
-        private ThemeDisplaySettings Settings;
+        private ThemeSettings Settings;
 
         private IJSObjectReference BodyClassJS;
 
-        public Dictionary<string, ThemeDisplaySettings> DeserializeData()
+        public Dictionary<string, ThemeSettings> DeserializeData()
         {
-            string jsonString = File.ReadAllText("./settings.json");
-            return CombinedSettings = JsonSerializer.Deserialize<Dictionary<string, ThemeDisplaySettings>>(jsonString);
+            string jsonString = File.ReadAllText("../../oqt-theme-2shine-bs5/Client/settings.json");
+            return CombinedSettings = JsonSerializer.Deserialize<Dictionary<string, ThemeSettings>>(jsonString);
         }
 
-        public void SerializeDataAsync(string ConfigName, ThemeDisplaySettings Settings)
+        public void SerializeDataAsync(string ConfigName, ThemeSettings Settings)
         {
             CombinedSettings.Add(ConfigName, Settings);
 
             string jsonString = JsonSerializer.Serialize(CombinedSettings);
-            File.WriteAllText("./settings.json", jsonString);
+            File.WriteAllText("../../oqt-theme-2shine-bs5/Client/settings.json", jsonString);
         }
     }
 }

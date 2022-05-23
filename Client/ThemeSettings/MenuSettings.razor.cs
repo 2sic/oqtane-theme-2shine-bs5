@@ -52,7 +52,7 @@ public partial class MenuSettings
     //Scope is static at the moment
     public string Scope = "Site";
 
-    private ThemeDisplaySettings Settings = new ThemeDisplaySettings();
+    private ThemeSettings Settings = new ThemeSettings();
 
     protected override void OnInitialized()
     {
