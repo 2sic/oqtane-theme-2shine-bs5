@@ -16,8 +16,9 @@
     <releaseNotes></releaseNotes>
     <summary></summary>
     <dependencies>
-      <group targetFramework=".NETCoreApp6.0" />
-      <dependency id="Oqtane.Framework" version="3.0.2" />
+      <group targetFramework=".NETCoreApp6.0" >
+        <dependency id="Oqtane.Framework" version="3.0.2" />
+      </group>
     </dependencies>
   </metadata>
   <files>
