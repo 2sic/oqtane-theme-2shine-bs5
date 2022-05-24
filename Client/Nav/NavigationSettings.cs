@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
+namespace ToSic.Oqt.Themes.ToSicStatus.Client.Nav;
 
 public class JsonNav
 {
@@ -18,14 +18,14 @@ public class MenuConfig
     public string StartingPage { get; set; }
     public int? StartLevel { get; set; }
 
-    public int LevelSkip { get; set; } = 0; 
+    public int LevelSkip { get; set; } = 0;
     public int? LevelDepth { get; set; }
 
     public bool Display { get; set; } = true;
-    
+
     public string Variation { get; set; }
     public string NavClasses { get; set; }
-    
+
     public MenuConfig(MenuConfig original)
     {
         LevelDepth = original.LevelDepth;

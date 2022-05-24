@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
+namespace ToSic.Oqt.Themes.ToSicStatus.Client.Nav;
 
 public class PageNavigatorService
 {
@@ -31,9 +31,9 @@ public class PageNavigatorService
         IList<Page> childPages = new List<Page>();
         IList<PageNavigator> childNavigators = new List<PageNavigator>();
 
-        if(startingpoint != null)
+        if (startingpoint != null)
         {
-            if(startingpoint == "*")
+            if (startingpoint == "*")
             {
                 childPages = MenuPages.Where(p => p.Level == LevelSkip).ToList();
             }
@@ -41,8 +41,8 @@ public class PageNavigatorService
             {
                 try
                 {
-                    Page page; 
-                    if(LevelSkip == 0)
+                    Page page;
+                    if (LevelSkip == 0)
                     {
                         page = MenuPages.Single(p => p.PageId == pageId);
                     }
@@ -68,12 +68,12 @@ public class PageNavigatorService
             }
         }
 
-        if(startlevel != null)
+        if (startlevel != null)
         {
             childPages = MenuPages.Where(p => p.Level == startlevel).ToList();
         }
 
-        if(pagelist != null)
+        if (pagelist != null)
         {
             foreach (var pageId in pagelist)
             {
@@ -87,13 +87,13 @@ public class PageNavigatorService
                 }
             }
         }
-        
+
         foreach (var childPage in childPages)
         {
             childNavigators.Add(new PageNavigator(MenuPages, 1, LevelDepth, childPage));
         }
 
-        if(Display == true)
+        if (Display == true)
         {
             return childNavigators;
         }

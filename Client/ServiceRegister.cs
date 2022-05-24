@@ -2,7 +2,7 @@
 using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 using ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client;
+namespace ToSic.Oqt.Themes.ToSicStatus.Client;
 
 public class ServiceRegister : Oqtane.Services.IClientStartup
 {
