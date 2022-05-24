@@ -1,7 +1,7 @@
 using Oqtane.Models;
 using Oqtane.Themes;
 
-namespace ToSic.Oqt.Themes.ToSicStatus.Client.Layouts;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
 
 public class ThemeInfo : ITheme
 {
@@ -12,6 +12,6 @@ public class ThemeInfo : ITheme
         Version = "1.0.0",
         ThemeSettingsType = Fake,
         ContainerSettingsType = "Oqtane.Theme.tosic.ContainerSettings, Oqtane.Theme.tosic.Oqtane",
-        PackageName = "ToSic.Oqt.Themes.ToSicStatus"
+        PackageName = "ToSic.Oqt.Themes.ToShineBs5"
     };
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ToSic.Oqt.Themes.ToSicStatus.Client.Menu;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 
 public partial class NavItemSidebar : NavItem
 {

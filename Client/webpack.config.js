@@ -13,7 +13,7 @@ module.exports = {
         ambient: glob.sync("./src/ts-ambient/*.ts")
     },
     output: {
-        path: path.resolve(__dirname, 'wwwroot/Themes/ToSic.Oqt.Themes.ToSicStatus'),
+        path: path.resolve(__dirname, 'wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5'),
     },
     mode: 'production',
     devtool: 'source-map',

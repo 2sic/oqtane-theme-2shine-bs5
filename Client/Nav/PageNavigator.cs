@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ToSic.Oqt.Themes.ToSicStatus.Client.Nav;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 
 public class PageNavigator
 {

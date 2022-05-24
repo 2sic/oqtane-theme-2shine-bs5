@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ToSic.Oqt.Themes.ToSicStatus.Client.Nav;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 
 public class JsonNav
 {

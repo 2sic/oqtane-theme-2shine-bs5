@@ -7,9 +7,9 @@
     <Authors>tosic</Authors>
     <Company>tosic</Company>
     <Description>[Description]</Description>
-    <Product>ToSic.Oqt.Themes.ToSicStatus</Product>
+    <Product>ToSic.Oqt.Themes.ToShineBs5</Product>
     <Copyright>tosic</Copyright>
-    <AssemblyName>ToSic.Oqt.Themes.ToSicStatus.Client.Oqtane</AssemblyName>
+    <AssemblyName>ToSic.Oqt.Themes.ToShineBs5.Client.Oqtane</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -44,7 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\Themes\ToSic.Oqt.Themes.ToSicStatus\global-settings.json">
+    <Content Update="wwwroot\Themes\ToSic.Oqt.Themes.ToShineBs5\global-settings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

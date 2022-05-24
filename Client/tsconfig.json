@@ -6,7 +6,7 @@
     "module": "ES2015",
     "sourceMap": true,
     "target": "ES2015",
-    "outDir": "wwwroot/Themes/ToSic.Oqt.Themes.ToSicStatus/interop",
+    "outDir": "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/interop",
     "allowJs": true,
     "moduleResolution": "Node",
     "lib": [ "es6", "dom" ]

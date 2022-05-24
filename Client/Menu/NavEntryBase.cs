@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Oqtane.Themes.Controls;
-using ToSic.Oqt.Themes.ToSicStatus.Client.Nav;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 
-namespace ToSic.Oqt.Themes.ToSicStatus.Client.Menu;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 
 public abstract class NavEntryBase : MenuBase
 {
@@ -39,7 +39,7 @@ public abstract class NavEntryBase : MenuBase
     {
         await base.OnParametersSetAsync();
 
-        string fileName = "wwwroot/Themes/ToSic.Oqt.Themes.ToSicStatus/navigation.json";
+        string fileName = "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/navigation.json";
 
         if (jsonNav == null)
         {

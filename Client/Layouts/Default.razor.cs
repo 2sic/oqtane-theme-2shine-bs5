@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net.Http;
 
-namespace ToSic.Oqt.Themes.ToSicStatus.Client.Layouts;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
 
 public partial class Default : Oqtane.Themes.ThemeBase
 {
@@ -55,7 +55,7 @@ public partial class Default : Oqtane.Themes.ThemeBase
 
     public static string ToShineThemePath()
     {
-        string path = "Themes/ToSic.Oqt.Themes.ToSicStatus/";
+        string path = "Themes/ToSic.Oqt.Themes.ToShineBs5/";
         return path;
     }
 
