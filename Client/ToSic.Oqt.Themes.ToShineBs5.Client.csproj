@@ -44,6 +44,17 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="dist\wwwroot\**\*.*">
+      <Pack>True</Pack>
+      <PackagePath>wwwroot</PackagePath>
+    </None>
+  </ItemGroup>
+
   <PropertyGroup>
     <!-- there may be other elements here -->
     <BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>
