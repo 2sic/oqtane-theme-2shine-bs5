@@ -13,19 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Menu\navigation.md" />
-    <None Remove="src\scss\components\_page-customizations.scss" />
-    <None Remove="src\scss\readme.md" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="src\scss\readme.md" />
-    <Content Include="src\scss\_page-customizations.scss" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="ThemeSettings\MenuSettings.razor" />
-    <None Include="ThemeSettings\ThemeSettings.razor" />
+    <Content Remove="src\**\*" />
+    <Content Remove="dist\**\*" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,8 +33,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\Themes\ToSic.Oqt.Themes.ToShineBs5\global-settings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Update="tsconfig.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="package.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="package-lock.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

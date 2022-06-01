@@ -4,7 +4,7 @@
   "description": "The default skin template for 2sic websites",
   "main": "(none)",
   "scripts": {
-    "clean": "shx rm -rf  wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/*",
+    "clean": "shx rm -rf  dist/wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/*",
     "build-prod": "npm run clean && tsc && webpack --verbose"
   },
   "author": "2sic internet solutions",

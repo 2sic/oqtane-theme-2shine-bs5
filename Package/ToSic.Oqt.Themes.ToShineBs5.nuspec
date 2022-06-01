@@ -24,7 +24,7 @@
   <files>
     <file src="..\Client\bin\Release\net6.0\ToSic.Oqt.Themes.ToShineBs5.Client.Oqtane.dll" target="lib\net6.0" /> 
     <file src="..\Client\bin\Release\net6.0\ToSic.Oqt.Themes.ToShineBs5.Client.Oqtane.pdb" target="lib\net6.0" /> 
-    <file src="..\Client\wwwroot\**\*.*" target="wwwroot" /> 
+    <file src="..\Client\dist\wwwroot\**\*.*" target="wwwroot" />
     <file src="icon.png" target="" />
   </files>
 </package>
