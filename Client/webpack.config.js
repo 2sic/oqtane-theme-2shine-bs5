@@ -6,6 +6,7 @@ const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const WebpackBar = require("webpackbar");
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -56,6 +57,20 @@ module.exports = {
     }),
     new WebpackBar(),
     new FriendlyErrorsWebpackPlugin(),
+    new CopyPlugin({
+      patterns: [
+        // copy navigation.js to dist
+        {
+          from: "*.json",
+          context: "src",
+        },
+        // copy bootstrap-bundle to dist
+        {
+          from: "bootstrap.bundle.min.*",
+          context: "node_modules/bootstrap/dist/js/",
+        },
+      ],
+    }),
   ],
   module: {
     rules: [

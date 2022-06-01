@@ -1,6 +1,4 @@
-XCOPY "..\Client\node_modules\bootstrap\dist\js\bootstrap.bundle.min.js" "..\Client\dist\wwwroot\Themes\ToSic.Oqt.Themes.ToShineBs5" /Y /S /I
-XCOPY "..\Client\node_modules\bootstrap\dist\js\bootstrap.bundle.min.js.map" "..\Client\dist\wwwroot\Themes\ToSic.Oqt.Themes.ToShineBs5" /Y /S /I
-XCOPY "..\Client\src\navigation.json" "..\Client\dist\wwwroot\Themes\ToSic.Oqt.Themes.ToShineBs5" /Y /S /I
+@REM TODO: NUGET.exe sollte über Standard-Pfad für Nuget CLI aufgerufen werden (evtl. im build process abrufen/installieren?) 
+"..\..\..\oqtane.framework\oqtane.package\nuget.exe" pack ToSic.Oqt.Themes.ToShineBs5.nuspec 
 
-"..\..\oqtane.framework\oqtane.package\nuget.exe" pack ToSic.Oqt.Themes.ToShineBs5.nuspec 
-XCOPY "*.nupkg" "..\..\oqtane.framework\Oqtane.Server\wwwroot\Themes\" /Y
+ XCOPY "*.nupkg" "..\..\website\wwwroot\Themes\" /Y
