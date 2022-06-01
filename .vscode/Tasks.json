@@ -9,7 +9,7 @@
       "label": "build",
       "type": "shell",
       "command": "dotnet",
-      "args": ["pack", "-c", "release", "--no-build"],
+      "args": ["pack", "-c", "release"],
       "problemMatcher": "$msCompile",
       "group": {
         "_id": "build",
