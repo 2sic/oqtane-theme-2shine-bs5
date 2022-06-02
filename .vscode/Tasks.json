@@ -11,6 +11,17 @@
       "problemMatcher": "$msCompile",
       "group": {
         "_id": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "build-debug",
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["pack", "-c", "Debug"],
+      "problemMatcher": "$msCompile",
+      "group": {
+        "_id": "build",
         "isDefault": false
       }
     }
