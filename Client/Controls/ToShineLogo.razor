@@ -3,7 +3,7 @@
 
 @if (file != null)
 {
-    <a class="logo" href="" title="2shine DNN BS5 2sxc (change this in the theme-body.ascx)">
+    <a class="logo" href="" title="2shine Oqtane BS5 2sxc (change this in the ToShineLogo.razor)">
         <img alt="Logo" class="img-fluid" src="@file.Url">
     </a>
 }
@@ -18,4 +18,4 @@
             file = await FileService.GetFileAsync(PageState.Site.LogoFileId.Value);
         }
     }
-} 
+}
