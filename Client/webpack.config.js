@@ -81,10 +81,13 @@ const commonConfig = {
       // triggers tsc build before webpack compile, needed for /interop js-files
       apply: (compiler) => {
         compiler.hooks.beforeCompile.tap("BeforeCompilePlugin", () => {
-          exec("tsc", (err, stdout, stderr) => {
-            if (stdout) process.stdout.write(stdout);
-            if (stderr) process.stderr.write(stderr);
-          }).on("exit", () => {});
+          exec(
+            `tsc --outDir dist/wwwroot/Themes/${oqtaneThemeName}/interop`,
+            (err, stdout, stderr) => {
+              if (stdout) process.stdout.write(stdout);
+              if (stderr) process.stderr.write(stderr);
+            }
+          ).on("exit", () => {});
         });
       },
     },
