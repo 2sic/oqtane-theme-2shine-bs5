@@ -2,8 +2,9 @@
   // oqtane theme name
   "ThemeName": "ToSic.Oqt.Themes.ToShineBs5",
 
-  // relative path to your oqtane installation (iis physical path)
-  "OqtaneRoot": "../web/",
+  // path (relative or absolute) to your oqtane installation (iis physical path)
+  //"OqtaneRoot": "../web/",
+  "OqtaneRoot": "\\\\srv-devweb-03.2sic.com\\Projects\\Test\\Web",
 
   // publishes debug builds to OqtaneRoot in PostBuildEvent
   "PublishDebug": true
