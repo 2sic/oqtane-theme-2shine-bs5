@@ -1,15 +1,13 @@
-const glob = require("glob");
 const path = require("path");
-const exec = require("child_process").exec;
-const { merge } = require("webpack-merge");
+const webpack = require("webpack");
+
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const WebpackBar = require("webpackbar");
-const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const CopyPlugin = require("copy-webpack-plugin");
 const FileManagerPlugin = require("filemanager-webpack-plugin");
+
+const glob = require("glob");
+const exec = require("child_process").exec;
+const { merge } = require("webpack-merge");
 
 let themeConfig = require(path.resolve(process.cwd(), "theme.json"));
 if (!themeConfig) {
@@ -26,6 +24,7 @@ if (!themeConfig) {
 }
 
 const commonConfig = {
+  mode: "production",
   entry: {
     styles: "./src/scss/theme.scss",
     ambient: glob.sync("./src/ts-ambient/*.ts"),
@@ -36,7 +35,6 @@ const commonConfig = {
       `dist/wwwroot/Themes/${themeConfig.ThemeName}`
     ),
   },
-  mode: "production",
   devtool: "source-map",
   performance: {
     assetFilter: function (assetFilename) {
@@ -44,40 +42,23 @@ const commonConfig = {
     },
   },
   stats: {
-    all: false,
-    assets: true,
+    warnings: false,
+    cachedModules: false,
+    groupModulesByCacheStatus: false,
+  },
+  cache: {
+    type: "filesystem",
+    cacheDirectory: path.resolve(__dirname, ".temp_cache"),
+    compression: "gzip",
   },
   resolve: {
     extensions: [".scss"],
   },
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          output: {
-            comments: false,
-          },
-        },
-        extractComments: false,
-      }),
-      new OptimizeCSSAssetsPlugin({
-        cssProcessorOptions: {
-          map: {
-            inline: false,
-            annotation: true,
-          },
-        },
-      }),
-    ],
-  },
   plugins: [
-    new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
       filename: "theme.min.css",
     }),
-    new WebpackBar(),
-    new FriendlyErrorsWebpackPlugin(),
+    new webpack.ProgressPlugin(),
     new CopyPlugin({
       patterns: [
         // copy navigation.js to dist
@@ -110,8 +91,8 @@ const commonConfig = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
-        exclude: /node_modules/,
+        test: /\.s[ac]ss$/i,
+        // exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -125,7 +106,9 @@ const commonConfig = {
             options: {
               sourceMap: true,
               postcssOptions: {
-                plugins: [require("autoprefixer")],
+                plugins: function () {
+                  return [require("autoprefixer")];
+                },
               },
             },
           },
@@ -142,20 +125,23 @@ const commonConfig = {
         exclude: [/node_modules/, /ts-interop/],
         use: {
           loader: "ts-loader",
+          options: {
+            transpileOnly: true,
+          },
         },
       },
-      {
-        test: /\.(png|jpe?g|gif)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-              outputPath: "images/",
-            },
-          },
-        ],
-      },
+      // {
+      //   test: /\.(png|jpe?g|gif)$/,
+      //   use: [
+      //     {
+      //       loader: "file-loader",
+      //       options: {
+      //         name: "[name].[ext]",
+      //         outputPath: "images/",
+      //       },
+      //     },
+      //   ],
+      // },
     ],
   },
 };
@@ -187,10 +173,15 @@ const buildConfig = {
 };
 
 module.exports = (env, args) => {
-  const config =
-    env == "watch"
-      ? merge(commonConfig, watchConfig)
-      : merge(commonConfig, buildConfig);
+  const config = env.watch
+    ? merge(commonConfig, watchConfig)
+    : merge(commonConfig, buildConfig);
+
+  console.log(config);
 
   return config;
 };
+
+new webpack.ProgressPlugin((percentage, message) => {
+  console.log(`${(percentage * 100).toFixed()}% ${message}`);
+});
