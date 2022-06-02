@@ -3,7 +3,7 @@ let themeConfig = require("../theme.json");
 
 if (!themeConfig || !themeConfig.OqtaneRootReleativePath) {
   themeConfig = {
-    OqtaneRootReleativePath: "../website",
+    OqtaneRootReleativePath: "../web",
     PublishDebugBuildToOqtane: false,
   };
 }

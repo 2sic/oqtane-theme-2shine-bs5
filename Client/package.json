@@ -6,7 +6,8 @@
   "scripts": {
     "publish": "node scripts/publish.js",
     "clean": "node scripts/clean.js",
-    "build": "npm run clean && webpack --env build",
+    "build": "node scripts/dotnet-build-pack.js",
+    "webpack-build": "npm run clean && webpack --env build",
     "webpack-watch": "npm run clean && webpack --env watch",
     "dotnet-watch": "node scripts/dotnet-watch.js"
   },

@@ -67,7 +67,7 @@
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Release npm run build" />
+    <Exec Command="if $(ConfigurationName) == Release npm run webpack-build" />
   </Target>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">

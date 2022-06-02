@@ -7,8 +7,5 @@ if (!themeConfig || !themeConfig.ThemeName) {
   };
 }
 
-console.log(
-  `cleaning dist directory dist/wwwroot/Themes/${themeConfig.ThemeName}`
-);
-
-shell.rm("-rf", `dist/wwwroot/Themes/${themeConfig.ThemeName}/*`);
+console.log(`cleaning dist directory`);
+shell.rm("-rf", `dist/*`);

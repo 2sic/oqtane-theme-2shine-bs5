@@ -13,14 +13,14 @@ let themeConfig = require(path.resolve(process.cwd(), "theme.json"));
 if (!themeConfig) {
   themeConfig = {
     ThemeName: "ToSic.Oqt.Themes.ToShineBs5",
-    OqtaneRootReleativePath: "../website",
+    OqtaneRootReleativePath: "../web",
   };
 } else {
   if (!themeConfig.ThemeName)
     themeConfig.ThemeName = "ToSic.Oqt.Themes.ToShineBs5";
 
   if (!themeConfig.OqtaneRootReleativePath)
-    themeConfig.OqtaneRootReleativePath = "../website";
+    themeConfig.OqtaneRootReleativePath = "../web";
 }
 
 const commonConfig = {
@@ -34,6 +34,7 @@ const commonConfig = {
       __dirname,
       `dist/wwwroot/Themes/${themeConfig.ThemeName}`
     ),
+    assetModuleFilename: "images/[hash][ext][query]",
   },
   devtool: "source-map",
   performance: {
@@ -130,18 +131,6 @@ const commonConfig = {
           },
         },
       },
-      // {
-      //   test: /\.(png|jpe?g|gif)$/,
-      //   use: [
-      //     {
-      //       loader: "file-loader",
-      //       options: {
-      //         name: "[name].[ext]",
-      //         outputPath: "images/",
-      //       },
-      //     },
-      //   ],
-      // },
     ],
   },
 };
@@ -149,7 +138,7 @@ const commonConfig = {
 const watchConfig = {
   watch: true,
   plugins: [
-    // copy dist to to oqtane website dir
+    // copy dist to to oqtane web dir
     new FileManagerPlugin({
       events: {
         onEnd: {
@@ -176,8 +165,6 @@ module.exports = (env, args) => {
   const config = env.watch
     ? merge(commonConfig, watchConfig)
     : merge(commonConfig, buildConfig);
-
-  console.log(config);
 
   return config;
 };
