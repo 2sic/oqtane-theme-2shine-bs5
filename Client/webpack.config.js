@@ -1,3 +1,4 @@
+require("jsonc-require");
 const path = require("path");
 const webpack = require("webpack");
 
@@ -9,18 +10,20 @@ const glob = require("glob");
 const exec = require("child_process").exec;
 const { merge } = require("webpack-merge");
 
-let themeConfig = require(path.resolve(process.cwd(), "theme.json"));
+let themeConfig = require(path.resolve(process.cwd(), "theme.jsonc"));
 if (!themeConfig) {
   themeConfig = {
     ThemeName: "ToSic.Oqt.Themes.ToShineBs5",
-    OqtaneRootReleativePath: "../web",
+    OqtaneRoot: "../web",
   };
 } else {
   if (!themeConfig.ThemeName)
     themeConfig.ThemeName = "ToSic.Oqt.Themes.ToShineBs5";
+  if (!themeConfig.OqtaneRoot) themeConfig.OqtaneRoot = "../web";
+}
 
-  if (!themeConfig.OqtaneRootReleativePath)
-    themeConfig.OqtaneRootReleativePath = "../web";
+if (!path.isAbsolute(themeConfig.OqtaneRoot)) {
+  themeConfig.OqtaneRoot = `../${themeConfig.OqtaneRoot}`;
 }
 
 const commonConfig = {
@@ -145,10 +148,7 @@ const watchConfig = {
           copy: [
             {
               source: "dist",
-              destination: path.resolve(
-                __dirname,
-                `../${themeConfig.OqtaneRootReleativePath}`
-              ),
+              destination: path.resolve(__dirname, themeConfig.OqtaneRoot),
             },
           ],
         },

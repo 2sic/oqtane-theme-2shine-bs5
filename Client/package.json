@@ -19,6 +19,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "filemanager-webpack-plugin": "^6.1.7",
+    "jsonc-require": "^1.0.1",
     "mini-css-extract-plugin": "^2.6.0",
     "postcss-loader": "^7.0.0",
     "sass": "^1.52.1",

@@ -1,18 +1,21 @@
+require("jsonc-require");
 const shell = require("shelljs");
-let themeConfig = require("../theme.json");
+const path = require("path");
 
-if (!themeConfig || !themeConfig.OqtaneRootReleativePath) {
+let themeConfig = require("../theme.jsonc");
+
+if (!themeConfig || !themeConfig.OqtaneRoot) {
   themeConfig = {
-    OqtaneRootReleativePath: "../web",
-    PublishDebugBuildToOqtane: false,
+    OqtaneRoot: "../web",
+    PublishDebug: false,
   };
 }
 
-if (themeConfig.PublishDebugBuildToOqtane) {
+if (!path.isAbsolute(themeConfig.OqtaneRoot)) {
+  themeConfig.OqtaneRoot = `../${themeConfig.OqtaneRoot}`;
+}
+
+if (themeConfig.PublishDebug) {
   console.log(`copy theme to oqtane dir`);
-  shell.cp(
-    "-Rf",
-    "bin/Debug/net6.0/*",
-    `../${themeConfig.OqtaneRootReleativePath}`
-  );
+  shell.cp("-Rf", "bin/Debug/net6.0/*", themeConfig.OqtaneRoot);
 }
