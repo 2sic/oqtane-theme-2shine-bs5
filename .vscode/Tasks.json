@@ -15,14 +15,17 @@
       }
     },
     {
-      "label": "build-debug",
+      "label": "watch build (debug)",
       "type": "shell",
       "command": "dotnet",
-      "args": ["pack", "-c", "Debug"],
+      "args": ["watch", "build", "-c", "Debug"],
       "problemMatcher": "$msCompile",
       "group": {
         "_id": "build",
         "isDefault": false
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/Client"
       }
     }
   ]

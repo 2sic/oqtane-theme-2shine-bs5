@@ -11,7 +11,12 @@ const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 const CopyPlugin = require("copy-webpack-plugin");
 const FileManagerPlugin = require("filemanager-webpack-plugin");
 
-const oqtaneThemeName = "ToSic.Oqt.Themes.ToShineBs5";
+let themeConfig = require(path.resolve(process.cwd(), "theme.json"));
+if (!themeConfig || !themeConfig.ThemeName) {
+  themeConfig = {
+    ThemeName: "ToSic.Oqt.Themes.ToShineBs5",
+  };
+}
 
 const commonConfig = {
   entry: {
@@ -19,7 +24,10 @@ const commonConfig = {
     ambient: glob.sync("./src/ts-ambient/*.ts"),
   },
   output: {
-    path: path.resolve(__dirname, `dist/wwwroot/Themes/${oqtaneThemeName}`),
+    path: path.resolve(
+      __dirname,
+      `dist/wwwroot/Themes/${themeConfig.ThemeName}`
+    ),
   },
   mode: "production",
   devtool: "source-map",
@@ -82,7 +90,7 @@ const commonConfig = {
       apply: (compiler) => {
         compiler.hooks.beforeCompile.tap("BeforeCompilePlugin", () => {
           exec(
-            `tsc --outDir dist/wwwroot/Themes/${oqtaneThemeName}/interop`,
+            `tsc --outDir dist/wwwroot/Themes/${themeConfig.ThemeName}/interop`,
             (err, stdout, stderr) => {
               if (stdout) process.stdout.write(stdout);
               if (stderr) process.stderr.write(stderr);
