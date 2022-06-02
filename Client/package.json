@@ -6,8 +6,9 @@
   "scripts": {
     "publish": "node scripts/publish.js",
     "clean": "node scripts/clean.js",
-    "watch": "npm run clean && webpack --env watch",
-    "build": "npm run clean && webpack --env build"
+    "build": "npm run clean && webpack --env build",
+    "webpack-watch": "npm run clean && webpack --env watch",
+    "dotnet-watch": "node scripts/dotnet-watch.js"
   },
   "author": "2sic internet solutions",
   "license": "MIT",

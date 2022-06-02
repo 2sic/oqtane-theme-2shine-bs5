@@ -1,4 +1,4 @@
-let shell = require("shelljs");
+const shell = require("shelljs");
 let themeConfig = require("../theme.json");
 
 if (!themeConfig || !themeConfig.ThemeName) {
@@ -10,4 +10,5 @@ if (!themeConfig || !themeConfig.ThemeName) {
 console.log(
   `cleaning dist directory dist/wwwroot/Themes/${themeConfig.ThemeName}`
 );
+
 shell.rm("-rf", `dist/wwwroot/Themes/${themeConfig.ThemeName}/*`);

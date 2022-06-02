@@ -1,4 +1,4 @@
-let shell = require("shelljs");
+const shell = require("shelljs");
 let themeConfig = require("../theme.json");
 
 if (!themeConfig || !themeConfig.OqtaneRootReleativePath) {
