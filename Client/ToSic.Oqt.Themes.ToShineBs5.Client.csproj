@@ -71,7 +71,7 @@
   </Target>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Debug npm run publish" />
+    <Exec Command="if $(ConfigurationName) == Debug npm run publish-watch" />
   </Target>
 
 </Project>

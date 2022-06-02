@@ -4,7 +4,8 @@
   "description": "The default skin template for 2sic websites",
   "main": "(none)",
   "scripts": {
-    "publish": "node scripts/publish.js",
+    "publish-build-pack": "node scripts/publish-build-pack.js",
+    "publish-watch": "node scripts/publish-watch.js",
     "clean": "node scripts/clean.js",
     "build": "node scripts/dotnet-build-pack.js",
     "webpack-build": "npm run clean && webpack --env build",
