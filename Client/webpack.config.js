@@ -12,10 +12,17 @@ const CopyPlugin = require("copy-webpack-plugin");
 const FileManagerPlugin = require("filemanager-webpack-plugin");
 
 let themeConfig = require(path.resolve(process.cwd(), "theme.json"));
-if (!themeConfig || !themeConfig.ThemeName) {
+if (!themeConfig) {
   themeConfig = {
     ThemeName: "ToSic.Oqt.Themes.ToShineBs5",
+    OqtaneRootReleativePath: "../website",
   };
+} else {
+  if (!themeConfig.ThemeName)
+    themeConfig.ThemeName = "ToSic.Oqt.Themes.ToShineBs5";
+
+  if (!themeConfig.OqtaneRootReleativePath)
+    themeConfig.OqtaneRootReleativePath = "../website";
 }
 
 const commonConfig = {
@@ -163,7 +170,10 @@ const watchConfig = {
           copy: [
             {
               source: "dist",
-              destination: path.resolve(__dirname, "../../website/"),
+              destination: path.resolve(
+                __dirname,
+                `../${themeConfig.OqtaneRootReleativePath}`
+              ),
             },
           ],
         },

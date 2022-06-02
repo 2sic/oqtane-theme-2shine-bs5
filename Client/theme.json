@@ -1,3 +1,5 @@
 {
-  "ThemeName": "ToSic.Oqt.Themes.ToShineBs5"
+  "ThemeName": "ToSic.Oqt.Themes.ToShineBs5",
+  "OqtaneRootReleativePath": "../website/",
+  "PublishDebugBuildToOqtane": true
 }
