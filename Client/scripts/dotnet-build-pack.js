@@ -31,4 +31,6 @@ function buildPackPublish() {
     silent: false,
     async: false,
   });
+
+  console.log("\x1b[32m%s\x1b[0m", "DONE");
 }

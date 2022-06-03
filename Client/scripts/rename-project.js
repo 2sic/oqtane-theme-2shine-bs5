@@ -20,7 +20,7 @@ function promptForRename() {
 
   if (!fs.existsSync("ToSic.Oqt.Themes.ToShineBs5.Client.csproj")) {
     console.log(
-      "it appear you already renamed your theme, this can only be done once!"
+      "it appears you already renamed your theme, this can only be done once!"
     );
   } else {
     const prompt = require("prompt");
@@ -88,6 +88,8 @@ function renameTheme(newThemeName) {
         fs.renameSync(defaultCsharpProject, `${newThemeName}.Client.csproj`);
       if (fs.existsSync(defaultVsSolution))
         fs.renameSync(defaultVsSolution, `../${newThemeName}.sln`);
+
+      console.log("\x1b[32m%s\x1b[0m", "DONE");
     } catch (error) {
       console.error("Error occurred:", error);
     }
