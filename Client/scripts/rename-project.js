@@ -16,8 +16,17 @@ if (!themeConfig || !themeConfig.ThemeName) {
 if (themeConfig.ThemeName === defaultThemeName) {
 } else {
   const options = {
-    files: "*.csproj",
-    from: defaultThemeName,
+    files: ["**/*.razor", "**/*.cs", "**/*.csproj", "**/*.sln"],
+    ignore: [
+      "obj/**",
+      "bin/**",
+      "node_modules/**",
+      "scripts/**",
+      "dist/**",
+      ".temp_cache/**",
+      ".vscode/**",
+    ],
+    from: RegExp(defaultThemeName, "g"),
     to: themeConfig.ThemeName,
   };
 
