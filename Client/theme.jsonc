@@ -4,7 +4,7 @@
 
   // path (relative or absolute) to your oqtane installation (iis physical path)
   "OqtaneRoot": "../web/",
-  //"OqtaneRoot": "\\\\srv-devweb-03.2sic.com\\Projects\\Test\\Web",
+  //"OqtaneRoot": "\\\\my.server.local\\MyOqtaneWebApp\\",
 
   "Publish": {
     // publish after watch build
