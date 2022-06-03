@@ -65,7 +65,7 @@ const commonConfig = {
     new webpack.ProgressPlugin(),
     new CopyPlugin({
       patterns: [
-        // copy navigation.js to dist
+        // copy navigation.json etc to dist
         {
           from: "*.json",
           context: "src",
@@ -96,7 +96,6 @@ const commonConfig = {
     rules: [
       {
         test: /\.s[ac]ss$/i,
-        // exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
           {

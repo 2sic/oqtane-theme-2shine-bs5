@@ -1,16 +1,34 @@
-const shell = require("shelljs");
+const fs = require("fs");
 
-shell.exec("dotnet build -c Release", {
-  silent: false,
-  async: false,
-});
+if (!fs.existsSync("node_modules")) {
+  const npm = require("npm");
+  npm.load(function (err) {
+    npm.on("log", function (message) {
+      console.log(message);
+    });
 
-shell.exec("dotnet pack -c Release --no-build", {
-  silent: false,
-  async: false,
-});
+    npm.commands.ci([], function (er, data) {
+      buildPackPublish();
+    });
+  });
+} else {
+  buildPackPublish();
+}
 
-shell.exec("npm run publish-build-pack", {
-  silent: false,
-  async: false,
-});
+function buildPackPublish() {
+  const shell = require("shelljs");
+  shell.exec("dotnet build -c Release", {
+    silent: false,
+    async: false,
+  });
+
+  shell.exec("dotnet pack -c Release --no-build", {
+    silent: false,
+    async: false,
+  });
+
+  shell.exec("node scripts/publish-build-pack.js", {
+    silent: false,
+    async: false,
+  });
+}

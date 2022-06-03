@@ -4,12 +4,8 @@
   "description": "The default skin template for 2sic websites",
   "main": "(none)",
   "scripts": {
-    "publish-build-pack": "node scripts/publish-build-pack.js",
-    "publish-watch": "node scripts/publish-watch.js",
-    "clean": "node scripts/clean.js",
     "build": "node scripts/dotnet-build-pack.js",
-    "webpack-build": "npm run clean && webpack --env build",
-    "webpack-watch": "npm run clean && webpack --env watch",
+    "webpack-watch": "node scripts/clean.js && webpack --env watch",
     "dotnet-watch": "node scripts/dotnet-watch.js"
   },
   "author": "2sic internet solutions",

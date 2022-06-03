@@ -67,11 +67,11 @@
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Release npm run webpack-build" />
+    <Exec Command="if $(ConfigurationName) == Release node scripts/clean.js &amp;&amp; webpack --env build" />
   </Target>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Debug npm run publish-watch" />
+    <Exec Command="if $(ConfigurationName) == Debug node scripts/publish-watch.js" />
   </Target>
 
 </Project>

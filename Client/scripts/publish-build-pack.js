@@ -32,7 +32,8 @@ function publish(restart = false) {
   const appOfflinePath = path.join(themeConfig.OqtaneRoot, "app_offline.htm");
 
   // create app_offline.htm; stops iis app
-  if (restart) fs.writeFileSync(appOfflinePath, "Learn Node FS module");
+  if (restart)
+    fs.writeFileSync(appOfflinePath, "2shine Theme update running ...");
 
   shell.cp(
     "-Rf",
