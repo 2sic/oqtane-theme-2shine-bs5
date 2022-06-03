@@ -18,60 +18,47 @@ Those will be added as soon as Oqtane implments that feature.
 
 # Installation
 
-## Development
-
 1. Create a folder for your project open the terminal and navigate to this folder.
-2. Clone the oqtane github repository by running:
-        
-        git clone https://github.com/oqtane/oqtane.framework.git
 
 3. Clone the 2shine Oqt github repository by running:
 
         git clone https://github.com/2sic/oqt-theme-2shine-bs5.git
 
-4. Open *YourProjectFolder/oqt-theme-2shine-bs5/Client* in your console 
+4. Open *YourProjectFolder/oqt-theme-2shine-bs5/Client* in your console (You can also open the folder with VSCode and run the commands from there)
     1. Install node-modules by running: 
     
-            npm ci 
+            npm ci
   
-5. Open the 2shine solution *YourProjectFolder/ToSic.Oqt.Themes.ToShineBs5.sln* in Visual Studio
-    1. Right click on the solution:
-    2. Navigate to **Add**
-    3. Click on **Existing Project**
-    4. Navigate to: *YourProjectFolder/Oqtane.Client/Oqtane.Client.csproj*
-    5. Repeat steps 1 - 4 for this file: *YourProjectFolder/Oqtane.Client/Oqtane.Shared.csproj*
-6. Rename:
+5. Rename:
       1. Make a Find and Replace in the entire solution:  
       Find: **ToSic.Oqt.Themes.ToShineBs5**  
       Replace it with something like: **[YourOrganization].Oqt.Themes.[ThemeName]**  
       (It's important that your new Namespace doesn't contain **Oqtane**)
-      2. You need to replace one instance manually:  
-      Go to *YourProjectFolder/Package/release.cmd*
-      On the first line there is a reference to *ToSic.Oqt.Themes.ToShineBs5.nuspec* which you need to replace
-      3. Replace some Filenames with the same name as you used for the find and replace (Only replace the **ToSic.Oqt.Themes.ToShineBs5**):  
+      2. Replace some Filenames with the same name as you used for the find and replace (Only replace the **ToSic.Oqt.Themes.ToShineBs5**):  
 
                 YourProjectFolder/ToSic.Oqt.Themes.ToShineBs5.sln
                 YourProjectFolder/Client/ToSic.Oqt.Themes.ToShineBs5.Client.csproj
-                YourProjectFolder/Package/ToSic.Oqt.Themes.ToShineBs5.Package.csproj
-                YourProjectFolder/Package/ToSic.Oqt.Themes.ToShineBs5.nuspec
 
-7. Build the solution 
-8. Start **Oqtane.Server** in **Debug** mode
-9. If you just want to develop 2shine and don't need full functionallity from oqtane you can just leave the database settings as is
-10. Fill out the **Application Administrator** registration 
-11. Log in and Navigate to **Theme Management** if **2shine Oqtane theme with Bootstrap 5** isn't listed you may need to close the browser and rebuild the solution 
-12. Apply the theme to the whole site: 
+6. Navigate to the **Client/theme.jsonc** file:
+      1. Change the **OqtaneRoot** path to your Oqtane Installation
+      2. You can also take a look at the other settings
+
+7. To build the project run: 
+
+        npm run build
+
+11. Log in and Navigate to **Theme Management** if **2shine Oqtane theme with Bootstrap 5** isn't listed you may need to restart the application
+
+13. Apply the theme to the whole site: 
       1. Navigate to **Site Settings** 
       2. Change the **Default Theme** setting to the layout you wan't to apply 
       3. Change the **Default Container** setting to the available container
-13. Apply the theme to a single page: 
+
+14. Apply the theme to a single page: 
       1. Navigate to **Page Management** 
       2. Choose the page you want to apply a layout to and click on **Edit** 
       3. Under **Appearance** chage the **Theme** setting to the layout you want to apply
       4. Change the **Default Container** setting to the 2shine container
-
-### Building the project with VSCode 
-To build the project with Visual Studio Code just press **Ctrl + Shift + B**.
 
 # Documentation
 
