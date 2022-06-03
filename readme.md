@@ -24,23 +24,12 @@ Those will be added as soon as Oqtane implments that feature.
 
         git clone https://github.com/2sic/oqt-theme-2shine-bs5.git
 
-4. Open *YourProjectFolder/oqt-theme-2shine-bs5/Client* in your console (You can also open the folder with VSCode and run the commands from there)
-    1. Install node-modules by running: 
-    
-            npm ci
-  
-5. Rename:
-      1. Make a Find and Replace in the entire solution:  
-      Find: **ToSic.Oqt.Themes.ToShineBs5**  
-      Replace it with something like: **[YourOrganization].Oqt.Themes.[ThemeName]**  
-      (It's important that your new Namespace doesn't contain **Oqtane**)
-      2. Replace some Filenames with the same name as you used for the find and replace (Only replace the **ToSic.Oqt.Themes.ToShineBs5**):  
+5. To use the theme you have to rename some variables and files. To rename everything at once you can just run:
 
-                YourProjectFolder/ToSic.Oqt.Themes.ToShineBs5.sln
-                YourProjectFolder/Client/ToSic.Oqt.Themes.ToShineBs5.Client.csproj
+       npm run rename-projects
 
 6. Navigate to the **Client/theme.jsonc** file:
-      1. Change the **OqtaneRoot** path to your Oqtane Installation
+      1. The **OqtaneRoot** setting determins where the theme is delivered to
       2. You can also take a look at the other settings
 
 7. To build the project run: 
@@ -61,6 +50,14 @@ Those will be added as soon as Oqtane implments that feature.
       4. Change the **Default Container** setting to the 2shine container
 
 # Documentation
+
+## Build and deployment
+
+There are some different node commands which help you to build and deploy the theme to oqtane: 
+
+      1. build          -> This will run webpack build the theme and deploy it to the designated location 
+      3. dotnet-watch   -> This will watch all of the .razor files and build and deploy the theme everytime it detects changes
+      2. webpack-watch  -> This will run webpack and watch the .scss and .ts files for changes and build and deliver them
 
 ## Controls
 
