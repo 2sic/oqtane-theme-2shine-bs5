@@ -19,9 +19,6 @@ Those will be added as soon as Oqtane implments that feature.
 # Installation
 
 1. Create a folder for your project open the terminal and navigate to this folder.
-2. Clone the oqtane github repository by running:
-        
-        git clone https://github.com/oqtane/oqtane.framework.git
 
 3. Clone the 2shine Oqt github repository by running:
 
@@ -46,20 +43,22 @@ Those will be added as soon as Oqtane implments that feature.
       1. Change the **OqtaneRoot** path to your Oqtane Installation
       2. You can also take a look at the other settings
 
-11. Log in and Navigate to **Theme Management** if **2shine Oqtane theme with Bootstrap 5** isn't listed you may need to close the browser and rebuild the solution 
+7. To build the project run: 
+
+        npm run build
+
+11. Log in and Navigate to **Theme Management** if **2shine Oqtane theme with Bootstrap 5** isn't listed you may need to restart the application
 
 13. Apply the theme to the whole site: 
       1. Navigate to **Site Settings** 
       2. Change the **Default Theme** setting to the layout you wan't to apply 
       3. Change the **Default Container** setting to the available container
+
 14. Apply the theme to a single page: 
       1. Navigate to **Page Management** 
       2. Choose the page you want to apply a layout to and click on **Edit** 
       3. Under **Appearance** chage the **Theme** setting to the layout you want to apply
       4. Change the **Default Container** setting to the 2shine container
-
-### Visual Studio Code development
-To develop in VS Code just open the **oqt-theme-2shine-bs5** folder with VS Code. Once VS Code has opened click on **Debug** and then click on **Start Without Debugging**.
 
 # Documentation
 
