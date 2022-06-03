@@ -19,6 +19,7 @@
     "jsonc-require": "^1.0.1",
     "mini-css-extract-plugin": "^2.6.0",
     "postcss-loader": "^7.0.0",
+    "prompt": "^1.3.0",
     "sass": "^1.52.1",
     "sass-loader": "^13.0.0",
     "shelljs": "^0.8.5",
