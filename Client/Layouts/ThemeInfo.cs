@@ -8,7 +8,7 @@ public class ThemeInfo : ITheme
     public string Fake => typeof(ThemeSettings.ThemeSettings).AssemblyQualifiedName;
     public Theme Theme => new()
     {
-        Name = "2sic-Status Theme with Bootstrap 5",
+        Name = "ToSic.Oqt.Themes.ToShineBs5 Theme with Bootstrap 5",
         Version = "1.0.0",
         ThemeSettingsType = Fake,
         ContainerSettingsType = "Oqtane.Theme.tosic.ContainerSettings, Oqtane.Theme.tosic.Oqtane",
