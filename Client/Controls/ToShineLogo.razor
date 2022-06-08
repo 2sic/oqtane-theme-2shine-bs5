@@ -16,7 +16,7 @@
     private string FileName = "logo-1000.png";
     private string BuildFileUrl(){
         var Namespace = ThemePath().Replace(".Client.Controls", "");
-        return Namespace + "Assets/" + FileName;
+        return Path.Combine(Namespace, "Assets/", FileName);
     }
 
     private File file = null;
