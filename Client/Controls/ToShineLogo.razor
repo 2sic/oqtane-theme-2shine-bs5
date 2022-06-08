@@ -1,14 +1,24 @@
 @inherits ThemeControlBase
 @inject IFileService FileService
 
+@* <a class="logo" href="" title="2shine Oqtane BS5 2sxc (change this in the ToShineLogo.razor)">
+    <img alt="Logo" class="img-fluid" src="@BuildFileUrl()">
+</a> *@
+
 @if (file != null)
 {
-    <a class="logo" href="" title="2shine Oqtane BS5 2sxc (change this in the ToShineLogo.razor)">
+    <a class="logo" href="" title="2shine DNN BS5 2sxc (change this in the theme-body.ascx)">
         <img alt="Logo" class="img-fluid" src="@file.Url">
     </a>
 }
 
 @code {
+    private string FileName = "logo-1000.png";
+    private string BuildFileUrl(){
+        var Namespace = ThemePath().Replace(".Client.Controls", "");
+        return Namespace + "Assets/" + FileName;
+    }
+
     private File file = null;
 
     protected override async Task OnParametersSetAsync()
