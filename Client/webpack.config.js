@@ -75,6 +75,11 @@ const commonConfig = {
           from: "bootstrap.bundle.min.*",
           context: "node_modules/bootstrap/dist/js/",
         },
+        {
+          from: "**/*",
+          to: "Assets",
+          context:"Images",
+        }
       ],
     }),
     {
