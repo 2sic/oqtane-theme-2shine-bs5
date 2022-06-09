@@ -105,3 +105,14 @@ if (document.querySelector('.to-shine-page-breadcrumb') != null) {
     //}
     document.querySelector('.to-shine-page-breadcrumb').classList.toggle('to-shine-page-breadcrumb-shortened', (document.querySelector('.to-shine-page-breadcrumb-link') != null || document.querySelectorAll('.to-shine-page-breadcrumb-link').length > 2))
 }
+
+//Offcanvas close on link click
+var links = document.querySelectorAll(".mobile-navigation-link");
+var myOffcanvas = document.getElementById('offcanvasNavbar')
+var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+ 
+links.forEach(element => {
+    element.addEventListener('click', () => {
+        bsOffcanvas.hide();
+    })
+});

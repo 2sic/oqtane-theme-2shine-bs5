@@ -17,7 +17,8 @@ public partial class NavItemMobile : NavItem
     {
         var linkCssClasses = new List<string>
         {
-            "nav-link"
+            "nav-link",
+            "mobile-navigation-link"
         };
         return linkCssClasses;
     }

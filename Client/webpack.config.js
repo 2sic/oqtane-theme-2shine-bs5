@@ -79,6 +79,10 @@ const commonConfig = {
           from: "**/*",
           to: "Assets",
           context:"Images",
+        },
+        {
+          from: "*.json",
+          context: "ThemeSettings",
         }
       ],
     }),
