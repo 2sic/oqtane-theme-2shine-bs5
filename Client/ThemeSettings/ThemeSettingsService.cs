@@ -39,18 +39,18 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
         }
     }
 
-    public int LevelSkip = 0;
+    public int LevelSkip;
 
     public int LevelDepth;
 
-    public bool Display = true;
+    public bool Display;
 
     public string Variation;
 
     //Scope is static at the moment
     public string Scope = "Site";
 
-    public bool UseUiSettings = false;
+    public bool UseUiSettings;
   }
   public sealed class ThemeSettingsService
   {
