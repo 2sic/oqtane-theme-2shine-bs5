@@ -34,7 +34,7 @@
 
 3.  To use the theme you have to rename some variables and files. To rename everything at once you can just navigate to **oqt-theme-2shine-bs5/Client/** and run:
    
-    npm install && npm run rename-project
+        npm install && npm run rename-project
 
 4.  Navigate to the **Client/theme.jsonc** file:
 
