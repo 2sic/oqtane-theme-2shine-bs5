@@ -1,0 +1,14 @@
+@using Microsoft.Extensions.Localization
+@using Oqtane
+@inject ISettingService SettingService
+@attribute [OqtaneIgnore]
+
+<div class="container">
+
+    <p><h2>Menus</h2></p> 
+    
+    <NavigationSettings ConfigName="Main"></NavigationSettings>
+    <NavigationSettings ConfigName="Mobile"></NavigationSettings>
+    <NavigationSettings ConfigName="Sidebar"></NavigationSettings>
+
+</div>

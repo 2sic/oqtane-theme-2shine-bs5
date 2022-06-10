@@ -36,7 +36,6 @@ public partial class Default : Oqtane.Themes.ThemeBase
 
     protected virtual bool ShowBreadcrumb => true;
 
-
     [Inject]
     protected HttpClient Http { get; set; }
 
@@ -55,8 +54,7 @@ public partial class Default : Oqtane.Themes.ThemeBase
 
     public static string ToShineThemePath()
     {
-        string path = "Themes/ToSic.Oqt.Themes.ToShineBs5/";
-        return path;
+        return "Themes/ToSic.Oqt.Themes.ToShineBs5/";
     }
 
     private IJSObjectReference BodyClassJS;

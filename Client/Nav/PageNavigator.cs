@@ -10,7 +10,7 @@ public class PageNavigator
 
     public Page CurrentPage = null;
 
-    public int NavigationLevel; 
+    public int NavigationLevel;
 
     public int LevelCounter;
 
@@ -24,7 +24,7 @@ public class PageNavigator
     }
 
     public bool HasChildren => Children.Any();
-   
+
     public IList<PageNavigator> Children => _children ??= GetChildren().ToList();
     private IList<PageNavigator> _children;
 

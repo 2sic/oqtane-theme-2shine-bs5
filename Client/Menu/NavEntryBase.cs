@@ -12,7 +12,7 @@ public abstract class NavEntryBase : MenuBase
     public PageNavigatorService Navigator { get; set; }
 
     [Parameter()]
-    public string StartingPage { get; set; } = null; 
+    public string StartingPage { get; set; } = null;
     [Parameter()]
     public int? StartLevel { get; set; } = null!;
     [Parameter()]
@@ -28,7 +28,7 @@ public abstract class NavEntryBase : MenuBase
     [Parameter()]
     public string Variation { get; set; }
     [Parameter()]
-    public string ConfigName{ get; set; }
+    public string ConfigName { get; set; }
 
 
     protected PageNavigator Start { get; private set; }
@@ -41,7 +41,7 @@ public abstract class NavEntryBase : MenuBase
 
         string fileName = "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/navigation.json";
 
-        if(jsonNav == null)
+        if (jsonNav == null)
         {
             string jsonString = System.IO.File.ReadAllText(fileName);
             jsonNav = System.Text.Json.JsonSerializer.Deserialize<JsonNav>(jsonString)!;
@@ -62,22 +62,22 @@ public abstract class NavEntryBase : MenuBase
             else if (StartingPage == null && navConfig.StartingPage != null)
                 StartingPage = "*";
 
-            if(StartLevel == null)
+            if (StartLevel == null)
                 StartLevel = navConfig.StartLevel;
 
-            if(PageList == null)
+            if (PageList == null)
                 PageList = navConfig.PageList;
 
-            if(LevelSkip == 0)
+            if (LevelSkip == 0)
                 LevelSkip = navConfig.LevelSkip;
 
-            if(Variation == null && navConfig.Variation != null)
+            if (Variation == null && navConfig.Variation != null)
                 Variation = navConfig.Variation;
-                
+
             if (LevelDepth == 0 && navConfig.LevelDepth != null)
                 LevelDepth = (int)navConfig.LevelDepth;
 
-            if(Display == true)
+            if (Display == true)
                 Display = navConfig.Display;
 
             Start = Navigator.Start(MenuPages, LevelDepth, Display, LevelSkip, StartingPage, StartLevel, PageList);

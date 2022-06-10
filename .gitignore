@@ -3,6 +3,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Webpack cache
+.temp_cache/
+
+# Theme-specific fiels
+dist/
+
 # User-specific files
 *.rsuser
 *.suo

@@ -10,38 +10,54 @@
     <Product>ToSic.Oqt.Themes.ToShineBs5</Product>
     <Copyright>tosic</Copyright>
     <AssemblyName>ToSic.Oqt.Themes.ToShineBs5.Client.Oqtane</AssemblyName>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Menu\navigation.md" />
-    <None Remove="src\scss\components\_page-customizations.scss" />
-    <None Remove="src\scss\readme.md" />
+    <Content Remove="src\**\*" />
+    <Content Remove="dist\**\*" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="src\scss\readme.md" />
-    <Content Include="src\scss\_page-customizations.scss" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.0" />
-    <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.2.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.0" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="6.0.0" PrivateAssets="all" />
+    <PackageReference Include="Oqtane.Client" Version="3.0.2" PrivateAssets="all" />
+    <PackageReference Include="Oqtane.Shared" Version="3.0.2" PrivateAssets="all" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Oqtane.Client" Version="3.0.2" />
-    <PackageReference Include="Oqtane.Shared" Version="3.0.2" />
-    <PackageReference Include="System.Runtime" Version="4.3.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="wwwroot\Themes\ToSic.Oqt.Themes.ToShineBs5\global-settings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Update="tsconfig.json">
+      <Pack>False</Pack>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
+    <Content Update="package.json">
+      <Pack>False</Pack>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="package-lock.json">
+      <Pack>False</Pack>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="theme.json">
+      <Pack>False</Pack>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="dist\wwwroot\**\*.*">
+      <Pack>True</Pack>
+      <PackagePath>wwwroot</PackagePath>
+    </None>
   </ItemGroup>
 
   <PropertyGroup>
@@ -51,7 +67,11 @@
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="npm run build-prod" />
+    <Exec Command="if $(ConfigurationName) == Release node scripts/clean.js &amp;&amp; webpack --env build" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if $(ConfigurationName) == Debug node scripts/publish-watch.js" />
   </Target>
 
 </Project>

@@ -1,0 +1,85 @@
+@namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
+@implements Oqtane.Interfaces.ISettingsControl
+@inherits ModuleBase
+@using Microsoft.AspNetCore.Components;
+
+<Section Name="@ConfigName" ResourceKey="@ConfigName">
+    <div class="container">
+        @*Use choice*@
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="Display" HelpText="Choose if the settings from the files or the ones from here should be used." ResourceKey="Display">Use these settings: </Label>
+            <div class="col-sm-9">
+                <select id="display" class="form-select" @bind="@ThemeSettings.UseUiSettings">
+                    <option value="true">Use custom settings</option>
+                    <option selected value="false">Use settings from files</option>
+                </select>
+            </div>
+        </div>
+        @*Scope*@
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="Scope" HelpText="Displays the current scope. Can't be changed." ResourceKey="Scope">Scope: </Label>
+            <div class="col-sm-9">
+                <select disabled id="login" class="form-select" @bind="@ThemeSettings.Scope">
+                    <option selected value="Site">Site</option>
+                    <option value="Page">Page</option>
+                </select>
+            </div>
+        </div>
+        @*StartingPage*@
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="StartingPage" HelpText='The page from which the navigation starts. To start the navigation from the root level just put "*". To start the navigation from a specifc page put in its pageId.' ResourceKey="StartingPage">Starting page: </Label>
+            <div class="col-sm-9">
+                <input id="startingPage" class="form-control" @bind="@ThemeSettings.StartingPage" />
+            </div>
+        </div>
+        @*StartLevel*@
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="StartLevel" HelpText="The page level on which the navigation starts" ResourceKey="StartLevel">Start level: </Label>
+            <div class="col-sm-9">
+                <input id="startLevel" class="form-control" @bind="@ThemeSettings.StartLevel" />
+            </div>
+        </div>
+        @*PageList*@
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="PageList" HelpText='A list of pages which should be displayed in the navigation. The format should be "1, 2, 3".' ResourceKey="StartLevel">Page list: </Label>
+            <div class="col-sm-9">
+                <input id="PageList" class="form-control" @bind="@ThemeSettings.PageListString" />
+            </div>
+        </div>
+        @*LevelDepth*@
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="LevelDepth" HelpText="The number of levels that should be included from the starting point down. 0 means only the starting point, 1 means the starting point and its children." ResourceKey="LevelDepth">Level depth: </Label>
+            <div class="col-sm-9">
+                <input id="LevelDepth" class="form-control" @bind="@ThemeSettings.LevelDepth" />
+            </div>
+        </div>
+        @*LevelSkip*@
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="LevelSkip" HelpText="The number of levels which are skiped by the navigation" ResourceKey="StartLevel">Level skip: </Label>
+            <div class="col-sm-9">
+                <input id="levelSkip" class="form-control" @bind="@ThemeSettings.LevelSkip" />
+            </div>
+        </div>
+        @*Display*@
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="Display" HelpText="Choose if the navigation should be displayed or not." ResourceKey="Display">Display: </Label>
+            <div class="col-sm-9">
+                <select id="display" class="form-select" @bind="@ThemeSettings.Display">
+                    <option selected value="true">True</option>
+                    <option value="false">False</option>
+                </select>
+            </div>
+        </div>
+        @*Variation*@
+        <div class="row mb-1 align-items-center">
+            <Label Class="col-sm-3" For="Variation" HelpText="Choose from one of the three predefined layout variations." ResourceKey="Variation">Layout variation: </Label>
+            <div class="col-sm-9">
+                <select id="variation" class="form-select" @bind="@ThemeSettings.Variation">
+                    <option selected value="Main">Main</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="Sidebar">Sidebar</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</Section>
