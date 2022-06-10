@@ -1,6 +1,6 @@
 <img width="100%" src="https://github.com/2sic/dnn-theme-2shine-bs5/raw/main/images/logo-1000.png">
 
-# Oqtane Skin/Theme with Bootstrap5 
+# Oqtane Skin/Theme with Bootstrap5
 
 # Layouts
 
@@ -12,50 +12,60 @@
 
 # WIP
 
-1. Oqtane is still missing the DNN concept of each page having a specific language. 
-That means the 2shine language classes and the page-root-neutral class are still missing. 
-Those will be added as soon as Oqtane implments that feature.
+1. Oqtane is still missing the DNN concept of each page having a specific language.
+   That means the 2shine language classes and the page-root-neutral class are still missing.
+   Those will be added as soon as Oqtane implments that feature.
+
+# Prerequisites
+
+1. Install git from https://git-scm.com/downloads/ or use your favorite git client
+
+2. Install node.js from https://nodejs.org/en/download/
+   - we recommend using the current LTS release
+   - we tested this skin with v16.15.1 and later, earlier version might work to
 
 # Installation
 
-1. Create a folder for your project open the terminal and navigate to this folder.
+1.  Create a folder for your project open the terminal and navigate to this folder.
 
-3. Clone the 2shine Oqt github repository by running:
+2.  Clone the 2shine Oqt github repository by running:
 
         git clone https://github.com/2sic/oqt-theme-2shine-bs5.git
 
-5. To use the theme you have to rename some variables and files. To rename everything at once you can just run:
+3.  To use the theme you have to rename some variables and files. To rename everything at once you can just run:
 
-       npm run rename-projects
+    npm run rename-projects
 
-6. Navigate to the **Client/theme.jsonc** file:
-      1. The **OqtaneRoot** setting determins where the theme is delivered to
-      2. You can also take a look at the other settings
+4.  Navigate to the **Client/theme.jsonc** file:
 
-7. To build the project run: 
+    1. The **OqtaneRoot** setting determins where the theme is delivered to
+    2. You can also take a look at the other settings
+
+5.  To build the project run:
 
         npm run build
 
-11. Log in and Navigate to **Theme Management** if **2shine Oqtane theme with Bootstrap 5** isn't listed you may need to restart the application
+6.  Log in and Navigate to **Theme Management** if **2shine Oqtane theme with Bootstrap 5** isn't listed you may need to restart the application
 
-13. Apply the theme to the whole site: 
-      1. Navigate to **Site Settings** 
-      2. Change the **Default Theme** setting to the layout you wan't to apply 
-      3. Change the **Default Container** setting to the available container
+7.  Apply the theme to the whole site:
 
-14. Apply the theme to a single page: 
-      1. Navigate to **Page Management** 
-      2. Choose the page you want to apply a layout to and click on **Edit** 
-      3. Under **Appearance** chage the **Theme** setting to the layout you want to apply
-      4. Change the **Default Container** setting to the 2shine container
+    1. Navigate to **Site Settings**
+    2. Change the **Default Theme** setting to the layout you wan't to apply
+    3. Change the **Default Container** setting to the available container
+
+8.  Apply the theme to a single page:
+    1. Navigate to **Page Management**
+    2. Choose the page you want to apply a layout to and click on **Edit**
+    3. Under **Appearance** chage the **Theme** setting to the layout you want to apply
+    4. Change the **Default Container** setting to the 2shine container
 
 # Documentation
 
 ## Build and deployment
 
-There are some different node commands which help you to build and deploy the theme to oqtane: 
+There are some different node commands which help you to build and deploy the theme to oqtane:
 
-      1. build          -> This will run webpack build the theme and deploy it to the designated location 
+      1. build          -> This will run webpack build the theme and deploy it to the designated location
       3. dotnet-watch   -> This will watch all of the .razor files and build and deploy the theme everytime it detects changes
       2. webpack-watch  -> This will run webpack and watch the .scss and .ts files for changes and build and deliver them
 
@@ -63,58 +73,56 @@ There are some different node commands which help you to build and deploy the th
 
 ### 1. Navigation:
 
-You can either manage the navigation configurations with the parameters that you can give to the razor control **NavEntry** 
+You can either manage the navigation configurations with the parameters that you can give to the razor control **NavEntry**
 or you can give them to the **navigation.json** file, which is located in the src folder.
 
 If you want the configurations from the config file to be used you just have to write the Key from the "NavConfigs" array which you want to use in the **ConfigName** parameter.
 The parameters defined with the razor control have priority and will override anything defined in the config file. So if you want to use the config file it is best to only define the ConfigName
-in the Blazor Component. 
+in the Blazor Component.
 
 **Those three parameters define the starting point for the navigation and you should only use one at a time the other two should just not be defined:**
 
 1. **StartingPage:**  
-This parameter expects a string.  
-You can either give a "*" to start from the root level or you can give a pageId to start from that specific page (Tip: To start with the children of a specific page put the pageId here and set the **LevelSkip** parameter to 1).  
+   This parameter expects a string.  
+   You can either give a "\*" to start from the root level or you can give a pageId to start from that specific page (Tip: To start with the children of a specific page put the pageId here and set the **LevelSkip** parameter to 1).
 
-2. **StartLevel:**    
-This parameter expects an integer.  
-This parameter expects a specific Level and will display anything on that level
+2. **StartLevel:**  
+   This parameter expects an integer.  
+   This parameter expects a specific Level and will display anything on that level
 
 3. **PageList:**  
-This parameter expects a List if integers.  
-You can put pageId's in the list and the pages will be displayed 
+   This parameter expects a List if integers.  
+   You can put pageId's in the list and the pages will be displayed
 
 **These parameters are used to define more settings:**
 
 1. **ConfigName:**
-This parameter expects a string.  
-Makes the link between a certain control and the defined settings in the config file.
-
+   This parameter expects a string.  
+   Makes the link between a certain control and the defined settings in the config file.
 
 2. **LevelDepth:**  
-This parameter expects an integer.  
-Is used to define how many levels the navigation should go down in the page tree from the defined starting point. 
-The value 0 means that only the starting point will be displayed 1 means the children of the starting point will also be in the navigation.
-
+   This parameter expects an integer.  
+   Is used to define how many levels the navigation should go down in the page tree from the defined starting point.
+   The value 0 means that only the starting point will be displayed 1 means the children of the starting point will also be in the navigation.
 
 3. **LevelSkip (optional):**  
-This parameter expects an integer (Default: 0).    
-Skips the defined number of levels if given 0 wont skip anything if given 1 skips one level
+   This parameter expects an integer (Default: 0).  
+   Skips the defined number of levels if given 0 wont skip anything if given 1 skips one level
 
 4. **Display (optional):**  
-This parameter expects a boolean (Default: true).    
-Deactivates the generation of HTML for this navigation
+   This parameter expects a boolean (Default: true).  
+   Deactivates the generation of HTML for this navigation
 
-5. **Variation (optional):**   
-This parameter expects a string (Default: "Main").  
-Choosing between the different layout options defined in ***Menu/NavEntry.razor***.
+5. **Variation (optional):**  
+   This parameter expects a string (Default: "Main").  
+   Choosing between the different layout options defined in **_Menu/NavEntry.razor_**.
 
-### 2. LanguageNav: 
+### 2. LanguageNav:
 
 The LanguageChanger control can be used to display Links to switch between different Languages change the names with are used to display these Links. This is done with the Languages Parameter.
 
-1. **Languages:**   
-This parameter expects a string.  
-This parameter manages the display names of the languages. To change the display name of english which has the language code "en" you will need to write "en: *yourName*". To change the names of multiple languages you can write "en: *yourName*, nl-NL: *yourName*".
+1. **Languages:**  
+   This parameter expects a string.  
+   This parameter manages the display names of the languages. To change the display name of english which has the language code "en" you will need to write "en: _yourName_". To change the names of multiple languages you can write "en: _yourName_, nl-NL: _yourName_".
 
 # History
