@@ -2,14 +2,5 @@
 @inject IFileService FileService
 
 <a class="logo" href="" title="2shine Oqtane BS5 2sxc (change this in the ToShineLogo.razor)">
-    <img alt="Logo" class="img-fluid" src="@BuildFileUrl()">
+    <img alt="Logo" class="img-fluid" src="@ToShineUtilities.ImageUrl("logo-1000.png")">
 </a>
-
-@code {
-    private string FileName = "logo-1000.png";
-
-    private string BuildFileUrl(){
-        var Namespace = ThemePath().Replace(".Client.Controls", "");
-        return Namespace + "Assets/" + FileName;
-    }
-}

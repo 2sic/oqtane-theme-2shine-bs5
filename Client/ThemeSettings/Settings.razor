@@ -1,5 +1,4 @@
-@using Microsoft.Extensions.Localization
-@using Oqtane
+@implements Oqtane.Interfaces.ISettingsControl
 @inject ISettingService SettingService
 @attribute [OqtaneIgnore]
 
@@ -7,8 +6,23 @@
 
     <p><h2>Menus</h2></p> 
     
-    <NavigationSettings ConfigName="Main"></NavigationSettings>
-    <NavigationSettings ConfigName="Mobile"></NavigationSettings>
-    <NavigationSettings ConfigName="Sidebar"></NavigationSettings>
+    <NavigationSettings @ref="Main" ConfigName="Main"></NavigationSettings>
+    <NavigationSettings @ref="Mobile" ConfigName="Mobile"></NavigationSettings>
+    <NavigationSettings @ref="Sidebar" ConfigName="Sidebar"></NavigationSettings>
 
 </div>
+
+@code{
+    [Inject]
+    public ThemeSettingsService SettingsService { get; set; }
+
+    NavigationSettings Main;
+    NavigationSettings Mobile;
+    NavigationSettings Sidebar;
+
+    public async Task UpdateSettings(){
+        await SettingsService.UpdateAndSerializeSettings(Main.ConfigName, Main.ThemeSettings);
+        await SettingsService.UpdateAndSerializeSettings(Mobile.ConfigName, Mobile.ThemeSettings);
+        await SettingsService.UpdateAndSerializeSettings(Sidebar.ConfigName, Sidebar.ThemeSettings);
+    }
+}

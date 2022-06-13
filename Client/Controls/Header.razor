@@ -4,32 +4,31 @@
 
     
 <nav id="to-shine-page-navigation" class="navbar navbar-expand-lg bg-white">
-    <div class="container">
-    <ToShineLogo></ToShineLogo>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="offcanvas offcanvas-start border-0" id="offcanvasNavbar">
-        <div class="offcanvas-header">
+    <div class="container d-flex justify-content-between align-items-center py-3">
         <ToShineLogo></ToShineLogo>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
-        <div class="d-flex flex-column justify-content-end align-items-end flex-grow-1">
-            <div class="d-none d-lg-block">
-            <NavEntry ConfigName="Main"></NavEntry>
-            </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="d-block d-lg-none w-100">
-            <NavEntry ConfigName="Mobile"></NavEntry>
+        <div class="offcanvas offcanvas-start border-0" id="offcanvasNavbar">
+            <div class="offcanvas-header">
+            <ToShineLogo></ToShineLogo>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
             </div>
-            <div class="d-flex order-lg-first">
-            <LanguageNav Languages="en: EN"></LanguageNav><LoginIcon></LoginIcon><AdminButtons></AdminButtons>
+            <div class="offcanvas-body">
+            <div class="d-flex flex-column justify-content-end align-items-end flex-grow-1">
+                <div class="d-none d-lg-block">
+                <NavEntry ConfigName="Main"></NavEntry>
+                </div>
+                <div class="d-block d-lg-none w-100">
+                <NavEntry ConfigName="Mobile"></NavEntry>
+                </div>
+                <div class="d-flex order-lg-first">
+                <LanguageNav Languages="en: EN"></LanguageNav><LoginIcon></LoginIcon><AdminButtons></AdminButtons>
+                </div>
+            </div>
             </div>
         </div>
-        </div>
-    </div>
     </div>
 </nav>
 

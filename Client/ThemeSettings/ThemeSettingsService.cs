@@ -72,7 +72,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
         CombinedSettings.Add(ConfigName, Settings);
       }
       string jsonString = JsonSerializer.Serialize(CombinedSettings);
-      await File.WriteAllTextAsync("../../oqt-theme-2shine-bs5/Client/settings.json", jsonString);
+      await File.WriteAllTextAsync("wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/navigation.json", jsonString);
     }
   }
 }
