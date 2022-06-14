@@ -37,7 +37,7 @@ const commonConfig = {
       __dirname,
       `dist/wwwroot/Themes/${themeConfig.ThemeName}`
     ),
-    assetModuleFilename: "images/[hash][ext][query]",
+    assetModuleFilename: "Images/[hash][ext][query]",
   },
   devtool: "source-map",
   performance: {
@@ -78,12 +78,12 @@ const commonConfig = {
         {
           from: "**/*",
           to: "Assets",
-          context:"Images",
+          context: "Images",
         },
         {
           from: "*.json",
           context: "ThemeSettings",
-        }
+        },
       ],
     }),
     {
@@ -103,6 +103,13 @@ const commonConfig = {
   ],
   module: {
     rules: [
+      {
+        test: /\.woff|woff2/,
+        type: "asset/resource",
+        generator: {
+          filename: "Fonts/[hash][ext][query]",
+        },
+      },
       {
         test: /\.s[ac]ss$/i,
         use: [
