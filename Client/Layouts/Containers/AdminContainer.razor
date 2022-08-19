@@ -1,0 +1,28 @@
+﻿@namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts
+@inherits ContainerBase
+@inject NavigationManager NavigationManager
+
+<div class="app-admin-modal to-shine-admin-container">
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><ModuleTitle /></h5>
+                    <button type="button" class="btn-close" aria-label="Close" @onclick="CloseModal"></button>
+                </div>
+                <div class="modal-body">
+                    <ModuleInstance />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private void CloseModal()
+    {
+        NavigationManager.NavigateTo(NavigateUrl());
+    }
+
+    public override string Name => "Custom admin container";
+}
