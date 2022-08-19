@@ -10,7 +10,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
 {
   public class ThemeSettingsContainer
   {
-    public string StartingPage = null;
+    public string StartingPage;
 
     public int? StartLevel = null!;
 
@@ -57,8 +57,12 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
     Dictionary<string, ThemeSettingsContainer> CombinedSettings; 
 
     public ThemeSettingsContainer DeserializeData(string ConfigName){
-      var jsonString = System.IO.File.ReadAllText("wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/navigation.json");
-      CombinedSettings = JsonSerializer.Deserialize<Dictionary<string, ThemeSettingsContainer>>(jsonString);
+      var jsonString = System.IO.File.ReadAllText("wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/settings.json");
+      var options = new JsonSerializerOptions
+      {
+        IncludeFields = true,
+      };
+      CombinedSettings = JsonSerializer.Deserialize<Dictionary<string, ThemeSettingsContainer>>(jsonString, options);
       if(CombinedSettings.ContainsKey(ConfigName)){
         return CombinedSettings[ConfigName];
       }
@@ -71,8 +75,12 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
       } else {
         CombinedSettings.Add(ConfigName, Settings);
       }
-      string jsonString = JsonSerializer.Serialize(CombinedSettings);
-      await File.WriteAllTextAsync("wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/navigation.json", jsonString);
+        var options = new JsonSerializerOptions
+        {
+            IncludeFields = true,
+        };
+        string jsonString = JsonSerializer.Serialize(CombinedSettings, options);
+        await File.WriteAllTextAsync("wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/settings.json", jsonString);
     }
   }
 }

@@ -1,0 +1,38 @@
+{
+  "Main": {
+    "StartingPage": null,
+    "StartLevel": null,
+    "PageListString": null,
+    "PageList": null,
+    "LevelSkip": 0,
+    "LevelDepth": 0,
+    "Display": false,
+    "Variation": null,
+    "Scope": "Site",
+    "UseUiSettings": false
+  },
+  "Mobile": {
+    "StartingPage": null,
+    "StartLevel": null,
+    "PageListString": null,
+    "PageList": null,
+    "LevelSkip": 0,
+    "LevelDepth": 0,
+    "Display": false,
+    "Variation": null,
+    "Scope": "Site",
+    "UseUiSettings": false
+  },
+  "Sidebar": {
+    "StartingPage": null,
+    "StartLevel": null,
+    "PageListString": null,
+    "PageList": null,
+    "LevelSkip": 0,
+    "LevelDepth": 0,
+    "Display": false,
+    "Variation": null,
+    "Scope": "Site",
+    "UseUiSettings": false
+  }
+}

@@ -15,11 +15,32 @@ public partial class NavigationSettings
 
     public ThemeSettingsContainer ThemeSettings = new ThemeSettingsContainer();
 
-    protected override void OnParametersSet(){
-        // base.OnParametersSet();
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
         var Settings = SettingsService.DeserializeData(ConfigName);
-        if(Settings != null) {
+        if (Settings != null)
+        {
             ThemeSettings = Settings;
         }
+    }
+
+    void OnSettingsChanged(object args)
+    {
+        bool.TryParse(args.ToString(), out var result);
+        ThemeSettings.UseUiSettings = result;
+
+    }
+
+    void OnDisplayChanged(object args)
+    {
+        bool.TryParse(args.ToString(), out var result);
+        ThemeSettings.Display = result;
+    }
+
+    void OnScopeChanged(object args)
+    {
+        bool.TryParse(args.ToString(), out var result);
+        ThemeSettings.Display = result;
     }
 }

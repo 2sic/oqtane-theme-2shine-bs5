@@ -6,11 +6,11 @@
     <div class="container">
         @*Use choice*@
         <div class="row mb-1 align-items-center">
-            <Label Class="col-sm-3" For="Display" HelpText="Choose if the settings from the files or the ones from here should be used." ResourceKey="Display">Use these settings: </Label>
+            <Label Class="col-sm-3" For="Settings" HelpText="Choose if the settings from the files or the ones from here should be used." ResourceKey="Display">Use these settings: </Label>
             <div class="col-sm-9">
-                <select id="display" class="form-select" @bind="@ThemeSettings.UseUiSettings">
-                    <option value="true">Use custom settings</option>
-                    <option selected value="false">Use settings from files</option>
+                <select id="settingstype" class="form-select" @onchange="(e) => OnSettingsChanged(e.Value)">
+                    <option value="True">Use custom settings</option>
+                    <option value="False">Use settings from files</option>
                 </select>
             </div>
         </div>
@@ -63,9 +63,9 @@
         <div class="row mb-1 align-items-center">
             <Label Class="col-sm-3" For="Display" HelpText="Choose if the navigation should be displayed or not." ResourceKey="Display">Display: </Label>
             <div class="col-sm-9">
-                <select id="display" class="form-select" @bind="@ThemeSettings.Display">
-                    <option selected value="true">True</option>
-                    <option value="false">False</option>
+                <select id="display" class="form-select" @onchange="(e) => OnDisplayChanged(e.Value)">
+                    <option value="True">True</option>
+                    <option value="False">False</option>
                 </select>
             </div>
         </div>
