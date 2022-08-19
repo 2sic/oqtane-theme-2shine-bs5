@@ -7,7 +7,8 @@ let themeConfig = require("../theme.jsonc");
 
 if (!themeConfig || !themeConfig.OqtaneRoot) {
   themeConfig = {
-    OqtaneRoot: "../web",
+      OqtaneRoot: "../web",
+      OqtaneWwwRoot: "../web",
     PublishDebug: false,
     Publish: {
       Watch: true,
@@ -21,6 +22,12 @@ if (!path.isAbsolute(themeConfig.OqtaneRoot)) {
   themeConfig.OqtaneRoot = path.normalize(
     path.join("..", themeConfig.OqtaneRoot)
   );
+}
+
+if (!path.isAbsolute(themeConfig.OqtaneWwwRoot)) {
+    themeConfig.OqtaneWwwRoot = path.normalize(
+        path.join("..", themeConfig.OqtaneWwwRoot)
+    );
 }
 
 if (themeConfig.Publish.Watch) {
