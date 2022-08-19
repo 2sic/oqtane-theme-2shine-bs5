@@ -14,22 +14,16 @@ let themeConfig = require(path.resolve(process.cwd(), "theme.jsonc"));
 if (!themeConfig) {
   themeConfig = {
     ThemeName: "ToSic.Oqt.Themes.ToShineBs5",
-      OqtaneRoot: "../web",
-      OqtaneWwwRoot: "../web",
+    OqtaneRoot: "../web",
   };
 } else {
   if (!themeConfig.ThemeName)
     themeConfig.ThemeName = "ToSic.Oqt.Themes.ToShineBs5";
-    if (!themeConfig.OqtaneRoot) themeConfig.OqtaneRoot = "../web";
-    if (!themeConfig.OqtaneWwwRoot) themeConfig.OqtaneWwwRoot = "../web";
+  if (!themeConfig.OqtaneRoot) themeConfig.OqtaneRoot = "../web";
 }
 
 if (!path.isAbsolute(themeConfig.OqtaneRoot)) {
   themeConfig.OqtaneRoot = `../${themeConfig.OqtaneRoot}`;
-}
-
-if (!path.isAbsolute(themeConfig.OqtaneWwwRoot)) {
-    themeConfig.OqtaneWwwRoot = `../${themeConfig.OqtaneWwwRoot}`;
 }
 
 const commonConfig = {
@@ -169,7 +163,7 @@ const watchConfig = {
           copy: [
             {
               source: "dist",
-                  destination: path.resolve(__dirname, themeConfig.OqtaneWwwRoot),
+              destination: path.resolve(__dirname, themeConfig.OqtaneRoot),
             },
           ],
         },

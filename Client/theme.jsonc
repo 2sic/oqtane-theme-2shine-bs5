@@ -3,8 +3,7 @@
   "ThemeName": "ToSic.Oqt.Themes.ToShineBs5",
 
   // path (relative or absolute) to your oqtane installation (iis physical path)
-  "OqtaneRoot": "../oqtane.framework/Oqtane.Server\\bin\\Debug\\net6.0",
-  "OqtaneWwwRoot": "../oqtane.framework/Oqtane.Server",
+  "OqtaneRoot": "../web/",
   //"OqtaneRoot": "\\\\my.server.local\\MyOqtaneWebApp\\",
 
   "Publish": {
