@@ -69,6 +69,21 @@ There are some different node commands which help you to build and deploy the th
       3. dotnet-watch   -> This will watch all of the .razor files and build and deploy the theme everytime it detects changes
       2. webpack-watch  -> This will run webpack and watch the .scss and .ts files for changes and build and deliver them
 
+## Features 
+
+### 1. Magic classes
+
+There are numerous classes added to the different elements to determine some different stylings and they can be used for your own customizations.
+
+1. **Body** 
+   
+   Here you can find a list (important:     check the **WIP** section above):
+   https://2shine.org/page-classes
+
+2. **Headerpane**
+
+   A class will be added to the Headerpane if there aren't any modules populating it. That is used to style the Headerpane on different layouts. You can also use it to    make your own customizations.
+
 ## Controls
 
 ### 1. Navigation:
@@ -80,7 +95,7 @@ If you want the configurations from the config file to be used you just have to 
 The parameters defined with the razor control have priority and will override anything defined in the config file. So if you want to use the config file it is best to only define the ConfigName
 in the Blazor Component.
 
-**Those three parameters define the starting point for the navigation and you should only use one at a time the other two should just not be defined:**
+**These three parameters define the starting point for the navigation and you should only use one at a time the other two should just not be defined:**
 
 1. **StartingPage:**  
    This parameter expects a string.  
