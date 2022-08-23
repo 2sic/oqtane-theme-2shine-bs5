@@ -60,6 +60,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="src\navigation.json" />
+  </ItemGroup>
+
   <PropertyGroup>
     <!-- there may be other elements here -->
     <BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>
