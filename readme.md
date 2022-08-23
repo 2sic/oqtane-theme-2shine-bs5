@@ -141,3 +141,5 @@ The LanguageChanger control can be used to display Links to switch between diffe
    This parameter manages the display names of the languages. To change the display name of english which has the language code "en" you will need to write "en: _yourName_". To change the names of multiple languages you can write "en: _yourName_, nl-NL: _yourName_".
 
 # History
+
+I hope u enjoy it ;-)

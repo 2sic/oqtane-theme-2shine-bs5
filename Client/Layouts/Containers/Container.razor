@@ -15,6 +15,7 @@
     //public override string Name => "Container for Designed Content";
 
     // Function to check if the module is published and assign the right class to it
+    // Todo: Permissions shouldn't be handeld with string manipulation -> there should be a better way
     private string ModulePublishState()
     {
         var modulePermissions = ModuleState.Permissions;
