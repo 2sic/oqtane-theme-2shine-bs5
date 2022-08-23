@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net.Http;
+using System.Linq;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
 
@@ -141,5 +142,27 @@ public partial class Default : Oqtane.Themes.ThemeBase
 
         bodyClasses = bodyClasses.Replace("  ", " ");
         return bodyClasses;
+    }
+
+    private string DetermineHeaderpaneEmpty()
+    {
+        var headerpaneIsEmpty = true;
+        var modules = this.PageState.Modules.Where(x => x.PageId == PageState.Page.PageId);
+        foreach(var module in modules)
+        {
+            if(module.Pane == "Header")
+            {
+                headerpaneIsEmpty = false;
+            }
+        }
+
+        if(headerpaneIsEmpty == true)
+        {
+            return "to-shine-header-pane-empty";
+        }
+        else
+        {
+            return string.Empty;
+        }
     }
 }

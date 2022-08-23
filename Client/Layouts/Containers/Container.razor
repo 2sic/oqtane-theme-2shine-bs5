@@ -3,7 +3,7 @@
 @using System.Text.Json;
 @using System.Text.RegularExpressions;
 
-<div class="to-shine-background-container py-4 @ModulePublishState() module-@ModuleState.ModuleId">
+<div id="module-@ModuleState.ModuleId" class="to-shine-background-container py-4 @ModuleType()">
     <div class="container">
         <ModuleActions/>
         <ModuleInstance/>
@@ -11,7 +11,8 @@
 </div>
 
 @code {
-    public override string Name => "Container for Designed Content";
+    public override string Name => "ToShine container";
+    //public override string Name => "Container for Designed Content";
 
     // Function to check if the module is published and assign the right class to it
     private string ModulePublishState()
@@ -28,6 +29,20 @@
         } else
         {
             return "to-shine-unpublished";
+        }
+    }
+
+    private string ModuleType()
+    {
+        var moduleTypeString = ModuleState.ModuleType;
+        string[] moduleTypes = moduleTypeString.Split(",");
+        string[] modules = moduleTypes[0].Split(".");
+        if(modules[2] == "Admin")
+        {
+            return "to-shine-admin-container";
+        } else
+        {
+            return string.Empty;
         }
     }
 }

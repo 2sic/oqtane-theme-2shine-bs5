@@ -11,7 +11,7 @@ public class ThemeInfo : ITheme
         Name = "ToSic.Oqt.Themes.ToShineBs5 Theme with Bootstrap 5",
         Version = "1.0.0",
         ThemeSettingsType = typeof(Settings).AssemblyQualifiedName,
-        ContainerSettingsType = "Oqtane.Theme.ToSic.ContainerSettings, Oqtane.Theme.ToSic.Oqtane",
-        PackageName = "ToSic.Oqt.Themes.ToShineBs5"
+        //ContainerSettingsType = "Oqtane.Theme.ToSic.ContainerSettings, Oqtane.Theme.ToSic.Oqtane",
+        PackageName = "ToSic.Oqt.Themes.ToShineBs5", 
     };
 }
