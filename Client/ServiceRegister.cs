@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 using ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings;
 
@@ -10,5 +11,6 @@ public class ServiceRegister : Oqtane.Services.IClientStartup
     {
         services.AddTransient<PageNavigatorService>();
         services.AddSingleton<ThemeSettingsService>();
+        services.AddTransient<PageCssClasses>();
     }
 }

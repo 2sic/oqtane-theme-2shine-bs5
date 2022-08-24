@@ -1,19 +1,25 @@
 ﻿@inherits ToSic.Oqt.Themes.ToShineBs5.Client.Layouts.Default
-
-@{ 
+@*
+    File Purpose:       Theme which shows the content *centered* on the page with a *sidebar*
+    Recommendations:    -
+    Nice to know:       Inherits from the Default.razor, so all code is there
+                        The few variables below adjust how the Default.razor will create the output
+                        ...but most of it is just some body classes + show/hide certain menus
+                        It needs the BuildRenderTree to basically just run the base class
+*@
+@{
     base.BuildRenderTree(__builder);
 }
-
 @code{
+    // Name to show in the Theme-picker
     public override string Name => "Centered-Sidebar";
 
-    //Set 2shine variables to define some settings for this layout
-    //------------------------------------------------------------
-    
-    //ClassName variable is used to set the body class which sets the css for this specific layout 
+    // ClassName is used to set the body class which sets the css for this specific layout
     protected override string ClassName => "centered";
 
+    // Determines if we should show a Nav on the side of the layout in addition to top
     protected override bool ShowSidebarNavigation => true;
 
+    // Show a breadcrumb on top?
     protected override bool ShowBreadcrumb => true;
 }

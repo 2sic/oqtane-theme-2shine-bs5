@@ -4,7 +4,11 @@
 @using Oqtane.Models
 @inject ILanguageService LanguageService
 @inject NavigationManager NavigationManager
-
+@*
+    File Purpose:       Show the Language Navigation / Selector
+    Recommendations:    -
+    Nice to know:       The languages available are handed in from the Header file
+*@
 @if (_supportedCultures?.Count() > 1)
 {
     @foreach (var culturePair in SupportedCultures)
@@ -33,12 +37,8 @@
     {
         var toShineDisplayName = "";
         foreach (var lang in _langFilters)
-        {
             if(lang.Item1 == cultureName && toShineDisplayName == "")
-            {
                 toShineDisplayName = lang.Item2;
-            }
-        }
         return toShineDisplayName;
     }
     

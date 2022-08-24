@@ -1,31 +1,25 @@
 @using Microsoft.Extensions.Localization
 @inherits ThemeControlBase
-
 @inject IPageService PageService
 @inject NavigationManager NavigationManager
-
+@*
+    File Purpose:       Shows the Toggle-Edit and Show-Control-Panel Buttons
+    Recommendations:    We recommend to use inline SVGs for performance reasons.
+    Nice to know:       -
+*@
+@* Button: Edit *@
 @if (ToShineUtilities.UserIsEditor(PageState) || (PageState.Page.IsPersonalizable && ToShineUtilities.UserIsRegistered(PageState)))
 {
-    if (PageState.EditMode)
-    {
-        <a class="to-shine-ui-buttons" data-bs-toggle="button" aria-pressed="true" autocomplete="off" @onclick="async () => await ToggleEditMode()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 
-                    11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/>
-            </svg>
-        </a>
-    }
-    else
-    {
-        <a class="to-shine-ui-buttons" data-bs-toggle="button" aria-pressed="false" autocomplete="off" @onclick="async () => await ToggleEditMode()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 
-                    11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/>
-            </svg>
-        </a>
-    }
+    var isPressed = PageState.EditMode.ToString().ToLower();
+    <a class="to-shine-ui-buttons" data-bs-toggle="button" aria-pressed="@isPressed" autocomplete="off" @onclick="async () => await ToggleEditMode()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 
+                11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/>
+        </svg>
+    </a>
 }
 
+@* Button: Show Control Panel *@
 @if (ToShineUtilities.UserIsEditor(PageState))
 {
     <a class="to-shine-ui-buttons button-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasControlPanel" aria-controls="offcanvasControlPanel">
@@ -45,14 +39,13 @@
         if (ToShineUtilities.UserIsEditor(PageState))
         {
             PageState.EditMode = !PageState.EditMode;
-
-            NavigationManager.NavigateTo(NavigateUrl(PageState.Page.Path, "edit=" + (PageState.EditMode ? "1" : "0")));
         }
         else if (PageState.Page.IsPersonalizable && PageState.User != null)
         {
+            // TODO: UNCLEAR WHAT THIS IS FOR - document or fix
             await PageService.AddPageAsync(PageState.Page.PageId, PageState.User.UserId);
-            PageState.EditMode = true;
-            NavigationManager.NavigateTo(NavigateUrl(PageState.Page.Path, "edit=" + (PageState.EditMode ? "1" : "0")));
+            PageState.EditMode = !PageState.EditMode;
         }
+        NavigationManager.NavigateTo(NavigateUrl(PageState.Page.Path, "edit=" + (PageState.EditMode ? "1" : "0")));
     }
 }

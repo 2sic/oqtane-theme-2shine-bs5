@@ -1,16 +1,25 @@
 ﻿@inherits MenuItemsBase
-
+@*
+    File Purpose:       Show the BreadCrumb
+    Recommendations:    -
+    Nice to know:       -
+    TODO:
+    - verify performance is ok, probably ensure it only builds the breadcrumb if the page doesn't change.
+*@
 <div class="to-shine-page-breadcrumb" aria-label="breadcrumb">
     <div class="container py-2">
-        <a class="to-shine-page-breadcrumb-link to-shine-page-breadcrumb-home display-md-inline" aria-current="page" href="@NavigateUrl(GetHomePage().Path)">@GetHomePage().Name</a>
+        <a class="to-shine-page-breadcrumb-link to-shine-page-breadcrumb-home display-md-inline" aria-current="page" 
+           href="@NavigateUrl(HomePage.Path)">@HomePage.Name</a>
+        @* Show a ... ellipsis in mobile mode to toggle showing the rest of the breadcrumb *@
         <span class="to-shine-page-breadcrumb-trigger display-inline display-md-none">
-            <a aria-current="page">...</a>
+            <a aria-current="page">…</a>
         </span>
-        @foreach(var Page in BreadCrumbPages)
+
+        @* Show an > arrow and the page name with link to it for each page in the breadcrumb *@
+        @foreach(var p in BreadCrumbPages)
         {
             <span>&nbsp;&rsaquo;&nbsp;</span>
-
-            <a href="@NavigateUrl(Page.Path)" class="to-shine-page-breadcrumb-link">@Page.Name</a>
+            <a href="@NavigateUrl(p.Path)" class="to-shine-page-breadcrumb-link">@p.Name</a>
         }
     </div>
 </div>
@@ -20,6 +29,9 @@
 
     private IEnumerable<Page> GetBreadCrumbPages()
     {
+        // TODO: this could be a performance issue if not done well
+        // Must check if it works, or if it's hit a lot
+        // and how to avoid doing this repeatedly if the page stays the same
         var page = PageState.Page;
         do
         {
@@ -29,9 +41,7 @@
         } while (page != null);
     }
 
-    private Page GetHomePage()
-    {
-        var homePage = PageState.Pages.Find(p => p.Path == "");
-        return homePage;
-    }
+    // The home page - never changes during runtime, so we can cache it
+    private Page HomePage => _homePage ??= PageState.Pages.Find(p => p.Path == "");
+    private Page _homePage;
 }

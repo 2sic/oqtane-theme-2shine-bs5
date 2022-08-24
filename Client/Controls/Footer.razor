@@ -1,5 +1,9 @@
 ﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu
-
+@*
+    File Purpose:       Show the Footer in the Layout with address etc.
+    Recommendations:    If you need icons like for 'tel', make sure you use inline SVGs
+    Nice to know:       It's implemented as microdata
+*@
 <footer id="to-shine-page-footer">
     <div class="container py-4 d-flex justify-content-md-between flex-column flex-md-row text-white">
         <ul class="to-shine-footer-address" itemscope itemtype="http://schema.org/LocalBusiness">
@@ -20,7 +24,7 @@
             </li>
         </ul>
         <div class="to-shine-footer-imprint">
-            <LoginHover></LoginHover>
+            <LoginText></LoginText>
             <a>Imprint</a> | <a>Privacy</a>
         </div>
     </div>
