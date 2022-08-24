@@ -17,11 +17,11 @@ public partial class Default : Oqtane.Themes.ThemeBase
 
     public override List<Resource> Resources => new()
     {
-        // Load Theme which contains Bootstrap with our customizations (generated with Sass using Webpack)
+        // Bootstrap with our customizations (generated with Sass using Webpack)
         new Resource { ResourceType = ResourceType.Stylesheet, Url = ToShineThemePath() + "theme.min.css" },
-        // Load the default BS JS
+        // Bootstrap JS
         new Resource { ResourceType = ResourceType.Script, Url = ToShineThemePath() + "bootstrap.bundle.min.js" },
-        // Our custom code which ensures page classes, Up-button etc.
+        // Theme JS for page classes, Up-button etc.
         new Resource { ResourceType = ResourceType.Script, Url = ToShineThemePath() + "ambient.js" },
     };
 
@@ -64,7 +64,7 @@ public partial class Default : Oqtane.Themes.ThemeBase
     {
         await base.OnAfterRenderAsync(firstRender);
 
-        string bodyClasses = await DetermineBodyClasses();
+        var bodyClasses = await DetermineBodyClasses();
 
         BodyClassJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", Path.Combine("./", ToShineThemePath(), "interop/page-control.js"));
 
@@ -89,21 +89,15 @@ public partial class Default : Oqtane.Themes.ThemeBase
         var pageParentId = page.ParentId;
         string pageRootClass = null;
         if (pageParentId == null)
-        {
             pageRootClass = "page-root-" + page.PageId;
-        }
         else
-        {
             while (pageParentId != null)
             {
                 var parentPage = await PageService.GetPageAsync((int)pageParentId);
                 pageParentId = parentPage.ParentId;
                 if (parentPage.ParentId == null)
-                {
                     pageRootClass = "page-root-" + parentPage.PageId;
-                }
             }
-        }
 
         //1.5 Set the page-root-neutral-### class
 
@@ -121,10 +115,10 @@ public partial class Default : Oqtane.Themes.ThemeBase
         //4.3 Set the lang-neutral- class
 
         //5.1 Set the to-shine-variation- class
-        var layoutVarriationClass = "to-shine-variation-" + ClassName;
+        var layoutVariationClass = "to-shine-variation-" + ClassName;
 
         //5.2 Set the to-shine-mainnav-variation- class
-        var navigationVariationClass = "to-shine-mainnav-variation-right";
+        const string navigationVariationClass = "to-shine-mainnav-variation-right";
 
         string[] classes =
         {
@@ -134,35 +128,24 @@ public partial class Default : Oqtane.Themes.ThemeBase
             isHomeClass,
             siteIdClass,
             navLevelClass,
-            layoutVarriationClass,
+            layoutVariationClass,
             navigationVariationClass,
         };
 
-        string bodyClasses = string.Join(" ", classes);
+        var bodyClasses = string.Join(" ", classes);
 
         bodyClasses = bodyClasses.Replace("  ", " ");
         return bodyClasses;
     }
 
-    private string DetermineHeaderpaneEmpty()
+    private string HeaderPaneIsEmptyClass()
     {
-        var headerpaneIsEmpty = true;
-        var modules = this.PageState.Modules.Where(x => x.PageId == PageState.Page.PageId);
+        var headerPaneIsEmpty = true;
+        var modules = PageState.Modules.Where(x => x.PageId == PageState.Page.PageId);
         foreach(var module in modules)
-        {
-            if(module.Pane == "Header")
-            {
-                headerpaneIsEmpty = false;
-            }
-        }
+            if (module.Pane == "Header")
+                headerPaneIsEmpty = false;
 
-        if(headerpaneIsEmpty == true)
-        {
-            return "to-shine-header-pane-empty";
-        }
-        else
-        {
-            return string.Empty;
-        }
+        return headerPaneIsEmpty ? "to-shine-header-pane-empty" : string.Empty;
     }
 }

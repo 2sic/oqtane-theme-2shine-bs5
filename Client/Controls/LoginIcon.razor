@@ -3,7 +3,7 @@
 @inject IStringLocalizer<Login> Localizer
 @inject IStringLocalizer<Oqtane.SharedResources> SharedLocalizer
 
-@if(this.PageState.User != null && this.PageState.User.IsAuthenticated)
+@if(PageState.User is {IsAuthenticated: true })
 {
     <a Title="Logoff" class="to-shine-login" @onclick="LogoutUser">
         <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 

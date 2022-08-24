@@ -8,18 +8,18 @@ public class PageNavigator
 {
     public IEnumerable<Page> Pages;
 
-    public Page CurrentPage = null;
+    public Page CurrentPage;
 
     public int NavigationLevel;
 
     public int LevelCounter;
 
-    public PageNavigator(IEnumerable<Page> pages, int navigationlevel, int leveldepth, Page currentpage, IList<PageNavigator> children = null)
+    public PageNavigator(IEnumerable<Page> pages, int navigationLevel, int levelDepth, Page currentPage, IList<PageNavigator> children = null)
     {
-        CurrentPage = currentpage;
+        CurrentPage = currentPage;
         Pages = pages;
-        LevelCounter = leveldepth;
-        NavigationLevel = navigationlevel;
+        LevelCounter = levelDepth;
+        NavigationLevel = navigationLevel;
         _children = children;
     }
 
@@ -30,26 +30,16 @@ public class PageNavigator
 
     private IEnumerable<PageNavigator> GetChildren()
     {
-        if (LevelCounter > 0)
-        {
-            var level = NavigationLevel + 1;
-            LevelCounter--;
+        if (LevelCounter <= 0) return new List<PageNavigator>();
 
-            IEnumerable<Page> childPages;
-            if (CurrentPage != null)
-            {
-                childPages = Pages.Where(p => p.ParentId == CurrentPage.PageId);
-            }
-            else
-            {
-                childPages = Pages.Where(p => p.ParentId == null);
-            }
+        var level = NavigationLevel + 1;
+        LevelCounter--;
 
-            return childPages.Select(p => new PageNavigator(Pages, level, LevelCounter, p));
-        }
-        else
-        {
-            return new List<PageNavigator>();
-        }
+        var childPages = CurrentPage != null 
+            ? Pages.Where(p => p.ParentId == CurrentPage.PageId) 
+            : Pages.Where(p => p.ParentId == null);
+
+        return childPages.Select(p => new PageNavigator(Pages, level, LevelCounter, p));
+
     }
 }

@@ -8,7 +8,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 
 public partial class NavItem : MenuBase
 {
-    [Parameter()]
+    [Parameter]
     public PageNavigator PageNavigator { get; set; }
 
     public string LinkHref()
@@ -31,11 +31,8 @@ public partial class NavItem : MenuBase
 
         //if (PageNavigator.CurrentPage.Order == length)
         //    commonClasses.Add("last");
-        
-        if (PageState.Page.PageId == PageNavigator.CurrentPage.PageId)
-            commonClasses.Add("active");
-        else
-            commonClasses.Add("inactive");
+
+        commonClasses.Add(PageState.Page.PageId == PageNavigator.CurrentPage.PageId ? "active" : "inactive");
 
         if (PageNavigator.HasChildren)
             commonClasses.Add("has-child");
@@ -68,10 +65,7 @@ public partial class NavItem : MenuBase
         if (PageNavigator.HasChildren)
             cssClasses.Add("dropdown-toggle");
 
-        if (PageNavigator.NavigationLevel == 1)
-            cssClasses.Add("nav-link");
-        else
-            cssClasses.Add("dropdown-item");
+        cssClasses.Add(PageNavigator.NavigationLevel == 1 ? "nav-link" : "dropdown-item");
         return cssClasses;
     }
 

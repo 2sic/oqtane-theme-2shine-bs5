@@ -1,9 +1,8 @@
 @namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts
 @inherits Oqtane.Themes.ContainerBase
-@using System.Text.Json;
 @using System.Text.RegularExpressions;
 
-<div id="module-@ModuleState.ModuleId" class="to-shine-background-container py-4 @ModuleType()">
+<div id="module-@ModuleState.ModuleId" class="to-shine-background-container py-4 @ModuleType() @ModulePublishStateClasses()">
     <div class="container">
         <ModuleActions/>
         <ModuleInstance/>
@@ -11,12 +10,11 @@
 </div>
 
 @code {
-    public override string Name => "ToShine container";
-    //public override string Name => "Container for Designed Content";
+    public override string Name => "ToShine Container";
 
     // Function to check if the module is published and assign the right class to it
-    // TODO: Permissions shouldn't be handeld with string manipulation -> there should be a better way
-    private string ModulePublishState()
+    // TODO: Permissions shouldn't be handled with string manipulation -> there should be a better way
+    private string ModulePublishStateClasses()
     {
         var modulePermissions = ModuleState.Permissions;
 
@@ -24,26 +22,14 @@
 
         var isPublished = moduleViewPermission.ToString().Contains("All Users");
 
-        if (isPublished)
-        {
-            return "";
-        } else
-        {
-            return "to-shine-unpublished";
-        }
+        return isPublished ? "" : "to-shine-unpublished";
     }
 
     private string ModuleType()
     {
         var moduleTypeString = ModuleState.ModuleType;
-        string[] moduleTypes = moduleTypeString.Split(",");
-        string[] modules = moduleTypes[0].Split(".");
-        if(modules[2] == "Admin")
-        {
-            return "to-shine-admin-container";
-        } else
-        {
-            return string.Empty;
-        }
+        var moduleTypes = moduleTypeString.Split(",");
+        var modules = moduleTypes[0].Split(".");
+        return modules[2] == "Admin" ? "to-shine-admin-container" : string.Empty;
     }
 }

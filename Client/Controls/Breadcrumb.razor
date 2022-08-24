@@ -31,7 +31,7 @@
 
     private Page GetHomePage()
     {
-        var homePage = this.PageState.Pages.Find(p => p.Path == "");
+        var homePage = PageState.Pages.Find(p => p.Path == "");
         return homePage;
     }
 }

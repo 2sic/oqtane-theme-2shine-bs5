@@ -7,52 +7,52 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 
 public class PageNavigatorService
 {
-    private IEnumerable<Page> MenuPages;
+    private IEnumerable<Page> _menuPages;
 
-    private int LevelDepth;
+    private int _levelDepth;
 
-    private int LevelSkip;
+    private int _levelSkip;
 
-    private bool Display;
+    private bool _display;
 
-    public PageNavigator Start(IEnumerable<Page> menupages, int leveldepth, bool display, int levelskip, string startingpoint = null, int? startlevel = null, List<int> pagelist = null)
+    public PageNavigator Start(IEnumerable<Page> menuPages, int levelDepth, bool display, int levelSkip, string startingPoint = null, int? startLevel = null, List<int> pageList = null)
     {
-        MenuPages = menupages;
-        LevelDepth = leveldepth;
-        LevelSkip = levelskip;
-        Display = display;
+        _menuPages = menuPages;
+        _levelDepth = levelDepth;
+        _levelSkip = levelSkip;
+        _display = display;
 
-        var Children = DetermineChildren(startingpoint, startlevel, pagelist);
-        return new PageNavigator(MenuPages, 0, leveldepth, null, Children);
+        var children = DetermineChildren(startingPoint, startLevel, pageList);
+        return new PageNavigator(_menuPages, 0, levelDepth, null, children);
     }
 
-    private IList<PageNavigator> DetermineChildren(string startingpoint, int? startlevel, List<int> pagelist)
+    private IList<PageNavigator> DetermineChildren(string startingPoint, int? startLevel, List<int> pageList)
     {
         IList<Page> childPages = new List<Page>();
         IList<PageNavigator> childNavigators = new List<PageNavigator>();
 
-        if (startingpoint != null)
+        if (startingPoint != null)
         {
-            if (startingpoint == "*")
+            if (startingPoint == "*")
             {
-                childPages = MenuPages.Where(p => p.Level == LevelSkip).ToList();
+                childPages = _menuPages.Where(p => p.Level == _levelSkip).ToList();
             }
-            else if (int.TryParse(startingpoint, out int pageId))
+            else if (int.TryParse(startingPoint, out var pageId))
             {
                 try
                 {
                     Page page;
-                    if (LevelSkip == 0)
+                    if (_levelSkip == 0)
                     {
-                        page = MenuPages.Single(p => p.PageId == pageId);
+                        page = _menuPages.Single(p => p.PageId == pageId);
                     }
                     else
                     {
-                        page = MenuPages.Single(p => p.PageId == pageId);
+                        page = _menuPages.Single(p => p.PageId == pageId);
 
-                        var targetLevel = page.Level + LevelSkip;
+                        var targetLevel = page.Level + _levelSkip;
 
-                        childPages = MenuPages.Where(p => p.Level == targetLevel).ToList();
+                        childPages = _menuPages.Where(p => p.Level == targetLevel).ToList();
                     }
 
                     childPages.Add(page);
@@ -64,22 +64,22 @@ public class PageNavigatorService
             }
             else
             {
-                throw new ArgumentException("The parameter StartingPoint was given an invalid input" + startingpoint);
+                throw new ArgumentException("The parameter StartingPoint was given an invalid input" + startingPoint);
             }
         }
 
-        if (startlevel != null)
+        if (startLevel != null)
         {
-            childPages = MenuPages.Where(p => p.Level == startlevel).ToList();
+            childPages = _menuPages.Where(p => p.Level == startLevel).ToList();
         }
 
-        if (pagelist != null)
+        if (pageList != null)
         {
-            foreach (var pageId in pagelist)
+            foreach (var pageId in pageList)
             {
                 try
                 {
-                    childPages.Add(MenuPages.Single(p => p.PageId == pageId));
+                    childPages.Add(_menuPages.Single(p => p.PageId == pageId));
                 }
                 catch
                 {
@@ -90,16 +90,9 @@ public class PageNavigatorService
 
         foreach (var childPage in childPages)
         {
-            childNavigators.Add(new PageNavigator(MenuPages, 1, LevelDepth, childPage));
+            childNavigators.Add(new PageNavigator(_menuPages, 1, _levelDepth, childPage));
         }
 
-        if (Display == true)
-        {
-            return childNavigators;
-        }
-        else
-        {
-            return new List<PageNavigator>();
-        }
+        return _display ? childNavigators : new List<PageNavigator>();
     }
 }

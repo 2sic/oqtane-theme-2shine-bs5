@@ -10,7 +10,7 @@ public partial class NavigationSettings
     [Inject]
     public ThemeSettingsService SettingsService { get; set; }
 
-    [Parameter()]
+    [Parameter]
     public string ConfigName { get; set; }
 
     public ThemeSettingsContainer ThemeSettings = new ThemeSettingsContainer();

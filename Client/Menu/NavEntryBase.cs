@@ -11,23 +11,23 @@ public abstract class NavEntryBase : MenuBase
     [Inject]
     public PageNavigatorService Navigator { get; set; }
 
-    [Parameter()]
-    public string StartingPage { get; set; } = null;
-    [Parameter()]
-    public int? StartLevel { get; set; } = null!;
-    [Parameter()]
-    public List<int> PageList { get; set; } = null;
+    [Parameter]
+    public string StartingPage { get; set; }
+    [Parameter]
+    public int? StartLevel { get; set; }
+    [Parameter]
+    public List<int> PageList { get; set; }
 
-    [Parameter()]
-    public int LevelSkip { get; set; } = 0;
-    [Parameter()]
+    [Parameter]
+    public int LevelSkip { get; set; }
+    [Parameter]
     public int LevelDepth { get; set; }
 
-    [Parameter()]
+    [Parameter]
     public bool Display { get; set; } = true;
-    [Parameter()]
+    [Parameter]
     public string Variation { get; set; }
-    [Parameter()]
+    [Parameter]
     public string ConfigName { get; set; }
 
 
@@ -39,11 +39,11 @@ public abstract class NavEntryBase : MenuBase
     {
         await base.OnParametersSetAsync();
 
-        string fileName = "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/navigation.json";
+        var fileName = "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/navigation.json";
 
         if (jsonNav == null)
         {
-            string jsonString = System.IO.File.ReadAllText(fileName);
+            var jsonString = System.IO.File.ReadAllText(fileName);
             jsonNav = System.Text.Json.JsonSerializer.Deserialize<JsonNav>(jsonString)!;
         }
 
@@ -62,11 +62,9 @@ public abstract class NavEntryBase : MenuBase
             else if (StartingPage == null && navConfig.StartingPage != null)
                 StartingPage = "*";
 
-            if (StartLevel == null)
-                StartLevel = navConfig.StartLevel;
+            StartLevel ??= navConfig.StartLevel;
 
-            if (PageList == null)
-                PageList = navConfig.PageList;
+            PageList ??= navConfig.PageList;
 
             if (LevelSkip == 0)
                 LevelSkip = navConfig.LevelSkip;
@@ -77,7 +75,7 @@ public abstract class NavEntryBase : MenuBase
             if (LevelDepth == 0 && navConfig.LevelDepth != null)
                 LevelDepth = (int)navConfig.LevelDepth;
 
-            if (Display == true)
+            if (Display)
                 Display = navConfig.Display;
 
             Start = Navigator.Start(MenuPages, LevelDepth, Display, LevelSkip, StartingPage, StartLevel, PageList);

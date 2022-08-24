@@ -26,11 +26,11 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
         }
         else
         {
-            string[] pages = ListString.Split(",");
-            List<int> PageList = new List<int>();
+            var pages = ListString.Split(",");
+            var PageList = new List<int>();
             foreach (var page in pages)
             {
-                if (Int32.TryParse(page, out int j))
+                if (Int32.TryParse(page, out var j))
                 {
                     PageList.Add(j);
                 }
@@ -57,7 +57,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
     Dictionary<string, ThemeSettingsContainer> CombinedSettings; 
 
     public ThemeSettingsContainer DeserializeData(string ConfigName){
-      var jsonString = System.IO.File.ReadAllText("wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/settings.json");
+      var jsonString = File.ReadAllText("wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/settings.json");
       var options = new JsonSerializerOptions
       {
         IncludeFields = true,
@@ -79,7 +79,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
         {
             IncludeFields = true,
         };
-        string jsonString = JsonSerializer.Serialize(CombinedSettings, options);
+        var jsonString = JsonSerializer.Serialize(CombinedSettings, options);
         await File.WriteAllTextAsync("wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/settings.json", jsonString);
     }
   }

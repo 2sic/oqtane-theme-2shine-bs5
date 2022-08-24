@@ -10,9 +10,9 @@
     @foreach (var culturePair in SupportedCultures)
     {
         <ul class="to-shine-page-language">
-            <li class="@(CultureInfo.CurrentUICulture.Name == culturePair.Culture.Name ? "active" : String.Empty)">
+            <li class="@(CultureInfo.CurrentUICulture.Name == culturePair.Culture.Name ? "active" : string.Empty)">
                 <a class="language-link"
-                    href="#" @onclick="@(async e => await SetCultureAsync(culturePair.Culture.Name))">@culturePair.Label</a>
+                    href="#" @onclick="@(async _ => await SetCultureAsync(culturePair.Culture.Name))">@culturePair.Label</a>
             </li>
         </ul>
     }
@@ -21,7 +21,7 @@
 @code{
     private IEnumerable<Culture> _supportedCultures;
 
-    [Parameter()]
+    [Parameter]
     public string Languages { get; set; } //"en: EN,nl-NL: NL";
 
     private (string, string)[] _langFilters;
@@ -29,17 +29,17 @@
 
     protected IEnumerable<(Culture Culture, string Label)> SupportedCultures;
 
-    public string FindCultureName(string CultureName)
+    public string FindCultureName(string cultureName)
     {
-        var ToShineDisplayName = "";
+        var toShineDisplayName = "";
         foreach (var lang in _langFilters)
         {
-            if(lang.Item1 == CultureName && ToShineDisplayName == "")
+            if(lang.Item1 == cultureName && toShineDisplayName == "")
             {
-                ToShineDisplayName = lang.Item2;
+                toShineDisplayName = lang.Item2;
             }
         }
-        return ToShineDisplayName;
+        return toShineDisplayName;
     }
     
     protected override async Task OnParametersSetAsync()
@@ -53,7 +53,11 @@
 
         _langFilters ??= Languages
             .Split(",")
-            .Select(l => { var splittedLang = l.Split(":"); return (splittedLang[0], splittedLang[1]); }) 
+            .Select(l =>
+            {
+                var splitLanguages = l.Split(":"); 
+                return (splitLanguages[0], splitLanguages[1]);
+            }) 
             .ToArray();
 
         SupportedCultures = _supportedCultures.Select(sc => (sc, FindCultureName(sc.Name)));
