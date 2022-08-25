@@ -5,7 +5,7 @@ using Oqtane;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Controls
 {
-    public class LoginBase: Oqtane.Themes.Controls.LoginBase
+    public class ButtonLoginBase: Oqtane.Themes.Controls.LoginBase
     {
         [Inject] private IStringLocalizer<SharedResources> Localizer { get; set; }
 

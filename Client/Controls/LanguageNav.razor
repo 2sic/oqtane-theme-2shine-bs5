@@ -1,10 +1,7 @@
 @inherits ThemeControlBase
 @using System.Globalization
-@using Microsoft.AspNetCore.Localization
-@using Oqtane.Models
-@inject ILanguageService LanguageService
-@inject NavigationManager NavigationManager
-@inject LanguageLogic LanguageLogic
+@using ToSic.Oqt.Themes.ToShineBs5.Client.Services
+@inject Services.LanguageService LanguageService
 @*
     File Purpose:       Show the Language Navigation / Selector
     Recommendations:    -
@@ -22,8 +19,8 @@
         <ul class="to-shine-page-language">
             <li class="@(CultureInfo.CurrentUICulture.Name == culture.Code ? "active" : "")">
                 <a href="#" 
-                   @onclick="@(async _ => await LanguageLogic.SetCultureAsync(culture.Code))"
-                   title="@culture.Title"
+                   @onclick="@(async _ => await LanguageService.SetCultureAsync(culture.Code))"
+                   title="@culture.Description"
                    >@culture.Label</a>
             </li>
         </ul>
@@ -36,13 +33,13 @@
     [Parameter]
     public string Languages { get; set; }
 
-    protected List<(string Code, string Label, string Title)> SupportedCultures;
+    protected List<LanguageButtonModel> SupportedCultures;
     
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
 
-        // The list won't change unless the page is reloaded, so we can cache it on this control
-        SupportedCultures ??= await LanguageLogic.LanguagesToShow(PageState, Languages);
+        // Load defined language list. It change unless the page is reloaded, so we can cache it on this control
+        SupportedCultures ??= await LanguageService.LanguagesToShow(PageState, Languages);
     }
 }

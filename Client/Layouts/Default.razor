@@ -25,8 +25,11 @@
         <Breadcrumb></Breadcrumb>
     }
 
-    @* The Admin pane is only needed to display the oqtane admin windows *@
-    <Pane Name="@PaneNames.Admin" />
+    @* The Admin pane is only needed to display the oqtane admin windows, the normal editor shouldn't actually use this *@
+    @if (ShowAdminPane)
+    {
+        <Pane Name="@PaneNames.Admin"/>
+    }
 
     @* If we show the Sidebar, then it must be side-by-side with the Content *@
     @if (ShowSidebarNavigation)

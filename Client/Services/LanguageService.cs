@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 using Oqtane.Services;
 using Oqtane.UI;
 using System.Linq;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Utilities;
 using static Microsoft.AspNetCore.Localization.CookieRequestCultureProvider;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Controls;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 /*
  * Todo:
@@ -20,9 +19,9 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Controls;
  * - ...and only show these; possibly show more to admin?
  */
 
-public class LanguageLogic
+public class LanguageService
 {
-    public LanguageLogic(NavigationManager navigation, IJSRuntime jsRuntime, ILanguageService languageService)
+    public LanguageService(NavigationManager navigation, IJSRuntime jsRuntime, ILanguageService languageService)
     {
         _navigationManager = navigation;
         _jsRuntime = jsRuntime;
@@ -33,7 +32,7 @@ public class LanguageLogic
     private readonly IJSRuntime _jsRuntime;
     private readonly ILanguageService _languageService;
 
-    public async Task<List<(string Code, string Label, string Title)>> LanguagesToShow(PageState pageState, string themeLanguages)
+    public async Task<List<LanguageButtonModel>> LanguagesToShow(PageState pageState, string themeLanguages)
     {
         var siteLanguages = await _languageService.GetLanguagesAsync(pageState.Site.SiteId);
 
@@ -63,9 +62,9 @@ public class LanguageLogic
                             ?? code[..2].ToUpperInvariant();
 
                 var langInSite = siteLanguages.Find(al => al.Code.EqInvariant(code));
-                return (Code: code, Label: label, Title: langInSite?.Name);
+                return new LanguageButtonModel() { Code = code, Label = label, Description = langInSite?.Name };
             })
-            .Where(set => set.Title.HasValue())
+            .Where(set => set.Description.HasValue())
             .ToList();
         return result;
     }

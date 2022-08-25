@@ -1,6 +1,6 @@
 ﻿using static System.StringComparison;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Utilities
+namespace ToSic.Oqt.Themes.ToShineBs5.Client
 {
     internal static class StringExtensions
     {

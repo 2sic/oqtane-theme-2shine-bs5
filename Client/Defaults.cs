@@ -1,4 +1,4 @@
-﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client.Controls;
+﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 
 /// <summary>
 /// Should contain default values for all the scenarios where configurations are missing or not necessary

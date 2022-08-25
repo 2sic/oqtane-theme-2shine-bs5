@@ -1,12 +1,12 @@
-﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
+﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 
 /// <summary>
-/// Constants and helpers related to creating Css and Css Classes
+/// Constants and helpers related to creating Css and Css Classes.
+///
+/// If you change these, you must also update the SCSS files. 
 /// </summary>
 internal class ThemeCss
 {
-    public const string AssetsPath = ThemeJs.AssetsPath;
-
     /// <summary>
     /// Prefix for all css classes which contain information about the page.
     /// </summary>
@@ -27,7 +27,11 @@ internal class ThemeCss
 
     public const string LayoutPrefix = "to-shine-";
     public const string LayoutVariationPrefix = $"{LayoutPrefix}variation-";
+    public const string LayoutAdminContainer = $"{LayoutPrefix}admin-container";
 
     public const string PanePrefix = "pane-";
     public const string PaneIsEmpty = $"{PanePrefix}is-empty";
+
+    public const string ModulePrefix = "module-";
+    public const string ModuleUnpublished = $"{ModulePrefix}unpublished";
 }

@@ -3,17 +3,16 @@ using System.Threading.Tasks;
 using Oqtane.Models;
 using Oqtane.Services;
 using Oqtane.UI;
-using static ToSic.Oqt.Themes.ToShineBs5.Client.Layouts.ThemeCss;
+using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeCss;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 /// <summary>
 /// Special helper to figure out what classes should be applied to the page. 
 /// </summary>
-public class PageCss
+public class PageCssService
 {
-
-    public PageCss(IPageService pageService) => _pageService = pageService;
+    public PageCssService(IPageService pageService) => _pageService = pageService;
     private readonly IPageService _pageService;
 
     public async Task<string> BodyClasses(Page page, string layoutVariation)
@@ -80,12 +79,16 @@ public class PageCss
         return bodyClasses;
     }
 
-    public string PaneIsEmpty(PageState pageState, string paneName)
+    public bool PaneIsEmpty(PageState pageState, string paneName)
     {
-        var paneIsEmpty = pageState.Modules
-            .Where(x => x.PageId == pageState.Page.PageId)
-            .All(m => m.Pane != paneName);
+        var paneHasModules = pageState.Modules.Any(
+            module => !module.IsDeleted
+                      && module.PageId == pageState.Page.PageId
+                      && module.Pane == paneName);
 
-        return paneIsEmpty ? ThemeCss.PaneIsEmpty : "";
+        return !paneHasModules;
     }
+
+    public string PaneIsEmptyClasses(PageState pageState, string paneName)
+        => PaneIsEmpty(pageState, paneName) ? ThemeCss.PaneIsEmpty : "";
 }
