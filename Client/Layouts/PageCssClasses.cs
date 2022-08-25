@@ -80,12 +80,12 @@ public class PageCssClasses
         return bodyClasses;
     }
 
-    public bool PaneIsEmpty(PageState pageState, string paneName)
+    public string PaneIsEmpty(PageState pageState, string paneName)
     {
         var paneIsEmpty = pageState.Modules
             .Where(x => x.PageId == pageState.Page.PageId)
             .All(m => m.Pane != paneName);
 
-        return paneIsEmpty;
+        return paneIsEmpty ? ThemeCss.PaneIsEmpty : "";
     }
 }

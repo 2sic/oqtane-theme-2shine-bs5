@@ -1,6 +1,11 @@
 ﻿@media all {
-    .role-admin .to-shine-header-pane-empty {
-        min-height: 50px
+    .role-admin {
+      nav#to-shine-page-navigation,
+      #to-shine-page-header-pane {
+        .pane-is-empty {
+            min-height: 50px
+        }
+      }
     }
 
     nav#to-shine-page-navigation {

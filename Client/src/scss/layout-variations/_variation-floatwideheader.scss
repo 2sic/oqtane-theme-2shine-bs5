@@ -31,7 +31,7 @@
       margin: 0 auto;
       background: $white;
 
-      &.to-shine-header-pane-empty {
+      &.pane-is-empty {
         @include media-breakpoint-up(lg) {
           min-height: 300px;
           background: $secondary;

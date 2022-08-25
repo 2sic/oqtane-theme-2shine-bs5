@@ -3,22 +3,35 @@ using Oqtane.Models;
 using Oqtane.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeCss;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
 
-public partial class Default : Oqtane.Themes.ThemeBase
+/// <summary>
+/// Base class for our themes. It's responsible for
+///
+/// 1. Some basic properties such as Name, BodyClasses etc. which each theme can configure
+/// 2. Adding special classes to the body tag so that the CSS can best optimize for each scenario
+/// </summary>
+public class ThemeBase : Oqtane.Themes.ThemeBase
 {
-    // Name to show in the Theme-picker
+    /// <summary>
+    /// Name to show in the Theme-picker
+    /// </summary>
     public override string Name => "Default";
 
-    // ClassName is used to set the body class which sets the css for this specific layout
-    protected virtual string ClassName => "default";
+    /// <summary>
+    /// Sets additional body classes - usually to activate CSS variations for this theme
+    /// </summary>
+    protected virtual string BodyClasses => "default";
 
-    // Determines if we should show a Nav on the side of the layout in addition to top
+    /// <summary>
+    /// Determines if we should show a Nav on the side of the layout in addition to top
+    /// </summary>
     protected virtual bool ShowSidebarNavigation => false;
 
-    // Show a breadcrumb on top?
+    /// <summary>
+    /// Show a breadcrumb on top?
+    /// </summary>
     protected virtual bool ShowBreadcrumb => true;
 
     public override List<Resource> Resources => new()
@@ -42,18 +55,14 @@ public partial class Default : Oqtane.Themes.ThemeBase
     {
         await base.OnAfterRenderAsync(firstRender);
 
-        var bodyClasses = await PageCssClasses.DetermineBodyClasses(PageState.Page, ClassName);
-
         _themeJs ??= new ThemeJs(JSRuntime);
+        var bodyClasses = await PageCssClasses.DetermineBodyClasses(PageState.Page, BodyClasses);
         await _themeJs.SetBodyClasses(bodyClasses);
     }
     private ThemeJs _themeJs;
 
     /// <summary>
-    /// Special classes for the header pane, especially to indicate when it's empty
+    /// Special classes for divs surrounding panes pane, especially to indicate when it's empty
     /// </summary>
-    private string HeaderPaneClasses() => PageCssClasses.PaneIsEmpty(PageState, PaneNameHeader)
-        // TODO: CHECK IF this class must contain the name "header" or if pane-empty would suffice
-        ? $"{LayoutPrefix}header-pane-empty"
-        : string.Empty;
+    public string PaneClasses(string paneName) => PageCssClasses.PaneIsEmpty(PageState, paneName);
 }

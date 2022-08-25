@@ -1,14 +1,21 @@
-@inherits Oqtane.Themes.ThemeBase
+@inherits ThemeBase
 @using ToSic.Oqt.Themes.ToShineBs5.Client.Controls;
 @using ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 @*
     File Purpose:       Core theme file and Default variation
     Recommendations:    -
-    Nice to know:       -
+    Nice to know:       Inherits from ThemeBase, which has some additional logic to make things happen
+                        The other theme files inherit from this, and will also use the HTML here
 *@
+@code {
+    public override string Name => "Default";
+    protected override string BodyClasses => "default";
+    protected override bool ShowSidebarNavigation => false;
+    protected override bool ShowBreadcrumb => true;
+}
 <Header></Header>
-<div id="to-shine-page-header-pane" class="@HeaderPaneClasses() container-xxl px-0">
-    <Pane Name="@PaneNameHeader" />
+<div id="to-shine-page-header-pane" class="container-xxl px-0 @PaneClasses(PaneNameHeader)">
+    <Pane Name="@PaneNameHeader"/>
 </div>
 <main id="to-shine-page-main">
 

@@ -12,6 +12,6 @@ public class ThemeInfo : ITheme
         Version = "1.0.0",
         ThemeSettingsType = typeof(Settings).AssemblyQualifiedName,
         //ContainerSettingsType = "Oqtane.Theme.ToSic.ContainerSettings, Oqtane.Theme.ToSic.Oqtane",
-        PackageName = "ToSic.Oqt.Themes.ToShineBs5", 
+        PackageName = "ToSic.Oqt.Themes.ToShineBs5",
     };
 }

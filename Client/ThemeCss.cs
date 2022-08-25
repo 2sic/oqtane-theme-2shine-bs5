@@ -27,5 +27,8 @@
 
         public const string LayoutPrefix = "to-shine-";
         public const string LayoutVariationPrefix = $"{LayoutPrefix}variation-";
+
+        public const string PanePrefix = "pane-";
+        public const string PaneIsEmpty = $"{PanePrefix}is-empty";
     }
 }
