@@ -4,8 +4,16 @@
 @*
     File Purpose:       Container for Modal Admin Dialogs
     Recommendations:    -
-    Nice to know:       -
+    Nice to know:       1. Always shows a title + the X-close button
+                        2. Should not be called "AdminContainer" because it conflicts with Oqtane names
 *@
+@code {
+    // The name is a bit long "System..." so it's not the first in the dropdown which is A-Z
+    public override string Name => "System Container for Admin Dialogs";
+
+    private void CloseModal() => NavigationManager.NavigateTo(NavigateUrl());
+}
+
 <div class="app-admin-modal to-shine-admin-container">
     <div class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog">
@@ -21,9 +29,3 @@
         </div>
     </div>
 </div>
-
-@code {
-    public override string Name => "Admin Container";
-
-    private void CloseModal() => NavigationManager.NavigateTo(NavigateUrl());
-}

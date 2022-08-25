@@ -1,8 +1,7 @@
 @using Microsoft.Extensions.Localization
 @using ToSic.Oqt.Themes.ToShineBs5.Client.Utilities
 @inherits ThemeControlBase
-@inject IPageService PageService
-@inject NavigationManager NavigationManager
+@inject AdminActions AdminActions
 @*
     File Purpose:       Shows the Toggle-Edit and Show-Control-Panel Buttons
     Recommendations:    We recommend to use inline SVGs for performance reasons.
@@ -12,7 +11,7 @@
 @if (PageState.UserIsEditor() || (PageState.Page.IsPersonalizable && PageState.UserIsRegistered()))
 {
     var isPressed = PageState.EditMode.ToString().ToLower();
-    <a class="to-shine-ui-buttons" data-bs-toggle="button" aria-pressed="@isPressed" autocomplete="off" @onclick="async () => await ToggleEditMode()">
+    <a class="to-shine-ui-buttons" data-bs-toggle="button" aria-pressed="@isPressed" autocomplete="off" @onclick="async () => await AdminActions.ToggleEditMode(PageState)">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 
                 11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/>
@@ -32,21 +31,4 @@
                 3.698.851l2.285-2.286c-.744-1.563-1.375-2.433-.848-3.706.527-1.271 1.588-1.44 3.221-2.021zm-12 2.384c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4z"/>
         </svg>
     </a>
-}
-
-@code{
-    private async Task ToggleEditMode()
-    {
-        if (PageState.UserIsEditor())
-        {
-            PageState.EditMode = !PageState.EditMode;
-        }
-        else if (PageState.Page.IsPersonalizable && PageState.User != null)
-        {
-            // TODO: UNCLEAR WHAT THIS IS FOR - document or fix
-            await PageService.AddPageAsync(PageState.Page.PageId, PageState.User.UserId);
-            PageState.EditMode = !PageState.EditMode;
-        }
-        NavigationManager.NavigateTo(NavigateUrl(PageState.Page.Path, "edit=" + (PageState.EditMode ? "1" : "0")));
-    }
 }

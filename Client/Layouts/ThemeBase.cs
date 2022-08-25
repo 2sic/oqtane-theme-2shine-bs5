@@ -53,7 +53,7 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     public const string PaneNameContent = "Content";
     public override string Panes => string.Join(",", PaneNames.Admin, PaneNameHeader, PaneNameContent);
 
-    [Inject] protected PageCssClasses PageCssClasses { get; set; }
+    [Inject] protected PageCss PageCss { get; set; }
 
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -61,7 +61,7 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
         await base.OnAfterRenderAsync(firstRender);
 
         _themeJs ??= new ThemeJs(JSRuntime);
-        var bodyClasses = await PageCssClasses.DetermineBodyClasses(PageState.Page, BodyClasses);
+        var bodyClasses = await PageCss.BodyClasses(PageState.Page, BodyClasses);
         await _themeJs.SetBodyClasses(bodyClasses);
     }
     private ThemeJs _themeJs;
@@ -69,5 +69,5 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     /// <summary>
     /// Special classes for divs surrounding panes pane, especially to indicate when it's empty
     /// </summary>
-    public string PaneClasses(string paneName) => PageCssClasses.PaneIsEmpty(PageState, paneName);
+    public string PaneClasses(string paneName) => PageCss.PaneIsEmpty(PageState, paneName);
 }

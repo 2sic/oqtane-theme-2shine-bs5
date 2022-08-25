@@ -3,20 +3,20 @@ using System.Threading.Tasks;
 using Oqtane.Models;
 using Oqtane.Services;
 using Oqtane.UI;
-using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeCss;
+using static ToSic.Oqt.Themes.ToShineBs5.Client.Layouts.ThemeCss;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
 
 /// <summary>
 /// Special helper to figure out what classes should be applied to the page. 
 /// </summary>
-public class PageCssClasses
+public class PageCss
 {
 
-    public PageCssClasses(IPageService pageService) => _pageService = pageService;
+    public PageCss(IPageService pageService) => _pageService = pageService;
     private readonly IPageService _pageService;
 
-    public async Task<string> DetermineBodyClasses(Page page, string layoutVariation)
+    public async Task<string> BodyClasses(Page page, string layoutVariation)
     {
         //1.1 Set the page-is-home class
         var isHomeClass = page.Path == "" ? PageIsHome : "";
