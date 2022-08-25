@@ -17,8 +17,7 @@
     {
         <ul class="to-shine-page-language">
             <li class="@(CultureInfo.CurrentUICulture.Name == culturePair.Culture.Name ? "active" : string.Empty)">
-                <a class="language-link"
-                    href="#" @onclick="@(async _ => await SetCultureAsync(culturePair.Culture.Name))">@culturePair.Label</a>
+                <a href="#" @onclick="@(async _ => await SetCultureAsync(culturePair.Culture.Name))">@culturePair.Label</a>
             </li>
         </ul>
     }
