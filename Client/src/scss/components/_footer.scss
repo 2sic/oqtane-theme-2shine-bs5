@@ -28,9 +28,10 @@
                 text-underline-offset: 3px;
             }
 
-            &.to-shine-page-login {
+            &.to-shine-login-invisible {
                 font-size: 12px;
                 color: transparent;
+                cursor: pointer;
 
                 &:hover {
                     color: $white;
