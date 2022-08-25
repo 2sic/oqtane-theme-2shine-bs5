@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Oqtane.Models;
 using Oqtane.Services;
 using Oqtane.UI;
-using static ToSic.Oqt.Themes.ToShineBs5.Client.CssConstants;
+using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeCss;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
 

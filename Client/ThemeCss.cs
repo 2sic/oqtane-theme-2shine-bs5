@@ -1,7 +1,12 @@
 ﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client
 {
-    internal class CssConstants
+    /// <summary>
+    /// Constants and helpers related to creating Css and Css Classes
+    /// </summary>
+    internal class ThemeCss
     {
+        public const string AssetsPath = ThemeJs.AssetsPath;
+
         /// <summary>
         /// Prefix for all css classes which contain information about the page.
         /// </summary>
