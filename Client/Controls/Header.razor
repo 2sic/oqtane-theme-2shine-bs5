@@ -1,6 +1,5 @@
-﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu
-@using ToSic.Oqt.Themes.ToShineBs5.Client.Layouts 
-@inherits MenuBase
+﻿@inherits MenuBase
+@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 @*
     File Purpose:       Show the Header with logo, navigation etc.
     Recommendations:    -
@@ -8,14 +7,14 @@
 *@
 <nav id="to-shine-page-navigation" class="navbar navbar-expand-lg bg-white">
     <div class="container d-flex justify-content-between align-items-center py-3">
-        <ToShineLogo></ToShineLogo>
+        <HeaderLogo></HeaderLogo>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="offcanvas offcanvas-start border-0" id="offcanvasNavbar">
             <div class="offcanvas-header">
-            <ToShineLogo></ToShineLogo>
+                <HeaderLogo></HeaderLogo>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
             </div>
             <div class="offcanvas-body">
@@ -27,7 +26,9 @@
                 <NavEntry ConfigName="Mobile"></NavEntry>
                 </div>
                 <div class="d-flex order-lg-first">
-                <LanguageNav Languages="en: EN"></LanguageNav><LoginIcon></LoginIcon><AdminButtons></AdminButtons>
+                    <LanguageNav Languages="en: EN"></LanguageNav>
+                    <LoginIcon></LoginIcon>
+                    <AdminButtons></AdminButtons>
                 </div>
             </div>
             </div>

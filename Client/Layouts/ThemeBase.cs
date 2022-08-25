@@ -12,27 +12,32 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
 /// 1. Some basic properties such as Name, BodyClasses etc. which each theme can configure
 /// 2. Adding special classes to the body tag so that the CSS can best optimize for each scenario
 /// </summary>
-public class ThemeBase : Oqtane.Themes.ThemeBase
+/// <remarks>
+/// - The base class must be abstract, so that Oqtane doesn't see it as a real them.
+/// - The config-properties must be abstract, so the inheriting files are forced to set them. 
+/// </remarks>
+public abstract class ThemeBase : Oqtane.Themes.ThemeBase
 {
     /// <summary>
-    /// Name to show in the Theme-picker
+    /// Name to show in the Theme-picker.
+    /// Must be set by each inheriting theme. 
     /// </summary>
-    public override string Name => "Default";
+    public abstract override string Name { get; }
 
     /// <summary>
     /// Sets additional body classes - usually to activate CSS variations for this theme
     /// </summary>
-    protected virtual string BodyClasses => "default";
+    protected abstract string BodyClasses { get; }
 
     /// <summary>
     /// Determines if we should show a Nav on the side of the layout in addition to top
     /// </summary>
-    protected virtual bool ShowSidebarNavigation => false;
+    protected abstract bool ShowSidebarNavigation { get; }
 
     /// <summary>
     /// Show a breadcrumb on top?
     /// </summary>
-    protected virtual bool ShowBreadcrumb => true;
+    protected abstract bool ShowBreadcrumb { get; }
 
     public override List<Resource> Resources => new()
     {
