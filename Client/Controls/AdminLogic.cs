@@ -11,12 +11,12 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Controls;
 /// It's just meant to support the AdminButtons,
 /// without placing the logic code inside that. 
 /// </summary>
-public class AdminActions
+public class AdminLogic
 {
     public IPageService PageService { get; }
     public NavigationManager NavigationManager { get; }
 
-    public AdminActions(IPageService pageService, NavigationManager navigationManager)
+    public AdminLogic(IPageService pageService, NavigationManager navigationManager)
     {
         PageService = pageService;
         NavigationManager = navigationManager;

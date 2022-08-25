@@ -13,6 +13,9 @@ public class ServiceRegister : Oqtane.Services.IClientStartup
         services.AddTransient<PageNavigatorService>();
         services.AddSingleton<ThemeSettingsService>();
         services.AddTransient<PageCss>();
-        services.AddTransient<AdminActions>();
+
+        // Logic parts for Controls
+        services.AddTransient<AdminLogic>();
+        services.AddTransient<LanguageLogic>();
     }
 }

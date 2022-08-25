@@ -4,75 +4,45 @@
 @using Oqtane.Models
 @inject ILanguageService LanguageService
 @inject NavigationManager NavigationManager
+@inject LanguageLogic LanguageLogic
 @*
     File Purpose:       Show the Language Navigation / Selector
     Recommendations:    -
     Nice to know:       The languages available are handed in from the Header file
-    TODO:
-    - extract logic into other files
+                        ...if the list is empty, it will use the site definition
+                        ...otherwise it will use the values specified for order/label of languages
+    WishList:
+    - make languages more configurable
+    - make the show/hide of this also configurable
 *@
-@if (_supportedCultures?.Count() > 1)
+@if (SupportedCultures?.Count > 1)
 {
-    @foreach (var culturePair in SupportedCultures)
+    @foreach (var culture in SupportedCultures)
     {
         <ul class="to-shine-page-language">
-            <li class="@(CultureInfo.CurrentUICulture.Name == culturePair.Culture.Name ? "active" : string.Empty)">
-                <a href="#" @onclick="@(async _ => await SetCultureAsync(culturePair.Culture.Name))">@culturePair.Label</a>
+            <li class="@(CultureInfo.CurrentUICulture.Name == culture.Code ? "active" : "")">
+                <a href="#" 
+                   @onclick="@(async _ => await LanguageLogic.SetCultureAsync(culture.Code))"
+                   title="@culture.Title"
+                   >@culture.Label</a>
             </li>
         </ul>
     }
 }
 
 @code{
-    private IEnumerable<Culture> _supportedCultures;
-
+    // List of languages to show, controlled by the skin
+    // Will automatically use system languages if not specified
     [Parameter]
-    public string Languages { get; set; } //"en: EN,nl-NL: NL";
+    public string Languages { get; set; }
 
-    private (string, string)[] _langFilters;
-
-
-    protected IEnumerable<(Culture Culture, string Label)> SupportedCultures;
-
-    public string FindCultureName(string cultureName)
-    {
-        var toShineDisplayName = "";
-        foreach (var lang in _langFilters)
-            if(lang.Item1 == cultureName && toShineDisplayName == "")
-                toShineDisplayName = lang.Item2;
-        return toShineDisplayName;
-    }
+    protected List<(string Code, string Label, string Title)> SupportedCultures;
     
     protected override async Task OnParametersSetAsync()
     {
-        var languages = await LanguageService.GetLanguagesAsync(PageState.Site.SiteId);
-        var defaultCulture = CultureInfo.GetCultureInfo(Constants.DefaultCulture);
+        await base.OnParametersSetAsync();
 
-        languages.Add(new Language { Code = defaultCulture.Name, Name = defaultCulture.DisplayName });
-
-        _supportedCultures = languages.Select(l => new Culture { Name = l.Code, DisplayName = l.Name });
-
-        _langFilters ??= Languages
-            .Split(",")
-            .Select(l =>
-            {
-                var splitLanguages = l.Split(":"); 
-                return (splitLanguages[0], splitLanguages[1]);
-            }) 
-            .ToArray();
-
-        SupportedCultures = _supportedCultures.Select(sc => (sc, FindCultureName(sc.Name)));
-    }
-
-    private async Task SetCultureAsync(string culture)
-    {
-        if (culture != CultureInfo.CurrentUICulture.Name)
-        {
-            var interop = new Interop(JSRuntime);
-            var localizationCookieValue = CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture));
-            await interop.SetCookie(CookieRequestCultureProvider.DefaultCookieName, localizationCookieValue, 360);
-
-            NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
-        }
+        // The list won't change unless the page is reloaded, so we can cache it on this control
+        SupportedCultures ??= await LanguageLogic.LanguagesToShow(PageState, Languages);
     }
 }
