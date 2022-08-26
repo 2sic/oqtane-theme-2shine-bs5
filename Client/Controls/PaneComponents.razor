@@ -1,0 +1,31 @@
+﻿@*
+File Purpose:       Special Component to add dynamic list of components to a Oqtane Pane
+Recommendations:    -
+Nice to know:       Mainly used for testing / development. 
+*@
+@code {
+    [Parameter]
+    public List<(string Pane, Type Type, Dictionary<string, object> Parameters)> Components { get; set; }
+
+    [Parameter]
+    public string Name { get; set; }
+
+    private List<(Type Type, Dictionary<string, object> Parameters)> MyComponents()
+    {
+        if (_cache != null) return _cache;
+        if (Components == null) return _cache = new();
+        return _cache = Components
+            .FindAll(c => c.Pane == Name)
+            .Select(set => (set.Type, set.Parameters ?? new()))
+            .ToList();
+    }
+
+    private List<(Type Type, Dictionary<string, object> Parameters)> _cache;
+}
+@if (MyComponents()?.Any() == true)
+{
+    @foreach (var c in MyComponents())
+    {
+        <DynamicComponent Type="@c.Type" Parameters="@c.Parameters"></DynamicComponent>
+    }
+}

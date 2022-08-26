@@ -2,17 +2,17 @@
   "Configurations": {
     "Main": {
       "LevelDepth": 1,
-      "StartPage": "*",
+      "Start": "*",
       "ConfigName": "Main"
     },
     "Mobile": {
       "LevelDepth": 2,
-      "StartPage": "*",
+      "Start": "*",
       "ConfigName": "Mobile"
     },
     "Sidebar": {
       "LevelDepth": 2,
-      "StartPage": "*",
+      "Start": "*",
       "ConfigName": "Sidebar"
     },
     "ImprintPrivacy": {

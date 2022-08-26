@@ -3,21 +3,18 @@
 @using Oqtane.Themes.Controls;
 @using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 
+@code {
+    [Parameter]
+    public PageNavigator PageNavigator { get; set; }
+}
 
-@if(PageNavigator.HasChildren)
+@if (PageNavigator.HasChildren)
 {
     <ul class="@(PageNavigator.NavigationLevel == 0 ? "navbar-nav" : "dropdown-menu")">
-        @if (PageNavigator.HasChildren)
+        @foreach(var pageNav in PageNavigator.Children)
         {
-            @foreach(var pageNav in PageNavigator.Children)
-            {
-                <NavItem PageNavigator="pageNav"></NavItem>
-            }
+            <NavItem PageNavigator="pageNav"></NavItem>
         }
     </ul>
 }
 
-@code{
-    [Parameter]
-    public PageNavigator PageNavigator { get; set; }
-}

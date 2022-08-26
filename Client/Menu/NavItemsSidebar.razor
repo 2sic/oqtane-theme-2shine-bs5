@@ -4,12 +4,9 @@
 @if(PageNavigator.HasChildren)
 {
     <ul class="@(PageNavigator.NavigationLevel == 0 ? "navbar-nav" : UlClasses())">
-        @if (PageNavigator.HasChildren)
+        @foreach(var pageNav in PageNavigator.Children)
         {
-            @foreach(var pageNav in PageNavigator.Children)
-            {
-                <NavItemSidebar PageNavigator="pageNav"></NavItemSidebar>
-            }
+            <NavItemSidebar PageNavigator="pageNav"></NavItemSidebar>
         }
     </ul>
 }

@@ -1,15 +1,12 @@
 ﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 @inherits NavItems;
 
-@if(PageNavigator.HasChildren)
+@if (PageNavigator.HasChildren)
 {
     <ul class="@(PageNavigator.NavigationLevel == 0 ? "navbar-nav" : UlClasses())">
-        @if (PageNavigator.HasChildren)
+        @foreach(var pageNav in PageNavigator.Children)
         {
-            @foreach(var pageNav in PageNavigator.Children)
-            {
-                <NavItemMobile PageNavigator="pageNav"></NavItemMobile>
-            }
+            <NavItemMobile PageNavigator="pageNav"></NavItemMobile>
         }
     </ul>
 }

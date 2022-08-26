@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Oqtane.Themes.Controls;
@@ -14,17 +15,18 @@ public abstract class NavEntryBase : MenuBase, IMenuConfig
     [Inject] protected MenuConfigFromJsonService ConfigFromJson { get; set; }
 
 
-    [Parameter] public string StartPage { get; set; }
-    [Parameter] public int? StartLevel { get; set; }
+    [Parameter] public string ConfigName { get; set; }
     [Parameter] public List<int> PageList { get; set; }
     [Parameter] public int? LevelSkip { get; set; }
     [Parameter] public int? LevelDepth { get; set; }
+    [Parameter] public bool Debug { get; set; } = false;
     [Parameter] public bool? Display { get; set; } = true;
     //[Parameter] public string Variation { get; set; }
-    [Parameter] public string ConfigName { get; set; }
+    [Parameter] public int? StartLevel { get; set; }
+    [Parameter] public string Start { get; set; }
 
 
-    protected PageNavigator Start { get; private set; }
+    protected PageNavigator RootNode { get; private set; }
 
     protected override async Task OnParametersSetAsync()
     {
@@ -39,8 +41,7 @@ public abstract class NavEntryBase : MenuBase, IMenuConfig
             var navConfig = ConfigFromJson.JsonConfig.Configurations[ConfigName];
             config = navConfig.Overrule(config);
         }
-        
 
-        Start = Navigator.Start(MenuPages, config);
+        RootNode = Navigator.Start(config, PageState.Pages,  MenuPages.ToList(), PageState.Page);
     }
 }

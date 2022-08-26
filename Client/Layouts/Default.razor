@@ -25,12 +25,6 @@
         <Breadcrumb></Breadcrumb>
     }
 
-    @* The Admin pane is only needed to display the oqtane admin windows, the normal editor shouldn't actually use this *@
-    @if (ShowAdminPane)
-    {
-        <Pane Name="@PaneNames.Admin"/>
-    }
-
     @* If we show the Sidebar, then it must be side-by-side with the Content *@
     @if (ShowSidebarNavigation)
     {
@@ -38,6 +32,7 @@
             <div class="row">
                 <div class="col-12 col-lg-9 order-lg-2">
                     <Pane Name="@PaneNameContent" />
+                    <PaneComponents Components="@DynamicComponents" Name="@PaneNameContent"></PaneComponents>
                 </div>
                 <div class="col-12 col-lg-3 order-lg-1">
                     <div id="to-shine-nav-sub" class="d-none d-sm-block">
@@ -50,7 +45,12 @@
     else
     {
         <Pane Name="@PaneNameContent" />
+        <PaneComponents Components="DynamicComponents" Name="@PaneNameContent"></PaneComponents>
     }
+    
+    @* The Admin pane is only needed to display the oqtane admin windows, the normal editor shouldn't actually use this *@
+    @*@if (ShowAdminPane)*@
+    <Pane Name="@PaneNames.Admin"/>
 
     <ToTop></ToTop>
 </main>

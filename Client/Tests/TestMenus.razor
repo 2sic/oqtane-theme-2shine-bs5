@@ -1,0 +1,36 @@
+﻿<h1>Test many Menus</h1>
+
+@code {
+    public const string TopLevelWithSubpagesId = "29";
+    //public const string TopLevelWithSubpagesId = "15";
+}
+@* This wrapper sets the style so the menu is row-focused*@
+<div class="navbar-expand-lg">
+    <h2>No Settings</h2>
+    <h3>Basic Menu without Setting, name none</h3>
+    <NavEntry Debug="true"></NavEntry>
+    <hr/>
+
+    <h2>Various Settings</h2>
+    <h3>Only one specific page, no other params</h3>
+    <NavEntry Debug="true" Start="@TopLevelWithSubpagesId"></NavEntry>
+
+    <h3>Only one specific page, LevelDepth = 0</h3>
+    <NavEntry Debug="true" Start="@TopLevelWithSubpagesId" LevelDepth="0"></NavEntry>
+
+    <h3>Only one specific page @TopLevelWithSubpagesId, with Depth=1</h3>
+    <NavEntry Debug="true" Start="@TopLevelWithSubpagesId" LevelDepth="1"></NavEntry>
+
+
+    <h2>Json Settings</h2>
+    <h3>Basic Menu without Setting, name "Main"</h3>
+    <NavEntry Debug="true" ConfigName="Main" ></NavEntry>
+
+    <h3>Basic Menu without Setting, name "Mobile"</h3>
+    <NavEntry Debug="true" ConfigName="Mobile"></NavEntry>
+
+    <h3>Basic Menu without Setting, name "Sidebar"</h3>
+    <NavEntry Debug="true" ConfigName="Sidebar"></NavEntry>
+
+    <hr/>
+</div>

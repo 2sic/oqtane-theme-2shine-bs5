@@ -1,86 +1,109 @@
 ﻿using Oqtane.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 
 public class PageNavigatorService
 {
-    private IEnumerable<Page> AllPages { get; set; }
+    //private List<Page> MenuPages { get; set; }
 
-    private MenuConfig Config { get; set; }
+    //private MenuConfig Config { get; set; }
 
-    public PageNavigator Start(IEnumerable<Page> menuPages, MenuConfig config/*, int levelDepth, bool display, int levelSkip, string startPage = null, int? startLevel = null, List<int> pageList = null*/)
+    [return: NotNull]
+    public PageNavigator Start(MenuConfig config, List<Page> allPages, List<Page> menuPages, Page currentPage)
     {
-        AllPages = menuPages;
-        Config = config;
-        //Config = new MenuConfig
-        //{
-        //    PageList = pageList,
-        //    Display = display,
-        //    LevelDepth = levelDepth,
-        //    LevelSkip = levelSkip,
-        //    StartingPage = startPage,
-        //    StartLevel = startLevel,
-        //};
-
-        var children = DetermineChildren();
-        return new PageNavigator(AllPages, 0, Config.LevelDepth ?? MenuConfig.LevelDepthDefault, null, children);
+        //MenuPages = menuPages;
+        //Config = config;
+        //var children = InitialChildren();
+        return new PageNavigatorRoot(config, allPages, menuPages, currentPage);
     }
 
-    private IList<PageNavigator> DetermineChildren()
-    {
-        // Give empty list if we shouldn't display it
-        if (!(Config.Display ?? MenuConfig.DisplayDefault)) return new List<PageNavigator>();
+    //private List<Page> InitialChildren()
+    //{
+    //    // Give empty list if we shouldn't display it
+    //    if (Config.Display == false) return new();
 
-        IList<Page> childPages = new List<Page>();
+    //    // Case 1: StartPage *, so all top-level entries
+    //    var start = Config.Start?.Trim();
+    //    if (start is null or MenuConfig.StartPageRoot)
+    //        return MenuPages.Where(p => p.Level == 0).ToList();
 
-        var startPage = Config.StartPage ?? MenuConfig.StartPageDefault;
-        //if (Config.StartingPage != null)
-        //{
-            if (startPage == MenuConfig.StartPageDefault)
-                childPages = AllPages.Where(p => p.Level == Config.LevelSkip).ToList();
-            else if (int.TryParse(startPage, out var pageId))
-                try
-                {
-                    var page = AllPages.Single(p => p.PageId == pageId);
-                    if (Config.LevelSkip != 0)
-                    {
-                        var targetLevel = page.Level + Config.LevelSkip;
-                        childPages = AllPages.Where(p => p.Level == targetLevel).ToList();
-                    }
+    //    // Case 2: '.' - not yet supported
+    //    if (start == MenuConfig.StartPageCurrent)
+    //    {
 
-                    childPages.Add(page);
-                }
-                catch
-                {
-                    throw new ArgumentException("The parameter StartingPoint was given an invalid PageId:" + pageId);
-                }
-            else
-                throw new ArgumentException($"The parameter {Config.StartPage} was given an invalid input" +
-                                            Config.StartPage);
-        //}
+    //    }
+    //    if (int.TryParse(start, out var starPage))
+    //    {
 
-        if (Config.StartLevel != null) 
-            childPages = AllPages.Where(p => p.Level == Config.StartLevel).ToList();
+    //    }
 
-        if (Config.PageList != null)
-            foreach (var pageId in Config.PageList)
-                try
-                {
-                    childPages.Add(AllPages.Single(p => p.PageId == pageId));
-                }
-                catch
-                {
-                    throw new ArgumentException("The parameter PageList was given an invalid PageId:" + pageId);
-                }
+    //    var childPages = new List<Page>();
+    //    // Case 1
+    //    // StartPage + Levels to Skip
+    //    // B: StartPageS
 
-        var childNavigators = childPages
-            .Select(childPage => new PageNavigator(AllPages, 1, Config.LevelDepth ?? MenuConfig.LevelDepthDefault, childPage))
-            .ToList();
+    //    // Case 2
+    //    // No start page + levels to skip
 
-        return childNavigators;
-    }
+
+
+    //    var startPage = !IsNullOrWhiteSpace(Config.Start) 
+    //        ? Config.Start 
+    //        : MenuConfig.StartPageDefault;
+    //    //if (Config.StartingPage != null)
+    //    //{
+    //        if (startPage == MenuConfig.StartPageRoot)
+    //            childPages = MenuPages.Where(p => p.Level == (Config.LevelSkip ?? MenuConfig.LevelSkipDefault)).ToList();
+    //        else if (int.TryParse(startPage, out var pageId))
+    //            try
+    //            {
+    //                var page = MenuPages.FirstOrDefault(p => p.PageId == pageId);
+    //                if (page != null)
+    //                {
+    //                    if (Config.LevelSkip != null && Config.LevelSkip != 0)
+    //                    {
+    //                        var targetLevel = page.Level + (Config.LevelSkip ?? MenuConfig.LevelSkipDefault);
+    //                        childPages = MenuPages.Where(p => p.Level == targetLevel).ToList();
+    //                    }
+
+    //                    childPages.Add(page);
+    //                }
+    //                else
+    //                    childPages.Add(ErrPage(pageId, $"Error: Page {pageId} not found"));
+    //            }
+    //            catch (Exception ex)
+    //            {
+    //                childPages.Add(ErrPage(pageId, $"Error: Page {pageId} - unexpected error {ex.Message}"));
+    //            }
+    //        else
+    //            childPages.Add(ErrPage(pageId, $"Error: StartPage '{Config.Start}' Config unexpected"));
+
+    //    //}
+
+    //    if (Config.StartLevel != null) 
+    //        childPages = MenuPages.Where(p => p.Level == Config.StartLevel).ToList();
+
+    //    if (Config.PageList != null)
+    //        foreach (var pageId in Config.PageList)
+    //            try
+    //            {
+    //                childPages.Add(MenuPages.Single(p => p.PageId == pageId));
+    //            }
+    //            catch (Exception ex)
+    //            {
+    //                childPages.Add(ErrPage(pageId, $"Error: PageList '{pageId}' invalid - {ex.Message}"));
+    //            }
+
+    //    //var childNavigators = childPages
+    //    //    .Select(childPage => new PageNavigator(AllPages, 1, Config.LevelDepth ?? MenuConfig.LevelDepthDefault, childPage))
+    //    //    .ToList();
+
+    //    return childPages;// childNavigators;
+    //}
+
+    //private static Page ErrPage(int id, string message)
+    //    => new Page { PageId = id, Name = message };
 }

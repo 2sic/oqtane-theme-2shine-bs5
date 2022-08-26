@@ -4,6 +4,7 @@ using Oqtane.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+using CList = System.Collections.Generic.List<(string Pane, System.Type Type, System.Collections.Generic.Dictionary<string, object> Parameters)>;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
 
@@ -40,6 +41,12 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     /// </summary>
     protected abstract bool ShowBreadcrumb { get; }
 
+    /// <summary>
+    /// WIP
+    /// inspired by http://www.binaryintellect.net/articles/a92dea29-3218-4d1c-a132-9671b518d1f4.aspx
+    /// </summary>
+    protected CList DynamicComponents { get; } = new();
+
     public override List<Resource> Resources => new()
     {
         // Bootstrap with our customizations (generated with Sass using Webpack)
@@ -50,15 +57,19 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
         new Resource { ResourceType = ResourceType.Script, Url = $"{AssetUrls.ThemePath}/ambient.js" },
     };
 
-    // Note that we don't want the AdminPane to be in the default list, as people shouldn't add modules there
+    // Panes of the layout
     public const string PaneNameHeader = "Header";
     public const string PaneNameContent = "Content";
-    public override string Panes => string.Join(",", /*PaneNames.Admin,*/ PaneNameHeader, PaneNameContent);
+    public override string Panes => string.Join(",",
+        /*PaneNames.Admin,*/  // Note that we don't want the AdminPane to be in the default list, as people shouldn't add modules there
+        PaneNameHeader, 
+        PaneNameContent);
 
     [Inject] protected PageCssService PageCss { get; set; }
     [Inject] protected ThemeJsService ThemeJs { get; set; }
 
-    public bool ShowAdminPane { get; set; } = false;
+    // TODO: Optimize so it's real-time and doesn't need StateHasChanged()
+    //public bool ShowAdminPane { get; set; } = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -66,9 +77,9 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
 
         // The admin pane is only necessary for edge cases and initial demo-content of Oqtane
         // So we should try to keep it hidden, but we must show it if something is inside it.
-        var showAdminPaneBefore = ShowAdminPane;
-        ShowAdminPane = !PageCss.PaneIsEmpty(PageState, PaneNames.Admin);
-        if (showAdminPaneBefore != ShowAdminPane) StateHasChanged();
+        //var showAdminPaneBefore = ShowAdminPane;
+        //ShowAdminPane = !PageCss.PaneIsEmpty(PageState, PaneNames.Admin);
+        //if (showAdminPaneBefore != ShowAdminPane) StateHasChanged();
 
         var bodyClasses = await PageCss.BodyClasses(PageState.Page, BodyClasses);
         await ThemeJs.SetBodyClasses(bodyClasses);
