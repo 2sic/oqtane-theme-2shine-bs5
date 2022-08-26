@@ -7,10 +7,13 @@
         {
         }
         public string ListClasses { get; set; }
-        public string ItemClasses { get; set; }
-        public string LinkClasses { get; set; }
+        public string LiClasses { get; set; }
+        public string AClasses { get; set; }
 
-        public string LinkActive { get; set; }
-        public string LinkInactive { get; set; }
+        public string AActive { get; set; }
+        public string AInactive { get; set; }
+
+        public string LiActive { get; set; }
+        public string LiInactive { get; set; }
     }
 }

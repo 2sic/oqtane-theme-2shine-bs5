@@ -39,21 +39,24 @@ internal class ThemeCss
 
     public static MenuCssConfig MenuCssDefaults = new()
     {
-        LinkActive = "active",
-        LinkInactive = "",
+        LiClasses = "nav-item",
+        AActive = "active",
+        AInactive = "",
+        LiActive = "active",
+        LiInactive = "inactive",
     };
 
     public static MenuCssConfig MobileCssConfig = new()
     {
         ListClasses = "",
-        ItemClasses = "position-relative",
-        LinkClasses = "nav-link mobile-navigation-link",
+        LiClasses = "position-relative",
+        AClasses = "nav-link mobile-navigation-link",
     };
 
     public static MenuCssConfig SidebarCssConfig = new()
     {
         ListClasses = "",
-        ItemClasses = "position-relative",
-        LinkClasses = "nav-link",
+        LiClasses = "position-relative",
+        AClasses = "nav-link",
     };
 }

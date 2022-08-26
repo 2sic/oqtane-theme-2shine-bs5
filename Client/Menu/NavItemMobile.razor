@@ -1,6 +1,6 @@
 ﻿@inherits MenuListBase;
 
-<li class="@LiClasses()">
+<li class="@MenuCss.LiClasses(MenuBranch)">
     <a class="@MenuCss.LinkClasses(MenuBranch)" href="@GetUrl()">
         @MenuBranch.Page.Name
     </a>

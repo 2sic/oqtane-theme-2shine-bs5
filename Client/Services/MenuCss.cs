@@ -14,30 +14,70 @@ public class MenuCss
 {
     public MenuCss(MenuCssConfig config)
     {
-        Config = config ?? new MenuCssConfig();
+        Configs = new List<MenuCssConfig> { MenuCssDefaults, config };
     }
+    internal List<MenuCssConfig> Configs { get; }
 
     public Func<MenuBranch, string> LinkCustom;
+    public Func<MenuBranch, string> ItemCustom;
 
     public string LinkClasses(MenuBranch branch)
     {
-        var initial = new List<string>();
+        var classes = new List<string>();
         if (LinkCustom != null)
-            initial.Add(LinkCustom.Invoke(branch));
+            classes.Add(LinkCustom.Invoke(branch));
 
-        //var initial = MainAClasses(branch);
-        initial.AddRange(Configs.Select(c => c.LinkClasses));
-        if (branch.IsActive) 
-            initial.AddRange(Configs.Select(c => c.LinkActive));
-        return ListToClasses(initial);
+        classes.AddRange(Configs.Select(c => c.AClasses));
+        classes.AddRange(Configs.Select(c 
+            => branch.IsActive ? c.AActive : c.AInactive));
+        return ListToClasses(classes);
     }
 
-    public string ListToClasses(IEnumerable<string> original) => string.Join(" ", original.Where(s => !s.IsNullOrEmpty()));
+    public string LiClasses(MenuBranch branch)
+    {
+        var classes = new List<string>();
+        classes.AddRange(CommonLiClasses(branch));
+        classes.AddRange(Configs.Select(c => c.LiClasses));
 
-    internal MenuCssConfig Config { get; set; }
+        if (ItemCustom != null)
+            classes.Add(ItemCustom.Invoke(branch));
 
-    internal List<MenuCssConfig> Configs => _allConfigs ??= new List<MenuCssConfig> { MenuCssDefaults, Config };
-    private List<MenuCssConfig> _allConfigs;
+        classes.AddRange(Configs.Select(c
+            => branch.IsActive ? c.LiActive : c.LiInactive));
+
+        return ListToClasses(classes);
+    }
+
+    private IList<string> CommonLiClasses(MenuBranch branch)
+    {
+        var commonClasses = new List<string>
+        {
+            //"nav-item",
+            "nav-" + branch.Page.PageId
+        };
+
+        if (branch.Page.Order == 1)
+            commonClasses.Add("first");
+
+        //if (PageNavigator.CurrentPage.Order == length)
+        //    commonClasses.Add("last");
+
+        //commonClasses.Add(branch.IsActive ? "active" : "inactive");
+
+        if (branch.HasChildren)
+            commonClasses.Add("has-child");
+
+        if (branch.Page.IsClickable == false)
+            commonClasses.Add("disabled");
+
+        return commonClasses;
+    }
+
+    private string ListToClasses(IEnumerable<string> original) 
+        => string
+            .Join(" ", original.Where(s => !s.IsNullOrEmpty()))
+            .Replace("  ", " ");
+
 
 
 

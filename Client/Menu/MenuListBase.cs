@@ -19,37 +19,37 @@ public abstract class MenuListBase: Oqtane.Themes.Controls.MenuBase
 
     protected static string ToClasses(IEnumerable<string> original) => string.Join(" ", original);
 
-    public IList<string> CommonLiClasses()
+    public IList<string> CommonLiClasses(MenuBranch branch)
     {
         var commonClasses = new List<string>
         {
             "nav-item",
-            "nav-" + MenuBranch.Page.PageId
+            "nav-" + branch.Page.PageId
         };
 
-        if (MenuBranch.Page.Order == 1)
+        if (branch.Page.Order == 1)
             commonClasses.Add("first");
 
         //if (PageNavigator.CurrentPage.Order == length)
         //    commonClasses.Add("last");
 
-        commonClasses.Add(PageState.Page.PageId == MenuBranch.Page.PageId ? "active" : "inactive");
+        commonClasses.Add(branch.IsActive ? "active" : "inactive");
 
-        if (MenuBranch.HasChildren)
+        if (branch.HasChildren)
             commonClasses.Add("has-child");
 
-        if (MenuBranch.Page.IsClickable == false)
+        if (branch.Page.IsClickable == false)
             commonClasses.Add("disabled");
 
         return commonClasses;
     }
 
-    public IList<string> CommonAClasses()
-    {
-        var cssClasses = new List<string>();
-        if (MenuBranch.IsActive)// .Page.PageId == PageState.Page.PageId)
-            cssClasses.Add("active");
-        return cssClasses;
-    }
+    //public IList<string> CommonAClasses()
+    //{
+    //    var cssClasses = new List<string>();
+    //    if (MenuBranch.IsActive)// .Page.PageId == PageState.Page.PageId)
+    //        cssClasses.Add("active");
+    //    return cssClasses;
+    //}
 
 }
