@@ -37,26 +37,57 @@ internal class ThemeCss
     public const string ModulePrefix = "module-";
     public const string ModuleUnpublished = $"{ModulePrefix}unpublished";
 
+    public const string PlaceHolderPageId = "PAGEID";
+
     public static MenuCssConfig MenuCssDefaults = new()
     {
-        LiClasses = "nav-item",
-        AActive = "active",
-        AInactive = "",
-        LiActive = "active",
-        LiInactive = "inactive",
+        A = new ()
+        {
+            Active = "active",
+            NotActive = "",
+        },
+        Li = new()
+        {
+            Classes = $"nav-item nav-{PlaceHolderPageId}",
+            Active = "active",
+            NotActive = "inactive",
+            HasChildren = "has-child",
+            Disabled = "disabled",
+        },
+        //LiClasses = "nav-item",
+        //AActive = "active",
+        //AInactive = "",
+        //LiActive = "active",
+        //LiInactive = "inactive",
     };
 
     public static MenuCssConfig MobileCssConfig = new()
     {
-        ListClasses = "",
-        LiClasses = "position-relative",
-        AClasses = "nav-link mobile-navigation-link",
+        A = new ()
+        {
+            Classes = "nav-link mobile-navigation-link",
+        },
+        Li = new()
+        {
+            Classes = "position-relative",
+        },
+        //ListClasses = "",
+        //LiClasses = "position-relative",
+        //AClasses = "nav-link mobile-navigation-link",
     };
 
     public static MenuCssConfig SidebarCssConfig = new()
     {
-        ListClasses = "",
-        LiClasses = "position-relative",
-        AClasses = "nav-link",
+        A = new()
+        {
+            Classes = "nav-link",
+        },
+        Li = new()
+        {
+            Classes = "position-relative",
+        },
+        //ListClasses = "",
+        //LiClasses = "position-relative",
+        //AClasses = "nav-link",
     };
 }
