@@ -2,83 +2,45 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Oqtane.Themes.Controls;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 
-public abstract class NavEntryBase : MenuBase
+public abstract class NavEntryBase : MenuBase, IMenuConfig
 {
-    [Inject]
-    public PageNavigatorService Navigator { get; set; }
+    [Inject] protected PageNavigatorService Navigator { get; set; }
+    [Inject] protected MenuConfigFromJsonService ConfigFromJson { get; set; }
 
-    [Parameter]
-    public string StartingPage { get; set; }
-    [Parameter]
-    public int? StartLevel { get; set; }
-    [Parameter]
-    public List<int> PageList { get; set; }
 
-    [Parameter]
-    public int LevelSkip { get; set; }
-    [Parameter]
-    public int LevelDepth { get; set; }
-
-    [Parameter]
-    public bool Display { get; set; } = true;
-    [Parameter]
-    public string Variation { get; set; }
-    [Parameter]
-    public string ConfigName { get; set; }
+    [Parameter] public string StartPage { get; set; }
+    [Parameter] public int? StartLevel { get; set; }
+    [Parameter] public List<int> PageList { get; set; }
+    [Parameter] public int? LevelSkip { get; set; }
+    [Parameter] public int? LevelDepth { get; set; }
+    [Parameter] public bool? Display { get; set; } = true;
+    //[Parameter] public string Variation { get; set; }
+    [Parameter] public string ConfigName { get; set; }
 
 
     protected PageNavigator Start { get; private set; }
-
-    protected JsonNav jsonNav;
 
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
 
-        var fileName = "wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/navigation.json";
-
-        if (jsonNav == null)
-        {
-            var jsonString = System.IO.File.ReadAllText(fileName);
-            jsonNav = System.Text.Json.JsonSerializer.Deserialize<JsonNav>(jsonString)!;
-        }
+        var config = new MenuConfig(this);
 
         // If the user didn't specify a config name in the Parameters or the config name
         // isn't contained in the json file the normal parameter are given to the service
-        if (ConfigName == null || jsonNav.NavConfigs.ContainsKey(ConfigName) == false)
+        if (ConfigName != null && ConfigFromJson.JsonConfig.Configurations.ContainsKey(ConfigName))
         {
-            Start = Navigator.Start(MenuPages, LevelDepth, Display, LevelSkip, StartingPage);
+            var navConfig = ConfigFromJson.JsonConfig.Configurations[ConfigName];
+            config = navConfig.Overrule(config);
         }
-        else
-        {
-            var navConfig = jsonNav.NavConfigs[ConfigName];
+        
 
-            if (StartingPage == null && navConfig.StartingPage != null)
-                StartingPage = navConfig.StartingPage;
-            else if (StartingPage == null && navConfig.StartingPage != null)
-                StartingPage = "*";
-
-            StartLevel ??= navConfig.StartLevel;
-
-            PageList ??= navConfig.PageList;
-
-            if (LevelSkip == 0)
-                LevelSkip = navConfig.LevelSkip;
-
-            if (Variation == null && navConfig.Variation != null)
-                Variation = navConfig.Variation;
-
-            if (LevelDepth == 0 && navConfig.LevelDepth != null)
-                LevelDepth = (int)navConfig.LevelDepth;
-
-            if (Display)
-                Display = navConfig.Display;
-
-            Start = Navigator.Start(MenuPages, LevelDepth, Display, LevelSkip, StartingPage, StartLevel, PageList);
-        }
+        Start = Navigator.Start(MenuPages, config);
     }
 }

@@ -1,19 +1,19 @@
 {
-  "NavConfigs": {
+  "Configurations": {
     "Main": {
       "LevelDepth": 1,
-      "StartingPage": "*",
-        "Variation":  "Main"
+      "StartPage": "*",
+      "ConfigName": "Main"
     },
     "Mobile": {
       "LevelDepth": 2,
-      "StartingPage": "*",
-      "Variation": "Mobile"
+      "StartPage": "*",
+      "ConfigName": "Mobile"
     },
     "Sidebar": {
       "LevelDepth": 2,
-      "StartingPage": "*",
-      "Variation": "Sidebar"
+      "StartPage": "*",
+      "ConfigName": "Sidebar"
     },
     "ImprintPrivacy": {
       "LevelDepth": 0,

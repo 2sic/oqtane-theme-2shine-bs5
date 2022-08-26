@@ -1,8 +1,12 @@
 ﻿@inherits NavEntryBase
 @using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 @using ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
-
-@switch (Variation)
+@*
+File Purpose:       Add a menu based on the parameter 'Variation'
+Recommendations:    -
+Nice to know:       TODO:
+*@
+@switch (ConfigName)
 {
     case "Sidebar":
         <NavItemsSidebar PageNavigator="Start"></NavItemsSidebar>

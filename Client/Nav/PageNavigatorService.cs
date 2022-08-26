@@ -2,57 +2,54 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 
 public class PageNavigatorService
 {
-    private IEnumerable<Page> _menuPages;
+    private IEnumerable<Page> AllPages { get; set; }
 
-    private int _levelDepth;
+    private MenuConfig Config { get; set; }
 
-    private int _levelSkip;
-
-    private bool _display;
-
-    public PageNavigator Start(IEnumerable<Page> menuPages, int levelDepth, bool display, int levelSkip, string startingPoint = null, int? startLevel = null, List<int> pageList = null)
+    public PageNavigator Start(IEnumerable<Page> menuPages, MenuConfig config/*, int levelDepth, bool display, int levelSkip, string startPage = null, int? startLevel = null, List<int> pageList = null*/)
     {
-        _menuPages = menuPages;
-        _levelDepth = levelDepth;
-        _levelSkip = levelSkip;
-        _display = display;
+        AllPages = menuPages;
+        Config = config;
+        //Config = new MenuConfig
+        //{
+        //    PageList = pageList,
+        //    Display = display,
+        //    LevelDepth = levelDepth,
+        //    LevelSkip = levelSkip,
+        //    StartingPage = startPage,
+        //    StartLevel = startLevel,
+        //};
 
-        var children = DetermineChildren(startingPoint, startLevel, pageList);
-        return new PageNavigator(_menuPages, 0, levelDepth, null, children);
+        var children = DetermineChildren();
+        return new PageNavigator(AllPages, 0, Config.LevelDepth ?? MenuConfig.LevelDepthDefault, null, children);
     }
 
-    private IList<PageNavigator> DetermineChildren(string startingPoint, int? startLevel, List<int> pageList)
+    private IList<PageNavigator> DetermineChildren()
     {
-        IList<Page> childPages = new List<Page>();
-        IList<PageNavigator> childNavigators = new List<PageNavigator>();
+        // Give empty list if we shouldn't display it
+        if (!(Config.Display ?? MenuConfig.DisplayDefault)) return new List<PageNavigator>();
 
-        if (startingPoint != null)
-        {
-            if (startingPoint == "*")
-            {
-                childPages = _menuPages.Where(p => p.Level == _levelSkip).ToList();
-            }
-            else if (int.TryParse(startingPoint, out var pageId))
-            {
+        IList<Page> childPages = new List<Page>();
+
+        var startPage = Config.StartPage ?? MenuConfig.StartPageDefault;
+        //if (Config.StartingPage != null)
+        //{
+            if (startPage == MenuConfig.StartPageDefault)
+                childPages = AllPages.Where(p => p.Level == Config.LevelSkip).ToList();
+            else if (int.TryParse(startPage, out var pageId))
                 try
                 {
-                    Page page;
-                    if (_levelSkip == 0)
+                    var page = AllPages.Single(p => p.PageId == pageId);
+                    if (Config.LevelSkip != 0)
                     {
-                        page = _menuPages.Single(p => p.PageId == pageId);
-                    }
-                    else
-                    {
-                        page = _menuPages.Single(p => p.PageId == pageId);
-
-                        var targetLevel = page.Level + _levelSkip;
-
-                        childPages = _menuPages.Where(p => p.Level == targetLevel).ToList();
+                        var targetLevel = page.Level + Config.LevelSkip;
+                        childPages = AllPages.Where(p => p.Level == targetLevel).ToList();
                     }
 
                     childPages.Add(page);
@@ -61,38 +58,29 @@ public class PageNavigatorService
                 {
                     throw new ArgumentException("The parameter StartingPoint was given an invalid PageId:" + pageId);
                 }
-            }
             else
-            {
-                throw new ArgumentException("The parameter StartingPoint was given an invalid input" + startingPoint);
-            }
-        }
+                throw new ArgumentException($"The parameter {Config.StartPage} was given an invalid input" +
+                                            Config.StartPage);
+        //}
 
-        if (startLevel != null)
-        {
-            childPages = _menuPages.Where(p => p.Level == startLevel).ToList();
-        }
+        if (Config.StartLevel != null) 
+            childPages = AllPages.Where(p => p.Level == Config.StartLevel).ToList();
 
-        if (pageList != null)
-        {
-            foreach (var pageId in pageList)
-            {
+        if (Config.PageList != null)
+            foreach (var pageId in Config.PageList)
                 try
                 {
-                    childPages.Add(_menuPages.Single(p => p.PageId == pageId));
+                    childPages.Add(AllPages.Single(p => p.PageId == pageId));
                 }
                 catch
                 {
                     throw new ArgumentException("The parameter PageList was given an invalid PageId:" + pageId);
                 }
-            }
-        }
 
-        foreach (var childPage in childPages)
-        {
-            childNavigators.Add(new PageNavigator(_menuPages, 1, _levelDepth, childPage));
-        }
+        var childNavigators = childPages
+            .Select(childPage => new PageNavigator(AllPages, 1, Config.LevelDepth ?? MenuConfig.LevelDepthDefault, childPage))
+            .ToList();
 
-        return _display ? childNavigators : new List<PageNavigator>();
+        return childNavigators;
     }
 }

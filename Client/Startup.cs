@@ -13,6 +13,7 @@ public class Startup : Oqtane.Services.IClientStartup
     /// <param name="services"></param>
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddScoped<MenuConfigFromJsonService>();
         services.AddTransient<PageNavigatorService>();
         services.AddSingleton<ThemeSettingsService>();
 
@@ -23,5 +24,6 @@ public class Startup : Oqtane.Services.IClientStartup
         // Logic parts for Controls
         services.AddTransient<PageEditService>();
         services.AddTransient<LanguageService>();
+
     }
 }
