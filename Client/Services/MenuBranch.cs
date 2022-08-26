@@ -32,6 +32,8 @@ public class MenuBranch
 
     public bool HasChildren => Children.Any();
 
+    public bool IsActive => Page.PageId == Tree.Page.PageId;
+
     [NotNull]
     public IList<MenuBranch> Children => _children ??= GetChildren();
     private IList<MenuBranch> _children;

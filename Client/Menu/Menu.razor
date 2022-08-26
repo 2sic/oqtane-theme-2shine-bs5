@@ -1,0 +1,47 @@
+﻿@inherits Oqtane.Themes.Controls.MenuBase
+@implements IMenuConfig
+@using ToSic.Oqt.Themes.ToShineBs5.Client.Models
+@*
+File Purpose:       Add a menu based on the parameter 'ConfigName'
+Recommendations:    -
+Nice to know:       
+    - Prepares the menu structure and then renders using one of various menu controls
+    - Can be configured directly on the tag, or can load a config from JSON
+    - WIP: Later it will also be able to load a config from the page/theme settings
+*@
+@switch (ConfigName)
+{
+    case "Main": 
+        <MenuMain MenuBranch="@MenuTree"></MenuMain>
+        break;
+    case "Mobile":
+        <MenuMobile MenuBranch="@MenuTree"></MenuMobile>
+        break;
+    case "Sidebar":
+        <MenuSidebar MenuBranch="@MenuTree"></MenuSidebar>
+        break;
+    default: //Main
+        <MenuMain MenuBranch="@MenuTree"></MenuMain>
+        break;
+}
+@code {
+    [Inject] protected MenuTreeService MenuTreeService { get; set; }
+
+    [Parameter] public string ConfigName { get; set; }
+    [Parameter] public List<int> PageList { get; set; }
+    [Parameter] public int? LevelSkip { get; set; }
+    [Parameter] public int? LevelDepth { get; set; }
+    [Parameter] public bool Debug { get; set; } = false;
+    [Parameter] public bool? Display { get; set; } = true;
+    [Parameter] public int? StartLevel { get; set; }
+    [Parameter] public string Start { get; set; }
+
+    protected MenuBranch MenuTree { get; private set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+
+        MenuTree = MenuTreeService.GetTree(new MenuConfig(this), PageState, MenuPages.ToList());
+    }
+}

@@ -2,13 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using Oqtane.Themes.Controls;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 
-public abstract class NavEntryBase : MenuBase, IMenuConfig
+public abstract class MenuBase : Oqtane.Themes.Controls.MenuBase, IMenuConfig
 {
     [Inject] protected MenuTreeService Navigator { get; set; }
 

@@ -59,7 +59,7 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
 
     // Panes of the layout
     public const string PaneNameHeader = "Header";
-    public const string PaneNameContent = "Content";
+    public const string PaneNameContent = "Content"; // TODO: Default
     public override string Panes => string.Join(",",
         /*PaneNames.Admin,*/  // Note that we don't want the AdminPane to be in the default list, as people shouldn't add modules there
         PaneNameHeader, 

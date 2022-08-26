@@ -1,4 +1,6 @@
-﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client;
+﻿using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
+
+namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 
 /// <summary>
 /// Constants and helpers related to creating Css and Css Classes.
@@ -34,4 +36,24 @@ internal class ThemeCss
 
     public const string ModulePrefix = "module-";
     public const string ModuleUnpublished = $"{ModulePrefix}unpublished";
+
+    public static MenuCssConfig MenuCssDefaults = new()
+    {
+        LinkActive = "active",
+        LinkInactive = "",
+    };
+
+    public static MenuCssConfig MobileCssConfig = new()
+    {
+        ListClasses = "",
+        ItemClasses = "position-relative",
+        LinkClasses = "nav-link mobile-navigation-link",
+    };
+
+    public static MenuCssConfig SidebarCssConfig = new()
+    {
+        ListClasses = "",
+        ItemClasses = "position-relative",
+        LinkClasses = "nav-link",
+    };
 }

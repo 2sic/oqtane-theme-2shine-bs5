@@ -1,9 +1,7 @@
-﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
-@using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
-@inherits NavItem;
+﻿@inherits MenuListBase;
 
 <li class="@LiClasses()">
-    <a class="@AClasses()" href="@LinkHref()">
+    <a class="@MenuCss.LinkClasses(MenuBranch)" href="@GetUrl()">
         @MenuBranch.Page.Name
     </a>
 
@@ -13,6 +11,6 @@
             data-bs-toggle="@(MenuBranch.HasChildren ? "collapse"  : "")" 
             data-bs-target="@(MenuBranch.HasChildren ? ".collapse-" + MenuBranch.Page.PageId : "")" 
         ></span>
-        <NavItemsMobile MenuBranch="MenuBranch"></NavItemsMobile>
+        <MenuMobile MenuBranch="MenuBranch"></MenuMobile>
     }
 </li>

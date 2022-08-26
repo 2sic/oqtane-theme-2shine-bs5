@@ -1,5 +1,4 @@
 @namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts
-@using ToSic.Oqt.Themes.ToShineBs5.Client.Services
 @inherits Oqtane.Themes.ContainerBase
 @*
     File Purpose:       Container for normal modules.
@@ -23,7 +22,7 @@ else
 {
     <div id="module-@ModuleState.ModuleId" class="to-shine-background-container py-4 @ContainerCss.Classes(ModuleState)">
         <div class="container">
-            <ModuleActions/>
+            <Oqtane.Themes.Controls.ModuleActions/>
             <ModuleInstance/>
         </div>
     </div>

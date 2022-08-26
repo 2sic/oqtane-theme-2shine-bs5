@@ -140,6 +140,16 @@ The LanguageChanger control can be used to display Links to switch between diffe
    This parameter expects a string.  
    This parameter manages the display names of the languages. To change the display name of english which has the language code "en" you will need to write "en: _yourName_". To change the names of multiple languages you can write "en: _yourName_, nl-NL: _yourName_".
 
+## General Recommendations & Coding Style
+
+1. Many of our controls have an obvious name like `Menu` but it can be confused with the `Oqtane.Theme.Controls.Menu`.
+Since we rarely use the default Oqtane controls, we don't recommend having it in your `_imports.razor` but instead we reference them explicitly where we need them. 
+1. Oqtane will save the full namespace of selected **Themes** and **Containers** in the DB. 
+Because of this, we highly recommend to always have a line like `@namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts` at the beginning of these files,
+so it doesn't change as you move files around.
+
+---
+
 # History
 
 I hope u enjoy it ;-)

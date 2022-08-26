@@ -1,7 +1,7 @@
-﻿@inherits MenuBase;
+﻿@inherits MenuListBase;
 
 <li class="@LiClasses()">
-    <a class="@AClasses()" href="@LinkHref()" 
+    <a class="@MenuCss.LinkClasses(MenuBranch)" href="@GetUrl()" 
         data-bs-toggle="@(MenuBranch.Page.HasChildren && MenuBranch.Page.IsClickable == false ? "dropdown" : "")"
     >
         @MenuBranch.Page.Name
@@ -9,6 +9,6 @@
 
     @if (MenuBranch.HasChildren)
     {
-        <NavItems MenuBranch="MenuBranch"></NavItems>
+        <MenuMain MenuBranch="MenuBranch"></MenuMain>
     }
 </li>

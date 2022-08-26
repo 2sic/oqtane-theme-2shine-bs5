@@ -1,4 +1,4 @@
-﻿@inherits MenuBase
+﻿@inherits Oqtane.Themes.Controls.MenuBase
 @using ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 @using ToSic.Oqt.Themes.ToShineBs5.Client;
 @*
@@ -22,10 +22,10 @@
             <div class="offcanvas-body">
             <div class="d-flex flex-column justify-content-end align-items-end flex-grow-1">
                 <div class="d-none d-lg-block">
-                <NavEntry ConfigName="Main"></NavEntry>
+                <Menu ConfigName="Main"></Menu>
                 </div>
                 <div class="d-block d-lg-none w-100">
-                <NavEntry ConfigName="Mobile"></NavEntry>
+                <Menu ConfigName="Mobile"></Menu>
                 </div>
                 <div class="d-flex order-lg-first">
                     <LanguageNav Languages="@Defaults.LanguageList"></LanguageNav>

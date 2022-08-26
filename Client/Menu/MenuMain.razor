@@ -1,4 +1,4 @@
-﻿@inherits MenuBase;
+﻿@inherits Oqtane.Themes.Controls.MenuBase;
 @using Microsoft.AspNetCore.Components;
 @using Oqtane.Themes.Controls;
 @using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
@@ -13,7 +13,7 @@
     <ul class="@(MenuBranch.MenuLevel == 0 ? "navbar-nav" : "dropdown-menu")">
         @foreach(var pageNav in MenuBranch.Children)
         {
-            <NavItem MenuBranch="pageNav"></NavItem>
+            <MenuItem MenuBranch="pageNav"></MenuItem>
         }
     </ul>
 }

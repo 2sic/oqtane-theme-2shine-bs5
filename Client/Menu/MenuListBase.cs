@@ -1,22 +1,21 @@
-using Microsoft.AspNetCore.Components;
-using Oqtane.Themes.Controls;
+﻿using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
+using Oqtane.UI;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 
-public partial class NavItem : MenuBase
+public abstract class MenuListBase: Oqtane.Themes.Controls.MenuBase
 {
     [Parameter]
     [Required]
     public MenuBranch MenuBranch { get; set; }
 
-    public string LinkHref()
-        => MenuBranch.Page.IsClickable
-            ? MenuBranch.Page.Path
-            : "javascript:void(0)";
+    public string GetUrl() => GetUrl(MenuBranch.Page);
+
+    protected abstract MenuCss MenuCss { get; }
+
 
     protected static string ToClasses(IEnumerable<string> original) => string.Join(" ", original);
 
@@ -48,29 +47,9 @@ public partial class NavItem : MenuBase
     public IList<string> CommonAClasses()
     {
         var cssClasses = new List<string>();
-        if (MenuBranch.Page.PageId == PageState.Page.PageId)
+        if (MenuBranch.IsActive)// .Page.PageId == PageState.Page.PageId)
             cssClasses.Add("active");
         return cssClasses;
     }
 
-    private IList<string> MainLiCLasses()
-    {
-        var cssClasses = new List<string>();
-        if (MenuBranch.HasChildren)
-            cssClasses.Add("dropdown");
-        return cssClasses;
-    }
-
-    private IList<string> MainAClasses()
-    {
-        var cssClasses = new List<string>();
-        if (MenuBranch.HasChildren)
-            cssClasses.Add("dropdown-toggle");
-
-        cssClasses.Add(MenuBranch.MenuLevel == 1 ? "nav-link" : "dropdown-item");
-        return cssClasses;
-    }
-
-    private string LiClasses() => ToClasses(CommonLiClasses().Concat(MainLiCLasses()));
-    private string AClasses() => ToClasses(CommonAClasses().Concat(MainAClasses()));
 }
