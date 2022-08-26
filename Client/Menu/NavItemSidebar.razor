@@ -1,6 +1,9 @@
-﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
-@inherits MenuListBase;
+﻿@inherits MenuListBase;
 
+@code
+{
+    protected override MenuCss MenuCss => ThemeCss.MenuCssSidebar;
+}
 <li class="@MenuCss.LiClasses(MenuBranch)">
     <a class="@MenuCss.LinkClasses(MenuBranch)" href="@GetUrl()">
         @MenuBranch.Page.Name

@@ -1,4 +1,5 @@
 ﻿using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 
@@ -54,29 +55,21 @@ internal class ThemeCss
             HasChildren = "has-child",
             Disabled = "disabled",
         },
-        //LiClasses = "nav-item",
-        //AActive = "active",
-        //AInactive = "",
-        //LiActive = "active",
-        //LiInactive = "inactive",
     };
 
-    public static MenuCssConfig MobileCssConfig = new()
+    public static MenuCss MenuCssMain = new(new())
     {
-        A = new ()
+        LinkCustom = branch =>
         {
-            Classes = "nav-link mobile-navigation-link",
+            var cls = branch.MenuLevel == 1 ? "nav-link" : "dropdown-item";
+            if (branch.HasChildren)
+                cls += " dropdown-toggle";
+            return cls;
         },
-        Li = new()
-        {
-            Classes = "position-relative",
-        },
-        //ListClasses = "",
-        //LiClasses = "position-relative",
-        //AClasses = "nav-link mobile-navigation-link",
+        ItemCustom = branch => branch.HasChildren ? "dropdown" : null
     };
 
-    public static MenuCssConfig SidebarCssConfig = new()
+    public static MenuCss MenuCssSidebar = new(new()
     {
         A = new()
         {
@@ -86,8 +79,17 @@ internal class ThemeCss
         {
             Classes = "position-relative",
         },
-        //ListClasses = "",
-        //LiClasses = "position-relative",
-        //AClasses = "nav-link",
-    };
+    });
+
+    public static MenuCss MenuCssMobile = new(new()
+    {
+        A = new()
+        {
+            Classes = "nav-link mobile-navigation-link",
+        },
+        Li = new()
+        {
+            Classes = "position-relative",
+        },
+    });
 }

@@ -1,5 +1,9 @@
 ﻿@inherits MenuListBase;
 
+@code
+{
+    protected override MenuCss MenuCss => ThemeCss.MenuCssMain;
+}
 <li class="@MenuCss.LiClasses(MenuBranch)">
     <a class="@MenuCss.LinkClasses(MenuBranch)" href="@GetUrl()" 
         data-bs-toggle="@(MenuBranch.Page.HasChildren && MenuBranch.Page.IsClickable == false ? "dropdown" : "")"
