@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 using ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings;
 
@@ -14,7 +13,7 @@ public class Startup : Oqtane.Services.IClientStartup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddScoped<MenuConfigFromJsonService>();
-        services.AddTransient<PageNavigatorService>();
+        services.AddTransient<MenuTreeService>();
         services.AddSingleton<ThemeSettingsService>();
 
         // Special services for the page

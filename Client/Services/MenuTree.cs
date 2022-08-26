@@ -5,9 +5,9 @@ using System.Linq;
 using Oqtane.Models;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
 {
-    public class PageNavigatorRoot: PageNavigator
+    public class MenuTree : MenuBranch
     {
         public IMenuConfig Config { get; }
         public List<Page> AllPages { get; }
@@ -20,10 +20,10 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav
 
         public List<string> DebugLog = new();
 
-        public override PageNavigatorRoot RootNavigator => this;
+        protected override MenuTree Tree => this;
 
-        public PageNavigatorRoot([NotNull] IMenuConfig config, [NotNull] List<Page> allPages, [NotNull] List<Page> menuPages, [NotNull] Page currentPage) 
-            : base(null, 0, (config.LevelDepth ?? MenuConfig.LevelDepthDefault) + 1, currentPage)
+        public MenuTree([NotNull] IMenuConfig config, [NotNull] List<Page> allPages, [NotNull] List<Page> menuPages, [NotNull] Page page)
+            : base(null, 0, page)
         {
             Config = config;
             AllPages = allPages;
@@ -48,7 +48,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav
             // Case 2: '.' - not yet tested
             var relatedPageLevel = Config.StartLevel ?? MenuConfig.StartLevelDefault;
             if (start == MenuConfig.StartPageCurrent)
-                return GetRelatedPagesByLevel(CurrentPage, relatedPageLevel);
+                return GetRelatedPagesByLevel(Page, relatedPageLevel);
 
             // Case 3: one or more IDs to start from
             var startIds = StringToIntArray(start);
@@ -62,70 +62,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav
                 default:
                     return new List<Page> { ErrPage(0, $"Error: can't get pages on level {relatedPageLevel} for '{start}'") };
             }
-            
 
-            var childPages = new List<Page>();
-            // Case 1
-            // StartPage + Levels to Skip
-            // B: StartPageS
-
-            // Case 2
-            // No start page + levels to skip
-
-
-
-            var startPage = !string.IsNullOrWhiteSpace(Config.Start)
-                ? Config.Start
-                : MenuConfig.StartPageDefault;
-            //if (Config.StartingPage != null)
-            //{
-            if (startPage == MenuConfig.StartPageRoot)
-                childPages = MenuPages.Where(p => p.Level == (Config.LevelSkip ?? MenuConfig.LevelSkipDefault)).ToList();
-            else if (int.TryParse(startPage, out var pageId))
-                try
-                {
-                    var page = MenuPages.FirstOrDefault(p => p.PageId == pageId);
-                    if (page != null)
-                    {
-                        if (Config.LevelSkip != null && Config.LevelSkip != 0)
-                        {
-                            var targetLevel = page.Level + (Config.LevelSkip ?? MenuConfig.LevelSkipDefault);
-                            childPages = MenuPages.Where(p => p.Level == targetLevel).ToList();
-                        }
-
-                        childPages.Add(page);
-                    }
-                    else
-                        childPages.Add(ErrPage(pageId, $"Error: Page {pageId} not found"));
-                }
-                catch (Exception ex)
-                {
-                    childPages.Add(ErrPage(pageId, $"Error: Page {pageId} - unexpected error {ex.Message}"));
-                }
-            else
-                childPages.Add(ErrPage(pageId, $"Error: StartPage '{Config.Start}' Config unexpected"));
-
-            //}
-
-            if (Config.StartLevel != null)
-                childPages = MenuPages.Where(p => p.Level == Config.StartLevel).ToList();
-
-            if (Config.PageList != null)
-                foreach (var pageId in Config.PageList)
-                    try
-                    {
-                        childPages.Add(MenuPages.Single(p => p.PageId == pageId));
-                    }
-                    catch (Exception ex)
-                    {
-                        childPages.Add(ErrPage(pageId, $"Error: PageList '{pageId}' invalid - {ex.Message}"));
-                    }
-
-            //var childNavigators = childPages
-            //    .Select(childPage => new PageNavigator(AllPages, 1, Config.LevelDepth ?? MenuConfig.LevelDepthDefault, childPage))
-            //    .ToList();
-
-            return childPages;// childNavigators;
         }
 
         private List<Page> GetRelatedPagesByLevel(Page referencePage, int level)
@@ -151,7 +88,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav
             if (string.IsNullOrWhiteSpace(value)) return Array.Empty<int>();
             var result = value.Split(',')
                 .Select(v => int.TryParse(v.Trim(), out var val) ? val : int.MinValue)
-                .Where(i => i!=int.MinValue)
+                .Where(i => i != int.MinValue)
                 .ToArray();
             return result;
         }

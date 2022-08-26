@@ -1,19 +1,18 @@
-﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
+﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 @inherits NavItems;
 
-@if(PageNavigator.HasChildren)
-{
-    <ul class="@(PageNavigator.NavigationLevel == 0 ? "navbar-nav" : UlClasses())">
-        @foreach(var pageNav in PageNavigator.Children)
-        {
-            <NavItemSidebar PageNavigator="pageNav"></NavItemSidebar>
-        }
-    </ul>
-}
-
-@code{
+@code {
     private string UlClasses()
     {
-        return "ul-collapse collapse collapse-" + @PageNavigator.CurrentPage.PageId;
+        return "ul-collapse collapse collapse-" + MenuBranch.Page.PageId;
     }
+}
+@if (MenuBranch.HasChildren)
+{
+    <ul class="@(MenuBranch.MenuLevel == 0 ? "navbar-nav" : UlClasses())">
+        @foreach(var pageNav in MenuBranch.Children)
+        {
+            <NavItemSidebar MenuBranch="pageNav"></NavItemSidebar>
+        }
+    </ul>
 }

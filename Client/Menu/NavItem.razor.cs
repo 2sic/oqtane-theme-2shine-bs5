@@ -3,7 +3,7 @@ using Oqtane.Themes.Controls;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 
@@ -11,11 +11,11 @@ public partial class NavItem : MenuBase
 {
     [Parameter]
     [Required]
-    public PageNavigator PageNavigator { get; set; }
+    public MenuBranch MenuBranch { get; set; }
 
     public string LinkHref()
-        => PageNavigator.CurrentPage.IsClickable
-            ? PageNavigator.CurrentPage.Path
+        => MenuBranch.Page.IsClickable
+            ? MenuBranch.Page.Path
             : "javascript:void(0)";
 
     protected static string ToClasses(IEnumerable<string> original) => string.Join(" ", original);
@@ -25,21 +25,21 @@ public partial class NavItem : MenuBase
         var commonClasses = new List<string>
         {
             "nav-item",
-            "nav-" + PageNavigator.CurrentPage.PageId
+            "nav-" + MenuBranch.Page.PageId
         };
 
-        if (PageNavigator.CurrentPage.Order == 1)
+        if (MenuBranch.Page.Order == 1)
             commonClasses.Add("first");
 
         //if (PageNavigator.CurrentPage.Order == length)
         //    commonClasses.Add("last");
 
-        commonClasses.Add(PageState.Page.PageId == PageNavigator.CurrentPage.PageId ? "active" : "inactive");
+        commonClasses.Add(PageState.Page.PageId == MenuBranch.Page.PageId ? "active" : "inactive");
 
-        if (PageNavigator.HasChildren)
+        if (MenuBranch.HasChildren)
             commonClasses.Add("has-child");
 
-        if (PageNavigator.CurrentPage.IsClickable == false)
+        if (MenuBranch.Page.IsClickable == false)
             commonClasses.Add("disabled");
 
         return commonClasses;
@@ -48,7 +48,7 @@ public partial class NavItem : MenuBase
     public IList<string> CommonAClasses()
     {
         var cssClasses = new List<string>();
-        if (PageNavigator.CurrentPage.PageId == PageState.Page.PageId)
+        if (MenuBranch.Page.PageId == PageState.Page.PageId)
             cssClasses.Add("active");
         return cssClasses;
     }
@@ -56,7 +56,7 @@ public partial class NavItem : MenuBase
     private IList<string> MainLiCLasses()
     {
         var cssClasses = new List<string>();
-        if (PageNavigator.HasChildren)
+        if (MenuBranch.HasChildren)
             cssClasses.Add("dropdown");
         return cssClasses;
     }
@@ -64,10 +64,10 @@ public partial class NavItem : MenuBase
     private IList<string> MainAClasses()
     {
         var cssClasses = new List<string>();
-        if (PageNavigator.HasChildren)
+        if (MenuBranch.HasChildren)
             cssClasses.Add("dropdown-toggle");
 
-        cssClasses.Add(PageNavigator.NavigationLevel == 1 ? "nav-link" : "dropdown-item");
+        cssClasses.Add(MenuBranch.MenuLevel == 1 ? "nav-link" : "dropdown-item");
         return cssClasses;
     }
 

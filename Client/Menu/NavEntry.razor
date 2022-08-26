@@ -1,23 +1,21 @@
 ﻿@inherits NavEntryBase
-@using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
-@using ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
 @*
-File Purpose:       Add a menu based on the parameter 'Variation'
+File Purpose:       Add a menu based on the parameter 'ConfigName'
 Recommendations:    -
 Nice to know:       TODO:
 *@
 @switch (ConfigName)
 {
     case "Sidebar":
-        <NavItemsSidebar PageNavigator="RootNode"></NavItemsSidebar>
+        <NavItemsSidebar MenuBranch="@MenuTree"></NavItemsSidebar>
         break;
     case "Mobile":
-        <NavItemsMobile PageNavigator="RootNode"></NavItemsMobile>
+        <NavItemsMobile MenuBranch="@MenuTree"></NavItemsMobile>
         break;
     case "Main": 
-        <NavItems PageNavigator="RootNode"></NavItems>
+        <NavItems MenuBranch="@MenuTree"></NavItems>
         break;
     default: //Main
-        <NavItems PageNavigator="RootNode"></NavItems>
+        <NavItems MenuBranch="@MenuTree"></NavItems>
         break;
 }

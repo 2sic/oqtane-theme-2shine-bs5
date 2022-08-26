@@ -1,21 +1,17 @@
-﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
+﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 @inherits NavItem;
 
-@if(PageNavigator != null)
-{
-    <li class="@LiClasses()">
-        <a class="@AClasses()" href="@LinkHref()">
-            @PageNavigator.CurrentPage.Name
-        </a>
+<li class="@LiClasses()">
+    <a class="@AClasses()" href="@LinkHref()">
+        @MenuBranch.Page.Name
+    </a>
 
-        @if(PageNavigator.HasChildren)
-        {
-            <span class='nav-item-sub-opener @(PageNavigator.CurrentPage.PageId == PageState.Page.PageId ? "" : "collapsed")'
-                data-bs-toggle="@(PageNavigator.HasChildren ? "collapse"  : "")" 
-                data-bs-target="@(PageNavigator.HasChildren ? ".collapse-" + @PageNavigator.CurrentPage.PageId : "")" 
-            ></span>
-            <NavItemsSidebar PageNavigator="PageNavigator"></NavItemsSidebar>
-        }
-    </li>
-}
-
+    @if (MenuBranch.HasChildren)
+    {
+        <span class='nav-item-sub-opener @(MenuBranch.Page.PageId == PageState.Page.PageId ? "" : "collapsed")'
+            data-bs-toggle="@(MenuBranch.HasChildren ? "collapse"  : "")" 
+            data-bs-target="@(MenuBranch.HasChildren ? ".collapse-" + MenuBranch.Page.PageId : "")" 
+        ></span>
+        <NavItemsSidebar MenuBranch="MenuBranch"></NavItemsSidebar>
+    }
+</li>

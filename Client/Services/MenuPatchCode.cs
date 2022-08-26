@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Oqtane.Models;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Nav
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
 {
     internal class MenuPatchCode
     {

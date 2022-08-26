@@ -1,19 +1,19 @@
 ﻿@inherits MenuBase;
 @using Microsoft.AspNetCore.Components;
 @using Oqtane.Themes.Controls;
-@using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
+@using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 @code {
     [Parameter]
-    public PageNavigator PageNavigator { get; set; }
+    public MenuBranch MenuBranch { get; set; }
 }
 
-@if (PageNavigator.HasChildren)
+@if (MenuBranch.HasChildren)
 {
-    <ul class="@(PageNavigator.NavigationLevel == 0 ? "navbar-nav" : "dropdown-menu")">
-        @foreach(var pageNav in PageNavigator.Children)
+    <ul class="@(MenuBranch.MenuLevel == 0 ? "navbar-nav" : "dropdown-menu")">
+        @foreach(var pageNav in MenuBranch.Children)
         {
-            <NavItem PageNavigator="pageNav"></NavItem>
+            <NavItem MenuBranch="pageNav"></NavItem>
         }
     </ul>
 }

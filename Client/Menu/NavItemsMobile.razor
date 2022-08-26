@@ -1,12 +1,12 @@
-﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Nav;
+﻿@using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 @inherits NavItems;
 
-@if (PageNavigator.HasChildren)
+@if (MenuBranch.HasChildren)
 {
-    <ul class="@(PageNavigator.NavigationLevel == 0 ? "navbar-nav" : UlClasses())">
-        @foreach(var pageNav in PageNavigator.Children)
+    <ul class="@(MenuBranch.MenuLevel == 0 ? "navbar-nav" : UlClasses())">
+        @foreach(var pageNav in MenuBranch.Children)
         {
-            <NavItemMobile PageNavigator="pageNav"></NavItemMobile>
+            <NavItemMobile MenuBranch="pageNav"></NavItemMobile>
         }
     </ul>
 }
@@ -14,6 +14,6 @@
 @code{
     private string UlClasses()
     {
-        return "ul-collapse collapse collapse-" + @PageNavigator.CurrentPage.PageId;
+        return "ul-collapse collapse collapse-" + MenuBranch.Page.PageId;
     }
 }

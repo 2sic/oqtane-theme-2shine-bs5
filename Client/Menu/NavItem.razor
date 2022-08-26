@@ -1,17 +1,14 @@
 ﻿@inherits MenuBase;
 
-@if(PageNavigator != null)
-{
-    <li class="@LiClasses()">
-        <a class="@AClasses()" href="@LinkHref()" 
-            data-bs-toggle="@(PageNavigator.CurrentPage.HasChildren && PageNavigator.CurrentPage.IsClickable == false ? "dropdown" : "")"
-        >
-            @PageNavigator.CurrentPage.Name
-        </a>
+<li class="@LiClasses()">
+    <a class="@AClasses()" href="@LinkHref()" 
+        data-bs-toggle="@(MenuBranch.Page.HasChildren && MenuBranch.Page.IsClickable == false ? "dropdown" : "")"
+    >
+        @MenuBranch.Page.Name
+    </a>
 
-        @if(PageNavigator.HasChildren)
-        {
-            <NavItems PageNavigator="PageNavigator"></NavItems>
-        }
-    </li>
-}
+    @if (MenuBranch.HasChildren)
+    {
+        <NavItems MenuBranch="MenuBranch"></NavItems>
+    }
+</li>
