@@ -13,6 +13,10 @@ public class MenuBranch
     /// </summary>
     protected virtual MenuTree Tree { get; }
 
+    internal string Classes(string tag) => Css.Classes(tag);
+    internal MenuCssOfBranch Css => _menuCssOfBranch ??= new MenuCssOfBranch(Tree.Config.MenuCss, this);
+    private MenuCssOfBranch _menuCssOfBranch;
+
     /// <summary>
     /// Current Page
     /// </summary>

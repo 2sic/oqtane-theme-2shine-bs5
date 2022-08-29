@@ -14,41 +14,53 @@ public class MenuCss
 {
     public MenuCss(MenuCssConfig config)
     {
-        Configs = new List<MenuCssConfig> { MenuCssDefaults, config };
+        Configs = new List<MenuCssConfig> { MenuCssDefaultsTODOMergeIn, config };
     }
     internal List<MenuCssConfig> Configs { get; }
 
     public Func<MenuBranch, string> LinkCustom;
     public Func<MenuBranch, string> ItemCustom;
 
-    public string LinkClasses(MenuBranch branch)
+    public string ClassesA(MenuBranch branch)
     {
-        //var classes = new List<string>();
-        ////if (LinkCustom != null)
-        ////    classes.Add(LinkCustom.Invoke(branch));
+        var classes = TagClasses("a", branch, Configs.Select(c => c.A), LinkCustom);
 
-        //classes.AddRange(TagClasses(branch, Configs.Select(c => c.A), LinkCustom));
-        var classes = TagClasses(branch, Configs.Select(c => c.A), LinkCustom);
+        return ListToClasses(classes, branch.Page.PageId);
+    }
+    public string ClassesUl(MenuBranch branch)
+    {
+        var classes = TagClasses("ul", branch, Configs.Select(c => c.Ul), null);
 
         return ListToClasses(classes, branch.Page.PageId);
     }
 
-    private List<string> TagClasses(MenuBranch branch, IEnumerable<MenuCssTagConfig> config, Func<MenuBranch, string> custom)
+    private List<string> TagClasses(string tag, MenuBranch branch, IEnumerable<MenuCssTagConfig> tagConfigs, Func<MenuBranch, string> custom)
     {
-        var confs = config
+        var configs = tagConfigs
             .Where(c => c != null)
             .ToList();
 
         var classes = new List<string>();
-        classes.AddRange(confs.Select(c => c.Classes));
+        classes.AddRange(configs.Select(c => c.Classes));
 
-        classes.AddRange(confs.Select(c
+        classes.AddRange(configs.Select(c
             => branch.IsActive ? c.Active : c.NotActive));
 
-        classes.AddRange(confs.Select(c
+        classes.AddRange(configs.Select(c
             => branch.HasChildren ? c.HasChildren : c.NoChildren));
-        classes.AddRange(confs.Select(c
+        classes.AddRange(configs.Select(c
             => branch.Page.IsClickable ? c.Enabled : c.Disabled));
+
+        // See if there are any css for this level or for not-specified levels
+        var levelCss = configs
+            .Select(c => c.ByLevel == null
+                ? null
+                : c.ByLevel.TryGetValue(branch.MenuLevel, out var levelClasses)
+                    ? levelClasses
+                    : c.ByLevel.TryGetValue(PlaceHolderLevelOther, out var levelClassesDefault)
+                        ? levelClassesDefault
+                        : null);
+        classes.AddRange(levelCss);
 
         if (custom != null)
             classes.Add(custom.Invoke(branch));
@@ -56,16 +68,12 @@ public class MenuCss
         return classes;
     }
 
-    public string LiClasses(MenuBranch branch)
+    public string ClassesLi(MenuBranch branch)
     {
         var classes = new List<string>();
         classes.AddRange(CommonLiClasses(branch));
 
-        classes.AddRange(TagClasses(branch, Configs.Select(c => c.Li), ItemCustom));
-
-        //if (ItemCustom != null)
-        //    classes.Add(ItemCustom.Invoke(branch));
-
+        classes.AddRange(TagClasses("li", branch, Configs.Select(c => c.Li), ItemCustom));
 
         return ListToClasses(classes, branch.Page.PageId);
     }

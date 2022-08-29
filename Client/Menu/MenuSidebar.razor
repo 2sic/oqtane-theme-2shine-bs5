@@ -1,14 +1,8 @@
 ﻿@inherits MenuMain;
 
-@code {
-    private string UlClasses()
-    {
-        return "ul-collapse collapse collapse-" + MenuBranch.Page.PageId;
-    }
-}
 @if (MenuBranch.HasChildren)
 {
-    <ul class="@(MenuBranch.MenuLevel == 0 ? "navbar-nav" : UlClasses())">
+    <ul class="@MenuBranch.Classes("ul")">
         @foreach(var pageNav in MenuBranch.Children)
         {
             <NavItemSidebar MenuBranch="pageNav"></NavItemSidebar>

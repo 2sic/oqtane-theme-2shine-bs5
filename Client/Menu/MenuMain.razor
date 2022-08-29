@@ -10,7 +10,7 @@
 
 @if (MenuBranch.HasChildren)
 {
-    <ul class="@(MenuBranch.MenuLevel == 0 ? "navbar-nav" : "dropdown-menu")">
+    <ul class="@MenuBranch.Classes("ul")">
         @foreach(var pageNav in MenuBranch.Children)
         {
             <MenuItem MenuBranch="pageNav"></MenuItem>

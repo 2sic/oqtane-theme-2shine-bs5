@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models
 {
@@ -56,5 +57,9 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models
         /// - blank / null, to use another start ???
         /// </summary>
         string Start { get; set; }
+
+        string CssConfig { get; set; }
+
+        MenuCss MenuCss { get; set; }
     }
 }

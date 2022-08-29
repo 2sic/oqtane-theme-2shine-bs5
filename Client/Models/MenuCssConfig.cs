@@ -1,8 +1,10 @@
-﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models
+﻿using System.Collections.Generic;
+
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models
 {
     public class MenuCssConfig
     {
-        public MenuCssTagConfig OlUl { get; set; }
+        public MenuCssTagConfig Ul { get; set; }
         public MenuCssTagConfig Li { get; set; }
         public MenuCssTagConfig A { get; set; }
     }
@@ -10,6 +12,9 @@
     public class MenuCssTagConfig
     {
         public string Classes { get; set; }
+        
+        public Dictionary<int, string> ByLevel { get; set; }
+
         public string Active { get; set; }
         public string NotActive { get; set; }
 

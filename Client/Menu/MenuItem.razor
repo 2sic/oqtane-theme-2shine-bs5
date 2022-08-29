@@ -4,8 +4,8 @@
 {
     protected override MenuCss MenuCss => ThemeCss.MenuCssMain;
 }
-<li class="@MenuCss.LiClasses(MenuBranch)">
-    <a class="@MenuCss.LinkClasses(MenuBranch)" href="@GetUrl()" 
+<li class="@MenuCss.ClassesLi(MenuBranch)">
+    <a class="@MenuCss.ClassesA(MenuBranch)" href="@GetUrl()" 
         data-bs-toggle="@(MenuBranch.Page.HasChildren && MenuBranch.Page.IsClickable == false ? "dropdown" : "")"
     >
         @MenuBranch.Page.Name

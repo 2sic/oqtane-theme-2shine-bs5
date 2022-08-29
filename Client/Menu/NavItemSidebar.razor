@@ -4,8 +4,8 @@
 {
     protected override MenuCss MenuCss => ThemeCss.MenuCssSidebar;
 }
-<li class="@MenuCss.LiClasses(MenuBranch)">
-    <a class="@MenuCss.LinkClasses(MenuBranch)" href="@GetUrl()">
+<li class="@MenuCss.ClassesLi(MenuBranch)">
+    <a class="@MenuCss.ClassesA(MenuBranch)" href="@GetUrl()">
         @MenuBranch.Page.Name
     </a>
 

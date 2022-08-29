@@ -31,6 +31,13 @@ public class MenuTreeService
             config = navConfig.Overrule(config);
         }
 
+        // See if we have a default configuration for CSS which should be applied
+        var cssConfigName = config.CssConfig;
+        if (string.IsNullOrWhiteSpace(cssConfigName)) cssConfigName = configName;
+        var menuCss = ThemeCss.MenuCssDefaults.TryGetValue(cssConfigName, out var themeCss) ? themeCss : null;
+        if (menuCss != null)
+            config = config.Overrule(new MenuConfig(config) { MenuCss = menuCss });
+
         return new MenuTree(config, pageState.Pages, menuPages, pageState.Page);
     }
 

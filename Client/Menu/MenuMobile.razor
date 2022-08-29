@@ -2,17 +2,10 @@
 
 @if (MenuBranch.HasChildren)
 {
-    <ul class="@(MenuBranch.MenuLevel == 0 ? "navbar-nav" : UlClasses())">
+    <ul class="@MenuBranch.Classes("ul")">
         @foreach(var pageNav in MenuBranch.Children)
         {
             <NavItemMobile MenuBranch="pageNav"></NavItemMobile>
         }
     </ul>
-}
-
-@code{
-    private string UlClasses()
-    {
-        return "ul-collapse collapse collapse-" + MenuBranch.Page.PageId;
-    }
 }

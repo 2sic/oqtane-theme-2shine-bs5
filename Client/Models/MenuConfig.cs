@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models;
 
@@ -20,6 +21,9 @@ public class MenuConfig: IMenuConfig
         PageList = original.PageList;
         Start = original.Start;
         StartLevel = original.StartLevel;
+
+        CssConfig = original.CssConfig;
+        MenuCss = original.MenuCss;
     }
 
     public MenuConfig Overrule(MenuConfig overrule)
@@ -34,6 +38,9 @@ public class MenuConfig: IMenuConfig
         if (overrule.PageList != default) newMc.PageList = overrule.PageList;
         if (overrule.Start != default) newMc.Start = overrule.Start;
         if (overrule.StartLevel != default) newMc.StartLevel = overrule.StartLevel;
+
+        if (overrule.CssConfig != default) newMc.CssConfig = overrule.CssConfig;
+        if (overrule.MenuCss != default) newMc.MenuCss = overrule.MenuCss;
         return newMc;
     }
 
@@ -72,4 +79,7 @@ public class MenuConfig: IMenuConfig
     /// <inheritdoc />
     public int? StartLevel { get; set; }
     public const int StartLevelDefault = 0;
+
+    public string CssConfig { get; set; }
+    public MenuCss MenuCss { get; set; }
 }
