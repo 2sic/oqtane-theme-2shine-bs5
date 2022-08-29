@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 
@@ -95,8 +94,12 @@ internal class ThemeCss
     
     public static Dictionary<string, MenuDesign> MenuDesignDefaults = new()
     {
-        { MenuDefault, MenuDesignFallback },
         {
+            // The Default design, if not overridden by the JSON
+            MenuDefault, MenuDesignFallback
+        },
+        {
+            // The Design configuration for Mobile menus, if not overridden by the JSON
             MenuMobile, new()
             {
                 Parts = new()
@@ -123,7 +126,6 @@ internal class ThemeCss
                         {
                             ByLevel = new()
                             {
-                                // Standard navbar-nav BS5
                                 { 0, "navbar-nav" },
                                 // todo: doc why collapse-PageId
                                 { PlaceHolderLevelOther, $"collapse to-shine-submenu-mob-{PlaceHolderPageId}" },
@@ -134,6 +136,7 @@ internal class ThemeCss
             }
         },
         {
+            // Design configuration for the Sidebar, if not overridden by the JSON
             MenuSidebar, new()
             {
                 Parts = new()
