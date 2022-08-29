@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Components;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Components;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Menu;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Controls.Menu;
 
 public abstract class ToShineMenuBase: Oqtane.Themes.Controls.MenuBase
 {
