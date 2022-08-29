@@ -1,11 +1,7 @@
 ﻿@inherits MenuListBase;
 
-@code
-{
-    protected override MenuCss MenuCss => ThemeCss.MenuCssMobile;
-}
-<li class="@MenuCss.ClassesLi(MenuBranch)">
-    <a class="@MenuCss.ClassesA(MenuBranch)" href="@GetUrl()">
+<li class="@MenuBranch.Classes("li")">
+    <a class="@MenuBranch.Classes("a")" href="@GetUrl()">
         @MenuBranch.Page.Name
     </a>
 

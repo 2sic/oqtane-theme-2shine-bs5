@@ -14,7 +14,7 @@
         public string Classes(string tag) =>
             tag switch
             {
-                "a" => _menuCss.ClassesUl(_branch),
+                "a" => _menuCss.ClassesA(_branch),
                 "li" => _menuCss.ClassesLi(_branch),
                 "ul" => _menuCss.ClassesUl(_branch),
                 _ => ""
