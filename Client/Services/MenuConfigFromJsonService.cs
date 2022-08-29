@@ -4,16 +4,33 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
 {
     public class MenuConfigFromJsonService
     {
-        public MenuConfigCatalog JsonConfig => _menuConfigCatalog ??= LoadJson();
-        private MenuConfigCatalog _menuConfigCatalog;
+        public bool HasMenu(string name) => !string.IsNullOrWhiteSpace(name)
+                                            && (JsonConfig?.Menus?.ContainsKey(name) ?? false);
 
-        private MenuConfigCatalog LoadJson()
+        public MenuConfig GetMenu(string name)
+        {
+            if (!HasMenu(name)) return null;
+            var config = JsonConfig.Menus[name];
+            if (config.ConfigName != name)
+                config.ConfigName = name;
+            return config;
+        }
+
+        public bool HasDesign(string name) => !string.IsNullOrWhiteSpace(name)
+                                              && (JsonConfig?.Designs?.ContainsKey(name) ?? false);
+
+        public MenuDesign GetDesign(string name) => HasDesign(name) ? JsonConfig.Designs[name] : null;
+
+        protected MenuConfigJson JsonConfig => _menuConfigJson ??= LoadJson();
+        private MenuConfigJson _menuConfigJson;
+
+        private MenuConfigJson LoadJson()
         {
             var jsonFileName = $"{Defaults.WwwRoot}/{AssetUrls.ThemePath}/{Defaults.NavigationJsonFile}";
             try
             {
                 var jsonString = System.IO.File.ReadAllText(jsonFileName);
-                var result = System.Text.Json.JsonSerializer.Deserialize<MenuConfigCatalog>(jsonString)!;
+                var result = System.Text.Json.JsonSerializer.Deserialize<MenuConfigJson>(jsonString)!;
 
                 return result;
             }
@@ -21,7 +38,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
             {
                 throw;//wip
                 // probably no json file found?
-                return new MenuConfigCatalog();
+                return new MenuConfigJson();
             }
         }
 

@@ -11,11 +11,11 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 /// </summary>
 public class MenuCss
 {
-    public MenuCss(MenuCssConfig config)
+    public MenuCss(MenuDesign config)
     {
-        Configs = new List<MenuCssConfig> { config };
+        Configs = new List<MenuDesign> { config };
     }
-    internal List<MenuCssConfig> Configs { get; }
+    internal List<MenuDesign> Configs { get; }
 
     public string Classes(string tag, MenuBranch branch)
     {
@@ -29,22 +29,22 @@ public class MenuCss
             : "";
     }
 
-    private List<string> TagClasses(MenuBranch branch, IEnumerable<MenuCssTagConfig> tagConfigs)
+    private List<string> TagClasses(MenuBranch branch, List<MenuPartCssConfig> configs)
     {
-        var configs = tagConfigs
-            .Where(c => c != null)
-            .ToList();
+        //var configs = tagConfigs
+        //    .Where(c => c != null)
+        //    .ToList();
 
         var classes = new List<string>();
         classes.AddRange(configs.Select(c => c.Classes));
 
         classes.AddRange(configs.Select(c
-            => branch.IsActive ? c.Active : c.NotActive));
+            => branch.IsActive ? c.Active : c.ActiveFalse));
 
         classes.AddRange(configs.Select(c
-            => branch.HasChildren ? c.HasChildren : c.NoChildren));
+            => branch.HasChildren ? c.HasChildren : c.HasChildrenFalse));
         classes.AddRange(configs.Select(c
-            => branch.Page.IsClickable ? c.Enabled : c.Disabled));
+            => branch.Page.IsClickable ? c.DisabledFalse : c.Disabled));
 
         // See if there are any css for this level or for not-specified levels
         var levelCss = configs
@@ -56,11 +56,6 @@ public class MenuCss
                         ? levelClassesDefault
                         : null);
         classes.AddRange(levelCss);
-
-        // First/Last ATM not implemented
-        // as it should be doable with CSS li:first-child() etc.
-        //classes.AddRange(configs.Select(c
-        //    => branch.Page.Order == 1 ? c.OrderIsFirst : null));
 
         return classes;
     }

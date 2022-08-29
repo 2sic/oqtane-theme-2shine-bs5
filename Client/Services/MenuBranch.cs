@@ -13,9 +13,9 @@ public class MenuBranch
     /// </summary>
     protected virtual MenuTree Tree { get; }
 
-    internal string Classes(string tag) => Tree.Config.MenuCss.Classes(tag, this); // Css.Classes(tag);
-    //internal MenuCssOfBranch Css => _menuCssOfBranch ??= new MenuCssOfBranch(Tree.Config.MenuCss, this);
-    //private MenuCssOfBranch _menuCssOfBranch;
+    internal string Classes(string tag) => Tree.Design.Classes(tag, this);
+
+    public virtual string Debug => Tree.Debug;
 
     /// <summary>
     /// Current Page
@@ -49,7 +49,7 @@ public class MenuBranch
     [return: NotNull]
     protected List<MenuBranch> GetChildren()
     {
-        var levelsRemaining = (Tree.Config.LevelDepth ?? MenuConfig.LevelDepthDefault) - MenuLevel + 1;
+        var levelsRemaining = (Tree.Config.Depth ?? MenuConfig.LevelDepthDefault) - MenuLevel + 1;
         return levelsRemaining <= 0
             ? new List<MenuBranch>()
             : GetChildPages()
@@ -58,14 +58,9 @@ public class MenuBranch
     }
 
 
-
-
-    protected virtual List<Page> GetChildPages()
-    {
-        return Page == null
-            ? new List<Page> { ErrPage(-1, "Error: No current page found") }
-            : ChildrenOf(Page.PageId);
-    }
+    protected virtual List<Page> GetChildPages() => Page == null
+        ? new List<Page> { ErrPage(-1, "Error: No current page found") }
+        : ChildrenOf(Page.PageId);
 
     protected List<Page> ChildrenOf(int pageId)
         => Tree.MenuPages.Where(p => p.ParentId == pageId).ToList();

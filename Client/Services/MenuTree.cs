@@ -9,25 +9,29 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
 {
     public class MenuTree : MenuBranch
     {
-        public IMenuConfig Config { get; }
-        public List<Page> AllPages { get; }
+        internal IMenuConfig Config { get; }
+        private List<Page> AllPages { get; }
 
         /// <summary>
         /// Pages in the menu according to Oqtane pre-processing
         /// Should be limited to pages which should be in the menu, visible and permissions ok. 
         /// </summary>
-        public List<Page> MenuPages;
-
-        public List<string> DebugLog = new();
+        internal List<Page> MenuPages;
 
         protected override MenuTree Tree => this;
 
-        public MenuTree([NotNull] IMenuConfig config, [NotNull] List<Page> allPages, [NotNull] List<Page> menuPages, [NotNull] Page page)
+        internal MenuCss Design => _menuCss ??= new MenuCss((Config as MenuConfig)?.MenuCss);
+        private MenuCss _menuCss;
+
+        public override string Debug { get; }
+
+        public MenuTree([NotNull] IMenuConfig config, [NotNull] List<Page> allPages, [NotNull] List<Page> menuPages, [NotNull] Page page, string debug)
             : base(null, 0, page)
         {
             Config = config;
             AllPages = allPages;
             MenuPages = menuPages;
+            Debug = debug;
 
             // Bug in Oqtane 3.2 and before: Level isn't hydrated
             if (allPages.All(p => p.Level == 0))

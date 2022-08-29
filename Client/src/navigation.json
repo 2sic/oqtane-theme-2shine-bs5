@@ -1,26 +1,46 @@
 {
-  "Configurations": {
+  "Menus": {
     "Main": {
-      "LevelDepth": 1,
       "Start": "*",
-      "ConfigName": "Main"
+      "Depth": 1
     },
     "Mobile": {
-      "LevelDepth": 2,
       "Start": "*",
-      "ConfigName": "Mobile"
+      "Depth": 2
     },
     "Sidebar": {
-      "LevelDepth": 2,
       "Start": "*",
-      "ConfigName": "Sidebar"
+      "Depth": 2,
+      "Design": "SidebarXXX"
     },
     "ImprintPrivacy": {
-      "LevelDepth": 0,
+      "Depth": 0,
       "PageList": [
         28,
         31
       ]
+    }
+  },
+  "Designs": {
+    "SidebarXXX": {
+      "Parts": {
+        "a": {
+          "Classes": "nav-link",
+          "Active": "active"
+        },
+        "li": {
+          "Classes": "nav-item nav-PAGEID position-relative",
+          "HasChildren": "has-child",
+          "Active": "active",
+          "Disabled": "disabled"
+        },
+        "ul": {
+          "ByLevel": {
+            "0": "navbar-nav XYZ",
+            "-1": "collapse to-shine-submenu-PAGEID"
+          }
+        }
+      }
     }
   }
 }

@@ -1,8 +1,13 @@
 ﻿using System.Collections.Generic;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
-
+// TODO
+// - LevelSkip and StartLevel are confusing terms, not sure what each one does
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models
 {
+    /// <summary>
+    /// Interface which describes what a menu config contains.
+    /// It must be an interface, because it's used for data in code, in json, as well as on Blazor components. 
+    /// </summary>
     public interface IMenuConfig
     {
         /// <summary>
@@ -23,7 +28,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models
         /// The number is ??? relative,
         /// so if the navigation starts an level 2 then levelDepth 2 means to show levels 2 & 3 ??? verify
         /// </summary>
-        int? LevelDepth { get; set; }
+        int? Depth { get; set; }
 
         /// <summary>
         /// Levels to skip from the initial stating point.
@@ -42,8 +47,8 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models
 
         /// <summary>
         /// The level this menu should start from.
+        /// - 0 is the top level (default)
         /// - 1 is the top level containing home and other pages
-        /// - 
         /// </summary>
         int? StartLevel { get; set; }
 
@@ -58,8 +63,8 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models
         /// </summary>
         string Start { get; set; }
 
-        string CssConfig { get; set; }
+        string Design { get; set; }
 
-        MenuCss MenuCss { get; set; }
+        //MenuDesign MenuCss { get; set; }
     }
 }

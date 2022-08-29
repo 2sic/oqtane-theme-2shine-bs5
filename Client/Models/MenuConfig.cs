@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models;
 
 public class MenuConfig: IMenuConfig
 {
     /// <summary>
-    /// Empty constructor is important for deserialization
+    /// Empty constructor is important for JSON deserialization
     /// </summary>
     public MenuConfig() { }
 
@@ -15,31 +14,33 @@ public class MenuConfig: IMenuConfig
         ConfigName = original.ConfigName;
         Debug = original.Debug;
         Display = original.Display;
-        LevelDepth = original.LevelDepth;
+        Depth = original.Depth;
         LevelSkip = original.LevelSkip;
         //NavClasses = original.NavClasses;
         PageList = original.PageList;
         Start = original.Start;
         StartLevel = original.StartLevel;
 
-        CssConfig = original.CssConfig;
-        MenuCss = original.MenuCss;
+        Design = original.Design;
+        MenuCss = (original as MenuConfig)?.MenuCss;
     }
 
     public MenuConfig Overrule(MenuConfig overrule)
     {
         var newMc = new MenuConfig(this);
+        if (overrule == null) return newMc;
         if (overrule.ConfigName != default) newMc.ConfigName = overrule.ConfigName;
         if (overrule.Debug != default) newMc.Debug = overrule.Debug;
         if (overrule.Display != default) newMc.Display = overrule.Display;
-        if (overrule.LevelDepth != default) newMc.LevelDepth = overrule.LevelDepth;
+        if (overrule.Depth != default) newMc.Depth = overrule.Depth;
         if (overrule.LevelSkip != default) newMc.LevelSkip = overrule.LevelSkip;
         // NavClasses
         if (overrule.PageList != default) newMc.PageList = overrule.PageList;
         if (overrule.Start != default) newMc.Start = overrule.Start;
         if (overrule.StartLevel != default) newMc.StartLevel = overrule.StartLevel;
 
-        if (overrule.CssConfig != default) newMc.CssConfig = overrule.CssConfig;
+        if (overrule.Design != default) newMc.Design = overrule.Design;
+        // var typed = overrule as MenuConfig;
         if (overrule.MenuCss != default) newMc.MenuCss = overrule.MenuCss;
         return newMc;
     }
@@ -60,12 +61,12 @@ public class MenuConfig: IMenuConfig
     public const bool DisplayDefault = true;
 
     /// <inheritdoc />
-    public int? LevelDepth { get; set; } = 0;
-    public const int LevelDepthDefault = 0;
+    public int? Depth { get; set; } = 0;
+    public const int LevelDepthDefault = default;
 
     /// <inheritdoc />
-    public int? LevelSkip { get; set; } = 0;
-    public const int LevelSkipDefault = 0;
+    public int? LevelSkip { get; set; }
+    public const int LevelSkipDefault = default;
 
     /// <inheritdoc />
     public List<int> PageList { get; set; }
@@ -78,8 +79,9 @@ public class MenuConfig: IMenuConfig
 
     /// <inheritdoc />
     public int? StartLevel { get; set; }
-    public const int StartLevelDefault = 0;
+    public const int StartLevelDefault = default;
 
-    public string CssConfig { get; set; }
-    public MenuCss MenuCss { get; set; }
+    public string Design { get; set; }
+    // todo: name, maybe not on interface
+    public MenuDesign MenuCss { get; set; }
 }

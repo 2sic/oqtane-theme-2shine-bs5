@@ -2,11 +2,11 @@
 
 @if (MenuBranch.HasChildren)
 {
-    <ul class="@MenuBranch.Classes("ul")">
+    <ul class='@MenuBranch.Classes("ul")' data-debug='@MenuBranch.Debug'>
         @foreach(var subBranch in MenuBranch.Children)
         {
-            <li class="@subBranch.Classes("li")">
-                <a class="@subBranch.Classes("a")" href="@GetUrl(subBranch)">
+            <li class='@subBranch.Classes("li")'>
+                <a class='@subBranch.Classes("a")' href='@GetUrl(subBranch)'>
                     @subBranch.Page.Name
                 </a>
 
@@ -14,9 +14,8 @@
                 {
                     @* todo: in-path *@
                     <span class='nav-item-sub-opener @(subBranch.IsActive ? "" : "collapsed")'
-                          data-bs-toggle="@(subBranch.HasChildren ? "collapse"  : "")" 
-                          data-bs-target="@(subBranch.HasChildren ? ".collapse-" + subBranch.Page.PageId : "")" 
-                    ></span>
+                        data-bs-toggle='@(subBranch.HasChildren ? "collapse"  : "")'
+                        data-bs-target='@(subBranch.HasChildren ? ".to-shine-submenu-" + subBranch.Page.PageId : "")'></span>
                     <MenuSidebar MenuBranch="@subBranch"></MenuSidebar>
                 }
             </li>

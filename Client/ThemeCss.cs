@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client;
@@ -44,8 +45,11 @@ internal class ThemeCss
     public const string MenuDefault = "Main";
     public const string MenuMobile = "Mobile";
     public const string MenuSidebar = "Sidebar";
+    public const string MenuDesignDefault = "Default";
 
-    public static MenuCss MenuCssMain = new(new()
+    // TODO: Review if we should have a menu-id, as otherwise multiple menus open/collapse together
+
+    public static MenuDesign MenuDesignFallback = new()
     {
         Parts = new()
         {
@@ -53,7 +57,6 @@ internal class ThemeCss
                 "a", new()
                 {
                     Active = "active",
-                    NotActive = "",
                     HasChildren = "dropdown-toggle",
                     ByLevel = new()
                     {
@@ -69,9 +72,7 @@ internal class ThemeCss
                     Classes = $"nav-item nav-{PlaceHolderPageId}",
                     HasChildren = "has-child dropdown",
                     Active = "active",
-                    NotActive = "inactive",
                     Disabled = "disabled",
-                    OrderIsFirst = "first",
                 }
 
             },
@@ -86,84 +87,81 @@ internal class ThemeCss
                 }
             }
         },
-    });
-
-    public static MenuCss MenuCssSidebar = new(new()
+    };
+    
+    public static Dictionary<string, MenuDesign> MenuDesignDefaults = new()
     {
-        Parts = new()
+        { MenuDefault, MenuDesignFallback },
         {
+            MenuMobile, new()
             {
-                "a", new()
+                Parts = new()
                 {
-                    Classes = "nav-link",
-                    Active = "active",
-                }
-            },
-            {
-                "li", new()
-                {
-                    Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
-                    HasChildren = "has-child",
-                    Active = "active",
-                    NotActive = "inactive",
-                    Disabled = "disabled",
-                    OrderIsFirst = "first",
-                }
-            },
-            {
-                "ul", new()
-                {
-                    ByLevel = new()
                     {
-                        { 0, "navbar-nav" },
-                        { PlaceHolderLevelOther, $"collapse collapse-{PlaceHolderPageId}" },
+                        "a", new()
+                        {
+                            Classes = "nav-link mobile-navigation-link",
+                            Active = "active",
+                        }
                     },
-                }
-            },
+                    {
+                        "li", new()
+                        {
+                            Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
+                            HasChildren = "has-child",
+                            // todo: make sure that all the LIs or ULs in the breadcrumb don't have collapse ... or with "show"
+                            Active = "active",
+                            Disabled = "disabled",
+                        }
+                    },
+                    {
+                        "ul", new()
+                        {
+                            ByLevel = new()
+                            {
+                                // Standard navbar-nav BS5
+                                { 0, "navbar-nav" },
+                                // todo: doc why collapse-PageId
+                                { PlaceHolderLevelOther, $"collapse to-shine-submenu-mob-{PlaceHolderPageId}" },
+                            },
+                        }
+                    },
+                },
+            }
         },
-    });
-
-    public static MenuCss MenuCssMobile = new(new()
-    {
-        Parts = new()
         {
+            MenuSidebar, new()
             {
-                "a", new()
+                Parts = new()
                 {
-                    Classes = "nav-link mobile-navigation-link",
-                    Active = "active",
-                }
-            },
-            {
-                "li", new()
-                {
-                    Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
-                    HasChildren = "has-child",
-                    // todo: make sure that all the LIs or ULs in the breadcrumb don't have collapse
-                    Active = "active",
-                    NotActive = "inactive",
-                    Disabled = "disabled",
-                }
-            },
-            {
-                "ul", new()
-                {
-                    ByLevel = new()
                     {
-                        // Standard navbar-nav BS5
-                        { 0, "navbar-nav" },
-                        // todo: doc why collapse-PageId
-                        { PlaceHolderLevelOther, $"collapse collapse-{PlaceHolderPageId}" },
+                        "a", new()
+                        {
+                            Classes = "nav-link",
+                            Active = "active",
+                        }
                     },
-                }
-            },
+                    {
+                        "li", new()
+                        {
+                            Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
+                            HasChildren = "has-child",
+                            Active = "active",
+                            Disabled = "disabled",
+                        }
+                    },
+                    {
+                        "ul", new()
+                        {
+                            ByLevel = new()
+                            {
+                                { 0, "navbar-nav" },
+                                { PlaceHolderLevelOther, $"collapse to-shine-submenu-{PlaceHolderPageId}" },
+                            },
+                        }
+                    },
+                },
+            }
         },
-    });
-
-    public static Dictionary<string, MenuCss> MenuCssDefaults = new()
-    {
-        { MenuDefault, MenuCssMain },
-        { MenuMobile, MenuCssMobile },
-        { MenuSidebar, MenuCssSidebar },
     };
 }
