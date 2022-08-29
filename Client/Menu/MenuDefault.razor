@@ -7,17 +7,15 @@
         {
             <li class="@subBranch.Classes("li")">
                 <a class="@subBranch.Classes("a")" href="@GetUrl(subBranch)"
+                   data-bs-toggle="@(subBranch.Page.HasChildren && subBranch.Page.IsClickable == false ? "dropdown" : "")"
                    >@subBranch.Page.Name</a>
 
                 @if (subBranch.HasChildren)
                 {
-                    <span class='nav-item-sub-opener collapsed'
-                          data-bs-toggle="@(subBranch.HasChildren ? "collapse"  : "")" 
-                          data-bs-target="@(subBranch.HasChildren ? ".collapse-" + subBranch.Page.PageId : "")" 
-                    ></span>
-                    <MenuMobile MenuBranch="@subBranch"></MenuMobile>
+                    <MenuDefault MenuBranch="@subBranch"></MenuDefault>
                 }
             </li>
         }
     </ul>
 }
+

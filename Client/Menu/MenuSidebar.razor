@@ -1,11 +1,25 @@
-﻿@inherits MenuMain;
+﻿@inherits ToShineMenuBase;
 
 @if (MenuBranch.HasChildren)
 {
     <ul class="@MenuBranch.Classes("ul")">
-        @foreach(var pageNav in MenuBranch.Children)
+        @foreach(var subBranch in MenuBranch.Children)
         {
-            <NavItemSidebar MenuBranch="pageNav"></NavItemSidebar>
+            <li class="@subBranch.Classes("li")">
+                <a class="@subBranch.Classes("a")" href="@GetUrl(subBranch)">
+                    @subBranch.Page.Name
+                </a>
+
+                @if (subBranch.HasChildren)
+                {
+                    @* todo: in-path *@
+                    <span class='nav-item-sub-opener @(subBranch.IsActive ? "" : "collapsed")'
+                          data-bs-toggle="@(subBranch.HasChildren ? "collapse"  : "")" 
+                          data-bs-target="@(subBranch.HasChildren ? ".collapse-" + subBranch.Page.PageId : "")" 
+                    ></span>
+                    <MenuSidebar MenuBranch="@subBranch"></MenuSidebar>
+                }
+            </li>
         }
     </ul>
 }
