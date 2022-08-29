@@ -1,11 +1,12 @@
-﻿@inherits ToSic.Oqt.Themes.ToShineBs5.Client.Layouts.Default
+﻿@inherits Default
 @*
-    File Purpose:       Theme which shows the content *centered* on the page
-    Recommendations:    -
-    Nice to know:       Inherits from the Default.razor, so all code is there
-                        The few variables below adjust how the Default.razor will create the output
-                        ...but most of it is just some body classes + show/hide certain menus
-                        It needs the BuildRenderTree to basically just run the base class
+File Purpose:       Theme which shows the content *centered* on the page
+Recommendations:    -
+Nice to know:
+    - Inherits from the Default.razor, so all code is there
+    - The few variables below adjust how the Default.razor will create the output
+      ...but most of it is just some body classes + show/hide certain menus
+    - It needs the BuildRenderTree to basically just run the base class
 *@
 @code {
     public override string Name => "Centered";
