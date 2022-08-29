@@ -4,9 +4,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models
 {
     public class MenuCssConfig
     {
-        public MenuCssTagConfig Ul { get; set; }
-        public MenuCssTagConfig Li { get; set; }
-        public MenuCssTagConfig A { get; set; }
+        public Dictionary<string, MenuCssTagConfig> Parts { get; set; } = new();
     }
 
     public class MenuCssTagConfig
@@ -23,5 +21,8 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models
 
         public string Disabled { get; set; }
         public string Enabled { get; set; }
+
+        // @2tl needed?
+        public string OrderIsFirst { get; set; }
     }
 }

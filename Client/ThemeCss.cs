@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client;
@@ -46,97 +45,116 @@ internal class ThemeCss
     public const string MenuMobile = "Mobile";
     public const string MenuSidebar = "Sidebar";
 
-    // TODO: Merge into the other rules
-    public static MenuCssConfig MenuCssDefaultsTODOMergeIn = new()
-    {
-        A = new ()
-        {
-            Active = "active",
-            NotActive = "",
-        },
-        Li = new()
-        {
-            Classes = $"nav-item nav-{PlaceHolderPageId}",
-            Active = "active",
-            NotActive = "inactive",
-            HasChildren = "has-child",
-            Disabled = "disabled",
-        },
-    };
-
     public static MenuCss MenuCssMain = new(new()
+    {
+        Parts = new()
         {
-            A = new()
             {
-                HasChildren = "dropdown-toggle",
-                ByLevel = new()
+                "a", new()
                 {
-                    { PlaceHolderLevelOther, "dropdown-item" },
-                    { 1, "nav-link" },
+                    Active = "active",
+                    NotActive = "",
+                    HasChildren = "dropdown-toggle",
+                    ByLevel = new()
+                    {
+                        { PlaceHolderLevelOther, "dropdown-item" },
+                        { 1, "nav-link" },
 
+                    }
                 }
             },
-            Li = new()
             {
-                HasChildren = "dropdown",
-            },
-            Ul = new()
-            {
-                ByLevel = new()
+                "li", new()
                 {
-                    { PlaceHolderLevelOther, "dropdown-menu" },
-                    { 0, "navbar-nav" },
-                },
+                    Classes = $"nav-item nav-{PlaceHolderPageId}",
+                    HasChildren = "has-child dropdown",
+                    Active = "active",
+                    NotActive = "inactive",
+                    Disabled = "disabled",
+                    OrderIsFirst = "first",
+                }
+
+            },
+            {
+                "ul", new()
+                {
+                    ByLevel = new()
+                    {
+                        { PlaceHolderLevelOther, "dropdown-menu" },
+                        { 0, "navbar-nav" },
+                    },
+                }
             }
-        })
-        //{
-        //    LinkCustom = branch =>
-        //    {
-        //        var cls = branch.MenuLevel == 1 ? "nav-link" : "dropdown-item";
-        //        //if (branch.HasChildren)
-        //        //    cls += " dropdown-toggle";
-        //        return cls;
-        //    },
-        //    ItemCustom = branch => branch.HasChildren ? "dropdown" : null
-        //}
-        ;
+        },
+    });
 
     public static MenuCss MenuCssSidebar = new(new()
     {
-        A = new()
+        Parts = new()
         {
-            Classes = "nav-link",
-        },
-        Li = new()
-        {
-            Classes = "position-relative",
-        },
-        Ul = new()
-        {
-            ByLevel = new()
             {
-                { 0, "navbar-nav" },
-                { PlaceHolderLevelOther, $"ul-collapse collapse collapse-{PlaceHolderPageId}" },
+                "a", new()
+                {
+                    Classes = "nav-link",
+                    Active = "active",
+                }
+            },
+            {
+                "li", new()
+                {
+                    Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
+                    HasChildren = "has-child",
+                    Active = "active",
+                    NotActive = "inactive",
+                    Disabled = "disabled",
+                    OrderIsFirst = "first",
+                }
+            },
+            {
+                "ul", new()
+                {
+                    ByLevel = new()
+                    {
+                        { 0, "navbar-nav" },
+                        { PlaceHolderLevelOther, $"ul-collapse collapse collapse-{PlaceHolderPageId}" },
+                    },
+                }
             },
         },
     });
 
     public static MenuCss MenuCssMobile = new(new()
     {
-        A = new()
+        Parts = new()
         {
-            Classes = "nav-link mobile-navigation-link",
-        },
-        Li = new()
-        {
-            Classes = "position-relative",
-        },
-        Ul = new()
-        {
-            ByLevel = new()
             {
-                { 0, "navbar-nav" },
-                { PlaceHolderLevelOther, $"ul-collapse collapse collapse-{PlaceHolderPageId}" },
+                "a", new()
+                {
+                    Classes = "nav-link mobile-navigation-link",
+                    Active = "active",
+                }
+            },
+            {
+                "li", new()
+                {
+                    Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
+                    HasChildren = "has-child",
+                    Active = "active",
+                    NotActive = "inactive",
+                    Disabled = "disabled",
+                    OrderIsFirst = "first",
+                }
+            },
+            {
+                "ul", new()
+                {
+                    ByLevel = new()
+                    {
+                        { 0, "navbar-nav" },
+                        // @2tl ul-collapse???  //Changed from 2shine DNN (.dropdown-menu -> .ul-collapse)
+                        { PlaceHolderLevelOther, $"ul-collapse collapse collapse-{PlaceHolderPageId}" },
+                    },
+                }
             },
         },
     });

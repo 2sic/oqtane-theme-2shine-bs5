@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
@@ -14,27 +13,23 @@ public class MenuCss
 {
     public MenuCss(MenuCssConfig config)
     {
-        Configs = new List<MenuCssConfig> { MenuCssDefaultsTODOMergeIn, config };
+        Configs = new List<MenuCssConfig> { config };
     }
     internal List<MenuCssConfig> Configs { get; }
 
-    public Func<MenuBranch, string> LinkCustom;
-    public Func<MenuBranch, string> ItemCustom;
-
-    public string ClassesA(MenuBranch branch)
+    public string Classes(string tag, MenuBranch branch)
     {
-        var classes = TagClasses("a", branch, Configs.Select(c => c.A), LinkCustom);
+        var configsForTag = Configs
+            .Select(c => c.Parts.TryGetValue(tag, out var a) ? a : null)
+            .Where(c => c != null)
+            .ToList();
 
-        return ListToClasses(classes, branch.Page.PageId);
-    }
-    public string ClassesUl(MenuBranch branch)
-    {
-        var classes = TagClasses("ul", branch, Configs.Select(c => c.Ul), null);
-
-        return ListToClasses(classes, branch.Page.PageId);
+        return configsForTag.Any() 
+            ? ListToClasses(TagClasses(branch, configsForTag), branch.Page.PageId) 
+            : "";
     }
 
-    private List<string> TagClasses(string tag, MenuBranch branch, IEnumerable<MenuCssTagConfig> tagConfigs, Func<MenuBranch, string> custom)
+    private List<string> TagClasses(MenuBranch branch, IEnumerable<MenuCssTagConfig> tagConfigs)
     {
         var configs = tagConfigs
             .Where(c => c != null)
@@ -62,31 +57,13 @@ public class MenuCss
                         : null);
         classes.AddRange(levelCss);
 
-        if (custom != null)
-            classes.Add(custom.Invoke(branch));
+        classes.AddRange(configs.Select(c
+            => branch.Page.Order == 1 ? c.OrderIsFirst : null));
 
         return classes;
     }
 
-    public string ClassesLi(MenuBranch branch)
-    {
-        var classes = new List<string>();
-        classes.AddRange(CommonLiClasses(branch));
-
-        classes.AddRange(TagClasses("li", branch, Configs.Select(c => c.Li), ItemCustom));
-
-        return ListToClasses(classes, branch.Page.PageId);
-    }
-
-    private IList<string> CommonLiClasses(MenuBranch branch)
-    {
-        var commonClasses = new List<string>();
-
-        if (branch.Page.Order == 1)
-            commonClasses.Add("first");
-
-        return commonClasses;
-    }
+    
 
     private string ListToClasses(IEnumerable<string> original, int pageId) 
         => string
