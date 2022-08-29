@@ -46,7 +46,7 @@ public class MenuConfig: IMenuConfig
 
     /// <inheritdoc />
     public string ConfigName { get; set; }
-    public const string ConfigNameDefault = "Main";
+    //public const string ConfigNameDefault = "Main";
 
     /// <inheritdoc />
     public bool Debug { get; set; } = DebugDefault;

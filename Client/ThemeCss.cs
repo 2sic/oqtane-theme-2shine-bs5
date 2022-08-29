@@ -116,7 +116,7 @@ internal class ThemeCss
                     ByLevel = new()
                     {
                         { 0, "navbar-nav" },
-                        { PlaceHolderLevelOther, $"ul-collapse collapse collapse-{PlaceHolderPageId}" },
+                        { PlaceHolderLevelOther, $"collapse collapse-{PlaceHolderPageId}" },
                     },
                 }
             },
@@ -139,10 +139,10 @@ internal class ThemeCss
                 {
                     Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
                     HasChildren = "has-child",
+                    // todo: make sure that all the LIs or ULs in the breadcrumb don't have collapse
                     Active = "active",
                     NotActive = "inactive",
                     Disabled = "disabled",
-                    OrderIsFirst = "first",
                 }
             },
             {
@@ -150,9 +150,10 @@ internal class ThemeCss
                 {
                     ByLevel = new()
                     {
+                        // Standard navbar-nav BS5
                         { 0, "navbar-nav" },
-                        // @2tl ul-collapse???  //Changed from 2shine DNN (.dropdown-menu -> .ul-collapse)
-                        { PlaceHolderLevelOther, $"ul-collapse collapse collapse-{PlaceHolderPageId}" },
+                        // todo: doc why collapse-PageId
+                        { PlaceHolderLevelOther, $"collapse collapse-{PlaceHolderPageId}" },
                     },
                 }
             },

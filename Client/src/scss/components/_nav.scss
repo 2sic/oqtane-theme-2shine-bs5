@@ -7,13 +7,13 @@
         }
 
         .navbar-nav {
-            > .first {
+            > li:first-child() {
                 .nav-link {
                     padding-left: 0;
                 }
             }
 
-            > .last {
+            > li:last-child() {
                 .nav-link {
                     padding-right: $nav-link-padding-x;
                 }
@@ -111,8 +111,10 @@
         .offcanvas-body {
             background-color: $primary;
             padding: 0;
-            //Changed from 2shine DNN (.dropdown-menu -> .ul-collapse)
-            .ul-collapse {
+            // Requires both collapse and collapsing,
+            // as that's the style that is applied during/open/close
+            ul.collapse, 
+            ul.collapsing {
                 background-color: rgba($black, 0.4);
                 border-radius: 0;
                 border-left: none;
@@ -205,7 +207,10 @@
         }
     }
 
-    .ul-collapse {
+    // Requires both collapse and collapsing,
+    // as that's the style that is applied during/open/close
+    ul.collapse,
+    ul.collapsing {
         background-color: rgba($primary, 0.1);
         list-style: none;
         padding-left: 0;

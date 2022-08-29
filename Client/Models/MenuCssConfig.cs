@@ -22,7 +22,8 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models
         public string Disabled { get; set; }
         public string Enabled { get; set; }
 
-        // @2tl needed?
-        public string OrderIsFirst { get; set; }
+        // First/Last ATM not implemented
+        // as it should be doable with CSS li:first-child() etc.
+        //public string OrderIsFirst { get; set; }
     }
 }

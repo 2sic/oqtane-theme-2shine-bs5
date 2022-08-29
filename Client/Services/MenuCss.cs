@@ -57,8 +57,10 @@ public class MenuCss
                         : null);
         classes.AddRange(levelCss);
 
-        classes.AddRange(configs.Select(c
-            => branch.Page.Order == 1 ? c.OrderIsFirst : null));
+        // First/Last ATM not implemented
+        // as it should be doable with CSS li:first-child() etc.
+        //classes.AddRange(configs.Select(c
+        //    => branch.Page.Order == 1 ? c.OrderIsFirst : null));
 
         return classes;
     }

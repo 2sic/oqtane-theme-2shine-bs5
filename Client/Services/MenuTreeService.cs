@@ -21,7 +21,7 @@ public class MenuTreeService
     public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages)
     {
         config ??= new MenuConfig();
-        var configName = config.ConfigName;
+        var configName = string.IsNullOrWhiteSpace(config.ConfigName) ? ThemeCss.MenuDefault : config.ConfigName;
 
         // If the user didn't specify a config name in the Parameters or the config name
         // isn't contained in the json file the normal parameter are given to the service
