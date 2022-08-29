@@ -1,5 +1,9 @@
 ﻿@inherits ToShineMenuBase;
-
+@*
+File Purpose:       Show a menu usually used on the side of content (Sidebar)
+Recommendations:    See `MenuDefault.razor`
+Nice to know:       See `MenuDefault.razor`
+*@
 @if (MenuBranch.HasChildren)
 {
     <ul class='@MenuBranch.Classes("ul")' data-debug='@MenuBranch.Debug'>

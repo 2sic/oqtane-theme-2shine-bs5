@@ -49,6 +49,10 @@ internal class ThemeCss
 
     // TODO: Review if we should have a menu-id, as otherwise multiple menus open/collapse together
 
+    /// <summary>
+    /// The default/fallback design configuration for menus.
+    /// Normally this would be set in the json file or the theme settings, so this wouldn't be used. 
+    /// </summary>
     public static MenuDesign MenuDesignFallback = new()
     {
         Parts = new()

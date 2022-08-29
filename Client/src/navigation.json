@@ -11,7 +11,7 @@
     "Sidebar": {
       "Start": "*",
       "Depth": 2,
-      "Design": "SidebarXXX"
+      "Design": "Sidebar"
     },
     "ImprintPrivacy": {
       "Depth": 0,
@@ -22,7 +22,7 @@
     }
   },
   "Designs": {
-    "SidebarXXX": {
+    "Sidebar": {
       "Parts": {
         "a": {
           "Classes": "nav-link",
