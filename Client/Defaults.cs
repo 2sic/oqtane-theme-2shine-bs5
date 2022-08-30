@@ -10,8 +10,16 @@ public class Defaults
     // Todo: move to json
     public const string LanguageList = ""; // "en: Engl, de-ch"; // ""en: EN, de: DE, de-CH: CH, fr: FR"; //", nl-NL: NDL";
 
-    // Todo: move to json
-    public const string LogoFile = "logo.svg";
+    
+    public static SettingsJson DefaultSettings = new()
+    {
+        Layout = new()
+        {
+            Logo = "logo.svg"
+        }
+    };
+
+    public const string AssetsPathPlaceholder = "[ASSETS-PATH]";
 
     #region Technical paths
 

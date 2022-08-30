@@ -11,11 +11,11 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 /// </summary>
 public class MenuTreeService
 {
-    public MenuTreeService(MenuConfigFromJsonService jsonConfigService)
+    public MenuTreeService(SettingsFromJsonService jsonConfigService)
     {
         _jsonConfig = jsonConfigService;
     }
-    private readonly MenuConfigFromJsonService _jsonConfig;
+    private readonly SettingsFromJsonService _jsonConfig;
 
     [return: NotNull]
     public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages)

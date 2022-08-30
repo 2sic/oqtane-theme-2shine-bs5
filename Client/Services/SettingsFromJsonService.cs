@@ -3,8 +3,11 @@
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
 {
-    public class MenuConfigFromJsonService
+    public class SettingsFromJsonService
     {
+        public string Logo => _logo ??= JsonConfig.Layout?.Logo;
+        private string _logo;
+
         public bool HasMenu(string name) => !string.IsNullOrWhiteSpace(name)
                                             && (JsonConfig?.Menus?.ContainsKey(name) ?? false);
 
