@@ -22,7 +22,7 @@ public class MenuTreeService
 
         // If the user didn't specify a config name in the Parameters or the config name
         // isn't contained in the json file the normal parameter are given to the service
-        var (menuSettings, menuConfigSource) = _themeSettings.FindMenu(configName);
+        var (menuSettings, menuConfigSource) = _themeSettings.FindMenuConfig(configName);
         config = menuSettings.Overrule(config);
         debugInfo += "; " + menuConfigSource;
 

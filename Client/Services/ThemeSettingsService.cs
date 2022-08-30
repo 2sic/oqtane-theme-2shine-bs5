@@ -9,79 +9,26 @@ using static ThemeCss;
 /// </summary>
 public class ThemeSettingsService
 {
-    internal SettingsFromJsonService Json { get; }
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="jsonService"></param>
+    public ThemeSettingsService(SettingsFromJsonService jsonService) => Json = jsonService;
+    private SettingsFromJsonService Json { get; }
 
-    public ThemeSettingsService(SettingsFromJsonService jsonService)
-    {
-        Json = jsonService;
-    }
-
-    private const string SourceJson = "(json)";
-    private const string SourcePreset = "(preset)";
-
+    /// <summary>
+    /// Get Logo as specified in JSON or preset
+    /// </summary>
     public string Logo => ReplacePlaceholders(Json.Settings?.Layout?.Logo ?? DefaultThemeSettings.Layout.Logo);
 
-    public (MenuConfig MenuConfig, string Source) FindMenu(string name)
+
+    public (MenuConfig MenuConfig, string Source) FindMenuConfig(string name)
     {
-        var names = new List<string> { name, MenuDefault };
-        var (result, foundName, sourceInfo) = FindInSources(names, (settings, n) => settings.GetMenu(n));
-        return (SyncName(result, foundName), sourceInfo);
-
-        var sources = new List<Internal.Settings.ThemeSettings>
-        {
-            // TODO: in future also add the settings from the dialog as the first priority
-            Json.Settings,
-            DefaultThemeSettings
-        };
-
-
-
-        //var sourcesAndNames = new List<(Internal.Settings.ThemeSettings Settings, string Name)>
-        //{
-        //    (Json.Settings, name),
-        //    (DefaultThemeSettings, name),
-        //    (Json.Settings, MenuDefault),
-        //    (DefaultThemeSettings, MenuDefault)
-        //};
-
-        var allSourcesAndNames = names
-            .SelectMany(name => sources.Select(settings => (Settings: settings, Name: name)));
-
-        var cnf = allSourcesAndNames.FirstOrDefault(set => set.Settings?.GetMenu(set.Name) != null);
-        if (cnf == default) throw new Exception($"Tried to find {nameof(MenuConfig)} '{name}' and '{MenuDefault}' but got nothing, not even a fallback/default.");
-        return (SyncName(cnf.Settings.GetMenu(cnf.Name), cnf.Name), $"Menu: {name} - found '{cnf.Name}' {cnf.Settings.Source}");
-    }
-
-    public (T Result, string Name, string source) FindInSources<T>(List<string> names, Func<Internal.Settings.ThemeSettings, string, T> findFunc)
-    {
-        var sources = new List<Internal.Settings.ThemeSettings>
-        {
-            // TODO: in future also add the settings from the dialog as the first priority
-            Json.Settings,
-            DefaultThemeSettings
-        };
-
-        var allSourcesAndNames = names
-            .SelectMany(name => sources.Select(settings => (Settings: settings, Name: name)))
-            .ToList();
-
-        foreach (var set in allSourcesAndNames)
-        {
-            var result = findFunc(set.Settings, set.Name);
-            if (result != null) return (result, set.Name, $"found in '{set.Name}' ({set.Settings.Source})");
-        }
-
-        //var cnf = allSourcesAndNames.FirstOrDefault(set => set.Settings?.GetMenu(set.Name) != null);
-        //if (cnf == default) 
-        throw new Exception($"Tried to find {nameof(T)} in the keys {string.Join(",", names)} but got nothing, not even a fallback/default.");
-        // return (SyncName(cnf.Settings.GetMenu(cnf.Name), cnf.Name), $"Menu: {name} - found '{cnf.Name}' {cnf.Settings.Source}");
-
-    }
-
-    private MenuConfig SyncName(MenuConfig config, string name)
-    {
-        if (config.ConfigName != name) config.ConfigName = name;
-        return config;
+        var (config, foundName, sourceInfo) 
+            = FindInSources((settings, n) => settings.GetMenu(n), name, MenuDefault);
+        
+        if (config.ConfigName != foundName) config.ConfigName = foundName;
+        return (config, sourceInfo);
     }
 
 
@@ -97,23 +44,37 @@ public class ThemeSettingsService
 
     public (MenuDesign Design, string Source) FindDesign(string designName)
     {
-        if(string.IsNullOrWhiteSpace(designName))
-            return (DefaultThemeSettings.GetDesign(MenuDesignDefault), MenuDesignDefault + " (default because empty)");
-
-        var designConfig = Json.Settings?.GetDesign(designName);
-        if (designConfig != null) return (designConfig, designName + " (json)");
-
-        designConfig = DefaultThemeSettings.GetDesign(designName);
-        if (designConfig != null) return (designConfig, designName + " (preset)");
-
-        designConfig = Json.Settings?.GetDesign(MenuDesignDefault);
-        if (designConfig != null) return (designConfig, MenuDesignDefault + " (json)");
-
-        designConfig = MenuDesignFallback;
-        return (designConfig, MenuDesignDefault + " (preset)");
+        var (result, foundName, sourceInfo) 
+            = FindInSources((settings, n) => settings.GetDesign(n), designName, MenuDesignDefault);
+        return (result, sourceInfo);
     }
 
 
     private string ReplacePlaceholders(string value) => value?
         .Replace(AssetsPathPlaceholder, AssetsPath);
+
+
+    private (T Result, string Name, string source) FindInSources<T>(
+        Func<Internal.Settings.ThemeSettings, string, T> findFunc,
+        params string[] names)
+    {
+        var sources = new List<Internal.Settings.ThemeSettings>
+        {
+            // in future also add the settings from the dialog as the first priority
+            Json.Settings,
+            DefaultThemeSettings
+        };
+
+        var allSourcesAndNames = names
+            .SelectMany(name => sources.Select(settings => (Settings: settings, Name: name)))
+            .ToList();
+
+        foreach (var set in allSourcesAndNames)
+        {
+            var result = findFunc(set.Settings, set.Name);
+            if (result != null) return (result, set.Name, $"found in '{set.Name}' ({set.Settings.Source})");
+        }
+
+        throw new Exception($"Tried to find {nameof(T)} in the keys {string.Join(",", names)} but got nothing, not even a fallback/default.");
+    }
 }

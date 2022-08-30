@@ -11,6 +11,50 @@ public class Defaults
     // Todo: move to json
     public const string LanguageList = ""; // "en: Engl, de-ch"; // ""en: EN, de: DE, de-CH: CH, fr: FR"; //", nl-NL: NDL";
 
+    /// <summary>
+    /// The default/fallback design configuration for menus.
+    /// Normally this would be set in the json file or the theme settings, so this wouldn't be used. 
+    /// </summary>
+    public static MenuDesign MenuDesignFallback = new()
+    {
+        Parts = new()
+        {
+            {
+                "a", new()
+                {
+                    Active = "active",
+                    HasChildren = "dropdown-toggle",
+                    ByLevel = new()
+                    {
+                        { PlaceHolderLevelOther, "dropdown-item" },
+                        { 1, "nav-link" },
+
+                    }
+                }
+            },
+            {
+                "li", new()
+                {
+                    Classes = $"nav-item nav-{PlaceHolderPageId}",
+                    HasChildren = "has-child dropdown",
+                    Active = "active",
+                    Disabled = "disabled",
+                }
+
+            },
+            {
+                "ul", new()
+                {
+                    ByLevel = new()
+                    {
+                        { PlaceHolderLevelOther, "dropdown-menu" },
+                        { 0, "navbar-nav" },
+                    },
+                }
+            }
+        },
+    };
+
 
     public static Internal.Settings.ThemeSettings DefaultThemeSettings = new()
     {
