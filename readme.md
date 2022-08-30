@@ -1,4 +1,4 @@
-<img width="100%" src="https://github.com/2sic/dnn-theme-2shine-bs5/raw/main/images/logo-1000.png">
+<img width="100%" src="https://github.com/2sic/oqt-theme-2shine-bs5/raw/docs/assets/logo.svg">
 
 # Oqtane Skin/Theme with Bootstrap5
 

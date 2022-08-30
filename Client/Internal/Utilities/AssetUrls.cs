@@ -10,7 +10,8 @@ public static class AssetUrls
     public static string ThemePath => "Themes/" + RootNamespace;
 
     public static string RootNamespace => _rootNamespace
-                                          ??= new ThemeInfo().Theme.PackageName; // typeof(ThemeInfo).Namespace.Replace(".Client.Layouts", "");
+                                          ??= new ThemeInfo().Theme.PackageName;
+
     private static string _rootNamespace;
 }
 

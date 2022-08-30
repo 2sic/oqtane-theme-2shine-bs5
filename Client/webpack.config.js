@@ -43,6 +43,8 @@ const commonConfig = {
       __dirname,
       `dist/wwwroot/Themes/${themeConfig.ThemeName}`
     ),
+    // TODO: probably check this, we moved the images to src/assets
+    // unclear if this does anything...?
     assetModuleFilename: "Images/[hash][ext][query]",
   },
   devtool: "source-map",
@@ -84,7 +86,7 @@ const commonConfig = {
         {
           from: "**/*",
           to: "Assets",
-          context: "Images",
+          context: "src/assets",
         },
         {
           from: "*.json",
