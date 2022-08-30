@@ -74,3 +74,34 @@ equivalent to
 }
 ```
 
+Variations from relative
+
+### Just the relative node
+
+level: 0
+depth: 0
+skip: 0
+
+### Relative node + siblings
+
+level: -1
+skip: 1
+depth: 0
+
+### Relative nodes children
+
+level: 0,
+skip: 1
+depth: 0
+
+### Relative nodes parent
+
+level: -1
+skip: 0
+depth: 0
+
+### Relative nodes parent + parent-siblings
+
+level: -2
+skip: 1
+depth: 0
