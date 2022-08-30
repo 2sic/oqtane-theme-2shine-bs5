@@ -1,7 +1,4 @@
-﻿using System.Threading.Tasks;
-using Oqtane.Models;
-using Oqtane.Services;
-using Oqtane.UI;
+﻿using Oqtane.UI;
 using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeCss;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
@@ -11,11 +8,9 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 /// </summary>
 public class PageCssService
 {
-    public PageCssService(IPageService pageService) => _pageService = pageService;
-    private readonly IPageService _pageService;
-
-    public async Task<string> BodyClasses(Page page, string layoutVariation)
+    public string BodyClasses(PageState pageState, string layoutVariation)
     {
+        var page = pageState.Page;
         //1.1 Set the page-is-home class
         var isHomeClass = page.Path == "" ? PageIsHome : "";
 
@@ -27,19 +22,11 @@ public class PageCssService
 
         //1.4 Set the page-root-### class
         var pageParentId = page.ParentId;
-        string pageRootClass = null;
-        if (pageParentId == null)
-            pageRootClass = $"{PageRootPrefix}{page.PageId}";
-        else
-            while (pageParentId != null)
-            {
-                // TODO: this could be a performance killer
-                // Probably better to use the mechanism also used in the Breadcrumb
-                var parentPage = await _pageService.GetPageAsync((int)pageParentId);
-                pageParentId = parentPage.ParentId;
-                if (parentPage.ParentId == null)
-                    pageRootClass = $"{PageRootPrefix}{parentPage.PageId}";
-            }
+
+        var pageRootClass = pageParentId == null 
+            ? $"{PageRootPrefix}{page.PageId}" 
+            : $"{PageRootPrefix}{pageState.GetBreadcrumb()?.FirstOrDefault()?.PageId}";
+
 
         //1.5 Set the page-root-neutral-### class
 

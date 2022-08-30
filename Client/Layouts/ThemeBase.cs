@@ -79,7 +79,7 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
         //ShowAdminPane = !PageCss.PaneIsEmpty(PageState, PaneNames.Admin);
         //if (showAdminPaneBefore != ShowAdminPane) StateHasChanged();
 
-        var bodyClasses = await PageCss.BodyClasses(PageState.Page, BodyClasses);
+        var bodyClasses = PageCss.BodyClasses(PageState, BodyClasses);
         await ThemeJs.SetBodyClasses(bodyClasses);
     }
 

@@ -10,6 +10,8 @@ public static class PageStateMenuExtensions
     public static IEnumerable<Page> GetBreadcrumb(this PageState pageState)
         => GetBreadCrumbPages(pageState).Reverse().ToList();
 
+
+
     private static IEnumerable<Page> GetBreadCrumbPages(PageState pageState)
     {
         var page = pageState.Page;
