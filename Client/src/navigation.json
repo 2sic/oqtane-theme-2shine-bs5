@@ -12,24 +12,24 @@
 
   // The version of this file, which helps the reader detect the format (or error if incompatible)
   // TODO:
-  "Version": 0.01,
+  "version": 0.01,
 
   // TODO:
-  "Layout": {
-    "Logo": "[ASSETS-PATH]/logo.svg"
+  "layout": {
+    "logo": "[ASSETS-PATH]/logo.svg"
   },
 
   // TODO:
-  "Languages": {
-    "List": [
+  "languages": {
+    "list": [
       {
-        "Culture": "en",
-        "Label": "ENG",
-        "Description": "English"
+        "culture": "en",
+        "label": "ENG",
+        "description": "English"
       },
       {
-        "Culture": "de-DE",
-        "Label": "DEU"
+        "culture": "de-DE",
+        "label": "DEU"
       }
     ]
   },
@@ -38,24 +38,24 @@
   "Menus": {
     // Main is usually used for the default, top-level menu
     "Main": {
-      "Start": "*",
-      "Depth": 2
+      "start": "*",
+      "depth": 2
     },
     // Mobile is usually used for the default, top-level menu which only appears when the screen is too small
     "Mobile": {
-      "Start": "*",
-      "Depth": 2
+      "start": "*",
+      "depth": 2
     },
     // Sidebar is used in menus usually to the left of content
     "Sidebar": {
-      "Start": "*",
-      "Depth": 2,
-      "Design": "Sidebar"
+      "start": "*",
+      "depth": 2,
+      "design": "Sidebar"
     },
     // Todo: not implemented yet
     "ImprintPrivacy": {
-      "Depth": 0,
-      "PageList": [
+      "depth": 0,
+      "pageList": [
         28,
         31
       ]
@@ -66,19 +66,19 @@
   // It's separate from the Menus, since it could be re-used
   "Designs": {
     "Sidebar": {
-      "Parts": {
+      "parts": {
         "a": {
-          "Classes": "nav-link",
-          "Active": "active"
+          "classes": "nav-link",
+          "active": "active"
         },
         "li": {
-          "Classes": "nav-item nav-[PAGEID] position-relative",
-          "HasChildren": "has-child",
-          "Active": "active",
-          "Disabled": "disabled"
+          "classes": "nav-item nav-[PAGEID] position-relative",
+          "hasChildren": "has-child",
+          "active": "active",
+          "disabled": "disabled"
         },
         "ul": {
-          "ByLevel": {
+          "byLevel": {
             "0": "navbar-nav XYZ",
             "-1": "collapse to-shine-submenu-[PAGEID]"
           }

@@ -37,6 +37,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
                 
                 var result = JsonSerializer.Deserialize<SettingsJson>(jsonString, new JsonSerializerOptions
                 {
+                    PropertyNameCaseInsensitive = true,
                     ReadCommentHandling = JsonCommentHandling.Skip,
                     AllowTrailingCommas = true,
                 })!;
