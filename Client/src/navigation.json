@@ -1,18 +1,19 @@
 {
-  // This file contains configuration for the menus in the layout. 
-  // It allows you to make most changes to menus without recompiling the source code, 
-  // thereby letting designers quickly build their theme
-  // It has three sections:
-  // - Version is simply a version number, to better control when the code expects a different structure
-  // - Menus which uses a string-key to identify a configuration, and determins which pages should be shown
-  // - Designs uses a string key as well, and determines look and feel through CSS-Classes added to the HTML
+  /* This file contains configuration for the menus in the layout. 
+   * It allows you to make most changes to menus without recompiling the source code, 
+   * thereby letting designers quickly build their theme
+   * It has three sections:
+   * - Version is simply a version number, to better control when the code expects a different structure
+   * - Menus which uses a string-key to identify a configuration, and determins which pages should be shown
+   * - Designs uses a string key as well, and determines look and feel through CSS-Classes added to the HTML
+   *
+   * Note: This is a JSON file but the parser will treat it as JSONC, so you can add comments
+  */
 
-  // Note: This is a JSON file but the parser will treat it as JSONC, so you can add comments
-
-  // The version is meant for internal
+  // The version of this file, which helps the reader detect the format (or error if incompatible)
   "Version": 0.01,
 
-  // The Menus contain the configuration for each menu. The names used are specified in the Razor files.
+  // Menus contain the configuration for each menu. The names used are specified in the Razor files.
   "Menus": {
     // Main is usually used for the default, top-level menu
     "Main": {
@@ -30,6 +31,7 @@
       "Depth": 2,
       "Design": "Sidebar"
     },
+    // Todo: not implemented yet
     "ImprintPrivacy": {
       "Depth": 0,
       "PageList": [
@@ -39,7 +41,7 @@
     }
   },
 
-  // The Designs specify how the output is made, what classes added to each node etc.
+  // Designs specify how the output is made, what classes added to each node etc.
   // It's separate from the Menus, since it could be re-used
   "Designs": {
     "Sidebar": {

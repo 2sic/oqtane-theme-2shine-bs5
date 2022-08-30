@@ -28,7 +28,7 @@ if (themeConfig.Publish.Build) {
 }
 
 function publish(restart = false) {
-  console.log(`copy theme to oqtane dir`);
+  console.log(`copy theme to oqtane dir: '${themeConfig.OqtaneRoot}'`);
   const appOfflinePath = path.join(themeConfig.OqtaneRoot, "app_offline.htm");
 
   // create app_offline.htm; stops iis app
