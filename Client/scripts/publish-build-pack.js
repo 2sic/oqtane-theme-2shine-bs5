@@ -3,7 +3,7 @@ const shell = require("shelljs");
 const path = require("path");
 const fs = require("fs");
 
-let themeConfig = require("../theme.jsonc");
+let themeConfig = require("../theme.json");
 
 if (!themeConfig || !themeConfig.OqtaneRoot) {
   themeConfig = {
