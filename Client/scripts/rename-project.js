@@ -26,7 +26,7 @@ function promptForRename() {
     const prompt = require("prompt");
     const properties = [
       {
-        description: "theme name (namespace eg. ToSic.Oqt.Themes.MyFancyTheme)",
+        description: "theme name (namespace eg. MyCompany.Oqt.Themes.MyFancyTheme)",
         name: "newThemeName",
         required: true,
         validator: /^(@?[a-z_A-Z]\w+(?:\.@?[a-z_A-Z]\w+)*)+$/,

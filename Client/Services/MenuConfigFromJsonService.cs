@@ -1,4 +1,5 @@
-﻿using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
+﻿using System.Text.Json;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
 {
@@ -30,7 +31,12 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
             try
             {
                 var jsonString = System.IO.File.ReadAllText(jsonFileName);
-                var result = System.Text.Json.JsonSerializer.Deserialize<MenuConfigJson>(jsonString)!;
+                
+                var result = JsonSerializer.Deserialize<MenuConfigJson>(jsonString, new JsonSerializerOptions
+                {
+                    ReadCommentHandling = JsonCommentHandling.Skip,
+                    AllowTrailingCommas = true,
+                })!;
 
                 return result;
             }

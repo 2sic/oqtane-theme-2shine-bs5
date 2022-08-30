@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
-using System.Linq;
 
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings;
+
+public class ThemeSettingsContainer
 {
-  public class ThemeSettingsContainer
-  {
     public string StartingPage;
 
     public int? StartLevel = null!;
@@ -51,30 +50,30 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
     public string Scope = "Site";
 
     public bool UseUiSettings;
-  }
-  public sealed class ThemeSettingsService
-  {
+}
+public sealed class ThemeSettingsService
+{
     Dictionary<string, ThemeSettingsContainer> CombinedSettings; 
 
     public ThemeSettingsContainer DeserializeData(string ConfigName){
-      var jsonString = File.ReadAllText("wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/settings.json");
-      var options = new JsonSerializerOptions
-      {
-        IncludeFields = true,
-      };
-      CombinedSettings = JsonSerializer.Deserialize<Dictionary<string, ThemeSettingsContainer>>(jsonString, options);
-      if(CombinedSettings.ContainsKey(ConfigName)){
-        return CombinedSettings[ConfigName];
-      }
-      return null;
+        var jsonString = File.ReadAllText("wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/settings.json");
+        var options = new JsonSerializerOptions
+        {
+            IncludeFields = true,
+        };
+        CombinedSettings = JsonSerializer.Deserialize<Dictionary<string, ThemeSettingsContainer>>(jsonString, options);
+        if(CombinedSettings.ContainsKey(ConfigName)){
+            return CombinedSettings[ConfigName];
+        }
+        return null;
     }
     
     public async Task UpdateAndSerializeSettings(string ConfigName, ThemeSettingsContainer Settings){
-      if(CombinedSettings.ContainsKey(ConfigName)){
-        CombinedSettings[ConfigName] = Settings;
-      } else {
-        CombinedSettings.Add(ConfigName, Settings);
-      }
+        if(CombinedSettings.ContainsKey(ConfigName)){
+            CombinedSettings[ConfigName] = Settings;
+        } else {
+            CombinedSettings.Add(ConfigName, Settings);
+        }
         var options = new JsonSerializerOptions
         {
             IncludeFields = true,
@@ -82,5 +81,4 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings
         var jsonString = JsonSerializer.Serialize(CombinedSettings, options);
         await File.WriteAllTextAsync("wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/settings.json", jsonString);
     }
-  }
 }
