@@ -1,4 +1,5 @@
 ﻿using ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
+using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeCss;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 
@@ -10,14 +11,105 @@ public class Defaults
     // Todo: move to json
     public const string LanguageList = ""; // "en: Engl, de-ch"; // ""en: EN, de: DE, de-CH: CH, fr: FR"; //", nl-NL: NDL";
 
-    
-    public static SettingsJson DefaultSettings = new()
+
+    public static Internal.Settings.ThemeSettings DefaultThemeSettings = new()
     {
+        Source = "Preset",
         Layout = new()
         {
             Logo = "logo.svg"
+        },
+        Menus = new()
+        {
+            {
+                MenuDefault, new()
+                {
+                    Start = "*",
+                    Depth = 1
+                }
+            }
+        },
+        Designs = new()
+        {
+            {
+                // The Default design, if not overridden by the JSON
+                MenuDefault, MenuDesignFallback
+            },
+            {
+                // The Design configuration for Mobile menus, if not overridden by the JSON
+                MenuMobile, new()
+                {
+                    Parts = new()
+                    {
+                        {
+                            "a", new()
+                            {
+                                Classes = "nav-link mobile-navigation-link",
+                                Active = "active",
+                            }
+                        },
+                        {
+                            "li", new()
+                            {
+                                Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
+                                HasChildren = "has-child",
+                                // todo: make sure that all the LIs or ULs in the breadcrumb don't have collapse ... or with "show"
+                                Active = "active",
+                                Disabled = "disabled",
+                            }
+                        },
+                        {
+                            "ul", new()
+                            {
+                                ByLevel = new()
+                                {
+                                    { 0, "navbar-nav" },
+                                    // todo: doc why collapse-PageId
+                                    { PlaceHolderLevelOther, $"collapse to-shine-submenu-mob-{PlaceHolderPageId}" },
+                                },
+                            }
+                        },
+                    },
+                }
+            },
+            {
+                // Design configuration for the Sidebar, if not overridden by the JSON
+                MenuSidebar, new()
+                {
+                    Parts = new()
+                    {
+                        {
+                            "a", new()
+                            {
+                                Classes = "nav-link",
+                                Active = "active",
+                            }
+                        },
+                        {
+                            "li", new()
+                            {
+                                Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
+                                HasChildren = "has-child",
+                                Active = "active",
+                                Disabled = "disabled",
+                            }
+                        },
+                        {
+                            "ul", new()
+                            {
+                                ByLevel = new()
+                                {
+                                    { 0, "navbar-nav" },
+                                    { PlaceHolderLevelOther, $"collapse to-shine-submenu-{PlaceHolderPageId}" },
+                                },
+                            }
+                        },
+                    },
+                }
+            }
         }
     };
+    
 
     public const string AssetsPathPlaceholder = "[ASSETS-PATH]";
 

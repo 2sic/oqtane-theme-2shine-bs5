@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Oqtane.UI;
-using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeCss;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
@@ -11,28 +10,21 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 /// </summary>
 public class MenuTreeService
 {
-    public MenuTreeService(SettingsFromJsonService jsonConfigService)
-    {
-        _jsonConfig = jsonConfigService;
-    }
-    private readonly SettingsFromJsonService _jsonConfig;
+    public MenuTreeService(ThemeSettingsService themeSettings) => _themeSettings = themeSettings;
+    private readonly ThemeSettingsService _themeSettings;
 
     [return: NotNull]
     public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages)
     {
         config ??= new MenuConfig();
-        var debugInfo = $"Initial Config: '{config.ConfigName}'";
-        var configName = string.IsNullOrWhiteSpace(config.ConfigName) ? MenuDefault : config.ConfigName;
-        if (configName != config.ConfigName)
-            debugInfo += $"; Config changed to '{configName}'";
+        var (configName, debugInfo) = _themeSettings.FindConfigName(config.ConfigName);
+
 
         // If the user didn't specify a config name in the Parameters or the config name
         // isn't contained in the json file the normal parameter are given to the service
-        if (_jsonConfig.HasMenu(configName))
-        {
-            config = _jsonConfig.GetMenu(configName).Overrule(config);
-            debugInfo += "; Config loaded from Json";
-        }
+        var (menuSettings, menuConfigSource) = _themeSettings.FindMenu(configName);
+        config = menuSettings.Overrule(config);
+        debugInfo += "; " + menuConfigSource;
 
         // See if we have a default configuration for CSS which should be applied
         var designName = config.Design;
@@ -49,7 +41,7 @@ public class MenuTreeService
         if (config.MenuCss == null)
         {
             // Check various places where design could be configured by priority
-            var (designConfig, source) = FindBestDesignConfig(designName);
+            var (designConfig, source) = _themeSettings.FindDesign(designName);
             debugInfo += $"; Design config loaded from '{source}'";
 
             config = config.Overrule(new MenuConfig(config) { MenuCss = designConfig });
@@ -60,20 +52,5 @@ public class MenuTreeService
         debugInfo = pageState.UserIsAdmin() ? debugInfo : null;
 
         return new MenuTree(config, pageState.Pages, menuPages, pageState.Page, debugInfo);
-    }
-
-    private (MenuDesign, string) FindBestDesignConfig(string designName)
-    {
-        var designConfig = _jsonConfig.GetDesign(designName);
-        if (designConfig != null) return (designConfig, designName + " (json)");
-
-        designConfig = (MenuDesignDefaults.TryGetValue(designName, out var defDesign) ? defDesign : null);
-        if (designConfig != null) return (designConfig, designName + " (preset)");
-
-        designConfig = _jsonConfig.GetDesign(MenuDesignDefault);
-        if (designConfig != null) return (designConfig, MenuDesignDefault + " (json)");
-
-        designConfig = MenuDesignFallback;
-        return (designConfig, MenuDesignDefault + " (preset)");
     }
 }

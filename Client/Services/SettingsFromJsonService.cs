@@ -5,42 +5,28 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
 {
     public class SettingsFromJsonService
     {
-        public string Logo => _logo ??= JsonConfig.Layout?.Logo;
+        public string Logo => _logo ??= Settings.Layout?.Logo;
         private string _logo;
 
-        public bool HasMenu(string name) => !string.IsNullOrWhiteSpace(name)
-                                            && (JsonConfig?.Menus?.ContainsKey(name) ?? false);
+        public Internal.Settings.ThemeSettings Settings => _settings ??= LoadJson();
+        private Internal.Settings.ThemeSettings _settings;
 
-        public MenuConfig GetMenu(string name)
-        {
-            if (!HasMenu(name)) return null;
-            var config = JsonConfig.Menus[name];
-            if (config.ConfigName != name)
-                config.ConfigName = name;
-            return config;
-        }
-
-        public bool HasDesign(string name) => !string.IsNullOrWhiteSpace(name)
-                                              && (JsonConfig?.Designs?.ContainsKey(name) ?? false);
-
-        public MenuDesign GetDesign(string name) => HasDesign(name) ? JsonConfig.Designs[name] : null;
-
-        protected SettingsJson JsonConfig => _settingsJson ??= LoadJson();
-        private SettingsJson _settingsJson;
-
-        private SettingsJson LoadJson()
+        private Internal.Settings.ThemeSettings LoadJson()
         {
             var jsonFileName = $"{Defaults.WwwRoot}/{Defaults.ThemePath}/{Defaults.NavigationJsonFile}";
             try
             {
                 var jsonString = System.IO.File.ReadAllText(jsonFileName);
                 
-                var result = JsonSerializer.Deserialize<SettingsJson>(jsonString, new JsonSerializerOptions
+                var result = JsonSerializer.Deserialize<Internal.Settings.ThemeSettings>(jsonString, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true,
                     ReadCommentHandling = JsonCommentHandling.Skip,
                     AllowTrailingCommas = true,
                 })!;
+
+                if (result != null)
+                    result.Source = "JSON";
 
                 return result;
             }
@@ -48,7 +34,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
             {
                 throw;//wip
                 // probably no json file found?
-                return new SettingsJson();
+                return new Internal.Settings.ThemeSettings();
             }
         }
 

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Settings;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Settings;
-
-public class SettingsJson
+public class ThemeSettings
 {
     public float Version { get; set; }
+
+    public string Source { get; set; }
 
     public SettingsJsonLayout Layout { get; set; }
 
@@ -19,6 +19,9 @@ public class SettingsJson
     /// Design definitions of the menu
     /// </summary>
     public Dictionary<string, MenuDesign> Designs { get; set; } = new();
+
+    public MenuConfig GetMenu(string name) => Menus?.FindInvariant(name);
+    public MenuDesign GetDesign(string name) => Designs?.FindInvariant(name);
 }
 
 public class SettingsJsonLayout

@@ -91,83 +91,83 @@ internal class ThemeCss
         },
     };
     
-    public static Dictionary<string, MenuDesign> MenuDesignDefaults = new()
-    {
-        {
-            // The Default design, if not overridden by the JSON
-            MenuDefault, MenuDesignFallback
-        },
-        {
-            // The Design configuration for Mobile menus, if not overridden by the JSON
-            MenuMobile, new()
-            {
-                Parts = new()
-                {
-                    {
-                        "a", new()
-                        {
-                            Classes = "nav-link mobile-navigation-link",
-                            Active = "active",
-                        }
-                    },
-                    {
-                        "li", new()
-                        {
-                            Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
-                            HasChildren = "has-child",
-                            // todo: make sure that all the LIs or ULs in the breadcrumb don't have collapse ... or with "show"
-                            Active = "active",
-                            Disabled = "disabled",
-                        }
-                    },
-                    {
-                        "ul", new()
-                        {
-                            ByLevel = new()
-                            {
-                                { 0, "navbar-nav" },
-                                // todo: doc why collapse-PageId
-                                { PlaceHolderLevelOther, $"collapse to-shine-submenu-mob-{PlaceHolderPageId}" },
-                            },
-                        }
-                    },
-                },
-            }
-        },
-        {
-            // Design configuration for the Sidebar, if not overridden by the JSON
-            MenuSidebar, new()
-            {
-                Parts = new()
-                {
-                    {
-                        "a", new()
-                        {
-                            Classes = "nav-link",
-                            Active = "active",
-                        }
-                    },
-                    {
-                        "li", new()
-                        {
-                            Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
-                            HasChildren = "has-child",
-                            Active = "active",
-                            Disabled = "disabled",
-                        }
-                    },
-                    {
-                        "ul", new()
-                        {
-                            ByLevel = new()
-                            {
-                                { 0, "navbar-nav" },
-                                { PlaceHolderLevelOther, $"collapse to-shine-submenu-{PlaceHolderPageId}" },
-                            },
-                        }
-                    },
-                },
-            }
-        },
-    };
+    //public static Dictionary<string, MenuDesign> MenuDesignDefaults = new()
+    //{
+    //    {
+    //        // The Default design, if not overridden by the JSON
+    //        MenuDefault, MenuDesignFallback
+    //    },
+    //    {
+    //        // The Design configuration for Mobile menus, if not overridden by the JSON
+    //        MenuMobile, new()
+    //        {
+    //            Parts = new()
+    //            {
+    //                {
+    //                    "a", new()
+    //                    {
+    //                        Classes = "nav-link mobile-navigation-link",
+    //                        Active = "active",
+    //                    }
+    //                },
+    //                {
+    //                    "li", new()
+    //                    {
+    //                        Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
+    //                        HasChildren = "has-child",
+    //                        // todo: make sure that all the LIs or ULs in the breadcrumb don't have collapse ... or with "show"
+    //                        Active = "active",
+    //                        Disabled = "disabled",
+    //                    }
+    //                },
+    //                {
+    //                    "ul", new()
+    //                    {
+    //                        ByLevel = new()
+    //                        {
+    //                            { 0, "navbar-nav" },
+    //                            // todo: doc why collapse-PageId
+    //                            { PlaceHolderLevelOther, $"collapse to-shine-submenu-mob-{PlaceHolderPageId}" },
+    //                        },
+    //                    }
+    //                },
+    //            },
+    //        }
+    //    },
+    //    {
+    //        // Design configuration for the Sidebar, if not overridden by the JSON
+    //        MenuSidebar, new()
+    //        {
+    //            Parts = new()
+    //            {
+    //                {
+    //                    "a", new()
+    //                    {
+    //                        Classes = "nav-link",
+    //                        Active = "active",
+    //                    }
+    //                },
+    //                {
+    //                    "li", new()
+    //                    {
+    //                        Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
+    //                        HasChildren = "has-child",
+    //                        Active = "active",
+    //                        Disabled = "disabled",
+    //                    }
+    //                },
+    //                {
+    //                    "ul", new()
+    //                    {
+    //                        ByLevel = new()
+    //                        {
+    //                            { 0, "navbar-nav" },
+    //                            { PlaceHolderLevelOther, $"collapse to-shine-submenu-{PlaceHolderPageId}" },
+    //                        },
+    //                    }
+    //                },
+    //            },
+    //        }
+    //    },
+    //};
 }
