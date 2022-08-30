@@ -3,7 +3,6 @@ using Oqtane.Models;
 using Oqtane.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 using CList = System.Collections.Generic.List<(string Pane, System.Type Type, System.Collections.Generic.Dictionary<string, object> Parameters)>;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;

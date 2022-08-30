@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
 using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeCss;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu;
 
 /// <summary>
 /// Special helper to provide Css classes to menus
@@ -24,8 +23,8 @@ public class MenuCss
             .Where(c => c != null)
             .ToList();
 
-        return configsForTag.Any() 
-            ? ListToClasses(TagClasses(branch, configsForTag), branch.Page.PageId) 
+        return configsForTag.Any()
+            ? ListToClasses(TagClasses(branch, configsForTag), branch.Page.PageId)
             : "";
     }
 
@@ -60,9 +59,9 @@ public class MenuCss
         return classes;
     }
 
-    
 
-    private string ListToClasses(IEnumerable<string> original, int pageId) 
+
+    private string ListToClasses(IEnumerable<string> original, int pageId)
         => string
             .Join(" ", original.Where(s => !s.IsNullOrEmpty()))
             .Replace("  ", " ")

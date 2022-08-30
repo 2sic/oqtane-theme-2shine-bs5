@@ -1,19 +1,19 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.JSInterop;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.JsModules;
 
 /// <summary>
 /// Base for any JS Module Helper class
 /// </summary>
-public class JsModuleServiceBase
+public abstract class JsModuleServiceBase
 {
     /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="jsRuntime">JS Runtime of the control, usually available later, like in the OnAfterRenderAsync</param>
     /// <param name="modulePath">Path to the javascript file, must be a JS6 Module</param>
-    public JsModuleServiceBase(IJSRuntime jsRuntime, string modulePath)
+    protected JsModuleServiceBase(IJSRuntime jsRuntime, string modulePath)
     {
         JsRuntime = jsRuntime;
         ModulePath = modulePath;

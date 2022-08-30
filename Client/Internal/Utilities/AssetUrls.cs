@@ -1,4 +1,6 @@
-namespace ToSic.Oqt.Themes.ToShineBs5.Client;
+using ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
+
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Utilities;
 
 public static class AssetUrls
 {
@@ -8,7 +10,7 @@ public static class AssetUrls
     public static string ThemePath => "Themes/" + RootNamespace;
 
     public static string RootNamespace => _rootNamespace
-                                          ??= typeof(AssetUrls).Namespace.Replace(".Client", "");
+                                          ??= new ThemeInfo().Theme.PackageName; // typeof(ThemeInfo).Namespace.Replace(".Client.Layouts", "");
     private static string _rootNamespace;
 }
 

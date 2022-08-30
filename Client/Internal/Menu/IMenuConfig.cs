@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+
 // TODO
 // - LevelSkip and StartLevel are confusing terms, not sure what each one does
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Models
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu
 {
     /// <summary>
     /// Interface which describes what a menu config contains.

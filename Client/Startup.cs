@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 using ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client;

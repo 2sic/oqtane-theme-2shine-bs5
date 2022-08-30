@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu;
 
 public class MenuBranch
 {

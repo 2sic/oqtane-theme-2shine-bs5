@@ -1,9 +1,7 @@
 ﻿using Oqtane.Models;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Oqtane.Services;
 using Oqtane.UI;
-using ToSic.Oqt.Themes.ToShineBs5.Client.Models;
 using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeCss;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;

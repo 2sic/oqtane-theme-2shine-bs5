@@ -3,7 +3,7 @@ using System.Linq;
 using Oqtane.Models;
 using Oqtane.UI;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Utilities;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Utilities;
 
 public static class PageStateMenuExtensions
 {

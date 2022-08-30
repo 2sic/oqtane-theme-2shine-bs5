@@ -1,4 +1,4 @@
-﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
+﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Language
 {
     public class LanguageButtonModel
     {

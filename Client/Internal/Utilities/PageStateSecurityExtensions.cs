@@ -4,7 +4,7 @@ using Oqtane.Security;
 using Oqtane.Shared;
 using Oqtane.UI;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Utilities;
 
 public static class PageStateSecurityExtensions
 {

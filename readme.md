@@ -152,4 +152,9 @@ so it doesn't change as you move files around.
 
 # History
 
+1. Version 5.0.0 created ca. July 2022 but still WIP
+1. Version 5.2.0 with major updates (docs not in sync yet) August 2022
+
+---
+
 I hope u enjoy it ;-)
