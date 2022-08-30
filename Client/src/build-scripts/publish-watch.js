@@ -3,7 +3,7 @@ const shell = require("shelljs");
 const path = require("path");
 const fs = require("fs");
 
-let themeConfig = require("../../theme.json");
+let themeConfig = require("../../build-theme.json");
 
 if (!themeConfig || !themeConfig.OqtaneRoot) {
   themeConfig = {
@@ -35,7 +35,7 @@ if (themeConfig.Publish.Watch) {
 }
 
 function publish(restart = false) {
-  console.log(`copy theme to oqtane dir specified in theme.json: '${themeConfig.OqtaneRoot}'`);
+  console.log(`copy theme to oqtane dir specified in build-theme.json: '${themeConfig.OqtaneRoot}'`);
   const appOfflinePath = path.join(themeConfig.OqtaneRoot, "app_offline.htm");
 
   // create app_offline.htm; stops iis app

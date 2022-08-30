@@ -1,6 +1,6 @@
 require("jsonc-require");
 const shell = require("shelljs");
-let themeConfig = require("../../theme.json");
+let themeConfig = require("../../build-theme.json");
 
 if (!themeConfig || !themeConfig.ThemeName) {
   themeConfig = {

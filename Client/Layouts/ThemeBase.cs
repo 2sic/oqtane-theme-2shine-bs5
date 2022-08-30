@@ -49,11 +49,11 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     public override List<Resource> Resources => new()
     {
         // Bootstrap with our customizations (generated with Sass using Webpack)
-        new Resource { ResourceType = ResourceType.Stylesheet, Url = $"{AssetUrls.ThemePath}/theme.min.css" },
+        new Resource { ResourceType = ResourceType.Stylesheet, Url = $"{Defaults.ThemePath}/theme.min.css" },
         // Bootstrap JS
-        new Resource { ResourceType = ResourceType.Script, Url = $"{AssetUrls.ThemePath}/bootstrap.bundle.min.js" },
+        new Resource { ResourceType = ResourceType.Script, Url = $"{Defaults.ThemePath}/bootstrap.bundle.min.js" },
         // Theme JS for page classes, Up-button etc.
-        new Resource { ResourceType = ResourceType.Script, Url = $"{AssetUrls.ThemePath}/ambient.js" },
+        new Resource { ResourceType = ResourceType.Script, Url = $"{Defaults.ThemePath}/ambient.js" },
     };
 
     // Panes of the layout

@@ -10,7 +10,7 @@ const glob = require("glob");
 const exec = require("child_process").exec;
 const { merge } = require("webpack-merge");
 
-let themeConfig = require(path.resolve(process.cwd(), "theme.json"));
+let themeConfig = require(path.resolve(process.cwd(), "build-theme.json"));
 if (!themeConfig) {
   themeConfig = {
     ThemeName: "ToSic.Oqt.Themes.ToShineBs5",

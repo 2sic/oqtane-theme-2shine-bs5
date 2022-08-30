@@ -65,7 +65,7 @@ function renameTheme(newThemeName) {
         "**/*.cs",
         "**/*.csproj",
         "../*.sln",
-        "theme.json",
+        "build-theme.json",
       ],
       ignore: [
         "obj/**",

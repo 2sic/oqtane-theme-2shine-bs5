@@ -37,7 +37,7 @@ internal class ThemeCss
     public const string ModulePrefix = "module-";
     public const string ModuleUnpublished = $"{ModulePrefix}unpublished";
 
-    public const string PlaceHolderPageId = "PAGEID";
+    public const string PlaceHolderPageId = "[PAGEID]";
     public const int PlaceHolderLevelOther = -1;
 
     public const string MenuDefault = "Main";

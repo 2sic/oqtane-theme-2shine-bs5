@@ -11,7 +11,28 @@
   */
 
   // The version of this file, which helps the reader detect the format (or error if incompatible)
+  // TODO:
   "Version": 0.01,
+
+  // TODO:
+  "Layout": {
+    "Logo": "[ASSETS-PATH]/logo.svg"
+  },
+
+  // TODO:
+  "Languages": {
+    "List": [
+      {
+        "Culture": "en",
+        "Label": "ENG",
+        "Description": "English"
+      },
+      {
+        "Culture": "de-DE",
+        "Label": "DEU"
+      }
+    ]
+  },
 
   // Menus contain the configuration for each menu. The names used are specified in the Razor files.
   "Menus": {
@@ -51,7 +72,7 @@
           "Active": "active"
         },
         "li": {
-          "Classes": "nav-item nav-PAGEID position-relative",
+          "Classes": "nav-item nav-[PAGEID] position-relative",
           "HasChildren": "has-child",
           "Active": "active",
           "Disabled": "disabled"
@@ -59,7 +80,7 @@
         "ul": {
           "ByLevel": {
             "0": "navbar-nav XYZ",
-            "-1": "collapse to-shine-submenu-PAGEID"
+            "-1": "collapse to-shine-submenu-[PAGEID]"
           }
         }
       }

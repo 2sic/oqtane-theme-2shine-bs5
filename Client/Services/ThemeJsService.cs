@@ -9,7 +9,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 /// </summary>
 public class ThemeJsService : JsModuleServiceBase
 {
-    public static string PageControlModulePath = $"./{AssetUrls.ThemePath}/interop/page-control.js";
+    public static string PageControlModulePath = $"./{Defaults.ThemePath}/interop/page-control.js";
 
     public ThemeJsService(IJSRuntime jsRuntime) : base(jsRuntime, PageControlModulePath)
     {

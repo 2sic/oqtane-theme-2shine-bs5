@@ -36,7 +36,7 @@
    
         npm install && npm run rename-project
 
-4.  Navigate to the **Client/theme.json** file:
+4.  Navigate to the **Client/build-theme.json** file:
 
     1. The **OqtaneRoot** setting determins where the theme is delivered to (Please change this to the path of your oqtane installation)
     2. You can also take a look at the other settings
@@ -65,7 +65,7 @@
 
 There are some different node commands which help you to build and deploy the theme to oqtane:
 
-      1. build          -> This will build the theme and deploy it to the designated location (in the `theme.json` file)
+      1. build          -> This will build the theme and deploy it to the designated location (in the `build-theme.json` file)
       3. dotnet-watch   -> This will watch all of the .razor files and build and deploy the theme everytime it detects changes
       2. webpack-watch  -> This will run webpack and watch the .scss and .ts files for changes and build and deliver them
 

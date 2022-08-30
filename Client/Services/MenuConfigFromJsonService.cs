@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 
+
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
 {
     public class MenuConfigFromJsonService
@@ -21,17 +22,17 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
 
         public MenuDesign GetDesign(string name) => HasDesign(name) ? JsonConfig.Designs[name] : null;
 
-        protected MenuConfigJson JsonConfig => _menuConfigJson ??= LoadJson();
-        private MenuConfigJson _menuConfigJson;
+        protected SettingsJson JsonConfig => _settingsJson ??= LoadJson();
+        private SettingsJson _settingsJson;
 
-        private MenuConfigJson LoadJson()
+        private SettingsJson LoadJson()
         {
-            var jsonFileName = $"{Defaults.WwwRoot}/{AssetUrls.ThemePath}/{Defaults.NavigationJsonFile}";
+            var jsonFileName = $"{Defaults.WwwRoot}/{Defaults.ThemePath}/{Defaults.NavigationJsonFile}";
             try
             {
                 var jsonString = System.IO.File.ReadAllText(jsonFileName);
                 
-                var result = JsonSerializer.Deserialize<MenuConfigJson>(jsonString, new JsonSerializerOptions
+                var result = JsonSerializer.Deserialize<SettingsJson>(jsonString, new JsonSerializerOptions
                 {
                     ReadCommentHandling = JsonCommentHandling.Skip,
                     AllowTrailingCommas = true,
@@ -43,7 +44,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
             {
                 throw;//wip
                 // probably no json file found?
-                return new MenuConfigJson();
+                return new SettingsJson();
             }
         }
 

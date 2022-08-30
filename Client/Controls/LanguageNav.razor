@@ -1,5 +1,5 @@
 @inherits ThemeControlBase
-@using System.Globalization
+@    using System.Globalization
 @inject Services.LanguageService LanguageService
 @*
     File Purpose:       Show the Language Navigation / Selector
@@ -16,9 +16,9 @@
     @foreach (var culture in SupportedCultures)
     {
         <ul class="to-shine-page-language">
-            <li class="@(CultureInfo.CurrentUICulture.Name == culture.Code ? "active" : "")">
+            <li class="@(CultureInfo.CurrentUICulture.Name == culture.Culture ? "active" : "")">
                 <a href="#" 
-                   @onclick="@(async _ => await LanguageService.SetCultureAsync(culture.Code))"
+                   @onclick="@(async _ => await LanguageService.SetCultureAsync(culture.Culture))"
                    title="@culture.Description"
                    >@culture.Label</a>
             </li>
@@ -32,7 +32,7 @@
     [Parameter]
     public string Languages { get; set; }
 
-    protected List<LanguageButtonModel> SupportedCultures;
+    protected List<SettingsLanguage> SupportedCultures;
     
     protected override async Task OnParametersSetAsync()
     {

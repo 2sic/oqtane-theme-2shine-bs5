@@ -32,7 +32,7 @@ public class LanguageService
     private readonly IJSRuntime _jsRuntime;
     private readonly ILanguageService _languageService;
 
-    public async Task<List<LanguageButtonModel>> LanguagesToShow(PageState pageState, string themeLanguages)
+    public async Task<List<SettingsLanguage>> LanguagesToShow(PageState pageState, string themeLanguages)
     {
         var siteLanguages = await _languageService.GetLanguagesAsync(pageState.Site.SiteId);
 
@@ -62,7 +62,7 @@ public class LanguageService
                             ?? code[..2].ToUpperInvariant();
 
                 var langInSite = siteLanguages.Find(al => al.Code.EqInvariant(code));
-                return new LanguageButtonModel() { Code = code, Label = label, Description = langInSite?.Name };
+                return new SettingsLanguage() { Culture = code, Label = label, Description = langInSite?.Name };
             })
             .Where(set => set.Description.HasValue())
             .ToList();
