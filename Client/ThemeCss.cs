@@ -39,7 +39,7 @@ internal class ThemeCss
     public const int PlaceHolderLevelOther = -1;
 
     public const string MenuMain = "Main";
-    public const string MenuDefault = MenuMain;
+    public const string MenuDefault = "Default";
     public const string MenuMobile = "Mobile";
     public const string MenuSidebar = "Sidebar";
     public const string MenuFooter = "Footer";

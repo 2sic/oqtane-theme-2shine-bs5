@@ -9,6 +9,7 @@ public class MenuConfig: IMenuConfig
 
     public MenuConfig(IMenuConfig original)
     {
+        Id = original.Id;
         ConfigName = original.ConfigName;
         Debug = original.Debug;
         Display = original.Display;
@@ -27,6 +28,7 @@ public class MenuConfig: IMenuConfig
     {
         var newMc = new MenuConfig(this);
         if (overrule == null) return newMc;
+        if (!string.IsNullOrWhiteSpace(overrule.Id)) newMc.Id = overrule.Id;
         if (overrule.ConfigName != default) newMc.ConfigName = overrule.ConfigName;
         if (overrule.Debug != default) newMc.Debug = overrule.Debug;
         if (overrule.Display != default) newMc.Display = overrule.Display;
@@ -42,6 +44,9 @@ public class MenuConfig: IMenuConfig
         if (overrule.MenuCss != default) newMc.MenuCss = overrule.MenuCss;
         return newMc;
     }
+
+    /// <inheritdoc />
+    public string Id { get; set; }
 
     /// <inheritdoc />
     public string ConfigName { get; set; }

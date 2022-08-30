@@ -50,6 +50,7 @@
     // Sidebar is used in menus usually to the left of content
     "Sidebar": {
       "start": ".",
+      //"startLevel": 1,
       "depth": 2,
       "design": "Sidebar"
     },

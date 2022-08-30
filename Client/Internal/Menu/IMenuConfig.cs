@@ -10,6 +10,12 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu;
 public interface IMenuConfig
 {
     /// <summary>
+    /// A unique ID to identify the menu.
+    /// Would be used for debugging but also to help in creating unique css-classes for collapsible menus
+    /// </summary>
+    string Id { get; set; }
+
+    /// <summary>
     /// Name to identify this configuration
     /// </summary>
     string ConfigName { get; set; }
@@ -33,8 +39,8 @@ public interface IMenuConfig
     /// Levels to skip from the initial stating point.
     /// - 0 means don't skip any, so if we're starting at the root, show that level
     /// - 1 means skip the first level, so if we're starting at the root, show the children
-    /// - 2 (uncommon) would mean to show the grandchildren only
     /// See inspiration context from DDRMenu https://www.dnnsoftware.com/wiki/ddrmenu-reference-guide
+    /// in DDR it was called 'skip' but it didn't make sense IMHO
     /// </summary>
     int? LevelSkip { get; set; }
 
@@ -46,8 +52,10 @@ public interface IMenuConfig
 
     /// <summary>
     /// The level this menu should start from.
-    /// - 0 is the top level (default)
-    /// - 1 is the top level containing home and other pages
+    /// - `0` is the top level (default)
+    /// - `1` is the top level containing home and other pages
+    /// - `-1` is one level up from the current node
+    /// - `-2` is two levels up from the current node
     /// </summary>
     int? StartLevel { get; set; }
 

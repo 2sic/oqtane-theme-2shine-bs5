@@ -76,7 +76,14 @@ public class Defaults
                 MenuDefault, new()
                 {
                     Start = "*",
-                    Depth = 1
+                    Depth = 0,
+                }
+            },
+            {
+                MenuMain, new ()
+                {
+                    Start = "*",
+                    Depth = 1,
                 }
             }
         },

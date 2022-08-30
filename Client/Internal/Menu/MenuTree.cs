@@ -43,6 +43,10 @@ public class MenuTree : MenuBranch
         // Give empty list if we shouldn't display it
         if (Config.Display == false) return new();
 
+        // Fake code to be able to stop at specific menus for testing
+        if (Config.Debug)
+            Config.Debug = Config.Debug;
+
         // Case 1: StartPage *, so all top-level entries
         var start = Config.Start?.Trim();
         if (start is null or MenuConfig.StartPageRoot)

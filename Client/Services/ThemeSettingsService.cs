@@ -25,9 +25,9 @@ public class ThemeSettingsService
     {
         if (_layoutSettings != null) return (_layoutSettings, "cached");
         var (show, _, showSource)
-            = FindInSources((settings, n) => settings.Layout?.LanguageMenuShow);
-        var (showMin, _, sourceInfo)
-            = FindInSources((settings, n) => settings.Layout?.LanguageMenuShowMin);
+            = FindInSources((settings, _) => settings.Layout?.LanguageMenuShow);
+        var (showMin, _, _)
+            = FindInSources((settings, _) => settings.Layout?.LanguageMenuShowMin);
         _layoutSettings = new SettingsLayout
         {
             LanguageMenuShowMin = showMin ?? 0,
@@ -41,15 +41,17 @@ public class ThemeSettingsService
     public (SettingsLanguages Languages, string Source) FindLanguageSettings()
     {
         var (config, _, sourceInfo) 
-            = FindInSources((settings, n) => settings.Languages?.List?.Any() == true ? settings.Languages : null);
+            = FindInSources((settings, _) => settings.Languages?.List?.Any() == true ? settings.Languages : null);
         
         return (config, sourceInfo);
     }
 
     public (MenuConfig MenuConfig, string Source) FindMenuConfig(string name)
     {
+        // Only search multiple names if the name is not already default
+        var names = name == MenuDefault ? new[] { name } : new[] { name, MenuDefault };
         var (config, foundName, sourceInfo) 
-            = FindInSources((settings, n) => settings.GetMenu(n), name, MenuDefault);
+            = FindInSources((settings, n) => settings.GetMenu(n), names);
         
         if (config.ConfigName != foundName) config.ConfigName = foundName;
         return (config, sourceInfo);
@@ -91,9 +93,11 @@ public class ThemeSettingsService
             DefaultThemeSettings
         };
 
+        // Make sure we have at least on name
         if (names == null || names.Length == 0) names = new[] { "dummy" };
 
         var allSourcesAndNames = names
+            .Distinct()
             .SelectMany(name => sources.Select(settings => (Settings: settings, Name: name)))
             .ToList();
 

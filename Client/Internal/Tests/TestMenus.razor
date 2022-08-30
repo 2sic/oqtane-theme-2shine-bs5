@@ -22,6 +22,17 @@
     <Menu Start="@TopLevelWithSubpagesId" Depth="1"></Menu>
     
     <hr/>
+    <h2>Start at current level</h2>
+    <h3>Current level only (should only show one page...)</h3>
+    <Menu Id="Start-At-Current-Level-NoChildren" Start="."></Menu>
+
+    <h3>Current level with children</h3>
+    <Menu Id="Start-At-Current-Level-Children" Start="." Depth="1"></Menu>
+
+    <h3>Current level children only</h3>
+    <Menu Start="." LevelSkip="1" Depth="0" Debug="true"></Menu>
+
+    <hr/>
     <h2>Start with specific numbers</h2>
     <h3>Specific Pages Listed here (Home, myPage, Login)</h3>
     <Menu Start="1, 3, 5!"></Menu>
