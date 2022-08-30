@@ -28,4 +28,7 @@ public class MenuPartCssConfig
         
     public string Disabled { get; set; }
     public string DisabledFalse { get; set; }
+
+    public string InBreadcrumb { get; set; }
+    public string InBreadcrumbFalse { get; set; }
 }

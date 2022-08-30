@@ -10,24 +10,17 @@ public static class PageStateMenuExtensions
     public static List<Page> Breadcrumb(this PageState pageState, Page page = null)
         => GetAncestors(pageState, page).Reverse().ToList();
 
+    public static List<Page> Breadcrumb(this List<Page> pages, Page page = null)
+        => GetAncestors(pages, page).Reverse().ToList();
+
     public static List<Page> Ancestors(this PageState pageState, Page page = null)
         => GetAncestors(pageState, page).ToList();
 
-    private static IEnumerable<Page> GetAncestors(PageState pageState, Page page = null)
-    {
-        //page ??= pageState.Page;
-        return GetAncestors(pageState.Pages, page ?? pageState.Page);
+    private static IEnumerable<Page> GetAncestors(PageState pageState, Page page = null) 
+        => GetAncestors(pageState.Pages, page ?? pageState.Page);
 
-        //do
-        //{
-        //    yield return page;
-        //    page = pageState.Pages.FirstOrDefault(p => p.PageId == page?.ParentId);
-
-        //} while (page != null);
-    }
     internal static IEnumerable<Page> GetAncestors(this List<Page> pages, Page page)
     {
-        // page ??= pageState.Page;
         do
         {
             yield return page;

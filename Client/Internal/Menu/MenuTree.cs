@@ -9,6 +9,10 @@ public class MenuTree : MenuBranch
     public const char PageForced = '!';
 
     internal IMenuConfig Config { get; }
+
+    /// <summary>
+    /// List of all pages - even these which would currently not be shown in the menu.
+    /// </summary>
     internal List<Page> AllPages { get; }
 
     /// <summary>
@@ -19,8 +23,14 @@ public class MenuTree : MenuBranch
 
     protected override MenuTree Tree => this;
 
-    internal MenuCss Design => _menuCss ??= new MenuCss((Config as MenuConfig)?.MenuCss);
+    internal MenuCss Design => _menuCss ??= new MenuCss(Config);
     private MenuCss _menuCss;
+
+    internal List<Page> Breadcrumb => _breadcrumb ??= AllPages.Breadcrumb(Page).ToList();
+    private List<Page> _breadcrumb;
+
+    public override string MenuId => _menuId ??= (Config as MenuConfig)?.MenuId;
+    private string _menuId;
 
     public override string Debug { get; }
 
@@ -63,36 +73,46 @@ public class MenuTree : MenuBranch
 
     internal List<Page> FindStartPages(StartingPoint[] pageIds)
     {
-        return pageIds.SelectMany(n =>
-            {
-                var source = n.Force ? Tree.AllPages : Tree.MenuPages;
-                
-                // Start by getting all the anchors - the pages to start from, before we know about children or not
-                // Three cases: root, current, ...
-                var anchors = n.Id != default
-                    ? source.Where(p => p.PageId == n.Id).ToList()
-                    : n.From == MenuConfig.StartPageRoot
-                        ? source.Where(p => p.Level == n.Level).ToList()
-                        : null;
-
-                if (anchors == null && n.From == MenuConfig.StartPageCurrent)
-                    if (n.Level == 0)
-                        anchors = new List<Page> { Page };
-                    else
-                    {
-                        var ancestors = source.GetAncestors(Page);
-                        if (n.Level > 0) ancestors = ancestors.Reverse();
-                        anchors = ancestors.Skip(Math.Abs(n.Level)).ToList();
-                    }
-
-                anchors ??= new List<Page>();
-
-                return n.Children
-                    ? anchors.SelectMany(p => GetRelatedPagesByLevel(p, 1)).ToList()
-                    : anchors;
-            })
+        var result = pageIds.SelectMany(FindStartingPage)
             .Where(p => p != null)
             .ToList();
+        return result;
+    }
+
+    private IEnumerable<Page> FindStartingPage(StartingPoint n)
+    {
+        var source = n.Force ? Tree.AllPages : Tree.MenuPages;
+
+        // Start by getting all the anchors - the pages to start from, before we know about children or not
+        // Three cases: root, current, ...
+        var anchors = n.Id != default
+            ? source.Where(p => p.PageId == n.Id).ToList()
+            : n.From == MenuConfig.StartPageRoot
+                ? source.Where(p => p.Level == 0).ToList()
+                : null;
+
+        if (anchors == null && n.From == MenuConfig.StartPageCurrent)
+            // Level 0 means current level / current page
+            if (n.Level == 0)
+                anchors = new List<Page> { Page };
+            // Level 1 means top-level pages. If we don't want the level1 children, we want the top-level items
+            // TODO: CHECK WHAT LEVEL Oqtane actually gives us, is 1 the top?
+            else if (n.Level == 1 && !n.Children)
+                anchors = source.Where(p => p.Level == 0).ToList();
+            else
+            {
+                var ancestors = source.GetAncestors(Page);
+                if (n.Level > 0) ancestors = ancestors.Reverse();
+                // If coming from the top, level 1 means top level, so skip one less
+                var level = n.Level > 0 ? n.Level - 1 : Math.Abs(n.Level);
+                anchors = ancestors.Skip(level).ToList();
+            }
+
+        anchors ??= new List<Page>();
+
+        return n.Children
+            ? anchors.SelectMany(p => GetRelatedPagesByLevel(p, 1)).ToList()
+            : anchors;
     }
 
 

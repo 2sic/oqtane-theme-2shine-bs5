@@ -35,6 +35,10 @@ public class MenuBranch
 
     public bool IsActive => Page.PageId == Tree.Page.PageId;
 
+    public bool InBreadcrumb => Tree.Breadcrumb.Contains(Page);
+
+    public virtual string MenuId => Tree.MenuId;
+
     [NotNull]
     public IList<MenuBranch> Children => _children ??= GetChildren();
     private IList<MenuBranch> _children;

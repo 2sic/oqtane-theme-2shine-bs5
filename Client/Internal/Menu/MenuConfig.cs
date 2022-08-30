@@ -1,4 +1,6 @@
-﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu;
+﻿using System;
+
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu;
 
 public class MenuConfig: IMenuConfig
 {
@@ -16,7 +18,6 @@ public class MenuConfig: IMenuConfig
         Display = original.Display;
         Depth = original.Depth;
         Children = original.Children;
-        //NavClasses = original.NavClasses;
         PageList = original.PageList;
         Start = original.Start;
         Level = original.Level;
@@ -35,13 +36,11 @@ public class MenuConfig: IMenuConfig
         if (overrule.Display != default) newMc.Display = overrule.Display;
         if (overrule.Depth != default) newMc.Depth = overrule.Depth;
         if (overrule.Children != default) newMc.Children = overrule.Children;
-        // NavClasses
         if (overrule.PageList != default) newMc.PageList = overrule.PageList;
         if (overrule.Start != default) newMc.Start = overrule.Start;
         if (overrule.Level != default) newMc.Level = overrule.Level;
 
         if (overrule.Design != default) newMc.Design = overrule.Design;
-        // var typed = overrule as MenuConfig;
         if (overrule.MenuCss != default) newMc.MenuCss = overrule.MenuCss;
         return newMc;
     }
@@ -51,14 +50,11 @@ public class MenuConfig: IMenuConfig
 
     /// <inheritdoc />
     public string ConfigName { get; set; }
-    //public const string ConfigNameDefault = "Main";
 
     /// <inheritdoc />
     public bool Debug { get; set; } = DebugDefault;
 
     public const bool DebugDefault = false;
-
-    //public string NavClasses { get; set; }
 
     /// <inheritdoc />
     public bool? Display { get; set; } = true;
@@ -87,22 +83,12 @@ public class MenuConfig: IMenuConfig
 
     public string Design { get; set; }
 
-    //public List<StartingPoint> StartingPoints
-    //{
-    //    get
-    //    {
-    //        if (_startingPoints != null) return _startingPoints;
-
-    //        // build starting points
-    //        var startParts = (Start ?? StartPageDefault).Split(',');
-
-    //        return _startingPoints;
-    //    }
-    //    set => _startingPoints = value;
-    //}
-
-    //private List<StartingPoint> _startingPoints;
-
     // todo: name, maybe not on interface
     public MenuDesign MenuCss { get; set; }
+
+    public string MenuId => _menuId ??= string.IsNullOrWhiteSpace(Id)
+        ? new Random().Next(100000, 1000000).ToString()
+        : Id;
+    private string _menuId;
+
 }

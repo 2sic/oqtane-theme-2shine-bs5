@@ -15,10 +15,10 @@ Nice to know:       See `MenuDefault.razor`
 
                 @if (subBranch.HasChildren)
                 {
-                    <span class='nav-item-sub-opener collapsed'
-                          data-bs-toggle='@(subBranch.HasChildren ? "collapse"  : "")' 
-                          data-bs-target='@(subBranch.HasChildren ? ".to-shine-submenu-mob-" + subBranch.Page.PageId : "")' 
-                    ></span>
+                    <span class='@subBranch.Classes("span")'
+                          data-bs-toggle='collapse' 
+                          data-bs-target='.to-shine-submenu-@subBranch.MenuId-@subBranch.Page.PageId' 
+                          aria-expanded='@subBranch.InBreadcrumb'></span>
                     <MenuMobile MenuBranch="@subBranch"></MenuMobile>
                 }
             </li>

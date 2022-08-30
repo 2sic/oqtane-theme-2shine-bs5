@@ -10,19 +10,19 @@ Nice to know:       See `MenuDefault.razor`
         @foreach(var subBranch in MenuBranch.Children)
         {
             <li class='@subBranch.Classes("li")'>
-                <a class='@subBranch.Classes("a")' href='@GetUrl(subBranch)'>
-                    @subBranch.Page.Name
-                </a>
+                <a class='@subBranch.Classes("a")' href='@GetUrl(subBranch)'
+                   >@subBranch.Page.Name</a>
 
                 @if (subBranch.HasChildren)
                 {
-                    @* todo: in-path *@
-                    <span class='nav-item-sub-opener @(subBranch.IsActive ? "" : "collapsed")'
-                        data-bs-toggle='@(subBranch.HasChildren ? "collapse"  : "")'
-                        data-bs-target='@(subBranch.HasChildren ? ".to-shine-submenu-" + subBranch.Page.PageId : "")'></span>
+                    <span class='@subBranch.Classes("span")'
+                          data-bs-toggle='collapse'
+                          data-bs-target='.to-shine-submenu-@subBranch.MenuId-@subBranch.Page.PageId'
+                          aria-expanded='@subBranch.InBreadcrumb'></span>
                     <MenuSidebar MenuBranch="@subBranch"></MenuSidebar>
                 }
             </li>
         }
     </ul>
 }
+    

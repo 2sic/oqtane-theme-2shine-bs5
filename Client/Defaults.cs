@@ -100,10 +100,15 @@ public class Defaults
                     Parts = new()
                     {
                         {
-                            "a", new()
+                            "ul", new()
                             {
-                                Classes = "nav-link mobile-navigation-link",
-                                Active = "active",
+                                ByLevel = new()
+                                {
+                                    { 0, "navbar-nav" },
+                                    // todo: doc why collapse-PageId
+                                    { PlaceHolderLevelOther, $"collapse to-shine-submenu-{PlaceholderMenuId}-{PlaceHolderPageId}" },
+                                },
+                                InBreadcrumb = "show",
                             }
                         },
                         {
@@ -117,14 +122,17 @@ public class Defaults
                             }
                         },
                         {
-                            "ul", new()
+                            "a", new()
                             {
-                                ByLevel = new()
-                                {
-                                    { 0, "navbar-nav" },
-                                    // todo: doc why collapse-PageId
-                                    { PlaceHolderLevelOther, $"collapse to-shine-submenu-mob-{PlaceHolderPageId}" },
-                                },
+                                Classes = "nav-link mobile-navigation-link",
+                                Active = "active",
+                            }
+                        },
+                        {
+                            "span", new()
+                            {
+                                Classes = "nav-item-sub-opener",
+                                InBreadcrumbFalse = "collapsed",
                             }
                         },
                     },
@@ -135,6 +143,7 @@ public class Defaults
     
 
     public const string PlaceholderAssetsPath = "[ASSETS-PATH]";
+    public const string PlaceholderMenuId = "[MENUID]";
 
     #region Technical paths
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeCss;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu;
@@ -8,10 +9,12 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu;
 /// </summary>
 public class MenuCss
 {
-    public MenuCss(MenuDesign config)
+    public MenuCss(IMenuConfig menuConfig)
     {
-        Configs = new List<MenuDesign> { config };
+        MenuConfig = menuConfig as MenuConfig ?? throw new ArgumentException("MenuConfig must be real", nameof(MenuConfig));
+        Configs = new List<MenuDesign> { MenuConfig.MenuCss };
     }
+    private MenuConfig MenuConfig { get; }
     internal List<MenuDesign> Configs { get; }
 
     public string Classes(string tag, MenuBranch branch)
@@ -28,10 +31,6 @@ public class MenuCss
 
     private List<string> TagClasses(MenuBranch branch, List<MenuPartCssConfig> configs)
     {
-        //var configs = tagConfigs
-        //    .Where(c => c != null)
-        //    .ToList();
-
         var classes = new List<string>();
         classes.AddRange(configs.Select(c => c.Classes));
 
@@ -42,6 +41,9 @@ public class MenuCss
             => branch.HasChildren ? c.HasChildren : c.HasChildrenFalse));
         classes.AddRange(configs.Select(c
             => branch.Page.IsClickable ? c.DisabledFalse : c.Disabled));
+
+        classes.AddRange(configs.Select(c
+            => branch.InBreadcrumb ? c.InBreadcrumb : c.InBreadcrumbFalse));
 
         // See if there are any css for this level or for not-specified levels
         var levelCss = configs
@@ -63,7 +65,8 @@ public class MenuCss
         => string
             .Join(" ", original.Where(s => !s.IsNullOrEmpty()))
             .Replace("  ", " ")
-            .Replace(PlaceHolderPageId, pageId.ToString());
+            .Replace(PlaceHolderPageId, pageId.ToString())
+            .Replace(Defaults.PlaceholderMenuId, MenuConfig.MenuId);
 
 
 }

@@ -50,7 +50,7 @@
     // Sidebar is used in menus usually to the left of content
     "Sidebar": {
       "start": ".",
-      //"startLevel": 1,
+      "level": 1,
       "depth": 2,
       "design": "Sidebar"
     },
@@ -66,9 +66,12 @@
   "Designs": {
     "Sidebar": {
       "parts": {
-        "a": {
-          "classes": "nav-link",
-          "active": "active"
+        "ul": {
+          "byLevel": {
+            "0": "navbar-nav",
+            "-1": "collapse to-shine-submenu-[MENUID]-[PAGEID]"
+          },
+          "inBreadcrumb": "show"
         },
         "li": {
           "classes": "nav-item nav-[PAGEID] position-relative",
@@ -76,11 +79,14 @@
           "active": "active",
           "disabled": "disabled"
         },
-        "ul": {
-          "byLevel": {
-            "0": "navbar-nav XYZ",
-            "-1": "collapse to-shine-submenu-[PAGEID]"
-          }
+        "a": {
+          "classes": "nav-link",
+          "active": "active"
+        },
+        "span": {
+          "classes": "nav-item-sub-opener",
+          "inBreadcrumb": "",
+          "inBreadcrumbFalse": "collapsed"
         }
       }
     }
