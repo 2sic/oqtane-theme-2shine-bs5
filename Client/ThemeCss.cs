@@ -42,6 +42,7 @@ internal class ThemeCss
     public const string MenuDefault = MenuMain;
     public const string MenuMobile = "Mobile";
     public const string MenuSidebar = "Sidebar";
+    public const string MenuFooter = "Footer";
     public const string MenuDesignDefault = "Default";
 
     // TODO: Review if we should have a menu-id, as otherwise multiple menus open/collapse together

@@ -20,7 +20,7 @@ Nice to know:       Uses extension methods like GetHomePage() and GetBreadcrumb(
         </span>
 
         @* Show an > arrow and the page name with link to it for each page in the breadcrumb *@
-        @foreach (var p in PageState.GetBreadcrumb())
+        @foreach (var p in PageState.Breadcrumb())
         {
             <span>&nbsp;&rsaquo;&nbsp;</span>
             <a href="@NavigateUrl(p.Path)" class="to-shine-page-breadcrumb-link">@p.Name</a>

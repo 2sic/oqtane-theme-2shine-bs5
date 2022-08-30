@@ -8,29 +8,37 @@
 <div class="navbar-expand-lg">
     <h2>No Settings</h2>
     <h3>Basic Menu without Setting, name none</h3>
-    <Menu Debug="true"></Menu>
+    <Menu></Menu>
     <hr/>
 
     <h2>Various Settings</h2>
     <h3>Only one specific page, no other params</h3>
-    <Menu Debug="true" Start="@TopLevelWithSubpagesId"></Menu>
+    <Menu Start="@TopLevelWithSubpagesId"></Menu>
 
     <h3>Only one specific page, LevelDepth = 0</h3>
-    <Menu Debug="true" Start="@TopLevelWithSubpagesId" Depth="0"></Menu>
+    <Menu Start="@TopLevelWithSubpagesId" Depth="0"></Menu>
 
     <h3>Only one specific page @TopLevelWithSubpagesId, with Depth=1</h3>
-    <Menu Debug="true" Start="@TopLevelWithSubpagesId" Depth="1"></Menu>
+    <Menu Start="@TopLevelWithSubpagesId" Depth="1"></Menu>
+    
+    <hr/>
+    <h2>Start with specific numbers</h2>
+    <h3>Specific Pages Listed here (Home, myPage, Login)</h3>
+    <Menu Start="1, 3, 5!"></Menu>
 
+    <h3>Specific Pages Listed here (Home, myPage, Login)</h3>
+    <Menu ConfigName="Footer"></Menu>
 
+    <hr/>
     <h2>Json Settings</h2>
     <h3>Basic Menu without Setting, name "Main"</h3>
-    <Menu Debug="true" ConfigName="Main"></Menu>
+    <Menu ConfigName="Main"></Menu>
 
     <h3>Basic Menu without Setting, name "Mobile"</h3>
-    <Menu Debug="true" ConfigName="Mobile"></Menu>
+    <Menu ConfigName="Mobile"></Menu>
 
     <h3>Basic Menu without Setting, name "Sidebar"</h3>
-    <Menu Debug="true" ConfigName="Sidebar"></Menu>
+    <Menu ConfigName="Sidebar"></Menu>
 
     <hr/>
 </div>

@@ -84,7 +84,7 @@ public class Defaults
         {
             {
                 // The Default design, if not overridden by the JSON
-                MenuDefault, MenuDesignFallback
+                MenuDesignDefault, MenuDesignFallback
             },
             {
                 // The Design configuration for Mobile menus, if not overridden by the JSON
@@ -147,6 +147,5 @@ public class Defaults
     public const string NavigationJsonFile = "theme-settings.json";
 
     #endregion
-
 
 }

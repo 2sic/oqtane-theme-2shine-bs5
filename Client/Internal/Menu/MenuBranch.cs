@@ -65,6 +65,14 @@ public class MenuBranch
     protected List<Page> FindPages(int[] pageIds)
         => Tree.MenuPages.Where(p => pageIds.Contains(p.PageId)).ToList();
 
+    internal List<Page> FindPages(MenuNode[] pageIds)
+    {
+        return pageIds.Select(n => (n.Force ? Tree.AllPages : Tree.MenuPages).FirstOrDefault(p => p.PageId == n.Id))
+            .Where(p => p != null)
+            .ToList();
+        //return Tree.MenuPages.Where(p => pageIds.Any(n => n.Id == p.PageId)).ToList();
+    }
+
     protected static Page ErrPage(int id, string message) => new() { PageId = id, Name = message };
 
 }

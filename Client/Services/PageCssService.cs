@@ -25,7 +25,7 @@ public class PageCssService
 
         var pageRootClass = pageParentId == null 
             ? $"{PageRootPrefix}{page.PageId}" 
-            : $"{PageRootPrefix}{pageState.GetBreadcrumb()?.FirstOrDefault()?.PageId}";
+            : $"{PageRootPrefix}{pageState.Breadcrumb()?.FirstOrDefault()?.PageId}";
 
 
         //1.5 Set the page-root-neutral-### class

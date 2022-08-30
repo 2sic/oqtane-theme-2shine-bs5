@@ -6,8 +6,10 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu;
 
 public class MenuTree : MenuBranch
 {
+    public const char PageForced = '!';
+
     internal IMenuConfig Config { get; }
-    private List<Page> AllPages { get; }
+    internal List<Page> AllPages { get; }
 
     /// <summary>
     /// Pages in the menu according to Oqtane pre-processing
@@ -84,12 +86,22 @@ public class MenuTree : MenuBranch
         }
     }
 
-    private int[] StringToIntArray(string value)
+    private MenuNode[] StringToIntArray(string value)
     {
-        if (string.IsNullOrWhiteSpace(value)) return Array.Empty<int>();
-        var result = value.Split(',')
-            .Select(v => int.TryParse(v.Trim(), out var val) ? val : int.MinValue)
-            .Where(i => i != int.MinValue)
+        if (string.IsNullOrWhiteSpace(value)) return Array.Empty<MenuNode>();
+        var parts = value.Split(',');
+        var result = parts
+            .Select(v =>
+            {
+                v = v.Trim();
+                if (string.IsNullOrWhiteSpace(v)) return null;
+                var important = v.EndsWith(PageForced);
+                if (important) v = v.TrimEnd(PageForced);
+                return int.TryParse(v.Trim(), out var id)
+                    ? new MenuNode { Id = id, Force = important }
+                    : null;
+            })
+            .Where(n => n != default)
             .ToArray();
         return result;
     }

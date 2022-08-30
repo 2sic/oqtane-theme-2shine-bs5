@@ -49,17 +49,14 @@
     },
     // Sidebar is used in menus usually to the left of content
     "Sidebar": {
-      "start": "*",
+      "start": ".",
       "depth": 2,
       "design": "Sidebar"
     },
-    // Todo: not implemented yet
-    "ImprintPrivacy": {
-      "depth": 0,
-      "pageList": [
-        28,
-        31
-      ]
+    // Footer menu, would usually show Imprint, Terms, Privacy etc.
+    // For the default values we're using Home "1" and Login (forced, even though it's set to not show in menus) "5!" as these are a few of the pages which always exist
+    "Footer": {
+      "start": "1, 5!"
     }
   },
 
