@@ -5,7 +5,6 @@ using System.Globalization;
 using System.Threading.Tasks;
 using Oqtane.Services;
 using Oqtane.UI;
-using System.Linq;
 using static Microsoft.AspNetCore.Localization.CookieRequestCultureProvider;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;

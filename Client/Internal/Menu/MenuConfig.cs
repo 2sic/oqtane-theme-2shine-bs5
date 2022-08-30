@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu;
+﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu;
 
 public class MenuConfig: IMenuConfig
 {

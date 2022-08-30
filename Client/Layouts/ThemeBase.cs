@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Oqtane.Models;
 using Oqtane.Shared;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using CList = System.Collections.Generic.List<(string Pane, System.Type Type, System.Collections.Generic.Dictionary<string, object> Parameters)>;
 

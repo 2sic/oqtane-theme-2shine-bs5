@@ -1,13 +1,14 @@
 @inherits ThemeControlBase
 @inject ThemeSettingsService Settings;
 @*
-    File Purpose:       Contains the logo in the layout. 
-    Recommendations:    We recommend to use an inline SVG for the logo.
-    Nice to know:       1. If you use a logo file, it must be in the wwwroot/Themes/.../ folder.
-                        2. This file is used once for mobile and once for desktop
-                        3. This file can't be called 'Logo.razor' as it conflicts with an Oqtane file
-    TODO:
-    - I18N
+File Purpose:       Contains the logo in the layout. 
+Recommendations:    We recommend to use an inline SVG for the logo.
+Nice to know:
+    1. If you use a logo file, it must be in the wwwroot/Themes/.../ folder.
+    2. This file is used once for mobile and once for desktop
+    3. This file can't be called 'Logo.razor' as it conflicts with an Oqtane file
+TODO:
+- I18N
 *@
 <a class="logo" href="" title="2shine Oqtane BS5 2sxc (change this in the ToShineLogo.razor)">
     <img alt="Logo" class="img-fluid" src="@Settings.Logo">

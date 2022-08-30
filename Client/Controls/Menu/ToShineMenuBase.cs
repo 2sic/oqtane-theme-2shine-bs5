@@ -9,6 +9,6 @@ public abstract class ToShineMenuBase: Oqtane.Themes.Controls.MenuBase
     [Required]
     public MenuBranch MenuBranch { get; set; }
 
-    public string GetUrl(MenuBranch branch) => base.GetUrl(branch.Page);
+    public string GetUrl(MenuBranch branch) => GetUrl(branch.Page);
 
 }

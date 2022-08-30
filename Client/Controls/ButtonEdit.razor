@@ -2,9 +2,9 @@
 @inherits ThemeControlBase
 @inject PageEditService PageEditService
 @*
-    File Purpose:       Shows the Toggle-Edit Button
-    Recommendations:    We recommend to use inline SVGs for performance reasons.
-    Nice to know:       -
+File Purpose:       Shows the Toggle-Edit Button
+Recommendations:    We recommend to use inline SVGs for performance reasons.
+Nice to know:       -
 *@
 @if (PageState.UserIsEditor() || (PageState.Page.IsPersonalizable && PageState.UserIsRegistered()))
 {
