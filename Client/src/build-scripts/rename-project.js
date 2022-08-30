@@ -71,7 +71,7 @@ function renameTheme(newThemeName) {
         "obj/**",
         "bin/**",
         "node_modules/**",
-        "scripts/**",
+        "src/build-scripts/**",
         "dist/**",
         ".temp_cache/**",
         ".vscode/**",

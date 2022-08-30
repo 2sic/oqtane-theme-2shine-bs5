@@ -27,7 +27,7 @@ function buildPackPublish() {
     async: false,
   });
 
-  shell.exec("node scripts/publish-build-pack.js", {
+  shell.exec("node src/build-scripts/publish-build-pack.js", {
     silent: false,
     async: false,
   });

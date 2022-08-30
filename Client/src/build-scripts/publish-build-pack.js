@@ -3,12 +3,11 @@ const shell = require("shelljs");
 const path = require("path");
 const fs = require("fs");
 
-let themeConfig = require("../theme.json");
+let themeConfig = require("../../theme.json");
 
 if (!themeConfig || !themeConfig.OqtaneRoot) {
   themeConfig = {
-      OqtaneRoot: "../web",
-      OqtaneWwwRoot: "../web",
+    OqtaneRoot: "../web",
     PublishDebug: false,
     Publish: {
       Watch: true,
@@ -24,25 +23,23 @@ if (!path.isAbsolute(themeConfig.OqtaneRoot)) {
   );
 }
 
-if (!path.isAbsolute(themeConfig.OqtaneWwwRoot)) {
-    themeConfig.OqtaneWwwRoot = path.normalize(
-        path.join("..", themeConfig.OqtaneWwwRoot)
-    );
-}
-
-if (themeConfig.Publish.Watch) {
+if (themeConfig.Publish.Build) {
   publish(themeConfig.Publish.RestartOqtane);
 }
 
 function publish(restart = false) {
-  console.log(`copy theme to oqtane dir: '${themeConfig.OqtaneRoot}'`);
+  console.log(`copy theme to oqtane dir specified in theme.json: '${themeConfig.OqtaneRoot}'`);
   const appOfflinePath = path.join(themeConfig.OqtaneRoot, "app_offline.htm");
 
   // create app_offline.htm; stops iis app
   if (restart)
     fs.writeFileSync(appOfflinePath, "2shine Theme update running ...");
 
-  shell.cp("-Rf", "bin/Debug/net6.0/*", themeConfig.OqtaneRoot);
+  shell.cp(
+    "-Rf",
+    "bin/Release/*.nupkg",
+    path.join(themeConfig.OqtaneRoot, "wwwroot", "Themes")
+  );
 
   // remove app_offline.htm; restarts iis app
   if (restart) fs.unlinkSync(appOfflinePath);

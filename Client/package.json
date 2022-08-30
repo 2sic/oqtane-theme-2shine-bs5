@@ -4,10 +4,10 @@
   "description": "The default skin template for 2sic websites",
   "main": "(none)",
   "scripts": {
-    "rename-project": "node scripts/rename-project.js",
-    "build": "node scripts/dotnet-build-pack.js",
-    "webpack-watch": "node scripts/clean.js && webpack --env watch",
-    "dotnet-watch": "node scripts/dotnet-watch.js"
+    "rename-project": "node src/build-scripts/rename-project.js",
+    "build": "node src/build-scripts/dotnet-build-pack.js",
+    "webpack-watch": "node src/build-scripts/clean.js && webpack --env watch",
+    "dotnet-watch": "node src/build-scripts/dotnet-watch.js"
   },
   "author": "2sic internet solutions",
   "license": "MIT",
