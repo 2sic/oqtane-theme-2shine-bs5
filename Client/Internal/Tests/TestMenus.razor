@@ -24,13 +24,29 @@
     <hr/>
     <h2>Start at current level</h2>
     <h3>Current level only (should only show one page...)</h3>
-    <Menu Id="Start-At-Current-Level-NoChildren" Start="."></Menu>
+    <Menu Start="." Id="Start-At-Current-Level-NoChildren"></Menu>
 
     <h3>Current level with children</h3>
-    <Menu Id="Start-At-Current-Level-Children" Start="." Depth="1"></Menu>
+    <Menu Start="." Depth="1" Id="Start-At-Current-Level-Children"></Menu>
 
     <h3>Current level children only</h3>
-    <Menu Start="." LevelSkip="1" Depth="0" Debug="true"></Menu>
+    <Menu Start="." Children="true" Depth="0" Debug="true"></Menu>
+
+    <h3>Parent level only</h3>
+    <Menu Start="." Level="-1" Depth="0" Debug="true"></Menu>
+
+    <h3>Parent level children only</h3>
+    <Menu Start="." Level="-1" Children="true" Depth="0" Debug="true"></Menu>
+
+    <h3>Current from Root Level 1, no children</h3>
+    <Menu Start="." Level="1" Children="false" Depth="0" Debug="true"></Menu>
+    <h3>Current from Root Level 1, children</h3>
+    <Menu Start="." Level="1" Children="true" Depth="0" Debug="true"></Menu>
+    <h3>Current from Root Level 1, no-children Depth 1</h3>
+    <Menu Start="." Level="1" Children="false" Depth="1" Debug="true"></Menu>
+
+    <h3>Current from Root Level 2</h3>
+    <Menu Start="." Level="2" Children="true" Depth="0" Debug="true"></Menu>
 
     <hr/>
     <h2>Start with specific numbers</h2>

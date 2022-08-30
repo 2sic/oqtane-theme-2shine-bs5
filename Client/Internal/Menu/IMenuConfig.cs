@@ -42,7 +42,7 @@ public interface IMenuConfig
     /// See inspiration context from DDRMenu https://www.dnnsoftware.com/wiki/ddrmenu-reference-guide
     /// in DDR it was called 'skip' but it didn't make sense IMHO
     /// </summary>
-    int? LevelSkip { get; set; }
+    bool? Children { get; set; }
 
     /// <summary>
     /// Exact list of pages to show in this menu.
@@ -57,7 +57,7 @@ public interface IMenuConfig
     /// - `-1` is one level up from the current node
     /// - `-2` is two levels up from the current node
     /// </summary>
-    int? StartLevel { get; set; }
+    int? Level { get; set; }
 
     /// <summary>
     /// Start page of this navigation - like home or another specific page.
@@ -72,5 +72,4 @@ public interface IMenuConfig
 
     string Design { get; set; }
 
-    //MenuDesign MenuCss { get; set; }
 }

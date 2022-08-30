@@ -2,6 +2,7 @@
 
 public class MenuConfig: IMenuConfig
 {
+
     /// <summary>
     /// Empty constructor is important for JSON deserialization
     /// </summary>
@@ -14,11 +15,11 @@ public class MenuConfig: IMenuConfig
         Debug = original.Debug;
         Display = original.Display;
         Depth = original.Depth;
-        LevelSkip = original.LevelSkip;
+        Children = original.Children;
         //NavClasses = original.NavClasses;
         PageList = original.PageList;
         Start = original.Start;
-        StartLevel = original.StartLevel;
+        Level = original.Level;
 
         Design = original.Design;
         MenuCss = (original as MenuConfig)?.MenuCss;
@@ -33,11 +34,11 @@ public class MenuConfig: IMenuConfig
         if (overrule.Debug != default) newMc.Debug = overrule.Debug;
         if (overrule.Display != default) newMc.Display = overrule.Display;
         if (overrule.Depth != default) newMc.Depth = overrule.Depth;
-        if (overrule.LevelSkip != default) newMc.LevelSkip = overrule.LevelSkip;
+        if (overrule.Children != default) newMc.Children = overrule.Children;
         // NavClasses
         if (overrule.PageList != default) newMc.PageList = overrule.PageList;
         if (overrule.Start != default) newMc.Start = overrule.Start;
-        if (overrule.StartLevel != default) newMc.StartLevel = overrule.StartLevel;
+        if (overrule.Level != default) newMc.Level = overrule.Level;
 
         if (overrule.Design != default) newMc.Design = overrule.Design;
         // var typed = overrule as MenuConfig;
@@ -68,8 +69,8 @@ public class MenuConfig: IMenuConfig
     public const int LevelDepthDefault = default;
 
     /// <inheritdoc />
-    public int? LevelSkip { get; set; }
-    public const int LevelSkipDefault = default;
+    public bool? Children { get; set; }
+    public const bool ChildrenDefault = default;
 
     /// <inheritdoc />
     public List<int> PageList { get; set; }
@@ -81,10 +82,27 @@ public class MenuConfig: IMenuConfig
     public const string StartPageCurrent = ".";
 
     /// <inheritdoc />
-    public int? StartLevel { get; set; }
+    public int? Level { get; set; }
     public const int StartLevelDefault = default;
 
     public string Design { get; set; }
+
+    //public List<StartingPoint> StartingPoints
+    //{
+    //    get
+    //    {
+    //        if (_startingPoints != null) return _startingPoints;
+
+    //        // build starting points
+    //        var startParts = (Start ?? StartPageDefault).Split(',');
+
+    //        return _startingPoints;
+    //    }
+    //    set => _startingPoints = value;
+    //}
+
+    //private List<StartingPoint> _startingPoints;
+
     // todo: name, maybe not on interface
     public MenuDesign MenuCss { get; set; }
 }

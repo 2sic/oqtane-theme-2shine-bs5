@@ -31,11 +31,11 @@ Nice to know:
     [Parameter] public string Id { get; set; }
     [Parameter] public string ConfigName { get; set; }
     [Parameter] public List<int> PageList { get; set; }
-    [Parameter] public int? LevelSkip { get; set; }
+    [Parameter] public bool? Children { get; set; }
     [Parameter] public int? Depth { get; set; }
     [Parameter] public bool Debug { get; set; } = false;
     [Parameter] public bool? Display { get; set; } = true;
-    [Parameter] public int? StartLevel { get; set; }
+    [Parameter] public int? Level { get; set; }
     [Parameter] public string Start { get; set; }
     [Parameter] public string Design { get; set; }
     [Parameter] public MenuDesign MenuCss { get; set; }

@@ -49,28 +49,52 @@ public class MenuTree : MenuBranch
 
         // Case 1: StartPage *, so all top-level entries
         var start = Config.Start?.Trim();
-        if (start is null or MenuConfig.StartPageRoot)
-            return MenuPages.Where(p => p.Level == 0).ToList();
 
         // Case 2: '.' - not yet tested
-        var relatedPageLevel = Config.StartLevel ?? MenuConfig.StartLevelDefault;
-        if (start == MenuConfig.StartPageCurrent)
-            return GetRelatedPagesByLevel(Page, relatedPageLevel);
-
+        var startLevel = Config.Level ?? MenuConfig.StartLevelDefault;
+        var getChildren = Config.Children ?? MenuConfig.ChildrenDefault;
+        var startingPoints = ConfigToStartingPoints(start, startLevel, getChildren);
         // Case 3: one or more IDs to start from
-        var startIds = StringToIntArray(start);
-        var startPages = FindPages(startIds);
-        switch (relatedPageLevel)
-        {
-            case 0:
-                return startPages;
-            case 1:
-                return startPages.SelectMany(p => GetRelatedPagesByLevel(p, 1)).ToList();
-            default:
-                return new List<Page> { ErrPage(0, $"Error: can't get pages on level {relatedPageLevel} for '{start}'") };
-        }
 
+        var startPages = FindStartPages(startingPoints);
+
+        return startPages;
     }
+
+    internal List<Page> FindStartPages(StartingPoint[] pageIds)
+    {
+        return pageIds.SelectMany(n =>
+            {
+                var source = n.Force ? Tree.AllPages : Tree.MenuPages;
+                
+                // Start by getting all the anchors - the pages to start from, before we know about children or not
+                // Three cases: root, current, ...
+                var anchors = n.Id != default
+                    ? source.Where(p => p.PageId == n.Id).ToList()
+                    : n.From == MenuConfig.StartPageRoot
+                        ? source.Where(p => p.Level == n.Level).ToList()
+                        : null;
+
+                if (anchors == null && n.From == MenuConfig.StartPageCurrent)
+                    if (n.Level == 0)
+                        anchors = new List<Page> { Page };
+                    else
+                    {
+                        var ancestors = source.GetAncestors(Page);
+                        if (n.Level > 0) ancestors = ancestors.Reverse();
+                        anchors = ancestors.Skip(Math.Abs(n.Level)).ToList();
+                    }
+
+                anchors ??= new List<Page>();
+
+                return n.Children
+                    ? anchors.SelectMany(p => GetRelatedPagesByLevel(p, 1)).ToList()
+                    : anchors;
+            })
+            .Where(p => p != null)
+            .ToList();
+    }
+
 
     private List<Page> GetRelatedPagesByLevel(Page referencePage, int level)
     {
@@ -90,20 +114,20 @@ public class MenuTree : MenuBranch
         }
     }
 
-    private MenuNode[] StringToIntArray(string value)
+    private StartingPoint[] ConfigToStartingPoints(string value, int level, bool children)
     {
-        if (string.IsNullOrWhiteSpace(value)) return Array.Empty<MenuNode>();
+        if (string.IsNullOrWhiteSpace(value)) return Array.Empty<StartingPoint>();
         var parts = value.Split(',');
         var result = parts
-            .Select(v =>
+            .Select(fromNode =>
             {
-                v = v.Trim();
-                if (string.IsNullOrWhiteSpace(v)) return null;
-                var important = v.EndsWith(PageForced);
-                if (important) v = v.TrimEnd(PageForced);
-                return int.TryParse(v.Trim(), out var id)
-                    ? new MenuNode { Id = id, Force = important }
-                    : null;
+                fromNode = fromNode.Trim();
+                if (string.IsNullOrWhiteSpace(fromNode)) return null;
+                var important = fromNode.EndsWith(PageForced);
+                if (important) fromNode = fromNode.TrimEnd(PageForced);
+                fromNode = fromNode.Trim();
+                int.TryParse(fromNode, out var id);
+                return new StartingPoint { Id = id, From = fromNode, Force = important, Children = children, Level = level};
             })
             .Where(n => n != default)
             .ToArray();

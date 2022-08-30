@@ -8,18 +8,30 @@ public static class PageStateMenuExtensions
     public static Page GetHomePage(this PageState pageState) => pageState.Pages.Find(p => p.Path == "");
 
     public static List<Page> Breadcrumb(this PageState pageState, Page page = null)
-        => GetBreadCrumbPages(pageState, page).Reverse().ToList();
+        => GetAncestors(pageState, page).Reverse().ToList();
 
     public static List<Page> Ancestors(this PageState pageState, Page page = null)
-        => GetBreadCrumbPages(pageState, page).ToList();
+        => GetAncestors(pageState, page).ToList();
 
-    private static IEnumerable<Page> GetBreadCrumbPages(PageState pageState, Page page = null)
+    private static IEnumerable<Page> GetAncestors(PageState pageState, Page page = null)
     {
-        page ??= pageState.Page;
+        //page ??= pageState.Page;
+        return GetAncestors(pageState.Pages, page ?? pageState.Page);
+
+        //do
+        //{
+        //    yield return page;
+        //    page = pageState.Pages.FirstOrDefault(p => p.PageId == page?.ParentId);
+
+        //} while (page != null);
+    }
+    internal static IEnumerable<Page> GetAncestors(this List<Page> pages, Page page)
+    {
+        // page ??= pageState.Page;
         do
         {
             yield return page;
-            page = pageState.Pages.FirstOrDefault(p => p.PageId == page?.ParentId);
+            page = pages.FirstOrDefault(p => p.PageId == page?.ParentId);
 
         } while (page != null);
     }
