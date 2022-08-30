@@ -16,11 +16,14 @@
 
   // TODO:
   "layout": {
-    "logo": "[ASSETS-PATH]/logo.svg"
+    "logo": "[ASSETS-PATH]/logo.svg",
+    "languageMenuShow": true,
+    "languageMenuShowMin":  2
   },
 
   // TODO:
   "languages": {
+    "hideOthers":  false,
     "list": [
       {
         "culture": "en",
@@ -28,7 +31,7 @@
         "description": "English"
       },
       {
-        "culture": "de-DE",
+        "culture": "de-CH",
         "label": "DEU"
       }
     ]

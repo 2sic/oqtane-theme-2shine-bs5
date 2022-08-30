@@ -6,9 +6,9 @@ public class ThemeSettings
 
     public string Source { get; set; }
 
-    public SettingsJsonLayout Layout { get; set; }
+    public SettingsLayout Layout { get; set; }
 
-    public SettingsJsonLanguages Languages { get; set; }
+    public SettingsLanguages Languages { get; set; }
 
     /// <summary>
     /// The menu definitions
@@ -24,12 +24,15 @@ public class ThemeSettings
     public MenuDesign GetDesign(string name) => Designs?.FindInvariant(name);
 }
 
-public class SettingsJsonLayout
+public class SettingsLayout
 {
     public string Logo { get; set; }
+    public bool LanguageMenuShow { get; set; } = true;
+    public int LanguageMenuShowMin { get; set; } = 0;
 }
 
-public class SettingsJsonLanguages
+public class SettingsLanguages
 {
-    public SettingsLanguage[] List { get; set; }
+    public bool HideOthers { get; set; } = false;
+    public List<SettingsLanguage> List { get; set; }
 }

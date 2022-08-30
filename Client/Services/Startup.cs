@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
@@ -11,8 +10,11 @@ public class Startup : Oqtane.Services.IClientStartup
     /// <param name="services"></param>
     public void ConfigureServices(IServiceCollection services)
     {
+        // All these Settings etc. should be scoped, so they don't have to reload for each click
         services.AddScoped<SettingsFromJsonService>();
         services.AddScoped<ThemeSettingsService>();
+        services.AddScoped<LanguageService>();
+
         services.AddTransient<MenuTreeService>();
         services.AddSingleton<ThemeSettings.ThemeSettingsService>();
 
@@ -22,7 +24,6 @@ public class Startup : Oqtane.Services.IClientStartup
 
         // Logic parts for Controls
         services.AddTransient<PageEditService>();
-        services.AddTransient<LanguageService>();
 
     }
 }

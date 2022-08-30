@@ -22,6 +22,27 @@ public class ThemeSettingsService
     /// </summary>
     public string Logo => ReplacePlaceholders(Json.Settings?.Layout?.Logo ?? DefaultThemeSettings.Layout.Logo);
 
+    public (SettingsLayout Layout, string Source) FindLayout()
+    {
+        var (show, _, showSource)
+            = FindInSources((settings, n) => settings.Layout?.LanguageMenuShow);
+        var (showMin, _, sourceInfo)
+            = FindInSources((settings, n) => settings.Layout?.LanguageMenuShowMin);
+        var result = new SettingsLayout
+        {
+            LanguageMenuShowMin = showMin ?? 0,
+            LanguageMenuShow = show ?? true,
+        };
+        return (result, showSource);
+    }
+
+    public (SettingsLanguages Languages, string Source) FindLanguages()
+    {
+        var (config, _, sourceInfo) 
+            = FindInSources((settings, n) => settings.Languages?.List?.Any() == true ? settings.Languages : null);
+        
+        return (config, sourceInfo);
+    }
 
     public (MenuConfig MenuConfig, string Source) FindMenuConfig(string name)
     {
@@ -45,7 +66,7 @@ public class ThemeSettingsService
 
     public (MenuDesign Design, string Source) FindDesign(string designName)
     {
-        var (result, foundName, sourceInfo) 
+        var (result, _, sourceInfo) 
             = FindInSources((settings, n) => settings.GetDesign(n), designName, MenuDesignDefault);
         return (result, sourceInfo);
     }
@@ -67,6 +88,8 @@ public class ThemeSettingsService
             Json.Settings,
             DefaultThemeSettings
         };
+
+        if (names == null || names.Length == 0) names = new[] { "dummy" };
 
         var allSourcesAndNames = names
             .SelectMany(name => sources.Select(settings => (Settings: settings, Name: name)))

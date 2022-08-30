@@ -8,9 +8,6 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 /// </summary>
 public class Defaults
 {
-    // Todo: move to json
-    public const string LanguageList = ""; // "en: Engl, de-ch"; // ""en: EN, de: DE, de-CH: CH, fr: FR"; //", nl-NL: NDL";
-
     /// <summary>
     /// The default/fallback design configuration for menus.
     /// Normally this would be set in the json file or the theme settings, so this wouldn't be used. 
@@ -61,7 +58,17 @@ public class Defaults
         Source = "Preset",
         Layout = new()
         {
-            Logo = "logo.svg"
+            Logo = "logo.svg",
+            LanguageMenuShow = true,
+            LanguageMenuShowMin = 2,
+        },
+        Languages = new()
+        {
+            HideOthers = false,
+            List = new()
+            {
+                new("en", "En")
+            }
         },
         Menus = new()
         {

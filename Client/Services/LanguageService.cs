@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.JSInterop;
 using System.Globalization;
@@ -21,44 +19,49 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
 public class LanguageService
 {
-    public LanguageService(NavigationManager navigation, IJSRuntime jsRuntime, ILanguageService languageService)
+    public LanguageService(NavigationManager navigation, IJSRuntime jsRuntime, ILanguageService oqtLanguages, ThemeSettingsService settings)
     {
         _navigationManager = navigation;
         _jsRuntime = jsRuntime;
-        _languageService = languageService;
+        _oqtLanguages = oqtLanguages;
+        _settings = settings;
     }
 
     private readonly NavigationManager _navigationManager;
     private readonly IJSRuntime _jsRuntime;
-    private readonly ILanguageService _languageService;
+    private readonly ILanguageService _oqtLanguages;
+    private readonly ThemeSettingsService _settings;
 
-    public async Task<List<SettingsLanguage>> LanguagesToShow(PageState pageState, string themeLanguages)
+    public async Task<bool> ShowMenu(int siteId)
     {
-        var siteLanguages = await _languageService.GetLanguagesAsync(pageState.Site.SiteId);
+        var languages = await LanguagesToShow(siteId);
+        return LayoutSettings.LanguageMenuShow && LayoutSettings.LanguageMenuShowMin <= languages.Count;
+    }
 
-        // Figure out list of languages if specified in in the parameters
-        (string Code, string Label)[] customList = string.IsNullOrWhiteSpace(themeLanguages)
-            ? Array.Empty<(string, string)>()
-            : themeLanguages.Split(",")
-                .Select(l =>
-                {
-                    var parts = l.Split(":");
-                    return (parts[0].Trim(), parts.Length > 1 ? parts[1].Trim() : null);
-                })
-                .Where(s => s.Item1.HasValue())
-                .ToArray();
+    private SettingsLayout LayoutSettings => _layout ??= _settings.FindLayout().Layout;
+    private SettingsLayout _layout;
+
+    public async Task<List<SettingsLanguage>> LanguagesToShow(int siteId)
+    {
+        if (_languages.TryGetValue(siteId, out var cached)) return cached;
+
+        var siteLanguages = await _oqtLanguages.GetLanguagesAsync(siteId);
+
+        var langsFromConfig = _settings.FindLanguages();
+
+        var customList = langsFromConfig.Languages.List;
 
         // Primary order of languages. If specified, use that, otherwise use site list
         var primaryOrder = customList.Any()
-            ? customList.Select(l => l.Code)
+            ? customList.Select(l => l.Culture)
             : siteLanguages.Select(l => l.Code);
 
         // Create list with Code, Label and Title
         var result = primaryOrder
             .Select(code =>
             {
-                var customLabel = customList.FirstOrDefault(l => l.Code.EqInvariant(code));
-                var label = (customLabel != default ? customLabel.Label : null)
+                var customLabel = customList.FirstOrDefault(l => l.Culture.EqInvariant(code));
+                var label = customLabel?.Label
                             ?? code[..2].ToUpperInvariant();
 
                 var langInSite = siteLanguages.Find(al => al.Code.EqInvariant(code));
@@ -66,8 +69,11 @@ public class LanguageService
             })
             .Where(set => set.Description.HasValue())
             .ToList();
+        _languages[siteId] = result;
         return result;
     }
+
+    private readonly Dictionary<int, List<SettingsLanguage>> _languages = new();
 
     public async Task SetCultureAsync(string culture)
     {

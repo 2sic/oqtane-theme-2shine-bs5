@@ -2,25 +2,26 @@
 @using System.Globalization
 @inject Services.LanguageService LanguageService
 @*
-    File Purpose:       Show the Language Navigation / Selector
-    Recommendations:    -
-    Nice to know:       The languages available are handed in from the Header file
-                        ...if the list is empty, it will use the site definition
-                        ...otherwise it will use the values specified for order/label of languages
-    WishList:
-    - make languages more configurable
-    - make the show/hide of this also configurable
+File Purpose:       Show the Language Navigation / Selector
+Recommendations:    -
+Nice to know:       
+    - The languages available are handed in from the Header file
+      ...if the list is empty, it will use the site definition
+      ...otherwise it will use the values specified for order/label of languages
+WishList:
+- make languages more configurable
+- make the show/hide of this also configurable
 *@
-@if (SupportedCultures?.Count > 1)
+@if (Show == true)
 {
-    @foreach (var culture in SupportedCultures)
+    @foreach (var lang in Languages)
     {
         <ul class="to-shine-page-language">
-            <li class="@(CultureInfo.CurrentUICulture.Name == culture.Culture ? "active" : "")">
+            <li class="@(CultureInfo.CurrentUICulture.Name == lang.Culture ? "active" : "")">
                 <a href="#" 
-                   @onclick="@(async _ => await LanguageService.SetCultureAsync(culture.Culture))"
-                   title="@culture.Description"
-                   >@culture.Label</a>
+                   @onclick="@(async _ => await LanguageService.SetCultureAsync(lang.Culture))"
+                   title="@lang.Description"
+                   >@lang.Label</a>
             </li>
         </ul>
     }
@@ -29,16 +30,19 @@
 @code{
     // List of languages to show, controlled by the skin
     // Will automatically use system languages if not specified
-    [Parameter]
-    public string Languages { get; set; }
+    //[Parameter]
+    //public string Languages { get; set; }
 
-    protected List<SettingsLanguage> SupportedCultures;
+    protected List<SettingsLanguage> Languages;
+
+    protected bool? Show = null;
     
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
 
         // Load defined language list. It change unless the page is reloaded, so we can cache it on this control
-        SupportedCultures ??= await LanguageService.LanguagesToShow(PageState, Languages);
+        Languages ??= await LanguageService.LanguagesToShow(PageState.Site.SiteId);
+        Show ??= await LanguageService.ShowMenu(PageState.Site.SiteId);
     }
 }
