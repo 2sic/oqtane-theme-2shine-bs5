@@ -47,16 +47,26 @@ public class LanguageService
 
         var siteLanguages = await _oqtLanguages.GetLanguagesAsync(siteId);
 
-        var langsFromConfig = _settings.FindLanguages();
+        var langsFromConfig = _settings.FindLanguageSettings();
 
-        var customList = langsFromConfig.Languages.List;
+        var customList = langsFromConfig.Languages.List.Values;
+
+        var siteLanguageCodes = siteLanguages.Select(l => l.Code).ToList();
 
         // Primary order of languages. If specified, use that, otherwise use site list
-        var primaryOrder = customList.Any()
-            ? customList.Select(l => l.Culture)
-            : siteLanguages.Select(l => l.Code);
+        var primaryOrder = (customList.Any()
+                ? customList.Select(l => l.Culture)
+                : siteLanguageCodes)
+            .ToList();
 
-        // Create list with Code, Label and Title
+        if (!langsFromConfig.Languages.HideOthers && primaryOrder.Count < siteLanguages.Count)
+        {
+            var missingLanguages = siteLanguageCodes
+                .Where(slc => !primaryOrder.Any(slc.EqInvariant)).ToList();
+            primaryOrder = primaryOrder.Concat(missingLanguages).ToList();
+        }
+
+            // Create list with Code, Label and Title
         var result = primaryOrder
             .Select(code =>
             {
@@ -65,7 +75,7 @@ public class LanguageService
                             ?? code[..2].ToUpperInvariant();
 
                 var langInSite = siteLanguages.Find(al => al.Code.EqInvariant(code));
-                return new SettingsLanguage() { Culture = code, Label = label, Description = langInSite?.Name };
+                return new SettingsLanguage { Culture = code, Label = label, Description = langInSite?.Name };
             })
             .Where(set => set.Description.HasValue())
             .ToList();

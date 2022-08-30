@@ -67,7 +67,7 @@ public class Defaults
             HideOthers = false,
             List = new()
             {
-                new("en", "En")
+                { "en", new SettingsLanguage("en", "En") }
             }
         },
         Menus = new()

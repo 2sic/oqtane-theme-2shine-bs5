@@ -1,4 +1,6 @@
-﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Settings;
+﻿using System;
+
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Settings;
 
 public class ThemeSettings
 {
@@ -33,6 +35,36 @@ public class SettingsLayout
 
 public class SettingsLanguages
 {
+    /// <summary>
+    /// If true, will only show the languages which are explicitly configured.
+    /// If false, will first show the configured languages, then the rest. 
+    /// </summary>
     public bool HideOthers { get; set; } = false;
-    public List<SettingsLanguage> List { get; set; }
+
+    /// <summary>
+    /// List of languages
+    /// </summary>
+    public Dictionary<string, SettingsLanguage> List
+    {
+        get => EnsureInitialized(_list);
+        set => _list = InitList(value);
+    }
+    private Dictionary<string, SettingsLanguage> _list;
+
+    private Dictionary<string, SettingsLanguage> InitList(Dictionary<string, SettingsLanguage> dic)
+    {
+        // Ensure each config knows what culture it's for, as 
+        foreach (var set in dic) 
+            set.Value.Culture ??= set.Key;
+        return new Dictionary<string, SettingsLanguage>(dic, StringComparer.InvariantCultureIgnoreCase);
+    }
+
+    private T EnsureInitialized<T>(T value)
+    {
+        if (_initialized) return value;
+
+        return value;
+    }
+
+    private bool _initialized;
 }

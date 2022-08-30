@@ -24,17 +24,15 @@
   // TODO:
   "languages": {
     "hideOthers":  false,
-    "list": [
-      {
-        "culture": "en",
+    "list": {
+      "en": {
         "label": "ENG",
         "description": "English"
       },
-      {
-        "culture": "de-CH",
+      "de-CH": {
         "label": "DEU"
       }
-    ]
+    }
   },
 
   // Menus contain the configuration for each menu. The names used are specified in the Razor files.

@@ -24,19 +24,22 @@ public class ThemeSettingsService
 
     public (SettingsLayout Layout, string Source) FindLayout()
     {
+        if (_layoutSettings != null) return (_layoutSettings, "cached");
         var (show, _, showSource)
             = FindInSources((settings, n) => settings.Layout?.LanguageMenuShow);
         var (showMin, _, sourceInfo)
             = FindInSources((settings, n) => settings.Layout?.LanguageMenuShowMin);
-        var result = new SettingsLayout
+        _layoutSettings = new SettingsLayout
         {
             LanguageMenuShowMin = showMin ?? 0,
             LanguageMenuShow = show ?? true,
         };
-        return (result, showSource);
+        return (_layoutSettings, showSource);
     }
 
-    public (SettingsLanguages Languages, string Source) FindLanguages()
+    private SettingsLayout _layoutSettings;
+
+    public (SettingsLanguages Languages, string Source) FindLanguageSettings()
     {
         var (config, _, sourceInfo) 
             = FindInSources((settings, n) => settings.Languages?.List?.Any() == true ? settings.Languages : null);
