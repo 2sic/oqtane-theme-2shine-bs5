@@ -61,7 +61,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="src\navigation.json" />
+    <Content Include="src\theme-settings.json" />
   </ItemGroup>
 
   <PropertyGroup>

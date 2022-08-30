@@ -115,47 +115,12 @@ public class Defaults
                         },
                     },
                 }
-            },
-            {
-                // Design configuration for the Sidebar, if not overridden by the JSON
-                MenuSidebar, new()
-                {
-                    Parts = new()
-                    {
-                        {
-                            "a", new()
-                            {
-                                Classes = "nav-link",
-                                Active = "active",
-                            }
-                        },
-                        {
-                            "li", new()
-                            {
-                                Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
-                                HasChildren = "has-child",
-                                Active = "active",
-                                Disabled = "disabled",
-                            }
-                        },
-                        {
-                            "ul", new()
-                            {
-                                ByLevel = new()
-                                {
-                                    { 0, "navbar-nav" },
-                                    { PlaceHolderLevelOther, $"collapse to-shine-submenu-{PlaceHolderPageId}" },
-                                },
-                            }
-                        },
-                    },
-                }
             }
         }
     };
     
 
-    public const string AssetsPathPlaceholder = "[ASSETS-PATH]";
+    public const string PlaceholderAssetsPath = "[ASSETS-PATH]";
 
     #region Technical paths
 
@@ -172,7 +137,7 @@ public class Defaults
 
     #region Navigation Constants
 
-    public const string NavigationJsonFile = "navigation.json";
+    public const string NavigationJsonFile = "theme-settings.json";
 
     #endregion
 

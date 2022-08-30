@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
-using static ToSic.Oqt.Themes.ToShineBs5.Client.Defaults;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+using static Defaults;
 using static ThemeCss;
+
 /// <summary>
 /// Service which consolidates settings made in the UI, in the JSON and falls back to coded defaults.
 /// </summary>
@@ -51,9 +52,11 @@ public class ThemeSettingsService
 
 
     private string ReplacePlaceholders(string value) => value?
-        .Replace(AssetsPathPlaceholder, AssetsPath);
+        .Replace(PlaceholderAssetsPath, AssetsPath);
 
-
+    /// <summary>
+    /// Loop through various sources of settings and check the keys in the preferred order to see if we get a hit.
+    /// </summary>
     private (T Result, string Name, string source) FindInSources<T>(
         Func<Internal.Settings.ThemeSettings, string, T> findFunc,
         params string[] names)
