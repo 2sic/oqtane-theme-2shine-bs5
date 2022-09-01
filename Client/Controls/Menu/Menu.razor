@@ -11,19 +11,19 @@ Nice to know:
 *@
 @switch (ConfigName)
 {
-    case ThemeCss.MenuMobile:
+    case Defaults.MenuMobile:
         <MenuMobile MenuBranch="@MenuTree"></MenuMobile>
         break;
-    case ThemeCss.MenuSidebar:
+    case Defaults.MenuSidebar:
         <MenuSidebar MenuBranch="@MenuTree"></MenuSidebar>
         break;
-    case ThemeCss.MenuMain:
+    case Defaults.MenuMain:
     default:
         <MenuDefault MenuBranch="@MenuTree"></MenuDefault>
         break;
 }
 @code {
-    [Inject] protected MenuTreeService MenuTreeService { get; set; }
+    [Inject] protected MenuTreeService<Defaults> MenuTreeService { get; set; }
 
     /// <summary>
     /// todo
@@ -39,6 +39,7 @@ Nice to know:
     [Parameter] public string Start { get; set; }
     [Parameter] public string Design { get; set; }
     [Parameter] public MenuDesign MenuCss { get; set; }
+    [Parameter] public ThemeCssSettings ThemeCss { get; set; }
 
     protected MenuBranch MenuTree { get; private set; }
 
@@ -46,6 +47,7 @@ Nice to know:
     {
         await base.OnParametersSetAsync();
 
-        MenuTree = MenuTreeService.GetTree(new MenuConfig(this), PageState, MenuPages.ToList());
+        // TODO: CHANGE HOW IT GETS THE DEFAULTS
+        MenuTree = MenuTreeService.GetTree(new MenuConfig(this), PageState, MenuPages.ToList(), ThemeCss);
     }
 }

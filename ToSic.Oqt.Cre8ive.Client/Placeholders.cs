@@ -5,4 +5,5 @@ public class Placeholders
     public const string PageId = "[PAGEID]";
     public const string AssetsPath = "[ASSETS-PATH]";
     public const string MenuId = "[MENUID]";
+    public const int PlaceHolderLevelOther = -1;
 }

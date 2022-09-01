@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using static ToSic.Oqt.Cre8ive.Client.Settings.ThemeCss;
 
 namespace ToSic.Oqt.Cre8ive.Client.Menu;
 
@@ -50,7 +49,7 @@ public class MenuCss
                 ? null
                 : c.ByLevel.TryGetValue(branch.MenuLevel, out var levelClasses)
                     ? levelClasses
-                    : c.ByLevel.TryGetValue(PlaceHolderLevelOther, out var levelClassesDefault)
+                    : c.ByLevel.TryGetValue(Placeholders.PlaceHolderLevelOther, out var levelClassesDefault)
                         ? levelClassesDefault
                         : null);
         classes.AddRange(levelCss);

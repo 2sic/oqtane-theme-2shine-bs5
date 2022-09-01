@@ -1,4 +1,6 @@
-﻿namespace ToSic.Oqt.Cre8ive.Client.Menu;
+﻿using ToSic.Oqt.Cre8ive.Client.Settings;
+
+namespace ToSic.Oqt.Cre8ive.Client.Menu;
 
 public class MenuConfig: IMenuConfig
 {
@@ -22,6 +24,7 @@ public class MenuConfig: IMenuConfig
 
         Design = original.Design;
         MenuCss = (original as MenuConfig)?.MenuCss;
+        ThemeCss = original.ThemeCss;
     }
 
     public MenuConfig Overrule(MenuConfig overrule)
@@ -40,6 +43,7 @@ public class MenuConfig: IMenuConfig
 
         if (overrule.Design != default) newMc.Design = overrule.Design;
         if (overrule.MenuCss != default) newMc.MenuCss = overrule.MenuCss;
+        if (overrule.ThemeCss != default) newMc.ThemeCss = overrule.ThemeCss;
         return newMc;
     }
 
@@ -67,10 +71,10 @@ public class MenuConfig: IMenuConfig
     public const bool ChildrenDefault = default;
 
     /// <inheritdoc />
-    public List<int> PageList { get; set; }
+    public List<int>? PageList { get; set; }
 
     /// <inheritdoc />
-    public string Start { get; set; }
+    public string? Start { get; set; }
     public const string StartPageDefault = "*";
     public const string StartPageRoot = "*";
     public const string StartPageCurrent = ".";
@@ -79,14 +83,16 @@ public class MenuConfig: IMenuConfig
     public int? Level { get; set; }
     public const int StartLevelDefault = default;
 
-    public string Design { get; set; }
+    public string? Design { get; set; }
 
     // todo: name, maybe not on interface
-    public MenuDesign MenuCss { get; set; }
+    public MenuDesign? MenuCss { get; set; }
+
+    public ThemeCssSettings? ThemeCss { get; set; }
 
     public string MenuId => _menuId ??= string.IsNullOrWhiteSpace(Id)
         ? new Random().Next(100000, 1000000).ToString()
         : Id;
-    private string _menuId;
+    private string? _menuId;
 
 }

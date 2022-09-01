@@ -7,13 +7,19 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 /// <summary>
 /// Will create a MenuTree based on the current pages information and configuration
 /// </summary>
-public class MenuTreeService
+public class MenuTreeService<T> where T : ThemeDefaults, new()
 {
-    public MenuTreeService(ThemeSettingsService themeSettings) => _themeSettings = themeSettings;
-    private readonly ThemeSettingsService _themeSettings;
+    public MenuTreeService(ThemeSettingsService<T> themeSettings, T settings)
+    {
+        _themeSettings = themeSettings;
+        _settings = settings;
+    }
+
+    private readonly ThemeSettingsService<T> _themeSettings;
+    private readonly T _settings;
 
     [return: NotNull]
-    public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages)
+    public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages, ThemeCssSettings themeCssSettings)
     {
         config ??= new MenuConfig();
         var (configName, debugInfo) = _themeSettings.FindConfigName(config.ConfigName);
@@ -23,6 +29,7 @@ public class MenuTreeService
         // isn't contained in the json file the normal parameter are given to the service
         var (menuSettings, menuConfigSource) = _themeSettings.FindMenuConfig(configName);
         config = menuSettings.Overrule(config);
+        if (config.ThemeCss == default) config.ThemeCss = themeCssSettings ?? _settings.ThemeCss;
         debugInfo += "; " + menuConfigSource;
 
         // See if we have a default configuration for CSS which should be applied

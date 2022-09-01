@@ -1,4 +1,6 @@
 ﻿
+using ToSic.Oqt.Cre8ive.Client.Settings;
+
 namespace ToSic.Oqt.Cre8ive.Client.Menu;
 
 /// <summary>
@@ -46,7 +48,7 @@ public interface IMenuConfig
     /// Exact list of pages to show in this menu.
     /// TODO: MAYBE allow for negative numbers to remove them from the list?
     /// </summary>
-    List<int> PageList { get; set; }
+    List<int>? PageList { get; set; }
 
     /// <summary>
     /// The level this menu should start from.
@@ -66,8 +68,10 @@ public interface IMenuConfig
     /// - `.` or `0` to indicate current page, probably not implemented yet TODO
     /// - blank / null, to use another start ???
     /// </summary>
-    string Start { get; set; }
+    string? Start { get; set; }
 
     string Design { get; set; }
 
+
+    ThemeCssSettings? ThemeCss { get; set; }
 }

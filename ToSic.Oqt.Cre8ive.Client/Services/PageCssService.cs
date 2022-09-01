@@ -1,41 +1,47 @@
 ﻿using Oqtane.UI;
-using static ToSic.Oqt.Cre8ive.Client.Settings.ThemeCss;
+using ToSic.Oqt.Cre8ive.Client.Settings;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+namespace ToSic.Oqt.Cre8ive.Client.Services;
 
 /// <summary>
 /// Special helper to figure out what classes should be applied to the page. 
 /// </summary>
-public class PageCssService
+public class PageCssService<T> where T : ThemeDefaults, new()
 {
+
+    public PageCssService(T settings) => Settings = settings.ThemeCss;
+    public ThemeCssSettings Settings { get; }
+
+    //protected abstract ThemeCss Settings { get; }
+
     public string BodyClasses(PageState pageState, string layoutVariation)
     {
         var page = pageState.Page;
         //1.1 Set the page-is-home class
-        var isHomeClass = page.Path == "" ? PageIsHome : "";
+        var isHomeClass = page.Path == "" ? Settings.PageIsHome : "";
 
         //1.2 Set the page-### class
-        var pageIdClass = PagePrefix + page.PageId;
+        var pageIdClass = Settings.PagePrefix + page.PageId;
 
         //1.3 Set the page-parent-### class
-        var pageParentClass = page.ParentId == null ? null : $"{PageParentPrefix}{page.ParentId}";
+        var pageParentClass = page.ParentId == null ? null : $"{Settings.PageParentPrefix}{page.ParentId}";
 
         //1.4 Set the page-root-### class
         var pageParentId = page.ParentId;
 
         var pageRootClass = pageParentId == null 
-            ? $"{PageRootPrefix}{page.PageId}" 
-            : $"{PageRootPrefix}{pageState.Breadcrumb()?.FirstOrDefault()?.PageId}";
+            ? $"{Settings.PageRootPrefix}{page.PageId}" 
+            : $"{Settings.PageRootPrefix}{pageState.Breadcrumb()?.FirstOrDefault()?.PageId}";
 
 
         //1.5 Set the page-root-neutral-### class
 
         //2 Set site-### class
-        var siteIdClass = $"{SitePrefix}{page.SiteId}";
+        var siteIdClass = $"{Settings.SitePrefix}{page.SiteId}";
 
         //3 Set the nav-level-### class
         var navLevel = page.Level + 1;
-        var navLevelClass = $"{NavLevelPrefix}{navLevel}";
+        var navLevelClass = $"{Settings.NavLevelPrefix}{navLevel}";
 
         //4.1 Set lang- class
 
@@ -44,7 +50,9 @@ public class PageCssService
         //4.3 Set the lang-neutral- class
 
         //5.1 Set the to-shine-variation- class
-        var layoutVariationClass = $"{LayoutVariationPrefix}{layoutVariation}";
+        var layoutVariationClass = $"{Settings.LayoutVariationPrefix}{layoutVariation}";
+
+        // TODO: MOVE OUT TO ThemeCss
 
         //5.2 Set the to-shine-mainnav-variation- class
         const string navigationVariationClass = "to-shine-mainnav-variation-right";
@@ -76,5 +84,5 @@ public class PageCssService
     }
 
     public string PaneIsEmptyClasses(PageState pageState, string paneName)
-        => PaneIsEmpty(pageState, paneName) ? ThemeCss.PaneIsEmpty : "";
+        => PaneIsEmpty(pageState, paneName) ? Settings.PaneIsEmpty : "";
 }

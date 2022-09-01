@@ -16,9 +16,9 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
  * - ...and only show these; possibly show more to admin?
  */
 
-public class LanguageService
+public class LanguageService<T> where T : ThemeDefaults, new()
 {
-    public LanguageService(NavigationManager navigation, IJSRuntime jsRuntime, ILanguageService oqtLanguages, ThemeSettingsService settings)
+    public LanguageService(NavigationManager navigation, IJSRuntime jsRuntime, ILanguageService oqtLanguages, ThemeSettingsService<T> settings)
     {
         _navigationManager = navigation;
         _jsRuntime = jsRuntime;
@@ -29,7 +29,7 @@ public class LanguageService
     private readonly NavigationManager _navigationManager;
     private readonly IJSRuntime _jsRuntime;
     private readonly ILanguageService _oqtLanguages;
-    private readonly ThemeSettingsService _settings;
+    private readonly ThemeSettingsService<T> _settings;
 
     public async Task<bool> ShowMenu(int siteId)
     {

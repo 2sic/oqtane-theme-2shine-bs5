@@ -11,6 +11,7 @@
     <Copyright>2sic</Copyright>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>$(MSBuildProjectName).Oqtane</AssemblyName>
   </PropertyGroup>
 
 
