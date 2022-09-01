@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections;
-using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeCss;
+﻿using System.Collections;
+using static ToSic.Oqt.Cre8ive.Client.Settings.ThemeCss;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu;
+namespace ToSic.Oqt.Cre8ive.Client.Menu;
 
 /// <summary>
 /// Special helper to provide Css classes to menus
@@ -65,8 +64,8 @@ public class MenuCss
         => string
             .Join(" ", original.Where(s => !s.IsNullOrEmpty()))
             .Replace("  ", " ")
-            .Replace(PlaceHolderPageId, pageId.ToString())
-            .Replace(Defaults.PlaceholderMenuId, MenuConfig.MenuId);
+            .Replace(Placeholders.PageId, pageId.ToString())
+            .Replace(Placeholders.MenuId, MenuConfig.MenuId);
 
 
 }

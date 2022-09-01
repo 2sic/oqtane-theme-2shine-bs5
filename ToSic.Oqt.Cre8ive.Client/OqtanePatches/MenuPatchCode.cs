@@ -1,9 +1,8 @@
-﻿using System;
-using Oqtane.Models;
+﻿using Oqtane.Models;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.OqtanePatches;
+namespace ToSic.Oqt.Cre8ive.Client.OqtanePatches;
 
-internal class MenuPatchCode
+public class MenuPatchCode
 {
     /// <summary>
     /// Patch - copied from the Oqtane PageService v3.2 where it's a private function.
@@ -14,7 +13,7 @@ internal class MenuPatchCode
     /// </summary>
     /// <param name="pages"></param>
     /// <returns></returns>
-    internal static List<Page> GetPagesHierarchy(List<Page> pages)
+    public static List<Page> GetPagesHierarchy(List<Page> pages)
     {
         List<Page> hierarchy = new List<Page>();
         Action<List<Page>, Page> getPath = null;

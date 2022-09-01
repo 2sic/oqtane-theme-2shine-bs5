@@ -1,7 +1,6 @@
-﻿using System.Threading.Tasks;
-using Microsoft.JSInterop;
+﻿using Microsoft.JSInterop;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.JsModules;
+namespace ToSic.Oqt.Cre8ive.Client.JsModules;
 
 /// <summary>
 /// Base for any JS Module Helper class

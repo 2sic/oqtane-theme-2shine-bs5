@@ -1,5 +1,5 @@
 ﻿using Oqtane.UI;
-using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeCss;
+using static ToSic.Oqt.Cre8ive.Client.Settings.ThemeCss;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 

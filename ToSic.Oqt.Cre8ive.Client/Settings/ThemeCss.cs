@@ -1,11 +1,12 @@
-﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client;
+﻿namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
 /// <summary>
 /// Constants and helpers related to creating Css and Css Classes.
 ///
 /// If you change these, you must also update the SCSS files. 
 /// </summary>
-internal class ThemeCss
+// TODO: CREATE A NORMAL CLASS WITH PROPERTIES WHICH A THEME CAN REPLACE
+public class ThemeCss
 {
     /// <summary>
     /// Prefix for all css classes which contain information about the page.
@@ -35,7 +36,6 @@ internal class ThemeCss
     public const string ModulePrefix = "module-";
     public const string ModuleUnpublished = $"{ModulePrefix}unpublished";
 
-    public const string PlaceHolderPageId = "[PAGEID]";
     public const int PlaceHolderLevelOther = -1;
 
     public const string MenuMain = "Main";

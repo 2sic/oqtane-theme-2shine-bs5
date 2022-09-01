@@ -4,12 +4,12 @@
     <TargetFramework>net6.0</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
     <Version>1.0.0</Version>
-    <Authors>tosic</Authors>
-    <Company>tosic</Company>
-    <Description>[Description]</Description>
+    <Authors>2sic</Authors>
+    <Company>2sic</Company>
+    <Description>Template Theme for professional Bootstrap 5 Designs</Description>
     <Product>ToSic.Oqt.Themes.ToShineBs5</Product>
-    <Copyright>tosic</Copyright>
-    <AssemblyName>ToSic.Oqt.Themes.ToShineBs5.Client.Oqtane</AssemblyName>
+    <Copyright>2sic</Copyright>
+    <AssemblyName>$(MSBuildProjectName).Oqtane</AssemblyName>
     <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
@@ -25,8 +25,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.2.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.0" PrivateAssets="all" />
     <PackageReference Include="System.Net.Http.Json" Version="6.0.0" PrivateAssets="all" />
-    <PackageReference Include="Oqtane.Client" Version="3.0.2" PrivateAssets="all" />
-    <PackageReference Include="Oqtane.Shared" Version="3.0.2" PrivateAssets="all" />
+    <PackageReference Include="Oqtane.Client" Version="3.1.4" PrivateAssets="all" />
+    <PackageReference Include="Oqtane.Shared" Version="3.1.4" PrivateAssets="all" />
     <PackageReference Include="System.Runtime" Version="4.3.1" PrivateAssets="all" />
   </ItemGroup>
 
@@ -62,6 +62,10 @@
 
   <ItemGroup>
     <Content Include="src\theme-settings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ToSic.Oqt.Cre8ive.Client\ToSic.Oqt.Cre8ive.Client.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

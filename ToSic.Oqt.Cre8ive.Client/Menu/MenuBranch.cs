@@ -1,7 +1,7 @@
-﻿using Oqtane.Models;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
+using Oqtane.Models;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu;
+namespace ToSic.Oqt.Cre8ive.Client.Menu;
 
 public class MenuBranch
 {
@@ -10,7 +10,7 @@ public class MenuBranch
     /// </summary>
     protected virtual MenuTree Tree { get; }
 
-    internal string Classes(string tag) => Tree.Design.Classes(tag, this);
+    public string Classes(string tag) => Tree.Design.Classes(tag, this);
 
     public virtual string Debug => Tree.Debug;
 

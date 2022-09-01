@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Settings;
+﻿namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
 public class ThemeSettings
 {

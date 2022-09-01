@@ -1,5 +1,6 @@
 ﻿using ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
-using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeCss;
+using static ToSic.Oqt.Cre8ive.Client.Placeholders;
+using static ToSic.Oqt.Cre8ive.Client.Settings.ThemeCss;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 
@@ -32,7 +33,7 @@ public class Defaults
             {
                 "li", new()
                 {
-                    Classes = $"nav-item nav-{PlaceHolderPageId}",
+                    Classes = $"nav-item nav-{PageId}",
                     HasChildren = "has-child dropdown",
                     Active = "active",
                     Disabled = "disabled",
@@ -53,7 +54,7 @@ public class Defaults
     };
 
 
-    public static Internal.Settings.ThemeSettings DefaultThemeSettings = new()
+    public static Cre8ive.Client.Settings.ThemeSettings DefaultThemeSettings = new()
     {
         Source = "Preset",
         Layout = new()
@@ -106,7 +107,7 @@ public class Defaults
                                 {
                                     { 0, "navbar-nav" },
                                     // todo: doc why collapse-PageId
-                                    { PlaceHolderLevelOther, $"collapse to-shine-submenu-{PlaceholderMenuId}-{PlaceHolderPageId}" },
+                                    { PlaceHolderLevelOther, $"collapse to-shine-submenu-{MenuId}-{PageId}" },
                                 },
                                 InBreadcrumb = "show",
                             }
@@ -114,7 +115,7 @@ public class Defaults
                         {
                             "li", new()
                             {
-                                Classes = $"nav-item nav-{PlaceHolderPageId} position-relative",
+                                Classes = $"nav-item nav-{PageId} position-relative",
                                 HasChildren = "has-child",
                                 // todo: make sure that all the LIs or ULs in the breadcrumb don't have collapse ... or with "show"
                                 Active = "active",
@@ -142,8 +143,6 @@ public class Defaults
     };
     
 
-    public const string PlaceholderAssetsPath = "[ASSETS-PATH]";
-    public const string PlaceholderMenuId = "[MENUID]";
 
     #region Technical paths
 

@@ -1,7 +1,7 @@
 ﻿using Oqtane.Models;
 using Oqtane.UI;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Utilities;
+namespace ToSic.Oqt.Cre8ive.Client;
 
 public static class PageStateMenuExtensions
 {
@@ -19,7 +19,7 @@ public static class PageStateMenuExtensions
     private static IEnumerable<Page> GetAncestors(PageState pageState, Page page = null) 
         => GetAncestors(pageState.Pages, page ?? pageState.Page);
 
-    internal static IEnumerable<Page> GetAncestors(this List<Page> pages, Page page)
+    public static IEnumerable<Page> GetAncestors(this List<Page> pages, Page page)
     {
         do
         {

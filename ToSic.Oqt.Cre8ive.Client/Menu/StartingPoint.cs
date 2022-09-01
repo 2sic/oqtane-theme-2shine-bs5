@@ -1,4 +1,4 @@
-﻿namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu
+﻿namespace ToSic.Oqt.Cre8ive.Client.Menu
 {
     public class StartingPoint
     {

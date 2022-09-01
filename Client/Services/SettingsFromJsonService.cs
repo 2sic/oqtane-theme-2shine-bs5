@@ -8,17 +8,17 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
         public string Logo => _logo ??= Settings.Layout?.Logo;
         private string _logo;
 
-        public Internal.Settings.ThemeSettings Settings => _settings ??= LoadJson();
-        private Internal.Settings.ThemeSettings _settings;
+        public Cre8ive.Client.Settings.ThemeSettings Settings => _settings ??= LoadJson();
+        private Cre8ive.Client.Settings.ThemeSettings _settings;
 
-        private Internal.Settings.ThemeSettings LoadJson()
+        private Cre8ive.Client.Settings.ThemeSettings LoadJson()
         {
             var jsonFileName = $"{Defaults.WwwRoot}/{Defaults.ThemePath}/{Defaults.NavigationJsonFile}";
             try
             {
                 var jsonString = System.IO.File.ReadAllText(jsonFileName);
                 
-                var result = JsonSerializer.Deserialize<Internal.Settings.ThemeSettings>(jsonString, new JsonSerializerOptions
+                var result = JsonSerializer.Deserialize<Cre8ive.Client.Settings.ThemeSettings>(jsonString, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true,
                     ReadCommentHandling = JsonCommentHandling.Skip,
@@ -34,7 +34,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services
             {
                 throw;//wip
                 // probably no json file found?
-                return new Internal.Settings.ThemeSettings();
+                return new Cre8ive.Client.Settings.ThemeSettings();
             }
         }
 

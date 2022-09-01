@@ -3,20 +3,20 @@ using Oqtane.Security;
 using Oqtane.Shared;
 using Oqtane.UI;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Utilities;
+namespace ToSic.Oqt.Cre8ive.Client;
 
 public static class PageStateSecurityExtensions
 {
-    internal static bool UserIsEditor(this PageState pageState)
+    public static bool UserIsEditor(this PageState pageState)
         => pageState.User != null && UserSecurity.IsAuthorized(pageState.User, PermissionNames.Edit, pageState.Page.Permissions);
 
-    internal static bool UserIsAdmin(this PageState pageState)
+    public static bool UserIsAdmin(this PageState pageState)
         => pageState.User != null && UserSecurity.IsAuthorized(pageState.User, PermissionNames.Edit, pageState.Page.Permissions);
 
-    internal static bool UserIsRegistered(this PageState pageState)
+    public static bool UserIsRegistered(this PageState pageState)
         => pageState.User != null && UserSecurity.IsAuthorized(pageState.User, RoleNames.Registered);
 
-    internal static bool IsPublished(this Module module)
+    public static bool IsPublished(this Module module)
         => /*UserSecurity.*/ContainsRole(module.Permissions, PermissionNames.View, RoleNames.Everyone);
 
 

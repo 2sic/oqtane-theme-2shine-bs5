@@ -77,16 +77,16 @@ public class ThemeSettingsService
 
 
     private string ReplacePlaceholders(string value) => value?
-        .Replace(PlaceholderAssetsPath, AssetsPath);
+        .Replace(Placeholders.AssetsPath, AssetsPath);
 
     /// <summary>
     /// Loop through various sources of settings and check the keys in the preferred order to see if we get a hit.
     /// </summary>
     private (T Result, string Name, string source) FindInSources<T>(
-        Func<Internal.Settings.ThemeSettings, string, T> findFunc,
+        Func<Cre8ive.Client.Settings.ThemeSettings, string, T> findFunc,
         params string[] names)
     {
-        var sources = new List<Internal.Settings.ThemeSettings>
+        var sources = new List<Cre8ive.Client.Settings.ThemeSettings>
         {
             // in future also add the settings from the dialog as the first priority
             Json.Settings,

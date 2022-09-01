@@ -1,8 +1,8 @@
 ﻿using static System.StringComparison;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Utilities;
+namespace ToSic.Oqt.Cre8ive.Client;
 
-internal static class StringExtensions
+public static class StringExtensions
 {
     public static bool EqInvariant(this string a, string b)
         => a == null && b == null

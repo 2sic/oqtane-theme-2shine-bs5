@@ -1,7 +1,5 @@
 ﻿
-// TODO
-// - LevelSkip and StartLevel are confusing terms, not sure what each one does
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Internal.Menu;
+namespace ToSic.Oqt.Cre8ive.Client.Menu;
 
 /// <summary>
 /// Interface which describes what a menu config contains.
