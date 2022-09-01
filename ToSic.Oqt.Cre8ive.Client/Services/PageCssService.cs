@@ -1,5 +1,4 @@
 ﻿using Oqtane.UI;
-using ToSic.Oqt.Cre8ive.Client.Settings;
 
 namespace ToSic.Oqt.Cre8ive.Client.Services;
 

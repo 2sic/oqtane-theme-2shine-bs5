@@ -1,7 +1,6 @@
 ﻿using System.Text.Json;
 
-
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+namespace ToSic.Oqt.Cre8ive.Client.Services;
 
 public class SettingsFromJsonService<T> where T : ThemeDefaults, new()
 {

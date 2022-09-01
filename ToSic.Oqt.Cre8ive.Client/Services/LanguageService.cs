@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Globalization;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.JSInterop;
-using System.Globalization;
-using System.Threading.Tasks;
 using Oqtane.Services;
 using Oqtane.UI;
 using static Microsoft.AspNetCore.Localization.CookieRequestCultureProvider;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+namespace ToSic.Oqt.Cre8ive.Client.Services;
 
 /*
  * Todo:

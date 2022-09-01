@@ -31,7 +31,7 @@ Nice to know:
             <div class="row">
                 <div class="col-12 col-lg-9 order-lg-2">
                     <Pane Name="@PaneNameDefault" />
-                    <PaneComponents Components="@DynamicComponents" Name="@PaneNameDefault"></PaneComponents>
+                    <DynComponentList Components="@DynComponents" Group="@PaneNameDefault"></DynComponentList>
                 </div>
                 <div class="col-12 col-lg-3 order-lg-1">
                     <div id="to-shine-nav-sub" class="d-none d-sm-block">
@@ -44,7 +44,7 @@ Nice to know:
     else
     {
         <Pane Name="@PaneNameDefault" />
-        <PaneComponents Components="DynamicComponents" Name="@PaneNameDefault"></PaneComponents>
+        <DynComponentList Components="DynComponents" Group="@PaneNameDefault"></DynComponentList>
     }
     
     @* The Admin pane is only needed to display the oqtane admin windows, the normal editor shouldn't actually use this *@

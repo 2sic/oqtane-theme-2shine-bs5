@@ -2,7 +2,6 @@
 using Oqtane.Models;
 using Oqtane.Shared;
 using System.Threading.Tasks;
-using CList = System.Collections.Generic.List<(string Pane, System.Type Type, System.Collections.Generic.Dictionary<string, object> Parameters)>;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
 
@@ -44,7 +43,7 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     /// inspired by http://www.binaryintellect.net/articles/a92dea29-3218-4d1c-a132-9671b518d1f4.aspx
     /// </summary>
     // TODO: MOVE TO Cre8ive
-    protected CList DynamicComponents { get; } = new();
+    protected List<Cre8ive.Client.DynComponents.DynComponent> DynComponents { get; } = new();
 
     public override List<Resource> Resources => new()
     {

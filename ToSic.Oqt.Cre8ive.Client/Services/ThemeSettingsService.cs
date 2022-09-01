@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+﻿namespace ToSic.Oqt.Cre8ive.Client.Services;
 
 /// <summary>
 /// Service which consolidates settings made in the UI, in the JSON and falls back to coded defaults.

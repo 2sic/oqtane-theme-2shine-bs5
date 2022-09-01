@@ -2,13 +2,19 @@
 
 public class ThemeSettings
 {
-    public float Version { get; set; }
+    ///// <summary>
+    ///// Version number when loading from JSON to verify it's what we expect
+    ///// </summary>
+    //public float Version { get; set; }
 
-    public string Source { get; set; }
+    /// <summary>
+    /// Source of these settings / where they came from, to ensure that we can see in debug where a value was picked up from
+    /// </summary>
+    public string Source { get; set; } = "Unknown";
 
-    public SettingsLayout Layout { get; set; }
+    public SettingsLayout? Layout { get; set; }
 
-    public SettingsLanguages Languages { get; set; }
+    public SettingsLanguages? Languages { get; set; }
 
     /// <summary>
     /// The menu definitions
@@ -20,13 +26,13 @@ public class ThemeSettings
     /// </summary>
     public Dictionary<string, MenuDesign> Designs { get; set; } = new();
 
-    public MenuConfig GetMenu(string name) => Menus?.FindInvariant(name);
-    public MenuDesign GetDesign(string name) => Designs?.FindInvariant(name);
+    public MenuConfig? GetMenu(string name) => Menus?.FindInvariant(name);
+    public MenuDesign? GetDesign(string name) => Designs?.FindInvariant(name);
 }
 
 public class SettingsLayout
 {
-    public string Logo { get; set; }
+    public string? Logo { get; set; }
     public bool LanguageMenuShow { get; set; } = true;
     public int LanguageMenuShowMin { get; set; } = 0;
 }
@@ -44,7 +50,7 @@ public class SettingsLanguages
     /// </summary>
     public Dictionary<string, SettingsLanguage> List
     {
-        get => EnsureInitialized(_list);
+        get => _list;
         set => _list = InitList(value);
     }
     private Dictionary<string, SettingsLanguage> _list;
@@ -56,13 +62,4 @@ public class SettingsLanguages
             set.Value.Culture ??= set.Key;
         return new Dictionary<string, SettingsLanguage>(dic, StringComparer.InvariantCultureIgnoreCase);
     }
-
-    private T EnsureInitialized<T>(T value)
-    {
-        if (_initialized) return value;
-
-        return value;
-    }
-
-    private bool _initialized;
 }
