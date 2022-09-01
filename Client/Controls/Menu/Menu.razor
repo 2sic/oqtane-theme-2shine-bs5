@@ -11,19 +11,19 @@ Nice to know:
 *@
 @switch (ConfigName)
 {
-    case Defaults.MenuMobile:
+    case ThemePackageSettings.MenuMobile:
         <MenuMobile MenuBranch="@MenuTree"></MenuMobile>
         break;
-    case Defaults.MenuSidebar:
+    case ThemePackageSettings.MenuSidebar:
         <MenuSidebar MenuBranch="@MenuTree"></MenuSidebar>
         break;
-    case Defaults.MenuMain:
+    case ThemePackageSettings.MenuMain:
     default:
         <MenuDefault MenuBranch="@MenuTree"></MenuDefault>
         break;
 }
 @code {
-    [Inject] protected MenuTreeService<Defaults> MenuTreeService { get; set; }
+    [Inject] protected MenuTreeService<ThemePackageSettings> MenuTreeService { get; set; }
 
     /// <summary>
     /// todo
@@ -38,7 +38,7 @@ Nice to know:
     [Parameter] public int? Level { get; set; }
     [Parameter] public string Start { get; set; }
     [Parameter] public string Design { get; set; }
-    [Parameter] public MenuDesign MenuCss { get; set; }
+    [Parameter] public MenuDesignSettings MenuCss { get; set; }
     [Parameter] public ThemeCssSettings ThemeCss { get; set; }
 
     protected MenuBranch MenuTree { get; private set; }

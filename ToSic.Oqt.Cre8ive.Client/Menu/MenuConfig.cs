@@ -23,11 +23,11 @@ public class MenuConfig: IMenuConfig
         Level = original.Level;
 
         Design = original.Design;
-        MenuCss = (original as MenuConfig)?.MenuCss;
+        DesignSettings = (original as MenuConfig)?.DesignSettings;
         ThemeCss = original.ThemeCss;
     }
 
-    public MenuConfig Overrule(MenuConfig overrule)
+    public MenuConfig Overrule(MenuConfig? overrule)
     {
         var newMc = new MenuConfig(this);
         if (overrule == null) return newMc;
@@ -42,7 +42,7 @@ public class MenuConfig: IMenuConfig
         if (overrule.Level != default) newMc.Level = overrule.Level;
 
         if (overrule.Design != default) newMc.Design = overrule.Design;
-        if (overrule.MenuCss != default) newMc.MenuCss = overrule.MenuCss;
+        if (overrule.DesignSettings != default) newMc.DesignSettings = overrule.DesignSettings;
         if (overrule.ThemeCss != default) newMc.ThemeCss = overrule.ThemeCss;
         return newMc;
     }
@@ -51,7 +51,7 @@ public class MenuConfig: IMenuConfig
     public string Id { get; set; }
 
     /// <inheritdoc />
-    public string ConfigName { get; set; }
+    public string? ConfigName { get; set; }
 
     /// <inheritdoc />
     public bool Debug { get; set; } = DebugDefault;
@@ -86,7 +86,7 @@ public class MenuConfig: IMenuConfig
     public string? Design { get; set; }
 
     // todo: name, maybe not on interface
-    public MenuDesign? MenuCss { get; set; }
+    public MenuDesignSettings? DesignSettings { get; set; }
 
     public ThemeCssSettings? ThemeCss { get; set; }
 
@@ -95,4 +95,10 @@ public class MenuConfig: IMenuConfig
         : Id;
     private string? _menuId;
 
+
+    public static MenuConfig Defaults = new()
+    {
+        Start = "*",
+        Depth = 0,
+    };
 }

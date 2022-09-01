@@ -24,11 +24,10 @@ public class Startup : Oqtane.Services.IClientStartup
         //services.AddSingleton<ThemeSettings.ThemeSettingsService>();
 
         //// Special services for the page
-        //services.AddTransient<PageCssService>();
         //services.AddTransient<ThemeJsService>();
 
         //// Logic parts for Controls
-        //services.AddTransient<PageEditService>();
+        services.AddTransient<PageEditService>();
 
     }
 }

@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
-using System.Threading.Tasks;
 using Oqtane.Services;
 using Oqtane.UI;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+namespace ToSic.Oqt.Cre8ive.Client.Services;
 
 /// <summary>
 /// Helper to remove the logic/code from the razor file.

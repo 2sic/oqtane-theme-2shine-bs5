@@ -42,17 +42,16 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     /// WIP
     /// inspired by http://www.binaryintellect.net/articles/a92dea29-3218-4d1c-a132-9671b518d1f4.aspx
     /// </summary>
-    // TODO: MOVE TO Cre8ive
-    protected List<Cre8ive.Client.DynComponents.DynComponent> DynComponents { get; } = new();
+    protected List<DynComponent> DynComponents { get; } = new();
 
     public override List<Resource> Resources => new()
     {
         // Bootstrap with our customizations (generated with Sass using Webpack)
-        new Resource { ResourceType = ResourceType.Stylesheet, Url = $"{Defaults.ThemePathStatic}/theme.min.css" },
+        new Resource { ResourceType = ResourceType.Stylesheet, Url = $"{ThemePackageSettings.ThemePathStatic}/theme.min.css" },
         // Bootstrap JS
-        new Resource { ResourceType = ResourceType.Script, Url = $"{Defaults.ThemePathStatic}/bootstrap.bundle.min.js" },
+        new Resource { ResourceType = ResourceType.Script, Url = $"{ThemePackageSettings.ThemePathStatic}/bootstrap.bundle.min.js" },
         // Theme JS for page classes, Up-button etc.
-        new Resource { ResourceType = ResourceType.Script, Url = $"{Defaults.ThemePathStatic}/ambient.js" },
+        new Resource { ResourceType = ResourceType.Script, Url = $"{ThemePackageSettings.ThemePathStatic}/ambient.js" },
     };
 
     // Panes of the layout
@@ -64,7 +63,7 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
         PaneNameDefault,
         PaneNameHeader);
 
-    [Inject] protected PageCssService<Defaults> PageCss { get; set; }
+    [Inject] protected PageCssService<ThemePackageSettings> PageCss { get; set; }
     [Inject] protected ThemeJsService ThemeJs { get; set; }
 
     // TODO: Optimize so it's real-time and doesn't need StateHasChanged()

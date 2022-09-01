@@ -1,11 +1,11 @@
 ﻿namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
-public abstract class ThemeDefaults
+public abstract class ThemePackageSettingsBase
 {
     // todo: naming
-    public abstract ThemeCssSettings ThemeCss { get; }
+    public virtual ThemeCssSettings Css { get; } = new();
 
-    public abstract ThemeSettings ThemeSettings { get; }
+    public abstract LayoutSettings Defaults { get; }
 
     public string WwwRoot { get; set; } = "wwwroot";
 
@@ -13,13 +13,13 @@ public abstract class ThemeDefaults
 
     public string ThemePackageName { get; set; } = "todo: set theme package name in your constructor";
 
-    public string AssetsPath
+    public string PathAssets
     {
-        get => _assetsPath ??= ThemePath + "/Assets";
+        get => _assetsPath ??= PathTheme + "/Assets";
         set => _assetsPath = value;
     }
 
-    public string ThemePath
+    public string PathTheme
     {
         get => _themePath ??= "Themes/" + ThemePackageName;
         set => _themePath = value;

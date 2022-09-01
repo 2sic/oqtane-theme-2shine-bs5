@@ -15,7 +15,7 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
  * - ...and only show these; possibly show more to admin?
  */
 
-public class LanguageService<T> where T : ThemeDefaults, new()
+public class LanguageService<T> where T : ThemePackageSettingsBase, new()
 {
     public LanguageService(NavigationManager navigation, IJSRuntime jsRuntime, ILanguageService oqtLanguages, ThemeSettingsService<T> settings)
     {

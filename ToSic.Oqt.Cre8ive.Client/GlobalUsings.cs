@@ -1,4 +1,5 @@
 // Global using directives
+global using System.Linq;
 
 global using ToSic.Oqt.Cre8ive.Client;
 global using ToSic.Oqt.Cre8ive.Client.Menu;

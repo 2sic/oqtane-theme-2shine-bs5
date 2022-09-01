@@ -3,7 +3,7 @@
 /// <summary>
 /// Service which consolidates settings made in the UI, in the JSON and falls back to coded defaults.
 /// </summary>
-public class ThemeSettingsService<T> where T : ThemeDefaults, new()
+public class ThemeSettingsService<T> where T : ThemePackageSettingsBase, new()
 {
 
     /// <summary>
@@ -21,7 +21,7 @@ public class ThemeSettingsService<T> where T : ThemeDefaults, new()
     /// <summary>
     /// Get Logo as specified in JSON or preset
     /// </summary>
-    public string Logo => ReplacePlaceholders(Json.Settings?.Layout?.Logo ?? _settings.ThemeSettings.Layout.Logo);
+    public string Logo => ReplacePlaceholders(Json.Settings?.Layout?.Logo ?? _settings.Defaults.Layout.Logo);
 
     public (SettingsLayout Layout, string Source) FindLayout()
     {
@@ -70,7 +70,7 @@ public class ThemeSettingsService<T> where T : ThemeDefaults, new()
         return (configName, debugInfo);
     }
 
-    public (MenuDesign Design, string Source) FindDesign(string designName)
+    public (MenuDesignSettings Design, string Source) FindDesign(string designName)
     {
         var (result, _, sourceInfo) 
             = FindInSources((settings, n) => settings.GetDesign(n), designName, Constants.DesignDefault);
@@ -79,20 +79,20 @@ public class ThemeSettingsService<T> where T : ThemeDefaults, new()
 
 
     private string ReplacePlaceholders(string value) => value?
-        .Replace(Placeholders.AssetsPath, _settings.AssetsPath);
+        .Replace(Placeholders.AssetsPath, _settings.PathAssets);
 
     /// <summary>
     /// Loop through various sources of settings and check the keys in the preferred order to see if we get a hit.
     /// </summary>
     private (TResult Result, string Name, string source) FindInSources<TResult>(
-        Func<Cre8ive.Client.Settings.ThemeSettings, string, TResult> findFunc,
+        Func<Cre8ive.Client.Settings.LayoutSettings, string, TResult> findFunc,
         params string[] names)
     {
-        var sources = new List<Cre8ive.Client.Settings.ThemeSettings>
+        var sources = new List<Cre8ive.Client.Settings.LayoutSettings>
         {
             // in future also add the settings from the dialog as the first priority
             Json.Settings,
-            _settings.ThemeSettings
+            _settings.Defaults
         };
 
         // Make sure we have at least on name

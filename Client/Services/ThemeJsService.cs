@@ -7,10 +7,11 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 /// <summary>
 /// Constants and helpers related to JS calls from the Theme to it's own JS libraries
 /// </summary>
+// TODO: SOME DAY move to Cre8ive, as soon as we know how to reliably include the js-assets in the final distribution
 public class ThemeJsService : JsModuleServiceBase
 {
 
-    public ThemeJsService(IJSRuntime jsRuntime, Defaults settings) : base(jsRuntime, $"./{settings.ThemePath}/interop/page-control.js")
+    public ThemeJsService(IJSRuntime jsRuntime, ThemePackageSettings settings) : base(jsRuntime, $"./{settings.PathTheme}/interop/page-control.js")
     {
     }
 

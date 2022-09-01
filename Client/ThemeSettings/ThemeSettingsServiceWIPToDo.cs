@@ -50,7 +50,7 @@ public class ThemeSettingsContainer
 
     public bool UseUiSettings;
 }
-public sealed class ThemeSettingsService
+public sealed class ThemeSettingsServiceWIPToDo
 {
     Dictionary<string, ThemeSettingsContainer> CombinedSettings; 
 

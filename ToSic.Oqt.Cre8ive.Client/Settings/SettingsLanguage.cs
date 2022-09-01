@@ -7,7 +7,7 @@ public class SettingsLanguage
     /// </summary>
     public SettingsLanguage() { }
 
-    public SettingsLanguage(string culture, string label = null, string description = null)
+    public SettingsLanguage(string culture, string? label = null, string? description = null)
     {
         Culture = culture;
         Label = label;
@@ -19,4 +19,5 @@ public class SettingsLanguage
     public string Description { get; set; }
 
     // TODO: MAYBE additional options to only enable on certain roles...?
+
 }

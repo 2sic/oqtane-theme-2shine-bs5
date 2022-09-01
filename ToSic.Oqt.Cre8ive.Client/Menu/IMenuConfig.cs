@@ -18,7 +18,7 @@ public interface IMenuConfig
     /// <summary>
     /// Name to identify this configuration
     /// </summary>
-    string ConfigName { get; set; }
+    string? ConfigName { get; set; }
 
     bool Debug { get; set; }
 

@@ -4,7 +4,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings;
 public partial class NavigationSettings
 {
     [Inject]
-    public ThemeSettingsService SettingsService { get; set; }
+    public ThemeSettingsServiceWIPToDo SettingsServiceWipToDo { get; set; }
 
     [Parameter]
     public string ConfigName { get; set; }
@@ -14,7 +14,7 @@ public partial class NavigationSettings
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
-        var settings = SettingsService.DeserializeData(ConfigName);
+        var settings = SettingsServiceWipToDo.DeserializeData(ConfigName);
         if (settings != null) ThemeSettings = settings;
     }
 

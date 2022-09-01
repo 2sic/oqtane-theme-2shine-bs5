@@ -5,10 +5,10 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
 /// <summary>
 /// Special helper to figure out what classes should be applied to the page. 
 /// </summary>
-public class PageCssService<T> where T : ThemeDefaults, new()
+public class PageCssService<T> where T : ThemePackageSettingsBase, new()
 {
 
-    public PageCssService(T settings) => Settings = settings.ThemeCss;
+    public PageCssService(T settings) => Settings = settings.Css;
     public ThemeCssSettings Settings { get; }
 
     //protected abstract ThemeCss Settings { get; }

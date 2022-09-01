@@ -7,7 +7,7 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
 /// <summary>
 /// Will create a MenuTree based on the current pages information and configuration
 /// </summary>
-public class MenuTreeService<T> where T : ThemeDefaults, new()
+public class MenuTreeService<T> where T : ThemePackageSettingsBase, new()
 {
     public MenuTreeService(ThemeSettingsService<T> themeSettings, T settings)
     {
@@ -29,7 +29,7 @@ public class MenuTreeService<T> where T : ThemeDefaults, new()
         // isn't contained in the json file the normal parameter are given to the service
         var (menuSettings, menuConfigSource) = _themeSettings.FindMenuConfig(configName);
         config = menuSettings.Overrule(config);
-        if (config.ThemeCss == default) config.ThemeCss = themeCssSettings ?? _settings.ThemeCss;
+        if (config.ThemeCss == default) config.ThemeCss = themeCssSettings ?? _settings.Css;
         debugInfo += "; " + menuConfigSource;
 
         // See if we have a default configuration for CSS which should be applied
@@ -44,13 +44,13 @@ public class MenuTreeService<T> where T : ThemeDefaults, new()
         // Usually there is no Design-object pre-filled, in which case we should
         // 1. try to find it in json
         // 2. use the one from the configuration
-        if (config.MenuCss == null)
+        if (config.DesignSettings == null)
         {
             // Check various places where design could be configured by priority
             var (designConfig, source) = _themeSettings.FindDesign(designName);
             debugInfo += $"; Design config loaded from '{source}'";
 
-            config = config.Overrule(new MenuConfig(config) { MenuCss = designConfig });
+            config = config.Overrule(new MenuConfig(config) { DesignSettings = designConfig });
         }
         else
             debugInfo += "; Design rules already set";

@@ -2,7 +2,7 @@
 
 namespace ToSic.Oqt.Cre8ive.Client.Services;
 
-public class SettingsFromJsonService<T> where T : ThemeDefaults, new()
+public class SettingsFromJsonService<T> where T : ThemePackageSettingsBase, new()
 {
     public SettingsFromJsonService(T settings) => CurrentThemeSettings = settings;
     public T CurrentThemeSettings { get; }
@@ -10,17 +10,17 @@ public class SettingsFromJsonService<T> where T : ThemeDefaults, new()
     public string Logo => _logo ??= Settings.Layout?.Logo;
     private string _logo;
 
-    public Cre8ive.Client.Settings.ThemeSettings Settings => _settings ??= LoadJson();
-    private Cre8ive.Client.Settings.ThemeSettings _settings;
+    public Cre8ive.Client.Settings.LayoutSettings Settings => _settings ??= LoadJson();
+    private Cre8ive.Client.Settings.LayoutSettings _settings;
 
-    private Cre8ive.Client.Settings.ThemeSettings LoadJson()
+    private Cre8ive.Client.Settings.LayoutSettings LoadJson()
     {
-        var jsonFileName = $"{CurrentThemeSettings.WwwRoot}/{CurrentThemeSettings.ThemePath}/{CurrentThemeSettings.SettingsJsonFile}";
+        var jsonFileName = $"{CurrentThemeSettings.WwwRoot}/{CurrentThemeSettings.PathTheme}/{CurrentThemeSettings.SettingsJsonFile}";
         try
         {
             var jsonString = System.IO.File.ReadAllText(jsonFileName);
                 
-            var result = JsonSerializer.Deserialize<Cre8ive.Client.Settings.ThemeSettings>(jsonString, new JsonSerializerOptions
+            var result = JsonSerializer.Deserialize<Cre8ive.Client.Settings.LayoutSettings>(jsonString, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
                 ReadCommentHandling = JsonCommentHandling.Skip,
@@ -36,7 +36,7 @@ public class SettingsFromJsonService<T> where T : ThemeDefaults, new()
         {
             throw;//wip
             // probably no json file found?
-            return new Cre8ive.Client.Settings.ThemeSettings();
+            return new Cre8ive.Client.Settings.LayoutSettings();
         }
     }
 

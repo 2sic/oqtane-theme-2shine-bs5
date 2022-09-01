@@ -11,17 +11,11 @@ public class Startup : Oqtane.Services.IClientStartup
     public void ConfigureServices(IServiceCollection services)
     {
 
-        services.AddSingleton<ThemeSettings.ThemeSettingsService>();
+        services.AddSingleton<ThemeSettings.ThemeSettingsServiceWIPToDo>();
 
-        // Special services for the page
-        //services.AddTransient<PageCssService>();
         services.AddTransient<ThemeJsService>();
 
-        // Logic parts for Controls
-        services.AddTransient<PageEditService>();
-
-
         // Defaults-Service
-        services.AddSingleton<Defaults>();
+        services.AddSingleton<ThemePackageSettings>();
     }
 }

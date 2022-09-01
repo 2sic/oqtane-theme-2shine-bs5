@@ -10,10 +10,10 @@ public class MenuCss
     public MenuCss(IMenuConfig menuConfig)
     {
         MenuConfig = menuConfig as MenuConfig ?? throw new ArgumentException("MenuConfig must be real", nameof(MenuConfig));
-        Configs = new List<MenuDesign> { MenuConfig.MenuCss };
+        Configs = new List<MenuDesignSettings> { MenuConfig.DesignSettings };
     }
     private MenuConfig MenuConfig { get; }
-    internal List<MenuDesign> Configs { get; }
+    internal List<MenuDesignSettings> Configs { get; }
 
     public string Classes(string tag, MenuBranch branch)
     {
@@ -27,7 +27,7 @@ public class MenuCss
             : "";
     }
 
-    private List<string> TagClasses(MenuBranch branch, List<MenuPartCssConfig> configs)
+    private List<string> TagClasses(MenuBranch branch, List<MenuDesignPartSettings> configs)
     {
         var classes = new List<string>();
         classes.AddRange(configs.Select(c => c.Classes));

@@ -12,7 +12,7 @@ Nice to know:
 @code {
     public override string Name => "Default Container";
 
-    [Inject] protected ContainerCssService<Defaults> ContainerCss { get; set; }
+    [Inject] protected ContainerCssService<ThemePackageSettings> ContainerCss { get; set; }
 }
 
 @if (ModuleState.UseAdminContainer)

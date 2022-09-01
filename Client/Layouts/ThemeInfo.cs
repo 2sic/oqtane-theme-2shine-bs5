@@ -16,7 +16,7 @@ public class ThemeInfo : ITheme
     public Theme Theme => new()
     {
         Name = "ToShine Bootstrap 5",
-        Version = "1.0.0",
+        Version = "2.0.0",
         ThemeSettingsType = typeof(Settings).AssemblyQualifiedName,
         //ContainerSettingsType = "Oqtane.Theme.ToSic.ContainerSettings, Oqtane.Theme.ToSic.Oqtane",
         PackageName = "ToSic.Oqt.Themes.ToShineBs5",

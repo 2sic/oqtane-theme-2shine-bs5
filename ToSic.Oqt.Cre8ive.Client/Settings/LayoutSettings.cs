@@ -1,6 +1,6 @@
 ﻿namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
-public class ThemeSettings
+public class LayoutSettings
 {
     ///// <summary>
     ///// Version number when loading from JSON to verify it's what we expect
@@ -24,10 +24,10 @@ public class ThemeSettings
     /// <summary>
     /// Design definitions of the menu
     /// </summary>
-    public Dictionary<string, MenuDesign> Designs { get; set; } = new();
+    public Dictionary<string, MenuDesignSettings> Designs { get; set; } = new();
 
     public MenuConfig? GetMenu(string name) => Menus?.FindInvariant(name);
-    public MenuDesign? GetDesign(string name) => Designs?.FindInvariant(name);
+    public MenuDesignSettings? GetDesign(string name) => Designs?.FindInvariant(name);
 }
 
 public class SettingsLayout
@@ -62,4 +62,14 @@ public class SettingsLanguages
             set.Value.Culture ??= set.Key;
         return new Dictionary<string, SettingsLanguage>(dic, StringComparer.InvariantCultureIgnoreCase);
     }
+
+    public static SettingsLanguages Defaults = new()
+    {
+        HideOthers = false,
+        List = new()
+        {
+            { "en", new SettingsLanguage("en", "English") }
+        }
+    };
+
 }
