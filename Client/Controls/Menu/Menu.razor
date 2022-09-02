@@ -1,15 +1,18 @@
-﻿@inherits Oqtane.Themes.Controls.MenuBase
-@implements IMenuConfig
+﻿@inherits MenuRootBase<ThemePackageSettings>
 @*
 File Purpose:       Add a menu based on the parameter 'ConfigName'
 Recommendations:    -
-Nice to know:       
+Nice to know:
+    - Inherits from a base class that prepares everything
+    - The <ThemePackageSettings> in the @inherits tells the system what will provide the settings
     - Prepares the menu structure and then renders using one of various menu controls
     - Can be configured directly on the tag, or can load a config from JSON
-    - Implements IMenuConfig so it can be a config, or can specify the name of a config to load
+      The exact properties are defined in the base class
     - WIP: Later it will also be able to load a config from the page/theme settings
 *@
+@* Show any exceptions to the admin if something went wrong loading settings *@
 <MenuExceptions Menu="@MenuTree"></MenuExceptions>
+@* Show the desired menu *@
 @switch (ConfigName)
 {
     case ThemePackageSettings.MenuMobile:
@@ -22,29 +25,4 @@ Nice to know:
     default:
         <MenuDefault MenuBranch="@MenuTree"></MenuDefault>
         break;
-}
-@code {
-    [Inject] protected MenuTreeService<ThemePackageSettings> MenuTreeService { get; set; }
-
-    /// <summary>
-    /// todo
-    /// </summary>
-    [Parameter] public string Id { get; set; }
-    [Parameter] public string ConfigName { get; set; }
-    [Parameter] public List<int> PageList { get; set; }
-    [Parameter] public bool? Children { get; set; }
-    [Parameter] public int? Depth { get; set; }
-    [Parameter] public bool Debug { get; set; } = false;
-    [Parameter] public bool? Display { get; set; } = true;
-    [Parameter] public int? Level { get; set; }
-    [Parameter] public string Start { get; set; }
-    [Parameter] public string Design { get; set; }
-
-    protected MenuTree MenuTree { get; private set; }
-
-    protected override async Task OnParametersSetAsync()
-    {
-        await base.OnParametersSetAsync();
-        MenuTree = MenuTreeService.GetTree(new MenuConfig(this), PageState, MenuPages.ToList());
-    }
 }
