@@ -37,8 +37,8 @@ public class LanguageService<T> where T : ThemePackageSettingsBase, new()
         return LayoutSettings.LanguageMenuShow && LayoutSettings.LanguageMenuShowMin <= languages.Count;
     }
 
-    private SettingsLayout LayoutSettings => _layout ??= _settings.FindLayout().Layout;
-    private SettingsLayout? _layout;
+    private LayoutSettings LayoutSettings => _layout ??= _settings.FindLayout().Layout;
+    private LayoutSettings? _layout;
 
     public async Task<List<Language>> LanguagesToShow(int siteId)
     {

@@ -1,4 +1,6 @@
-﻿namespace ToSic.Oqt.Cre8ive.Client.Services;
+﻿using Microsoft.AspNetCore.Components;
+
+namespace ToSic.Oqt.Cre8ive.Client.Services;
 
 /// <summary>
 /// Service which consolidates settings made in the UI, in the JSON and falls back to coded defaults.
@@ -22,14 +24,21 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
     /// </summary>
     public string Logo => ReplacePlaceholders(Json.Settings?.Layout?.Logo ?? _settings.Defaults.Layout?.Logo ?? "default-logo-not-set.jpg");
 
-    public (SettingsLayout Layout, string Source) FindLayout()
+    public MarkupString BreadcrumbSeparator => (MarkupString)(Json.Settings?.Layout?.BreadcrumbSeparator ??
+                                               _settings.Defaults.Layout?.BreadcrumbSeparator ??
+                                               LayoutSettings.BreadcrumbSeparatorDefault);
+    public MarkupString BreadcrumbReveal => (MarkupString)(Json.Settings?.Layout?.BreadcrumbReveal ??
+                                               _settings.Defaults.Layout?.BreadcrumbReveal ??
+                                               LayoutSettings.BreadcrumbRevealDefault);
+
+    public (LayoutSettings Layout, string Source) FindLayout()
     {
         if (_layoutSettings != null) return (_layoutSettings, "cached");
         var (show, _, showSource)
             = FindInSources((settings, _) => settings.Layout?.LanguageMenuShow);
         var (showMin, _, _)
             = FindInSources((settings, _) => settings.Layout?.LanguageMenuShowMin);
-        _layoutSettings = new SettingsLayout
+        _layoutSettings = new LayoutSettings
         {
             LanguageMenuShowMin = showMin ?? 0,
             LanguageMenuShow = show ?? true,
@@ -37,7 +46,7 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
         return (_layoutSettings, showSource);
     }
 
-    private SettingsLayout? _layoutSettings;
+    private LayoutSettings? _layoutSettings;
 
     public (LanguagesSettings Languages, string Source) FindLanguageSettings()
     {
@@ -86,15 +95,15 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
     /// Loop through various sources of settings and check the keys in the preferred order to see if we get a hit.
     /// </summary>
     private (TResult Result, string Name, string source) FindInSources<TResult>(
-        Func<LayoutSettings, string, TResult> findFunc,
+        Func<LayoutsSettings, string, TResult> findFunc,
         params string[]? names)
     {
-        var sources = new List<LayoutSettings?>
+        var sources = new List<LayoutsSettings?>
         {
             // in future also add the settings from the dialog as the first priority
             Json.Settings,
             _settings.Defaults
-        }.Where(x => x != null).Cast<LayoutSettings>().ToList();
+        }.Where(x => x != null).Cast<LayoutsSettings>().ToList();
 
         // Make sure we have at least on name
         if (names == null || names.Length == 0) names = new[] { "dummy" };

@@ -5,7 +5,7 @@ public abstract class ThemePackageSettingsBase
     // todo: naming
     public virtual ThemeCssSettings Css { get; } = new();
 
-    public abstract LayoutSettings Defaults { get; }
+    public abstract LayoutsSettings Defaults { get; }
 
     public string WwwRoot { get; set; } = "wwwroot";
 

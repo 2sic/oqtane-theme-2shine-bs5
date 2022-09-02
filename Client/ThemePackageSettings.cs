@@ -34,7 +34,7 @@ public class ThemePackageSettings: ThemePackageSettingsBase
     /// Theme Settings Defaults, used to lookup things which the json file doesn't specify.
     /// Normally you don't want to change this, but just set everything in the json
     /// </summary>
-    public override LayoutSettings Defaults => new()
+    public override LayoutsSettings Defaults => new()
     {
         Source = "Preset",
         Layout = new()
@@ -42,6 +42,8 @@ public class ThemePackageSettings: ThemePackageSettingsBase
             Logo = "logo.svg",
             LanguageMenuShow = true,
             LanguageMenuShowMin = 2,
+            BreadcrumbSeparator = LayoutSettings.BreadcrumbSeparatorDefault,
+            BreadcrumbReveal = LayoutSettings.BreadcrumbRevealDefault,
         },
         Languages = LanguagesSettings.Defaults,
         Menus = new()

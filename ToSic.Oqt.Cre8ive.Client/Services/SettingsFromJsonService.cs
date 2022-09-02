@@ -7,17 +7,17 @@ public class SettingsFromJsonService<T>: IHasSettingsExceptions where T : ThemeP
     public SettingsFromJsonService(T settings) => CurrentThemeSettings = settings;
     public T CurrentThemeSettings { get; }
 
-    public LayoutSettings? Settings => _settings ??= LoadJson();
-    private LayoutSettings? _settings;
+    public LayoutsSettings? Settings => _settings ??= LoadJson();
+    private LayoutsSettings? _settings;
 
-    private LayoutSettings? LoadJson()
+    private LayoutsSettings? LoadJson()
     {
         var jsonFileName = $"{CurrentThemeSettings.WwwRoot}/{CurrentThemeSettings.PathTheme}/{CurrentThemeSettings.SettingsJsonFile}";
         try
         {
             var jsonString = File.ReadAllText(jsonFileName);
                 
-            var result = JsonSerializer.Deserialize<LayoutSettings>(jsonString, new JsonSerializerOptions
+            var result = JsonSerializer.Deserialize<LayoutsSettings>(jsonString, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
                 ReadCommentHandling = JsonCommentHandling.Skip,
@@ -35,7 +35,7 @@ public class SettingsFromJsonService<T>: IHasSettingsExceptions where T : ThemeP
             Exceptions.Add(new($"Error loading json configuration file '{CurrentThemeSettings.SettingsJsonFile}'. {ex.Message}"));
             //throw;//wip
             // probably no json file found?
-            return new LayoutSettings();
+            return new LayoutsSettings();
         }
     }
 

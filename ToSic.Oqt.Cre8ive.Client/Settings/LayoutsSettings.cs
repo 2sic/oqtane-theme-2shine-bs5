@@ -1,6 +1,6 @@
 ﻿namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
-public class LayoutSettings
+public class LayoutsSettings
 {
     ///// <summary>
     ///// Version number when loading from JSON to verify it's what we expect
@@ -12,7 +12,7 @@ public class LayoutSettings
     /// </summary>
     public string Source { get; set; } = "Unknown";
 
-    public SettingsLayout? Layout { get; set; }
+    public LayoutSettings? Layout { get; set; }
 
     public LanguagesSettings? Languages { get; set; }
 
@@ -30,9 +30,16 @@ public class LayoutSettings
     public MenuDesignSettings? GetDesign(string name) => Designs.FindInvariant(name);
 }
 
-public class SettingsLayout
+public class LayoutSettings
 {
     public string? Logo { get; set; }
     public bool LanguageMenuShow { get; set; } = true;
     public int LanguageMenuShowMin { get; set; } = 0;
+
+    public string? BreadcrumbSeparator { get; set; }
+    public const string BreadcrumbSeparatorDefault = "&nbsp;&rsaquo;&nbsp;";
+
+    public string? BreadcrumbReveal { get; set; }
+
+    public const string BreadcrumbRevealDefault = "…"; // Ellipsis character
 }

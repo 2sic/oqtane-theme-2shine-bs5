@@ -1,4 +1,5 @@
-﻿@inherits Oqtane.Themes.Controls.MenuBase
+﻿@using System.Text.Encodings.Web
+@inherits Oqtane.Themes.Controls.MenuBase
 @*
 File Purpose:       Show the Breadcrumb
 Recommendations:    -
@@ -8,6 +9,8 @@ Nice to know:       Uses extension methods like GetHomePage() and GetBreadcrumb(
     // The home page - never changes during runtime, so we can cache it
     private Page HomePage => _homePage ??= PageState.GetHomePage();
     private Page _homePage;
+
+    [Inject] ThemeSettingsService<ThemePackageSettings> Settings { get; set; }
 }
 
 <div class="to-shine-page-breadcrumb" aria-label="breadcrumb">
@@ -16,13 +19,13 @@ Nice to know:       Uses extension methods like GetHomePage() and GetBreadcrumb(
            href="@NavigateUrl(HomePage.Path)">@HomePage.Name</a>
         @* Show a ... ellipsis in mobile mode to toggle showing the rest of the breadcrumb *@
         <span class="to-shine-page-breadcrumb-trigger">
-            <a aria-current="page">…</a>
+            @Settings.BreadcrumbReveal
         </span>
 
         @* Show an > arrow and the page name with link to it for each page in the breadcrumb *@
         @foreach (var p in PageState.Breadcrumb())
         {
-            <span>&nbsp;&rsaquo;&nbsp;</span>
+            <span>@Settings.BreadcrumbSeparator</span>
             <a href="@NavigateUrl(p.Path)" class="to-shine-page-breadcrumb-link">@p.Name</a>
         }
     </div>
