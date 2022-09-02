@@ -39,11 +39,11 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
 
     private SettingsLayout? _layoutSettings;
 
-    public (SettingsLanguages Languages, string Source) FindLanguageSettings()
+    public (LanguagesSettings Languages, string Source) FindLanguageSettings()
     {
         var (config, _, sourceInfo) 
             = FindInSources((settings, _) => settings.Languages?.List?.Any() == true ? settings.Languages : null);
-        if (config == null) throw new NullReferenceException($"{nameof(config)} should be a {nameof(SettingsLanguage)}");
+        if (config == null) throw new NullReferenceException($"{nameof(config)} should be a {nameof(Language)}");
         return (config, sourceInfo);
     }
 

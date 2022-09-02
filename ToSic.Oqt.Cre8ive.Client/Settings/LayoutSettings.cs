@@ -14,7 +14,7 @@ public class LayoutSettings
 
     public SettingsLayout? Layout { get; set; }
 
-    public SettingsLanguages? Languages { get; set; }
+    public LanguagesSettings? Languages { get; set; }
 
     /// <summary>
     /// The menu definitions
@@ -35,42 +35,4 @@ public class SettingsLayout
     public string? Logo { get; set; }
     public bool LanguageMenuShow { get; set; } = true;
     public int LanguageMenuShowMin { get; set; } = 0;
-}
-
-public class SettingsLanguages
-{
-    /// <summary>
-    /// If true, will only show the languages which are explicitly configured.
-    /// If false, will first show the configured languages, then the rest. 
-    /// </summary>
-    public bool HideOthers { get; set; } = false;
-
-    /// <summary>
-    /// List of languages
-    /// </summary>
-    public Dictionary<string, SettingsLanguage>? List
-    {
-        get => _list;
-        set => _list = InitList(value);
-    }
-    private Dictionary<string, SettingsLanguage>? _list;
-
-    private Dictionary<string, SettingsLanguage>? InitList(Dictionary<string, SettingsLanguage>? dic)
-    {
-        if (dic == null) return null;
-        // Ensure each config knows what culture it's for, as 
-        foreach (var set in dic) 
-            set.Value.Culture ??= set.Key;
-        return new Dictionary<string, SettingsLanguage>(dic, StringComparer.InvariantCultureIgnoreCase);
-    }
-
-    public static SettingsLanguages Defaults = new()
-    {
-        HideOthers = false,
-        List = new()
-        {
-            { "en", new SettingsLanguage("en", "English") }
-        }
-    };
-
 }

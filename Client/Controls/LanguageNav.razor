@@ -1,5 +1,6 @@
 @inherits ThemeControlBase
 @using System.Globalization
+@using Language = ToSic.Oqt.Cre8ive.Client.Settings.Language
 @inject LanguageService<ThemePackageSettings> LanguageService
 @*
 File Purpose:       Show the Language Navigation / Selector
@@ -33,7 +34,7 @@ WishList:
     //[Parameter]
     //public string Languages { get; set; }
 
-    protected List<SettingsLanguage> Languages;
+    protected List<Language> Languages;
 
     protected bool? Show = null;
     

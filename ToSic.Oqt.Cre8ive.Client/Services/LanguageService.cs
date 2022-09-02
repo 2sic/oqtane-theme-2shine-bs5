@@ -40,7 +40,7 @@ public class LanguageService<T> where T : ThemePackageSettingsBase, new()
     private SettingsLayout LayoutSettings => _layout ??= _settings.FindLayout().Layout;
     private SettingsLayout? _layout;
 
-    public async Task<List<SettingsLanguage>> LanguagesToShow(int siteId)
+    public async Task<List<Language>> LanguagesToShow(int siteId)
     {
         if (_languages.TryGetValue(siteId, out var cached)) return cached;
 
@@ -74,7 +74,7 @@ public class LanguageService<T> where T : ThemePackageSettingsBase, new()
                             ?? code[..2].ToUpperInvariant();
 
                 var langInSite = siteLanguages.Find(al => al.Code.EqInvariant(code));
-                return new SettingsLanguage { Culture = code, Label = label, Description = langInSite?.Name };
+                return new Language { Culture = code, Label = label, Description = langInSite?.Name };
             })
             .Where(set => set.Description.HasValue())
             .ToList();
@@ -82,7 +82,7 @@ public class LanguageService<T> where T : ThemePackageSettingsBase, new()
         return result;
     }
 
-    private readonly Dictionary<int, List<SettingsLanguage>> _languages = new();
+    private readonly Dictionary<int, List<Language>> _languages = new();
 
     public async Task SetCultureAsync(string culture)
     {

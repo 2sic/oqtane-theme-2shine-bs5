@@ -43,7 +43,7 @@ public class ThemePackageSettings: ThemePackageSettingsBase
             LanguageMenuShow = true,
             LanguageMenuShowMin = 2,
         },
-        Languages = SettingsLanguages.Defaults,
+        Languages = LanguagesSettings.Defaults,
         Menus = new()
         {
             { Constants.MenuDefault, MenuConfig.Defaults },

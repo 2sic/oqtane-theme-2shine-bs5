@@ -1,13 +1,13 @@
 ﻿namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
-public class SettingsLanguage
+public class Language
 {
     /// <summary>
     /// Empty constructor for deserialization
     /// </summary>
-    public SettingsLanguage() { }
+    public Language() { }
 
-    public SettingsLanguage(string culture, string? label = null, string? description = null)
+    public Language(string culture, string? label = null, string? description = null)
     {
         Culture = culture;
         Label = label;
