@@ -5,27 +5,26 @@ namespace ToSic.Oqt.Cre8ive.Client;
 
 public static class PageStateMenuExtensions
 {
-    public static Page GetHomePage(this PageState pageState) => pageState.Pages.Find(p => p.Path == "");
+    public static Page? GetHomePage(this PageState pageState) => pageState.Pages.Find(p => p.Path == "");
 
-    public static List<Page> Breadcrumb(this PageState pageState, Page page = null)
+    public static List<Page> Breadcrumb(this PageState pageState, Page? page = null)
         => GetAncestors(pageState, page).Reverse().ToList();
 
-    public static List<Page> Breadcrumb(this List<Page> pages, Page page = null)
+    public static List<Page> Breadcrumb(this List<Page> pages, Page page)
         => GetAncestors(pages, page).Reverse().ToList();
 
-    public static List<Page> Ancestors(this PageState pageState, Page page = null)
+    public static List<Page> Ancestors(this PageState pageState, Page? page = null)
         => GetAncestors(pageState, page).ToList();
 
-    private static IEnumerable<Page> GetAncestors(PageState pageState, Page page = null) 
+    private static IEnumerable<Page> GetAncestors(PageState pageState, Page? page = null) 
         => GetAncestors(pageState.Pages, page ?? pageState.Page);
 
-    public static IEnumerable<Page> GetAncestors(this List<Page> pages, Page page)
+    public static IEnumerable<Page> GetAncestors(this List<Page> pages, Page? page)
     {
-        do
+        while (page != null)
         {
             yield return page;
-            page = pages.FirstOrDefault(p => p.PageId == page?.ParentId);
-
-        } while (page != null);
+            page = pages.FirstOrDefault(p => p.PageId == page.ParentId);
+        }
     }
 }

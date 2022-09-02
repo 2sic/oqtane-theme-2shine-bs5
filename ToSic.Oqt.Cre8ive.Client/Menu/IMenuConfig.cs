@@ -13,7 +13,7 @@ public interface IMenuConfig
     /// A unique ID to identify the menu.
     /// Would be used for debugging but also to help in creating unique css-classes for collapsible menus
     /// </summary>
-    string Id { get; set; }
+    string? Id { get; set; }
 
     /// <summary>
     /// Name to identify this configuration
@@ -70,8 +70,6 @@ public interface IMenuConfig
     /// </summary>
     string? Start { get; set; }
 
-    string Design { get; set; }
+    string? Design { get; set; }
 
-
-    ThemeCssSettings? ThemeCss { get; set; }
 }

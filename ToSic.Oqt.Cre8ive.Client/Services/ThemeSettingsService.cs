@@ -21,7 +21,7 @@ public class ThemeSettingsService<T> where T : ThemePackageSettingsBase, new()
     /// <summary>
     /// Get Logo as specified in JSON or preset
     /// </summary>
-    public string Logo => ReplacePlaceholders(Json.Settings?.Layout?.Logo ?? _settings.Defaults.Layout.Logo);
+    public string Logo => ReplacePlaceholders(Json.Settings?.Layout?.Logo ?? _settings.Defaults.Layout?.Logo ?? "default-logo-not-set.jpg");
 
     public (SettingsLayout Layout, string Source) FindLayout()
     {
@@ -38,13 +38,13 @@ public class ThemeSettingsService<T> where T : ThemePackageSettingsBase, new()
         return (_layoutSettings, showSource);
     }
 
-    private SettingsLayout _layoutSettings;
+    private SettingsLayout? _layoutSettings;
 
     public (SettingsLanguages Languages, string Source) FindLanguageSettings()
     {
         var (config, _, sourceInfo) 
             = FindInSources((settings, _) => settings.Languages?.List?.Any() == true ? settings.Languages : null);
-        
+        if (config == null) throw new NullReferenceException($"{nameof(config)} should be a {nameof(SettingsLanguage)}");
         return (config, sourceInfo);
     }
 
@@ -55,12 +55,13 @@ public class ThemeSettingsService<T> where T : ThemePackageSettingsBase, new()
         var (config, foundName, sourceInfo) 
             = FindInSources((settings, n) => settings.GetMenu(n), names);
         
+        if (config == null) throw new NullReferenceException($"{nameof(config)} should be a {nameof(MenuConfig)}");
         if (config.ConfigName != foundName) config.ConfigName = foundName;
         return (config, sourceInfo);
     }
 
 
-    public (string ConfigName, string Source) FindConfigName(string originalName)
+    public (string ConfigName, string Source) FindConfigName(string? originalName)
     {
         var debugInfo = $"Initial Config: '{originalName}'";
         var configName = string.IsNullOrWhiteSpace(originalName) ? Constants.MenuDefault : originalName;
@@ -74,26 +75,27 @@ public class ThemeSettingsService<T> where T : ThemePackageSettingsBase, new()
     {
         var (result, _, sourceInfo) 
             = FindInSources((settings, n) => settings.GetDesign(n), designName, Constants.DesignDefault);
+        if (result == null) throw new NullReferenceException($"{nameof(result)} should be a {nameof(MenuDesignSettings)}");
         return (result, sourceInfo);
     }
 
 
-    private string ReplacePlaceholders(string value) => value?
+    private string ReplacePlaceholders(string value) => value
         .Replace(Placeholders.AssetsPath, _settings.PathAssets);
 
     /// <summary>
     /// Loop through various sources of settings and check the keys in the preferred order to see if we get a hit.
     /// </summary>
     private (TResult Result, string Name, string source) FindInSources<TResult>(
-        Func<Cre8ive.Client.Settings.LayoutSettings, string, TResult> findFunc,
-        params string[] names)
+        Func<LayoutSettings, string, TResult> findFunc,
+        params string[]? names)
     {
-        var sources = new List<Cre8ive.Client.Settings.LayoutSettings>
+        var sources = new List<LayoutSettings?>
         {
             // in future also add the settings from the dialog as the first priority
             Json.Settings,
             _settings.Defaults
-        };
+        }.Where(x => x != null).Cast<LayoutSettings>().ToList();
 
         // Make sure we have at least on name
         if (names == null || names.Length == 0) names = new[] { "dummy" };

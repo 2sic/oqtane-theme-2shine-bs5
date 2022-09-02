@@ -7,26 +7,24 @@ public class SettingsFromJsonService<T> where T : ThemePackageSettingsBase, new(
     public SettingsFromJsonService(T settings) => CurrentThemeSettings = settings;
     public T CurrentThemeSettings { get; }
 
-    public string Logo => _logo ??= Settings.Layout?.Logo;
-    private string _logo;
+    public LayoutSettings? Settings => _settings ??= LoadJson();
+    private LayoutSettings? _settings;
 
-    public Cre8ive.Client.Settings.LayoutSettings Settings => _settings ??= LoadJson();
-    private Cre8ive.Client.Settings.LayoutSettings _settings;
-
-    private Cre8ive.Client.Settings.LayoutSettings LoadJson()
+    private LayoutSettings? LoadJson()
     {
         var jsonFileName = $"{CurrentThemeSettings.WwwRoot}/{CurrentThemeSettings.PathTheme}/{CurrentThemeSettings.SettingsJsonFile}";
         try
         {
-            var jsonString = System.IO.File.ReadAllText(jsonFileName);
+            var jsonString = File.ReadAllText(jsonFileName);
                 
-            var result = JsonSerializer.Deserialize<Cre8ive.Client.Settings.LayoutSettings>(jsonString, new JsonSerializerOptions
+            var result = JsonSerializer.Deserialize<LayoutSettings>(jsonString, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
                 ReadCommentHandling = JsonCommentHandling.Skip,
                 AllowTrailingCommas = true,
             })!;
 
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
             if (result != null)
                 result.Source = "JSON";
 
@@ -36,7 +34,7 @@ public class SettingsFromJsonService<T> where T : ThemePackageSettingsBase, new(
         {
             throw;//wip
             // probably no json file found?
-            return new Cre8ive.Client.Settings.LayoutSettings();
+            return new LayoutSettings();
         }
     }
 

@@ -1,4 +1,10 @@
 ﻿using Oqtane.Models;
+// ReSharper disable ConvertToLocalFunction
+// ReSharper disable ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+// ReSharper disable AccessToModifiedClosure
+#pragma warning disable CS8625
+#pragma warning disable CS8600
+#pragma warning disable CS8602
 
 namespace ToSic.Oqt.Cre8ive.Client.OqtanePatches;
 

@@ -19,7 +19,7 @@ public class MenuTreeService<T> where T : ThemePackageSettingsBase, new()
     private readonly T _settings;
 
     [return: NotNull]
-    public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages, ThemeCssSettings themeCssSettings)
+    public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages)
     {
         config ??= new MenuConfig();
         var (configName, debugInfo) = _themeSettings.FindConfigName(config.ConfigName);
@@ -29,7 +29,6 @@ public class MenuTreeService<T> where T : ThemePackageSettingsBase, new()
         // isn't contained in the json file the normal parameter are given to the service
         var (menuSettings, menuConfigSource) = _themeSettings.FindMenuConfig(configName);
         config = menuSettings.Overrule(config);
-        if (config.ThemeCss == default) config.ThemeCss = themeCssSettings ?? _settings.Css;
         debugInfo += "; " + menuConfigSource;
 
         // See if we have a default configuration for CSS which should be applied
@@ -55,6 +54,7 @@ public class MenuTreeService<T> where T : ThemePackageSettingsBase, new()
         else
             debugInfo += "; Design rules already set";
 
+        // should be null if not admin, so the final razor doesn't even add the attribute
         debugInfo = pageState.UserIsAdmin() ? debugInfo : null;
 
         return new MenuTree(config, pageState.Pages, menuPages, pageState.Page, debugInfo);

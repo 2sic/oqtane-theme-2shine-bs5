@@ -38,8 +38,6 @@ Nice to know:
     [Parameter] public int? Level { get; set; }
     [Parameter] public string Start { get; set; }
     [Parameter] public string Design { get; set; }
-    [Parameter] public MenuDesignSettings MenuCss { get; set; }
-    [Parameter] public ThemeCssSettings ThemeCss { get; set; }
 
     protected MenuBranch MenuTree { get; private set; }
 
@@ -48,6 +46,6 @@ Nice to know:
         await base.OnParametersSetAsync();
 
         // TODO: CHANGE HOW IT GETS THE DEFAULTS
-        MenuTree = MenuTreeService.GetTree(new MenuConfig(this), PageState, MenuPages.ToList(), ThemeCss);
+        MenuTree = MenuTreeService.GetTree(new MenuConfig(this), PageState, MenuPages.ToList());
     }
 }

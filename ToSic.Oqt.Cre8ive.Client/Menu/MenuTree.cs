@@ -24,18 +24,18 @@ public class MenuTree : MenuBranch
     protected override MenuTree Tree => this;
 
     internal MenuCss Design => _menuCss ??= new MenuCss(Config);
-    private MenuCss _menuCss;
+    private MenuCss? _menuCss;
 
     internal List<Page> Breadcrumb => _breadcrumb ??= AllPages.Breadcrumb(Page).ToList();
-    private List<Page> _breadcrumb;
+    private List<Page>? _breadcrumb;
 
-    public override string MenuId => _menuId ??= (Config as MenuConfig)?.MenuId;
-    private string _menuId;
+    public override string MenuId => _menuId ??= (Config as MenuConfig)?.MenuId ?? "error-menu-id";
+    private string? _menuId;
 
-    public override string Debug { get; }
+    public override string? Debug { get; }
 
-    public MenuTree([NotNull] IMenuConfig config, [NotNull] List<Page> allPages, [NotNull] List<Page> menuPages, [NotNull] Page page, string debug)
-        : base(null, 0, page)
+    public MenuTree([NotNull] IMenuConfig config, [NotNull] List<Page> allPages, [NotNull] List<Page> menuPages, [NotNull] Page page, string? debug)
+        : base(null! /* root must be null, as `Tree` is handled in this class */, 0, page)
     {
         Config = config;
         AllPages = allPages;
@@ -134,7 +134,7 @@ public class MenuTree : MenuBranch
         }
     }
 
-    private StartingPoint[] ConfigToStartingPoints(string value, int level, bool children)
+    private StartingPoint[] ConfigToStartingPoints(string? value, int level, bool children)
     {
         if (string.IsNullOrWhiteSpace(value)) return Array.Empty<StartingPoint>();
         var parts = value.Split(',');
@@ -149,8 +149,8 @@ public class MenuTree : MenuBranch
                 int.TryParse(fromNode, out var id);
                 return new StartingPoint { Id = id, From = fromNode, Force = important, Children = children, Level = level};
             })
-            .Where(n => n != default)
+            .Where(n => n != null)
             .ToArray();
-        return result;
+        return result as StartingPoint[];
     }
 }

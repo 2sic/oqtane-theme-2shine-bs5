@@ -32,7 +32,10 @@ public static class PageStateSecurityExtensions
     {
         return UserSecurity.GetPermissionStrings(permissionStrings)
             .FirstOrDefault(item => item.PermissionName == permissionName)
-            .Permissions.Split(';').Contains(roleName);
+            ?.Permissions
+            .Split(';')
+            .Contains(roleName)
+            ?? false;
     }
 
 }

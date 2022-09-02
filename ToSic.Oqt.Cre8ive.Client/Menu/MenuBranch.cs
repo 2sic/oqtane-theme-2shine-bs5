@@ -12,7 +12,7 @@ public class MenuBranch
 
     public string Classes(string tag) => Tree.Design.Classes(tag, this);
 
-    public virtual string Debug => Tree.Debug;
+    public virtual string? Debug => Tree.Debug;
 
     /// <summary>
     /// Current Page
@@ -24,7 +24,7 @@ public class MenuBranch
     /// </summary>
     public int MenuLevel { get; }
 
-    public MenuBranch(MenuTree root, int menuLevel, [NotNull] Page page)
+    public MenuBranch(MenuTree root, int menuLevel, Page page)
     {
         Tree = root;
         Page = page;
@@ -41,7 +41,7 @@ public class MenuBranch
 
     [NotNull]
     public IList<MenuBranch> Children => _children ??= GetChildren();
-    private IList<MenuBranch> _children;
+    private IList<MenuBranch>? _children;
 
     /// <summary>
     /// Retrieve the children the first time it's needed.

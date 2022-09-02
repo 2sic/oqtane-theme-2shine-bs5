@@ -24,7 +24,7 @@ public class MenuConfig: IMenuConfig
 
         Design = original.Design;
         DesignSettings = (original as MenuConfig)?.DesignSettings;
-        ThemeCss = original.ThemeCss;
+        //ThemeCss = original.ThemeCss;
     }
 
     public MenuConfig Overrule(MenuConfig? overrule)
@@ -43,12 +43,12 @@ public class MenuConfig: IMenuConfig
 
         if (overrule.Design != default) newMc.Design = overrule.Design;
         if (overrule.DesignSettings != default) newMc.DesignSettings = overrule.DesignSettings;
-        if (overrule.ThemeCss != default) newMc.ThemeCss = overrule.ThemeCss;
+        //if (overrule.ThemeCss != default) newMc.ThemeCss = overrule.ThemeCss;
         return newMc;
     }
 
     /// <inheritdoc />
-    public string Id { get; set; }
+    public string? Id { get; set; }
 
     /// <inheritdoc />
     public string? ConfigName { get; set; }
@@ -87,8 +87,6 @@ public class MenuConfig: IMenuConfig
 
     // todo: name, maybe not on interface
     public MenuDesignSettings? DesignSettings { get; set; }
-
-    public ThemeCssSettings? ThemeCss { get; set; }
 
     public string MenuId => _menuId ??= string.IsNullOrWhiteSpace(Id)
         ? new Random().Next(100000, 1000000).ToString()

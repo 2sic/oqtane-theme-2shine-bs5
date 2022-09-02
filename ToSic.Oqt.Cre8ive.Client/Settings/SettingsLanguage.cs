@@ -14,9 +14,9 @@ public class SettingsLanguage
         Description = description;
     }
 
-    public string Culture { get; set; }
-    public string Label { get; set; }
-    public string Description { get; set; }
+    public string? Culture { get; set; }
+    public string? Label { get; set; }
+    public string? Description { get; set; }
 
     // TODO: MAYBE additional options to only enable on certain roles...?
 

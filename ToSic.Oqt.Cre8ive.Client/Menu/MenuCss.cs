@@ -10,26 +10,27 @@ public class MenuCss
     public MenuCss(IMenuConfig menuConfig)
     {
         MenuConfig = menuConfig as MenuConfig ?? throw new ArgumentException("MenuConfig must be real", nameof(MenuConfig));
-        Configs = new List<MenuDesignSettings> { MenuConfig.DesignSettings };
+
+        DesignSettingsList = new List<MenuDesignSettings> { MenuConfig.DesignSettings! };
     }
     private MenuConfig MenuConfig { get; }
-    internal List<MenuDesignSettings> Configs { get; }
+    internal List<MenuDesignSettings> DesignSettingsList { get; }
 
     public string Classes(string tag, MenuBranch branch)
     {
-        var configsForTag = Configs
+        var configsForTag = DesignSettingsList
             .Select(c => c.Parts.TryGetValue(tag, out var a) ? a : null)
-            .Where(c => c != null)
+            .Where(c => c is not null)
             .ToList();
 
         return configsForTag.Any()
-            ? ListToClasses(TagClasses(branch, configsForTag), branch.Page.PageId)
+            ? ListToClasses(TagClasses(branch, configsForTag as List<MenuDesignPartSettings>), branch.Page.PageId)
             : "";
     }
 
-    private List<string> TagClasses(MenuBranch branch, List<MenuDesignPartSettings> configs)
+    private List<string?> TagClasses(MenuBranch branch, List<MenuDesignPartSettings> configs)
     {
-        var classes = new List<string>();
+        var classes = new List<string?>();
         classes.AddRange(configs.Select(c => c.Classes));
 
         classes.AddRange(configs.Select(c
@@ -59,7 +60,7 @@ public class MenuCss
 
 
 
-    private string ListToClasses(IEnumerable<string> original, int pageId)
+    private string ListToClasses(IEnumerable<string?> original, int pageId)
         => string
             .Join(" ", original.Where(s => !s.IsNullOrEmpty()))
             .Replace("  ", " ")

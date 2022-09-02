@@ -5,6 +5,7 @@ using Microsoft.JSInterop;
 using Oqtane.Services;
 using Oqtane.UI;
 using static Microsoft.AspNetCore.Localization.CookieRequestCultureProvider;
+#pragma warning disable CS8602
 
 namespace ToSic.Oqt.Cre8ive.Client.Services;
 
@@ -37,7 +38,7 @@ public class LanguageService<T> where T : ThemePackageSettingsBase, new()
     }
 
     private SettingsLayout LayoutSettings => _layout ??= _settings.FindLayout().Layout;
-    private SettingsLayout _layout;
+    private SettingsLayout? _layout;
 
     public async Task<List<SettingsLanguage>> LanguagesToShow(int siteId)
     {

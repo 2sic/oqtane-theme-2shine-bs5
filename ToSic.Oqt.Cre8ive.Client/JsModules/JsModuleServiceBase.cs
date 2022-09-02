@@ -28,7 +28,7 @@ public abstract class JsModuleServiceBase
     /// <returns></returns>
     public async Task<IJSObjectReference> Module() => _jsModule
         ??= await JsRuntime.InvokeAsync<IJSObjectReference>("import", ModulePath);
-    private IJSObjectReference _jsModule;
+    private IJSObjectReference? _jsModule;
 
     protected async Task<TValue> InvokeAsync<TValue>(string identifier)
         => await (await Module()).InvokeAsync<TValue>(identifier);

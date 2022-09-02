@@ -26,8 +26,8 @@ public class LayoutSettings
     /// </summary>
     public Dictionary<string, MenuDesignSettings> Designs { get; set; } = new();
 
-    public MenuConfig? GetMenu(string name) => Menus?.FindInvariant(name);
-    public MenuDesignSettings? GetDesign(string name) => Designs?.FindInvariant(name);
+    public MenuConfig? GetMenu(string name) => Menus.FindInvariant(name);
+    public MenuDesignSettings? GetDesign(string name) => Designs.FindInvariant(name);
 }
 
 public class SettingsLayout
@@ -48,15 +48,16 @@ public class SettingsLanguages
     /// <summary>
     /// List of languages
     /// </summary>
-    public Dictionary<string, SettingsLanguage> List
+    public Dictionary<string, SettingsLanguage>? List
     {
         get => _list;
         set => _list = InitList(value);
     }
-    private Dictionary<string, SettingsLanguage> _list;
+    private Dictionary<string, SettingsLanguage>? _list;
 
-    private Dictionary<string, SettingsLanguage> InitList(Dictionary<string, SettingsLanguage> dic)
+    private Dictionary<string, SettingsLanguage>? InitList(Dictionary<string, SettingsLanguage>? dic)
     {
+        if (dic == null) return null;
         // Ensure each config knows what culture it's for, as 
         foreach (var set in dic) 
             set.Value.Culture ??= set.Key;

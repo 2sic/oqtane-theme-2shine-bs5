@@ -56,7 +56,7 @@ public class PageCssService<T> where T : ThemePackageSettingsBase, new()
         //5.2 Set the to-shine-mainnav-variation- class
         const string navigationVariationClass = "to-shine-mainnav-variation-right";
 
-        string[] classes =
+        string?[] classes =
         {
             pageIdClass,
             pageParentClass,
