@@ -3,9 +3,8 @@
 /// <summary>
 /// Service which consolidates settings made in the UI, in the JSON and falls back to coded defaults.
 /// </summary>
-public class ThemeSettingsService<T> where T : ThemePackageSettingsBase, new()
+public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePackageSettingsBase, new()
 {
-
     /// <summary>
     /// Constructor
     /// </summary>
@@ -113,4 +112,8 @@ public class ThemeSettingsService<T> where T : ThemePackageSettingsBase, new()
 
         throw new Exception($"Tried to find {nameof(TResult)} in the keys {string.Join(",", names)} but got nothing, not even a fallback/default.");
     }
+
+    public List<SettingsException> Exceptions => MyExceptions.Concat(Json.Exceptions).ToList();
+    private List<SettingsException> MyExceptions => _myExceptions ??= new();
+    private List<SettingsException>? _myExceptions;
 }

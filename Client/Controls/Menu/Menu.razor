@@ -9,6 +9,7 @@ Nice to know:
     - Implements IMenuConfig so it can be a config, or can specify the name of a config to load
     - WIP: Later it will also be able to load a config from the page/theme settings
 *@
+<MenuExceptions Menu="@MenuTree"></MenuExceptions>
 @switch (ConfigName)
 {
     case ThemePackageSettings.MenuMobile:
@@ -39,13 +40,11 @@ Nice to know:
     [Parameter] public string Start { get; set; }
     [Parameter] public string Design { get; set; }
 
-    protected MenuBranch MenuTree { get; private set; }
+    protected MenuTree MenuTree { get; private set; }
 
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
-
-        // TODO: CHANGE HOW IT GETS THE DEFAULTS
         MenuTree = MenuTreeService.GetTree(new MenuConfig(this), PageState, MenuPages.ToList());
     }
 }

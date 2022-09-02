@@ -28,6 +28,7 @@ $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
 
+//TODO: WHY IS THIS HERE?
 // $theme-colors: ();
 // $theme-colors: map-merge(
 //   (
@@ -43,6 +44,8 @@ $gray-900: #212529;
 // Gutter width:
 
 $grid-gutter-width: 30px;
+
+//TODO: WHY IS THIS HERE?
 
 // Container padding
 
@@ -74,10 +77,10 @@ $link-hover-decoration: none;
 
 
 // 2.3 Custom Bootstrap Instant 5 Theme variables - used in the variations of the themes */
+// TODO: should be renamed to toshine-*
 $tosic-header-background: #fff;
 $tosic-footer-background: $secondary;
 $tosic-footer-color: #fff;
-
 
 // ----------------------------------------------------------------------------------------------------
 // 3. Special CSS for specific pages

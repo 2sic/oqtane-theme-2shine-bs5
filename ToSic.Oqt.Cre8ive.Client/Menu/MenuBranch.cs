@@ -3,7 +3,7 @@ using Oqtane.Models;
 
 namespace ToSic.Oqt.Cre8ive.Client.Menu;
 
-public class MenuBranch
+public class MenuBranch: IHasSettingsExceptions
 {
     /// <summary>
     /// Root navigator object which has some data/logs for all navigators which spawned from it. 
@@ -39,7 +39,6 @@ public class MenuBranch
 
     public virtual string MenuId => Tree.MenuId;
 
-    [NotNull]
     public IList<MenuBranch> Children => _children ??= GetChildren();
     private IList<MenuBranch>? _children;
 
@@ -72,4 +71,5 @@ public class MenuBranch
 
     protected static Page ErrPage(int id, string message) => new() { PageId = id, Name = message };
 
+    public virtual List<SettingsException> Exceptions => Tree.Exceptions;
 }

@@ -9,14 +9,12 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
 /// </summary>
 public class MenuTreeService<T> where T : ThemePackageSettingsBase, new()
 {
-    public MenuTreeService(ThemeSettingsService<T> themeSettings, T settings)
-    {
-        _themeSettings = themeSettings;
-        _settings = settings;
-    }
-
+    /// <summary>
+    /// Constructor for DI
+    /// </summary>
+    /// <param name="themeSettings"></param>
+    public MenuTreeService(ThemeSettingsService<T> themeSettings) => _themeSettings = themeSettings;
     private readonly ThemeSettingsService<T> _themeSettings;
-    private readonly T _settings;
 
     [return: NotNull]
     public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages)
@@ -57,6 +55,6 @@ public class MenuTreeService<T> where T : ThemePackageSettingsBase, new()
         // should be null if not admin, so the final razor doesn't even add the attribute
         debugInfo = pageState.UserIsAdmin() ? debugInfo : null;
 
-        return new MenuTree(config, pageState.Pages, menuPages, pageState.Page, debugInfo);
+        return new MenuTree(config, pageState.Pages, menuPages, pageState.Page, debugInfo, _themeSettings);
     }
 }

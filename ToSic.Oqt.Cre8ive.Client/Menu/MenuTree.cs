@@ -21,6 +21,9 @@ public class MenuTree : MenuBranch
     /// </summary>
     internal List<Page> MenuPages;
 
+    public override List<SettingsException> Exceptions => _exceptions.Exceptions;
+    private readonly IHasSettingsExceptions _exceptions;
+
     protected override MenuTree Tree => this;
 
     internal MenuCss Design => _menuCss ??= new MenuCss(Config);
@@ -34,12 +37,13 @@ public class MenuTree : MenuBranch
 
     public override string? Debug { get; }
 
-    public MenuTree([NotNull] IMenuConfig config, [NotNull] List<Page> allPages, [NotNull] List<Page> menuPages, [NotNull] Page page, string? debug)
+    public MenuTree([NotNull] IMenuConfig config, [NotNull] List<Page> allPages, [NotNull] List<Page> menuPages, [NotNull] Page page, string? debug, IHasSettingsExceptions exceptions)
         : base(null! /* root must be null, as `Tree` is handled in this class */, 0, page)
     {
         Config = config;
         AllPages = allPages;
         MenuPages = menuPages;
+        _exceptions = exceptions;
         Debug = debug;
 
         // Bug in Oqtane 3.2 and before: Level isn't hydrated
