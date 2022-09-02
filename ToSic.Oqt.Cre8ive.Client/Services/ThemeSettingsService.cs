@@ -17,17 +17,12 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
 
     private SettingsFromJsonService<T> Json { get; }
 
-    /// <summary>
-    /// Get Logo as specified in JSON or preset
-    /// </summary>
-    public string Logo => ReplacePlaceholders(Json.Settings?.Layout?.Logo ?? _settings.Defaults.Layout?.Logo ?? "default-logo-not-set.jpg");
-
     public CurrentSettings CurrentSettings(string name)
     {
         name ??= Constants.Default;
-        var curr = FindLayout(name);
+        var layout = FindLayout(name).Layout;
 
-        var breadcrumbName = curr.Layout.Breadcrumbs;
+        var breadcrumbName = layout.Breadcrumbs;
         if (breadcrumbName == Constants.Inherit) breadcrumbName = name;
 
         // WIP
@@ -42,7 +37,7 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
         };
 
 
-        return new CurrentSettings(curr.Layout, breadcrumb);
+        return new CurrentSettings(layout, breadcrumb);
     }
 
     public (LayoutSettings Layout, string Source) FindLayout(string name)
@@ -52,7 +47,8 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
         {
             LanguageMenuShowMin = FindValue((settings, _) => settings.Layout?.LanguageMenuShowMin) ?? 0,
             LanguageMenuShow = FindValue((settings, _) => settings.Layout?.LanguageMenuShow) ?? true,
-            Breadcrumbs = FindValue((settings, _) => settings.Layout?.Breadcrumbs)
+            Breadcrumbs = FindValue((settings, _) => settings.Layout?.Breadcrumbs),
+            Logo = ReplacePlaceholders(FindValue((s, _) => s.Layout?.Logo)!),
         };
         return (_layoutSettings, "various");
     }

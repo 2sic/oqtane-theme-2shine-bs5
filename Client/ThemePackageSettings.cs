@@ -42,7 +42,7 @@ public class ThemePackageSettings: ThemePackageSettingsBase
             Logo = "logo.svg",
             LanguageMenuShow = true,
             LanguageMenuShowMin = 2,
-            Breadcrumbs = "Test",
+            //Breadcrumbs = "Test",
         },
         Languages = LanguagesSettings.Defaults,
         Breadcrumbs = new()

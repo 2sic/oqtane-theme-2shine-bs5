@@ -1,5 +1,4 @@
-@inherits ThemeControlBase
-@inject ThemeSettingsService<ThemePackageSettings> Settings;
+@inherits ControlWithSettings
 @*
 File Purpose:       Contains the logo in the layout. 
 Recommendations:    We recommend to use an inline SVG for the logo.
@@ -11,5 +10,5 @@ TODO:
 - I18N
 *@
 <a class="logo" href="" title="2shine Oqtane BS5 2sxc (change this in the ToShineLogo.razor)">
-    <img alt="Logo" class="img-fluid" src="@Settings.Logo">
+    <img alt="Logo" class="img-fluid" src="@Settings.Layout.Logo">
 </a>

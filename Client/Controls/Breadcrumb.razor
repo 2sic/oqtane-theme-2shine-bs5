@@ -10,10 +10,11 @@ Nice to know:       Uses extension methods like GetHomePage() and GetBreadcrumb(
     private Page HomePage => _homePage ??= PageState.GetHomePage();
     private Page _homePage;
 
-    [Parameter] public CurrentSettings Settings { get; set; }
+    [Parameter, EditorRequired] public CurrentSettings Settings { get; set; }
 }
-@{ if (Settings == null) return; }
-
+@{
+    if (Settings == null) return;
+}
 <div class="to-shine-page-breadcrumb" aria-label="breadcrumb">
     <div class="container py-2">
         <a class="to-shine-page-breadcrumb-link to-shine-page-breadcrumb-home" aria-current="page" 

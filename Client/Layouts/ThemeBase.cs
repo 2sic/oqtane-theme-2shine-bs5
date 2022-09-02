@@ -68,16 +68,21 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     [Inject] protected PageCssService<ThemePackageSettings> PageCss { get; set; }
     [Inject] protected ThemeJsService ThemeJs { get; set; }
 
-    public CurrentSettings Settings { get; private set; }
+    //    // Todo: Make configurable
+    public CurrentSettings Settings => _settings ??= ThemeSettingsService.CurrentSettings(Constants.Default);
+    private CurrentSettings _settings;
 
     // TODO: Optimize so it's real-time and doesn't need StateHasChanged()
     //public bool ShowAdminPane { get; set; } = false;
 
-    protected override async Task OnInitializedAsync()
-    {
-        await base.OnInitializedAsync();
-        Settings = ThemeSettingsService.CurrentSettings("test");
-    }
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    await base.OnInitializedAsync();
+
+    //    // As soon as the object is ready we must get the current settings...
+    //    // Todo: Make configurable
+    //    Settings = ThemeSettingsService.CurrentSettings(Constants.Default);
+    //}
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -88,8 +93,6 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
         //var showAdminPaneBefore = ShowAdminPane;
         //ShowAdminPane = !PageCss.PaneIsEmpty(PageState, PaneNames.Admin);
         //if (showAdminPaneBefore != ShowAdminPane) StateHasChanged();
-
-        Settings = ThemeSettingsService.CurrentSettings(Constants.Default);
 
         var bodyClasses = PageCss.BodyClasses(PageState, BodyClasses);
         await ThemeJs.SetBodyClasses(bodyClasses);
