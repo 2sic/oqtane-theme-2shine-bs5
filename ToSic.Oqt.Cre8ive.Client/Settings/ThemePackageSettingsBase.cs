@@ -5,7 +5,7 @@ public abstract class ThemePackageSettingsBase
     // todo: naming
     public virtual ThemeCssSettings Css { get; } = new();
 
-    public abstract LayoutsSettings Defaults { get; }
+    public virtual LayoutsSettings Defaults { get; } = new();
 
     public string WwwRoot { get; set; } = "wwwroot";
 
@@ -26,4 +26,31 @@ public abstract class ThemePackageSettingsBase
     }
     private string? _assetsPath;
     private string? _themePath;
+
+    internal class ThemePackageSettingsFallback: ThemePackageSettingsBase
+    {
+        public override LayoutsSettings Defaults => new()
+        {
+            Source = "Preset",
+            Layout = LayoutSettings.Defaults,
+            Languages = LanguagesSettings.Defaults,
+            Breadcrumbs = new()
+            {
+                { Constants.Default, BreadcrumbSettings.Defaults }
+            },
+            Menus = new()
+            {
+                { Constants.Default, MenuConfig.Defaults },
+            },
+            Designs = new()
+            {
+                // The Default design, if not overridden in the JSON
+                { Constants.Default, MenuDesignSettings.Defaults },
+                // The Design configuration for Mobile menus, if not overridden by the JSON
+                { Constants.DesignMobile, MenuDesignSettings.MobileDefaults }
+            }
+        };
+    }
+
+    internal static ThemePackageSettingsFallback Fallback = new();
 }

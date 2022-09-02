@@ -6,10 +6,17 @@ public class LayoutSettings
     public bool LanguageMenuShow { get; set; } = true;
     public int LanguageMenuShowMin { get; set; } = 0;
 
-    public string? BreadcrumbSeparator { get; set; }
-    public const string BreadcrumbSeparatorDefault = "&nbsp;&rsaquo;&nbsp;";
+    /// <summary>
+    /// Name of the breadcrumbs configuration to use.
+    /// Will usually be empty, as we'll use the Default instead
+    /// </summary>
+    public string? Breadcrumbs { get; set; }
 
-    public string? BreadcrumbReveal { get; set; }
-
-    public const string BreadcrumbRevealDefault = "…"; // Ellipsis character
+    public static LayoutSettings Defaults = new()
+    {
+        Logo = "unknown-logo.png",
+        LanguageMenuShow = true,
+        LanguageMenuShowMin = 2,
+        Breadcrumbs = Constants.Inherit,
+    };
 }

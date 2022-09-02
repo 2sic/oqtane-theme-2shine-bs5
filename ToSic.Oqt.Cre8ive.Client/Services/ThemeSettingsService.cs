@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-
-namespace ToSic.Oqt.Cre8ive.Client.Services;
+﻿namespace ToSic.Oqt.Cre8ive.Client.Services;
 
 /// <summary>
 /// Service which consolidates settings made in the UI, in the JSON and falls back to coded defaults.
@@ -24,20 +22,37 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
     /// </summary>
     public string Logo => ReplacePlaceholders(Json.Settings?.Layout?.Logo ?? _settings.Defaults.Layout?.Logo ?? "default-logo-not-set.jpg");
 
-#pragma warning disable CS8604
-    public MarkupString BreadcrumbSeparator => (MarkupString)FindLayout().Layout.BreadcrumbSeparator;
-    public MarkupString BreadcrumbReveal => (MarkupString)FindLayout().Layout.BreadcrumbReveal;
-#pragma warning restore CS8604
+    public CurrentSettings CurrentSettings(string name)
+    {
+        name ??= Constants.Default;
+        var curr = FindLayout(name);
 
-    public (LayoutSettings Layout, string Source) FindLayout()
+        var breadcrumbName = curr.Layout.Breadcrumbs;
+        if (breadcrumbName == Constants.Inherit) breadcrumbName = name;
+
+        // WIP
+        var names = new[] { breadcrumbName!, Constants.Default };
+
+        var breadcrumb = new BreadcrumbSettings
+        {
+            Separator = FindValue((s, n) => s.GetBreadcrumb(n)?.Separator, names)
+                                  ?? BreadcrumbSettings.BreadcrumbSeparatorDefault,
+            Revealer = FindValue((s, n) => s.GetBreadcrumb(n)?.Revealer, names) 
+                               ?? BreadcrumbSettings.BreadcrumbRevealDefault,
+        };
+
+
+        return new CurrentSettings(curr.Layout, breadcrumb);
+    }
+
+    public (LayoutSettings Layout, string Source) FindLayout(string name)
     {
         if (_layoutSettings != null) return (_layoutSettings, "cached");
         _layoutSettings = new LayoutSettings
         {
             LanguageMenuShowMin = FindValue((settings, _) => settings.Layout?.LanguageMenuShowMin) ?? 0,
             LanguageMenuShow = FindValue((settings, _) => settings.Layout?.LanguageMenuShow) ?? true,
-            BreadcrumbSeparator = FindValue((settings, _) => settings.Layout?.BreadcrumbSeparator) ?? LayoutSettings.BreadcrumbSeparatorDefault,
-            BreadcrumbReveal = FindValue((settings, _) => settings.Layout?.BreadcrumbReveal) ?? LayoutSettings.BreadcrumbRevealDefault,
+            Breadcrumbs = FindValue((settings, _) => settings.Layout?.Breadcrumbs)
         };
         return (_layoutSettings, "various");
     }
@@ -55,7 +70,7 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
     public (MenuConfig MenuConfig, string Source) FindMenuConfig(string name)
     {
         // Only search multiple names if the name is not already default
-        var names = name == Constants.MenuDefault ? new[] { name } : new[] { name, Constants.MenuDefault };
+        var names = name == Constants.Default ? new[] { name } : new[] { name, Constants.Default };
         var (config, foundName, sourceInfo) 
             = FindInSources((settings, n) => settings.GetMenu(n), names);
         
@@ -68,7 +83,7 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
     public (string ConfigName, string Source) FindConfigName(string? originalName)
     {
         var debugInfo = $"Initial Config: '{originalName}'";
-        var configName = string.IsNullOrWhiteSpace(originalName) ? Constants.MenuDefault : originalName;
+        var configName = string.IsNullOrWhiteSpace(originalName) ? Constants.Default : originalName;
         if (configName != originalName)
             debugInfo += $"; Config changed to '{configName}'";
 
@@ -78,7 +93,7 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
     public (MenuDesignSettings Design, string Source) FindDesign(string designName)
     {
         var (result, _, sourceInfo) 
-            = FindInSources((settings, n) => settings.GetDesign(n), designName, Constants.DesignDefault);
+            = FindInSources((settings, n) => settings.GetDesign(n), designName, Constants.Default);
         if (result == null) throw new NullReferenceException($"{nameof(result)} should be a {nameof(MenuDesignSettings)}");
         return (result, sourceInfo);
     }
@@ -90,7 +105,7 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
 
     private TResult FindValue<TResult>(Func<LayoutsSettings, string, TResult> findFunc, params string[]? names)
     {
-        var (showMin, _, _) = FindInSources(findFunc);
+        var (showMin, _, _) = FindInSources(findFunc, names);
         return showMin;
     }
 
@@ -102,11 +117,15 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
         params string[]? names)
     {
         var sources = new List<LayoutsSettings?>
-        {
-            // in future also add the settings from the dialog as the first priority
-            Json.Settings,
-            _settings.Defaults
-        }.Where(x => x != null).Cast<LayoutsSettings>().ToList();
+            {
+                // in future also add the settings from the dialog as the first priority
+                Json.Settings,
+                _settings.Defaults,
+                ThemePackageSettingsBase.Fallback.Defaults,
+            }
+            .Where(x => x != null)
+            .Cast<LayoutsSettings>()
+            .ToList();
 
         // Make sure we have at least on name
         if (names == null || names.Length == 0) names = new[] { "dummy" };

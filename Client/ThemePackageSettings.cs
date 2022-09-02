@@ -42,13 +42,20 @@ public class ThemePackageSettings: ThemePackageSettingsBase
             Logo = "logo.svg",
             LanguageMenuShow = true,
             LanguageMenuShowMin = 2,
-            BreadcrumbSeparator = LayoutSettings.BreadcrumbSeparatorDefault,
-            BreadcrumbReveal = LayoutSettings.BreadcrumbRevealDefault,
+            Breadcrumbs = "Test",
         },
         Languages = LanguagesSettings.Defaults,
+        Breadcrumbs = new()
+        {
+            { Constants.Default, BreadcrumbSettings.Defaults },
+            { "Test", new()
+            {
+                Separator = " to ",
+            }}
+        },
         Menus = new()
         {
-            { Constants.MenuDefault, MenuConfig.Defaults },
+            { Constants.Default, MenuConfig.Defaults },
             {
                 MenuMain, new()
                 {
@@ -60,7 +67,7 @@ public class ThemePackageSettings: ThemePackageSettingsBase
         Designs = new()
         {
             // The Default design, if not overridden in the JSON
-            { Constants.DesignDefault, MenuDesignSettings.Defaults },
+            { Constants.Default, MenuDesignSettings.Defaults },
             // The Design configuration for Mobile menus, if not overridden by the JSON
             { Constants.DesignMobile, MenuDesignSettings.MobileDefaults }
         }

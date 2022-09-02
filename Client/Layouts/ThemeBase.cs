@@ -2,6 +2,7 @@
 using Oqtane.Models;
 using Oqtane.Shared;
 using System.Threading.Tasks;
+using Constants = ToSic.Oqt.Cre8ive.Client.Constants;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
 
@@ -63,11 +64,20 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
         PaneNameDefault,
         PaneNameHeader);
 
+    [Inject] protected ThemeSettingsService<ThemePackageSettings> ThemeSettingsService { get; set; }
     [Inject] protected PageCssService<ThemePackageSettings> PageCss { get; set; }
     [Inject] protected ThemeJsService ThemeJs { get; set; }
 
+    public CurrentSettings Settings { get; private set; }
+
     // TODO: Optimize so it's real-time and doesn't need StateHasChanged()
     //public bool ShowAdminPane { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        Settings = ThemeSettingsService.CurrentSettings("test");
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -78,6 +88,8 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
         //var showAdminPaneBefore = ShowAdminPane;
         //ShowAdminPane = !PageCss.PaneIsEmpty(PageState, PaneNames.Admin);
         //if (showAdminPaneBefore != ShowAdminPane) StateHasChanged();
+
+        Settings = ThemeSettingsService.CurrentSettings(Constants.Default);
 
         var bodyClasses = PageCss.BodyClasses(PageState, BodyClasses);
         await ThemeJs.SetBodyClasses(bodyClasses);

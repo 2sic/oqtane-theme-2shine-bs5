@@ -16,6 +16,8 @@ public class LayoutsSettings
 
     public LanguagesSettings? Languages { get; set; }
 
+    public Dictionary<string, BreadcrumbSettings> Breadcrumbs { get; set; } = new();
+
     /// <summary>
     /// The menu definitions
     /// </summary>
@@ -28,4 +30,5 @@ public class LayoutsSettings
 
     public MenuConfig? GetMenu(string name) => Menus.FindInvariant(name);
     public MenuDesignSettings? GetDesign(string name) => Designs.FindInvariant(name);
+    public BreadcrumbSettings? GetBreadcrumb(string name) => Breadcrumbs.FindInvariant(name);
 }
