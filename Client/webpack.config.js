@@ -36,7 +36,7 @@ const commonConfig = {
   mode: "production",
   entry: {
     styles: "./src/styles/theme.scss",
-    ambient: glob.sync("./src/ts-ambient/*.ts"),
+    ambient: glob.sync("./src/scripts/ambient/*.ts"),
   },
   output: {
     path: path.resolve(
@@ -149,7 +149,7 @@ const commonConfig = {
       },
       {
         test: /\.ts$/,
-        exclude: [/node_modules/, /ts-interop/],
+        exclude: [/node_modules/, /scripts\/interop/],
         use: {
           loader: "ts-loader",
           options: {
