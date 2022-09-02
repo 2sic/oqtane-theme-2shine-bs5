@@ -35,7 +35,7 @@ if (!path.isAbsolute(themeConfig.OqtaneWwwRoot)) {
 const commonConfig = {
   mode: "production",
   entry: {
-    styles: "./src/scss/theme.scss",
+    styles: "./src/styles/theme.scss",
     ambient: glob.sync("./src/ts-ambient/*.ts"),
   },
   output: {
