@@ -24,26 +24,22 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
     /// </summary>
     public string Logo => ReplacePlaceholders(Json.Settings?.Layout?.Logo ?? _settings.Defaults.Layout?.Logo ?? "default-logo-not-set.jpg");
 
-    public MarkupString BreadcrumbSeparator => (MarkupString)(Json.Settings?.Layout?.BreadcrumbSeparator ??
-                                               _settings.Defaults.Layout?.BreadcrumbSeparator ??
-                                               LayoutSettings.BreadcrumbSeparatorDefault);
-    public MarkupString BreadcrumbReveal => (MarkupString)(Json.Settings?.Layout?.BreadcrumbReveal ??
-                                               _settings.Defaults.Layout?.BreadcrumbReveal ??
-                                               LayoutSettings.BreadcrumbRevealDefault);
+#pragma warning disable CS8604
+    public MarkupString BreadcrumbSeparator => (MarkupString)FindLayout().Layout.BreadcrumbSeparator;
+    public MarkupString BreadcrumbReveal => (MarkupString)FindLayout().Layout.BreadcrumbReveal;
+#pragma warning restore CS8604
 
     public (LayoutSettings Layout, string Source) FindLayout()
     {
         if (_layoutSettings != null) return (_layoutSettings, "cached");
-        var (show, _, showSource)
-            = FindInSources((settings, _) => settings.Layout?.LanguageMenuShow);
-        var (showMin, _, _)
-            = FindInSources((settings, _) => settings.Layout?.LanguageMenuShowMin);
         _layoutSettings = new LayoutSettings
         {
-            LanguageMenuShowMin = showMin ?? 0,
-            LanguageMenuShow = show ?? true,
+            LanguageMenuShowMin = FindValue((settings, _) => settings.Layout?.LanguageMenuShowMin) ?? 0,
+            LanguageMenuShow = FindValue((settings, _) => settings.Layout?.LanguageMenuShow) ?? true,
+            BreadcrumbSeparator = FindValue((settings, _) => settings.Layout?.BreadcrumbSeparator) ?? LayoutSettings.BreadcrumbSeparatorDefault,
+            BreadcrumbReveal = FindValue((settings, _) => settings.Layout?.BreadcrumbReveal) ?? LayoutSettings.BreadcrumbRevealDefault,
         };
-        return (_layoutSettings, showSource);
+        return (_layoutSettings, "various");
     }
 
     private LayoutSettings? _layoutSettings;
@@ -90,6 +86,13 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
 
     private string ReplacePlaceholders(string value) => value
         .Replace(Placeholders.AssetsPath, _settings.PathAssets);
+
+
+    private TResult FindValue<TResult>(Func<LayoutsSettings, string, TResult> findFunc, params string[]? names)
+    {
+        var (showMin, _, _) = FindInSources(findFunc);
+        return showMin;
+    }
 
     /// <summary>
     /// Loop through various sources of settings and check the keys in the preferred order to see if we get a hit.
