@@ -30,6 +30,10 @@ public class ThemeSettingsService: IHasSettingsExceptions
 
     public CurrentSettings CurrentSettings(string name)
     {
+        var originalNameForCache = name ?? "prevent-error";
+        var cached = _currentSettingsCache.FindInvariant(originalNameForCache);
+        if (cached != null) return cached;
+
         var configName = FindConfigName(name, Constants.Default);
         name = configName.ConfigName;
         var layout = FindLayout(name).Layout;
@@ -68,8 +72,12 @@ public class ThemeSettingsService: IHasSettingsExceptions
         current.DebugSources.Add(nameof(current.Languages), languages.Source);
         current.DebugSources.Add(nameof(current.LanguageDesign), langDesign.Source);
         current.DebugSources.Add(nameof(current.ContainerDesign), containerDesign.Source);
+
+        _currentSettingsCache[originalNameForCache] = current;
         return current;
     }
+
+    private readonly NamedSettings<CurrentSettings> _currentSettingsCache = new();
 
     private static string[] GetConfigNamesToCheck(string? configuredNameOrNull, string currentName)
     {
@@ -94,14 +102,14 @@ public class ThemeSettingsService: IHasSettingsExceptions
             LanguageMenuDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuDesign, names),
             Breadcrumbs = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.Breadcrumbs, names),
             Logo = ReplacePlaceholders(FindValue((s, n) => s.Layouts?.GetInvariant(n)?.Logo, names)!),
+            // Check if we have a menu map
             Menus = FindValue((set, n) =>
             {
                 var menu = set.Layouts?.GetInvariant(n)?.Menus;
                 return menu != null && menu.Any() ? menu : null;
             }, names)!,
         };
-        // Check if we have a menu map
-        _layoutSettingsCache.Add(name, layoutSettings);
+        _layoutSettingsCache[name] = layoutSettings;
         return (layoutSettings, "various");
     }
 

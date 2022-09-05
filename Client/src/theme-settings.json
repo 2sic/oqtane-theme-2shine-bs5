@@ -13,15 +13,8 @@
   // The version of this file, which helps the reader detect the format (or error if incompatible)
   "version": 0.01,
 
-  // TODO:
-  // "layout": {
-  //   "containerDesign": "Default",
-  //   "logo": "[Assets.Path]/logo-broken.svg",
-  //   // very optional, just as example. will default to "Default" otherwise
-  //   // "languageMenuDesign": "custom-lang-design",
-  //   "languageMenuShow": true,
-  //   "languageMenuShowMin":  2
-  // },
+  // Layouts Configurations. In most cases you'll just use "Default"
+  // The example below shows how the "Sidebar" configuration switches to a different menu
   "Layouts":{
     "Default": {
       // Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
@@ -48,7 +41,7 @@
     }
   },
 
-  // TODO:
+  // Languages Configurations
   "Languages": {
     "Default": {
       "hideOthers":  false,
