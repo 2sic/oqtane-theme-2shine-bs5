@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Components;
 
-namespace ToSic.Oqt.Cre8ive.Client.Menu;
+namespace ToSic.Oqt.Cre8ive.Client.Controls.Menu;
 
 /// <summary>
 /// Base class for any menu list

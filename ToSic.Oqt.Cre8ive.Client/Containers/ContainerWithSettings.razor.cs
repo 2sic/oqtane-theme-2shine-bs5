@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
+using ToSic.Oqt.Cre8ive.Client.Controls;
 
-namespace ToSic.Oqt.Cre8ive.Client.Controls;
+namespace ToSic.Oqt.Cre8ive.Client.Containers;
 
-public class ContainerWithSettings: Oqtane.Themes.ContainerBase
+public class ContainerWithSettings: Oqtane.Themes.ContainerBase, IControlWithSettings
 {
     [CascadingParameter] public CurrentSettings Settings { get; set; }
 

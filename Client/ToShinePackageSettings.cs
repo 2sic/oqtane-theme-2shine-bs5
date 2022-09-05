@@ -28,7 +28,7 @@ public static class ToShinePackageSettings
     /// Default settings used in this package.
     /// They are defined here and given as initial values to the ThemeSettingsService in the Default Razor file.
     /// 
-    /// You don't need to do much here, because all settings should actually come from the json file. 
+    /// You don't need to do much here, because all settings should then come from the json file. 
     /// </summary>
     public static ThemePackageSettings PackageDefaults = new() 
     {
@@ -38,7 +38,9 @@ public static class ToShinePackageSettings
         // The json file in the theme folder folder containing all kinds of settings etc.
         SettingsJsonFile = "theme-settings.json",
 
-        // The default Theme CSS Settings.
+        // The Theme CSS Settings
+        // It contains names/prefixes of CSS classes which are added to the HTML by code. 
+        // You only ever need to change this if you modify the generated CSS to use other prefixes etc.
         Css = new()
         {
             // Here you could override various defaults if you choose to change your CSS like this
@@ -49,7 +51,10 @@ public static class ToShinePackageSettings
         // Normally you don't want to change this, but just set everything in the json
         Defaults = new()
         {
+            // The source is just a name, which you may sometimes see in debug messages to see where the setting came from
             Source = "Preset",
+
+            // Layout settings
             Layout = new()
             {
                 Logo = "logo.svg",

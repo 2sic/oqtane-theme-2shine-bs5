@@ -3,7 +3,7 @@ using Oqtane.Themes;
 
 namespace ToSic.Oqt.Cre8ive.Client.Controls;
 
-public class ControlWithSettings: ThemeControlBase
+public abstract class ControlWithSettings: ThemeControlBase, IControlWithSettings
 {
     [CascadingParameter] public CurrentSettings Settings { get; set; }
 

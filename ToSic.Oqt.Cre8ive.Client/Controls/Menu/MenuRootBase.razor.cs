@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Components;
-using ToSic.Oqt.Cre8ive.Client.Controls;
 
-namespace ToSic.Oqt.Cre8ive.Client.Menu;
+namespace ToSic.Oqt.Cre8ive.Client.Controls.Menu;
 
 /// <summary>
 /// Base class for Razor menus
 /// </summary>
-public abstract class MenuRootBase : MenuWithSettings, IMenuConfig // where TPackageSettings : ThemePackageSettingsBase, new()
+public abstract class MenuRootBase: MenuWithSettings, IMenuConfig
 {
     /// <inheritdoc />
     [Parameter] public string? Id { get; set; }
