@@ -177,8 +177,11 @@
         "span": {
           "classes": "nav-item-sub-opener",
           "isNotInBreadcrumb": "collapsed"
+        },
+        // Special target information (not really styling) usually on the span-tag
+        "data-bs-target": {
+          "value": ".to-shine-submenu-[Menu.Id]-[Page.Id]"
         }
-
       }
     },
     "Sidebar": {
@@ -203,6 +206,9 @@
         "span": {
           "classes": "nav-item-sub-opener",
           "isNotInBreadcrumb": "collapsed"
+        },
+        "data-bs-target": {
+          "value": ".to-shine-submenu-[Menu.Id]-[Page.Id]"
         }
       }
     },

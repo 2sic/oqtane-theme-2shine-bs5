@@ -34,4 +34,10 @@ public class MenuStyling: StylingWithActive
     /// </summary>
     public string? IsInBreadcrumb { get; set; }
     public string? IsNotInBreadcrumb { get; set; }
+
+
+    /// <summary>
+    /// Special key to get a value - for non-css configurations
+    /// </summary>
+    public string? Value { get; set; }
 }

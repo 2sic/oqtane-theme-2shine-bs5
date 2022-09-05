@@ -16,17 +16,29 @@ public class MenuCss
     private MenuConfig MenuConfig { get; }
     internal List<MenuDesignSettings> DesignSettingsList { get; }
 
-    public string Classes(string tag, MenuBranch branch)
+    public string Value(string key, MenuBranch branch)
     {
-        var configsForTag = DesignSettingsList
-            .Select(c => c.Styling.FindInvariant(tag))
-            .Where(c => c is not null)
+        var configsForKey = ConfigsForTag(key)
+            .Select(c => c.Value)
+            .Where(v => v.HasValue())
             .ToList();
 
+        return string.Join(" ", configsForKey);
+    }
+
+    public string Classes(string tag, MenuBranch branch)
+    {
+        var configsForTag = ConfigsForTag(tag);
         return configsForTag.Any()
             ? ListToClasses(TagClasses(branch, configsForTag as List<MenuStyling>))
             : "";
     }
+
+    private List<MenuStyling?> ConfigsForTag(string tag) =>
+        DesignSettingsList
+            .Select(c => c.Styling.FindInvariant(tag))
+            .Where(c => c is not null)
+            .ToList();
 
     private List<string?> TagClasses(MenuBranch branch, List<MenuStyling> configs)
     {

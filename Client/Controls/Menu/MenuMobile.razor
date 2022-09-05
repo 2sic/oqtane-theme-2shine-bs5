@@ -17,7 +17,7 @@ Nice to know:       See `MenuDefault.razor`
                 {
                     <span class='@subBranch.Classes("span")'
                           data-bs-toggle='collapse' 
-                          data-bs-target='.to-shine-submenu-@subBranch.MenuId-@subBranch.Page.PageId' 
+                          data-bs-target='@subBranch.Value("data-bs-target")'
                           aria-expanded='@subBranch.InBreadcrumb'></span>
                     <MenuMobile MenuBranch="@subBranch"></MenuMobile>
                 }

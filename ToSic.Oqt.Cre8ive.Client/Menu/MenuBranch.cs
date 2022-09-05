@@ -12,6 +12,8 @@ public class MenuBranch: IHasSettingsExceptions
 
     public string? Classes(string tag) => Tree.PageReplacer.Replace(Tree.Design.Classes(tag, this), Page).EmptyAsNull();
 
+    public string? Value(string key) => Tree.PageReplacer.Replace(Tree.Design.Value(key, this), Page).EmptyAsNull();
+
     public virtual string? Debug => Tree.Debug;
 
     /// <summary>
