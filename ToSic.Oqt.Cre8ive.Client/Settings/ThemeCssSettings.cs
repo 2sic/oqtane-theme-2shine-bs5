@@ -12,14 +12,12 @@ public class ThemeCssSettings
     private string? _pageRootPrefix;
     private string? _pageParentPrefix;
     private string? _layoutVariationPrefix;
-    private string? _layoutAdminContainer;
     private string? _paneIsEmpty;
-    private string? _moduleUnpublished;
     private const string SitePrefixDefault = "site-";
     private const string PagePrefixDefault = "page-";
-    private const string LayoutPrefixDefault = "to-shine-";
+    internal const string LayoutPrefixDefault = "to-shine-";
     private const string PanePrefixDefault = "pane-";
-    private const string ModulePrefixDefault = "module-";
+    internal const string ModulePrefixDefault = "module-";
     private const string NavLevelPrefixDefault = "nav-level-";
 
     public const string SettingFromDefaults = "to-shine-warning-from-defaults";
@@ -62,11 +60,6 @@ public class ThemeCssSettings
         set => _layoutVariationPrefix = value;
     }
 
-    public string LayoutAdminContainer
-    {
-        get => _layoutAdminContainer ??= $"{LayoutPrefix}admin-container";
-        set => _layoutAdminContainer = value;
-    }
 
     public string PanePrefix { get; set; } = PanePrefixDefault;
 
@@ -76,13 +69,4 @@ public class ThemeCssSettings
         set => _paneIsEmpty = value;
     }
 
-    public string ModulePrefix { get; set; } = ModulePrefixDefault;
-
-    public string ModuleUnpublished
-    {
-        get => _moduleUnpublished ??= $"{ModulePrefixDefault}unpublished";
-        set => _moduleUnpublished = value;
-    }
-
-    // public string Language
 }

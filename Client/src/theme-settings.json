@@ -16,6 +16,7 @@
 
   // TODO:
   "layout": {
+    "containerDesign": "Default",
     "logo": "[ASSETS-PATH]/logo.svg",
     // very optional, just as example. will default to "default" otherwise
     // "languageMenuDesign": "custom-lang-design",
@@ -38,7 +39,7 @@
   },
   "languageDesigns": {
     "default": {
-      "styling":{
+      "styling": {
         "ul": { "classes": "to-shine-page-language" },
         "li": { "active": "active" }
       }
@@ -50,6 +51,19 @@
     //     "li": { "active": "active custom", "activeFalse": "inactive custom" }
     //   }
     // }
+  },
+  "containerDesigns": {
+    "default": {
+      "styling": {
+        "div": {
+          "classes": "to-shine-background-container py-4 JSON",
+          // "isPublished": "module-published",
+          "isNotPublished": "module-unpublished JSON",
+          "isAdminModule": "to-shine-admin-container JSON",
+          // "isNotAdminModule": "to-shine-default-container"
+        }
+      }
+    }
   },
 
   // Menus contain the configuration for each menu. The names used are specified in the Razor files.

@@ -7,6 +7,10 @@ public partial class ThemePackageSettings
         Defaults = new()
         {
             Source = "Preset",
+            ContainerDesigns = new()
+            {
+                { Constants.Default, ContainerDesignSettings.Defaults }
+            },
             Layout = LayoutSettings.Defaults,
             Languages = LanguagesSettings.Defaults,
             LanguageDesigns = new()

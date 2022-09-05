@@ -48,13 +48,21 @@ public class ThemeSettingsService: IHasSettingsExceptions
 
         // Get language design from configuration - keep the first which has any settings
         // This also means no partial inheritance, it's all or nothing
+        var langDesignNames = GetConfigNamesToCheck(layout.LanguageMenuDesign, name);
         var langDesign = FindInSources((s, n) =>
         {
             var found = s.LanguageDesigns?.GetInvariant(n);
             return found is { Styling: { } } && found.Styling.Any() ? found : null;
-        }, GetConfigNamesToCheck(layout.LanguageMenuDesign, name));
+        }, langDesignNames);
 
-        var current = new CurrentSettings(this, layout, breadcrumb, Settings.Css, languages.Languages, langDesign.Result);
+        var containerDesignNames = GetConfigNamesToCheck(layout.ContainerDesign, name);
+        var containerDesign = FindInSources((s, n) =>
+        {
+            var found = s.ContainerDesigns?.GetInvariant(n);
+            return found is { Styling: { } } && found.Styling.Any() ? found : null;
+        }, containerDesignNames);
+
+        var current = new CurrentSettings(this, layout, breadcrumb, Settings.Css, languages.Languages, langDesign.Result, containerDesign.Result);
         current.DebugSources.Add("Name", configName.Source);
         current.DebugSources.Add(nameof(current.Languages), languages.Source);
         current.DebugSources.Add(nameof(current.LanguageDesign), langDesign.Source);
@@ -75,6 +83,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
         if (_layoutSettings != null) return (_layoutSettings, "cached");
         _layoutSettings = new LayoutSettings
         {
+            ContainerDesign = FindValue((settings, _) => settings.Layout?.ContainerDesign),
             LanguageMenuShowMin = FindValue((settings, _) => settings.Layout?.LanguageMenuShowMin) ?? 0,
             LanguageMenuShow = FindValue((settings, _) => settings.Layout?.LanguageMenuShow) ?? true,
             LanguageMenuDesign = FindValue((settings, _) => settings.Layout?.LanguageMenuDesign),

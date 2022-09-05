@@ -8,6 +8,8 @@ public class LayoutSettings
 
     public string? LanguageMenuDesign { get; set; }
 
+    public string? ContainerDesign { get; set; }
+
     /// <summary>
     /// Name of the breadcrumbs configuration to use.
     /// Will usually be empty, as we'll use the Default instead
@@ -17,6 +19,7 @@ public class LayoutSettings
     public static LayoutSettings Defaults = new()
     {
         Logo = "unknown-logo.png",
+        ContainerDesign = Constants.Inherit,
         LanguageMenuDesign = Constants.Inherit,
         LanguageMenuShow = true,
         LanguageMenuShowMin = 2,
