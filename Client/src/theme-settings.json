@@ -9,13 +9,13 @@
    *
    * Note: This is a JSON file but the parser will treat it as JSONC, so you can add comments
   */
-
+  // ********************
   // The version of this file, which helps the reader detect the format (or error if incompatible)
   "version": 0.01,
-
+  // ********************
   // Layouts Configurations. In most cases you'll just use "Default"
   // The example below shows how the "Sidebar" configuration switches to a different menu
-  "Layouts":{
+  "Layouts": {
     "Default": {
       // Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
       "containerDesign": "=",
@@ -24,7 +24,7 @@
       // very optional, just as example. will default to "=" meaning "Default"
       // "languageMenuDesign": "custom-lang-design",
       "languageMenuShow": true,
-      "languageMenuShowMin":  2,
+      "languageMenuShowMin": 2,
       // "breadcrumbs": "=",         // Breadcrumb-config inherits name, so also "Default" - this is the default BTW
     },
     // Layout showing the submenu in the sidebar, so we don't need to show more items in the main menu
@@ -36,15 +36,15 @@
   },
   "Breadcrumbs": {
     "Default": {
-      "separator": "&nbsp;&rsaquo;&nbsp;",  // a non-breaking space + >> + non-breaking space
-      "revealer": "…"                       // this is an Ellipsis character
+      "separator": "&nbsp;&rsaquo;&nbsp;", // a non-breaking space + >> + non-breaking space
+      "revealer": "…" // this is an Ellipsis character
     }
   },
-
+  // ********************
   // Languages Configurations
   "Languages": {
     "Default": {
-      "hideOthers":  false,
+      "hideOthers": false,
       "list": {
         "en": {
           "label": "ENG",
@@ -56,35 +56,7 @@
       }
     }
   },
-  "LanguageDesigns": {
-    "Default": {
-      "styling": {
-        "ul": { "classes": "to-shine-page-language" },
-        "li": { "isActive": "active" }
-      }
-    },
-    // Example of design specs with another name
-    // "custom-lang-design": {
-    //   "styling":{
-    //     "ul": { "classes": "to-shine-page-language custom" },
-    //     "li": { "isActive": "active custom", "isNotActive": "inactive custom" }
-    //   }
-    // }
-  },
-  "ContainerDesigns": {
-    "Default": {
-      "styling": {
-        "div": {
-          "classes": "to-shine-background-container py-4",
-          // "isPublished": "module-published",
-          "isNotPublished": "module-unpublished",
-          "isAdminModule": "to-shine-admin-container",
-          // "isNotAdminModule": "to-shine-default-container"
-        }
-      }
-    }
-  },
-
+  // ********************
   // Menus contain the configuration for each menu. The names used are specified in the Razor files.
   "Menus": {
     // The default configuration is taken if no other configuration is used
@@ -120,7 +92,43 @@
       "start": "1, 5!"
     }
   },
-
+  // ********************
+  // Language Designs add classes for the language menus
+  "LanguageDesigns": {
+    "Default": {
+      "styling": {
+        "ul": {
+          "classes": "to-shine-page-language"
+        },
+        "li": {
+          "isActive": "active"
+        }
+      }
+    },
+    // Example of design specs with another name
+    // "custom-lang-design": {
+    //   "styling":{
+    //     "ul": { "classes": "to-shine-page-language custom" },
+    //     "li": { "isActive": "active custom", "isNotActive": "inactive custom" }
+    //   }
+    // }
+  },
+  // ********************
+  // Container Designs determine CSS classes on containers
+  "ContainerDesigns": {
+    "Default": {
+      "styling": {
+        "div": {
+          "classes": "to-shine-background-container py-4",
+          // "isPublished": "module-published",
+          "isNotPublished": "module-unpublished",
+          "isAdminModule": "to-shine-admin-container",
+          // "isNotAdminModule": "to-shine-default-container"
+        }
+      }
+    }
+  },
+  // ********************
   // MenuDesigns specify how the output is made, what classes added to each node etc.
   // It's separate from the Menus, since it could be re-used
   // It also supports two special placeholders [Page.Id] and [Menu.Id]
@@ -154,7 +162,7 @@
         }
       }
     },
-    "Mobile":{
+    "Mobile": {
       "styling": {
         "ul": {
           "byLevel": {
@@ -214,7 +222,7 @@
     },
     "Footer": {
       "styling": {
-        "ul" :{
+        "ul": {
           "classes": "navbar-nav test-wip-config"
         }
       }

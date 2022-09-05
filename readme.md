@@ -161,7 +161,6 @@ See also [folder and namespace docs](./docs/folders-and-namespaces.md)
 
 1. Breadcrumb revealer doesn't work as expected, only hides "Home"
 1. Styling of footer menu to be "something | something | something"
-1. configurable settings don't work at all ATM
 1. Nav features
   1. ability to exclude pages (especially on home level)
   2. verify that we need `toshine-mainnav-variations-...` classes
@@ -172,6 +171,7 @@ See also [folder and namespace docs](./docs/folders-and-namespaces.md)
 
 1. ideally try to move out the js for the page to the project Cre8ive
 1. find a way to allow layouts/designs/logos etc. to vary by site-id
+1. more configurable settings on layout, like breadcrumb on/off etc.
 
 ---
 
