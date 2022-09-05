@@ -8,7 +8,7 @@
 public partial class ThemePackageSettings
 {
     // todo: naming
-    public virtual ThemeCssSettings Css { get; set; } = new();
+    public virtual PageStyling Page { get; set; } = new();
 
     public virtual LayoutsSettings Defaults { get; set; } = new();
 

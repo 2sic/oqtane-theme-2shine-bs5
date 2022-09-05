@@ -17,8 +17,8 @@ public class LanguageDesignSettings: SettingsWithStyling<StylingWithActive>
     {
         Styling = new()
         {
-            { "ul", new() { Classes = $"to-shine-page-language {ThemeCssSettings.SettingFromDefaults}" } },
-            { "li", new() { IsActive = $"active {ThemeCssSettings.SettingFromDefaults}", IsNotActive = "" } }
+            { "ul", new() { Classes = $"to-shine-page-language {PageStyling.SettingFromDefaults}" } },
+            { "li", new() { IsActive = $"active {PageStyling.SettingFromDefaults}", IsNotActive = "" } }
         }
     };
 }

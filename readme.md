@@ -159,6 +159,8 @@ See also [folder and namespace docs](./docs/folders-and-namespaces.md)
 1. configurable settings don't work at all ATM
 1. Nav features
   1. ability to exclude pages (especially on home level)
+  2. verify that we need `toshine-mainnav-variations-...` classes
+1. In general, probably rename `to-shine-...` classes to `toshine-...`
 
 ### Lower Priority
 

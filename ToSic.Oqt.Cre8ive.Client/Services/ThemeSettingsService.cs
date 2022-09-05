@@ -62,7 +62,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
             return found is { Styling: { } } && found.Styling.Any() ? found : null;
         }, containerDesignNames);
 
-        var current = new CurrentSettings(this, layout, breadcrumb, Settings.Css, languages.Languages, langDesign.Result, containerDesign.Result);
+        var current = new CurrentSettings(this, layout, breadcrumb, Settings.Page, languages.Languages, langDesign.Result, containerDesign.Result);
         current.DebugSources.Add("Name", configName.Source);
         current.DebugSources.Add(nameof(current.Languages), languages.Source);
         current.DebugSources.Add(nameof(current.LanguageDesign), langDesign.Source);

@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Oqtane.Models;
+using Oqtane.UI;
 using ToSic.Oqt.Cre8ive.Client.OqtanePatches;
 
 namespace ToSic.Oqt.Cre8ive.Client.Menu;
@@ -9,6 +10,10 @@ public class MenuTree : MenuBranch
     public const char PageForced = '!';
 
     internal IMenuConfig Config { get; }
+    public PageState PageState { get; }
+
+    internal PagePlaceholders PageReplacer => _pageReplacer ??= new PagePlaceholders(PageState, null, menuId: MenuId);
+    private PagePlaceholders? _pageReplacer;
 
     /// <summary>
     /// List of all pages - even these which would currently not be shown in the menu.
@@ -37,18 +42,19 @@ public class MenuTree : MenuBranch
 
     public override string? Debug { get; }
 
-    public MenuTree([NotNull] IMenuConfig config, [NotNull] List<Page> allPages, [NotNull] List<Page> menuPages, [NotNull] Page page, string? debug, IHasSettingsExceptions exceptions)
-        : base(null! /* root must be null, as `Tree` is handled in this class */, 0, page)
+    public MenuTree(IMenuConfig config, PageState pageState, List<Page> menuPages, string? debug, IHasSettingsExceptions exceptions)
+        : base(null! /* root must be null, as `Tree` is handled in this class */, 0, pageState.Page)
     {
+        PageState = pageState;
         Config = config;
-        AllPages = allPages;
+        AllPages = pageState.Pages;
         MenuPages = menuPages;
         _exceptions = exceptions;
         Debug = debug;
 
         // Bug in Oqtane 3.2 and before: Level isn't hydrated
-        if (allPages.All(p => p.Level == 0))
-            MenuPatchCode.GetPagesHierarchy(allPages);
+        if (AllPages.All(p => p.Level == 0))
+            MenuPatchCode.GetPagesHierarchy(AllPages);
     }
 
     [return: NotNull]

@@ -48,6 +48,6 @@ public class MenuTreeService: ServiceWithCurrentSettings
         // should be null if not admin, so the final razor doesn't even add the attribute
         debugInfo = pageState.UserIsAdmin() ? debugInfo : null;
 
-        return new MenuTree(config, pageState.Pages, menuPages, pageState.Page, debugInfo, settingsSvc);
+        return new MenuTree(config, pageState, menuPages, debugInfo, settingsSvc);
     }
 }

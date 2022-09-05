@@ -13,62 +13,26 @@ public class PageCssService: ServiceWithCurrentSettings
 
         if (Css == null) throw new ArgumentException("Can't continue without CSS specs", nameof(Css));
 
-        var page = pageState.Page;
-        //1.1 Set the page-is-home class
-        var isHomeClass = page.Path == "" ? Css.PageIsHome : "";
+        // Make a copy...
+        var classes = Css.BodyClasses.ToList();
+        if(pageState.Page.Path == "") classes.Add(Css.PageIsHome);
 
-        //1.2 Set the page-### class
-        var pageIdClass = Css.PagePrefix + page.PageId;
-
-        //1.3 Set the page-parent-### class
-        var pageParentClass = page.ParentId == null ? null : $"{Css.PageParentPrefix}{page.ParentId}";
-
-        //1.4 Set the page-root-### class
-        var pageParentId = page.ParentId;
-
-        var pageRootClass = pageParentId == null 
-            ? $"{Css.PageRootPrefix}{page.PageId}" 
-            : $"{Css.PageRootPrefix}{pageState.Breadcrumb()?.FirstOrDefault()?.PageId}";
-
-
+        // Do these once multi-language is better
         //1.5 Set the page-root-neutral-### class
+        // do once Multilanguage is good
 
-        //2 Set site-### class
-        var siteIdClass = $"{Css.SitePrefix}{page.SiteId}";
-
-        //3 Set the nav-level-### class
-        var navLevel = page.Level + 1;
-        var navLevelClass = $"{Css.NavLevelPrefix}{navLevel}";
 
         //4.1 Set lang- class
-
+        // do once lang is clear
         //4.2 Set the lang-root- class
-
+        // do once lang is clear
         //4.3 Set the lang-neutral- class
-
-        //5.1 Set the to-shine-variation- class
-        var layoutVariationClass = $"{Css.LayoutVariationPrefix}{layoutVariation}";
-
-        // TODO: MOVE OUT TO ThemeCss
-
-        //5.2 Set the to-shine-mainnav-variation- class
-        const string navigationVariationClass = "to-shine-mainnav-variation-right";
-
-        string?[] classes =
-        {
-            pageIdClass,
-            pageParentClass,
-            pageRootClass,
-            isHomeClass,
-            siteIdClass,
-            navLevelClass,
-            layoutVariationClass,
-            navigationVariationClass,
-        };
+        // do once lang is clear
 
         var bodyClasses = string.Join(" ", classes).Replace("  ", " ");
-        return bodyClasses;
+        return Placeholders.Replace(bodyClasses, pageState, layoutVariation);
     }
+
 
     public bool PaneIsEmpty(PageState pageState, string paneName)
     {

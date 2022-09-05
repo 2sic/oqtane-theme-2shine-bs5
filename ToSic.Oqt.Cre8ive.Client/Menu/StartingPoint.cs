@@ -13,11 +13,4 @@
         public bool Children { get; set; } = false;
 
     }
-
-    //public class StartingPoint
-    //{
-
-    //    public bool Force { get; set; } = false;
-    //}
-    
 }

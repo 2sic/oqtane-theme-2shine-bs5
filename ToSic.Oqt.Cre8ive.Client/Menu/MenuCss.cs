@@ -64,8 +64,9 @@ public class MenuCss
         => string
             .Join(" ", original.Where(s => !s.IsNullOrEmpty()))
             .Replace("  ", " ")
-            .Replace(Placeholders.PageId, pageId.ToString())
-            .Replace(Placeholders.MenuId, MenuConfig.MenuId);
+            ;
+            //.Replace(Placeholders.PageId, pageId.ToString())
+            //.Replace(Placeholders.MenuId, MenuConfig.MenuId);
 
 
 }

@@ -23,7 +23,8 @@ public class MenuStyling: StylingWithActive
     public string? IsNotParent { get; set; }
 
     /// <summary>
-    /// 
+    /// Classes to add if the node is disabled.
+    /// TODO: unclear why it's disabled, what would cause this...
     /// </summary>
     public string? IsDisabled { get; set; }
     public string? IsNotDisabled { get; set; }

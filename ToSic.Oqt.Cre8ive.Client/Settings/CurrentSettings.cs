@@ -8,7 +8,7 @@ public class CurrentSettings
         ThemeSettingsService service, 
         LayoutSettings layout, 
         BreadcrumbSettings breadcrumb, 
-        ThemeCssSettings css, 
+        PageStyling css, 
         LanguagesSettings languages, 
         LanguageDesignSettings languageDesign, 
         ContainerDesignSettings containerDesign
@@ -29,7 +29,7 @@ public class CurrentSettings
 
     public BreadcrumbSettings Breadcrumb { get; }
 
-    public ThemeCssSettings Css { get; }
+    public PageStyling Css { get; }
 
     public LanguagesSettings Languages { get; }
 

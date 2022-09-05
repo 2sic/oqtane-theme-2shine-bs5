@@ -62,10 +62,20 @@ public class ThemeInfo : ITheme
         // The Theme CSS Settings
         // It contains names/prefixes of CSS classes which are added to the HTML by code. 
         // You only ever need to change this if you modify the generated CSS to use other prefixes etc.
-        Css = new()
+        Page = new()
         {
             // Here you could override various defaults if you choose to change your CSS like this
-            // PagePrefix = "page-";
+            BodyClasses = new[]
+            {
+                $"page-{Placeholders.PageId}",
+                $"page-root-{Placeholders.PageRootId}",
+                $"page-parent-{Placeholders.PageParentId}",
+                $"site-{Placeholders.SiteId}",
+                $"nav-level-{Placeholders.MenuLevel}",
+                $"to-shine-variation-{Placeholders.LayoutVariation}"
+            },
+            PageIsHome = "page-is-home",
+            PaneIsEmpty = "pane-is-empty",
         },
 
         // Theme Settings Defaults, used to lookup things which the json file doesn't specify.
