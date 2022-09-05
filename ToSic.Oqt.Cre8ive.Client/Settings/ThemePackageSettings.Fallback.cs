@@ -9,7 +9,7 @@ public partial class ThemePackageSettings
             Source = "Preset",
             ContainerDesigns = new()
             {
-                { Constants.Default, ContainerDesignSettings.Defaults }
+                { Constants.Default, ContainerDesign.Defaults }
             },
 
             Layouts = new()
@@ -23,7 +23,7 @@ public partial class ThemePackageSettings
             },
             LanguageDesigns = new()
             {
-                { Constants.Default, LanguageDesignSettings.Defaults }
+                { Constants.Default, LanguageDesign.Defaults }
             },
             Breadcrumbs = new()
             {
@@ -36,9 +36,9 @@ public partial class ThemePackageSettings
             MenuDesigns = new()
             {
                 // The Default design, if not overridden in the JSON
-                { Constants.Default, MenuDesignSettings.Defaults },
+                { Constants.Default, MenuDesign.Defaults },
                 // The Design configuration for Mobile menus, if not overridden by the JSON
-                { Constants.DesignMobile, MenuDesignSettings.MobileDefaults }
+                { Constants.DesignMobile, MenuDesign.MobileDefaults }
             }
         }
     };

@@ -12,8 +12,8 @@ public class CurrentSettings
         BreadcrumbSettings breadcrumb, 
         PageStyling css, 
         LanguagesSettings languages, 
-        LanguageDesignSettings languageDesign, 
-        ContainerDesignSettings containerDesign)
+        LanguageDesign languageDesign, 
+        ContainerDesign containerDesign)
     {
         Layout = layout;
         Breadcrumb = breadcrumb;
@@ -37,9 +37,9 @@ public class CurrentSettings
 
     public LanguagesSettings Languages { get; }
 
-    public LanguageDesignSettings LanguageDesign { get; set; }
+    public LanguageDesign LanguageDesign { get; set; }
 
-    public ContainerDesignSettings ContainerDesign { get; set; }
+    public ContainerDesign ContainerDesign { get; set; }
 
     public Dictionary<string, string> DebugSources { get; } = new(InvariantCultureIgnoreCase);
 }

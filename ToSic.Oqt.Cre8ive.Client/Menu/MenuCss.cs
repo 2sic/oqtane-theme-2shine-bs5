@@ -11,10 +11,10 @@ public class MenuCss
     {
         MenuConfig = menuConfig as MenuConfig ?? throw new ArgumentException("MenuConfig must be real", nameof(MenuConfig));
 
-        DesignSettingsList = new List<MenuDesignSettings> { MenuConfig.DesignSettings! };
+        DesignSettingsList = new List<MenuDesign> { MenuConfig.DesignSettings! };
     }
     private MenuConfig MenuConfig { get; }
-    internal List<MenuDesignSettings> DesignSettingsList { get; }
+    internal List<MenuDesign> DesignSettingsList { get; }
 
     public string Value(string key, MenuBranch branch)
     {

@@ -152,11 +152,11 @@ public class ThemeSettingsService: IHasSettingsExceptions
         return (Constants.Default, debugInfo);
     }
 
-    public (MenuDesignSettings Design, string Source) FindDesign(string designName)
+    public (MenuDesign Design, string Source) FindDesign(string designName)
     {
         var (result, _, sourceInfo) 
             = FindInSources((settings, n) => settings.MenuDesigns?.GetInvariant(n), designName, Constants.Default);
-        if (result == null) throw new NullReferenceException($"{nameof(result)} should be a {nameof(MenuDesignSettings)}");
+        if (result == null) throw new NullReferenceException($"{nameof(result)} should be a {nameof(MenuDesign)}");
         return (result, sourceInfo);
     }
 

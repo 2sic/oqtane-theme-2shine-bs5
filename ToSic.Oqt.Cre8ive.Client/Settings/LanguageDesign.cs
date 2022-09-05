@@ -2,7 +2,7 @@
 
 namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
-public class LanguageDesignSettings: SettingsWithStyling<StylingWithActive>
+public class LanguageDesign: SettingsWithStyling<StylingWithActive>
 {
     internal string Classes(string tag, Language? lang = null)
     {
@@ -13,7 +13,7 @@ public class LanguageDesignSettings: SettingsWithStyling<StylingWithActive>
         return styles.Classes + " " + (lang?.IsActive ?? false ? styles.IsActive : styles.IsNotActive);
     }
 
-    public static LanguageDesignSettings Defaults = new()
+    public static LanguageDesign Defaults = new()
     {
         Styling = new()
         {

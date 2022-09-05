@@ -86,7 +86,7 @@ public class MenuConfig: IMenuConfig
     public string? Design { get; set; }
 
     // todo: name, maybe not on interface
-    public MenuDesignSettings? DesignSettings { get; set; }
+    public MenuDesign? DesignSettings { get; set; }
 
     public string MenuId => _menuId ??= string.IsNullOrWhiteSpace(Id)
         ? new Random().Next(100000, 1000000).ToString()

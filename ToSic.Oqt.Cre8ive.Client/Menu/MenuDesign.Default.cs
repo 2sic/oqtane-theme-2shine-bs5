@@ -1,13 +1,13 @@
 ﻿namespace ToSic.Oqt.Cre8ive.Client.Menu;
 using static Placeholders;
 
-public partial class MenuDesignSettings
+public partial class MenuDesign
 {
     /// <summary>
     /// The default/fallback design configuration for menus.
     /// Normally this would be set in the json file or the theme settings, so this wouldn't be used. 
     /// </summary>
-    public static MenuDesignSettings Defaults => new()
+    public static MenuDesign Defaults => new()
     {
         Styling = new()
         {

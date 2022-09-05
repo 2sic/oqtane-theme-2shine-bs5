@@ -4,7 +4,7 @@ using static ToSic.Oqt.Cre8ive.Client.Styling.PageStyling;
 
 namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
-public class ContainerDesignSettings : SettingsWithStyling<ContainerStyling>
+public class ContainerDesign : SettingsWithStyling<ContainerStyling>
 {
     internal string Classes(Module module, string tag)
     {
@@ -20,7 +20,7 @@ public class ContainerDesignSettings : SettingsWithStyling<ContainerStyling>
 
     }
 
-    public static ContainerDesignSettings Defaults = new()
+    public static ContainerDesign Defaults = new()
     {
         Styling = new()
         {
