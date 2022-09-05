@@ -5,19 +5,18 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
 /// <summary>
 /// Special helper to figure out what classes should be applied to the page. 
 /// </summary>
-public class PageCssService // <T> where T : ThemePackageSettingsBase, new()
+public class PageCssService
 {
-
-    //public PageCssService(T settings) => Css = settings.Css;
-
     public void InitSettings(CurrentSettings settings) => Css ??= settings.Css;
 
-    public ThemeCssSettings Css { get; private set; }
+    public ThemeCssSettings? Css { get; private set; }
 
     //protected abstract ThemeCss Settings { get; }
 
     public string BodyClasses(PageState pageState, string layoutVariation)
     {
+        if (Css == null) throw new ArgumentException("Can't continue without CSS specs", nameof(Css));
+
         var page = pageState.Page;
         //1.1 Set the page-is-home class
         var isHomeClass = page.Path == "" ? Css.PageIsHome : "";

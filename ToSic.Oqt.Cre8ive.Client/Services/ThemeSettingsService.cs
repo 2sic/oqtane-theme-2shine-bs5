@@ -1,27 +1,37 @@
-﻿using static ToSic.Oqt.Cre8ive.Client.Settings.ThemePackageSettingsBase;
+﻿using static ToSic.Oqt.Cre8ive.Client.Settings.ThemePackageSettings;
 
 namespace ToSic.Oqt.Cre8ive.Client.Services;
 
 /// <summary>
 /// Service which consolidates settings made in the UI, in the JSON and falls back to coded defaults.
 /// </summary>
-public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePackageSettingsBase, new()
+public class ThemeSettingsService: IHasSettingsExceptions
 {
     /// <summary>
     /// Constructor
     /// </summary>
-    public ThemeSettingsService(SettingsFromJsonService jsonService, T settings)
+    public ThemeSettingsService(SettingsFromJsonService jsonService)
     {
-        _settings = settings;
         Json = jsonService;
     }
-    private readonly T _settings;
+
+    public void InitSettings(ThemePackageSettings themeSettings)
+    {
+        Settings = themeSettings;
+    }
+
+    private ThemePackageSettings Settings
+    {
+        get => _settings ?? throw new ArgumentException($"The {nameof(ThemeSettingsService)} can't work without first calling {nameof(InitSettings)}", nameof(Settings));
+        set => _settings = value;
+    }
 
     private SettingsFromJsonService Json { get; }
 
     public CurrentSettings CurrentSettings(string name)
     {
-        name ??= Constants.Default;
+        var configName = FindConfigName(name);
+        name = configName.ConfigName;
         var layout = FindLayout(name).Layout;
 
         var breadcrumbName = layout.Breadcrumbs;
@@ -40,7 +50,8 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
 
         var languages = FindLanguageSettings();
 
-        var current = new CurrentSettings(layout, breadcrumb, _settings.Css, languages.Languages);
+        var current = new CurrentSettings(this, layout, breadcrumb, Settings.Css, languages.Languages);
+        current.DebugSources.Add("Name", configName.Source);
         current.DebugSources.Add(nameof(current.Languages), languages.Source);
         return current;
     }
@@ -81,14 +92,13 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
     }
 
 
-    public (string ConfigName, string Source) FindConfigName(string? originalName)
+    public (string ConfigName, string Source) FindConfigName(string? configName)
     {
-        var debugInfo = $"Initial Config: '{originalName}'";
-        var configName = string.IsNullOrWhiteSpace(originalName) ? Constants.Default : originalName;
-        if (configName != originalName)
-            debugInfo += $"; Config changed to '{configName}'";
+        var debugInfo = $"Initial Config: '{configName}'";
+        if (!string.IsNullOrWhiteSpace(configName)) return (configName, debugInfo);
 
-        return (configName, debugInfo);
+        debugInfo += $"; Config changed to '{Constants.Default}'";
+        return (Constants.Default, debugInfo);
     }
 
     public (MenuDesignSettings Design, string Source) FindDesign(string designName)
@@ -101,7 +111,7 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
 
 
     private string ReplacePlaceholders(string value) => value
-        .Replace(Placeholders.AssetsPath, _settings.PathAssets);
+        .Replace(Placeholders.AssetsPath, Settings.PathAssets);
 
 
     private TResult FindValue<TResult>(Func<LayoutsSettings, string, TResult> findFunc, params string[]? names)
@@ -149,8 +159,8 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
             var sources = new List<LayoutsSettings?>
                 {
                     // in future also add the settings from the dialog as the first priority
-                    Json.LoadJson(_settings),
-                    _settings.Defaults,
+                    Json.LoadJson(Settings),
+                    Settings.Defaults,
                     Fallback.Defaults,
                 }
                 .Where(x => x != null)
@@ -165,4 +175,5 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
     public List<SettingsException> Exceptions => MyExceptions.Concat(Json.Exceptions).ToList();
     private List<SettingsException> MyExceptions => _myExceptions ??= new();
     private List<SettingsException>? _myExceptions;
+    private ThemePackageSettings _settings;
 }

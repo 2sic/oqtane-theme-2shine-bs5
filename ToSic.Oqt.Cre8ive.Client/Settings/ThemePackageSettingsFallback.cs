@@ -1,6 +1,6 @@
 ﻿namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
-internal class ThemePackageSettingsFallback: ThemePackageSettingsBase
+internal class ThemePackageSettingsFallback: ThemePackageSettings
 {
     private LayoutsSettings _defaults;
 

@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Components;
+using ToSic.Oqt.Cre8ive.Client.Controls;
 
 namespace ToSic.Oqt.Cre8ive.Client.Menu;
 
 /// <summary>
 /// Base class for Razor menus
 /// </summary>
-/// <typeparam name="TPackageSettings"></typeparam>
-public abstract class MenuRootBase<TPackageSettings> : Oqtane.Themes.Controls.MenuBase, IMenuConfig where TPackageSettings : ThemePackageSettingsBase, new()
+public abstract class MenuRootBase : MenuWithSettings, IMenuConfig // where TPackageSettings : ThemePackageSettingsBase, new()
 {
     /// <inheritdoc />
     [Parameter] public string? Id { get; set; }
@@ -31,11 +31,12 @@ public abstract class MenuRootBase<TPackageSettings> : Oqtane.Themes.Controls.Me
 
     protected MenuTree? MenuTree { get; private set; }
 
-    [Inject] protected MenuTreeService<TPackageSettings>? MenuTreeService { get; set; }
+    [Inject] protected MenuTreeService? MenuTreeService { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
+        MenuTreeService!.InitSettings(Settings);
         MenuTree = MenuTreeService?.GetTree(new MenuConfig(this), PageState, MenuPages.ToList());
     }
 

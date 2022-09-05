@@ -4,13 +4,16 @@ namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
 public class CurrentSettings
 {
-    public CurrentSettings(LayoutSettings layout, BreadcrumbSettings breadcrumb, ThemeCssSettings css, LanguagesSettings languages)
+    public CurrentSettings(ThemeSettingsService service, LayoutSettings layout, BreadcrumbSettings breadcrumb, ThemeCssSettings css, LanguagesSettings languages)
     {
         Layout = layout;
         Breadcrumb = breadcrumb;
         Css = css;
         Languages = languages;
+        Service = service;
     }
+
+    public ThemeSettingsService Service { get; }
 
     public LayoutSettings Layout { get; }
 

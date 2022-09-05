@@ -10,12 +10,8 @@ public class Startup : Oqtane.Services.IClientStartup
     /// <param name="services"></param>
     public void ConfigureServices(IServiceCollection services)
     {
-
         services.AddSingleton<ThemeSettings.ThemeSettingsServiceWIPToDo>();
 
         services.AddTransient<ThemeJsService>();
-
-        // Defaults-Service
-        services.AddSingleton<ThemePackageSettings>();
     }
 }

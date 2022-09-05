@@ -10,7 +10,7 @@ public class SettingsFromJsonService : IHasSettingsExceptions
     //public LayoutsSettings? Settings => _settings ??= LoadJson();
     //private LayoutsSettings? _settings;
 
-    public LayoutsSettings? LoadJson(ThemePackageSettingsBase themeConfig)
+    public LayoutsSettings? LoadJson(ThemePackageSettings themeConfig)
     {
         var jsonFileName = $"{themeConfig.WwwRoot}/{themeConfig.PathTheme}/{themeConfig.SettingsJsonFile}";
         try

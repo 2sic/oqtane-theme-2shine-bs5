@@ -7,24 +7,29 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
 /// <summary>
 /// Will create a MenuTree based on the current pages information and configuration
 /// </summary>
-public class MenuTreeService<T> where T : ThemePackageSettingsBase, new()
+public class MenuTreeService // <T> where T : ThemePackageSettingsBase, new()
 {
-    /// <summary>
-    /// Constructor for DI
-    /// </summary>
-    /// <param name="themeSettings"></param>
-    public MenuTreeService(ThemeSettingsService<T> themeSettings) => _themeSettings = themeSettings;
-    private readonly ThemeSettingsService<T> _themeSettings;
+    ///// <summary>
+    ///// Constructor for DI
+    ///// </summary>
+    ///// <param name="themeSettings"></param>
+    //public MenuTreeService(ThemeSettingsService<T> themeSettings) => _themeSettings = themeSettings;
+    //private readonly ThemeSettingsService<T> _themeSettings;
+
+    public void InitSettings(CurrentSettings settings) => Settings ??= settings;
+    public CurrentSettings Settings { get; private set; }
+
 
     [return: NotNull]
     public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages)
     {
-        var (configName, debugInfo) = _themeSettings.FindConfigName(config.ConfigName);
+        var settingsSvc = Settings.Service;
+        var (configName, debugInfo) = settingsSvc.FindConfigName(config.ConfigName);
 
 
         // If the user didn't specify a config name in the Parameters or the config name
         // isn't contained in the json file the normal parameter are given to the service
-        var (menuSettings, menuConfigSource) = _themeSettings.FindMenuConfig(configName);
+        var (menuSettings, menuConfigSource) = settingsSvc.FindMenuConfig(configName);
         config = menuSettings.Overrule(config);
         debugInfo += "; " + menuConfigSource;
 
@@ -43,7 +48,7 @@ public class MenuTreeService<T> where T : ThemePackageSettingsBase, new()
         if (config.DesignSettings == null)
         {
             // Check various places where design could be configured by priority
-            var (designConfig, source) = _themeSettings.FindDesign(designName);
+            var (designConfig, source) = settingsSvc.FindDesign(designName);
             debugInfo += $"; Design config loaded from '{source}'";
 
             config = config.Overrule(new MenuConfig(config) { DesignSettings = designConfig });
@@ -54,6 +59,6 @@ public class MenuTreeService<T> where T : ThemePackageSettingsBase, new()
         // should be null if not admin, so the final razor doesn't even add the attribute
         debugInfo = pageState.UserIsAdmin() ? debugInfo : null;
 
-        return new MenuTree(config, pageState.Pages, menuPages, pageState.Page, debugInfo, _themeSettings);
+        return new MenuTree(config, pageState.Pages, menuPages, pageState.Page, debugInfo, settingsSvc);
     }
 }

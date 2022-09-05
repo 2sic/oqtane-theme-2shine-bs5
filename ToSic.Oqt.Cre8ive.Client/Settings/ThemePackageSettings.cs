@@ -1,11 +1,11 @@
 ﻿namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
-public abstract class ThemePackageSettingsBase
+public class ThemePackageSettings
 {
     // todo: naming
-    public virtual ThemeCssSettings Css { get; } = new();
+    public virtual ThemeCssSettings Css { get; set; } = new();
 
-    public virtual LayoutsSettings Defaults { get; } = new();
+    public virtual LayoutsSettings Defaults { get; set; } = new();
 
     public string WwwRoot { get; set; } = "wwwroot";
 
@@ -27,7 +27,7 @@ public abstract class ThemePackageSettingsBase
     private string? _assetsPath;
     private string? _themePath;
 
-    internal class ThemePackageSettingsFallback: ThemePackageSettingsBase
+    internal class ThemePackageSettingsFallback: ThemePackageSettings
     {
         public override LayoutsSettings Defaults => new()
         {

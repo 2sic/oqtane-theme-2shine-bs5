@@ -1,4 +1,4 @@
-﻿@inherits MenuRootBase<ThemePackageSettings>
+﻿@inherits MenuRootBase
 @*
 File Purpose:       Add a menu based on the parameter 'ConfigName'
 Recommendations:    -
@@ -16,13 +16,13 @@ Nice to know:
 @* Show the desired menu *@
 @switch (ConfigName)
 {
-    case ThemePackageSettings.MenuMobile:
+    case ToShinePackageSettings.MenuMobile:
         <MenuMobile MenuBranch="@MenuTree"></MenuMobile>
         break;
-    case ThemePackageSettings.MenuSidebar:
+    case ToShinePackageSettings.MenuSidebar:
         <MenuSidebar MenuBranch="@MenuTree"></MenuSidebar>
         break;
-    case ThemePackageSettings.MenuMain:
+    case ToShinePackageSettings.MenuMain:
     default:
         <MenuDefault MenuBranch="@MenuTree"></MenuDefault>
         break;

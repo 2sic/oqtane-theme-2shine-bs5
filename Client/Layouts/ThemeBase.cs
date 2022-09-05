@@ -48,11 +48,11 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     public override List<Resource> Resources => new()
     {
         // Bootstrap with our customizations (generated with Sass using Webpack)
-        new Resource { ResourceType = ResourceType.Stylesheet, Url = $"{ThemePackageSettings.ThemePathStatic}/theme.min.css" },
+        new Resource { ResourceType = ResourceType.Stylesheet, Url = $"{ToShinePackageSettings.ThemePath}/theme.min.css" },
         // Bootstrap JS
-        new Resource { ResourceType = ResourceType.Script, Url = $"{ThemePackageSettings.ThemePathStatic}/bootstrap.bundle.min.js" },
+        new Resource { ResourceType = ResourceType.Script, Url = $"{ToShinePackageSettings.ThemePath}/bootstrap.bundle.min.js" },
         // Theme JS for page classes, Up-button etc.
-        new Resource { ResourceType = ResourceType.Script, Url = $"{ThemePackageSettings.ThemePathStatic}/ambient.js" },
+        new Resource { ResourceType = ResourceType.Script, Url = $"{ToShinePackageSettings.ThemePath}/ambient.js" },
     };
 
     // Panes of the layout
@@ -64,12 +64,12 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
         PaneNameDefault,
         PaneNameHeader);
 
-    [Inject] protected ThemeSettingsService<ThemePackageSettings> ThemeSettingsService { get; set; }
+    [Inject] protected ThemeSettingsService ThemeSettingsService { get; set; }
     [Inject] protected PageCssService PageCss { get; set; }
     [Inject] protected ThemeJsService ThemeJs { get; set; }
 
     // Todo: Make configurable
-    public CurrentSettings Settings => _settings ??= ThemeSettingsService.CurrentSettings(Constants.Default);
+    public CurrentSettings Settings => _settings;
     private CurrentSettings _settings;
 
     // TODO: Optimize so it's real-time and doesn't need StateHasChanged()
@@ -78,6 +78,8 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
+        ThemeSettingsService.InitSettings(ToShinePackageSettings.PackageDefaults);
+        _settings = ThemeSettingsService.CurrentSettings(Constants.Default);
         PageCss.InitSettings(Settings);
     }
 
