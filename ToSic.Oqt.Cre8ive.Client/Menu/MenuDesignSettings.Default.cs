@@ -14,8 +14,8 @@ public partial class MenuDesignSettings
             {
                 "a", new()
                 {
-                    Active = "active",
-                    HasChildren = "dropdown-toggle",
+                    IsActive = "active",
+                    IsParent = "dropdown-toggle",
                     ByLevel = new()
                     {
                         { PlaceHolderLevelOther, "dropdown-item" },
@@ -28,9 +28,9 @@ public partial class MenuDesignSettings
                 "li", new()
                 {
                     Classes = $"nav-item nav-{PageId}",
-                    HasChildren = "has-child dropdown",
-                    Active = "active",
-                    Disabled = "disabled",
+                    IsParent = "has-child dropdown",
+                    IsActive = "active",
+                    IsDisabled = "disabled",
                 }
 
             },

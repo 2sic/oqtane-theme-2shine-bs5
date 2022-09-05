@@ -20,31 +20,31 @@ public partial class MenuDesignSettings
                         // todo: doc why collapse-PageId
                         { PlaceHolderLevelOther, $"collapse to-shine-submenu-{MenuId}-{PageId}" },
                     },
-                    InBreadcrumb = "show",
+                    IsInBreadcrumb = "show",
                 }
             },
             {
                 "li", new()
                 {
                     Classes = $"nav-item nav-{PageId} position-relative",
-                    HasChildren = "has-child",
+                    IsParent = "has-child",
                     // todo: make sure that all the LIs or ULs in the breadcrumb don't have collapse ... or with "show"
-                    Active = "active",
-                    Disabled = "disabled",
+                    IsActive = "active",
+                    IsDisabled = "disabled",
                 }
             },
             {
                 "a", new()
                 {
                     Classes = "nav-link mobile-navigation-link",
-                    Active = "active",
+                    IsActive = "active",
                 }
             },
             {
                 "span", new()
                 {
                     Classes = "nav-item-sub-opener",
-                    InBreadcrumbFalse = "collapsed",
+                    IsNotInBreadcrumb = "collapsed",
                 }
             },
         },

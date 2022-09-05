@@ -66,6 +66,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
         current.DebugSources.Add("Name", configName.Source);
         current.DebugSources.Add(nameof(current.Languages), languages.Source);
         current.DebugSources.Add(nameof(current.LanguageDesign), langDesign.Source);
+        current.DebugSources.Add(nameof(current.ContainerDesign), containerDesign.Source);
         return current;
     }
 

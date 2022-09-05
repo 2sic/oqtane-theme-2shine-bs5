@@ -41,14 +41,14 @@
     "default": {
       "styling": {
         "ul": { "classes": "to-shine-page-language" },
-        "li": { "active": "active" }
+        "li": { "isActive": "active" }
       }
     },
     // Example of design specs with another name
     // "custom-lang-design": {
     //   "styling":{
     //     "ul": { "classes": "to-shine-page-language custom" },
-    //     "li": { "active": "active custom", "activeFalse": "inactive custom" }
+    //     "li": { "isActive": "active custom", "isNotActive": "inactive custom" }
     //   }
     // }
   },
@@ -103,22 +103,22 @@
             "0": "navbar-nav",
             "-1": "collapse to-shine-submenu-[MENUID]-[PAGEID]"
           },
-          "inBreadcrumb": "show"
+          "isInBreadcrumb": "show"
         },
         "li": {
           "classes": "nav-item nav-[PAGEID] position-relative",
-          "hasChildren": "has-child",
-          "active": "active",
-          "disabled": "disabled"
+          "isParent": "has-child",
+          "isActive": "active",
+          "isDisabled": "disabled"
         },
         "a": {
           "classes": "nav-link",
-          "active": "active"
+          "isAactive": "active"
         },
         "span": {
           "classes": "nav-item-sub-opener",
-          "inBreadcrumb": "",
-          "inBreadcrumbFalse": "collapsed"
+          "isInBreadcrumb": "",
+          "isNotInBreadcrumb": "collapsed"
         }
       }
     },

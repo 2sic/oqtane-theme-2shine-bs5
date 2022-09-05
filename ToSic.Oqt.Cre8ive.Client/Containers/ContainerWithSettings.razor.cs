@@ -7,17 +7,9 @@ public class ContainerWithSettings: Oqtane.Themes.ContainerBase, IControlWithSet
 {
     [CascadingParameter] public CurrentSettings Settings { get; set; }
 
-    //[Inject] protected ContainerCssService ContainerCss { get; set; }
+    [Inject] public NavigationManager? NavigationManager { get; set; }
 
-    [Inject] public NavigationManager NavigationManager { get; set; }
+    protected void CloseModal() => NavigationManager?.NavigateTo(NavigateUrl());
 
-    protected void CloseModal() => NavigationManager.NavigateTo(NavigateUrl());
-
-    //protected override async Task OnParametersSetAsync()
-    //{
-    //    await base.OnParametersSetAsync();
-    //    ContainerCss.InitSettings(Settings);
-    //}
-
-    public string? Classes(string tag) => Settings.ContainerDesign.Classes(ModuleState, tag).EmptyAsNull(); // ContainerCss.Classes(ModuleState).EmptyAsNull();
+    public string? Classes(string tag) => Settings.ContainerDesign.Classes(ModuleState, tag).EmptyAsNull();
 }

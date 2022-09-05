@@ -10,7 +10,7 @@ public class LanguageDesignSettings: SettingsWithStyling<StylingWithActive>
         if (Styling == null || !Styling.Any()) return "";
         var styles = Styling.FindInvariant(tag);
         if (styles is null) return "";
-        return styles.Classes + " " + (lang?.IsActive ?? false ? styles.Active : styles.ActiveFalse);
+        return styles.Classes + " " + (lang?.IsActive ?? false ? styles.IsActive : styles.IsNotActive);
     }
 
     public static LanguageDesignSettings Defaults = new()
@@ -18,7 +18,7 @@ public class LanguageDesignSettings: SettingsWithStyling<StylingWithActive>
         Styling = new()
         {
             { "ul", new() { Classes = $"to-shine-page-language {ThemeCssSettings.SettingFromDefaults}" } },
-            { "li", new() { Active = $"active {ThemeCssSettings.SettingFromDefaults}", ActiveFalse = "" } }
+            { "li", new() { IsActive = $"active {ThemeCssSettings.SettingFromDefaults}", IsNotActive = "" } }
         }
     };
 }

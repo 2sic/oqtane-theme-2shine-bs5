@@ -34,15 +34,15 @@ public class MenuCss
         classes.AddRange(configs.Select(c => c.Classes));
 
         classes.AddRange(configs.Select(c
-            => branch.IsActive ? c.Active : c.ActiveFalse));
+            => branch.IsActive ? c.IsActive : c.IsNotActive));
 
         classes.AddRange(configs.Select(c
-            => branch.HasChildren ? c.HasChildren : c.HasChildrenFalse));
+            => branch.HasChildren ? c.IsParent : c.IsNotParent));
         classes.AddRange(configs.Select(c
-            => branch.Page.IsClickable ? c.DisabledFalse : c.Disabled));
+            => branch.Page.IsClickable ? c.IsNotDisabled : c.IsDisabled));
 
         classes.AddRange(configs.Select(c
-            => branch.InBreadcrumb ? c.InBreadcrumb : c.InBreadcrumbFalse));
+            => branch.InBreadcrumb ? c.IsInBreadcrumb : c.IsNotInBreadcrumb));
 
         // See if there are any css for this level or for not-specified levels
         var levelCss = configs

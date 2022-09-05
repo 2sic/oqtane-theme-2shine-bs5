@@ -10,14 +10,27 @@ public class MenuStyling: StylingWithActive
     /// </summary>
     public Dictionary<int, string>? ByLevel { get; set; }
 
+    /// <summary>
+    /// Classes to add if this node is a parent (has-children).
+    ///
+    /// Note that we used `IsParent` instead of `HasChildren` to keep naming with `IsNotParent` consistent. 
+    /// </summary>
+    public string? IsParent { get; set; }
 
-    public string? HasChildren { get; set; }
-    public string? HasChildrenFalse { get; set; }
+    /// <summary>
+    /// Classes to add if this node is not a parent (doesn't have children)
+    /// </summary>
+    public string? IsNotParent { get; set; }
 
-        
-    public string? Disabled { get; set; }
-    public string? DisabledFalse { get; set; }
+    /// <summary>
+    /// 
+    /// </summary>
+    public string? IsDisabled { get; set; }
+    public string? IsNotDisabled { get; set; }
 
-    public string? InBreadcrumb { get; set; }
-    public string? InBreadcrumbFalse { get; set; }
+    /// <summary>
+    /// Classes to add if this node is in the path / breadcrumb of the current page.
+    /// </summary>
+    public string? IsInBreadcrumb { get; set; }
+    public string? IsNotInBreadcrumb { get; set; }
 }
