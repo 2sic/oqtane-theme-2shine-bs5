@@ -20,10 +20,10 @@ internal class PagePlaceholders
         _page = pageState.Page;
     }
 
-    internal string Replace(string classes)
+    internal string Replace(string classes, Page? page = null)
     {
         if (string.IsNullOrWhiteSpace(classes)) return classes;
-        var page = _page;
+        page ??= _page;
         var result = classes
             .Replace(PageId, $"{page.PageId}", InvariantCultureIgnoreCase);
 
@@ -38,7 +38,7 @@ internal class PagePlaceholders
             .Replace(MenuId, _menuId ?? None);
 
         // Checking the breadcrumb is a bit more expensive, so be sure we need it
-        if (result.Contains(Placeholders.PageRootId))
+        if (result.Contains(PageRootId))
             result = result
                 .Replace(PageRootId, CurrentPageRootId != null ? $"{CurrentPageRootId}" : None);
 

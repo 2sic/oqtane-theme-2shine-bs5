@@ -37,7 +37,7 @@ public class MenuCss
             => branch.IsActive ? c.IsActive : c.IsNotActive));
 
         classes.AddRange(configs.Select(c
-            => branch.HasChildren ? c.IsParent : c.IsNotParent));
+            => branch.HasChildren ? c.HasChildren : c.HasNoChildren));
         classes.AddRange(configs.Select(c
             => branch.Page.IsClickable ? c.IsNotDisabled : c.IsDisabled));
 

@@ -15,12 +15,12 @@ public class MenuStyling: StylingWithActive
     ///
     /// Note that we used `IsParent` instead of `HasChildren` to keep naming with `IsNotParent` consistent. 
     /// </summary>
-    public string? IsParent { get; set; }
+    public string? HasChildren { get; set; }
 
     /// <summary>
     /// Classes to add if this node is not a parent (doesn't have children)
     /// </summary>
-    public string? IsNotParent { get; set; }
+    public string? HasNoChildren { get; set; }
 
     /// <summary>
     /// Classes to add if the node is disabled.

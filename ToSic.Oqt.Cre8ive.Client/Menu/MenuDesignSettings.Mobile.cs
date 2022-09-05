@@ -27,7 +27,7 @@ public partial class MenuDesignSettings
                 "li", new()
                 {
                     Classes = $"nav-item nav-{PageId} position-relative",
-                    IsParent = "has-child",
+                    HasChildren = "has-child",
                     // todo: make sure that all the LIs or ULs in the breadcrumb don't have collapse ... or with "show"
                     IsActive = "active",
                     IsDisabled = "disabled",

@@ -137,13 +137,16 @@
         },
         "li": {
           "classes": "nav-item nav-[Page.Id]",
-          "isParent": "has-child dropdown",
+          "hasChildren": "has-child dropdown",
+          // "hasNoChildren": "example",
           "isActive": "active",
-          "isDisabled": "disabled"
+          // "isNotActive": "example",
+          "isDisabled": "disabled",
+          //"isNotDisabled": "example",
         },
         "a": {
           "isActive": "active",
-          "isParent": "dropdown-toggle",
+          "hasChildren": "dropdown-toggle",
           "byLevel": {
             "1": "nav-link",
             "-1": "dropdown-item"
@@ -162,7 +165,7 @@
         },
         "li": {
           "classes": "nav-item nav-[Page.Id] position-relative",
-          "isParent": "has-child",
+          "hasChildren": "has-child",
           "isActive": "active",
           "isDisabled": "disabled"
         },
@@ -189,7 +192,7 @@
         },
         "li": {
           "classes": "nav-item nav-[Page.Id] position-relative",
-          "isParent": "has-child",
+          "hasChildren": "has-child",
           "isActive": "active",
           "isDisabled": "disabled"
         },
