@@ -8,8 +8,7 @@ Nice to know:       Mainly used for testing / development.
     [Parameter]
     public List<DynComponent>? Components { get; set; }
 
-    [Parameter]
-    [Required]
+    [Parameter, EditorRequired]
     public string? Group { get; set; }
 
     private List<(Type Type, Dictionary<string, object> Parameters)> MyComponents()
