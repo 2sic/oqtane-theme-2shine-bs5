@@ -1,7 +1,7 @@
-@inherits ThemeControlBase
+@inherits ControlWithSettings
 @using System.Globalization
 @using Language = ToSic.Oqt.Cre8ive.Client.Settings.Language
-@inject LanguageService<ThemePackageSettings> LanguageService
+@inject ToSic.Oqt.Cre8ive.Client.Services.LanguageService LanguageService
 @*
 File Purpose:       Show the Language Navigation / Selector
 Recommendations:    -
@@ -41,6 +41,8 @@ WishList:
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
+
+        LanguageService.InitSettings(Settings);
 
         // Load defined language list. It change unless the page is reloaded, so we can cache it on this control
         Languages ??= await LanguageService.LanguagesToShow(PageState.Site.SiteId);

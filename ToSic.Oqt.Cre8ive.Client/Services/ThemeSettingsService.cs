@@ -1,4 +1,6 @@
-﻿namespace ToSic.Oqt.Cre8ive.Client.Services;
+﻿using static ToSic.Oqt.Cre8ive.Client.Settings.ThemePackageSettingsBase;
+
+namespace ToSic.Oqt.Cre8ive.Client.Services;
 
 /// <summary>
 /// Service which consolidates settings made in the UI, in the JSON and falls back to coded defaults.
@@ -8,14 +10,14 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
     /// <summary>
     /// Constructor
     /// </summary>
-    public ThemeSettingsService(SettingsFromJsonService<T> jsonService, T settings)
+    public ThemeSettingsService(SettingsFromJsonService jsonService, T settings)
     {
         _settings = settings;
         Json = jsonService;
     }
     private readonly T _settings;
 
-    private SettingsFromJsonService<T> Json { get; }
+    private SettingsFromJsonService Json { get; }
 
     public CurrentSettings CurrentSettings(string name)
     {
@@ -36,8 +38,11 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
                                ?? BreadcrumbSettings.BreadcrumbRevealDefault,
         };
 
+        var languages = FindLanguageSettings();
 
-        return new CurrentSettings(layout, breadcrumb);
+        var current = new CurrentSettings(layout, breadcrumb, _settings.Css, languages.Languages);
+        current.DebugSources.Add(nameof(current.Languages), languages.Source);
+        return current;
     }
 
     public (LayoutSettings Layout, string Source) FindLayout(string name)
@@ -112,16 +117,12 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
         Func<LayoutsSettings, string, TResult> findFunc,
         params string[]? names)
     {
-        var sources = new List<LayoutsSettings?>
-            {
-                // in future also add the settings from the dialog as the first priority
-                Json.Settings,
-                _settings.Defaults,
-                ThemePackageSettingsBase.Fallback.Defaults,
-            }
-            .Where(x => x != null)
-            .Cast<LayoutsSettings>()
-            .ToList();
+
+        // TODO
+        // - After that work on making this less generic again, 
+        // Basically the tree service should get the settings or something from a non generic class
+        // Which the default.razor will prepare / hand through the stack
+        var sources = ConfigurationSources;
 
         // Make sure we have at least on name
         if (names == null || names.Length == 0) names = new[] { "dummy" };
@@ -139,6 +140,27 @@ public class ThemeSettingsService<T>: IHasSettingsExceptions where T : ThemePack
 
         throw new Exception($"Tried to find {nameof(TResult)} in the keys {string.Join(",", names)} but got nothing, not even a fallback/default.");
     }
+
+    private List<LayoutsSettings> ConfigurationSources
+    {
+        get
+        {
+            if (_configurationSources != null) return _configurationSources;
+            var sources = new List<LayoutsSettings?>
+                {
+                    // in future also add the settings from the dialog as the first priority
+                    Json.LoadJson(_settings),
+                    _settings.Defaults,
+                    Fallback.Defaults,
+                }
+                .Where(x => x != null)
+                .Cast<LayoutsSettings>()
+                .ToList();
+            return _configurationSources = sources;
+        }
+    }
+
+    private List<LayoutsSettings>? _configurationSources;
 
     public List<SettingsException> Exceptions => MyExceptions.Concat(Json.Exceptions).ToList();
     private List<SettingsException> MyExceptions => _myExceptions ??= new();

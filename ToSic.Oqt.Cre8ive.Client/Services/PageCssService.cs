@@ -5,11 +5,14 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
 /// <summary>
 /// Special helper to figure out what classes should be applied to the page. 
 /// </summary>
-public class PageCssService<T> where T : ThemePackageSettingsBase, new()
+public class PageCssService // <T> where T : ThemePackageSettingsBase, new()
 {
 
-    public PageCssService(T settings) => Settings = settings.Css;
-    public ThemeCssSettings Settings { get; }
+    //public PageCssService(T settings) => Css = settings.Css;
+
+    public void InitSettings(CurrentSettings settings) => Css ??= settings.Css;
+
+    public ThemeCssSettings Css { get; private set; }
 
     //protected abstract ThemeCss Settings { get; }
 
@@ -17,30 +20,30 @@ public class PageCssService<T> where T : ThemePackageSettingsBase, new()
     {
         var page = pageState.Page;
         //1.1 Set the page-is-home class
-        var isHomeClass = page.Path == "" ? Settings.PageIsHome : "";
+        var isHomeClass = page.Path == "" ? Css.PageIsHome : "";
 
         //1.2 Set the page-### class
-        var pageIdClass = Settings.PagePrefix + page.PageId;
+        var pageIdClass = Css.PagePrefix + page.PageId;
 
         //1.3 Set the page-parent-### class
-        var pageParentClass = page.ParentId == null ? null : $"{Settings.PageParentPrefix}{page.ParentId}";
+        var pageParentClass = page.ParentId == null ? null : $"{Css.PageParentPrefix}{page.ParentId}";
 
         //1.4 Set the page-root-### class
         var pageParentId = page.ParentId;
 
         var pageRootClass = pageParentId == null 
-            ? $"{Settings.PageRootPrefix}{page.PageId}" 
-            : $"{Settings.PageRootPrefix}{pageState.Breadcrumb()?.FirstOrDefault()?.PageId}";
+            ? $"{Css.PageRootPrefix}{page.PageId}" 
+            : $"{Css.PageRootPrefix}{pageState.Breadcrumb()?.FirstOrDefault()?.PageId}";
 
 
         //1.5 Set the page-root-neutral-### class
 
         //2 Set site-### class
-        var siteIdClass = $"{Settings.SitePrefix}{page.SiteId}";
+        var siteIdClass = $"{Css.SitePrefix}{page.SiteId}";
 
         //3 Set the nav-level-### class
         var navLevel = page.Level + 1;
-        var navLevelClass = $"{Settings.NavLevelPrefix}{navLevel}";
+        var navLevelClass = $"{Css.NavLevelPrefix}{navLevel}";
 
         //4.1 Set lang- class
 
@@ -49,7 +52,7 @@ public class PageCssService<T> where T : ThemePackageSettingsBase, new()
         //4.3 Set the lang-neutral- class
 
         //5.1 Set the to-shine-variation- class
-        var layoutVariationClass = $"{Settings.LayoutVariationPrefix}{layoutVariation}";
+        var layoutVariationClass = $"{Css.LayoutVariationPrefix}{layoutVariation}";
 
         // TODO: MOVE OUT TO ThemeCss
 
@@ -83,5 +86,5 @@ public class PageCssService<T> where T : ThemePackageSettingsBase, new()
     }
 
     public string PaneIsEmptyClasses(PageState pageState, string paneName)
-        => PaneIsEmpty(pageState, paneName) ? Settings.PaneIsEmpty : "";
+        => PaneIsEmpty(pageState, paneName) ? Css.PaneIsEmpty : "";
 }

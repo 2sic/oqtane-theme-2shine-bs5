@@ -2,17 +2,17 @@
 
 namespace ToSic.Oqt.Cre8ive.Client.Services;
 
-public class SettingsFromJsonService<T>: IHasSettingsExceptions where T : ThemePackageSettingsBase, new()
+public class SettingsFromJsonService : IHasSettingsExceptions
 {
-    public SettingsFromJsonService(T settings) => CurrentThemeSettings = settings;
-    public T CurrentThemeSettings { get; }
+    //public SettingsFromJsonService(T settings) => CurrentThemeSettings = settings;
+    //public T CurrentThemeSettings { get; }
 
-    public LayoutsSettings? Settings => _settings ??= LoadJson();
-    private LayoutsSettings? _settings;
+    //public LayoutsSettings? Settings => _settings ??= LoadJson();
+    //private LayoutsSettings? _settings;
 
-    private LayoutsSettings? LoadJson()
+    public LayoutsSettings? LoadJson(ThemePackageSettingsBase themeConfig)
     {
-        var jsonFileName = $"{CurrentThemeSettings.WwwRoot}/{CurrentThemeSettings.PathTheme}/{CurrentThemeSettings.SettingsJsonFile}";
+        var jsonFileName = $"{themeConfig.WwwRoot}/{themeConfig.PathTheme}/{themeConfig.SettingsJsonFile}";
         try
         {
             var jsonString = File.ReadAllText(jsonFileName);
@@ -32,7 +32,7 @@ public class SettingsFromJsonService<T>: IHasSettingsExceptions where T : ThemeP
         }
         catch (Exception ex)
         {
-            Exceptions.Add(new($"Error loading json configuration file '{CurrentThemeSettings.SettingsJsonFile}'. {ex.Message}"));
+            Exceptions.Add(new($"Error loading json configuration file '{themeConfig.SettingsJsonFile}'. {ex.Message}"));
             //throw;//wip
             // probably no json file found?
             return new LayoutsSettings();

@@ -65,24 +65,22 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
         PaneNameHeader);
 
     [Inject] protected ThemeSettingsService<ThemePackageSettings> ThemeSettingsService { get; set; }
-    [Inject] protected PageCssService<ThemePackageSettings> PageCss { get; set; }
+    [Inject] protected PageCssService PageCss { get; set; }
     [Inject] protected ThemeJsService ThemeJs { get; set; }
 
-    //    // Todo: Make configurable
+    // Todo: Make configurable
     public CurrentSettings Settings => _settings ??= ThemeSettingsService.CurrentSettings(Constants.Default);
     private CurrentSettings _settings;
 
     // TODO: Optimize so it's real-time and doesn't need StateHasChanged()
     //public bool ShowAdminPane { get; set; } = false;
 
-    //protected override async Task OnInitializedAsync()
-    //{
-    //    await base.OnInitializedAsync();
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+        PageCss.InitSettings(Settings);
+    }
 
-    //    // As soon as the object is ready we must get the current settings...
-    //    // Todo: Make configurable
-    //    Settings = ThemeSettingsService.CurrentSettings(Constants.Default);
-    //}
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

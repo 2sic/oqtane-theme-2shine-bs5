@@ -1,18 +1,17 @@
 @namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts
-@inherits Oqtane.Themes.ContainerBase
+@inherits ContainerWithSettings
 @*
 File Purpose:       Container for normal modules.
 Recommendations:    -
 Nice to know:
-    1. Will not show a title or anything, so it's really clean
+    1. Will not show a title or anything, so the output is really clean
     2. Adds a special class to show that the module is not yet published
     3. Has a background-container with another div which is the container which allows for cool full-width background CSS
     4. When showing admin-modules, will automatically use the admin container
 *@
-@code {
+@code
+{
     public override string Name => "Default Container";
-
-    [Inject] protected ContainerCssService<ThemePackageSettings> ContainerCss { get; set; }
 }
 
 @if (ModuleState.UseAdminContainer)

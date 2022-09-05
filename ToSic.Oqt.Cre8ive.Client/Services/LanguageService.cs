@@ -16,29 +16,32 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
  * - ...and only show these; possibly show more to admin?
  */
 
-public class LanguageService<T> where T : ThemePackageSettingsBase, new()
+public class LanguageService // <T> where T : ThemePackageSettingsBase, new()
 {
-    public LanguageService(NavigationManager navigation, IJSRuntime jsRuntime, ILanguageService oqtLanguages, ThemeSettingsService<T> settings)
+    public LanguageService(NavigationManager navigation, IJSRuntime jsRuntime, ILanguageService oqtLanguages)
     {
         _navigationManager = navigation;
         _jsRuntime = jsRuntime;
         _oqtLanguages = oqtLanguages;
-        _settings = settings;
     }
 
     private readonly NavigationManager _navigationManager;
     private readonly IJSRuntime _jsRuntime;
     private readonly ILanguageService _oqtLanguages;
-    private readonly ThemeSettingsService<T> _settings;
+
+    public void InitSettings(CurrentSettings settings) => Settings ??= settings;
+
+    public CurrentSettings? Settings { get; private set; }
+
 
     public async Task<bool> ShowMenu(int siteId)
     {
         var languages = await LanguagesToShow(siteId);
-        return LayoutSettings.LanguageMenuShow && LayoutSettings.LanguageMenuShowMin <= languages.Count;
+        return Settings.Layout.LanguageMenuShow && Settings.Layout.LanguageMenuShowMin <= languages.Count;
     }
 
-    private LayoutSettings LayoutSettings => _layout ??= _settings.FindLayout(Constants.Default).Layout;
-    private LayoutSettings? _layout;
+    //private LayoutSettings LayoutSettings => _layout ??= _setSrvOld.FindLayout(Constants.Default).Layout;
+    //private LayoutSettings? _layout;
 
     public async Task<List<Language>> LanguagesToShow(int siteId)
     {
@@ -46,9 +49,9 @@ public class LanguageService<T> where T : ThemePackageSettingsBase, new()
 
         var siteLanguages = await _oqtLanguages.GetLanguagesAsync(siteId);
 
-        var langsFromConfig = _settings.FindLanguageSettings();
+        var langSettings = Settings.Languages;// _setSrvOld.FindLanguageSettings();
 
-        var customList = langsFromConfig.Languages.List.Values;
+        var customList = langSettings.List.Values;
 
         var siteLanguageCodes = siteLanguages.Select(l => l.Code).ToList();
 
@@ -58,7 +61,7 @@ public class LanguageService<T> where T : ThemePackageSettingsBase, new()
                 : siteLanguageCodes)
             .ToList();
 
-        if (!langsFromConfig.Languages.HideOthers && primaryOrder.Count < siteLanguages.Count)
+        if (!langSettings.HideOthers && primaryOrder.Count < siteLanguages.Count)
         {
             var missingLanguages = siteLanguageCodes
                 .Where(slc => !primaryOrder.Any(slc.EqInvariant)).ToList();

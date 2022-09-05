@@ -19,7 +19,6 @@ public class MenuTreeService<T> where T : ThemePackageSettingsBase, new()
     [return: NotNull]
     public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages)
     {
-        config ??= new MenuConfig();
         var (configName, debugInfo) = _themeSettings.FindConfigName(config.ConfigName);
 
 
