@@ -160,7 +160,7 @@ See also [folder and namespace docs](./docs/folders-and-namespaces.md)
 ## Todo 2dm/2tl
 
 1. Breadcrumb revealer doesn't work as expected, only hides "Home"
-1. Styling of footer menu
+1. Styling of footer menu to be "something | something | something"
 1. configurable settings don't work at all ATM
 1. Nav features
   1. ability to exclude pages (especially on home level)

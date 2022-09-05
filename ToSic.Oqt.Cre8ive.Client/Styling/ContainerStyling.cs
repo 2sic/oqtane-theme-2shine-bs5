@@ -1,6 +1,4 @@
-﻿using ToSic.Oqt.Cre8ive.Client.Styling;
-
-namespace ToSic.Oqt.Cre8ive.Client.Settings;
+﻿namespace ToSic.Oqt.Cre8ive.Client.Styling;
 
 public class ContainerStyling: StylingBase
 {

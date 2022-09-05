@@ -42,10 +42,8 @@ public class ThemeSettingsService: IHasSettingsExceptions
 
         var breadcrumb = new BreadcrumbSettings
         {
-            Separator = FindValue((s, n) => s.Breadcrumbs?.GetInvariant(n)?.Separator, breadcrumbNames)
-                                  ?? BreadcrumbSettings.BreadcrumbSeparatorDefault,
-            Revealer = FindValue((s, n) => s.Breadcrumbs?.GetInvariant(n)?.Revealer, breadcrumbNames) 
-                               ?? BreadcrumbSettings.BreadcrumbRevealDefault,
+            Separator = FindValue((s, n) => s.Breadcrumbs?.GetInvariant(n)?.Separator, breadcrumbNames)!,
+            Revealer = FindValue((s, n) => s.Breadcrumbs?.GetInvariant(n)?.Revealer, breadcrumbNames)!,
         };
 
         var languagesNames = GetConfigNamesToCheck(layout.Languages, name);
@@ -53,7 +51,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
 
         // Get language design from configuration - keep the first which has any settings
         // This also means no partial inheritance, it's all or nothing
-        var langDesignNames = GetConfigNamesToCheck(layout.LanguageMenuDesign, name);
+        var langDesignNames = GetConfigNamesToCheck(layout.LanguageDesign, name);
         var langDesign = FindInSources((s, n) =>
         {
             var found = s.LanguageDesigns?.GetInvariant(n);
@@ -97,9 +95,9 @@ public class ThemeSettingsService: IHasSettingsExceptions
         {
             ContainerDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.ContainerDesign, names),
             Languages = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.Languages, names),
-            LanguageMenuShowMin = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuShowMin, names) ?? 0,
-            LanguageMenuShow = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuShow, names) ?? true,
-            LanguageMenuDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuDesign, names),
+            LanguagesShowMin = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguagesShowMin, names) ?? 0,
+            LanguagesShow = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguagesShow, names) ?? true,
+            LanguageDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageDesign, names),
             Breadcrumbs = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.Breadcrumbs, names),
             Logo = ReplacePlaceholders(FindValue((s, n) => s.Layouts?.GetInvariant(n)?.Logo, names)!),
             // Check if we have a menu map
@@ -167,7 +165,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
         .Replace(Placeholders.AssetsPath, Settings.PathAssets);
 
 
-    private TResult FindValue<TResult>(Func<LayoutsSettings, string, TResult> findFunc, params string[]? names)
+    private TResult FindValue<TResult>(Func<CatalogOfSettings, string, TResult> findFunc, params string[]? names)
     {
         var (showMin, _, _) = FindInSources(findFunc, names);
         return showMin;
@@ -177,7 +175,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
     /// Loop through various sources of settings and check the keys in the preferred order to see if we get a hit.
     /// </summary>
     private (TResult Result, string Name, string Source) FindInSources<TResult>(
-        Func<LayoutsSettings, string, TResult> findFunc,
+        Func<CatalogOfSettings, string, TResult> findFunc,
         params string[]? names)
     {
 
@@ -204,12 +202,12 @@ public class ThemeSettingsService: IHasSettingsExceptions
         throw new Exception($"Tried to find {nameof(TResult)} in the keys {string.Join(",", names)} but got nothing, not even a fallback/default.");
     }
 
-    private List<LayoutsSettings> ConfigurationSources
+    private List<CatalogOfSettings> ConfigurationSources
     {
         get
         {
             if (_configurationSources != null) return _configurationSources;
-            var sources = new List<LayoutsSettings?>
+            var sources = new List<CatalogOfSettings?>
                 {
                     // in future also add the settings from the dialog as the first priority
                     Json.LoadJson(Settings),
@@ -217,13 +215,13 @@ public class ThemeSettingsService: IHasSettingsExceptions
                     Fallback.Defaults,
                 }
                 .Where(x => x != null)
-                .Cast<LayoutsSettings>()
+                .Cast<CatalogOfSettings>()
                 .ToList();
             return _configurationSources = sources;
         }
     }
 
-    private List<LayoutsSettings>? _configurationSources;
+    private List<CatalogOfSettings>? _configurationSources;
 
     public List<SettingsException> Exceptions => MyExceptions.Concat(Json.Exceptions).ToList();
     private List<SettingsException> MyExceptions => _myExceptions ??= new();

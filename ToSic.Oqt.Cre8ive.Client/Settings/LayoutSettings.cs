@@ -2,18 +2,30 @@
 
 public class LayoutSettings
 {
+    /// <summary>
+    /// The logo to show, should be located in the assets subfolder
+    /// </summary>
     public string? Logo { get; set; }
 
+    /// <summary>
+    /// The languages configuration which should be used
+    /// </summary>
     public string? Languages { get; set; } = null;
 
-    public bool LanguageMenuShow { get; set; } = true;
+    public bool LanguagesShow { get; set; } = true;
 
-    public int LanguageMenuShowMin { get; set; } = 0;
+    public int LanguagesShowMin { get; set; } = 0;
 
-    public string? LanguageMenuDesign { get; set; }
+    public string? LanguageDesign { get; set; }
 
+    /// <summary>
+    /// The preferred container design to use. 
+    /// </summary>
     public string? ContainerDesign { get; set; }
 
+    /// <summary>
+    /// Map of menu names and alternate configurations to load instead
+    /// </summary>
     public NamedSettings<string> Menus { get; set; } = new();
 
     /// <summary>
@@ -27,11 +39,12 @@ public class LayoutSettings
         Logo = "unknown-logo.png",
         ContainerDesign = Constants.Inherit,
         Languages = Constants.Inherit,
-        LanguageMenuDesign = Constants.Inherit,
-        LanguageMenuShow = true,
-        LanguageMenuShowMin = 2,
+        LanguageDesign = Constants.Inherit,
+        LanguagesShow = true,
+        LanguagesShowMin = 2,
         Breadcrumbs = Constants.Inherit,
-        Menus = new() // no map for the menus
+        // The menus-map. Since this is the fallback, it must have at least an entry to not be skipped. 
+        Menus = new()
         {
             { Constants.Default, Constants.Default }
         },

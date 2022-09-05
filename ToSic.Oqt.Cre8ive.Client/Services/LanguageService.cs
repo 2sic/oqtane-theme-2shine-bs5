@@ -35,7 +35,7 @@ public class LanguageService: ServiceWithCurrentSettings
     public async Task<bool> ShowMenu(int siteId)
     {
         var languages = await LanguagesToShow(siteId);
-        return Settings.Layout.LanguageMenuShow && Settings.Layout.LanguageMenuShowMin <= languages.Count;
+        return Settings.Layout.LanguagesShow && Settings.Layout.LanguagesShowMin <= languages.Count;
     }
 
     public async Task<List<Language>> LanguagesToShow(int siteId)

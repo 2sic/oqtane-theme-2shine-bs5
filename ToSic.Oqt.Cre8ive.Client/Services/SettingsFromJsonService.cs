@@ -4,14 +4,14 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
 
 public class SettingsFromJsonService : IHasSettingsExceptions
 {
-    public LayoutsSettings? LoadJson(ThemePackageSettings themeConfig)
+    public CatalogOfSettings? LoadJson(ThemePackageSettings themeConfig)
     {
         var jsonFileName = $"{themeConfig.WwwRoot}/{themeConfig.PathTheme}/{themeConfig.SettingsJsonFile}";
         try
         {
             var jsonString = File.ReadAllText(jsonFileName);
                 
-            var result = JsonSerializer.Deserialize<LayoutsSettings>(jsonString, new JsonSerializerOptions
+            var result = JsonSerializer.Deserialize<CatalogOfSettings>(jsonString, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
                 ReadCommentHandling = JsonCommentHandling.Skip,
@@ -29,7 +29,7 @@ public class SettingsFromJsonService : IHasSettingsExceptions
             Exceptions.Add(new($"Error loading json configuration file '{themeConfig.SettingsJsonFile}'. {ex.Message}"));
             //throw;//wip
             // probably no json file found?
-            return new LayoutsSettings();
+            return new CatalogOfSettings();
         }
     }
 

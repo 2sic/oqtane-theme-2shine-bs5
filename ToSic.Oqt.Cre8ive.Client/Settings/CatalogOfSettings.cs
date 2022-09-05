@@ -1,6 +1,10 @@
 ﻿namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
-public class LayoutsSettings
+/// <summary>
+/// This is a catalog of all kinds of configurations.
+/// It serves as a kind of database to manage all configurations, which will usually be retrieved using a name. 
+/// </summary>
+public class CatalogOfSettings
 {
     ///// <summary>
     ///// Version number when loading from JSON to verify it's what we expect

@@ -1,4 +1,4 @@
-﻿namespace ToSic.Oqt.Cre8ive.Client.Settings;
+﻿namespace ToSic.Oqt.Cre8ive.Client.Styling;
 
 public class SettingsWithStyling<T> where T : class
 {

@@ -9,10 +9,16 @@ namespace ToSic.Oqt.Cre8ive.Client.Settings;
 /// </summary>
 public partial class ThemePackageSettings
 {
-    // todo: naming
+    /// <summary>
+    /// Classes and similar to add to the page.
+    /// </summary>
     public virtual PageStyling Page { get; set; } = new();
 
-    public virtual LayoutsSettings Defaults { get; set; } = new();
+    /// <summary>
+    /// All kinds of settings for the layout, how it should be etc.
+    /// Should usually only serve as backup in case the JSON fails.
+    /// </summary>
+    public virtual CatalogOfSettings Defaults { get; set; } = new();
 
     public string WwwRoot { get; set; } = "wwwroot";
 
