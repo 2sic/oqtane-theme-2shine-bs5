@@ -51,7 +51,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
 
         // Get language design from configuration - keep the first which has any settings
         // This also means no partial inheritance, it's all or nothing
-        var langDesignNames = GetConfigNamesToCheck(layout.LanguageDesign, name);
+        var langDesignNames = GetConfigNamesToCheck(layout.LanguageMenuDesign, name);
         var langDesign = FindInSources((s, n) =>
         {
             var found = s.LanguageDesigns?.GetInvariant(n);
@@ -95,9 +95,9 @@ public class ThemeSettingsService: IHasSettingsExceptions
         {
             ContainerDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.ContainerDesign, names),
             Languages = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.Languages, names),
-            LanguagesShowMin = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguagesShowMin, names) ?? 0,
-            LanguagesShow = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguagesShow, names) ?? true,
-            LanguageDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageDesign, names),
+            LanguageMenuShowMin = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuShowMin, names) ?? 0,
+            LanguageMenuShow = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuShow, names) ?? true,
+            LanguageMenuDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuDesign, names),
             Breadcrumbs = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.Breadcrumbs, names),
             Logo = ReplacePlaceholders(FindValue((s, n) => s.Layouts?.GetInvariant(n)?.Logo, names)!),
             // Check if we have a menu map

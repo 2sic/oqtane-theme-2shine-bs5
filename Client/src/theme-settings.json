@@ -22,9 +22,9 @@
       "logo": "[Assets.Path]/logo.svg",
       "languages": "=",
       // very optional, just as example. will default to "=" meaning "Default"
-      // "languageDesign": "custom-lang-design",
-      "languagesShow": true,
-      "languagesShowMin":  2,
+      // "languageMenuDesign": "custom-lang-design",
+      "languageMenuShow": true,
+      "languageMenuShowMin":  2,
       // "breadcrumbs": "=",         // Breadcrumb-config inherits name, so also "Default" - this is the default BTW
     },
     // Layout showing the submenu in the sidebar, so we don't need to show more items in the main menu

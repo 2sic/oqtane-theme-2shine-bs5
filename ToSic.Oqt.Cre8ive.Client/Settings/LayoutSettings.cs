@@ -12,11 +12,15 @@ public class LayoutSettings
     /// </summary>
     public string? Languages { get; set; } = null;
 
-    public bool LanguagesShow { get; set; } = true;
+    // TODO:
+    // - probably add properties like BreadcrumbShow
+    // - consider how to model it - should we have sub-objects? or too complex?
 
-    public int LanguagesShowMin { get; set; } = 0;
+    public bool LanguageMenuShow { get; set; } = true;
 
-    public string? LanguageDesign { get; set; }
+    public int LanguageMenuShowMin { get; set; } = 0;
+
+    public string? LanguageMenuDesign { get; set; }
 
     /// <summary>
     /// The preferred container design to use. 
@@ -39,9 +43,9 @@ public class LayoutSettings
         Logo = "unknown-logo.png",
         ContainerDesign = Constants.Inherit,
         Languages = Constants.Inherit,
-        LanguageDesign = Constants.Inherit,
-        LanguagesShow = true,
-        LanguagesShowMin = 2,
+        LanguageMenuDesign = Constants.Inherit,
+        LanguageMenuShow = true,
+        LanguageMenuShowMin = 2,
         Breadcrumbs = Constants.Inherit,
         // The menus-map. Since this is the fallback, it must have at least an entry to not be skipped. 
         Menus = new()

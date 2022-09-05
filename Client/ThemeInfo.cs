@@ -93,8 +93,8 @@ public class ThemeInfo : ITheme
                     Constants.Default, new()
                     {
                         Logo = "logo.svg",
-                        LanguagesShow = true,
-                        LanguagesShowMin = 2,
+                        LanguageMenuShow = true,
+                        LanguageMenuShowMin = 2,
                         //Breadcrumbs = "Test",
                     }
                 }

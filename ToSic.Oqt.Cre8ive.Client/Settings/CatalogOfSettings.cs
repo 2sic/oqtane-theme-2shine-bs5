@@ -26,6 +26,8 @@ public class CatalogOfSettings
 
     public NamedSettings<BreadcrumbSettings> Breadcrumbs { get; set; } = new();
 
+    // TODO: For completeness, we may need BreadcrumbDesign
+
     /// <summary>
     /// The menu definitions
     /// </summary>
