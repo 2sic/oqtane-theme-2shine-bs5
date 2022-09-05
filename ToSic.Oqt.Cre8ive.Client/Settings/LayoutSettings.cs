@@ -3,6 +3,9 @@
 public class LayoutSettings
 {
     public string? Logo { get; set; }
+
+    public string? Languages { get; set; } = null;
+
     public bool LanguageMenuShow { get; set; } = true;
     public int LanguageMenuShowMin { get; set; } = 0;
 
@@ -20,6 +23,7 @@ public class LayoutSettings
     {
         Logo = "unknown-logo.png",
         ContainerDesign = Constants.Inherit,
+        Languages = Constants.Inherit,
         LanguageMenuDesign = Constants.Inherit,
         LanguageMenuShow = true,
         LanguageMenuShowMin = 2,

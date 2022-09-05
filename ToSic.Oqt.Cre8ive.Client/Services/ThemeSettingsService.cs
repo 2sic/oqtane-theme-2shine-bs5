@@ -44,7 +44,8 @@ public class ThemeSettingsService: IHasSettingsExceptions
                                ?? BreadcrumbSettings.BreadcrumbRevealDefault,
         };
 
-        var languages = FindLanguageSettings();
+        var languagesNames = GetConfigNamesToCheck(layout.Languages, name);
+        var languages = FindLanguageSettings(languagesNames);
 
         // Get language design from configuration - keep the first which has any settings
         // This also means no partial inheritance, it's all or nothing
@@ -85,6 +86,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
         _layoutSettings = new LayoutSettings
         {
             ContainerDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.ContainerDesign),
+            Languages = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.Languages),
             LanguageMenuShowMin = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuShowMin) ?? 0,
             LanguageMenuShow = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuShow) ?? true,
             LanguageMenuDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuDesign),
@@ -96,10 +98,14 @@ public class ThemeSettingsService: IHasSettingsExceptions
 
     private LayoutSettings? _layoutSettings;
 
-    public (LanguagesSettings Languages, string Source) FindLanguageSettings()
+    public (LanguagesSettings Languages, string Source) FindLanguageSettings(string[] languagesNames)
     {
         var (config, _, sourceInfo) 
-            = FindInSources((settings, _) => settings.Languages?.List?.Any() == true ? settings.Languages : null);
+            = FindInSources((settings, n) =>
+            {
+                var tryToFind = settings.Languages?.GetInvariant(n);
+                return tryToFind?.List?.Any() == true ? tryToFind : null;
+            }, languagesNames);
         if (config == null) throw new NullReferenceException($"{nameof(config)} should be a {nameof(Language)}");
         return (config, sourceInfo);
     }

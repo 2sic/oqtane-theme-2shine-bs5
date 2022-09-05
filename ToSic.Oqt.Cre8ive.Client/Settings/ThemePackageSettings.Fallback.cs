@@ -17,7 +17,10 @@ public partial class ThemePackageSettings
                 { Constants.Default, LayoutSettings.Defaults }
             },
 
-            Languages = LanguagesSettings.Defaults,
+            Languages = new()
+            {
+                { Constants.Default, LanguagesSettings.Defaults }
+            },
             LanguageDesigns = new()
             {
                 { Constants.Default, LanguageDesignSettings.Defaults }

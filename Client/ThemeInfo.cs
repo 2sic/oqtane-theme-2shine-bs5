@@ -99,7 +99,10 @@ public class ThemeInfo : ITheme
                     }
                 }
             },
-            Languages = LanguagesSettings.Defaults,
+            Languages = new()
+            {
+                { Constants.Default, LanguagesSettings.Defaults }
+            },
             Breadcrumbs = new()
             {
                 { Constants.Default, BreadcrumbSettings.Defaults },

@@ -16,7 +16,7 @@ public class LayoutsSettings
 
     public NamedSettings<ContainerDesignSettings> ContainerDesigns { get; set; } = new();
 
-    public LanguagesSettings? Languages { get; set; }
+    public NamedSettings<LanguagesSettings> Languages { get; set; } = new();
 
     public NamedSettings<LanguageDesignSettings> LanguageDesigns { get; set; } = new();
 

@@ -27,6 +27,7 @@
       // Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
       "containerDesign": "=",
       "logo": "[Assets.Path]/logo.svg",
+      "languages": "=",
       // very optional, just as example. will default to "=" meaning "Default"
       // "languageMenuDesign": "custom-lang-design",
       "languageMenuShow": true,
@@ -43,14 +44,16 @@
 
   // TODO:
   "Languages": {
-    "hideOthers":  false,
-    "list": {
-      "en": {
-        "label": "ENG",
-        "description": "English"
-      },
-      "de-CH": {
-        "label": "DEU"
+    "Default": {
+      "hideOthers":  false,
+      "list": {
+        "en": {
+          "label": "ENG",
+          "description": "English (from JSON config)"
+        },
+        "de-CH": {
+          "label": "DEU"
+        }
       }
     }
   },

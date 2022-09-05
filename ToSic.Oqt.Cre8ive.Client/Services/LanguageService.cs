@@ -68,11 +68,14 @@ public class LanguageService: ServiceWithCurrentSettings
             .Select(code =>
             {
                 var customLabel = customList.FirstOrDefault(l => l.Culture.EqInvariant(code));
-                var label = customLabel?.Label
-                            ?? code[..2].ToUpperInvariant();
 
                 var langInSite = siteLanguages.Find(al => al.Code.EqInvariant(code));
-                return new Language { Culture = code, Label = label, Description = langInSite?.Name };
+                return new Language
+                {
+                    Culture = code, 
+                    Label = customLabel?.Label ?? code[..2].ToUpperInvariant(), 
+                    Description = customLabel?.Description ?? langInSite?.Name ?? ""
+                };
             })
             .Where(set => set.Description.HasValue())
             .ToList();
