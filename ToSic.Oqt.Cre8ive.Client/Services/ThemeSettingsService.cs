@@ -30,7 +30,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
 
     public CurrentSettings CurrentSettings(string name)
     {
-        var configName = FindConfigName(name);
+        var configName = FindConfigName(name, Constants.Default);
         name = configName.ConfigName;
         var layout = FindLayout(name).Layout;
 
@@ -63,7 +63,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
             return found is { Styling: { } } && found.Styling.Any() ? found : null;
         }, containerDesignNames);
 
-        var current = new CurrentSettings(this, layout, breadcrumb, Settings.Page, languages.Languages, langDesign.Result, containerDesign.Result);
+        var current = new CurrentSettings(name, this, layout, breadcrumb, Settings.Page, languages.Languages, langDesign.Result, containerDesign.Result);
         current.DebugSources.Add("Name", configName.Source);
         current.DebugSources.Add(nameof(current.Languages), languages.Source);
         current.DebugSources.Add(nameof(current.LanguageDesign), langDesign.Source);
@@ -82,21 +82,30 @@ public class ThemeSettingsService: IHasSettingsExceptions
 
     public (LayoutSettings Layout, string Source) FindLayout(string name)
     {
-        if (_layoutSettings != null) return (_layoutSettings, "cached");
-        _layoutSettings = new LayoutSettings
+        var cached = _layoutSettingsCache.FindInvariant(name);
+        if (cached != null) return (cached, "cached");
+        var names = GetConfigNamesToCheck(name, name);
+        var layoutSettings = new LayoutSettings
         {
-            ContainerDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.ContainerDesign),
-            Languages = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.Languages),
-            LanguageMenuShowMin = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuShowMin) ?? 0,
-            LanguageMenuShow = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuShow) ?? true,
-            LanguageMenuDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuDesign),
-            Breadcrumbs = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.Breadcrumbs),
-            Logo = ReplacePlaceholders(FindValue((s, n) => s.Layouts?.GetInvariant(n)?.Logo)!),
+            ContainerDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.ContainerDesign, names),
+            Languages = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.Languages, names),
+            LanguageMenuShowMin = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuShowMin, names) ?? 0,
+            LanguageMenuShow = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuShow, names) ?? true,
+            LanguageMenuDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuDesign, names),
+            Breadcrumbs = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.Breadcrumbs, names),
+            Logo = ReplacePlaceholders(FindValue((s, n) => s.Layouts?.GetInvariant(n)?.Logo, names)!),
+            Menus = FindValue((set, n) =>
+            {
+                var menu = set.Layouts?.GetInvariant(n)?.Menus;
+                return menu != null && menu.Any() ? menu : null;
+            }, names)!,
         };
-        return (_layoutSettings, "various");
+        // Check if we have a menu map
+        _layoutSettingsCache.Add(name, layoutSettings);
+        return (layoutSettings, "various");
     }
 
-    private LayoutSettings? _layoutSettings;
+    private readonly NamedSettings<LayoutSettings> _layoutSettingsCache = new();
 
     public (LanguagesSettings Languages, string Source) FindLanguageSettings(string[] languagesNames)
     {
@@ -123,9 +132,14 @@ public class ThemeSettingsService: IHasSettingsExceptions
     }
 
 
-    public (string ConfigName, string Source) FindConfigName(string? configName)
+    public (string ConfigName, string Source) FindConfigName(string? configName, string inheritedName)
     {
         var debugInfo = $"Initial Config: '{configName}'";
+        if (configName.EqInvariant(Constants.Inherit))
+        {
+            configName = inheritedName;
+            debugInfo += $"; switched to inherit '{inheritedName}'";
+        }
         if (!string.IsNullOrWhiteSpace(configName)) return (configName, debugInfo);
 
         debugInfo += $"; Config changed to '{Constants.Default}'";

@@ -52,7 +52,7 @@ public class ThemeInfo : ITheme
     /// 
     /// You don't need to do much here, because all settings should then come from the json file. 
     /// </summary>
-    public static ThemePackageSettings PackageDefaults = new()
+    public static ThemePackageSettings ThemePackageDefaults = new()
     {
         // The package name is important, as it's used to find assets etc.
         ThemePackageName = new ThemeInfo().Theme.PackageName,

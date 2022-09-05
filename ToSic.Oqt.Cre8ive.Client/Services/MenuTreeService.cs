@@ -12,9 +12,16 @@ public class MenuTreeService: ServiceWithCurrentSettings
     [return: NotNull]
     public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages)
     {
-        var settingsSvc = Settings.Service;
-        var (configName, debugInfo) = settingsSvc.FindConfigName(config.ConfigName);
+        var settingsSvc = Settings!.Service;
+        var (configName, debugInfo) = settingsSvc.FindConfigName(config.ConfigName, Settings.Name);
 
+        // Check if we have a name-remap to consider
+        var updatedName = Settings.Layout.Menus.FindInvariant(configName);
+        if (updatedName.HasValue())
+        {
+            configName = updatedName!;
+            debugInfo += $"; updated config to '{configName}'";
+        }
 
         // If the user didn't specify a config name in the Parameters or the config name
         // isn't contained in the json file the normal parameter are given to the service

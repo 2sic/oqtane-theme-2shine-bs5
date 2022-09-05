@@ -23,6 +23,11 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     /// Must be set by each inheriting theme. 
     /// </summary>
     public abstract override string Name { get; }
+    
+    /// <summary>
+    /// The layout name which is used to lookup configurations
+    /// </summary>
+    public abstract string Layout { get; }
 
     /// <summary>
     /// Sets additional body classes - usually to activate CSS variations for this theme
@@ -78,8 +83,8 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
-        ThemeSettingsService.InitSettings(ThemeInfo.PackageDefaults);
-        _settings = ThemeSettingsService.CurrentSettings(Constants.Default);
+        ThemeSettingsService.InitSettings(ThemeInfo.ThemePackageDefaults);
+        _settings = ThemeSettingsService.CurrentSettings(Layout);
         PageCss.InitSettings(Settings);
     }
 
