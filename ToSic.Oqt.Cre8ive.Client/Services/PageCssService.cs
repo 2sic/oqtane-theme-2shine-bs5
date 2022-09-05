@@ -7,12 +7,6 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
 /// </summary>
 public class PageCssService: ServiceWithCurrentSettings
 {
-    //public void InitSettings(CurrentSettings settings) => Css ??= settings.Css;
-
-    //public ThemeCssSettings? Css { get; private set; }
-
-    //protected abstract ThemeCss Settings { get; }
-
     public string BodyClasses(PageState pageState, string layoutVariation)
     {
         var Css = Settings.Css;

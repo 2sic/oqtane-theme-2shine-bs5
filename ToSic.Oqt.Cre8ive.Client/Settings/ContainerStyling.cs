@@ -2,7 +2,7 @@
 
 namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
-public class ContainerDesign: StylingBase
+public class ContainerStyling: StylingBase
 {
     public string? IsPublished { get; set; }
     public string? IsNotPublished { get; set; }

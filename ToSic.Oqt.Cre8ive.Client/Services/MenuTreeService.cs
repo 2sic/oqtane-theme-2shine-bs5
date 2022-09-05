@@ -9,10 +9,6 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
 /// </summary>
 public class MenuTreeService: ServiceWithCurrentSettings
 {
-    //public void InitSettings(CurrentSettings settings) => Settings ??= settings;
-    //public CurrentSettings Settings { get; private set; }
-
-
     [return: NotNull]
     public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages)
     {

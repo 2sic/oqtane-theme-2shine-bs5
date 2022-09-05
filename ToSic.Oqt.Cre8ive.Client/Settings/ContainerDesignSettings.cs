@@ -3,7 +3,7 @@ using static ToSic.Oqt.Cre8ive.Client.Settings.ThemeCssSettings;
 
 namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
-public class ContainerDesignSettings : SettingsWithStyling<ContainerDesign>
+public class ContainerDesignSettings : SettingsWithStyling<ContainerStyling>
 {
     internal string Classes(Module module, string tag)
     {

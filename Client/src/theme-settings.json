@@ -56,10 +56,10 @@
     "default": {
       "styling": {
         "div": {
-          "classes": "to-shine-background-container py-4 JSON",
+          "classes": "to-shine-background-container py-4",
           // "isPublished": "module-published",
-          "isNotPublished": "module-unpublished JSON",
-          "isAdminModule": "to-shine-admin-container JSON",
+          "isNotPublished": "module-unpublished",
+          "isAdminModule": "to-shine-admin-container",
           // "isNotAdminModule": "to-shine-default-container"
         }
       }
