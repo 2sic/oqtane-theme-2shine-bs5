@@ -10,4 +10,6 @@ public static class StringExtensions
 
     internal static bool HasValue(this string? value)
         => !string.IsNullOrEmpty(value);
+
+    internal static string? EmptyAsNull(this string? value) => string.IsNullOrWhiteSpace(value) ? value : null;
 }

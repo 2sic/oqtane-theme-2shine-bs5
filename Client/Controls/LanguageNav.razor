@@ -1,7 +1,5 @@
-@inherits ControlWithSettings
+@inherits LanguagesBase
 @using System.Globalization
-@using Language = ToSic.Oqt.Cre8ive.Client.Settings.Language
-@inject ToSic.Oqt.Cre8ive.Client.Services.LanguageService LanguageService
 @*
 File Purpose:       Show the Language Navigation / Selector
 Recommendations:    -
@@ -9,38 +7,18 @@ Nice to know:
     - The languages available are handed in from the Header file
       ...if the list is empty, it will use the site definition
       ...otherwise it will use the values specified for order/label of languages
-WishList:
-- make languages more configurable
-- make the show/hide of this also configurable
 *@
 @if (Show == true)
 {
-    @foreach (var lang in Languages)
-    {
-        <ul class="to-shine-page-language">
-            <li class="@(CultureInfo.CurrentUICulture.Name == lang.Culture ? "active" : "")">
-                <a href="#" 
-                   @onclick="@(async _ => await LanguageService.SetCultureAsync(lang.Culture))"
-                   title="@lang.Description"
-                   >@lang.Label</a>
+    <ul class='@Classes("ul")'>
+        @foreach (var lang in Languages)
+        {
+            <li class='@Classes("li", lang)'>
+                <a href="#"
+                    @onclick="@(async _ => await SetLanguage(lang.Culture))"
+                    title="@lang.Description"
+                    >@lang.Label</a>
             </li>
-        </ul>
-    }
-}
-
-@code{
-    protected List<Language> Languages;
-
-    protected bool? Show = null;
-    
-    protected override async Task OnParametersSetAsync()
-    {
-        await base.OnParametersSetAsync();
-
-        LanguageService.InitSettings(Settings);
-
-        // Load defined language list. It change unless the page is reloaded, so we can cache it on this control
-        Languages ??= await LanguageService.LanguagesToShow(PageState.Site.SiteId);
-        Show ??= await LanguageService.ShowMenu(PageState.Site.SiteId);
-    }
+        }
+    </ul>
 }

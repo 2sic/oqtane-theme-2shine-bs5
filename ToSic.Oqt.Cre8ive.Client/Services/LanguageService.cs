@@ -29,9 +29,7 @@ public class LanguageService: ServiceWithCurrentSettings
     private readonly IJSRuntime _jsRuntime;
     private readonly ILanguageService _oqtLanguages;
 
-    //public void InitSettings(CurrentSettings settings) => Settings ??= settings;
 
-    //public CurrentSettings? Settings { get; private set; }
 
 
     public async Task<bool> ShowMenu(int siteId)
@@ -46,7 +44,7 @@ public class LanguageService: ServiceWithCurrentSettings
 
         var siteLanguages = await _oqtLanguages.GetLanguagesAsync(siteId);
 
-        var langSettings = Settings.Languages;// _setSrvOld.FindLanguageSettings();
+        var langSettings = Settings.Languages;
 
         var customList = langSettings.List.Values;
 

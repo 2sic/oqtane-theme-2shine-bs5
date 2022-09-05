@@ -18,4 +18,6 @@ public class ContainerWithSettings: Oqtane.Themes.ContainerBase, IControlWithSet
         await base.OnParametersSetAsync();
         ContainerCss.InitSettings(Settings);
     }
+
+    public string? Classes() => ContainerCss.Classes(ModuleState).EmptyAsNull();
 }

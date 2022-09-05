@@ -1,11 +1,13 @@
-﻿namespace ToSic.Oqt.Cre8ive.Client.Menu;
+﻿using ToSic.Oqt.Cre8ive.Client.Styling;
 
-public class MenuDesignPartSettings
+namespace ToSic.Oqt.Cre8ive.Client.Menu;
+
+public class MenuDesignPartSettings: StylingWithActive
 {
-    /// <summary>
-    /// Classes which are applied to all the tags of this type
-    /// </summary>
-    public string? Classes { get; set; }
+    ///// <summary>
+    ///// Classes which are applied to all the tags of this type
+    ///// </summary>
+    //public string? Classes { get; set; }
         
     /// <summary>
     /// List of classes to add on certain levels only.
@@ -14,8 +16,8 @@ public class MenuDesignPartSettings
     public Dictionary<int, string>? ByLevel { get; set; }
 
 
-    public string? Active { get; set; }
-    public string? ActiveFalse { get; set; }
+    //public string? Active { get; set; }
+    //public string? ActiveFalse { get; set; }
 
     public string? HasChildren { get; set; }
     public string? HasChildrenFalse { get; set; }

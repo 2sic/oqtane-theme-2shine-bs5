@@ -156,6 +156,14 @@ See also [folder and namespace docs](./docs/folders-and-namespaces.md)
 1. Resources / multi-language of various parts
 1. Theme definion should have names
 1. Breadcrum should allow `auto` to only show if it has depth
+1. configurable settings don't work at all ATM
+1. Nav features
+  1. ability to exclude pages (especially on home level)
+
+### Lower Priority
+
+1. ideally try to move out the js for the page to the project Cre8ive
+1. 
 
 ---
 

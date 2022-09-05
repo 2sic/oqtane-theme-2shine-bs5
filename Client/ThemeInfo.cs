@@ -22,7 +22,7 @@ public class ThemeInfo : ITheme
         Name = "ToShine Bootstrap 5",
         Version = "2.0.0",
         // Settings still very WIP
-        ThemeSettingsType = typeof(ThemeSettingsUi.Settings).AssemblyQualifiedName,
+        //ThemeSettingsType = typeof(ThemeSettingsUi.Settings).AssemblyQualifiedName,
         //ContainerSettingsType = "Oqtane.Theme.ToSic.ContainerSettings, Oqtane.Theme.ToSic.Oqtane",
         PackageName = "ToSic.Oqt.Themes.ToShineBs5",
     };
