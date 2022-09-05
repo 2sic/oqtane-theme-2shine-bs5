@@ -144,9 +144,18 @@ The LanguageChanger control can be used to display Links to switch between diffe
 
 1. Many of our controls have an obvious name like `Menu` but it can be confused with the `Oqtane.Theme.Controls.Menu`.
 Since we rarely use the default Oqtane controls, we don't recommend having it in your `_imports.razor` but instead we reference them explicitly where we need them. 
-1. Oqtane will save the full namespace of selected **Themes** and **Containers** in the DB. 
+<!-- 1. Oqtane will save the full namespace of selected **Themes** and **Containers** in the DB. 
 Because of this, we highly recommend to always have a line like `@namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts` at the beginning of these files,
-so it doesn't change as you move files around.
+so it doesn't change as you move files around. -->
+
+See also [folder and namespace docs](./docs/folders-and-namespaces.md)
+
+## Todo 2dm/2tl
+
+1. Styling of footer menu
+1. Resources / multi-language of various parts
+1. Theme definion should have names
+1. Breadcrum should allow `auto` to only show if it has depth
 
 ---
 

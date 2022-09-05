@@ -9,6 +9,10 @@ public class ContainerWithSettings: Oqtane.Themes.ContainerBase, IControlWithSet
 
     [Inject] protected ContainerCssService ContainerCss { get; set; }
 
+    [Inject] public NavigationManager NavigationManager { get; set; }
+
+    protected void CloseModal() => NavigationManager.NavigateTo(NavigateUrl());
+
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();

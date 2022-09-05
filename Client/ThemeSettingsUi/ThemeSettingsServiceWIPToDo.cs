@@ -3,8 +3,7 @@ using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettingsUi;
 
 public class ThemeSettingsContainer
 {

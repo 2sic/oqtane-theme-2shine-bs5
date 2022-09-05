@@ -4,12 +4,6 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
 
 public class SettingsFromJsonService : IHasSettingsExceptions
 {
-    //public SettingsFromJsonService(T settings) => CurrentThemeSettings = settings;
-    //public T CurrentThemeSettings { get; }
-
-    //public LayoutsSettings? Settings => _settings ??= LoadJson();
-    //private LayoutsSettings? _settings;
-
     public LayoutsSettings? LoadJson(ThemePackageSettings themeConfig)
     {
         var jsonFileName = $"{themeConfig.WwwRoot}/{themeConfig.PathTheme}/{themeConfig.SettingsJsonFile}";

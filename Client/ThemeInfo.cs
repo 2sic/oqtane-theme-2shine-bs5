@@ -1,6 +1,5 @@
 using Oqtane.Models;
 using Oqtane.Themes;
-using ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings;
 
 // Important: This must match the namespace of the layouts
 // otherwise the Oqtane registration won't work as expected. 
@@ -22,7 +21,8 @@ public class ThemeInfo : ITheme
     {
         Name = "ToShine Bootstrap 5",
         Version = "2.0.0",
-        ThemeSettingsType = typeof(Settings).AssemblyQualifiedName,
+        // Settings still very WIP
+        ThemeSettingsType = typeof(ThemeSettingsUi.Settings).AssemblyQualifiedName,
         //ContainerSettingsType = "Oqtane.Theme.ToSic.ContainerSettings, Oqtane.Theme.ToSic.Oqtane",
         PackageName = "ToSic.Oqt.Themes.ToShineBs5",
     };

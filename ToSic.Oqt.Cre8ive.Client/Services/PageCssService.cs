@@ -5,16 +5,18 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
 /// <summary>
 /// Special helper to figure out what classes should be applied to the page. 
 /// </summary>
-public class PageCssService
+public class PageCssService: ServiceWithCurrentSettings
 {
-    public void InitSettings(CurrentSettings settings) => Css ??= settings.Css;
+    //public void InitSettings(CurrentSettings settings) => Css ??= settings.Css;
 
-    public ThemeCssSettings? Css { get; private set; }
+    //public ThemeCssSettings? Css { get; private set; }
 
     //protected abstract ThemeCss Settings { get; }
 
     public string BodyClasses(PageState pageState, string layoutVariation)
     {
+        var Css = Settings.Css;
+
         if (Css == null) throw new ArgumentException("Can't continue without CSS specs", nameof(Css));
 
         var page = pageState.Page;
@@ -85,5 +87,5 @@ public class PageCssService
     }
 
     public string PaneIsEmptyClasses(PageState pageState, string paneName)
-        => PaneIsEmpty(pageState, paneName) ? Css.PaneIsEmpty : "";
+        => PaneIsEmpty(pageState, paneName) ? Settings.Css.PaneIsEmpty : "";
 }

@@ -1,18 +1,16 @@
 ﻿@inherits ContainerWithSettings
-@inject NavigationManager NavigationManager
 @*
 File Purpose:       Container for Modal Admin Dialogs
 Recommendations:    -
 Nice to know:
     1. Always shows a title + the X-close button
     2. Should _not_ be called "AdminContainer" because it conflicts with Oqtane names
+    3. Calls `CloseModal` of the base class
 *@
 @code 
 {
     // The name is a bit long "System..." so it's not the first in the dropdown which is A-Z
     public override string Name => "System Container for Admin Dialogs";
-
-    private void CloseModal() => NavigationManager.NavigateTo(NavigateUrl());
 }
 
 <div class="app-admin-modal to-shine-admin-container">
@@ -21,7 +19,7 @@ Nice to know:
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title"><Oqtane.Themes.Controls.ModuleTitle /></h5>
-                    <button type="button" class="btn-close" aria-label="Close" @onclick="CloseModal"></button>
+                    <button type="button" class="btn-close" aria-label="Close" @onclick="@CloseModal"></button>
                 </div>
                 <div class="modal-body">
                     <ModuleInstance />

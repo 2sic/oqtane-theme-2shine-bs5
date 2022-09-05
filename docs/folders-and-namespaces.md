@@ -10,6 +10,11 @@ It's important to know that
 1. The `ThemeInfo.cs` must be in the same namespace as the layout files
 1. Containers must be in the same namespace or sub-namespaces as the layout files
 
+> **Important**
+> Oqtane will save the full namespace of selected **Themes** and **Containers** in the DB. 
+> Because of this, renaming these razor-controls will always cause problems,
+> so only change if really necessary and then re-check your site for issues. 
+
 ## Special Folder Layouts
 
 The `Layouts` folder contains the layout Razor files, but they explicitly don't use the automatic namespace. 

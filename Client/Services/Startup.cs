@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettingsUi;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
@@ -10,7 +11,7 @@ public class Startup : Oqtane.Services.IClientStartup
     /// <param name="services"></param>
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddSingleton<ThemeSettings.ThemeSettingsServiceWIPToDo>();
+        services.AddSingleton<ThemeSettingsServiceWIPToDo>();
 
         services.AddTransient<ThemeJsService>();
     }

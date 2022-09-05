@@ -16,7 +16,7 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
  * - ...and only show these; possibly show more to admin?
  */
 
-public class LanguageService // <T> where T : ThemePackageSettingsBase, new()
+public class LanguageService: ServiceWithCurrentSettings
 {
     public LanguageService(NavigationManager navigation, IJSRuntime jsRuntime, ILanguageService oqtLanguages)
     {
@@ -29,9 +29,9 @@ public class LanguageService // <T> where T : ThemePackageSettingsBase, new()
     private readonly IJSRuntime _jsRuntime;
     private readonly ILanguageService _oqtLanguages;
 
-    public void InitSettings(CurrentSettings settings) => Settings ??= settings;
+    //public void InitSettings(CurrentSettings settings) => Settings ??= settings;
 
-    public CurrentSettings? Settings { get; private set; }
+    //public CurrentSettings? Settings { get; private set; }
 
 
     public async Task<bool> ShowMenu(int siteId)
@@ -39,9 +39,6 @@ public class LanguageService // <T> where T : ThemePackageSettingsBase, new()
         var languages = await LanguagesToShow(siteId);
         return Settings.Layout.LanguageMenuShow && Settings.Layout.LanguageMenuShowMin <= languages.Count;
     }
-
-    //private LayoutSettings LayoutSettings => _layout ??= _setSrvOld.FindLayout(Constants.Default).Layout;
-    //private LayoutSettings? _layout;
 
     public async Task<List<Language>> LanguagesToShow(int siteId)
     {

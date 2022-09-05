@@ -7,17 +7,10 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
 /// <summary>
 /// Will create a MenuTree based on the current pages information and configuration
 /// </summary>
-public class MenuTreeService // <T> where T : ThemePackageSettingsBase, new()
+public class MenuTreeService: ServiceWithCurrentSettings
 {
-    ///// <summary>
-    ///// Constructor for DI
-    ///// </summary>
-    ///// <param name="themeSettings"></param>
-    //public MenuTreeService(ThemeSettingsService<T> themeSettings) => _themeSettings = themeSettings;
-    //private readonly ThemeSettingsService<T> _themeSettings;
-
-    public void InitSettings(CurrentSettings settings) => Settings ??= settings;
-    public CurrentSettings Settings { get; private set; }
+    //public void InitSettings(CurrentSettings settings) => Settings ??= settings;
+    //public CurrentSettings Settings { get; private set; }
 
 
     [return: NotNull]

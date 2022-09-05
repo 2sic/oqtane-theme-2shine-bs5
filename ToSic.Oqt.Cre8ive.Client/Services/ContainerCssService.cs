@@ -5,11 +5,11 @@ namespace ToSic.Oqt.Cre8ive.Client.Services;
 /// <summary>
 /// Note: ATM not a real service yet, so we don't add "Service" to the name as of now.
 /// </summary>
-public class ContainerCssService
+public class ContainerCssService: ServiceWithCurrentSettings
 {
-    public void InitSettings(CurrentSettings settings) => Settings ??= settings;
+    //public void InitSettings(CurrentSettings settings) => Settings ??= settings;
 
-    protected CurrentSettings? Settings { get; private set; }
+    //protected CurrentSettings? Settings { get; private set; }
 
     public string Classes(Module module)
     {
