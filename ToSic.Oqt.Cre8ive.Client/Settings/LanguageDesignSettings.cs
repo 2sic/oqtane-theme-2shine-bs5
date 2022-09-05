@@ -7,7 +7,8 @@ public class LanguageDesignSettings: SettingsWithStyling<StylingWithActive>
     internal string Classes(string tag, Language? lang = null)
     {
         if (!tag.HasValue()) return "";
-        var styles = (Styling ?? Defaults.Styling).FindInvariant(tag);
+        if (Styling == null || !Styling.Any()) return "";
+        var styles = Styling.FindInvariant(tag);
         if (styles is null) return "";
         return styles.Classes + " " + (lang?.IsActive ?? false ? styles.Active : styles.ActiveFalse);
     }

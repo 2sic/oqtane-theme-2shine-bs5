@@ -17,9 +17,9 @@ public class LayoutSettings
     public static LayoutSettings Defaults = new()
     {
         Logo = "unknown-logo.png",
+        LanguageMenuDesign = Constants.Inherit,
         LanguageMenuShow = true,
         LanguageMenuShowMin = 2,
         Breadcrumbs = Constants.Inherit,
-        LanguageMenuDesign = Constants.Inherit,
     };
 }

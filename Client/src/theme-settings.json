@@ -17,10 +17,10 @@
   // TODO:
   "layout": {
     "logo": "[ASSETS-PATH]/logo.svg",
-    "languageMenuShow": true,
-    "languageMenuShowMin":  2,
     // very optional, just as example. will default to "default" otherwise
-    "languageMenuDesign": "custom-lang-design"
+    // "languageMenuDesign": "custom-lang-design",
+    "languageMenuShow": true,
+    "languageMenuShowMin":  2
   },
 
   // TODO:
@@ -43,12 +43,13 @@
         "li": { "active": "active" }
       }
     },
-    "custom-lang-design": {
-      "styling":{
-        "ul": { "classes": "to-shine-page-language custom" },
-        "li": { "active": "active custom", "activeFalse": "inactive custom" }
-      }
-    }
+    // Example of design specs with another name
+    // "custom-lang-design": {
+    //   "styling":{
+    //     "ul": { "classes": "to-shine-page-language custom" },
+    //     "li": { "active": "active custom", "activeFalse": "inactive custom" }
+    //   }
+    // }
   },
 
   // Menus contain the configuration for each menu. The names used are specified in the Razor files.
