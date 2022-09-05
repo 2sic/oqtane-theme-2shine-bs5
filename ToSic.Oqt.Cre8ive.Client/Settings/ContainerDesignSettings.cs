@@ -1,5 +1,5 @@
 ﻿using Oqtane.Models;
-using static ToSic.Oqt.Cre8ive.Client.Settings.PageStyling;
+using static ToSic.Oqt.Cre8ive.Client.Styling.PageStyling;
 
 namespace ToSic.Oqt.Cre8ive.Client.Settings;
 

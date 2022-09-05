@@ -24,7 +24,7 @@ public class MenuCss
             .ToList();
 
         return configsForTag.Any()
-            ? ListToClasses(TagClasses(branch, configsForTag as List<MenuStyling>), branch.Page.PageId)
+            ? ListToClasses(TagClasses(branch, configsForTag as List<MenuStyling>))
             : "";
     }
 
@@ -50,7 +50,7 @@ public class MenuCss
                 ? null
                 : c.ByLevel.TryGetValue(branch.MenuLevel, out var levelClasses)
                     ? levelClasses
-                    : c.ByLevel.TryGetValue(Placeholders.PlaceHolderLevelOther, out var levelClassesDefault)
+                    : c.ByLevel.TryGetValue(Placeholders.ByLevelOtherKey, out var levelClassesDefault)
                         ? levelClassesDefault
                         : null);
         classes.AddRange(levelCss);
@@ -60,13 +60,6 @@ public class MenuCss
 
 
 
-    private string ListToClasses(IEnumerable<string?> original, int pageId)
-        => string
-            .Join(" ", original.Where(s => !s.IsNullOrEmpty()))
-            .Replace("  ", " ")
-            ;
-            //.Replace(Placeholders.PageId, pageId.ToString())
-            //.Replace(Placeholders.MenuId, MenuConfig.MenuId);
-
-
+    private string ListToClasses(IEnumerable<string?> original)
+        => string.Join(" ", original.Where(s => !s.IsNullOrEmpty())).Replace("  ", " ");
 }

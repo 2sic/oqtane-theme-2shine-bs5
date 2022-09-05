@@ -65,7 +65,7 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
         PaneNameHeader);
 
     [Inject] protected ThemeSettingsService ThemeSettingsService { get; set; }
-    [Inject] protected PageCssService PageCss { get; set; }
+    protected PageStyles PageCss { get; set; } = new();
     [Inject] protected ThemeJsService ThemeJs { get; set; }
 
     // Todo: Make configurable

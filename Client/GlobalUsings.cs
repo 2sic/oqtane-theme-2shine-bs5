@@ -10,3 +10,4 @@ global using ToSic.Oqt.Cre8ive.Client.Settings;
 global using ToSic.Oqt.Cre8ive.Client.Services;
 global using ToSic.Oqt.Cre8ive.Client.DynComponents;
 global using ToSic.Oqt.Cre8ive.Client.Controls;
+global using ToSic.Oqt.Cre8ive.Client.Styling;

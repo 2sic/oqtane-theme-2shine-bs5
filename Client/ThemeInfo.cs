@@ -1,5 +1,6 @@
 using Oqtane.Models;
 using Oqtane.Themes;
+using static ToSic.Oqt.Cre8ive.Client.Placeholders;
 
 // Important: This must match the namespace of the layouts
 // otherwise the Oqtane registration won't work as expected. 
@@ -67,12 +68,12 @@ public class ThemeInfo : ITheme
             // Here you could override various defaults if you choose to change your CSS like this
             BodyClasses = new[]
             {
-                $"page-{Placeholders.PageId}",
-                $"page-root-{Placeholders.PageRootId}",
-                $"page-parent-{Placeholders.PageParentId}",
-                $"site-{Placeholders.SiteId}",
-                $"nav-level-{Placeholders.MenuLevel}",
-                $"to-shine-variation-{Placeholders.LayoutVariation}"
+                $"page-{PageId}",
+                $"page-root-{PageRootId}",
+                $"page-parent-{PageParentId}",
+                $"site-{SiteId}",
+                $"nav-level-{MenuLevel}",
+                $"to-shine-variation-{LayoutVariation}"
             },
             PageIsHome = "page-is-home",
             PaneIsEmpty = "pane-is-empty",
@@ -106,7 +107,7 @@ public class ThemeInfo : ITheme
             {
                 { Constants.Default, MenuConfig.Defaults },
                 {
-                    ThemeInfo.MenuMain, new()
+                    MenuMain, new()
                     {
                         Start = "*",
                         Depth = 1,

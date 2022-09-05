@@ -1,4 +1,5 @@
-﻿using static System.StringComparer;
+﻿using ToSic.Oqt.Cre8ive.Client.Styling;
+using static System.StringComparer;
 
 namespace ToSic.Oqt.Cre8ive.Client.Settings;
 

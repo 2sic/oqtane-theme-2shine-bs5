@@ -1,21 +1,21 @@
 ﻿using Oqtane.UI;
 
-namespace ToSic.Oqt.Cre8ive.Client.Services;
+namespace ToSic.Oqt.Cre8ive.Client.Styling;
 
 /// <summary>
 /// Special helper to figure out what classes should be applied to the page. 
 /// </summary>
-public class PageCssService: ServiceWithCurrentSettings
+public class PageStyles: ServiceWithCurrentSettings
 {
     public string BodyClasses(PageState pageState, string layoutVariation)
     {
-        var Css = Settings.Css;
+        var css = Settings?.Css;
 
-        if (Css == null) throw new ArgumentException("Can't continue without CSS specs", nameof(Css));
+        if (css == null) throw new ArgumentException("Can't continue without CSS specs", nameof(css));
 
         // Make a copy...
-        var classes = Css.BodyClasses.ToList();
-        if(pageState.Page.Path == "") classes.Add(Css.PageIsHome);
+        var classes = css.BodyClasses.ToList();
+        if (pageState.Page.Path == "") classes.Add(css.PageIsHome);
 
         // Do these once multi-language is better
         //1.5 Set the page-root-neutral-### class
@@ -45,5 +45,5 @@ public class PageCssService: ServiceWithCurrentSettings
     }
 
     public string PaneIsEmptyClasses(PageState pageState, string paneName)
-        => PaneIsEmpty(pageState, paneName) ? Settings.Css.PaneIsEmpty : "";
+        => PaneIsEmpty(pageState, paneName) ? Settings?.Css.PaneIsEmpty ?? "": "";
 }

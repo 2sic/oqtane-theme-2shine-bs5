@@ -18,7 +18,7 @@ public partial class MenuDesignSettings
                     {
                         { 0, "navbar-nav" },
                         // todo: doc why collapse-PageId
-                        { PlaceHolderLevelOther, $"collapse to-shine-submenu-{MenuId}-{PageId}" },
+                        { ByLevelOtherKey, $"collapse to-shine-submenu-{MenuId}-{PageId}" },
                     },
                     IsInBreadcrumb = "show",
                 }

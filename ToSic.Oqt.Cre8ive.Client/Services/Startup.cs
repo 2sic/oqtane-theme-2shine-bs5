@@ -11,9 +11,6 @@ public class Startup : Oqtane.Services.IClientStartup
     public void ConfigureServices(IServiceCollection services)
     {
         // All these Settings etc. should be scoped, so they don't have to reload for each click
-        services.AddTransient<PageCssService>();
-
-        // All these Settings etc. should be scoped, so they don't have to reload for each click
         services.AddScoped<SettingsFromJsonService>();
         services.AddScoped<ThemeSettingsService>();
         services.AddTransient<LanguageService>();

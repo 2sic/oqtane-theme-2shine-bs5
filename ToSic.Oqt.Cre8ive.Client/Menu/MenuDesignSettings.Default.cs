@@ -18,7 +18,7 @@ public partial class MenuDesignSettings
                     IsParent = "dropdown-toggle",
                     ByLevel = new()
                     {
-                        { PlaceHolderLevelOther, "dropdown-item" },
+                        { ByLevelOtherKey, "dropdown-item" },
                         { 1, "nav-link" },
 
                     }
@@ -39,7 +39,7 @@ public partial class MenuDesignSettings
                 {
                     ByLevel = new()
                     {
-                        { PlaceHolderLevelOther, "dropdown-menu" },
+                        { ByLevelOtherKey, "dropdown-menu" },
                         { 0, "navbar-nav" },
                     },
                 }

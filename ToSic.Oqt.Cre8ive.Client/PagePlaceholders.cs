@@ -31,16 +31,16 @@ internal class PagePlaceholders
         if (!result.Contains(PlaceholderMarker)) return result;
 
         result = result
-            .Replace(PageParentId, page.ParentId != null ? $"{page.ParentId}" : NoneId)
+            .Replace(PageParentId, page.ParentId != null ? $"{page.ParentId}" : None)
             .Replace(SiteId, $"{page.SiteId}", InvariantCultureIgnoreCase)
-            .Replace(LayoutVariation, _layoutVariation ?? NoneId)
+            .Replace(LayoutVariation, _layoutVariation ?? None)
             .Replace(MenuLevel, $"{page.Level + 1}")
-            .Replace(MenuId, _menuId ?? NoneId);
+            .Replace(MenuId, _menuId ?? None);
 
         // Checking the breadcrumb is a bit more expensive, so be sure we need it
         if (result.Contains(Placeholders.PageRootId))
             result = result
-                .Replace(PageRootId, CurrentPageRootId != null ? $"{CurrentPageRootId}" : NoneId);
+                .Replace(PageRootId, CurrentPageRootId != null ? $"{CurrentPageRootId}" : None);
 
         return result;
     }
