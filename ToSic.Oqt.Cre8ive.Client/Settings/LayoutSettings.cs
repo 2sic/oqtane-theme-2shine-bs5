@@ -6,6 +6,8 @@ public class LayoutSettings
     public bool LanguageMenuShow { get; set; } = true;
     public int LanguageMenuShowMin { get; set; } = 0;
 
+    public string? LanguageMenuDesign { get; set; }
+
     /// <summary>
     /// Name of the breadcrumbs configuration to use.
     /// Will usually be empty, as we'll use the Default instead
@@ -18,5 +20,6 @@ public class LayoutSettings
         LanguageMenuShow = true,
         LanguageMenuShowMin = 2,
         Breadcrumbs = Constants.Inherit,
+        LanguageMenuDesign = Constants.Inherit,
     };
 }

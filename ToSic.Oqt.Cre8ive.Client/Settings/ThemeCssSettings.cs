@@ -22,6 +22,8 @@ public class ThemeCssSettings
     private const string ModulePrefixDefault = "module-";
     private const string NavLevelPrefixDefault = "nav-level-";
 
+    public const string SettingFromDefaults = "to-shine-warning-from-defaults";
+
     /// <summary>
     /// Prefix for all css classes which contain information about the page.
     /// </summary>

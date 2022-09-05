@@ -103,7 +103,7 @@ public class ThemeInfo : ITheme
                     }
                 }
             },
-            Designs = new()
+            MenuDesigns = new()
             {
                 // The Default design, if not overridden in the JSON
                 { Constants.Default, MenuDesignSettings.Defaults },

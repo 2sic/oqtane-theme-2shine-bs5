@@ -9,6 +9,10 @@ public partial class ThemePackageSettings
             Source = "Preset",
             Layout = LayoutSettings.Defaults,
             Languages = LanguagesSettings.Defaults,
+            LanguageDesigns = new()
+            {
+                { Constants.Default, LanguageDesignSettings.Defaults }
+            },
             Breadcrumbs = new()
             {
                 { Constants.Default, BreadcrumbSettings.Defaults }
@@ -17,7 +21,7 @@ public partial class ThemePackageSettings
             {
                 { Constants.Default, MenuConfig.Defaults },
             },
-            Designs = new()
+            MenuDesigns = new()
             {
                 // The Default design, if not overridden in the JSON
                 { Constants.Default, MenuDesignSettings.Defaults },

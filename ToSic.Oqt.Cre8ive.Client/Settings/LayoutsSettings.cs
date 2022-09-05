@@ -16,19 +16,23 @@ public class LayoutsSettings
 
     public LanguagesSettings? Languages { get; set; }
 
-    public Dictionary<string, BreadcrumbSettings> Breadcrumbs { get; set; } = new();
+    public NamedSettings<LanguageDesignSettings> LanguageDesigns { get; set; } = new();
+
+    // public NamedSettings<>
+
+    // TODO: 
+    // - then introduce something for nav-design
+    // - and something for container design
+
+    public NamedSettings<BreadcrumbSettings> Breadcrumbs { get; set; } = new();
 
     /// <summary>
     /// The menu definitions
     /// </summary>
-    public Dictionary<string, MenuConfig> Menus { get; set; } = new();
+    public NamedSettings<MenuConfig> Menus { get; set; } = new();
 
     /// <summary>
     /// Design definitions of the menu
     /// </summary>
-    public Dictionary<string, MenuDesignSettings> Designs { get; set; } = new();
-
-    public MenuConfig? GetMenu(string name) => Menus.FindInvariant(name);
-    public MenuDesignSettings? GetDesign(string name) => Designs.FindInvariant(name);
-    public BreadcrumbSettings? GetBreadcrumb(string name) => Breadcrumbs.FindInvariant(name);
+    public NamedSettings<MenuDesignSettings> MenuDesigns { get; set; } = new();
 }

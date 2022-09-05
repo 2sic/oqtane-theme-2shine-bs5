@@ -10,7 +10,7 @@ public class MenuBranch: IHasSettingsExceptions
     /// </summary>
     protected virtual MenuTree Tree { get; }
 
-    public string Classes(string tag) => Tree.Design.Classes(tag, this);
+    public string? Classes(string tag) => Tree.Design.Classes(tag, this).EmptyAsNull();
 
     public virtual string? Debug => Tree.Debug;
 

@@ -89,8 +89,9 @@ const commonConfig = {
           context: "src/assets",
         },
         {
+          // TODO: unclear what this is for
           from: "*.json",
-          context: "ThemeSettings",
+          context: "ThemeSettingsUi",
         },
       ],
     }),

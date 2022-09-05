@@ -9,7 +9,7 @@ public partial class MenuDesignSettings
     /// </summary>
     public static MenuDesignSettings MobileDefaults = new()
     {
-        Parts = new()
+        Styling = new()
         {
             {
                 "ul", new()

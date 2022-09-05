@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-using ToSic.Oqt.Cre8ive.Client.Styling;
-using static System.StringComparer;
-
-namespace ToSic.Oqt.Cre8ive.Client.Settings;
+﻿namespace ToSic.Oqt.Cre8ive.Client.Settings;
 
 public class LanguagesSettings
 {
+    /// <summary>
+    /// Dummy constructor so better find cases where it's created
+    /// Note it must be without parameters for json deserialization
+    /// </summary>
+    public LanguagesSettings() {}
+
     /// <summary>
     /// If true, will only show the languages which are explicitly configured.
     /// If false, will first show the configured languages, then the rest. 
@@ -22,16 +24,6 @@ public class LanguagesSettings
     }
     private Dictionary<string, Language>? _list;
 
-    internal string Classes(string tag, Language? lang = null)
-    {
-        if (!tag.HasValue()) return "";
-        var styles = Styling.FindInvariant(tag);
-        if (styles is null) return "";
-        return styles is StylingWithActive swa
-            ? styles.Classes + " " + ((lang?.IsActive ?? false) ? swa.Active : swa.ActiveFalse)
-            : styles.Classes ?? "";
-    }
-
     private Dictionary<string, Language>? InitList(Dictionary<string, Language>? dic)
     {
         if (dic == null) return null;
@@ -41,13 +33,6 @@ public class LanguagesSettings
         return dic.ToInvariant();
     }
 
-    public Dictionary<string, StylingBase> Styling
-    {
-        get => _styling;
-        set => _styling = value.ToInvariant();
-    }
-    private Dictionary<string, StylingBase> _styling = new(InvariantCultureIgnoreCase);
-
     public static LanguagesSettings Defaults = new()
     {
         HideOthers = false,
@@ -55,11 +40,6 @@ public class LanguagesSettings
         {
             { "en", new() { Culture = "en", Description = "English" } }
         },
-        Styling = new()
-        {
-            { "ul", new() { Classes = "to-shine-page-language" } },
-            { "li", new StylingWithActive { Active = "active", ActiveFalse = "" } }
-        }
     };
 
 }

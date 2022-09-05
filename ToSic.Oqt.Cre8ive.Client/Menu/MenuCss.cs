@@ -19,16 +19,16 @@ public class MenuCss
     public string Classes(string tag, MenuBranch branch)
     {
         var configsForTag = DesignSettingsList
-            .Select(c => c.Parts.TryGetValue(tag, out var a) ? a : null)
+            .Select(c => c.Styling.FindInvariant(tag))
             .Where(c => c is not null)
             .ToList();
 
         return configsForTag.Any()
-            ? ListToClasses(TagClasses(branch, configsForTag as List<MenuDesignPartSettings>), branch.Page.PageId)
+            ? ListToClasses(TagClasses(branch, configsForTag as List<MenuStyling>), branch.Page.PageId)
             : "";
     }
 
-    private List<string?> TagClasses(MenuBranch branch, List<MenuDesignPartSettings> configs)
+    private List<string?> TagClasses(MenuBranch branch, List<MenuStyling> configs)
     {
         var classes = new List<string?>();
         classes.AddRange(configs.Select(c => c.Classes));

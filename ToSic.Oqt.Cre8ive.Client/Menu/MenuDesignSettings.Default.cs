@@ -9,7 +9,7 @@ public partial class MenuDesignSettings
     /// </summary>
     public static MenuDesignSettings Defaults => new()
     {
-        Parts = new()
+        Styling = new()
         {
             {
                 "a", new()

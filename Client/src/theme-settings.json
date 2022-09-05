@@ -18,7 +18,9 @@
   "layout": {
     "logo": "[ASSETS-PATH]/logo.svg",
     "languageMenuShow": true,
-    "languageMenuShowMin":  2
+    "languageMenuShowMin":  2,
+    // very optional, just as example. will default to "default" otherwise
+    "languageMenuDesign": "custom-lang-design"
   },
 
   // TODO:
@@ -31,6 +33,20 @@
       },
       "de-CH": {
         "label": "DEU"
+      }
+    }
+  },
+  "languageDesigns": {
+    "default": {
+      "styling":{
+        "ul": { "classes": "to-shine-page-language" },
+        "li": { "active": "active" }
+      }
+    },
+    "custom-lang-design": {
+      "styling":{
+        "ul": { "classes": "to-shine-page-language custom" },
+        "li": { "active": "active custom", "activeFalse": "inactive custom" }
       }
     }
   },
@@ -61,11 +77,12 @@
     }
   },
 
-  // Designs specify how the output is made, what classes added to each node etc.
+  // MenuDesigns specify how the output is made, what classes added to each node etc.
   // It's separate from the Menus, since it could be re-used
-  "Designs": {
+  // It also supports two special placeholders [PAGEID] and [MENUID]
+  "MenuDesigns": {
     "Sidebar": {
-      "parts": {
+      "styling": {
         "ul": {
           "byLevel": {
             "0": "navbar-nav",
@@ -87,6 +104,13 @@
           "classes": "nav-item-sub-opener",
           "inBreadcrumb": "",
           "inBreadcrumbFalse": "collapsed"
+        }
+      }
+    },
+    "Footer": {
+      "styling": {
+        "ul" :{
+          "classes": "navbar-nav test-wip-config"
         }
       }
     }

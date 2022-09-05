@@ -1,7 +1,5 @@
 ﻿namespace ToSic.Oqt.Cre8ive.Client.Menu;
 
-public partial class MenuDesignSettings
+public partial class MenuDesignSettings: SettingsWithStyling<MenuStyling>
 {
-    public Dictionary<string, MenuDesignPartSettings> Parts { get; set; } = new();
-
 }

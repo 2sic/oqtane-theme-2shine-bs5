@@ -2,7 +2,7 @@
 
 namespace ToSic.Oqt.Cre8ive.Client.Controls.Language;
 
-public abstract class LanguagesBase: ControlWithSettings
+public abstract class LanguageMenuBase: ControlWithSettings
 {
     [Inject] private LanguageService LanguageService { get; set; }
 
@@ -25,5 +25,5 @@ public abstract class LanguagesBase: ControlWithSettings
 
 
 
-    public string? Classes(string tag, Settings.Language? lang = null) => Settings.Languages.Classes(tag, lang).EmptyAsNull();
+    public string? Classes(string tag, Settings.Language? lang = null) => Settings.LanguageDesign.Classes(tag, lang).EmptyAsNull();
 }
