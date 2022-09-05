@@ -125,6 +125,59 @@
   // It's separate from the Menus, since it could be re-used
   // It also supports two special placeholders [Page.Id] and [Menu.Id]
   "MenuDesigns": {
+    // The default menu styling used for main and most menus
+    // (unless specified otherwise)
+    "Default": {
+      "styling": {
+        "ul": {
+          "byLevel": {
+            "0": "navbar-nav",
+            "-1": "dropdown-menu"
+          }
+        },
+        "li": {
+          "classes": "nav-item nav-[Page.Id]",
+          "isParent": "has-child dropdown",
+          "isActive": "active",
+          "isDisabled": "disabled"
+        },
+        "a": {
+          "isActive": "active",
+          "isParent": "dropdown-toggle",
+          "byLevel": {
+            "1": "nav-link",
+            "-1": "dropdown-item"
+          }
+        }
+      }
+    },
+    "Mobile":{
+      "styling": {
+        "ul": {
+          "byLevel": {
+            "0": "navbar-nav",
+            "-1": "collapse to-shine-submenu-[Menu.Id]-[Page.Id]"
+          },
+          "isInBreadcrumb": "show"
+        },
+        "li": {
+          "classes": "nav-item nav-[Page.Id] position-relative",
+          "isParent": "has-child",
+          "isActive": "active",
+          "isDisabled": "disabled"
+        },
+        "a": {
+          // NOTE: ATM this is the only difference to Sidebar
+          "classes": "nav-link mobile-navigation-link",
+          "isActive": "active"
+        },
+        "span": {
+          "classes": "nav-item-sub-opener",
+          "isNotInBreadcrumb": "collapsed"
+        }
+
+      }
+    },
     "Sidebar": {
       "styling": {
         "ul": {
@@ -142,11 +195,10 @@
         },
         "a": {
           "classes": "nav-link",
-          "isAactive": "active"
+          "isActive": "active"
         },
         "span": {
           "classes": "nav-item-sub-opener",
-          "isInBreadcrumb": "",
           "isNotInBreadcrumb": "collapsed"
         }
       }

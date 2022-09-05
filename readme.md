@@ -159,7 +159,6 @@ See also [folder and namespace docs](./docs/folders-and-namespaces.md)
 
 ## Todo 2dm/2tl
 
-1. Add `Default` etc. styles/layouts to json so it's not fallbacked
 1. Breadcrumb revealer doesn't work as expected, only hides "Home"
 1. Styling of footer menu
 1. configurable settings don't work at all ATM

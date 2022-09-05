@@ -99,25 +99,23 @@ public class ThemeInfo : ITheme
                     }
                 }
             },
-            Languages = new()
-            {
-                { Constants.Default, LanguagesSettings.Defaults }
-            },
-            Breadcrumbs = new()
-            {
-                { Constants.Default, BreadcrumbSettings.Defaults },
-            },
-            Menus = new()
-            {
-                { Constants.Default, MenuConfig.Defaults },
-            },
-            MenuDesigns = new()
-            {
-                // The Default design, if not overridden in the JSON
-                { Constants.Default, MenuDesignSettings.Defaults },
-                // The Design configuration for Mobile menus, if not overridden by the JSON
-                { Constants.DesignMobile, MenuDesignSettings.MobileDefaults }
-            }
+            // All other settings shouldn't normally be activated here, but be configured in the JSON
+            //Languages = new()
+            //{
+            //    { Constants.Default, LanguagesSettings.Defaults }
+            //},
+            //Breadcrumbs = new()
+            //{
+            //    { Constants.Default, BreadcrumbSettings.Defaults },
+            //},
+            //Menus = new()
+            //{
+            //    { Constants.Default, MenuConfig.Defaults },
+            //},
+            //MenuDesigns = new()
+            //{
+            //    { Constants.Default, MenuDesignSettings.Defaults },
+            //}
         }
     };
 
