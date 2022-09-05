@@ -1,13 +1,32 @@
-﻿using ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
+using Oqtane.Models;
+using Oqtane.Themes;
+using ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettings;
 
+// Important: This must match the namespace of the layouts
+// otherwise the Oqtane registration won't work as expected. 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 
 /// <summary>
-/// Should contain default values for all the scenarios where configurations are missing or not necessary
-/// Note that this class is a singleton, so it will be re-used by everything.
+/// This class / file serves a few purposes:
+/// 
+/// 1. The theme-info for registration in Oqtane - because it inherits <see cref="ITheme"/>
+/// 2. Contains names / constants like `MenuMobile` used in the theme
+/// 2. Contains the default configurations/settings in the static `PackageDefaults`
 /// </summary>
-public static class ToShinePackageSettings
+public class ThemeInfo : ITheme
 {
+    /// <summary>
+    /// The standard information object for Oqtane to register the theme.
+    /// </summary>
+    public Theme Theme => new()
+    {
+        Name = "ToShine Bootstrap 5",
+        Version = "2.0.0",
+        ThemeSettingsType = typeof(Settings).AssemblyQualifiedName,
+        //ContainerSettingsType = "Oqtane.Theme.ToSic.ContainerSettings, Oqtane.Theme.ToSic.Oqtane",
+        PackageName = "ToSic.Oqt.Themes.ToShineBs5",
+    };
+
     #region Menu Names for this Theme, used in various Razor files
 
     public const string MenuMain = "Main";
@@ -24,13 +43,15 @@ public static class ToShinePackageSettings
 
     #endregion
 
+    #region Package Theme Defaults / Settings etc.
+
     /// <summary>
     /// Default settings used in this package.
     /// They are defined here and given as initial values to the ThemeSettingsService in the Default Razor file.
     /// 
     /// You don't need to do much here, because all settings should then come from the json file. 
     /// </summary>
-    public static ThemePackageSettings PackageDefaults = new() 
+    public static ThemePackageSettings PackageDefaults = new()
     {
         // The package name is important, as it's used to find assets etc.
         ThemePackageName = new ThemeInfo().Theme.PackageName,
@@ -75,7 +96,7 @@ public static class ToShinePackageSettings
             {
                 { Constants.Default, MenuConfig.Defaults },
                 {
-                    MenuMain, new()
+                    ThemeInfo.MenuMain, new()
                     {
                         Start = "*",
                         Depth = 1,
@@ -92,4 +113,5 @@ public static class ToShinePackageSettings
         }
     };
 
+    #endregion
 }

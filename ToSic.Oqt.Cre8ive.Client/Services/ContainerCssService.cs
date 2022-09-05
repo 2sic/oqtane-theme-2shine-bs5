@@ -13,10 +13,18 @@ public class ContainerCssService
 
     public string Classes(Module module)
     {
+        // Settings are null because something went really wrong
+        // ...or the theme is loading a different theme, which doesn't pass settings down the value chain
         if (Settings == null)
+        {
+            return "error-class-settings-not-set error-verify-the-theme-passes-settings";
+
             throw new Exception(
                 $"Can't provide {nameof(ContainerCssService)} as {nameof(Settings)} are missing. " +
                 $"Make sure you call {nameof(InitSettings)} first.");
+
+        }
+
         return string.Join(" ", new[]
         {
             module.IsPublished() ? "" : Settings.Css.ModuleUnpublished, // Info-Class if not published

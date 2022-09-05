@@ -1,4 +1,5 @@
-@inherits ThemeBase
+@namespace ToSic.Oqt.Themes.ToShineBs5.Client
+@inherits ToSic.Oqt.Themes.ToShineBs5.Client.ThemeBase
 @*
 File Purpose:       Core theme file and Default variation
 Recommendations:    -
@@ -6,7 +7,8 @@ Nice to know:
     - Inherits from ThemeBase, which has some additional logic to make things happen
     - The other theme files inherit from this, and will also use the HTML here
 *@
-@code {
+@code
+{
     public override string Name => "Default";
     protected override string BodyClasses => "floatwideheader";
     protected override bool ShowSidebarNavigation => false;
@@ -37,7 +39,7 @@ Nice to know:
                     </div>
                     <div class="col-12 col-lg-3 order-lg-1">
                         <div id="to-shine-nav-sub" class="d-none d-sm-block">
-                            <Menu ConfigName="@ToShinePackageSettings.MenuSidebar"></Menu>
+                            <Menu ConfigName="@ThemeInfo.MenuSidebar"></Menu>
                         </div>
                     </div>
                 </div>

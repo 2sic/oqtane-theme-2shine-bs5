@@ -16,6 +16,14 @@ public static class PageStateSecurityExtensions
     public static bool UserIsRegistered(this PageState pageState)
         => pageState.User != null && UserSecurity.IsAuthorized(pageState.User, RoleNames.Registered);
 
+    /// <summary>
+    /// Modules are treated as admin modules (and must use the the admin container) if they are marked as such, or come from the Oqtane ....Admin... type
+    /// </summary>
+    /// <param name="module"></param>
+    /// <returns></returns>
+    public static bool ForceAdminContainer(this Module module) 
+        => module.UseAdminContainer || module.ModuleType.Contains(".Admin.");
+
     public static bool IsPublished(this Module module)
         => /*UserSecurity.*/ContainsRole(module.Permissions, PermissionNames.View, RoleNames.Everyone);
 

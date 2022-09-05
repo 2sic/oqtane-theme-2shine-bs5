@@ -4,7 +4,7 @@ using Oqtane.Shared;
 using System.Threading.Tasks;
 using Constants = ToSic.Oqt.Cre8ive.Client.Constants;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts;
+namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 
 /// <summary>
 /// Base class for our themes. It's responsible for
@@ -48,11 +48,11 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     public override List<Resource> Resources => new()
     {
         // Bootstrap with our customizations (generated with Sass using Webpack)
-        new Resource { ResourceType = ResourceType.Stylesheet, Url = $"{ToShinePackageSettings.ThemePath}/theme.min.css" },
+        new Resource { ResourceType = ResourceType.Stylesheet, Url = $"{ThemeInfo.ThemePath}/theme.min.css" },
         // Bootstrap JS
-        new Resource { ResourceType = ResourceType.Script, Url = $"{ToShinePackageSettings.ThemePath}/bootstrap.bundle.min.js" },
+        new Resource { ResourceType = ResourceType.Script, Url = $"{ThemeInfo.ThemePath}/bootstrap.bundle.min.js" },
         // Theme JS for page classes, Up-button etc.
-        new Resource { ResourceType = ResourceType.Script, Url = $"{ToShinePackageSettings.ThemePath}/ambient.js" },
+        new Resource { ResourceType = ResourceType.Script, Url = $"{ThemeInfo.ThemePath}/ambient.js" },
     };
 
     // Panes of the layout
@@ -78,7 +78,7 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
-        ThemeSettingsService.InitSettings(ToShinePackageSettings.PackageDefaults);
+        ThemeSettingsService.InitSettings(ThemeInfo.PackageDefaults);
         _settings = ThemeSettingsService.CurrentSettings(Constants.Default);
         PageCss.InitSettings(Settings);
     }

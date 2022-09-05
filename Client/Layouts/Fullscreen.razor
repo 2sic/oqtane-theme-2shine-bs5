@@ -1,4 +1,5 @@
-﻿@inherits Default
+﻿@namespace ToSic.Oqt.Themes.ToShineBs5.Client
+@inherits Default
 @*
 File Purpose:       Theme which shows the content with *fullscreen width*
 Recommendations:    -
@@ -8,7 +9,8 @@ Nice to know:
       ...but most of it is just some body classes + show/hide certain menus
     - It needs the BuildRenderTree to basically just run the base class
 *@
-@code{
+@code
+{
     public override string Name => "Fullscreen";
     protected override string BodyClasses => "fullscreen";
     protected override bool ShowSidebarNavigation => false;

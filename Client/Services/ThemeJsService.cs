@@ -11,7 +11,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 public class ThemeJsService : JsModuleServiceBase
 {
 
-    public ThemeJsService(IJSRuntime jsRuntime) : base(jsRuntime, $"./{ToShinePackageSettings.ThemePath}/interop/page-control.js")
+    public ThemeJsService(IJSRuntime jsRuntime) : base(jsRuntime, $"./{ThemeInfo.ThemePath}/interop/page-control.js")
     {
     }
 
