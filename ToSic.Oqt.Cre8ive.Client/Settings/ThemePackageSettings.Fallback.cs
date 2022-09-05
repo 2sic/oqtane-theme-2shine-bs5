@@ -11,7 +11,12 @@ public partial class ThemePackageSettings
             {
                 { Constants.Default, ContainerDesignSettings.Defaults }
             },
-            Layout = LayoutSettings.Defaults,
+
+            Layouts = new()
+            {
+                { Constants.Default, LayoutSettings.Defaults }
+            },
+
             Languages = LanguagesSettings.Defaults,
             LanguageDesigns = new()
             {

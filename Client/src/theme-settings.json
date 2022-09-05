@@ -14,21 +14,35 @@
   "version": 0.01,
 
   // TODO:
-  "layout": {
-    "containerDesign": "Default",
-    "logo": "[Assets.Path]/logo.svg",
-    // very optional, just as example. will default to "default" otherwise
-    // "languageMenuDesign": "custom-lang-design",
-    "languageMenuShow": true,
-    "languageMenuShowMin":  2
+  // "layout": {
+  //   "containerDesign": "Default",
+  //   "logo": "[Assets.Path]/logo-broken.svg",
+  //   // very optional, just as example. will default to "Default" otherwise
+  //   // "languageMenuDesign": "custom-lang-design",
+  //   "languageMenuShow": true,
+  //   "languageMenuShowMin":  2
+  // },
+  "Layouts":{
+    "Default": {
+      // Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
+      "containerDesign": "=",
+      "logo": "[Assets.Path]/logo.svg",
+      // very optional, just as example. will default to "=" meaning "Default"
+      // "languageMenuDesign": "custom-lang-design",
+      "languageMenuShow": true,
+      "languageMenuShowMin":  2,
+      // "breadcrumbs": "=",         // Breadcrumb-config inherits name, so also "Default" - this is the default BTW
+    }
   },
-  // TODO:
-  "PageDesigns": {
-
+  "Breadcrumbs": {
+    "Default": {
+      "separator": "&nbsp;&rsaquo;&nbsp;",  // a non-breaking space + >> + non-breaking space
+      "revealer": "…"                       // this is an Ellipsis character
+    }
   },
 
   // TODO:
-  "languages": {
+  "Languages": {
     "hideOthers":  false,
     "list": {
       "en": {
@@ -41,7 +55,7 @@
     }
   },
   "LanguageDesigns": {
-    "default": {
+    "Default": {
       "styling": {
         "ul": { "classes": "to-shine-page-language" },
         "li": { "isActive": "active" }
@@ -56,7 +70,7 @@
     // }
   },
   "ContainerDesigns": {
-    "default": {
+    "Default": {
       "styling": {
         "div": {
           "classes": "to-shine-background-container py-4",
@@ -71,6 +85,11 @@
 
   // Menus contain the configuration for each menu. The names used are specified in the Razor files.
   "Menus": {
+    // The default configuration is taken if no other configuration is used
+    "Default": {
+      "start": "*",
+      "depth": 0,
+    },
     // Main is usually used for the default, top-level menu
     "Main": {
       "start": "*",

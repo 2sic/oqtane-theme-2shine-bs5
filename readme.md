@@ -150,22 +150,30 @@ so it doesn't change as you move files around. -->
 
 See also [folder and namespace docs](./docs/folders-and-namespaces.md)
 
+## Todo 2dm/2md
+
+1. Page seems to reload 2x at first - must find out why w/2md
+1. Must verify packaging etc. works
+1. Reconsider including the dist-folder, and maybe renaming it to wwwroot???
+1. Resources / multi-language of various parts
+
 ## Todo 2dm/2tl
 
+1. Add `Default` etc. styles/layouts to json so it's not fallbacked
+1. Breadcrumb revealer doesn't work as expected, only hides "Home"
 1. Styling of footer menu
-1. Resources / multi-language of various parts
 1. Theme definion should have names
-1. Breadcrum should allow `auto` to only show if it has depth
 1. configurable settings don't work at all ATM
 1. Nav features
   1. ability to exclude pages (especially on home level)
   2. verify that we need `toshine-mainnav-variations-...` classes
 1. In general, probably rename `to-shine-...` classes to `toshine-...`
+1. update bootstrap to 5.2
 
 ### Lower Priority
 
 1. ideally try to move out the js for the page to the project Cre8ive
-1. 
+1. find a way to allow layouts/designs/logos etc. to vary by site-id
 
 ---
 

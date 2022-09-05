@@ -84,12 +84,12 @@ public class ThemeSettingsService: IHasSettingsExceptions
         if (_layoutSettings != null) return (_layoutSettings, "cached");
         _layoutSettings = new LayoutSettings
         {
-            ContainerDesign = FindValue((settings, _) => settings.Layout?.ContainerDesign),
-            LanguageMenuShowMin = FindValue((settings, _) => settings.Layout?.LanguageMenuShowMin) ?? 0,
-            LanguageMenuShow = FindValue((settings, _) => settings.Layout?.LanguageMenuShow) ?? true,
-            LanguageMenuDesign = FindValue((settings, _) => settings.Layout?.LanguageMenuDesign),
-            Breadcrumbs = FindValue((settings, _) => settings.Layout?.Breadcrumbs),
-            Logo = ReplacePlaceholders(FindValue((s, _) => s.Layout?.Logo)!),
+            ContainerDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.ContainerDesign),
+            LanguageMenuShowMin = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuShowMin) ?? 0,
+            LanguageMenuShow = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuShow) ?? true,
+            LanguageMenuDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.LanguageMenuDesign),
+            Breadcrumbs = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.Breadcrumbs),
+            Logo = ReplacePlaceholders(FindValue((s, n) => s.Layouts?.GetInvariant(n)?.Logo)!),
         };
         return (_layoutSettings, "various");
     }

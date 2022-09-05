@@ -87,32 +87,26 @@ public class ThemeInfo : ITheme
             Source = "Preset",
 
             // Layout settings
-            Layout = new()
+            Layouts = new()
             {
-                Logo = "logo.svg",
-                LanguageMenuShow = true,
-                LanguageMenuShowMin = 2,
-                //Breadcrumbs = "Test",
+                {
+                    Constants.Default, new()
+                    {
+                        Logo = "logo.svg",
+                        LanguageMenuShow = true,
+                        LanguageMenuShowMin = 2,
+                        //Breadcrumbs = "Test",
+                    }
+                }
             },
             Languages = LanguagesSettings.Defaults,
             Breadcrumbs = new()
             {
                 { Constants.Default, BreadcrumbSettings.Defaults },
-                //{ "Test", new()
-                //{
-                //    Separator = " to ",
-                //}}
             },
             Menus = new()
             {
                 { Constants.Default, MenuConfig.Defaults },
-                {
-                    MenuMain, new()
-                    {
-                        Start = "*",
-                        Depth = 1,
-                    }
-                }
             },
             MenuDesigns = new()
             {

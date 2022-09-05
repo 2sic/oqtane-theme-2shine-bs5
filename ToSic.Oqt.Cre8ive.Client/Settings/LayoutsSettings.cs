@@ -12,19 +12,13 @@ public class LayoutsSettings
     /// </summary>
     public string Source { get; set; } = "Unknown";
 
-    public LayoutSettings? Layout { get; set; }
+    public NamedSettings<LayoutSettings> Layouts { get; set; } = new();
 
     public NamedSettings<ContainerDesignSettings> ContainerDesigns { get; set; } = new();
 
     public LanguagesSettings? Languages { get; set; }
 
     public NamedSettings<LanguageDesignSettings> LanguageDesigns { get; set; } = new();
-
-    // public NamedSettings<>
-
-    // TODO: 
-    // - then introduce something for nav-design
-    // - and something for container design
 
     public NamedSettings<BreadcrumbSettings> Breadcrumbs { get; set; } = new();
 
