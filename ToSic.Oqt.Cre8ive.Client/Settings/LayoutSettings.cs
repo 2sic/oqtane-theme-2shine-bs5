@@ -27,6 +27,8 @@ public class LayoutSettings
     /// </summary>
     public string? ContainerDesign { get; set; }
 
+    public bool? MagicContextInBody { get; set; }
+
     /// <summary>
     /// Map of menu names and alternate configurations to load instead
     /// </summary>
@@ -46,6 +48,7 @@ public class LayoutSettings
         LanguageMenuDesign = Constants.Inherit,
         LanguageMenuShow = true,
         LanguageMenuShowMin = 2,
+        MagicContextInBody = false,
         Breadcrumbs = Constants.Inherit,
         // The menus-map. Since this is the fallback, it must have at least an entry to not be skipped. 
         Menus = new()

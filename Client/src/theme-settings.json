@@ -25,6 +25,8 @@
       // "languageMenuDesign": "custom-lang-design",
       "languageMenuShow": true,
       "languageMenuShowMin": 2,
+      // Determins if we should use the body (or a div) for the magic context
+      "magicContextInBody": false,
       // "breadcrumbs": "=",         // Breadcrumb-config inherits name, so also "Default" - this is the default BTW
     },
     // Layout showing the submenu in the sidebar, so we don't need to show more items in the main menu
@@ -82,7 +84,7 @@
     // Sidebar is used in menus usually to the left of content
     "Sidebar": {
       "start": ".",
-      "level": 1,
+      "level": 2,
       "depth": 2,
       "design": "Sidebar"
     },

@@ -34,7 +34,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
 
     private SettingsFromJsonService Json { get; }
 
-    public CurrentSettings CurrentSettings(PageState pageState, string name, bool useWrapperForBodyClasses, string bodyClasses)
+    public CurrentSettings CurrentSettings(PageState pageState, string name, string bodyClasses)
     {
         // Get a cache-id for this specific configuration, which can vary by page
         var originalNameForCache = (name ?? "prevent-error") + pageState.Page.PageId;
@@ -72,9 +72,9 @@ public class ThemeSettingsService: IHasSettingsExceptions
             return found is { Styling: { } } && found.Styling.Any() ? found : null;
         }, containerDesignNames);
 
-        var current = new CurrentSettings(name, this, useWrapperForBodyClasses, layout, breadcrumb, PackageSettings.Page, languages.Languages, langDesign.Result, containerDesign.Result);
+        var current = new CurrentSettings(name, this, layout, breadcrumb, PackageSettings.Page, languages.Languages, langDesign.Result, containerDesign.Result);
         PageStyles.InitSettings(current);
-        current.BodyClasses = PageStyles.BodyClasses(pageState, bodyClasses);
+        current.MagicContext = PageStyles.BodyClasses(pageState, bodyClasses);
         current.DebugSources.Add("Name", configName.Source);
         current.DebugSources.Add(nameof(current.Languages), languages.Source);
         current.DebugSources.Add(nameof(current.LanguageDesign), langDesign.Source);
@@ -115,6 +115,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
                 var menu = set.Layouts?.GetInvariant(n)?.Menus;
                 return menu != null && menu.Any() ? menu : null;
             }, names)!,
+            MagicContextInBody = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.MagicContextInBody, names) ?? false,
         };
         _layoutSettingsCache[name] = layoutSettings;
         return (layoutSettings, "various");

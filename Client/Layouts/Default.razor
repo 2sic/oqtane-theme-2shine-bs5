@@ -14,13 +14,10 @@ Nice to know:
     protected override string BodyClasses => "floatwideheader";
     protected override bool ShowSidebarNavigation => false;
     protected override bool ShowBreadcrumb => true;
-
-    protected override bool MagicClassesInDiv { get; set; } = true;
-
 }
 @{ if (Settings == null) return; }
 <CascadingValue Value="Settings">
-<BodyDiv>
+<MagicContext>
     <Header></Header>
     <div id="to-shine-page-header-pane" class="container-xxl px-0 @PaneClasses(PaneNameHeader)">
         <Pane Name="@PaneNameHeader"/>
@@ -63,5 +60,5 @@ Nice to know:
     </main>
     @*<a @onclick="() => ApplyClassesToWrapper = !ApplyClassesToWrapper">toggle classestowrapper</a>*@
     <Footer></Footer>
-</BodyDiv>
+</MagicContext>
 </CascadingValue>

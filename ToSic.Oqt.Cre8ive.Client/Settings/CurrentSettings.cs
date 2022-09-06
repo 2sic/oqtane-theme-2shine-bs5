@@ -8,8 +8,6 @@ public class CurrentSettings
     public CurrentSettings(
         string name,
         ThemeSettingsService service,
-        bool useWrapperForClasses,
-        //string bodyClasses,
         LayoutSettings layout, 
         BreadcrumbSettings breadcrumb, 
         PageStyling page, 
@@ -23,15 +21,11 @@ public class CurrentSettings
         Languages = languages;
         LanguageDesign = languageDesign;
         ContainerDesign = containerDesign;
-        //BodyClasses = bodyClasses;
-        UseWrapperForClasses = useWrapperForClasses;
         Name = name;
         Service = service;
     }
 
-    public bool UseWrapperForClasses { get; set; }
-
-    public string BodyClasses { get; set; }
+    public string MagicContext { get; set; } = "";
 
     public string Name { get; }
 

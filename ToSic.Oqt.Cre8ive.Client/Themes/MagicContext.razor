@@ -1,0 +1,26 @@
+﻿@using ToSic.Oqt.Cre8ive.Client.Styling
+@inherits ToSic.Oqt.Cre8ive.Client.Controls.ComponentWithSettings
+@code {
+
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Inject] protected IThemeJsService? ThemeJs { get; set; }
+
+    private bool PutInBody => Settings.Layout.MagicContextInBody == true;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        if (PutInBody && ThemeJs != null) await ThemeJs.SetBodyClasses(Settings.MagicContext);
+    }
+
+}
+@if (PutInBody)
+{
+    @ChildContent
+}
+else
+{
+    <div id="@Settings.Page.MagicContextId" class="@Settings.MagicContext">
+        @ChildContent
+    </div>
+}

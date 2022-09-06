@@ -42,4 +42,6 @@ public class PageStyling
 
 
     public string PaneIsEmpty { get; set; } = $"{PanePrefixDefault}is-empty";
+
+    public string MagicContextId { get; set; } = BodyDivId;
 }

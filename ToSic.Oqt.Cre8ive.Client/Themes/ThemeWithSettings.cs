@@ -16,7 +16,6 @@ namespace ToSic.Oqt.Cre8ive.Client.Themes;
 /// </remarks>
 public abstract class ThemeWithSettings : Oqtane.Themes.ThemeBase
 {
-    private ThemeSettingsService _themeSettingsService;
 
     /// <summary>
     /// Name to show in the Theme-picker.
@@ -34,10 +33,6 @@ public abstract class ThemeWithSettings : Oqtane.Themes.ThemeBase
     /// Sets additional body classes - usually to activate CSS variations for this theme
     /// </summary>
     protected abstract string BodyClasses { get; }
-
-    protected virtual bool MagicClassesInDiv { get; set; } = false;
-
-    protected string WrapperClasses { get; private set; } = "";
 
     /// <summary>
     /// WIP
@@ -60,8 +55,8 @@ public abstract class ThemeWithSettings : Oqtane.Themes.ThemeBase
         get => _themeSettingsService;
         set => _themeSettingsService = value.InitSettings(ThemePackageSettings);
     }
+    private ThemeSettingsService _themeSettingsService;
 
-    [Inject] protected IThemeJsService ThemeJs { get; set; }
     private PageStyles PageStyles => ThemeSettingsService.PageStyles;
 
     /// <summary>
@@ -78,16 +73,7 @@ public abstract class ThemeWithSettings : Oqtane.Themes.ThemeBase
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
-        Settings = ThemeSettingsService.CurrentSettings(PageState, Layout, MagicClassesInDiv, BodyClasses);
-    }
-
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnAfterRenderAsync(firstRender);
-
-        if (!Settings.UseWrapperForClasses) 
-            await ThemeJs.SetBodyClasses(Settings.BodyClasses);
+        Settings = ThemeSettingsService.CurrentSettings(PageState, Layout, BodyClasses);
     }
 
     /// <summary>
