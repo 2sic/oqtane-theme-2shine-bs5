@@ -15,9 +15,12 @@ Nice to know:
     protected override bool ShowSidebarNavigation => false;
     protected override bool ShowBreadcrumb => true;
 }
+@* Stop here if Settings are not ready *@
 @{ if (Settings == null) return; }
-<CascadingValue Value="Settings">
-<MagicContext>
+
+@* Make sure Settings are forwarded to all child controls *@
+@* Ensure the Magic Context (page-id, is-home, etc.) is available on the <body> or on a wrapper <div> depending on the config *@
+<CascadingValue Value="Settings"><MagicContext>
     <Header></Header>
     <div id="to-shine-page-header-pane" class="container-xxl px-0 @PaneClasses(PaneNameHeader)">
         <Pane Name="@PaneNameHeader"/>
@@ -27,7 +30,7 @@ Nice to know:
         @* Show Breadcrumb if desired *@
         @if (ShowBreadcrumb)
         {
-            <Breadcrumb Settings="@Settings"></Breadcrumb>
+            <Breadcrumb></Breadcrumb>
         }
 
         @* If we show the Sidebar, then it must be side-by-side with the Content *@
@@ -36,7 +39,7 @@ Nice to know:
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-9 order-lg-2">
-                        <Pane Name="@PaneNameDefault" />
+                        <Pane Name="@PaneNameDefault"/>
                         <DynComponentList Components="@DynComponents" Group="@PaneNameDefault"></DynComponentList>
                     </div>
                     <div class="col-12 col-lg-3 order-lg-1">
@@ -49,16 +52,14 @@ Nice to know:
         }
         else
         {
-            <Pane Name="@PaneNameDefault" />
+            <Pane Name="@PaneNameDefault"/>
             <DynComponentList Components="DynComponents" Group="@PaneNameDefault"></DynComponentList>
         }
-        
+
         @* TODO: Delete as soon as support in Oqtane 3.2 is here *@
         <Pane Name="@PaneNames.Admin"/>
 
         <ToTop></ToTop>
     </main>
-    @*<a @onclick="() => ApplyClassesToWrapper = !ApplyClassesToWrapper">toggle classestowrapper</a>*@
     <Footer></Footer>
-</MagicContext>
-</CascadingValue>
+</MagicContext></CascadingValue>
