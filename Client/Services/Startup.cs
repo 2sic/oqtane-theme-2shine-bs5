@@ -14,5 +14,6 @@ public class Startup : Oqtane.Services.IClientStartup
         services.AddSingleton<ThemeSettingsServiceWIPToDo>();
 
         services.AddTransient<ThemeJsService>();
+        services.AddTransient<IThemeJsService, ThemeJsService>();
     }
 }

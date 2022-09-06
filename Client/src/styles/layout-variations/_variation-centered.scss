@@ -1,6 +1,8 @@
 @media all {
   /*layout centered*/
-  body.to-shine-variation-centered {
+  body.to-shine-variation-centered,
+  // when using wrapper instead of body
+  div#toshine-body.to-shine-variation-centered {
     header {
       background: transparent;
       .container {

@@ -1,7 +1,9 @@
 /*layout fullscreen*/
 @media all {
   html {
-    body.to-shine-variation-fullscreen {
+    body.to-shine-variation-fullscreen,
+    // when using wrapper instead of body
+    div#toshine-body.to-shine-variation-fullscreen {
       background-color: $white;
       form {
         #to-shine-page-header-pane {

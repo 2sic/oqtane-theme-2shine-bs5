@@ -21,6 +21,8 @@ public abstract class JsModuleServiceBase
     protected IJSRuntime JsRuntime { get; }
     protected string ModulePath { get; }
 
+    public async Task Log(params object[] args) => await JsRuntime.InvokeVoidAsync("console.log", args);
+
     /// <summary>
     /// The JsObjectReference to the real module.
     /// Will need to load it on first access, so it's async. 

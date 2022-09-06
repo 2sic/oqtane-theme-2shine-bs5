@@ -14,9 +14,13 @@ Nice to know:
     protected override string BodyClasses => "floatwideheader";
     protected override bool ShowSidebarNavigation => false;
     protected override bool ShowBreadcrumb => true;
+
+    protected override bool MagicClassesInDiv { get; set; } = true;
+
 }
-@{ if (Settings == null) return;}
+@{ if (Settings == null) return; }
 <CascadingValue Value="Settings">
+<BodyDiv>
     <Header></Header>
     <div id="to-shine-page-header-pane" class="container-xxl px-0 @PaneClasses(PaneNameHeader)">
         <Pane Name="@PaneNameHeader"/>
@@ -52,11 +56,12 @@ Nice to know:
             <DynComponentList Components="DynComponents" Group="@PaneNameDefault"></DynComponentList>
         }
         
-        @* The Admin pane is only needed to display the oqtane admin windows, the normal editor shouldn't actually use this *@
-        @*@if (ShowAdminPane)*@
+        @* TODO: Delete as soon as support in Oqtane 3.2 is here *@
         <Pane Name="@PaneNames.Admin"/>
 
         <ToTop></ToTop>
     </main>
+    @*<a @onclick="() => ApplyClassesToWrapper = !ApplyClassesToWrapper">toggle classestowrapper</a>*@
     <Footer></Footer>
+</BodyDiv>
 </CascadingValue>

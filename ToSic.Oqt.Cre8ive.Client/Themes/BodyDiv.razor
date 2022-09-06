@@ -1,0 +1,20 @@
+﻿@using ToSic.Oqt.Cre8ive.Client.Styling
+@inherits ToSic.Oqt.Cre8ive.Client.Controls.ComponentWithSettings
+@code {
+    //[Parameter] public bool Enabled { get; set; }
+    //[Parameter] public string? Tag { get; set; }
+    //[Parameter] public string? Classes { get; set; }
+    // [Parameter] public string[] Attributes { get; set; }
+    //[Parameter] public string? Id { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}
+@if (Settings.UseWrapperForClasses)
+{
+    <div id="@PageStyling.BodyDivId" class="@Settings.BodyClasses">
+        @ChildContent
+    </div>
+}
+else
+{
+    @ChildContent;
+}

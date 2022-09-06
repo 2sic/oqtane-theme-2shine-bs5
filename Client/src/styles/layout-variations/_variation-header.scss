@@ -1,6 +1,8 @@
 @media all {
   /* Logo left */ /* Logo right */
-  body.to-shine-mainnav-variation-left {
+  body.to-shine-mainnav-variation-left,
+  // when using wrapper instead of body
+  div#toshine-body.to-shine-mainnav-variation-left {
     nav#to-shine-page-navigation {
       .container {
         @include media-breakpoint-up(lg) {
@@ -10,7 +12,9 @@
     } 
   }
   /* header centered */
-  body.to-shine-mainnav-variation-center {
+  body.to-shine-mainnav-variation-center,
+  // when using wrapper instead of body
+  div#toshine-body.to-shine-mainnav-variation-center {
     nav#to-shine-page-navigation {
       > .container {
         @include media-breakpoint-up(lg) {

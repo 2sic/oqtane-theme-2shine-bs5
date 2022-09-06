@@ -7,23 +7,31 @@ public class CurrentSettings
 {
     public CurrentSettings(
         string name,
-        ThemeSettingsService service, 
+        ThemeSettingsService service,
+        bool useWrapperForClasses,
+        //string bodyClasses,
         LayoutSettings layout, 
         BreadcrumbSettings breadcrumb, 
-        PageStyling css, 
+        PageStyling page, 
         LanguagesSettings languages, 
         LanguageDesign languageDesign, 
         ContainerDesign containerDesign)
     {
         Layout = layout;
         Breadcrumb = breadcrumb;
-        Css = css;
+        Page = page;
         Languages = languages;
         LanguageDesign = languageDesign;
         ContainerDesign = containerDesign;
+        //BodyClasses = bodyClasses;
+        UseWrapperForClasses = useWrapperForClasses;
         Name = name;
         Service = service;
     }
+
+    public bool UseWrapperForClasses { get; set; }
+
+    public string BodyClasses { get; set; }
 
     public string Name { get; }
 
@@ -33,7 +41,7 @@ public class CurrentSettings
 
     public BreadcrumbSettings Breadcrumb { get; }
 
-    public PageStyling Css { get; }
+    public PageStyling Page { get; }
 
     public LanguagesSettings Languages { get; }
 

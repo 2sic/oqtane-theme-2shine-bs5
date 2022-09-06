@@ -13,6 +13,7 @@ public class PageStyling
     private const string PanePrefixDefault = "pane-";
     internal const string ModulePrefixDefault = "module-";
     private const string MenuLevelPrefixDefault = "nav-level-";
+    internal const string BodyDivId = "toshine-body";
 
     public const string SettingFromDefaults = "to-shine-warning-this-is-from-defaults-you-should-set-your-own-value";
 

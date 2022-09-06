@@ -7,9 +7,9 @@ namespace ToSic.Oqt.Cre8ive.Client.Styling;
 /// </summary>
 public class PageStyles: ServiceWithCurrentSettings
 {
-    public string BodyClasses(PageState pageState, string layoutVariation)
+    public string BodyClasses(PageState pageState, string additionalBodyClasses)
     {
-        var css = Settings?.Css;
+        var css = Settings?.Page;
 
         if (css == null) throw new ArgumentException("Can't continue without CSS specs", nameof(css));
 
@@ -30,7 +30,7 @@ public class PageStyles: ServiceWithCurrentSettings
         // do once lang is clear
 
         var bodyClasses = string.Join(" ", classes).Replace("  ", " ");
-        return Placeholders.Replace(bodyClasses, pageState, layoutVariation);
+        return Placeholders.Replace(bodyClasses, pageState, additionalBodyClasses);
     }
 
 
@@ -45,5 +45,5 @@ public class PageStyles: ServiceWithCurrentSettings
     }
 
     public string PaneIsEmptyClasses(PageState pageState, string paneName)
-        => PaneIsEmpty(pageState, paneName) ? Settings?.Css.PaneIsEmpty ?? "": "";
+        => PaneIsEmpty(pageState, paneName) ? Settings?.Page.PaneIsEmpty ?? "": "";
 }

@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
-using Oqtane.Models;
-using Oqtane.Shared;
-using System.Threading.Tasks;
-using Constants = ToSic.Oqt.Cre8ive.Client.Constants;
+﻿using Oqtane.Models;
+using ToSic.Oqt.Cre8ive.Client.Themes;
+using static Oqtane.Shared.ResourceType;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 
@@ -16,24 +14,8 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 /// - The base class must be abstract, so that Oqtane doesn't see it as a real them.
 /// - The config-properties must be abstract, so the inheriting files are forced to set them. 
 /// </remarks>
-public abstract class ThemeBase : Oqtane.Themes.ThemeBase
+public abstract class ThemeBase : ThemeWithSettings
 {
-    /// <summary>
-    /// Name to show in the Theme-picker.
-    /// Must be set by each inheriting theme. 
-    /// </summary>
-    public abstract override string Name { get; }
-    
-    /// <summary>
-    /// The layout name which is used to lookup configurations
-    /// </summary>
-    public abstract string Layout { get; }
-
-    /// <summary>
-    /// Sets additional body classes - usually to activate CSS variations for this theme
-    /// </summary>
-    protected abstract string BodyClasses { get; }
-
     /// <summary>
     /// Determines if we should show a Nav on the side of the layout in addition to top
     /// </summary>
@@ -44,67 +26,21 @@ public abstract class ThemeBase : Oqtane.Themes.ThemeBase
     /// </summary>
     protected abstract bool ShowBreadcrumb { get; }
 
-    /// <summary>
-    /// WIP
-    /// inspired by http://www.binaryintellect.net/articles/a92dea29-3218-4d1c-a132-9671b518d1f4.aspx
-    /// </summary>
-    protected List<DynComponent> DynComponents { get; } = new();
-
     public override List<Resource> Resources => new()
     {
-        // Bootstrap with our customizations (generated with Sass using Webpack)
-        new Resource { ResourceType = ResourceType.Stylesheet, Url = $"{ThemeInfo.ThemePath}/theme.min.css" },
-        // Bootstrap JS
-        new Resource { ResourceType = ResourceType.Script, Url = $"{ThemeInfo.ThemePath}/bootstrap.bundle.min.js" },
-        // Theme JS for page classes, Up-button etc.
-        new Resource { ResourceType = ResourceType.Script, Url = $"{ThemeInfo.ThemePath}/ambient.js" },
+        new Resource { ResourceType = Stylesheet, Url = $"{ThemeInfo.ThemePath}/theme.min.css" },       // Bootstrap generated with Sass/Webpack
+        new Resource { ResourceType = Script, Url = $"{ThemeInfo.ThemePath}/bootstrap.bundle.min.js" }, // Bootstrap JS
+        new Resource { ResourceType = Script, Url = $"{ThemeInfo.ThemePath}/ambient.js", },             // Ambient JS for page Up-button etc.
     };
 
-    // Panes of the layout
-    public const string PaneNameHeader = "Header";
-    public const string PaneNameDefault = "Default";
+    /// <summary>
+    /// The ThemePackageSettings must be set in this class, so the Settings initializer can pick it up.
+    /// </summary>
+    public override ThemePackageSettings ThemePackageSettings => ThemeInfo.ThemePackageDefaults;
 
     public override string Panes => string.Join(",",
         /*PaneNames.Admin,*/  // Note that we don't want the AdminPane to be in the default list, as people shouldn't add modules there
         PaneNameDefault,
         PaneNameHeader);
 
-    [Inject] protected ThemeSettingsService ThemeSettingsService { get; set; }
-    protected PageStyles PageCss { get; set; } = new();
-    [Inject] protected ThemeJsService ThemeJs { get; set; }
-
-    // Todo: Make configurable
-    public CurrentSettings Settings => _settings;
-    private CurrentSettings _settings;
-
-    // TODO: Optimize so it's real-time and doesn't need StateHasChanged()
-    //public bool ShowAdminPane { get; set; } = false;
-
-    protected override async Task OnParametersSetAsync()
-    {
-        await base.OnParametersSetAsync();
-        ThemeSettingsService.InitSettings(ThemeInfo.ThemePackageDefaults);
-        _settings = ThemeSettingsService.CurrentSettings(Layout);
-        PageCss.InitSettings(Settings);
-    }
-
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnAfterRenderAsync(firstRender);
-
-        // The admin pane is only necessary for edge cases and initial demo-content of Oqtane
-        // So we should try to keep it hidden, but we must show it if something is inside it.
-        //var showAdminPaneBefore = ShowAdminPane;
-        //ShowAdminPane = !PageCss.PaneIsEmpty(PageState, PaneNames.Admin);
-        //if (showAdminPaneBefore != ShowAdminPane) StateHasChanged();
-
-        var bodyClasses = PageCss.BodyClasses(PageState, BodyClasses);
-        await ThemeJs.SetBodyClasses(bodyClasses);
-    }
-
-    /// <summary>
-    /// Special classes for divs surrounding panes pane, especially to indicate when it's empty
-    /// </summary>
-    public string PaneClasses(string paneName) => PageCss.PaneIsEmptyClasses(PageState, paneName);
 }

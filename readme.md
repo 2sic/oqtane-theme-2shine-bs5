@@ -1,6 +1,32 @@
 <img width="100%" src="https://raw.githubusercontent.com/2sic/oqt-theme-2shine-bs5/main/docs/assets/logo.svg">
 
-# Oqtane Skin/Theme with Bootstrap5
+# Oqtane Theme with Bootstrap5 for Designers
+
+> The only Oqtane Theme for Professional Designers
+
+This theme is made especially for professional designers who wish to create awesome looking solutions (especially web sites) using Oqtane. 
+
+## Magic for Designers
+
+It has a bunch of magic baked into it, allowing for fast iterative design. 
+Here's what makes it special:
+
+1. Everything is Bootstrap 5 Best-Practices and most of the work is done with SASS, Webpack and Typescript
+1. This means **95%** of all design work can be done _without_ recompiling the theme or restarting Oqtane
+1. You can do all the work using VS Code (and without the heavy Visual Studio)
+1. You can live-develop a theme and auto-deploy the builds to an Oqtane in your network - without restart
+1. Almost all the logic is well hidden in a separate layer, staying out of your way. 
+
+Why is this important?
+
+1. Normal Oqtane Theme Development requires you to restart Oqtane after every change.  
+   This is very tiresome if you are tweaking the design step-by-step.
+1. Normal Oqtane Themes have a lot of code mixed into the Razor files.  
+   This makes it scary for designers, and also makes it hard to update to an improved logic-stack without extensive manual work. 
+1. Normal Oqtane Themes require a lot of code to get the Menus right.  
+   This is error-prone and most designers will never get it right. 
+
+
 
 # Layouts
 

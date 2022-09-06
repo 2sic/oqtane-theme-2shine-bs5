@@ -1,5 +1,7 @@
 @media all {
-  body.to-shine-variation-default {
+  body.to-shine-variation-default,
+  // when using wrapper instead of body
+  div#toshine-body.to-shine-variation-default {
     #to-shine-page-header-pane {
       margin-top:0px;
       @include media-breakpoint-up(xxl) {

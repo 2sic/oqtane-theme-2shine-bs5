@@ -1,4 +1,6 @@
-﻿using static ToSic.Oqt.Cre8ive.Client.Settings.ThemePackageSettings;
+﻿using Oqtane.UI;
+using ToSic.Oqt.Cre8ive.Client.Styling;
+using static ToSic.Oqt.Cre8ive.Client.Settings.ThemePackageSettings;
 
 namespace ToSic.Oqt.Cre8ive.Client.Services;
 
@@ -15,22 +17,27 @@ public class ThemeSettingsService: IHasSettingsExceptions
         Json = jsonService;
     }
 
-    public void InitSettings(ThemePackageSettings themeSettings)
+    public ThemeSettingsService InitSettings(ThemePackageSettings themeSettings)
     {
-        Settings = themeSettings;
+        PackageSettings = themeSettings;
+        return this;
     }
 
-    private ThemePackageSettings Settings
+    public PageStyles PageStyles { get; } = new();
+
+
+    private ThemePackageSettings PackageSettings
     {
-        get => _settings ?? throw new ArgumentException($"The {nameof(ThemeSettingsService)} can't work without first calling {nameof(InitSettings)}", nameof(Settings));
+        get => _settings ?? throw new ArgumentException($"The {nameof(ThemeSettingsService)} can't work without first calling {nameof(InitSettings)}", nameof(PackageSettings));
         set => _settings = value;
     }
 
     private SettingsFromJsonService Json { get; }
 
-    public CurrentSettings CurrentSettings(string name)
+    public CurrentSettings CurrentSettings(PageState pageState, string name, bool useWrapperForBodyClasses, string bodyClasses)
     {
-        var originalNameForCache = name ?? "prevent-error";
+        // Get a cache-id for this specific configuration, which can vary by page
+        var originalNameForCache = (name ?? "prevent-error") + pageState.Page.PageId;
         var cached = _currentSettingsCache.FindInvariant(originalNameForCache);
         if (cached != null) return cached;
 
@@ -65,7 +72,9 @@ public class ThemeSettingsService: IHasSettingsExceptions
             return found is { Styling: { } } && found.Styling.Any() ? found : null;
         }, containerDesignNames);
 
-        var current = new CurrentSettings(name, this, layout, breadcrumb, Settings.Page, languages.Languages, langDesign.Result, containerDesign.Result);
+        var current = new CurrentSettings(name, this, useWrapperForBodyClasses, layout, breadcrumb, PackageSettings.Page, languages.Languages, langDesign.Result, containerDesign.Result);
+        PageStyles.InitSettings(current);
+        current.BodyClasses = PageStyles.BodyClasses(pageState, bodyClasses);
         current.DebugSources.Add("Name", configName.Source);
         current.DebugSources.Add(nameof(current.Languages), languages.Source);
         current.DebugSources.Add(nameof(current.LanguageDesign), langDesign.Source);
@@ -162,7 +171,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
 
 
     private string ReplacePlaceholders(string value) => value
-        .Replace(Placeholders.AssetsPath, Settings.PathAssets);
+        .Replace(Placeholders.AssetsPath, PackageSettings.PathAssets);
 
 
     private TResult FindValue<TResult>(Func<CatalogOfSettings, string, TResult> findFunc, params string[]? names)
@@ -210,8 +219,8 @@ public class ThemeSettingsService: IHasSettingsExceptions
             var sources = new List<CatalogOfSettings?>
                 {
                     // in future also add the settings from the dialog as the first priority
-                    Json.LoadJson(Settings),
-                    Settings.Defaults,
+                    Json.LoadJson(PackageSettings),
+                    PackageSettings.Defaults,
                     Fallback.Defaults,
                 }
                 .Where(x => x != null)

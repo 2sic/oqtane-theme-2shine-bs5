@@ -1,6 +1,8 @@
 @media all {
   /*layout floatwideheader*/
-  body.to-shine-variation-floatwideheader {
+  body.to-shine-variation-floatwideheader,
+  // when using wrapper instead of body
+  div#toshine-body.to-shine-variation-floatwideheader {
     &.page-2650 {
       main#to-shine-page-main {
         @include media-breakpoint-up(xl) {

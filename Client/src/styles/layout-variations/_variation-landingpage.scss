@@ -1,6 +1,8 @@
 @media all {
     /*layout full*/
-    body.to-shine-variation-landingpage {
+    body.to-shine-variation-landingpage,
+    // when using wrapper instead of body
+    div#toshine-body.to-shine-variation-landingpage {
       background:$white;
       
       nav#to-shine-page-navigation {
