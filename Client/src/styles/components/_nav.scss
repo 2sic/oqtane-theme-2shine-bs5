@@ -1,5 +1,5 @@
-﻿.#{$prefix}mainnav-variation-left {
-    ##{$prefix}page-navigation {
+﻿.#{$prefix}-mainnav-variation-left {
+    ##{$prefix}-page-navigation {
         .offcanvas-body {
             .align-items-end {
                 align-items: flex-start !important;
@@ -22,7 +22,7 @@
     }
 }
 
-##{$prefix}page-navigation {
+##{$prefix}-page-navigation {
     position: sticky;
     top: 0;
     z-index: 801;
@@ -139,7 +139,7 @@
         }
     }
 
-    .#{$prefix}login-icon {
+    .#{$prefix}-login-icon {
         width: 10px;
         margin-left: 15px;
         margin-top: -2px;
@@ -181,7 +181,7 @@
     }
 }
 
-##{$prefix}nav-sub {
+##{$prefix}-nav-sub {
     .nav-item-sub-opener {
         position: absolute;
         top: 0px;

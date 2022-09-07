@@ -1,5 +1,5 @@
 ﻿@media all {
-    footer##{$prefix}page-footer {
+    footer##{$prefix}-page-footer {
 
         ul {
             margin: 0;
@@ -28,7 +28,7 @@
                 text-underline-offset: 3px;
             }
 
-            &.#{$prefix}login-invisible {
+            &.#{$prefix}-login-invisible {
                 font-size: 12px;
                 color: transparent;
                 cursor: pointer;
@@ -39,11 +39,11 @@
             }
         }
 
-        .#{$prefix}footer-address {
+        .#{$prefix}-footer-address {
 
         }
 
-        .#{$prefix}footer-imprint {
+        .#{$prefix}-footer-imprint {
           
         }
     }

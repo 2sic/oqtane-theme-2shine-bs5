@@ -1,4 +1,6 @@
-﻿/* Open all PDF links in a new window */
+﻿const prefix = "to-shine";
+
+/* Open all PDF links in a new window */
 document.querySelectorAll('a').forEach((linkElem: Element, index) => {
 	if (linkElem.hasAttribute('href') && linkElem.getAttribute('href').endsWith('.pdf')) {
 		linkElem.setAttribute('target', '_blank');
@@ -31,12 +33,13 @@ const ToShineBody = document.querySelector("body");
 const observer = new MutationObserver(mutations => {
 
     //ToShineToTopButton
-    var toTopButton = document.getElementById("to-shine-to-top");
+    var toTopButton = document.getElementById(`${prefix}-to-top`);
     toTopButton.addEventListener("click", scrollTop);
     //ToShineToTopButton end
 
     //ToShineBreadcrumbTrigger
-    var breadcrumbTrigger = document.querySelector(".to-shine-page-breadcrumb-trigger");
+    var breadcrumbTrigger = document.querySelector(`.${prefix}-page-breadcrumb-trigger`);
+    // TODO: something is missing here for the breadcrumb-trigger
     //ToShineBreadcrumbTrigger end
     
 });
@@ -45,14 +48,14 @@ observer.observe(ToShineBody, {
     attributes: true
 });
 
-//To-shine-to-top button
+// to-top button
 document.addEventListener("scroll", toTopButtonVisibility);
 function toTopButtonVisibility() {
-    var toTopButton = document.getElementById("to-shine-to-top");
+    var toTopButton = document.getElementById(`${prefix}-to-top`);
     if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        toTopButton.classList.add("to-shine-top-visible");
+        toTopButton.classList.add(`${prefix}-top-visible`);
     } else {
-        toTopButton.classList.remove("to-shine-to-visible");
+        toTopButton.classList.remove(`${prefix}-to-visible`);
     }
 }
 
@@ -66,11 +69,11 @@ document.addEventListener('scroll', breadcrumbsAttributes);
 var counter = 0;
 
 function breadcrumbsAttributes() {
-    var header = document.getElementById("to-shine-page-navigation");
+    var header = document.getElementById(`${prefix}-page-navigation`);
     var headerHeight = header.offsetHeight -1;
 
 	/*Get header Pane height*/
-    var headerPane = document.getElementById("to-shine-page-header-pane");
+    var headerPane = document.getElementById(`${prefix}-page-header-pane`);
 
     var headerPaneStyle = getComputedStyle(headerPane);
     var headerPaneHeight = parseInt(headerPaneStyle.height);
@@ -78,7 +81,7 @@ function breadcrumbsAttributes() {
     var headerPaneMarginTop = parseInt(headerPaneStyle.marginBottom);
     var totalHeight = headerPaneMarginBottom + headerPaneMarginTop + headerPaneHeight;
     
-    var breadcrumbs = document.querySelector(".to-shine-page-breadcrumb");
+    var breadcrumbs = document.querySelector(`.${prefix}-page-breadcrumb`);
 
     (breadcrumbs as HTMLElement).style["top"] = headerHeight + "px";
     
@@ -93,17 +96,19 @@ function breadcrumbsAttributes() {
     }
 }
 
-document.querySelector('.to-shine-page-breadcrumb-trigger').addEventListener('click', () => {
-    document.querySelector('.to-shine-page-breadcrumb').classList.toggle('to-shine-page-breadcrumb-shortened')
+document.querySelector(`.${prefix}-page-breadcrumb-trigger`).addEventListener('click', () => {
+    document.querySelector(`.${prefix}-page-breadcrumb`).classList.toggle(`${prefix}-page-breadcrumb-shortened`)
 })
 
-if (document.querySelector('.to-shine-page-breadcrumb') != null) {
+if (document.querySelector(`.${prefix}-page-breadcrumb`) != null) {
     //document.querySelector('.to-shine-page-breadcrumb span a:last-child').classList.add('last');
     //document.querySelector('.to-shine-page-breadcrumb span:last-child').classList.add('last');
     //if (document.querySelector('.to-shine-page-breadcrumb span .to-shine-page-breadcrumb-link:nth-last-child(3)') != null) {
     //    document.querySelector('.to-shine-page-breadcrumb span .to-shine-page-breadcrumb-link:nth-last-child(3)').classList.add('second-last');
     //}
-    document.querySelector('.to-shine-page-breadcrumb').classList.toggle('to-shine-page-breadcrumb-shortened', (document.querySelector('.to-shine-page-breadcrumb-link') != null || document.querySelectorAll('.to-shine-page-breadcrumb-link').length > 2))
+    document
+      .querySelector(`.${prefix}-page-breadcrumb`)
+      .classList.toggle(`${prefix}-page-breadcrumb-shortened`, (document.querySelector(`.${prefix}-page-breadcrumb-link`) != null || document.querySelectorAll(`.${prefix}-page-breadcrumb-link`).length > 2))
 }
 
 //Offcanvas close on link click

@@ -1,11 +1,11 @@
 @media all {
     /*layout full*/
-    body.#{$prefix}variation-landingpage,
+    body.#{$prefix}-variation-landingpage,
     // when using wrapper instead of body
-    div#cre8magic-root.#{$prefix}variation-landingpage {
+    div#cre8magic-root.#{$prefix}-variation-landingpage {
       background:$white;
       
-      nav##{$prefix}page-navigation {
+      nav##{$prefix}-page-navigation {
         background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(255,255,255,0) 100%);
         position: fixed;
         top:0;
@@ -13,12 +13,12 @@
         width:100%;
       }
      
-      footer##{$prefix}page-footer {
+      footer##{$prefix}-page-footer {
         background: rgb(0,131,201);
         background: linear-gradient(90deg, rgba(0,131,201,1) 0%, rgba(88,190,187,1) 100%);
       }
 
-      .#{$prefix}background-container {
+      .#{$prefix}-background-container {
         overflow: hidden;
       }
     }
