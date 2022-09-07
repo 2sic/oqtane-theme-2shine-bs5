@@ -1,10 +1,15 @@
 <img width="100%" src="https://raw.githubusercontent.com/2sic/oqt-theme-2shine-bs5/main/docs/assets/logo.svg">
 
-# Oqtane Theme with Bootstrap5 for Designers
+# Oqtane Theme Template for Designers
 
-> The only Oqtane Theme for Professional Designers
 
-This theme is made especially for professional designers who wish to create awesome looking solutions (especially web sites) using Oqtane. 
+> &nbsp;
+>
+> ## The only Oqtane Theme for passionate designers
+>
+> &nbsp;
+
+This theme template is made especially for passionate designers who wish to create awesome looking solutions using Oqtane. 
 
 ## Magic for Designers
 
@@ -19,16 +24,27 @@ Here's what makes it special:
 
 Why is this important?
 
-1. Normal Oqtane Theme Development requires you to restart Oqtane after every change.  
-   This is very tiresome if you are tweaking the design step-by-step.
-1. Normal Oqtane Themes have a lot of code mixed into the Razor files.  
-   This makes it scary for designers, and also makes it hard to update to an improved logic-stack without extensive manual work. 
+1. Normal Oqtane Themes require you to recompile and restart Oqtane after every change.  
+   This is very tiresome when you are tweaking the design step-by-step.  
+1. Normal Oqtane Themes have a lot of logic and HTML mixed together the Razor files.  
+   This makes it difficult and scary for designers. 
+   It also makes it hard to update to an improved logic-stack without extensive manual work. 
 1. Normal Oqtane Themes require a lot of code to get the Menus right.  
    This is error-prone and most designers will never get it right. 
 
+## What's In the Package
 
+1. A Bootstrap5 best practices setup with SASS, Typescript and Webpack, optimized to run in both Visual Studio as well as VS Code
+1. Build-and-deploy automation
+  * to rename everything when you start, since your Theme requires a unique namespace
+  * to deploy to a local or remote Oqtane - both when building Bootstrap-only using Webpack, as well as when building the entire nuget package
+1. Ca. 20 lightweight components containing only minimal HTML to create just about any design you want - usually without recompiling Razor
+1. A menu engine allowing you to define what is shown in what menu, allowing designers to quickly modify visible menu structures in header, sidebar, footer, mobile etc.
+1. MagicClasses (TODO:)
+1. A configuration system which 
+...
 
-# Layouts
+## Layouts
 
 1. Default - Floating content on background, full-width sticky-header
 2. Fullscreen - Modules can use the full width to set backgrounds
@@ -36,64 +52,30 @@ Why is this important?
 4. Centered-Submenu - Paged/floating content with submenu to the left
 5. Float-WideHeader - Paged/floating content with wide header
 
+## Installation
+
+👉🏾 See [Getting Started](./docs/gettings-started.md)
+
+## Build and deployment
+
+👉🏾 See [Build and Deploy](./docs/build-and-deploy.md)
+
+## Configure a Theme and Styling in JSON
+
+TODO:
+
+## Get the Most out of Bootstrap5 with SASS
+
+TODO:
+
+
+
 # WIP
 
 1. Oqtane is still missing the DNN concept of each page having a specific language.
    That means the 2shine language classes and the page-root-neutral class are still missing.
    Those will be added as soon as Oqtane implments that feature.
 
-# Prerequisites
-
-1. Install git from https://git-scm.com/downloads/ or use your favorite git client
-
-2. Install node.js from https://nodejs.org/en/download/
-   - we recommend using the current LTS release
-   - we tested this skin with v16.15.1 and later, earlier version might work to
-
-# Installation
-
-1.  Create a folder for your project open the terminal and navigate to this folder.
-
-2.  Clone the 2shine Oqt github repository by running:
-
-        git clone https://github.com/2sic/oqt-theme-2shine-bs5.git
-
-3.  To use the theme you have to rename some variables and files. To rename everything at once you can just navigate to **oqt-theme-2shine-bs5/Client/** and run:
-   
-        npm install && npm run rename-project
-
-4.  Navigate to the **Client/build-theme.json** file:
-
-    1. The **OqtaneRoot** setting determins where the theme is delivered to (Please change this to the path of your oqtane installation)
-    2. You can also take a look at the other settings
-
-5.  To build the project run:
-
-        npm run build
-
-6.  Log in and Navigate to **Theme Management** if **2shine Oqtane theme with Bootstrap 5** isn't listed you may need to restart the application
-
-7.  Apply the theme to the whole site:
-
-    1. Navigate to **Site Settings**
-    2. Change the **Default Theme** setting to the layout you wan't to apply
-    3. Change the **Default Container** setting to the available container
-
-8.  Apply the theme to a single page:
-    1. Navigate to **Page Management**
-    2. Choose the page you want to apply a layout to and click on **Edit**
-    3. Under **Appearance** chage the **Theme** setting to the layout you want to apply
-    4. Change the **Default Container** setting to the 2shine container
-
-# Documentation
-
-## Build and deployment
-
-There are some different node commands which help you to build and deploy the theme to oqtane:
-
-      1. build          -> This will build the theme and deploy it to the designated location (in the `build-theme.json` file)
-      3. dotnet-watch   -> This will watch all of the .razor files and build and deploy the theme everytime it detects changes
-      2. webpack-watch  -> This will run webpack and watch the .scss and .ts files for changes and build and deliver them
 
 ## Features 
 
@@ -178,7 +160,6 @@ See also [folder and namespace docs](./docs/folders-and-namespaces.md)
 
 ## Todo 2dm/2md
 
-1. Page seems to reload 2x at first - must find out why w/2md
 1. Must verify packaging etc. works
 1. Reconsider including the dist-folder, and maybe renaming it to wwwroot???
 1. Resources / multi-language of various parts
@@ -203,8 +184,8 @@ See also [folder and namespace docs](./docs/folders-and-namespaces.md)
 
 # History
 
-1. Version 5.0.0 created ca. July 2022 but still WIP
-1. Version 5.2.0 with major updates (docs not in sync yet) August 2022
+1. Version 1.0.0 created ca. July 2022 but still WIP
+1. Version 2.0.0 with major updates (docs not in sync yet) August 2022
 
 ---
 
