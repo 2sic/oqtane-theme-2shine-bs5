@@ -2,14 +2,11 @@
 
 # Oqtane Theme Template for Designers
 
-
 > &nbsp;
 >
 > ## The only Oqtane Theme for passionate designers
 >
-> &nbsp;
-
-This theme template is made especially for passionate designers who wish to create awesome looking solutions using Oqtane. 
+> This theme template is made especially for passionate designers who wish to create awesome looking solutions using Oqtane. 
 
 ## Magic for Designers
 
@@ -34,40 +31,39 @@ Why is this important?
 
 ## What's In the Package
 
-1. A Bootstrap5 best practices setup with SASS, Typescript and Webpack, optimized to run in both Visual Studio as well as VS Code
+1. A Bootstrap5 best practices setup
 1. Build-and-deploy automation
-  * to rename everything when you start, since your Theme requires a unique namespace
-  * to deploy to a local or remote Oqtane - both when building Bootstrap-only using Webpack, as well as when building the entire nuget package
-1. Ca. 20 lightweight components containing only minimal HTML to create just about any design you want - usually without recompiling Razor
-1. A menu engine allowing you to define what is shown in what menu, allowing designers to quickly modify visible menu structures in header, sidebar, footer, mobile etc.
+1. Ca. 20 lightweight Razor components
+1. Ca. 5 prepared layouts (full-width, centered, etc.)
+1. MagicMenu Engine 
 1. MagicClasses (TODO:)
-1. A configuration system which 
-...
+1. MagicConfiguration
+1. ...
 
-## Layouts
+👉🏾 Read more in [What's Inside the Package](./docs/whats-inside.md)
 
-1. Default - Floating content on background, full-width sticky-header
-2. Fullscreen - Modules can use the full width to set backgrounds
-3. Centered - Content and Menu are max-width, background to right and left
-4. Centered-Submenu - Paged/floating content with submenu to the left
-5. Float-WideHeader - Paged/floating content with wide header
+## Learn More
 
-## Installation
+This setup is meant to make you super efficient and productive. 
+But to benefit from them, you need to understand how all the parts tie together.
 
-👉🏾 See [Getting Started](./docs/gettings-started.md)
+* Installation, Build, Deploy
+    1. [Getting Started](./docs/gettings-started.md)
+    1. [Build and Deploy](./docs/build-and-deploy.md)
 
-## Build and deployment
+* Configure a Theme and Styling in JSON
 
-👉🏾 See [Build and Deploy](./docs/build-and-deploy.md)
+* Get the Most out of Bootstrap5 with SASS
 
-## Configure a Theme and Styling in JSON
+* [Panes](./docs/panes.md)
 
-TODO:
+* [MagicClasses](./docs/magic-classes.md)
 
-## Get the Most out of Bootstrap5 with SASS
+* MagicMenu
 
-TODO:
+* MagicSettings
 
+* MagicLanguages
 
 
 # WIP
@@ -77,20 +73,6 @@ TODO:
    Those will be added as soon as Oqtane implments that feature.
 
 
-## Features 
-
-### 1. Magic classes
-
-There are numerous classes added to the different elements to determine some different stylings and they can be used for your own customizations.
-
-1. **Body** 
-   
-   Here you can find a list (important:     check the **WIP** section above):
-   https://2shine.org/page-classes
-
-2. **Headerpane**
-
-   A class will be added to the Headerpane if there aren't any modules populating it. That is used to style the Headerpane on different layouts. You can also use it to    make your own customizations.
 
 ## Controls
 
@@ -157,6 +139,13 @@ Because of this, we highly recommend to always have a line like `@namespace ToSi
 so it doesn't change as you move files around. -->
 
 See also [folder and namespace docs](./docs/folders-and-namespaces.md)
+
+## Todo 2dm
+
+1. Rename `Cre8ive` to `Cre8Magic`
+    1. namespace
+    1. base classes, services, etc. `Magic...`
+1. Feature to add `Custom` settings to a layout config - just a dictionary of objects?
 
 ## Todo 2dm/2md
 
