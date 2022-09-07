@@ -14,7 +14,7 @@ namespace ToSic.Oqt.Themes.ToShineBs5.Client;
 /// - The base class must be abstract, so that Oqtane doesn't see it as a real them.
 /// - The config-properties must be abstract, so the inheriting files are forced to set them. 
 /// </remarks>
-public abstract class ThemeBase : ThemeWithSettings
+public abstract class ThemeBase : MagicTheme
 {
     /// <summary>
     /// Determines if we should show a Nav on the side of the layout in addition to top

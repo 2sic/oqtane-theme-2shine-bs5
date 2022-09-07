@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Oqtane.Themes;
 
 namespace ToSic.Oqt.Cre8Magic.Client.Controls;
 
-public abstract class ControlWithSettings: ThemeControlBase, IControlWithSettings
+public abstract class MagicComponent: ComponentBase, IControlWithSettings
 {
     [CascadingParameter] public CurrentSettings Settings { get; set; }
 }

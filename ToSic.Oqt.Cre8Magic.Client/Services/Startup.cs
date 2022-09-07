@@ -15,7 +15,7 @@ public class Startup : Oqtane.Services.IClientStartup
         services.AddScoped<ThemeSettingsService>();
         services.AddTransient<LanguageService>();
 
-        services.AddTransient<MenuTreeService>();
+        //services.AddTransient<MenuTreeService>();
 
         //// Logic parts for Controls
         services.AddTransient<PageEditService>();

@@ -2,7 +2,7 @@
 
 namespace ToSic.Oqt.Cre8Magic.Client.Controls.Language;
 
-public abstract class LanguageMenuBase: ControlWithSettings
+public abstract class MagicLanguageMenu: MagicControl
 {
     [Inject] private LanguageService LanguageService { get; set; }
 

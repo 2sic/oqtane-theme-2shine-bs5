@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Oqtane.Models;
+﻿using Oqtane.Models;
 using Oqtane.UI;
 
 namespace ToSic.Oqt.Cre8Magic.Client.Services;
@@ -7,9 +6,9 @@ namespace ToSic.Oqt.Cre8Magic.Client.Services;
 /// <summary>
 /// Will create a MenuTree based on the current pages information and configuration
 /// </summary>
+// TODO: MAYBE NOT A SERVICE - DOESN'T NEED DI atm
 public class MenuTreeService: ServiceWithCurrentSettings
 {
-    [return: NotNull]
     public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages)
     {
         var settingsSvc = Settings!.Service;

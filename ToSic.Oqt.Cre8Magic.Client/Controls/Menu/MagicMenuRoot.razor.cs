@@ -5,7 +5,7 @@ namespace ToSic.Oqt.Cre8Magic.Client.Controls.Menu;
 /// <summary>
 /// Base class for Razor menus
 /// </summary>
-public abstract class MenuRootBase: MenuWithSettings, IMenuConfig
+public abstract class MagicMenuRoot: MagicMenuBase, IMenuConfig
 {
     /// <inheritdoc />
     [Parameter] public string? Id { get; set; }
@@ -30,7 +30,8 @@ public abstract class MenuRootBase: MenuWithSettings, IMenuConfig
 
     protected MenuTree? MenuTree { get; private set; }
 
-    [Inject] protected MenuTreeService? MenuTreeService { get; set; }
+    /*[Inject]*/
+    protected MenuTreeService? MenuTreeService { get; set; } = new();
 
     protected override async Task OnParametersSetAsync()
     {

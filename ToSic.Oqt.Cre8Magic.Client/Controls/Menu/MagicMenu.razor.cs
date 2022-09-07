@@ -5,7 +5,7 @@ namespace ToSic.Oqt.Cre8Magic.Client.Controls.Menu;
 /// <summary>
 /// Base class for any menu list
 /// </summary>
-public abstract class MenuListBase: Oqtane.Themes.Controls.MenuBase
+public abstract class MagicMenu: MagicMenuBase
 {
 #pragma warning disable CS8618
     [Parameter, EditorRequired] public MenuBranch MenuBranch { get; set; }

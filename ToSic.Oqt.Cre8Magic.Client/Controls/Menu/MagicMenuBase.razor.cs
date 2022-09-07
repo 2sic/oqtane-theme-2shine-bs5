@@ -2,7 +2,7 @@
 
 namespace ToSic.Oqt.Cre8Magic.Client.Controls.Menu;
 
-public class MenuWithSettings: Oqtane.Themes.Controls.MenuBase, IControlWithSettings
+public abstract class MagicMenuBase: Oqtane.Themes.Controls.MenuBase, IControlWithSettings
 {
     [CascadingParameter] public CurrentSettings Settings { get; set; }
 

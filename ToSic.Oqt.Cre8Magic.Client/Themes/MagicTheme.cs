@@ -14,7 +14,7 @@ namespace ToSic.Oqt.Cre8Magic.Client.Themes;
 /// - The base class must be abstract, so that Oqtane doesn't see it as a real them.
 /// - The config-properties must be abstract, so the inheriting files are forced to set them. 
 /// </remarks>
-public abstract class ThemeWithSettings : Oqtane.Themes.ThemeBase
+public abstract class MagicTheme : Oqtane.Themes.ThemeBase
 {
 
     /// <summary>

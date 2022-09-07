@@ -57,11 +57,11 @@ But to benefit from them, you need to understand how all the parts tie together.
 
 * [Panes](./docs/panes.md)
 
-* [MagicClasses](./docs/magic-classes.md)
+* [MagicClasses](./docs/magic-classes.md) & MagicContext
 
 * MagicMenu
 
-* MagicSettings
+* MagicSettings (todo, incl. passing around etc.)
 
 * MagicLanguages
 
