@@ -2,23 +2,23 @@
 
 namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
-public class MagicLanguageDesignSettings: SettingsWithStyling<StylingWithActive>
+public class MagicLanguageDesignSettings: NamedSettings<StylingWithActive>
 {
     internal string Classes(string tag, Language? lang = null)
     {
         if (!tag.HasValue()) return "";
-        if (Styling == null || !Styling.Any()) return "";
-        var styles = Styling.FindInvariant(tag);
+        if (/*Design == null ||*/ !this.Any()) return "";
+        var styles = this.FindInvariant(tag);
         if (styles is null) return "";
         return styles.Classes + " " + (lang?.IsActive ?? false ? styles.IsActive : styles.IsNotActive);
     }
 
     public static MagicLanguageDesignSettings Defaults = new()
     {
-        Styling = new()
-        {
+        //Design = new()
+        //{
             { "ul", new() { Classes = $"to-shine-page-language {PageStyling.SettingFromDefaults}" } },
             { "li", new() { IsActive = $"active {PageStyling.SettingFromDefaults}", IsNotActive = "" } }
-        }
+        //}
     };
 }

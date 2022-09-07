@@ -36,7 +36,7 @@ public class MagicMenuDesigner
 
     private List<MagicMenuDesignSetting?> ConfigsForTag(string tag) =>
         DesignSettingsList
-            .Select(c => c.Styling.FindInvariant(tag))
+            .Select(c => c.FindInvariant(tag))
             .Where(c => c is not null)
             .ToList();
 

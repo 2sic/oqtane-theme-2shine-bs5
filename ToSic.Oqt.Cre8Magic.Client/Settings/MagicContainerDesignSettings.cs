@@ -4,13 +4,13 @@ using static ToSic.Oqt.Cre8Magic.Client.Styling.PageStyling;
 
 namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
-public class MagicContainerDesignSettings : SettingsWithStyling<ContainerStyling>
+public class MagicContainerDesignSettings : NamedSettings<ContainerStyling>
 {
     internal string Classes(Module module, string tag)
     {
         //if (module == null) return "";
-        if (Styling == null || !Styling.Any()) return "";
-        var styles = Styling.FindInvariant(tag);
+        if (/*Design == null ||*/ !this.Any()) return "";
+        var styles = this.FindInvariant(tag);
         if (styles is null) return "";
         return string.Join(" ", new[]
         {
@@ -22,8 +22,8 @@ public class MagicContainerDesignSettings : SettingsWithStyling<ContainerStyling
 
     public static MagicContainerDesignSettings Defaults = new()
     {
-        Styling = new()
-        {
+        //Design = new()
+        //{
             {
                 "div", new()
                 {
@@ -32,6 +32,6 @@ public class MagicContainerDesignSettings : SettingsWithStyling<ContainerStyling
                     IsAdminModule = $"{LayoutPrefixDefault}admin-container  {SettingFromDefaults}"
                 }
             },
-        }
+        //}
     };
 }

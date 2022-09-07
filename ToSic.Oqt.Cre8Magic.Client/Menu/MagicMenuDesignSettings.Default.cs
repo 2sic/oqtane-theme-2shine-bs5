@@ -9,8 +9,8 @@ public partial class MagicMenuDesignSettings
     /// </summary>
     public static MagicMenuDesignSettings Defaults => new()
     {
-        Styling = new()
-        {
+        //Design = new()
+        //{
             {
                 "a", new()
                 {
@@ -44,6 +44,6 @@ public partial class MagicMenuDesignSettings
                     },
                 }
             }
-        },
+        //},
     };
 }

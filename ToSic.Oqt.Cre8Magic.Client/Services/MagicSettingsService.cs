@@ -62,14 +62,14 @@ public class MagicSettingsService: IHasSettingsExceptions
         var langDesign = FindInSources((s, n) =>
         {
             var found = s.LanguageDesigns?.GetInvariant(n);
-            return found is { Styling: { } } && found.Styling.Any() ? found : null;
+            return found is { } && found.Any() ? found : null;
         }, langDesignNames);
 
         var containerDesignNames = GetConfigNamesToCheck(layout.ContainerDesign, name);
         var containerDesign = FindInSources((s, n) =>
         {
             var found = s.ContainerDesigns?.GetInvariant(n);
-            return found is { Styling: { } } && found.Styling.Any() ? found : null;
+            return found is { } && found.Any() ? found : null;
         }, containerDesignNames);
 
         var current = new CurrentSettings(name, this, layout, breadcrumb, PackageSettings.Page, languages.Languages, langDesign.Result, containerDesign.Result);

@@ -9,8 +9,8 @@ public partial class MagicMenuDesignSettings
     /// </summary>
     public static MagicMenuDesignSettings MobileDefaults = new()
     {
-        Styling = new()
-        {
+        //Design = new()
+        //{
             {
                 "ul", new()
                 {
@@ -47,6 +47,6 @@ public partial class MagicMenuDesignSettings
                     IsNotInBreadcrumb = "collapsed",
                 }
             },
-        },
+        //},
     };
 }
