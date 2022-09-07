@@ -1,6 +1,6 @@
 ﻿using Oqtane.UI;
 
-namespace ToSic.Oqt.Cre8ive.Client.Styling;
+namespace ToSic.Oqt.Cre8Magic.Client.Styling;
 
 /// <summary>
 /// Special helper to figure out what classes should be applied to the page. 

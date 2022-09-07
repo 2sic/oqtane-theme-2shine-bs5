@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace ToSic.Oqt.Cre8ive.Client.Settings;
+namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
 public class Language
 {

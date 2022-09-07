@@ -6,7 +6,7 @@
 #pragma warning disable CS8600
 #pragma warning disable CS8602
 
-namespace ToSic.Oqt.Cre8ive.Client.OqtanePatches;
+namespace ToSic.Oqt.Cre8Magic.Client.OqtanePatches;
 
 public class MenuPatchCode
 {

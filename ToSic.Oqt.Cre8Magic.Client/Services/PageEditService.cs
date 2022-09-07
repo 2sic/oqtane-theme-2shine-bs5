@@ -2,7 +2,7 @@
 using Oqtane.Services;
 using Oqtane.UI;
 
-namespace ToSic.Oqt.Cre8ive.Client.Services;
+namespace ToSic.Oqt.Cre8Magic.Client.Services;
 
 /// <summary>
 /// Helper to remove the logic/code from the razor file.

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace ToSic.Oqt.Cre8ive.Client.Services;
+namespace ToSic.Oqt.Cre8Magic.Client.Services;
 
 public class Startup : Oqtane.Services.IClientStartup
 {

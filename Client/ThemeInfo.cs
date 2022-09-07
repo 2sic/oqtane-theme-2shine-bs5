@@ -1,6 +1,6 @@
 using Oqtane.Models;
 using Oqtane.Themes;
-using static ToSic.Oqt.Cre8ive.Client.Placeholders;
+using static ToSic.Oqt.Cre8Magic.Client.Placeholders;
 
 // Important: This must match the namespace of the layouts
 // otherwise the Oqtane registration won't work as expected. 

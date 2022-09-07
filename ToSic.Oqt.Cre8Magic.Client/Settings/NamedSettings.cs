@@ -1,6 +1,6 @@
 ﻿using static System.StringComparer;
 
-namespace ToSic.Oqt.Cre8ive.Client.Settings;
+namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
 /// <summary>
 /// Case insensitive dictionary managing a list of named settings

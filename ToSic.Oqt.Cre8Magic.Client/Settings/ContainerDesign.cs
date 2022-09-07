@@ -1,8 +1,8 @@
 ﻿using Oqtane.Models;
-using ToSic.Oqt.Cre8ive.Client.Styling;
-using static ToSic.Oqt.Cre8ive.Client.Styling.PageStyling;
+using ToSic.Oqt.Cre8Magic.Client.Styling;
+using static ToSic.Oqt.Cre8Magic.Client.Styling.PageStyling;
 
-namespace ToSic.Oqt.Cre8ive.Client.Settings;
+namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
 public class ContainerDesign : SettingsWithStyling<ContainerStyling>
 {

@@ -1,7 +1,7 @@
-﻿using ToSic.Oqt.Cre8ive.Client.Styling;
+﻿using ToSic.Oqt.Cre8Magic.Client.Styling;
 using static System.StringComparer;
 
-namespace ToSic.Oqt.Cre8ive.Client.Settings;
+namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
 public class CurrentSettings
 {

@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Oqtane.Models;
 using Oqtane.UI;
-using ToSic.Oqt.Cre8ive.Client.OqtanePatches;
+using ToSic.Oqt.Cre8Magic.Client.OqtanePatches;
 
-namespace ToSic.Oqt.Cre8ive.Client.Menu;
+namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 
 public class MenuTree : MenuBranch
 {

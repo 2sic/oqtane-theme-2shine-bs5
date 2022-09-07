@@ -1,7 +1,7 @@
 ﻿
-using ToSic.Oqt.Cre8ive.Client.Settings;
+using ToSic.Oqt.Cre8Magic.Client.Settings;
 
-namespace ToSic.Oqt.Cre8ive.Client.Menu;
+namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 
 /// <summary>
 /// Interface which describes what a menu config contains.

@@ -1,4 +1,4 @@
-﻿namespace ToSic.Oqt.Cre8ive.Client.Menu;
+﻿namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 using static Placeholders;
 
 public partial class MenuDesign

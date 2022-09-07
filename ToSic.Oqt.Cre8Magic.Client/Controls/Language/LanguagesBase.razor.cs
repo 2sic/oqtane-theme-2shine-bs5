@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace ToSic.Oqt.Cre8ive.Client.Controls.Language;
+namespace ToSic.Oqt.Cre8Magic.Client.Controls.Language;
 
 public abstract class LanguageMenuBase: ControlWithSettings
 {

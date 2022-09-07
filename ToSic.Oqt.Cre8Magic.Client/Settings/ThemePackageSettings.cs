@@ -1,6 +1,6 @@
-﻿using ToSic.Oqt.Cre8ive.Client.Styling;
+﻿using ToSic.Oqt.Cre8Magic.Client.Styling;
 
-namespace ToSic.Oqt.Cre8ive.Client.Settings;
+namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
 /// <summary>
 /// Settings for a Theme Package.

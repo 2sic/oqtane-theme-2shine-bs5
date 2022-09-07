@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace ToSic.Oqt.Cre8ive.Client.Menu;
+namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 
 /// <summary>
 /// Special helper to provide Css classes to menus

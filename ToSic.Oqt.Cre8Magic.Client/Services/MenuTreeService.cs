@@ -2,7 +2,7 @@
 using Oqtane.Models;
 using Oqtane.UI;
 
-namespace ToSic.Oqt.Cre8ive.Client.Services;
+namespace ToSic.Oqt.Cre8Magic.Client.Services;
 
 /// <summary>
 /// Will create a MenuTree based on the current pages information and configuration

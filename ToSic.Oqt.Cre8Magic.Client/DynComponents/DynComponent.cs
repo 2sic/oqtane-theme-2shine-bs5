@@ -1,4 +1,4 @@
-﻿namespace ToSic.Oqt.Cre8ive.Client.DynComponents;
+﻿namespace ToSic.Oqt.Cre8Magic.Client.DynComponents;
 
 public class DynComponent
 {

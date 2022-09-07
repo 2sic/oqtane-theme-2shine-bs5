@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
-using ToSic.Oqt.Cre8ive.Client.DynComponents;
-using ToSic.Oqt.Cre8ive.Client.Styling;
+using ToSic.Oqt.Cre8Magic.Client.DynComponents;
+using ToSic.Oqt.Cre8Magic.Client.Styling;
 
-namespace ToSic.Oqt.Cre8ive.Client.Themes;
+namespace ToSic.Oqt.Cre8Magic.Client.Themes;
 
 /// <summary>
 /// Base class for our themes. It's responsible for

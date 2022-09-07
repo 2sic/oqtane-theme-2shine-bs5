@@ -7,7 +7,7 @@ using Oqtane.UI;
 using static Microsoft.AspNetCore.Localization.CookieRequestCultureProvider;
 #pragma warning disable CS8602
 
-namespace ToSic.Oqt.Cre8ive.Client.Services;
+namespace ToSic.Oqt.Cre8Magic.Client.Services;
 
 /*
  * Todo:

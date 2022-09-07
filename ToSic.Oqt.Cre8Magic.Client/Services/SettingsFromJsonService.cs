@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace ToSic.Oqt.Cre8ive.Client.Services;
+namespace ToSic.Oqt.Cre8Magic.Client.Services;
 
 public class SettingsFromJsonService : IHasSettingsExceptions
 {

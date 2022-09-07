@@ -1,4 +1,4 @@
-﻿namespace ToSic.Oqt.Cre8ive.Client.Settings;
+﻿namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
 /// <summary>
 /// This is a catalog of all kinds of configurations.

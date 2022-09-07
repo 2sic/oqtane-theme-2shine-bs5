@@ -1,6 +1,6 @@
 ﻿using static System.StringComparison;
 
-namespace ToSic.Oqt.Cre8ive.Client;
+namespace ToSic.Oqt.Cre8Magic.Client;
 
 public static class StringExtensions
 {

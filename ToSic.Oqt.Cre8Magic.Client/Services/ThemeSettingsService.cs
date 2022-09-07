@@ -1,8 +1,8 @@
 ﻿using Oqtane.UI;
-using ToSic.Oqt.Cre8ive.Client.Styling;
-using static ToSic.Oqt.Cre8ive.Client.Settings.ThemePackageSettings;
+using ToSic.Oqt.Cre8Magic.Client.Styling;
+using static ToSic.Oqt.Cre8Magic.Client.Settings.ThemePackageSettings;
 
-namespace ToSic.Oqt.Cre8ive.Client.Services;
+namespace ToSic.Oqt.Cre8Magic.Client.Services;
 
 /// <summary>
 /// Service which consolidates settings made in the UI, in the JSON and falls back to coded defaults.

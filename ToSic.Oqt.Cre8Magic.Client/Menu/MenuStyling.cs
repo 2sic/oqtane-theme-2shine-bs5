@@ -1,6 +1,6 @@
-﻿using ToSic.Oqt.Cre8ive.Client.Styling;
+﻿using ToSic.Oqt.Cre8Magic.Client.Styling;
 
-namespace ToSic.Oqt.Cre8ive.Client.Menu;
+namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 
 public class MenuStyling: StylingWithActive
 {

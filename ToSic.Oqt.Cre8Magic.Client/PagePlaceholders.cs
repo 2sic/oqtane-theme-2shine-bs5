@@ -1,9 +1,9 @@
 ﻿using Oqtane.Models;
 using Oqtane.UI;
-using static ToSic.Oqt.Cre8ive.Client.Placeholders;
+using static ToSic.Oqt.Cre8Magic.Client.Placeholders;
 using static System.StringComparison;
 
-namespace ToSic.Oqt.Cre8ive.Client;
+namespace ToSic.Oqt.Cre8Magic.Client;
 
 internal class PagePlaceholders
 {

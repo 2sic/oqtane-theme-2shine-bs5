@@ -1,4 +1,4 @@
-﻿namespace ToSic.Oqt.Cre8ive.Client.Styling;
+﻿namespace ToSic.Oqt.Cre8Magic.Client.Styling;
 
 /// <summary>
 /// Anything that can define what classes it should have.

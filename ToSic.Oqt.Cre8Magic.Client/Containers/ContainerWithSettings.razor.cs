@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
-using ToSic.Oqt.Cre8ive.Client.Controls;
+using ToSic.Oqt.Cre8Magic.Client.Controls;
 
-namespace ToSic.Oqt.Cre8ive.Client.Containers;
+namespace ToSic.Oqt.Cre8Magic.Client.Containers;
 
 public class ContainerWithSettings: Oqtane.Themes.ContainerBase, IControlWithSettings
 {

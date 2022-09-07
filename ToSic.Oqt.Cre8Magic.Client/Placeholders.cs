@@ -1,6 +1,6 @@
 ﻿using Oqtane.UI;
 
-namespace ToSic.Oqt.Cre8ive.Client;
+namespace ToSic.Oqt.Cre8Magic.Client;
 
 public class Placeholders
 {

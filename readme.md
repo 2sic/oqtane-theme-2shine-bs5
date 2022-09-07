@@ -142,7 +142,7 @@ See also [folder and namespace docs](./docs/folders-and-namespaces.md)
 
 ## Todo 2dm
 
-1. Rename `Cre8ive` to `Cre8Magic`
+1. Rename `Cre8Magic` to `Cre8Magic`
     1. namespace
     1. base classes, services, etc. `Magic...`
 1. Feature to add `Custom` settings to a layout config - just a dictionary of objects?
@@ -165,7 +165,7 @@ See also [folder and namespace docs](./docs/folders-and-namespaces.md)
 
 ### Lower Priority
 
-1. ideally try to move out the js for the page to the project Cre8ive
+1. ideally try to move out the js for the page to the project Cre8Magic
 1. find a way to allow layouts/designs/logos etc. to vary by site-id
 1. more configurable settings on layout, like breadcrumb on/off etc.
 

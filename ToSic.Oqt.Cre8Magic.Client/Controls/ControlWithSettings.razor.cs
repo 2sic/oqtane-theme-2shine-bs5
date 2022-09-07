@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Oqtane.Themes;
 
-namespace ToSic.Oqt.Cre8ive.Client.Controls;
+namespace ToSic.Oqt.Cre8Magic.Client.Controls;
 
 public abstract class ControlWithSettings: ThemeControlBase, IControlWithSettings
 {

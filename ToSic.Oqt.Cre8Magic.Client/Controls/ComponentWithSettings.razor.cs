@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace ToSic.Oqt.Cre8ive.Client.Controls;
+namespace ToSic.Oqt.Cre8Magic.Client.Controls;
 
 public abstract class ComponentWithSettings: ComponentBase, IControlWithSettings
 {

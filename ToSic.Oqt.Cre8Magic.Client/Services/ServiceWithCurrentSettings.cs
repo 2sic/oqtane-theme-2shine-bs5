@@ -1,4 +1,4 @@
-﻿namespace ToSic.Oqt.Cre8ive.Client.Services;
+﻿namespace ToSic.Oqt.Cre8Magic.Client.Services;
 
 public abstract class ServiceWithCurrentSettings
 {

@@ -1,4 +1,4 @@
-﻿namespace ToSic.Oqt.Cre8ive.Client.Styling;
+﻿namespace ToSic.Oqt.Cre8Magic.Client.Styling;
 
 /// <summary>
 /// Constants and helpers related to creating Css and Css Classes.
