@@ -78,6 +78,7 @@ public class ThemeInfo : ITheme
             },
             PageIsHome = "page-is-home",
             PaneIsEmpty = "pane-is-empty",
+            MagicContextTagId = "toshine-body",
         },
 
         // Theme Settings Defaults, used to lookup things which the json file doesn't specify.
