@@ -22,16 +22,13 @@ public class MagicContainerDesignSettings : NamedSettings<MagicContainerDesign>
 
     public static MagicContainerDesignSettings Defaults = new()
     {
-        //Design = new()
-        //{
+        {
+            "div", new()
             {
-                "div", new()
-                {
-                    Classes = $"to-shine-page-language {SettingFromDefaults}",
-                    IsNotPublished = $"{ModulePrefixDefault}unpublished  {SettingFromDefaults}",
-                    IsAdminModule = $"{LayoutPrefixDefault}admin-container  {SettingFromDefaults}"
-                }
-            },
-        //}
+                Classes = $"{MainPrefix}page-language {SettingFromDefaults}",
+                IsNotPublished = $"{ModulePrefixDefault}unpublished  {SettingFromDefaults}",
+                IsAdminModule = $"{MainPrefix}admin-container  {SettingFromDefaults}"
+            }
+        },
     };
 }

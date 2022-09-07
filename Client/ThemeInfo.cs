@@ -1,6 +1,5 @@
 using Oqtane.Models;
 using Oqtane.Themes;
-using static ToSic.Oqt.Cre8Magic.Client.MagicPlaceholders;
 
 // Important: This must match the namespace of the layouts
 // otherwise the Oqtane registration won't work as expected. 
@@ -102,6 +101,13 @@ public class ThemeInfo : ITheme
             //    }
         //}
     };
+
+    #endregion
+
+    #region Constants for generating CSS Classes
+
+    // Note: not "to-shine-" because we need the "-" as separator in razor files it must be @ThemeInfo.ClassPrefix-something-else
+    public const string ClassPrefix = "to-shine"; 
 
     #endregion
 }

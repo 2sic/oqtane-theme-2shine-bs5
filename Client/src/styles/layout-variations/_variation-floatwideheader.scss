@@ -1,23 +1,23 @@
 @media all {
   /*layout floatwideheader*/
-  body.to-shine-variation-floatwideheader,
+  body.#{$prefix}variation-floatwideheader,
   // when using wrapper instead of body
-  div#cre8magic-root.to-shine-variation-floatwideheader {
+  div#cre8magic-root.#{$prefix}variation-floatwideheader {
     &.page-2650 {
-      main#to-shine-page-main {
+      main##{$prefix}page-main {
         @include media-breakpoint-up(xl) {
           margin-top: -10vh!important;
         }
       }
     }
-    main#to-shine-page-main {
+    main##{$prefix}page-main {
       @include media-breakpoint-up(xl) {
         margin-top: -5vh!important;
       }
     }
 
-    main#to-shine-page-main,
-    footer#to-shine-page-footer {
+    main##{$prefix}page-main,
+    footer##{$prefix}page-footer {
       background: $white;
       width: 100%;
       margin: 0 auto;
@@ -26,8 +26,8 @@
         max-width: 1320px;
       }
     }
-    nav#to-shine-page-navigation,
-    #to-shine-page-header-pane {
+    nav##{$prefix}page-navigation,
+    ##{$prefix}page-header-pane {
       max-width: 1600px;
       width: 100%;
       margin: 0 auto;
@@ -41,7 +41,7 @@
         }
       }
     }
-    footer#to-shine-page-footer {
+    footer##{$prefix}page-footer {
       background: rgb(0,131,201);
       background: linear-gradient(90deg, rgba(0,131,201,1) 0%, rgba(88,190,187,1) 100%);
       

@@ -22,7 +22,6 @@ public class MagicMenuSettings: IMagicMenuSettings
 
         Design = original.Design;
         DesignSettings = (original as MagicMenuSettings)?.DesignSettings;
-        //ThemeCss = original.ThemeCss;
     }
 
     public MagicMenuSettings Overrule(MagicMenuSettings? overrule)
@@ -41,7 +40,6 @@ public class MagicMenuSettings: IMagicMenuSettings
 
         if (overrule.Design != default) newMc.Design = overrule.Design;
         if (overrule.DesignSettings != default) newMc.DesignSettings = overrule.DesignSettings;
-        //if (overrule.ThemeCss != default) newMc.ThemeCss = overrule.ThemeCss;
         return newMc;
     }
 

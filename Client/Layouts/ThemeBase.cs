@@ -1,5 +1,4 @@
 ﻿using Oqtane.Models;
-using ToSic.Oqt.Cre8Magic.Client.Themes;
 using static Oqtane.Shared.ResourceType;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client;

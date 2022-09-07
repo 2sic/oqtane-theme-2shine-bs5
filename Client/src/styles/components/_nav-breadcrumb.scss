@@ -1,9 +1,9 @@
 ﻿/* ---------- Breadcrumbs ---------- */
-.page-is-home .to-shine-page-breadcrumb {
+.page-is-home .#{$prefix}page-breadcrumb {
     display: none;
 }
 
-.to-shine-page-breadcrumb {
+.#{$prefix}page-breadcrumb {
     position: sticky;
     top: 82px;
     z-index: 10;
@@ -13,7 +13,7 @@
         top: 58px;
     }
 
-    .to-shine-page-breadcrumb-link {
+    .#{$prefix}page-breadcrumb-link {
         color: $gray-600;
         white-space: pre-wrap;
         font-size: 14px;
@@ -23,7 +23,7 @@
             color: $primary;
         }
 
-        &.to-shine-page-breadcrumb-home {
+        &.#{$prefix}page-breadcrumb-home {
             display: inline;
 
             @include media-breakpoint-up(md) {
@@ -33,15 +33,15 @@
     }
 
     .last {
-        .to-shine-page-breadcrumb-link {
+        .#{$prefix}page-breadcrumb-link {
             color: $primary;
             display: inline-block;
         }
     }
 
-    &.to-shine-page-breadcrumb-shortened {
-        .to-shine-page-breadcrumb-link {
-            &.to-shine-page-breadcrumb-home {
+    &.#{$prefix}page-breadcrumb-shortened {
+        .#{$prefix}page-breadcrumb-link {
+            &.#{$prefix}page-breadcrumb-home {
                 display: none;
 
                 @include media-breakpoint-up(md) {
@@ -51,7 +51,7 @@
         }
     }
 
-    .to-shine-page-breadcrumb-trigger {
+    .#{$prefix}page-breadcrumb-trigger {
         cursor: pointer;
         display: inline;
 

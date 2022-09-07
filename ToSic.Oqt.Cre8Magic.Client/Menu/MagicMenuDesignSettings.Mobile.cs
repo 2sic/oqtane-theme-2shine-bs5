@@ -1,4 +1,6 @@
-﻿namespace ToSic.Oqt.Cre8Magic.Client.Menu;
+﻿using ToSic.Oqt.Cre8Magic.Client.Styling;
+
+namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 using static MagicPlaceholders;
 
 public partial class MagicMenuDesignSettings
@@ -9,44 +11,41 @@ public partial class MagicMenuDesignSettings
     /// </summary>
     public static MagicMenuDesignSettings MobileDefaults = new()
     {
-        //Design = new()
-        //{
+        {
+            "ul", new()
             {
-                "ul", new()
+                ByLevel = new()
                 {
-                    ByLevel = new()
-                    {
-                        { 0, "navbar-nav" },
-                        // todo: doc why collapse-PageId
-                        { ByLevelOtherKey, $"collapse to-shine-submenu-{MenuId}-{PageId}" },
-                    },
-                    IsInBreadcrumb = "show",
-                }
-            },
+                    { 0, "navbar-nav" },
+                    // todo: doc why collapse-PageId
+                    { ByLevelOtherKey, $"collapse {MagicPageDesign.MainPrefix}submenu-{MenuId}-{PageId}" },
+                },
+                IsInBreadcrumb = "show",
+            }
+        },
+        {
+            "li", new()
             {
-                "li", new()
-                {
-                    Classes = $"nav-item nav-{PageId} position-relative",
-                    HasChildren = "has-child",
-                    // todo: make sure that all the LIs or ULs in the breadcrumb don't have collapse ... or with "show"
-                    IsActive = "active",
-                    IsDisabled = "disabled",
-                }
-            },
+                Classes = $"nav-item nav-{PageId} position-relative",
+                HasChildren = "has-child",
+                // todo: make sure that all the LIs or ULs in the breadcrumb don't have collapse ... or with "show"
+                IsActive = "active",
+                IsDisabled = "disabled",
+            }
+        },
+        {
+            "a", new()
             {
-                "a", new()
-                {
-                    Classes = "nav-link mobile-navigation-link",
-                    IsActive = "active",
-                }
-            },
+                Classes = "nav-link mobile-navigation-link",
+                IsActive = "active",
+            }
+        },
+        {
+            "span", new()
             {
-                "span", new()
-                {
-                    Classes = "nav-item-sub-opener",
-                    IsNotInBreadcrumb = "collapsed",
-                }
-            },
-        //},
+                Classes = "nav-item-sub-opener",
+                IsNotInBreadcrumb = "collapsed",
+            }
+        },
     };
 }

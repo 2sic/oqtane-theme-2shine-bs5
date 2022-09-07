@@ -22,10 +22,10 @@ Nice to know:
 @* Ensure the Magic Context (page-id, is-home, etc.) is available on the <body> or on a wrapper <div> depending on the config *@
 <CascadingValue Value="Settings"><MagicContext>
     <Header></Header>
-    <div id="to-shine-page-header-pane" class="container-xxl px-0 @PaneClasses(PaneNameHeader)">
+        <div id="@ClassPrefix-page-header-pane" class="container-xxl px-0 @PaneClasses(PaneNameHeader)">
         <Pane Name="@PaneNameHeader"/>
     </div>
-    <main id="to-shine-page-main">
+        <main id="@ClassPrefix-page-main">
 
         @* Show Breadcrumb if desired *@
         @if (ShowBreadcrumb)
@@ -43,7 +43,7 @@ Nice to know:
                         <DynComponentList Components="@DynComponents" Group="@PaneNameDefault"></DynComponentList>
                     </div>
                     <div class="col-12 col-lg-3 order-lg-1">
-                        <div id="to-shine-nav-sub" class="d-none d-sm-block">
+                        <div id="@ClassPrefix-nav-sub" class="d-none d-sm-block">
                             <Menu ConfigName="@ThemeInfo.MenuSidebar"></Menu>
                         </div>
                     </div>

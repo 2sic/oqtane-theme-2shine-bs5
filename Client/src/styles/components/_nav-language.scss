@@ -1,6 +1,6 @@
 ﻿@media all {
-    .to-shine-mainnav-variation-left {
-        .to-shine-page-language {
+    .#{$prefix}mainnav-variation-left {
+        .#{$prefix}page-language {
             li {
                 &:first-child {
                     padding-left: 0;
@@ -9,7 +9,7 @@
         }
     }
 
-    .to-shine-page-language {
+    .#{$prefix}page-language {
         margin: 0;
         padding: 0;
         display: flex;

@@ -1,15 +1,15 @@
 @media all {
-  body.to-shine-variation-default,
+  body.#{$prefix}variation-default,
   // when using wrapper instead of body
-  div#cre8magic-root.to-shine-variation-default {
-    #to-shine-page-header-pane {
+  div#cre8magic-root.#{$prefix}variation-default {
+    ##{$prefix}page-header-pane {
       margin-top:0px;
       @include media-breakpoint-up(xxl) {
         margin-top:50px;
       }
     }
-    main#to-shine-page-main,
-    footer#to-shine-page-footer {
+    main##{$prefix}page-main,
+    footer##{$prefix}page-footer {
       width:100%;
       margin: 0 auto;
       background-color:$white;
@@ -17,7 +17,7 @@
         max-width: 1320px;
       }
     }
-    footer#to-shine-page-footer {
+    footer##{$prefix}page-footer {
       background: rgb(0,131,201);
       background: linear-gradient(90deg, rgba(0,131,201,1) 0%, rgba(88,190,187,1) 100%);
       

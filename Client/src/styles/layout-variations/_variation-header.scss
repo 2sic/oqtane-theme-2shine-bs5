@@ -1,9 +1,9 @@
 @media all {
   /* Logo left */ /* Logo right */
-  body.to-shine-mainnav-variation-left,
+  body.#{$prefix}mainnav-variation-left,
   // when using wrapper instead of body
-  div#cre8magic-root.to-shine-mainnav-variation-left {
-    nav#to-shine-page-navigation {
+  div#cre8magic-root.#{$prefix}mainnav-variation-left {
+    nav##{$prefix}page-navigation {
       .container {
         @include media-breakpoint-up(lg) {
           flex-direction: row-reverse;
@@ -12,10 +12,10 @@
     } 
   }
   /* header centered */
-  body.to-shine-mainnav-variation-center,
+  body.#{$prefix}mainnav-variation-center,
   // when using wrapper instead of body
-  div#cre8magic-root.to-shine-mainnav-variation-center {
-    nav#to-shine-page-navigation {
+  div#cre8magic-root.#{$prefix}mainnav-variation-center {
+    nav##{$prefix}page-navigation {
       > .container {
         @include media-breakpoint-up(lg) {
           flex-direction: column !important;

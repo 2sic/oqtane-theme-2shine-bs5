@@ -1,14 +1,14 @@
 ﻿@media all {
     .role-admin {
-      nav#to-shine-page-navigation,
-      #to-shine-page-header-pane {
+      nav##{$prefix}page-navigation,
+      ##{$prefix}page-header-pane {
         .pane-is-empty {
             min-height: 50px
         }
       }
     }
 
-    nav#to-shine-page-navigation {
+    nav##{$prefix}page-navigation {
         background: $tosic-header-background;
         position: sticky;
         top: 0;
@@ -37,7 +37,7 @@
         }
     }
 
-    .to-shine-login-icon {
+    .#{$prefix}login-icon {
         width: 10px;
         margin-left: 15px;
         margin-top: -2px;
