@@ -39,7 +39,6 @@
   "PageDesigns": {
     "Default": {
       "MagicClasses": [
-        "test-from-json",
         "page-[Page.Id]",
         "page-root-[Page.RootId]",
         "page-parent-[Page.ParentId]",
@@ -49,7 +48,7 @@
       ],
       "PageIsHome": "page-is-home",
       "PaneIsEmpty": "pane-is-empty",
-      "MagicContextTagId": "toshine-body",
+      "MagicContextTagId": "cre8magic-root",
     }
   },
   "Breadcrumbs": {
@@ -100,7 +99,8 @@
     // Sidebar is used in menus usually to the left of content
     "Sidebar": {
       "start": ".",
-      "level": 2,
+      "level": 1,
+      "children": true,
       "depth": 2,
       "design": "Sidebar"
     },
