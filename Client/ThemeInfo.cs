@@ -60,63 +60,46 @@ public class ThemeInfo : ITheme
         // The json file in the theme folder folder containing all kinds of settings etc.
         SettingsJsonFile = "theme-settings.json",
 
-        // TODO: MOVE TO JSON
-        // The Theme CSS Settings
-        // It contains names/prefixes of CSS classes which are added to the HTML by code. 
-        // You only ever need to change this if you modify the generated CSS to use other prefixes etc.
-        Page = new()
-        {
-            // Here you could override various defaults if you choose to change your CSS like this
-            BodyClasses = new[]
-            {
-                $"page-{PageId}",
-                $"page-root-{PageRootId}",
-                $"page-parent-{PageParentId}",
-                $"site-{SiteId}",
-                $"nav-level-{MenuLevel}",
-                $"to-shine-variation-{LayoutVariation}"
-            },
-            PageIsHome = "page-is-home",
-            PaneIsEmpty = "pane-is-empty",
-            MagicContextTagId = "toshine-body",
-        },
-
         // Theme Settings Defaults, used to lookup things which the json file doesn't specify.
         // Normally you don't want to change this, but just set everything in the json
         //Defaults = new()
         //{
-        //    // The source is just a name, which you may sometimes see in debug messages to see where the setting came from
-        //    Source = "Preset",
+            //    // The source is just a name, which you may sometimes see in debug messages to see where the setting came from
+            //    Source = "Preset",
 
-        //    // Layout settings
-        //    Layouts = new()
-        //    {
-        //        {
-        //            MagicConstants.Default, new()
-        //            {
-        //                Logo = "logo.svg",
-        //                LanguageMenuShow = true,
-        //                LanguageMenuShowMin = 2,
-        //                //Breadcrumbs = "Test",
-        //            }
-        //        }
-        //    },
-        //    Languages = new()
-        //    {
-        //        { MagicConstants.Default, MagicLanguagesSettings.Defaults }
-        //    },
-        //    Breadcrumbs = new()
-        //    {
-        //        { MagicConstants.Default, MagicBreadcrumbSettings.Defaults },
-        //    },
-        //    Menus = new()
-        //    {
-        //        { MagicConstants.Default, MagicMenuSettings.Defaults },
-        //    },
-        //    MenuDesigns = new()
-        //    {
-        //        { MagicConstants.Default, MagicMenuDesignSettings.Defaults },
-        //    }
+            //PageDesigns = new()
+            //{
+            //    { MagicConstants.Default, MagicPageDesign.Defaults}
+            //}
+            //    // Layout settings
+            //    Layouts = new()
+            //    {
+            //        {
+            //            MagicConstants.Default, new()
+            //            {
+            //                Logo = "logo.svg",
+            //                LanguageMenuShow = true,
+            //                LanguageMenuShowMin = 2,
+            //                //Breadcrumbs = "Test",
+            //            }
+            //        }
+            //    },
+            //    Languages = new()
+            //    {
+            //        { MagicConstants.Default, MagicLanguagesSettings.Defaults }
+            //    },
+            //    Breadcrumbs = new()
+            //    {
+            //        { MagicConstants.Default, MagicBreadcrumbSettings.Defaults },
+            //    },
+            //    Menus = new()
+            //    {
+            //        { MagicConstants.Default, MagicMenuSettings.Defaults },
+            //    },
+            //    MenuDesigns = new()
+            //    {
+            //        { MagicConstants.Default, MagicMenuDesignSettings.Defaults },
+            //    }
         //}
     };
 

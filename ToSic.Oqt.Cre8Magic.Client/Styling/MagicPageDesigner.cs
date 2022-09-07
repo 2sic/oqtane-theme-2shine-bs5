@@ -14,7 +14,7 @@ public class MagicPageDesigner: MagicServiceWithSettingsBase
         if (css == null) throw new ArgumentException("Can't continue without CSS specs", nameof(css));
 
         // Make a copy...
-        var classes = css.BodyClasses.ToList();
+        var classes = css.MagicClasses.ToList();
         if (pageState.Page.Path == "") classes.Add(css.PageIsHome);
 
         // Do these once multi-language is better

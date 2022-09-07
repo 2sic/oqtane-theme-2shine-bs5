@@ -31,6 +31,8 @@ public class MagicLayoutSettings
 
     public bool? MagicContextInBody { get; set; }
 
+    public string? PageDesign { get; set; }
+
     /// <summary>
     /// Map of menu names and alternate configurations to load instead
     /// </summary>
@@ -57,5 +59,6 @@ public class MagicLayoutSettings
         {
             { Default, Default }
         },
+        PageDesign = Inherit,
     };
 }

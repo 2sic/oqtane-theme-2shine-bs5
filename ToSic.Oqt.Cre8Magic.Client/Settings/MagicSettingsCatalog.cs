@@ -1,4 +1,6 @@
-﻿namespace ToSic.Oqt.Cre8Magic.Client.Settings;
+﻿using ToSic.Oqt.Cre8Magic.Client.Styling;
+
+namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
 /// <summary>
 /// This is a catalog of all kinds of configurations.
@@ -27,6 +29,8 @@ public class MagicSettingsCatalog
     public NamedSettings<MagicBreadcrumbSettings> Breadcrumbs { get; set; } = new();
 
     // TODO: For completeness, we may need BreadcrumbDesign
+
+    public NamedSettings<MagicPageDesign> PageDesigns { get; set; } = new();
 
     /// <summary>
     /// The menu definitions

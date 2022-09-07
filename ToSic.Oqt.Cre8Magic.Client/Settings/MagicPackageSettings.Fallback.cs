@@ -1,4 +1,5 @@
-﻿using static ToSic.Oqt.Cre8Magic.Client.MagicConstants;
+﻿using ToSic.Oqt.Cre8Magic.Client.Styling;
+using static ToSic.Oqt.Cre8Magic.Client.MagicConstants;
 
 namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
@@ -41,7 +42,11 @@ public partial class MagicPackageSettings
                 { Default, MagicMenuDesignSettings.Defaults },
                 // The Design configuration for Mobile menus, if not overridden by the JSON
                 { DesignMobile, MagicMenuDesignSettings.MobileDefaults }
+            },
+            PageDesigns = new()
+            {
+                { Default, MagicPageDesign.Defaults }
             }
-        }
+        },
     };
 }

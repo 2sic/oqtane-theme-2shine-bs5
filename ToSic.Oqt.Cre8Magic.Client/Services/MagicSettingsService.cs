@@ -46,14 +46,15 @@ public class MagicSettingsService: IHasSettingsExceptions
         name = configName.ConfigName;
         var layout = FindLayout(name).Layout;
 
+        // BreadcrumbSettings
         var breadcrumbNames = GetConfigNamesToCheck(layout.Breadcrumbs, name);
-
         var breadcrumb = new MagicBreadcrumbSettings
         {
             Separator = FindValue((s, n) => s.Breadcrumbs?.GetInvariant(n)?.Separator, breadcrumbNames)!,
             Revealer = FindValue((s, n) => s.Breadcrumbs?.GetInvariant(n)?.Revealer, breadcrumbNames)!,
         };
 
+        // Language Settings
         var languagesNames = GetConfigNamesToCheck(layout.Languages, name);
         var languages = FindLanguageSettings(languagesNames);
 
@@ -66,6 +67,7 @@ public class MagicSettingsService: IHasSettingsExceptions
             return found is { } && found.Any() ? found : null;
         }, langDesignNames);
 
+        // Container Design
         var containerDesignNames = GetConfigNamesToCheck(layout.ContainerDesign, name);
         var containerDesign = FindInSources((s, n) =>
         {
@@ -73,7 +75,11 @@ public class MagicSettingsService: IHasSettingsExceptions
             return found is { } && found.Any() ? found : null;
         }, containerDesignNames);
 
-        var current = new MagicSettings(name, this, layout, breadcrumb, PackageSettings.Page, languages.Languages, langDesign.Result, containerDesign.Result);
+        // Page Design
+        var pageDesignNames = GetConfigNamesToCheck(layout.PageDesign, name);
+        var pageDesign = FindInSources((s, n) => s.PageDesigns?.GetInvariant(n), pageDesignNames);
+
+        var current = new MagicSettings(name, this, layout, breadcrumb, pageDesign.Result, languages.Languages, langDesign.Result, containerDesign.Result);
         PageDesigner.InitSettings(current);
         current.MagicContext = PageDesigner.BodyClasses(pageState, bodyClasses);
         current.DebugSources.Add("Name", configName.Source);

@@ -36,6 +36,22 @@
       }
     }
   },
+  "PageDesigns": {
+    "Default": {
+      "MagicClasses": [
+        "test-from-json",
+        "page-[Page.Id]",
+        "page-root-[Page.RootId]",
+        "page-parent-[Page.ParentId]",
+        "site-[Site.Id]",
+        "nav-level-[Menu.Level]",
+        "to-shine-variation-[Layout.Variation]"
+      ],
+      "PageIsHome": "page-is-home",
+      "PaneIsEmpty": "pane-is-empty",
+      "MagicContextTagId": "toshine-body",
+    }
+  },
   "Breadcrumbs": {
     "Default": {
       "separator": "&nbsp;&rsaquo;&nbsp;", // a non-breaking space + >> + non-breaking space

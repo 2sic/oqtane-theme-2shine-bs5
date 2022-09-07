@@ -10,15 +10,10 @@ namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 public partial class MagicPackageSettings
 {
     /// <summary>
-    /// Classes and similar to add to the page.
-    /// </summary>
-    public virtual MagicPageDesign Page { get; set; } = new();
-
-    /// <summary>
     /// All kinds of settings for the layout, how it should be etc.
     /// Should usually only serve as backup in case the JSON fails.
     /// </summary>
-    public virtual MagicSettingsCatalog Defaults { get; set; } = new();
+    public MagicSettingsCatalog? Defaults { get; set; }
 
     public string WwwRoot { get; set; } = "wwwroot";
 

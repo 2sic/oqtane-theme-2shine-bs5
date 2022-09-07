@@ -17,7 +17,7 @@ public class MagicPageDesign
 
     public const string SettingFromDefaults = "to-shine-warning-this-is-from-defaults-you-should-set-your-own-value";
 
-    public string[] BodyClasses { get; set; } =
+    public string[] MagicClasses { get; set; } =
     {
         //1.2 Set the page-### class
         $"{PagePrefixDefault}{MagicPlaceholders.PageId}",
@@ -44,4 +44,6 @@ public class MagicPageDesign
     public string PaneIsEmpty { get; set; } = $"{PanePrefixDefault}is-empty";
 
     public string MagicContextTagId { get; set; } = BodyDivId;
+
+    public static MagicPageDesign Defaults = new();
 }
