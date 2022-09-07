@@ -1,6 +1,6 @@
 ﻿namespace ToSic.Oqt.Cre8Magic.Client.Styling;
 
-public class ContainerStyling: StylingBase
+public class MagicContainerDesign: MagicDesignBase
 {
     public string? IsPublished { get; set; }
     public string? IsNotPublished { get; set; }

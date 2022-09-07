@@ -30,17 +30,17 @@ public class MagicMenuDesigner
     {
         var configsForTag = ConfigsForTag(tag);
         return configsForTag.Any()
-            ? ListToClasses(TagClasses(branch, configsForTag as List<MagicMenuDesignSetting>))
+            ? ListToClasses(TagClasses(branch, configsForTag as List<MagicMenuDesign>))
             : "";
     }
 
-    private List<MagicMenuDesignSetting?> ConfigsForTag(string tag) =>
+    private List<MagicMenuDesign?> ConfigsForTag(string tag) =>
         DesignSettingsList
             .Select(c => c.FindInvariant(tag))
             .Where(c => c is not null)
             .ToList();
 
-    private List<string?> TagClasses(MagicMenuBranch branch, List<MagicMenuDesignSetting> configs)
+    private List<string?> TagClasses(MagicMenuBranch branch, List<MagicMenuDesign> configs)
     {
         var classes = new List<string?>();
         classes.AddRange(configs.Select(c => c.Classes));

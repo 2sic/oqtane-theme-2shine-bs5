@@ -10,7 +10,7 @@ public class CurrentSettings
         MagicSettingsService service,
         LayoutSettings layout, 
         BreadcrumbSettings breadcrumb, 
-        PageStyling page, 
+        MagicPageDesign page, 
         LanguagesSettings languages, 
         MagicLanguageDesignSettings languageDesign, 
         MagicContainerDesignSettings containerDesign)
@@ -35,7 +35,7 @@ public class CurrentSettings
 
     public BreadcrumbSettings Breadcrumb { get; }
 
-    public PageStyling Page { get; }
+    public MagicPageDesign Page { get; }
 
     public LanguagesSettings Languages { get; }
 

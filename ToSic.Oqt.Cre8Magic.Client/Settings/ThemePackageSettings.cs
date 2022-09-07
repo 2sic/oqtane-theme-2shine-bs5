@@ -12,7 +12,7 @@ public partial class ThemePackageSettings
     /// <summary>
     /// Classes and similar to add to the page.
     /// </summary>
-    public virtual PageStyling Page { get; set; } = new();
+    public virtual MagicPageDesign Page { get; set; } = new();
 
     /// <summary>
     /// All kinds of settings for the layout, how it should be etc.

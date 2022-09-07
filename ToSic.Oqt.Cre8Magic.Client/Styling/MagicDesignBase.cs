@@ -5,7 +5,7 @@
 ///
 /// This is usually the base class for something that can also have more information.
 /// </summary>
-public class StylingBase
+public class MagicDesignBase
 {
     /// <summary>
     /// Classes which are applied to all the tags of this type

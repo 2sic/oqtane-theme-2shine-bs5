@@ -23,7 +23,7 @@ public class MagicSettingsService: IHasSettingsExceptions
         return this;
     }
 
-    public PageStyles PageStyles { get; } = new();
+    public MagicPageDesigner PageDesigner { get; } = new();
 
 
     private ThemePackageSettings PackageSettings
@@ -73,8 +73,8 @@ public class MagicSettingsService: IHasSettingsExceptions
         }, containerDesignNames);
 
         var current = new CurrentSettings(name, this, layout, breadcrumb, PackageSettings.Page, languages.Languages, langDesign.Result, containerDesign.Result);
-        PageStyles.InitSettings(current);
-        current.MagicContext = PageStyles.BodyClasses(pageState, bodyClasses);
+        PageDesigner.InitSettings(current);
+        current.MagicContext = PageDesigner.BodyClasses(pageState, bodyClasses);
         current.DebugSources.Add("Name", configName.Source);
         current.DebugSources.Add(nameof(current.Languages), languages.Source);
         current.DebugSources.Add(nameof(current.LanguageDesign), langDesign.Source);

@@ -5,7 +5,7 @@
 ///
 /// If you change these, you must also update the SCSS files. 
 /// </summary>
-public class PageStyling
+public class MagicPageDesign
 {
     private const string SitePrefixDefault = "site-";
     private const string PagePrefixDefault = "page-";
@@ -43,5 +43,5 @@ public class PageStyling
 
     public string PaneIsEmpty { get; set; } = $"{PanePrefixDefault}is-empty";
 
-    public string MagicContextId { get; set; } = BodyDivId;
+    public string MagicContextTagId { get; set; } = BodyDivId;
 }

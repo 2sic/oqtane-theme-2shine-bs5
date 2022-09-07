@@ -2,7 +2,7 @@
 
 namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
-public class MagicLanguageDesignSettings: NamedSettings<StylingWithActive>
+public class MagicLanguageDesignSettings: NamedSettings<MagicDesignWithActive>
 {
     internal string Classes(string tag, Language? lang = null)
     {
@@ -17,8 +17,8 @@ public class MagicLanguageDesignSettings: NamedSettings<StylingWithActive>
     {
         //Design = new()
         //{
-            { "ul", new() { Classes = $"to-shine-page-language {PageStyling.SettingFromDefaults}" } },
-            { "li", new() { IsActive = $"active {PageStyling.SettingFromDefaults}", IsNotActive = "" } }
+            { "ul", new() { Classes = $"to-shine-page-language {MagicPageDesign.SettingFromDefaults}" } },
+            { "li", new() { IsActive = $"active {MagicPageDesign.SettingFromDefaults}", IsNotActive = "" } }
         //}
     };
 }

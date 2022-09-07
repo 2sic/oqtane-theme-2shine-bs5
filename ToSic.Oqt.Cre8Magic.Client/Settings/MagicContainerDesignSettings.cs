@@ -1,10 +1,10 @@
 ﻿using Oqtane.Models;
 using ToSic.Oqt.Cre8Magic.Client.Styling;
-using static ToSic.Oqt.Cre8Magic.Client.Styling.PageStyling;
+using static ToSic.Oqt.Cre8Magic.Client.Styling.MagicPageDesign;
 
 namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
-public class MagicContainerDesignSettings : NamedSettings<ContainerStyling>
+public class MagicContainerDesignSettings : NamedSettings<MagicContainerDesign>
 {
     internal string Classes(Module module, string tag)
     {

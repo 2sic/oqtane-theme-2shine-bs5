@@ -57,7 +57,7 @@ public abstract class MagicTheme : Oqtane.Themes.ThemeBase
     }
     private MagicSettingsService _magicSettingsService;
 
-    private PageStyles PageStyles => MagicSettingsService.PageStyles;
+    private MagicPageDesigner PageDesigner => MagicSettingsService.PageDesigner;
 
     /// <summary>
     /// The settings of this layout, as loaded from the ThemePackageSettings + JSON
@@ -79,5 +79,5 @@ public abstract class MagicTheme : Oqtane.Themes.ThemeBase
     /// <summary>
     /// Special classes for divs surrounding panes pane, especially to indicate when it's empty
     /// </summary>
-    public string PaneClasses(string paneName) => PageStyles.PaneIsEmptyClasses(PageState, paneName);
+    public string PaneClasses(string paneName) => PageDesigner.PaneIsEmptyClasses(PageState, paneName);
 }
