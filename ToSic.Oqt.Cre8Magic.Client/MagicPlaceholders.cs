@@ -2,7 +2,7 @@
 
 namespace ToSic.Oqt.Cre8Magic.Client;
 
-public class Placeholders
+public class MagicPlaceholders
 {
     /// <summary>
     /// This will be used as value if a value is null/empty.

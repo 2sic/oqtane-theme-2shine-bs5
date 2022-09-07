@@ -36,7 +36,7 @@ public abstract class ThemeBase : MagicTheme
     /// <summary>
     /// The ThemePackageSettings must be set in this class, so the Settings initializer can pick it up.
     /// </summary>
-    public override ThemePackageSettings ThemePackageSettings => ThemeInfo.ThemePackageDefaults;
+    public override MagicPackageSettings ThemePackageSettings => ThemeInfo.ThemePackageDefaults;
 
     public override string Panes => string.Join(",",
         /*PaneNames.Admin,*/  // Note that we don't want the AdminPane to be in the default list, as people shouldn't add modules there

@@ -1,6 +1,8 @@
-﻿namespace ToSic.Oqt.Cre8Magic.Client.Settings;
+﻿using static ToSic.Oqt.Cre8Magic.Client.MagicConstants;
 
-public class LayoutSettings
+namespace ToSic.Oqt.Cre8Magic.Client.Settings;
+
+public class MagicLayoutSettings
 {
     /// <summary>
     /// The logo to show, should be located in the assets subfolder
@@ -40,20 +42,20 @@ public class LayoutSettings
     /// </summary>
     public string? Breadcrumbs { get; set; }
 
-    public static LayoutSettings Defaults = new()
+    public static MagicLayoutSettings Defaults = new()
     {
         Logo = "unknown-logo.png",
-        ContainerDesign = Constants.Inherit,
-        Languages = Constants.Inherit,
-        LanguageMenuDesign = Constants.Inherit,
+        ContainerDesign = Inherit,
+        Languages = Inherit,
+        LanguageMenuDesign = Inherit,
         LanguageMenuShow = true,
         LanguageMenuShowMin = 2,
         MagicContextInBody = false,
-        Breadcrumbs = Constants.Inherit,
+        Breadcrumbs = Inherit,
         // The menus-map. Since this is the fallback, it must have at least an entry to not be skipped. 
         Menus = new()
         {
-            { Constants.Default, Constants.Default }
+            { Default, Default }
         },
     };
 }

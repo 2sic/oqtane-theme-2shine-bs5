@@ -4,7 +4,7 @@
 /// This is a catalog of all kinds of configurations.
 /// It serves as a kind of database to manage all configurations, which will usually be retrieved using a name. 
 /// </summary>
-public class CatalogOfSettings
+public class MagicSettingsCatalog
 {
     ///// <summary>
     ///// Version number when loading from JSON to verify it's what we expect
@@ -16,15 +16,15 @@ public class CatalogOfSettings
     /// </summary>
     public string Source { get; set; } = "Unknown";
 
-    public NamedSettings<LayoutSettings> Layouts { get; set; } = new();
+    public NamedSettings<MagicLayoutSettings> Layouts { get; set; } = new();
 
     public NamedSettings<MagicContainerDesignSettings> ContainerDesigns { get; set; } = new();
 
-    public NamedSettings<LanguagesSettings> Languages { get; set; } = new();
+    public NamedSettings<MagicLanguagesSettings> Languages { get; set; } = new();
 
     public NamedSettings<MagicLanguageDesignSettings> LanguageDesigns { get; set; } = new();
 
-    public NamedSettings<BreadcrumbSettings> Breadcrumbs { get; set; } = new();
+    public NamedSettings<MagicBreadcrumbSettings> Breadcrumbs { get; set; } = new();
 
     // TODO: For completeness, we may need BreadcrumbDesign
 

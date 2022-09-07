@@ -2,8 +2,8 @@
 
 public abstract class MagicServiceWithSettingsBase
 {
-    public void InitSettings(CurrentSettings settings) => Settings ??= settings;
+    public void InitSettings(MagicSettings settings) => Settings ??= settings;
 
-    public CurrentSettings? Settings { get; private set; }
+    public MagicSettings? Settings { get; private set; }
 
 }

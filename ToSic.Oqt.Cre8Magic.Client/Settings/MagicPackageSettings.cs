@@ -7,7 +7,7 @@ namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 ///
 /// Contains semi-constants like location of assets and configuration for various parts like CSS.
 /// </summary>
-public partial class ThemePackageSettings
+public partial class MagicPackageSettings
 {
     /// <summary>
     /// Classes and similar to add to the page.
@@ -18,13 +18,13 @@ public partial class ThemePackageSettings
     /// All kinds of settings for the layout, how it should be etc.
     /// Should usually only serve as backup in case the JSON fails.
     /// </summary>
-    public virtual CatalogOfSettings Defaults { get; set; } = new();
+    public virtual MagicSettingsCatalog Defaults { get; set; } = new();
 
     public string WwwRoot { get; set; } = "wwwroot";
 
     public string SettingsJsonFile { get; set; } = "theme-settings.json";
 
-    public string ThemePackageName { get; set; } = "todo: set theme package name in your constructor";
+    public string PackageName { get; set; } = "todo: set theme package name in your constructor";
 
     public string PathAssets
     {
@@ -34,7 +34,7 @@ public partial class ThemePackageSettings
 
     public string PathTheme
     {
-        get => _themePath ??= "Themes/" + ThemePackageName;
+        get => _themePath ??= "Themes/" + PackageName;
         set => _themePath = value;
     }
     private string? _assetsPath;

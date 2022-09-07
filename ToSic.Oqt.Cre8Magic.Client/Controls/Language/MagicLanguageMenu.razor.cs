@@ -6,7 +6,7 @@ public abstract class MagicLanguageMenu: MagicControl
 {
     [Inject] private LanguageService LanguageService { get; set; }
 
-    public List<Settings.Language> Languages { get; private set; }
+    public List<Settings.MagicLanguage> Languages { get; private set; }
 
     public bool? Show { get; private set; } = null;
 
@@ -25,5 +25,5 @@ public abstract class MagicLanguageMenu: MagicControl
 
 
 
-    public string? Classes(string tag, Settings.Language? lang = null) => Settings.LanguageDesign.Classes(tag, lang).EmptyAsNull();
+    public string? Classes(string tag, Settings.MagicLanguage? lang = null) => Settings.LanguageDesign.Classes(tag, lang).EmptyAsNull();
 }

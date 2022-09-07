@@ -62,7 +62,7 @@ public class MagicMenuDesigner
                 ? null
                 : c.ByLevel.TryGetValue(branch.MenuLevel, out var levelClasses)
                     ? levelClasses
-                    : c.ByLevel.TryGetValue(Placeholders.ByLevelOtherKey, out var levelClassesDefault)
+                    : c.ByLevel.TryGetValue(MagicPlaceholders.ByLevelOtherKey, out var levelClassesDefault)
                         ? levelClassesDefault
                         : null);
         classes.AddRange(levelCss);

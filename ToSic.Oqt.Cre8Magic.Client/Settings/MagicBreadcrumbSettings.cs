@@ -1,6 +1,6 @@
 ﻿namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
-public class BreadcrumbSettings
+public class MagicBreadcrumbSettings
 {
     public string? Separator { get; set; }
     private const string BreadcrumbSeparatorDefault = "&nbsp;&rsaquo;&nbsp;";
@@ -9,7 +9,7 @@ public class BreadcrumbSettings
 
     private const string BreadcrumbRevealDefault = "…"; // Ellipsis character
 
-    public static BreadcrumbSettings Defaults = new()
+    public static MagicBreadcrumbSettings Defaults = new()
     {
         Separator = BreadcrumbSeparatorDefault,
         Revealer = BreadcrumbRevealDefault,

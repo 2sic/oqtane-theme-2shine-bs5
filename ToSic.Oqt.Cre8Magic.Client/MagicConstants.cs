@@ -1,6 +1,6 @@
 ﻿namespace ToSic.Oqt.Cre8Magic.Client;
 
-public class Constants
+public class MagicConstants
 {
     public static string Default = "Default";
     public static string DesignMobile = "Mobile";

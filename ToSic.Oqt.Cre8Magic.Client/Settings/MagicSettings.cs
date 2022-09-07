@@ -3,15 +3,18 @@ using static System.StringComparer;
 
 namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
-public class CurrentSettings
+/// <summary>
+/// The current settings of a page.
+/// </summary>
+public class MagicSettings
 {
-    public CurrentSettings(
+    public MagicSettings(
         string name,
         MagicSettingsService service,
-        LayoutSettings layout, 
-        BreadcrumbSettings breadcrumb, 
+        MagicLayoutSettings layout, 
+        MagicBreadcrumbSettings breadcrumb, 
         MagicPageDesign page, 
-        LanguagesSettings languages, 
+        MagicLanguagesSettings languages, 
         MagicLanguageDesignSettings languageDesign, 
         MagicContainerDesignSettings containerDesign)
     {
@@ -31,13 +34,13 @@ public class CurrentSettings
 
     public MagicSettingsService Service { get; }
 
-    public LayoutSettings Layout { get; }
+    public MagicLayoutSettings Layout { get; }
 
-    public BreadcrumbSettings Breadcrumb { get; }
+    public MagicBreadcrumbSettings Breadcrumb { get; }
 
     public MagicPageDesign Page { get; }
 
-    public LanguagesSettings Languages { get; }
+    public MagicLanguagesSettings Languages { get; }
 
     public MagicLanguageDesignSettings LanguageDesign { get; set; }
 

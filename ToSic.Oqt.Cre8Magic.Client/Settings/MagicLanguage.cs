@@ -2,14 +2,14 @@
 
 namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
-public class Language
+public class MagicLanguage
 {
     /// <summary>
     /// Empty constructor for deserialization
     /// </summary>
-    public Language() { }
+    public MagicLanguage() { }
 
-    public Language(string culture, string? label = null, string? description = null)
+    public MagicLanguage(string culture, string? label = null, string? description = null)
     {
         Culture = culture;
         Label = label;

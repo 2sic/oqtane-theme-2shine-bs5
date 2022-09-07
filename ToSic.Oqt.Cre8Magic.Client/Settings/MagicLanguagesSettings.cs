@@ -1,12 +1,12 @@
 ﻿namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
-public class LanguagesSettings
+public class MagicLanguagesSettings
 {
     /// <summary>
     /// Dummy constructor so better find cases where it's created
     /// Note it must be without parameters for json deserialization
     /// </summary>
-    public LanguagesSettings() {}
+    public MagicLanguagesSettings() {}
 
     /// <summary>
     /// If true, will only show the languages which are explicitly configured.
@@ -17,14 +17,14 @@ public class LanguagesSettings
     /// <summary>
     /// List of languages
     /// </summary>
-    public Dictionary<string, Language>? List
+    public Dictionary<string, MagicLanguage>? List
     {
         get => _list;
         set => _list = InitList(value);
     }
-    private Dictionary<string, Language>? _list;
+    private Dictionary<string, MagicLanguage>? _list;
 
-    private Dictionary<string, Language>? InitList(Dictionary<string, Language>? dic)
+    private Dictionary<string, MagicLanguage>? InitList(Dictionary<string, MagicLanguage>? dic)
     {
         if (dic == null) return null;
         // Ensure each config knows what culture it's for, as 
@@ -33,7 +33,7 @@ public class LanguagesSettings
         return dic.ToInvariant();
     }
 
-    public static LanguagesSettings Defaults = new()
+    public static MagicLanguagesSettings Defaults = new()
     {
         HideOthers = false,
         List = new()

@@ -1,5 +1,5 @@
 ﻿namespace ToSic.Oqt.Cre8Magic.Client.Menu;
-using static Placeholders;
+using static MagicPlaceholders;
 
 public partial class MagicMenuDesignSettings
 {

@@ -3,7 +3,7 @@ using Oqtane.Themes;
 
 namespace ToSic.Oqt.Cre8Magic.Client.Controls;
 
-public abstract class MagicControl: ThemeControlBase, IControlWithSettings
+public abstract class MagicControl: ThemeControlBase, IMagicControlWithSettings
 {
-    [CascadingParameter] public CurrentSettings Settings { get; set; }
+    [CascadingParameter] public MagicSettings Settings { get; set; }
 }

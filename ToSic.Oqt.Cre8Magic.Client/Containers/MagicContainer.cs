@@ -3,9 +3,9 @@ using ToSic.Oqt.Cre8Magic.Client.Controls;
 
 namespace ToSic.Oqt.Cre8Magic.Client.Containers;
 
-public class MagicContainer: Oqtane.Themes.ContainerBase, IControlWithSettings
+public class MagicContainer: Oqtane.Themes.ContainerBase, IMagicControlWithSettings
 {
-    [CascadingParameter] public CurrentSettings Settings { get; set; }
+    [CascadingParameter] public MagicSettings Settings { get; set; }
 
     [Inject] public NavigationManager? NavigationManager { get; set; }
 

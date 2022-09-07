@@ -30,7 +30,7 @@ public class MagicPageDesigner: MagicServiceWithSettingsBase
         // do once lang is clear
 
         var bodyClasses = string.Join(" ", classes).Replace("  ", " ");
-        return Placeholders.Replace(bodyClasses, pageState, additionalBodyClasses);
+        return MagicPlaceholders.Replace(bodyClasses, pageState, additionalBodyClasses);
     }
 
 

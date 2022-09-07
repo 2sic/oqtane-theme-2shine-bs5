@@ -38,7 +38,7 @@ public class LanguageService: MagicServiceWithSettingsBase
         return Settings.Layout.LanguageMenuShow && Settings.Layout.LanguageMenuShowMin <= languages.Count;
     }
 
-    public async Task<List<Language>> LanguagesToShow(int siteId)
+    public async Task<List<MagicLanguage>> LanguagesToShow(int siteId)
     {
         if (_languages.TryGetValue(siteId, out var cached)) return cached;
 
@@ -70,7 +70,7 @@ public class LanguageService: MagicServiceWithSettingsBase
                 var customLabel = customList.FirstOrDefault(l => l.Culture.EqInvariant(code));
 
                 var langInSite = siteLanguages.Find(al => al.Code.EqInvariant(code));
-                return new Language
+                return new MagicLanguage
                 {
                     Culture = code, 
                     Label = customLabel?.Label ?? code[..2].ToUpperInvariant(), 
@@ -83,7 +83,7 @@ public class LanguageService: MagicServiceWithSettingsBase
         return result;
     }
 
-    private readonly Dictionary<int, List<Language>> _languages = new();
+    private readonly Dictionary<int, List<MagicLanguage>> _languages = new();
 
     public async Task SetCultureAsync(string culture)
     {

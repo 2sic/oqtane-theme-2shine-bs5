@@ -1,6 +1,6 @@
 using Oqtane.Models;
 using Oqtane.Themes;
-using static ToSic.Oqt.Cre8Magic.Client.Placeholders;
+using static ToSic.Oqt.Cre8Magic.Client.MagicPlaceholders;
 
 // Important: This must match the namespace of the layouts
 // otherwise the Oqtane registration won't work as expected. 
@@ -52,10 +52,10 @@ public class ThemeInfo : ITheme
     /// 
     /// You don't need to do much here, because all settings should then come from the json file. 
     /// </summary>
-    public static ThemePackageSettings ThemePackageDefaults = new()
+    public static MagicPackageSettings ThemePackageDefaults = new()
     {
         // The package name is important, as it's used to find assets etc.
-        ThemePackageName = new ThemeInfo().Theme.PackageName,
+        PackageName = new ThemeInfo().Theme.PackageName,
 
         // The json file in the theme folder folder containing all kinds of settings etc.
         SettingsJsonFile = "theme-settings.json",
@@ -90,7 +90,7 @@ public class ThemeInfo : ITheme
             Layouts = new()
             {
                 {
-                    Constants.Default, new()
+                    MagicConstants.Default, new()
                     {
                         Logo = "logo.svg",
                         LanguageMenuShow = true,

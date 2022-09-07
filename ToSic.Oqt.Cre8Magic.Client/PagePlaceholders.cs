@@ -1,6 +1,6 @@
 ﻿using Oqtane.Models;
 using Oqtane.UI;
-using static ToSic.Oqt.Cre8Magic.Client.Placeholders;
+using static ToSic.Oqt.Cre8Magic.Client.MagicPlaceholders;
 using static System.StringComparison;
 
 namespace ToSic.Oqt.Cre8Magic.Client;

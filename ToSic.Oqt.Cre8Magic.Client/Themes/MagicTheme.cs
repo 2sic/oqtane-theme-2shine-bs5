@@ -62,13 +62,13 @@ public abstract class MagicTheme : Oqtane.Themes.ThemeBase
     /// <summary>
     /// The settings of this layout, as loaded from the ThemePackageSettings + JSON
     /// </summary>
-    protected CurrentSettings Settings { get; set; }
+    protected MagicSettings Settings { get; set; }
 
     /// <summary>
     /// This contains the default settings which must be used in this theme.
     /// Any inheriting class must specify what it will be. 
     /// </summary>
-    public abstract ThemePackageSettings ThemePackageSettings { get; }
+    public abstract MagicPackageSettings ThemePackageSettings { get; }
 
     protected override async Task OnParametersSetAsync()
     {

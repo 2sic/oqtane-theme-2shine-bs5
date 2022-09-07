@@ -11,7 +11,7 @@ public class Startup : Oqtane.Services.IClientStartup
     public void ConfigureServices(IServiceCollection services)
     {
         // All these Settings etc. should be scoped, so they don't have to reload for each click
-        services.AddScoped<SettingsFromJsonService>();
+        services.AddScoped<MagicSettingsJsonService>();
         services.AddScoped<MagicSettingsService>();
         services.AddTransient<LanguageService>();
 

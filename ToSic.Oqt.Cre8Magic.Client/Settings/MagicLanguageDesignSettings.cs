@@ -4,7 +4,7 @@ namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
 public class MagicLanguageDesignSettings: NamedSettings<MagicDesignWithActive>
 {
-    internal string Classes(string tag, Language? lang = null)
+    internal string Classes(string tag, MagicLanguage? lang = null)
     {
         if (!tag.HasValue()) return "";
         if (/*Design == null ||*/ !this.Any()) return "";

@@ -1,6 +1,7 @@
 ﻿using Oqtane.UI;
 using ToSic.Oqt.Cre8Magic.Client.Styling;
-using static ToSic.Oqt.Cre8Magic.Client.Settings.ThemePackageSettings;
+using static ToSic.Oqt.Cre8Magic.Client.MagicConstants;
+using static ToSic.Oqt.Cre8Magic.Client.Settings.MagicPackageSettings;
 
 namespace ToSic.Oqt.Cre8Magic.Client.Services;
 
@@ -12,12 +13,12 @@ public class MagicSettingsService: IHasSettingsExceptions
     /// <summary>
     /// Constructor
     /// </summary>
-    public MagicSettingsService(SettingsFromJsonService jsonService)
+    public MagicSettingsService(MagicSettingsJsonService jsonService)
     {
         Json = jsonService;
     }
 
-    public MagicSettingsService InitSettings(ThemePackageSettings themeSettings)
+    public MagicSettingsService InitSettings(MagicPackageSettings themeSettings)
     {
         PackageSettings = themeSettings;
         return this;
@@ -26,28 +27,28 @@ public class MagicSettingsService: IHasSettingsExceptions
     public MagicPageDesigner PageDesigner { get; } = new();
 
 
-    private ThemePackageSettings PackageSettings
+    private MagicPackageSettings PackageSettings
     {
         get => _settings ?? throw new ArgumentException($"The {nameof(MagicSettingsService)} can't work without first calling {nameof(InitSettings)}", nameof(PackageSettings));
         set => _settings = value;
     }
 
-    private SettingsFromJsonService Json { get; }
+    private MagicSettingsJsonService Json { get; }
 
-    public CurrentSettings CurrentSettings(PageState pageState, string name, string bodyClasses)
+    public MagicSettings CurrentSettings(PageState pageState, string name, string bodyClasses)
     {
         // Get a cache-id for this specific configuration, which can vary by page
         var originalNameForCache = (name ?? "prevent-error") + pageState.Page.PageId;
         var cached = _currentSettingsCache.FindInvariant(originalNameForCache);
         if (cached != null) return cached;
 
-        var configName = FindConfigName(name, Constants.Default);
+        var configName = FindConfigName(name, Default);
         name = configName.ConfigName;
         var layout = FindLayout(name).Layout;
 
         var breadcrumbNames = GetConfigNamesToCheck(layout.Breadcrumbs, name);
 
-        var breadcrumb = new BreadcrumbSettings
+        var breadcrumb = new MagicBreadcrumbSettings
         {
             Separator = FindValue((s, n) => s.Breadcrumbs?.GetInvariant(n)?.Separator, breadcrumbNames)!,
             Revealer = FindValue((s, n) => s.Breadcrumbs?.GetInvariant(n)?.Revealer, breadcrumbNames)!,
@@ -72,7 +73,7 @@ public class MagicSettingsService: IHasSettingsExceptions
             return found is { } && found.Any() ? found : null;
         }, containerDesignNames);
 
-        var current = new CurrentSettings(name, this, layout, breadcrumb, PackageSettings.Page, languages.Languages, langDesign.Result, containerDesign.Result);
+        var current = new MagicSettings(name, this, layout, breadcrumb, PackageSettings.Page, languages.Languages, langDesign.Result, containerDesign.Result);
         PageDesigner.InitSettings(current);
         current.MagicContext = PageDesigner.BodyClasses(pageState, bodyClasses);
         current.DebugSources.Add("Name", configName.Source);
@@ -84,23 +85,23 @@ public class MagicSettingsService: IHasSettingsExceptions
         return current;
     }
 
-    private readonly NamedSettings<CurrentSettings> _currentSettingsCache = new();
+    private readonly NamedSettings<MagicSettings> _currentSettingsCache = new();
 
     private static string[] GetConfigNamesToCheck(string? configuredNameOrNull, string currentName)
     {
-        if (configuredNameOrNull == Constants.Inherit) configuredNameOrNull = currentName;
+        if (configuredNameOrNull == Inherit) configuredNameOrNull = currentName;
 
         return string.IsNullOrWhiteSpace(configuredNameOrNull) 
-            ? new[] { Constants.Default }
-            : new[] { configuredNameOrNull, Constants.Default }.Distinct().ToArray();
+            ? new[] { Default }
+            : new[] { configuredNameOrNull, Default }.Distinct().ToArray();
     }
 
-    public (LayoutSettings Layout, string Source) FindLayout(string name)
+    public (MagicLayoutSettings Layout, string Source) FindLayout(string name)
     {
         var cached = _layoutSettingsCache.FindInvariant(name);
         if (cached != null) return (cached, "cached");
         var names = GetConfigNamesToCheck(name, name);
-        var layoutSettings = new LayoutSettings
+        var layoutSettings = new MagicLayoutSettings
         {
             ContainerDesign = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.ContainerDesign, names),
             Languages = FindValue((set, n) => set.Layouts?.GetInvariant(n)?.Languages, names),
@@ -121,9 +122,9 @@ public class MagicSettingsService: IHasSettingsExceptions
         return (layoutSettings, "various");
     }
 
-    private readonly NamedSettings<LayoutSettings> _layoutSettingsCache = new();
+    private readonly NamedSettings<MagicLayoutSettings> _layoutSettingsCache = new();
 
-    public (LanguagesSettings Languages, string Source) FindLanguageSettings(string[] languagesNames)
+    public (MagicLanguagesSettings Languages, string Source) FindLanguageSettings(string[] languagesNames)
     {
         var (config, _, sourceInfo) 
             = FindInSources((settings, n) =>
@@ -131,14 +132,14 @@ public class MagicSettingsService: IHasSettingsExceptions
                 var tryToFind = settings.Languages?.GetInvariant(n);
                 return tryToFind?.List?.Any() == true ? tryToFind : null;
             }, languagesNames);
-        if (config == null) throw new NullReferenceException($"{nameof(config)} should be a {nameof(Language)}");
+        if (config == null) throw new NullReferenceException($"{nameof(config)} should be a {nameof(MagicLanguage)}");
         return (config, sourceInfo);
     }
 
     public (MagicMenuSettings MenuConfig, string Source) FindMenuConfig(string name)
     {
         // Only search multiple names if the name is not already default
-        var names = name == Constants.Default ? new[] { name } : new[] { name, Constants.Default };
+        var names = name == Default ? new[] { name } : new[] { name, Default };
         var (config, foundName, sourceInfo) 
             = FindInSources((settings, n) => settings?.Menus?.GetInvariant(n), names);
         
@@ -151,31 +152,31 @@ public class MagicSettingsService: IHasSettingsExceptions
     internal (string ConfigName, string Source) FindConfigName(string? configName, string inheritedName)
     {
         var debugInfo = $"Initial Config: '{configName}'";
-        if (configName.EqInvariant(Constants.Inherit))
+        if (configName.EqInvariant(Inherit))
         {
             configName = inheritedName;
             debugInfo += $"; switched to inherit '{inheritedName}'";
         }
         if (!string.IsNullOrWhiteSpace(configName)) return (configName, debugInfo);
 
-        debugInfo += $"; Config changed to '{Constants.Default}'";
-        return (Constants.Default, debugInfo);
+        debugInfo += $"; Config changed to '{Default}'";
+        return (Default, debugInfo);
     }
 
     internal (MagicMenuDesignSettings Design, string Source) FindDesign(string designName)
     {
         var (result, _, sourceInfo) 
-            = FindInSources((settings, n) => settings.MenuDesigns?.GetInvariant(n), designName, Constants.Default);
+            = FindInSources((settings, n) => settings.MenuDesigns?.GetInvariant(n), designName, Default);
         if (result == null) throw new NullReferenceException($"{nameof(result)} should be a {nameof(MagicMenuDesignSettings)}");
         return (result, sourceInfo);
     }
 
 
     private string ReplacePlaceholders(string value) => value
-        .Replace(Placeholders.AssetsPath, PackageSettings.PathAssets);
+        .Replace(MagicPlaceholders.AssetsPath, PackageSettings.PathAssets);
 
 
-    private TResult FindValue<TResult>(Func<CatalogOfSettings, string, TResult> findFunc, params string[]? names)
+    private TResult FindValue<TResult>(Func<MagicSettingsCatalog, string, TResult> findFunc, params string[]? names)
     {
         var (showMin, _, _) = FindInSources(findFunc, names);
         return showMin;
@@ -185,7 +186,7 @@ public class MagicSettingsService: IHasSettingsExceptions
     /// Loop through various sources of settings and check the keys in the preferred order to see if we get a hit.
     /// </summary>
     private (TResult Result, string Name, string Source) FindInSources<TResult>(
-        Func<CatalogOfSettings, string, TResult> findFunc,
+        Func<MagicSettingsCatalog, string, TResult> findFunc,
         params string[]? names)
     {
 
@@ -196,7 +197,7 @@ public class MagicSettingsService: IHasSettingsExceptions
         var sources = ConfigurationSources;
 
         // Make sure we have at least on name
-        if (names == null || names.Length == 0) names = new[] { Constants.Default };
+        if (names == null || names.Length == 0) names = new[] { Default };
 
         var allSourcesAndNames = names
             .Distinct()
@@ -212,12 +213,12 @@ public class MagicSettingsService: IHasSettingsExceptions
         throw new Exception($"Tried to find {nameof(TResult)} in the keys {string.Join(",", names)} but got nothing, not even a fallback/default.");
     }
 
-    private List<CatalogOfSettings> ConfigurationSources
+    private List<MagicSettingsCatalog> ConfigurationSources
     {
         get
         {
             if (_configurationSources != null) return _configurationSources;
-            var sources = new List<CatalogOfSettings?>
+            var sources = new List<MagicSettingsCatalog?>
                 {
                     // in future also add the settings from the dialog as the first priority
                     Json.LoadJson(PackageSettings),
@@ -225,16 +226,16 @@ public class MagicSettingsService: IHasSettingsExceptions
                     Fallback.Defaults,
                 }
                 .Where(x => x != null)
-                .Cast<CatalogOfSettings>()
+                .Cast<MagicSettingsCatalog>()
                 .ToList();
             return _configurationSources = sources;
         }
     }
 
-    private List<CatalogOfSettings>? _configurationSources;
+    private List<MagicSettingsCatalog>? _configurationSources;
 
     public List<SettingsException> Exceptions => MyExceptions.Concat(Json.Exceptions).ToList();
     private List<SettingsException> MyExceptions => _myExceptions ??= new();
     private List<SettingsException>? _myExceptions;
-    private ThemePackageSettings _settings;
+    private MagicPackageSettings _settings;
 }
