@@ -1,6 +1,6 @@
 ﻿namespace ToSic.Oqt.Cre8Magic.Client.Menu
 {
-    public class StartingPoint
+    internal class StartingPoint
     {
         public int Id { get; set; }
 

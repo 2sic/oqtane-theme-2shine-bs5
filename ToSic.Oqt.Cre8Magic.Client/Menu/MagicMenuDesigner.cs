@@ -5,18 +5,18 @@ namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 /// <summary>
 /// Special helper to provide Css classes to menus
 /// </summary>
-public class MenuCss
+public class MagicMenuDesigner
 {
-    public MenuCss(IMenuConfig menuConfig)
+    public MagicMenuDesigner(IMagicMenuSettings menuConfig)
     {
-        MenuConfig = menuConfig as MenuConfig ?? throw new ArgumentException("MenuConfig must be real", nameof(MenuConfig));
+        MenuSettings = menuConfig as MagicMenuSettings ?? throw new ArgumentException("MenuConfig must be real", nameof(MenuSettings));
 
-        DesignSettingsList = new List<MenuDesign> { MenuConfig.DesignSettings! };
+        DesignSettingsList = new List<MagicMenuDesignSettings> { MenuSettings.DesignSettings! };
     }
-    private MenuConfig MenuConfig { get; }
-    internal List<MenuDesign> DesignSettingsList { get; }
+    private MagicMenuSettings MenuSettings { get; }
+    internal List<MagicMenuDesignSettings> DesignSettingsList { get; }
 
-    public string Value(string key, MenuBranch branch)
+    public string Value(string key, MagicMenuBranch branch)
     {
         var configsForKey = ConfigsForTag(key)
             .Select(c => c.Value)
@@ -26,21 +26,21 @@ public class MenuCss
         return string.Join(" ", configsForKey);
     }
 
-    public string Classes(string tag, MenuBranch branch)
+    public string Classes(string tag, MagicMenuBranch branch)
     {
         var configsForTag = ConfigsForTag(tag);
         return configsForTag.Any()
-            ? ListToClasses(TagClasses(branch, configsForTag as List<MenuStyling>))
+            ? ListToClasses(TagClasses(branch, configsForTag as List<MagicMenuDesignSetting>))
             : "";
     }
 
-    private List<MenuStyling?> ConfigsForTag(string tag) =>
+    private List<MagicMenuDesignSetting?> ConfigsForTag(string tag) =>
         DesignSettingsList
             .Select(c => c.Styling.FindInvariant(tag))
             .Where(c => c is not null)
             .ToList();
 
-    private List<string?> TagClasses(MenuBranch branch, List<MenuStyling> configs)
+    private List<string?> TagClasses(MagicMenuBranch branch, List<MagicMenuDesignSetting> configs)
     {
         var classes = new List<string?>();
         classes.AddRange(configs.Select(c => c.Classes));

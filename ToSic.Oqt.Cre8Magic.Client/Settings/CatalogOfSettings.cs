@@ -18,11 +18,11 @@ public class CatalogOfSettings
 
     public NamedSettings<LayoutSettings> Layouts { get; set; } = new();
 
-    public NamedSettings<ContainerDesign> ContainerDesigns { get; set; } = new();
+    public NamedSettings<MagicContainerDesignSettings> ContainerDesigns { get; set; } = new();
 
     public NamedSettings<LanguagesSettings> Languages { get; set; } = new();
 
-    public NamedSettings<LanguageDesign> LanguageDesigns { get; set; } = new();
+    public NamedSettings<MagicLanguageDesignSettings> LanguageDesigns { get; set; } = new();
 
     public NamedSettings<BreadcrumbSettings> Breadcrumbs { get; set; } = new();
 
@@ -31,10 +31,10 @@ public class CatalogOfSettings
     /// <summary>
     /// The menu definitions
     /// </summary>
-    public NamedSettings<MenuConfig> Menus { get; set; } = new();
+    public NamedSettings<MagicMenuSettings> Menus { get; set; } = new();
 
     /// <summary>
     /// Design definitions of the menu
     /// </summary>
-    public NamedSettings<MenuDesign> MenuDesigns { get; set; } = new();
+    public NamedSettings<MagicMenuDesignSettings> MenuDesigns { get; set; } = new();
 }

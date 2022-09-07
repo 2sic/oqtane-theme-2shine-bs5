@@ -7,9 +7,9 @@ namespace ToSic.Oqt.Cre8Magic.Client.Services;
 /// Will create a MenuTree based on the current pages information and configuration
 /// </summary>
 // TODO: MAYBE NOT A SERVICE - DOESN'T NEED DI atm
-public class MenuTreeService: ServiceWithCurrentSettings
+public class MagicMenuService: MagicServiceWithSettingsBase
 {
-    public MenuTree GetTree(MenuConfig config, PageState pageState, List<Page> menuPages)
+    public MagicMenuTree GetTree(MagicMenuSettings config, PageState pageState, List<Page> menuPages)
     {
         var settingsSvc = Settings!.Service;
         var (configName, debugInfo) = settingsSvc.FindConfigName(config.ConfigName, Settings.Name);
@@ -46,7 +46,7 @@ public class MenuTreeService: ServiceWithCurrentSettings
             var (designConfig, source) = settingsSvc.FindDesign(designName);
             debugInfo += $"; Design config loaded from '{source}'";
 
-            config = config.Overrule(new MenuConfig(config) { DesignSettings = designConfig });
+            config = config.Overrule(new MagicMenuSettings(config) { DesignSettings = designConfig });
         }
         else
             debugInfo += "; Design rules already set";
@@ -54,6 +54,6 @@ public class MenuTreeService: ServiceWithCurrentSettings
         // should be null if not admin, so the final razor doesn't even add the attribute
         debugInfo = pageState.UserIsAdmin() ? debugInfo : null;
 
-        return new MenuTree(config, pageState, menuPages, debugInfo, settingsSvc);
+        return new MagicMenuTree(config, pageState, menuPages, debugInfo, settingsSvc);
     }
 }

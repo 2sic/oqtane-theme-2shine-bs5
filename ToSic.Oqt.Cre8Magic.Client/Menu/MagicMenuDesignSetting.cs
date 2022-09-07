@@ -2,7 +2,7 @@
 
 namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 
-public class MenuStyling: StylingWithActive
+public class MagicMenuDesignSetting: StylingWithActive
 {
     /// <summary>
     /// List of classes to add on certain levels only.

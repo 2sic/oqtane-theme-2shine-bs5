@@ -7,13 +7,13 @@ public class CurrentSettings
 {
     public CurrentSettings(
         string name,
-        ThemeSettingsService service,
+        MagicSettingsService service,
         LayoutSettings layout, 
         BreadcrumbSettings breadcrumb, 
         PageStyling page, 
         LanguagesSettings languages, 
-        LanguageDesign languageDesign, 
-        ContainerDesign containerDesign)
+        MagicLanguageDesignSettings languageDesign, 
+        MagicContainerDesignSettings containerDesign)
     {
         Layout = layout;
         Breadcrumb = breadcrumb;
@@ -29,7 +29,7 @@ public class CurrentSettings
 
     public string Name { get; }
 
-    public ThemeSettingsService Service { get; }
+    public MagicSettingsService Service { get; }
 
     public LayoutSettings Layout { get; }
 
@@ -39,9 +39,9 @@ public class CurrentSettings
 
     public LanguagesSettings Languages { get; }
 
-    public LanguageDesign LanguageDesign { get; set; }
+    public MagicLanguageDesignSettings LanguageDesign { get; set; }
 
-    public ContainerDesign ContainerDesign { get; set; }
+    public MagicContainerDesignSettings ContainerDesign { get; set; }
 
     public Dictionary<string, string> DebugSources { get; } = new(InvariantCultureIgnoreCase);
 }

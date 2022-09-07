@@ -1,6 +1,6 @@
 ﻿@inherits Oqtane.Themes.ThemeControlBase
 @code {
-    [Parameter] public MenuTree? Menu { get; set; }
+    [Parameter] public MagicMenuTree? Menu { get; set; }
 }
 @if (Menu != null && PageState.UserIsAdmin() && ((Menu as IHasSettingsExceptions)?.HasExceptions ?? false))
 {

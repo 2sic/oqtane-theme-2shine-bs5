@@ -2,6 +2,6 @@
 
 namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 
-public partial class MenuDesign: SettingsWithStyling<MenuStyling>
+public partial class MagicMenuDesignSettings: SettingsWithStyling<MagicMenuDesignSetting>
 {
 }

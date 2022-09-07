@@ -7,17 +7,17 @@ namespace ToSic.Oqt.Cre8Magic.Client.Services;
 /// <summary>
 /// Service which consolidates settings made in the UI, in the JSON and falls back to coded defaults.
 /// </summary>
-public class ThemeSettingsService: IHasSettingsExceptions
+public class MagicSettingsService: IHasSettingsExceptions
 {
     /// <summary>
     /// Constructor
     /// </summary>
-    public ThemeSettingsService(SettingsFromJsonService jsonService)
+    public MagicSettingsService(SettingsFromJsonService jsonService)
     {
         Json = jsonService;
     }
 
-    public ThemeSettingsService InitSettings(ThemePackageSettings themeSettings)
+    public MagicSettingsService InitSettings(ThemePackageSettings themeSettings)
     {
         PackageSettings = themeSettings;
         return this;
@@ -28,7 +28,7 @@ public class ThemeSettingsService: IHasSettingsExceptions
 
     private ThemePackageSettings PackageSettings
     {
-        get => _settings ?? throw new ArgumentException($"The {nameof(ThemeSettingsService)} can't work without first calling {nameof(InitSettings)}", nameof(PackageSettings));
+        get => _settings ?? throw new ArgumentException($"The {nameof(MagicSettingsService)} can't work without first calling {nameof(InitSettings)}", nameof(PackageSettings));
         set => _settings = value;
     }
 
@@ -135,20 +135,20 @@ public class ThemeSettingsService: IHasSettingsExceptions
         return (config, sourceInfo);
     }
 
-    public (MenuConfig MenuConfig, string Source) FindMenuConfig(string name)
+    public (MagicMenuSettings MenuConfig, string Source) FindMenuConfig(string name)
     {
         // Only search multiple names if the name is not already default
         var names = name == Constants.Default ? new[] { name } : new[] { name, Constants.Default };
         var (config, foundName, sourceInfo) 
             = FindInSources((settings, n) => settings?.Menus?.GetInvariant(n), names);
         
-        if (config == null) throw new NullReferenceException($"{nameof(config)} should be a {nameof(MenuConfig)}");
+        if (config == null) throw new NullReferenceException($"{nameof(config)} should be a {nameof(MagicMenuSettings)}");
         if (config.ConfigName != foundName) config.ConfigName = foundName;
         return (config, sourceInfo);
     }
 
 
-    public (string ConfigName, string Source) FindConfigName(string? configName, string inheritedName)
+    internal (string ConfigName, string Source) FindConfigName(string? configName, string inheritedName)
     {
         var debugInfo = $"Initial Config: '{configName}'";
         if (configName.EqInvariant(Constants.Inherit))
@@ -162,11 +162,11 @@ public class ThemeSettingsService: IHasSettingsExceptions
         return (Constants.Default, debugInfo);
     }
 
-    public (MenuDesign Design, string Source) FindDesign(string designName)
+    internal (MagicMenuDesignSettings Design, string Source) FindDesign(string designName)
     {
         var (result, _, sourceInfo) 
             = FindInSources((settings, n) => settings.MenuDesigns?.GetInvariant(n), designName, Constants.Default);
-        if (result == null) throw new NullReferenceException($"{nameof(result)} should be a {nameof(MenuDesign)}");
+        if (result == null) throw new NullReferenceException($"{nameof(result)} should be a {nameof(MagicMenuDesignSettings)}");
         return (result, sourceInfo);
     }
 

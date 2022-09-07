@@ -1,6 +1,6 @@
 ﻿namespace ToSic.Oqt.Cre8Magic.Client.Services;
 
-public abstract class ServiceWithCurrentSettings
+public abstract class MagicServiceWithSettingsBase
 {
     public void InitSettings(CurrentSettings settings) => Settings ??= settings;
 

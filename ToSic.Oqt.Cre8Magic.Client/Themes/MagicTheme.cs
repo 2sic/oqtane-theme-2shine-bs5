@@ -50,14 +50,14 @@ public abstract class MagicTheme : Oqtane.Themes.ThemeBase
     public abstract override string Panes { get; }
 
     [Inject]
-    protected ThemeSettingsService ThemeSettingsService
+    protected MagicSettingsService MagicSettingsService
     {
-        get => _themeSettingsService;
-        set => _themeSettingsService = value.InitSettings(ThemePackageSettings);
+        get => _magicSettingsService;
+        set => _magicSettingsService = value.InitSettings(ThemePackageSettings);
     }
-    private ThemeSettingsService _themeSettingsService;
+    private MagicSettingsService _magicSettingsService;
 
-    private PageStyles PageStyles => ThemeSettingsService.PageStyles;
+    private PageStyles PageStyles => MagicSettingsService.PageStyles;
 
     /// <summary>
     /// The settings of this layout, as loaded from the ThemePackageSettings + JSON
@@ -73,7 +73,7 @@ public abstract class MagicTheme : Oqtane.Themes.ThemeBase
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
-        Settings = ThemeSettingsService.CurrentSettings(PageState, Layout, BodyClasses);
+        Settings = MagicSettingsService.CurrentSettings(PageState, Layout, BodyClasses);
     }
 
     /// <summary>

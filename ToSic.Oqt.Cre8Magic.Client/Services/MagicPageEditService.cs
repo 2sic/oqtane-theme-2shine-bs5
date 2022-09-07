@@ -9,9 +9,9 @@ namespace ToSic.Oqt.Cre8Magic.Client.Services;
 /// It's just meant to support the AdminButtons,
 /// without placing the logic code inside that. 
 /// </summary>
-public class PageEditService
+public class MagicPageEditService
 {
-    public PageEditService(IPageService pageService, NavigationManager navigationManager)
+    public MagicPageEditService(IPageService pageService, NavigationManager navigationManager)
     {
         _pageService = pageService;
         _navigationManager = navigationManager;

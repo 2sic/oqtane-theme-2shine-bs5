@@ -16,7 +16,7 @@ namespace ToSic.Oqt.Cre8Magic.Client.Services;
  * - ...and only show these; possibly show more to admin?
  */
 
-public class LanguageService: ServiceWithCurrentSettings
+public class LanguageService: MagicServiceWithSettingsBase
 {
     public LanguageService(NavigationManager navigation, IJSRuntime jsRuntime, ILanguageService oqtLanguages)
     {

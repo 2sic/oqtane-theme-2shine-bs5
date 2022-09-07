@@ -1,16 +1,14 @@
-﻿using ToSic.Oqt.Cre8Magic.Client.Settings;
+﻿namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 
-namespace ToSic.Oqt.Cre8Magic.Client.Menu;
-
-public class MenuConfig: IMenuConfig
+public class MagicMenuSettings: IMagicMenuSettings
 {
 
     /// <summary>
     /// Empty constructor is important for JSON deserialization
     /// </summary>
-    public MenuConfig() { }
+    public MagicMenuSettings() { }
 
-    public MenuConfig(IMenuConfig original)
+    public MagicMenuSettings(IMagicMenuSettings original)
     {
         Id = original.Id;
         ConfigName = original.ConfigName;
@@ -23,13 +21,13 @@ public class MenuConfig: IMenuConfig
         Level = original.Level;
 
         Design = original.Design;
-        DesignSettings = (original as MenuConfig)?.DesignSettings;
+        DesignSettings = (original as MagicMenuSettings)?.DesignSettings;
         //ThemeCss = original.ThemeCss;
     }
 
-    public MenuConfig Overrule(MenuConfig? overrule)
+    public MagicMenuSettings Overrule(MagicMenuSettings? overrule)
     {
-        var newMc = new MenuConfig(this);
+        var newMc = new MagicMenuSettings(this);
         if (overrule == null) return newMc;
         if (!string.IsNullOrWhiteSpace(overrule.Id)) newMc.Id = overrule.Id;
         if (overrule.ConfigName != default) newMc.ConfigName = overrule.ConfigName;
@@ -86,7 +84,7 @@ public class MenuConfig: IMenuConfig
     public string? Design { get; set; }
 
     // todo: name, maybe not on interface
-    public MenuDesign? DesignSettings { get; set; }
+    public MagicMenuDesignSettings? DesignSettings { get; set; }
 
     public string MenuId => _menuId ??= string.IsNullOrWhiteSpace(Id)
         ? new Random().Next(100000, 1000000).ToString()
@@ -94,7 +92,7 @@ public class MenuConfig: IMenuConfig
     private string? _menuId;
 
 
-    public static MenuConfig Defaults = new()
+    public static MagicMenuSettings Defaults = new()
     {
         Start = "*",
         Depth = 0,

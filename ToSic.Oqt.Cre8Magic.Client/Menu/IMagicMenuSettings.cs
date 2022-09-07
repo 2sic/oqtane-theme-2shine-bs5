@@ -1,13 +1,10 @@
-﻿
-using ToSic.Oqt.Cre8Magic.Client.Settings;
-
-namespace ToSic.Oqt.Cre8Magic.Client.Menu;
+﻿namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 
 /// <summary>
 /// Interface which describes what a menu config contains.
 /// It must be an interface, because it's used for data in code, in json, as well as on Blazor components. 
 /// </summary>
-public interface IMenuConfig
+public interface IMagicMenuSettings
 {
     /// <summary>
     /// A unique ID to identify the menu.

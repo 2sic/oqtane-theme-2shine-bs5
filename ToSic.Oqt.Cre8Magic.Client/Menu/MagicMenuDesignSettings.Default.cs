@@ -1,13 +1,13 @@
 ﻿namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 using static Placeholders;
 
-public partial class MenuDesign
+public partial class MagicMenuDesignSettings
 {
     /// <summary>
     /// The default/fallback design configuration for menus.
     /// Normally this would be set in the json file or the theme settings, so this wouldn't be used. 
     /// </summary>
-    public static MenuDesign Defaults => new()
+    public static MagicMenuDesignSettings Defaults => new()
     {
         Styling = new()
         {

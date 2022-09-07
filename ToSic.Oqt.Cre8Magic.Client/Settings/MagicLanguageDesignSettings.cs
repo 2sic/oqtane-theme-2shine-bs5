@@ -2,7 +2,7 @@
 
 namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
-public class LanguageDesign: SettingsWithStyling<StylingWithActive>
+public class MagicLanguageDesignSettings: SettingsWithStyling<StylingWithActive>
 {
     internal string Classes(string tag, Language? lang = null)
     {
@@ -13,7 +13,7 @@ public class LanguageDesign: SettingsWithStyling<StylingWithActive>
         return styles.Classes + " " + (lang?.IsActive ?? false ? styles.IsActive : styles.IsNotActive);
     }
 
-    public static LanguageDesign Defaults = new()
+    public static MagicLanguageDesignSettings Defaults = new()
     {
         Styling = new()
         {

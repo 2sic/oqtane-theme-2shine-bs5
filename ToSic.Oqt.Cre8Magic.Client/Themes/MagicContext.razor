@@ -3,7 +3,7 @@
 @code {
 
     [Parameter] public RenderFragment? ChildContent { get; set; }
-    [Inject] protected IThemeJsService? ThemeJs { get; set; }
+    [Inject] protected IMagicThemeJsService? ThemeJs { get; set; }
 
     private bool PutInBody => Settings.Layout.MagicContextInBody == true;
 

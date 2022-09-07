@@ -5,7 +5,7 @@ namespace ToSic.Oqt.Cre8Magic.Client.Controls.Menu;
 /// <summary>
 /// Base class for Razor menus
 /// </summary>
-public abstract class MagicMenuRoot: MagicMenuBase, IMenuConfig
+public abstract class MagicMenuRoot: MagicMenuBase, IMagicMenuSettings
 {
     /// <inheritdoc />
     [Parameter] public string? Id { get; set; }
@@ -28,16 +28,16 @@ public abstract class MagicMenuRoot: MagicMenuBase, IMenuConfig
     /// <inheritdoc />
     [Parameter] public string? Design { get; set; }
 
-    protected MenuTree? MenuTree { get; private set; }
+    protected MagicMenuTree? MenuTree { get; private set; }
 
     /*[Inject]*/
-    protected MenuTreeService? MenuTreeService { get; set; } = new();
+    protected MagicMenuService? MenuTreeService { get; set; } = new();
 
     protected override async Task OnParametersSetAsync()
     {
         await base.OnParametersSetAsync();
         MenuTreeService!.InitSettings(Settings);
-        MenuTree = MenuTreeService?.GetTree(new MenuConfig(this), PageState, MenuPages.ToList());
+        MenuTree = MenuTreeService?.GetTree(new MagicMenuSettings(this), PageState, MenuPages.ToList());
     }
 
 }

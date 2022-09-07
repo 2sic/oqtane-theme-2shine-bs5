@@ -4,7 +4,7 @@ using static ToSic.Oqt.Cre8Magic.Client.Styling.PageStyling;
 
 namespace ToSic.Oqt.Cre8Magic.Client.Settings;
 
-public class ContainerDesign : SettingsWithStyling<ContainerStyling>
+public class MagicContainerDesignSettings : SettingsWithStyling<ContainerStyling>
 {
     internal string Classes(Module module, string tag)
     {
@@ -20,7 +20,7 @@ public class ContainerDesign : SettingsWithStyling<ContainerStyling>
 
     }
 
-    public static ContainerDesign Defaults = new()
+    public static MagicContainerDesignSettings Defaults = new()
     {
         Styling = new()
         {

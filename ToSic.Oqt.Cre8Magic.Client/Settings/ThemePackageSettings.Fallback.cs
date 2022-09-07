@@ -9,7 +9,7 @@ public partial class ThemePackageSettings
             Source = "Preset",
             ContainerDesigns = new()
             {
-                { Constants.Default, ContainerDesign.Defaults }
+                { Constants.Default, MagicContainerDesignSettings.Defaults }
             },
 
             Layouts = new()
@@ -23,7 +23,7 @@ public partial class ThemePackageSettings
             },
             LanguageDesigns = new()
             {
-                { Constants.Default, LanguageDesign.Defaults }
+                { Constants.Default, MagicLanguageDesignSettings.Defaults }
             },
             Breadcrumbs = new()
             {
@@ -31,14 +31,14 @@ public partial class ThemePackageSettings
             },
             Menus = new()
             {
-                { Constants.Default, MenuConfig.Defaults },
+                { Constants.Default, MagicMenuSettings.Defaults },
             },
             MenuDesigns = new()
             {
                 // The Default design, if not overridden in the JSON
-                { Constants.Default, MenuDesign.Defaults },
+                { Constants.Default, MagicMenuDesignSettings.Defaults },
                 // The Design configuration for Mobile menus, if not overridden by the JSON
-                { Constants.DesignMobile, MenuDesign.MobileDefaults }
+                { Constants.DesignMobile, MagicMenuDesignSettings.MobileDefaults }
             }
         }
     };

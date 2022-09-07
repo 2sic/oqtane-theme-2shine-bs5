@@ -5,7 +5,7 @@ namespace ToSic.Oqt.Cre8Magic.Client.Styling;
 /// <summary>
 /// Special helper to figure out what classes should be applied to the page. 
 /// </summary>
-public class PageStyles: ServiceWithCurrentSettings
+public class PageStyles: MagicServiceWithSettingsBase
 {
     public string BodyClasses(PageState pageState, string additionalBodyClasses)
     {

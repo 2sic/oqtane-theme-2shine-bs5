@@ -5,14 +5,14 @@ namespace ToSic.Oqt.Cre8Magic.Client.JsModules;
 /// <summary>
 /// Base for any JS Module Helper class
 /// </summary>
-public abstract class JsModuleServiceBase
+public abstract class MagicJsServiceBase
 {
     /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="jsRuntime">JS Runtime of the control, usually available later, like in the OnAfterRenderAsync</param>
     /// <param name="modulePath">Path to the javascript file, must be a JS6 Module</param>
-    protected JsModuleServiceBase(IJSRuntime jsRuntime, string modulePath)
+    protected MagicJsServiceBase(IJSRuntime jsRuntime, string modulePath)
     {
         JsRuntime = jsRuntime;
         ModulePath = modulePath;

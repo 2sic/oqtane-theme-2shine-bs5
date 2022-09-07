@@ -1,6 +1,6 @@
 ﻿namespace ToSic.Oqt.Cre8Magic.Client.Services;
 
-public interface IThemeJsService
+public interface IMagicThemeJsService
 {
     Task Log(params object[] args);
 

@@ -3,12 +3,12 @@ using Oqtane.Models;
 
 namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 
-public class MenuBranch: IHasSettingsExceptions
+public class MagicMenuBranch: IHasSettingsExceptions
 {
     /// <summary>
     /// Root navigator object which has some data/logs for all navigators which spawned from it. 
     /// </summary>
-    protected virtual MenuTree Tree { get; }
+    protected virtual MagicMenuTree Tree { get; }
 
     public string? Classes(string tag) => Tree.PageReplacer.Replace(Tree.Design.Classes(tag, this), Page).EmptyAsNull();
 
@@ -26,7 +26,7 @@ public class MenuBranch: IHasSettingsExceptions
     /// </summary>
     public int MenuLevel { get; }
 
-    public MenuBranch(MenuTree root, int menuLevel, Page page)
+    public MagicMenuBranch(MagicMenuTree root, int menuLevel, Page page)
     {
         Tree = root;
         Page = page;
@@ -41,21 +41,21 @@ public class MenuBranch: IHasSettingsExceptions
 
     public virtual string MenuId => Tree.MenuId;
 
-    public IList<MenuBranch> Children => _children ??= GetChildren();
-    private IList<MenuBranch>? _children;
+    public IList<MagicMenuBranch> Children => _children ??= GetChildren();
+    private IList<MagicMenuBranch>? _children;
 
     /// <summary>
     /// Retrieve the children the first time it's needed.
     /// </summary>
     /// <returns></returns>
     [return: NotNull]
-    protected List<MenuBranch> GetChildren()
+    protected List<MagicMenuBranch> GetChildren()
     {
-        var levelsRemaining = (Tree.Config.Depth ?? MenuConfig.LevelDepthDefault) - MenuLevel + 1;
+        var levelsRemaining = (Tree.Config.Depth ?? MagicMenuSettings.LevelDepthDefault) - MenuLevel + 1;
         return levelsRemaining <= 0
-            ? new List<MenuBranch>()
+            ? new List<MagicMenuBranch>()
             : GetChildPages()
-                .Select(page => new MenuBranch(Tree, MenuLevel + 1, page))
+                .Select(page => new MagicMenuBranch(Tree, MenuLevel + 1, page))
                 .ToList();
     }
 

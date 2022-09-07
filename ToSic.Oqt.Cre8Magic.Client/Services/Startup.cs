@@ -12,13 +12,13 @@ public class Startup : Oqtane.Services.IClientStartup
     {
         // All these Settings etc. should be scoped, so they don't have to reload for each click
         services.AddScoped<SettingsFromJsonService>();
-        services.AddScoped<ThemeSettingsService>();
+        services.AddScoped<MagicSettingsService>();
         services.AddTransient<LanguageService>();
 
         //services.AddTransient<MenuTreeService>();
 
         //// Logic parts for Controls
-        services.AddTransient<PageEditService>();
+        services.AddTransient<MagicPageEditService>();
 
     }
 }

@@ -5,11 +5,11 @@ using ToSic.Oqt.Cre8Magic.Client.OqtanePatches;
 
 namespace ToSic.Oqt.Cre8Magic.Client.Menu;
 
-public class MenuTree : MenuBranch
+public class MagicMenuTree : MagicMenuBranch
 {
     public const char PageForced = '!';
 
-    internal IMenuConfig Config { get; }
+    internal IMagicMenuSettings Config { get; }
     public PageState PageState { get; }
 
     internal PagePlaceholders PageReplacer => _pageReplacer ??= new PagePlaceholders(PageState, null, menuId: MenuId);
@@ -29,20 +29,20 @@ public class MenuTree : MenuBranch
     public override List<SettingsException> Exceptions => _exceptions.Exceptions;
     private readonly IHasSettingsExceptions _exceptions;
 
-    protected override MenuTree Tree => this;
+    protected override MagicMenuTree Tree => this;
 
-    internal MenuCss Design => _menuCss ??= new MenuCss(Config);
-    private MenuCss? _menuCss;
+    internal MagicMenuDesigner Design => _menuCss ??= new MagicMenuDesigner(Config);
+    private MagicMenuDesigner? _menuCss;
 
     internal List<Page> Breadcrumb => _breadcrumb ??= AllPages.Breadcrumb(Page).ToList();
     private List<Page>? _breadcrumb;
 
-    public override string MenuId => _menuId ??= (Config as MenuConfig)?.MenuId ?? "error-menu-id";
+    public override string MenuId => _menuId ??= (Config as MagicMenuSettings)?.MenuId ?? "error-menu-id";
     private string? _menuId;
 
     public override string? Debug { get; }
 
-    public MenuTree(IMenuConfig config, PageState pageState, List<Page> menuPages, string? debug, IHasSettingsExceptions exceptions)
+    public MagicMenuTree(IMagicMenuSettings config, PageState pageState, List<Page> menuPages, string? debug, IHasSettingsExceptions exceptions)
         : base(null! /* root must be null, as `Tree` is handled in this class */, 0, pageState.Page)
     {
         PageState = pageState;
@@ -71,8 +71,8 @@ public class MenuTree : MenuBranch
         var start = Config.Start?.Trim();
 
         // Case 2: '.' - not yet tested
-        var startLevel = Config.Level ?? MenuConfig.StartLevelDefault;
-        var getChildren = Config.Children ?? MenuConfig.ChildrenDefault;
+        var startLevel = Config.Level ?? MagicMenuSettings.StartLevelDefault;
+        var getChildren = Config.Children ?? MagicMenuSettings.ChildrenDefault;
         var startingPoints = ConfigToStartingPoints(start, startLevel, getChildren);
         // Case 3: one or more IDs to start from
 
@@ -97,11 +97,11 @@ public class MenuTree : MenuBranch
         // Three cases: root, current, ...
         var anchors = n.Id != default
             ? source.Where(p => p.PageId == n.Id).ToList()
-            : n.From == MenuConfig.StartPageRoot
+            : n.From == MagicMenuSettings.StartPageRoot
                 ? source.Where(p => p.Level == 0).ToList()
                 : null;
 
-        if (anchors == null && n.From == MenuConfig.StartPageCurrent)
+        if (anchors == null && n.From == MagicMenuSettings.StartPageCurrent)
             // Level 0 means current level / current page
             if (n.Level == 0)
                 anchors = new List<Page> { Page };
