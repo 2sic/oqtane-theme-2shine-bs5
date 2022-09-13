@@ -19,7 +19,7 @@
     "Default": {
       // Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
       "containerDesign": "=",
-      "logo": "[Assets.Path]/logo.svg",
+      "logo": "[Theme.AssetsPath]/logo.svg?[Theme.Path]&pageId=[Page.Id]&siteid=[Site.Id]",
       "languages": "=",
       // very optional, just as example. will default to "=" meaning "Default"
       // "languageMenuDesign": "custom-lang-design",
@@ -142,7 +142,7 @@
   "ContainerDesigns": {
     "Default": {
       "div": {
-        "classes": "to-shine-background-container py-4",
+        "classes": "to-shine-background-container py-4 test-[Module.Id] test-[Page.Id]",
         // "isPublished": "module-published",
         "isNotPublished": "module-unpublished",
         "isAdminModule": "to-shine-admin-container"
@@ -160,7 +160,7 @@
     "Default": {
       "ul": {
         "byLevel": {
-          "0": "navbar-nav",
+          "0": "navbar-nav test-[Page.Id] test-[Theme.Path]",
           "-1": "dropdown-menu"
         }
       },
