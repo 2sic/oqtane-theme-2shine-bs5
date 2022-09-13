@@ -1,4 +1,4 @@
-<img width="100%" src="https://raw.githubusercontent.com/2sic/oqt-theme-2shine-bs5/main/docs/assets/logo.svg">
+<img width="100%" src="https://raw.githubusercontent.com/2sic/oqtane-theme-2shine-bs5/main/docs/assets/logo.svg">
 
 # Oqtane Theme Template for Designers
 

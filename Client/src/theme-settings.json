@@ -26,7 +26,7 @@
       "languageMenuShow": true,
       "languageMenuShowMin": 2,
       // Determins if we should use the body (or a div) for the magic context
-      "magicContextInBody": false,
+      "magicContextInBody": false
       // "breadcrumbs": "=",         // Breadcrumb-config inherits name, so also "Default" - this is the default BTW
     },
     // Layout showing the submenu in the sidebar, so we don't need to show more items in the main menu
@@ -48,7 +48,7 @@
       ],
       "PageIsHome": "page-is-home",
       "PaneIsEmpty": "pane-is-empty",
-      "MagicContextTagId": "cre8magic-root",
+      "MagicContextTagId": "cre8magic-root"
     }
   },
   "Breadcrumbs": {
@@ -62,7 +62,8 @@
   "Languages": {
     "Default": {
       "hideOthers": false,
-      "list": {
+      // TODO: PROBABLY change to "Values"
+      "Languages": {
         "en": {
           "label": "ENG",
           "description": "English (from JSON config)"
@@ -79,7 +80,7 @@
     // The default configuration is taken if no other configuration is used
     "Default": {
       "start": "*",
-      "depth": 0,
+      "depth": 0
     },
     // This is used as the main-menu in the navigation with sidebar submenu
     "ToplevelOnly": {
@@ -120,12 +121,21 @@
       "li": {
         "isActive": "active"
       }
-    },
+    }
     // Example of design specs with another name
     // "custom-lang-design": {
     //     "ul": { "classes": "to-shine-page-language custom" },
     //     "li": { "isActive": "active custom", "isNotActive": "inactive custom" }
     // }
+  },
+  // ********************
+  // Containers has properties / settings / values on containers which are not directly related to design
+  "Containers": {
+    "Default": {
+      "Values": {
+        "id": "module-[Module.Id]"
+      }
+    }
   },
   // ********************
   // Container Designs determine CSS classes on containers
@@ -135,7 +145,7 @@
         "classes": "to-shine-background-container py-4",
         // "isPublished": "module-published",
         "isNotPublished": "module-unpublished",
-        "isAdminModule": "to-shine-admin-container",
+        "isAdminModule": "to-shine-admin-container"
         // "isNotAdminModule": "to-shine-default-container"
       }
     }
@@ -160,7 +170,7 @@
         // "hasNoChildren": "example",
         "isActive": "active",
         // "isNotActive": "example",
-        "isDisabled": "disabled",
+        "isDisabled": "disabled"
         //"isNotDisabled": "example",
       },
       "a": {
