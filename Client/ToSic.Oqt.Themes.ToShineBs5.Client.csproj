@@ -63,7 +63,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ToSic.Oqt.Cre8Magic.Client\ToSic.Oqt.Cre8Magic.Client.csproj" />
+    <ProjectReference Include="..\..\oqtane-cre8magic\ToSic.Oqt.Cre8Magic.Client\ToSic.Oqt.Cre8Magic.Client.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
