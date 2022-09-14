@@ -19,13 +19,14 @@
     "Default": {
       // Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
       "containerDesign": "=",
-      "logo": "[Theme.AssetsPath]/logo.svg?[Theme.Path]&pageId=[Page.Id]&siteid=[Site.Id]",
+      "logo": "[Theme.Url]/Assets/logo.svg",
       "languages": "=",
       // very optional, just as example. will default to "=" meaning "Default"
       // "languageMenuDesign": "custom-lang-design",
       "languageMenuShow": true,
       "languageMenuShowMin": 2,
       // Determins if we should use the body (or a div) for the magic context
+      // As of now we feel that browser behavior is better if it's in the div-tag (false)
       "magicContextInBody": false
       // "breadcrumbs": "=",         // Breadcrumb-config inherits name, so also "Default" - this is the default BTW
     },
