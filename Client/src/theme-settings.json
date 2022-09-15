@@ -62,7 +62,11 @@
       // It's used in CSS rules, so it must match the value in your SCSS
       "MagicContextTagId": "cre8magic-root",
       // TODO: add classes section for stuff like sidebar
-      // "something-else-in-dic?": "test"
+      "Classes": {
+        // This config is used with sidebar-menu, places the body to the right, the menu to the left
+        "sidebar-body": "col-12 col-lg-9 order-lg-2",
+        "sidebar-menu": "col-12 col-lg-3 order-lg-1"
+      }
     }
   },
   "Breadcrumbs": {
