@@ -15,13 +15,13 @@ Nice to know:       Uses extension methods like GetHomePage() and GetBreadcrumb(
            href="@NavigateUrl(HomePage.Path)">@HomePage.Name</a>
         @* Show a ... ellipsis in mobile mode to toggle showing the rest of the breadcrumb *@
         <span class="@ClassPrefix-page-breadcrumb-trigger">
-            @((MarkupString)Settings.Breadcrumb.Revealer)
+            @((MarkupString)Settings.Breadcrumbs.Revealer)
         </span>
 
         @* Show an > arrow and the page name with link to it for each page in the breadcrumb *@
         @foreach (var p in PageState.Breadcrumb())
         {
-            <span>@((MarkupString)Settings.Breadcrumb.Separator)</span>
+            <span>@((MarkupString)Settings.Breadcrumbs.Separator)</span>
             <a href="@NavigateUrl(p.Path)" class="@ClassPrefix-page-breadcrumb-link">@p.Name</a>
         }
     </div>
