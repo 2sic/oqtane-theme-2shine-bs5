@@ -21,7 +21,7 @@
 
   // Layouts Configurations. In most cases you'll just use "Default"
   // The example below shows how the "Sidebar" configuration switches to a different menu
-  "Layouts": {
+  "Themes": {
     "Default": {
       // Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
       "containerDesign": "=",
@@ -38,6 +38,7 @@
     },
     // Layout showing the submenu in the sidebar, so we don't need to show more items in the main menu
     "Sidebar": {
+      "@inherits": "Default",
       "menus": {
         "Main": "ToplevelOnly"
       }
@@ -45,7 +46,7 @@
   },
 
 
-  "PageDesigns": {
+  "ThemeDesigns": {
     "Default": {
       "MagicContext": [
         "page-[Page.Id]",
