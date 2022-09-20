@@ -9,30 +9,34 @@ Nice to know:       Most of the parts are again other controls (icon, navigation
 <nav id="@ClassPrefix-page-navigation" class="navbar navbar-expand-lg bg-white">
     <div class="container d-flex justify-content-between align-items-center py-3">
         <HeaderLogo></HeaderLogo>
+        
+        @* Hamburger button *@
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+        
+        @* TODO: verify w/2tl if this all should be called offcanvas - unsure about it, as much of it is on-canvas as well*@
         <div class="offcanvas offcanvas-start border-0" id="offcanvasNavbar">
             <div class="offcanvas-header">
                 <HeaderLogo></HeaderLogo>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
             </div>
             <div class="offcanvas-body">
-            <div class="d-flex flex-column justify-content-end align-items-end flex-grow-1">
-                <div class="d-none d-lg-block">
-                    <Menu ConfigName="@ThemeInfo.MenuMain"></Menu>
+                <div class="d-flex flex-column justify-content-end align-items-end flex-grow-1">
+                    <div class="d-none d-lg-block">
+                        <Menu ConfigName="@ThemeInfo.MenuMain"></Menu>
+                    </div>
+                    <div class="d-block d-lg-none w-100">
+                        <Menu ConfigName="@ThemeInfo.MenuMobile"></Menu>
+                    </div>
+                    <div class="d-flex order-lg-first">
+                        <LanguageNav></LanguageNav>
+                        <ButtonLoginIcon></ButtonLoginIcon>
+                        <ButtonEdit></ButtonEdit>
+                        <ButtonControlPanel></ButtonControlPanel>
+                        <MagicThemeDebug></MagicThemeDebug>
+                    </div>
                 </div>
-                <div class="d-block d-lg-none w-100">
-                    <Menu ConfigName="@ThemeInfo.MenuMobile"></Menu>
-                </div>
-                <div class="d-flex order-lg-first">
-                    <LanguageNav></LanguageNav>
-                    <ButtonLoginIcon></ButtonLoginIcon>
-                    <ButtonEdit></ButtonEdit>
-                    <ButtonControlPanel></ButtonControlPanel>
-                </div>
-            </div>
             </div>
         </div>
     </div>

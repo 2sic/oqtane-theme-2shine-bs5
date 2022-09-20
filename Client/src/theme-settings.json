@@ -18,8 +18,8 @@
   "Xdebug": true,
   // Master debug settings - if not enabled here, all others will not have an effect
   "debug": {
-    "allowed": true,    // The most important setting - if this is false, nothing else will happen
-    "admin": true,       // Enable for admin
+    "allowed": true,     // The most important setting - if this is false, nothing else will happen
+    "admin": false,       // Enable all for admin
     "anonymous": false,  // Enable for anonymous
   },
 
@@ -39,8 +39,12 @@
       "languageMenuShowMin": 2,
       // Determins if we should use the body (or a div) for the magic context
       // As of now we feel that browser behavior is better if it's in the div-tag (false)
-      "magicContextInBody": false
+      "magicContextInBody": false,
       // "breadcrumbs": "=",         // Breadcrumb-config inherits name, so also "Default" - this is the default BTW
+      "debug": {
+        "admin": true,
+        "anonymous": false,
+      }
     },
     // Layout showing the submenu in the sidebar, so we don't need to show more items in the main menu
     "Sidebar": {
@@ -119,6 +123,7 @@
     "Main": {
       "start": "*",
       "depth": 2,
+      // Example to enable debug just on this specific menu
       "debug": {
         "anonymous": false,
         "admin": false,
@@ -143,10 +148,6 @@
     // For the default values we're using Home "1" and Login (forced, even though it's set to not show in menus) "5!" as these are a few of the pages which always exist
     "Footer": {
       "start": "1, 5!",
-      "debug": {
-        "anonymous": false,
-        "admin": true
-      }
     }
   },
 
