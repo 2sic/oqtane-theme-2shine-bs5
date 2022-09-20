@@ -48,8 +48,8 @@ Nice to know:
             <div class="container">
                 <div class="row">
                     <div class='@Classes("sidebar-body")'>
-                        <Pane Name="@PaneNameDefault"/>
-                        <DynComponentList Components="@DynComponents" Group="@PaneNameDefault"></DynComponentList>
+                        <Pane Name="@PaneNames.Default"/>
+                        <DynComponentList Components="@DynComponents" Group="@PaneNames.Default"></DynComponentList>
                     </div>
                     <div class='@Classes("sidebar-menu")'>
                         <div id="@ClassPrefix-nav-sub" class="d-none d-sm-block">
@@ -61,12 +61,9 @@ Nice to know:
         }
         else
         {
-            <Pane Name="@PaneNameDefault"/>
-            <DynComponentList Components="DynComponents" Group="@PaneNameDefault"></DynComponentList>
+            <Pane Name="@PaneNames.Default"/>
+            <DynComponentList Components="DynComponents" Group="@PaneNames.Default"></DynComponentList>
         }
-
-        @* TODO: Delete as soon as support in Oqtane 3.2 is here *@
-        @*<Pane Name="@PaneNames.Admin"/>*@
 
         <ToTop></ToTop>
     </main>
