@@ -1,6 +1,6 @@
 ﻿@inherits MagicMenu;
 @*
-File Purpose:       Show a menu usually used on the side of content (Sidebar)
+File Purpose:       Show a vertical menu, usually used for mobile or sidebar
 Recommendations:    See `MenuDefault.razor`
 Nice to know:       See `MenuDefault.razor`
 *@
@@ -19,7 +19,7 @@ Nice to know:       See `MenuDefault.razor`
                           data-bs-toggle='collapse'
                           data-bs-target='@subBranch.Value("data-bs-target")'
                           aria-expanded='@subBranch.InBreadcrumb'></span>
-                    <MenuSidebar MenuBranch="@subBranch"></MenuSidebar>
+                    <MenuVertical MenuBranch="@subBranch"></MenuVertical>
                 }
             </li>
         }
