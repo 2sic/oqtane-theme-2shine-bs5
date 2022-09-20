@@ -14,13 +14,12 @@
   // The version of this file, which helps the reader detect the format (or error if incompatible)
   "version": 0.01,
 
-  // Optionally activate debug, to see errors for non-admins as well
-  "Xdebug": true,
-  // Master debug settings - if not enabled here, all others will not have an effect
+  // Global debug settings
+  // If "allowed" here, you can activate individually on each Theme and Menu
   "debug": {
     "allowed": true,     // The most important setting - if this is false, nothing else will happen
-    "admin": false,       // Enable all for admin
-    "anonymous": false,  // Enable for anonymous
+    "admin": false,      // Enable everywhere for admin - if false, can be enabled on specific elements
+    "anonymous": false,  // Enable everywhere for anonymous - if false, can be
   },
 
   // ********************
