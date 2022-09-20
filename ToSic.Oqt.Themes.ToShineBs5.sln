@@ -10,7 +10,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oqtane.Shared", "..\oqtane.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oqtane.Client", "..\oqtane.framework\Oqtane.Client\Oqtane.Client.csproj", "{F9DDCE29-CFA2-4F78-B47D-F483D4D736CA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "..\oqtane-cre8magic\ToSic.Oqt.Cre8Magic.Client", "..\oqtane-cre8magic\ToSic.Oqt.Cre8Magic.Client\ToSic.Oqt.Cre8Magic.Client.csproj", "{46071FC8-7CF2-4062-A0F3-C726EDFB01D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Oqt.Cre8Magic.Client", "..\oqtane-cre8magic\ToSic.Oqt.Cre8Magic.Client\ToSic.Oqt.Cre8Magic.Client.csproj", "{46071FC8-7CF2-4062-A0F3-C726EDFB01D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

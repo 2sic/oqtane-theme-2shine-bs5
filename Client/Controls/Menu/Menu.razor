@@ -12,14 +12,13 @@ Nice to know:
     - WIP: Later it will also be able to load a config from the page/theme settings
 *@
 @* Show the desired menu *@
-@switch (ConfigName)
+@if (ThemeInfo.MenuVertical.Equals(MenuTree.Settings.Template, StringComparison.InvariantCultureIgnoreCase))
 {
-    case ThemeInfo.MenuMobile:
-    case ThemeInfo.MenuSidebar:
-        <MenuVertical MenuBranch="@MenuTree"></MenuVertical>
-        break;
-    case ThemeInfo.MenuMain:
-    default:
-        <MenuDefault MenuBranch="@MenuTree"></MenuDefault>
-        break;
+    <MenuVertical CurrentBranch="@MenuTree"></MenuVertical>
 }
+else
+{
+    <MenuDefault CurrentBranch="@MenuTree"></MenuDefault>
+}
+@* Debug Information as things can get complex *@
+<MagicMenuDebug MenuTree="@MenuTree"></MagicMenuDebug>

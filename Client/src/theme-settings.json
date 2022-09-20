@@ -116,11 +116,13 @@
     },
     // Mobile is usually used for the default, top-level menu which only appears when the screen is too small
     "Mobile": {
+      "template": "vertical",
       "start": "*",
       "depth": 2
     },
     // Sidebar is used in menus usually to the left of content
     "Sidebar": {
+      "template": "vertical",
       "start": ".",
       "level": 1,
       "children": true,

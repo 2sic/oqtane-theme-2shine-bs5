@@ -11,10 +11,10 @@ Nice to know:
     - The configurations are smart, so they change the class depending on active etc.
     - The `a` tag with the label is written in a way so there are no additional spaces
 *@
-@if (MenuBranch.HasChildren)
+@if (CurrentBranch.HasChildren)
 {
-    <ul class='@MenuBranch.Classes("ul")' data-debug='@MenuBranch.Debug'>
-        @foreach(var subBranch in MenuBranch.Children)
+    <ul class='@CurrentBranch.Classes("ul")'>
+        @foreach(var subBranch in CurrentBranch.Children)
         {
             <li class='@subBranch.Classes("li")'>
                 <a class='@subBranch.Classes("a")' href='@GetUrl(subBranch)'
@@ -23,7 +23,7 @@ Nice to know:
 
                 @if (subBranch.HasChildren)
                 {
-                    <MenuDefault MenuBranch="@subBranch"></MenuDefault>
+                    <MenuDefault CurrentBranch="@subBranch"></MenuDefault>
                 }
             </li>
         }

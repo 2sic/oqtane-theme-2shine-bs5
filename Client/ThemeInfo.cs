@@ -29,6 +29,8 @@ public class ThemeInfo : ITheme
 
     #region Menu Names for this Theme, used in various Razor files
 
+    public const string MenuHorizontal = "Horizontal";
+    public const string MenuVertical = "Vertical";
     public const string MenuMain = "Main";
     public const string MenuMobile = "Mobile";
     public const string MenuSidebar = "Sidebar";
