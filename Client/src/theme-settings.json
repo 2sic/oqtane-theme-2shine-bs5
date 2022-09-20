@@ -15,7 +15,13 @@
   "version": 0.01,
 
   // Optionally activate debug, to see errors for non-admins as well
-  "debug": true,
+  "Xdebug": true,
+  // Master debug settings - if not enabled here, all others will not have an effect
+  "debug": {
+    "allowed": true,    // The most important setting - if this is false, nothing else will happen
+    "admin": true,       // Enable for admin
+    "anonymous": false,  // Enable for anonymous
+  },
 
   // ********************
 
@@ -102,7 +108,7 @@
     // The default configuration is taken if no other configuration is used
     "Default": {
       "start": "*",
-      "depth": 0
+      "depth": 0,
     },
     // This is used as the main-menu in the navigation with sidebar submenu
     "ToplevelOnly": {
@@ -112,7 +118,11 @@
     // Main is usually used for the default, top-level menu
     "Main": {
       "start": "*",
-      "depth": 2
+      "depth": 2,
+      "debug": {
+        "anonymous": false,
+        "admin": false,
+      },
     },
     // Mobile is usually used for the default, top-level menu which only appears when the screen is too small
     "Mobile": {
@@ -132,7 +142,11 @@
     // Footer menu, would usually show Imprint, Terms, Privacy etc.
     // For the default values we're using Home "1" and Login (forced, even though it's set to not show in menus) "5!" as these are a few of the pages which always exist
     "Footer": {
-      "start": "1, 5!"
+      "start": "1, 5!",
+      "debug": {
+        "anonymous": false,
+        "admin": true
+      }
     }
   },
 
