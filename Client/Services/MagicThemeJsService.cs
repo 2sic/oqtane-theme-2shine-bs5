@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.JSInterop;
-using ToSic.Oqt.Cre8Magic.Client.JsModules;
+using ToSic.Cre8Magic.Client.JsModules;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
