@@ -38,6 +38,14 @@ public class ThemeInfo : ITheme
 
     #endregion
 
+    #region Constants for generating CSS Classes
+
+    // Note: not "to-shine-" because we need the "-" as separator in razor files it must be @ThemeInfo.ClassPrefix-something-else
+    public const string ClassPrefix = "to-shine";
+
+    #endregion
+
+
     #region Paths used in the Theme for getting JS and CSS files
 
     internal static string ThemePath => _themePath ??= "Themes/" + new ThemeInfo().Theme.PackageName;
@@ -63,53 +71,9 @@ public class ThemeInfo : ITheme
 
         // Theme Settings Defaults, used to lookup things which the json file doesn't specify.
         // Normally you don't want to change this, but just set everything in the json
-        //Defaults = new()
-        //{
-            //    // The source is just a name, which you may sometimes see in debug messages to see where the setting came from
-            //    Source = "Preset",
-
-            //PageDesigns = new()
-            //{
-            //    { MagicConstants.Default, MagicPageDesign.Defaults}
-            //}
-            //    // Layout settings
-            //    Layouts = new()
-            //    {
-            //        {
-            //            MagicConstants.Default, new()
-            //            {
-            //                Logo = "logo.svg",
-            //                LanguageMenuShow = true,
-            //                LanguageMenuShowMin = 2,
-            //                //Breadcrumbs = "Test",
-            //            }
-            //        }
-            //    },
-            //    Languages = new()
-            //    {
-            //        { MagicConstants.Default, MagicLanguagesSettings.Defaults }
-            //    },
-            //    Breadcrumbs = new()
-            //    {
-            //        { MagicConstants.Default, MagicBreadcrumbSettings.Defaults },
-            //    },
-            //    Menus = new()
-            //    {
-            //        { MagicConstants.Default, MagicMenuSettings.Defaults },
-            //    },
-            //    MenuDesigns = new()
-            //    {
-            //        { MagicConstants.Default, MagicMenuDesignSettings.Defaults },
-            //    }
-        //}
+        //Defaults = new() { ... }
     };
 
     #endregion
 
-    #region Constants for generating CSS Classes
-
-    // Note: not "to-shine-" because we need the "-" as separator in razor files it must be @ThemeInfo.ClassPrefix-something-else
-    public const string ClassPrefix = "to-shine"; 
-
-    #endregion
 }

@@ -1,4 +1,12 @@
-// Global using directives
+/*
+ * Global using directives
+ *
+ * These usings are auto-applied to all .cs files and to razor as well.
+ *
+ * Note that for razor it only works for code, but not for tags.
+ * So for <MagicMenu > to work without a namespace, it must also be in the _imports.razor
+ */
+// 
 global using System.Collections.Generic;
 global using System.Linq;
 
