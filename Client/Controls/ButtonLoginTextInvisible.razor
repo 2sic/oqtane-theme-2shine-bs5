@@ -1,8 +1,8 @@
-﻿@inherits ButtonLoginBase
+﻿@inherits MagicLogin
 @*
 File Purpose:       Show the Login/Logout text buttons
 Recommendations:    -
 Nice to know:       Inherits the LoginBase, which contains ChangeLogin and i18n for the label
 See also:           LoginIcon.razor has the same feature but with icons
 *@
-<a class="@ClassPrefix-login-invisible d-none d-lg-inline-flex" @onclick="ChangeLogin">@LocalizedLabel</a>
+<a class="@Classes("login-invisible")" @onclick="ChangeLogin">@LocalizedLabel</a>

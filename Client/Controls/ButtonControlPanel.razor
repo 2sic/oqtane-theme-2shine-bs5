@@ -4,7 +4,7 @@ File Purpose:       Button: Show Control Panel
 Recommendations:    We recommend to use inline SVGs for performance reasons.
 Nice to know:       Will use Bootstrap toggle functionality to show the hidden control panel
 *@
-@if (PageState.UserIsAdmin())
+@if (UserIsAdmin)
 {
     <a class="@ClassPrefix-ui-buttons button-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasControlPanel" aria-controls="offcanvasControlPanel">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

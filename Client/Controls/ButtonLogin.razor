@@ -1,11 +1,11 @@
-﻿@inherits ButtonLoginBase
+﻿@inherits MagicLogin
 @*
 File Purpose:       Show the Login buttons / state using lock icons
 Recommendations:    If you want other icons, do use inline SVGs
 Nice to know:       Inherits the LoginBase, which contains ChangeLogin and i18n for the label
 See also:           LoginText.razor has the same feature but with text labels
 *@
-<a Title="@LocalizedLabel" class="@ClassPrefix-login-icon" @onclick="ChangeLogin">
+<a Title="@LocalizedLabel" class='@Classes("login-icon")' @onclick="ChangeLogin">
     @if (IsLoggedIn)
     {
         <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" 
