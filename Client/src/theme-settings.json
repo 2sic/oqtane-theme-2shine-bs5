@@ -160,7 +160,6 @@
       },
       "li": {
         "isActive": "active",
-        // "active2": "on-value",
       }
     }
     // Example of design specs with another name
@@ -189,9 +188,9 @@
       "div": {
         "classes": "to-shine-background-container py-4 test-[Module.Id] test-[Page.Id]",
         // "isPublished": "module-published",
-        "isNotPublished": "module-unpublished",
+        "isPublished": [null, "module-unpublished"],
         "isAdminModule": "to-shine-admin-container"
-        // "isNotAdminModule": "to-shine-default-container"
+        // "isAdminModule": [null, "to-shine-default-container"]
       }
     }
   },
@@ -210,18 +209,15 @@
           "0": "navbar-nav test-[Page.Id] test-[Theme.Path]",
           "-1": "dropdown-menu"
         },
-        "active2": [null, "off-val-only"],
       },
       "li": {
         "classes": "nav-item nav-[Page.Id]",
         "hasChildren": "has-child dropdown",
-        // "hasNoChildren": "example",
+        // "hasChildren": [null, "example"],
         "isActive": "active",
-        // "isNotActive": "example",
+        //"isActive": ["active", "inactive"],
         "isDisabled": "disabled",
-        //"isNotDisabled": "example",
-
-        // "active2": ["on-val", "off-val"],
+        // "isDisabled": ["disabled", "not-disabled"],
       },
       "a": {
         "isActive": "active",
@@ -230,7 +226,6 @@
           "1": "nav-link",
           "-1": "dropdown-item"
         },
-        "active2": ["on-val-no-off-val"],
       }
     },
     "Mobile": {
@@ -239,7 +234,7 @@
           "0": "navbar-nav",
           "-1": "collapse to-shine-submenu-[Menu.Id]-[Page.Id]"
         },
-        "isInBreadcrumb": "show"
+        "inBreadcrumb": "show"
       },
       "li": {
         "classes": "nav-item nav-[Page.Id] position-relative",
@@ -254,7 +249,7 @@
       },
       "span": {
         "classes": "nav-item-sub-opener",
-        "isNotInBreadcrumb": "collapsed"
+        "inBreadcrumb": [null, "collapsed"],
       },
       // Special target information (not really styling) usually on the span-tag
       "data-bs-target": {
@@ -267,7 +262,7 @@
           "0": "navbar-nav",
           "-1": "collapse to-shine-submenu-[Menu.Id]-[Page.Id]"
         },
-        "isInBreadcrumb": "show"
+        "inBreadcrumb": "show"
       },
       "li": {
         "classes": "nav-item nav-[Page.Id] position-relative",
@@ -281,7 +276,7 @@
       },
       "span": {
         "classes": "nav-item-sub-opener",
-        "isNotInBreadcrumb": "collapsed"
+        "inBreadcrumb": [null, "collapsed"],
       },
       "data-bs-target": {
         "value": ".to-shine-submenu-[Menu.Id]-[Page.Id]"
