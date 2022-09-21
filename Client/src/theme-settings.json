@@ -18,8 +18,8 @@
   // If "allowed" here, you can activate individually on each Theme and Menu
   "debug": {
     "allowed": true,     // The most important setting - if this is false, nothing else will happen
-    "admin": false,      // Enable everywhere for admin - if false, can be enabled on specific elements
-    "anonymous": false,  // Enable everywhere for anonymous - if false, can be
+    "admin": true,      // Enable everywhere for admin - if false, can be enabled on specific elements
+    "anonymous": true,  // Enable everywhere for anonymous - if false, can be
   },
 
   // ********************
@@ -159,7 +159,8 @@
         "classes": "to-shine-page-language"
       },
       "li": {
-        "isActive": "active"
+        "isActive": "active",
+        // "active2": "on-value",
       }
     }
     // Example of design specs with another name
@@ -208,7 +209,8 @@
         "byLevel": {
           "0": "navbar-nav test-[Page.Id] test-[Theme.Path]",
           "-1": "dropdown-menu"
-        }
+        },
+        "active2": [null, "off-val-only"],
       },
       "li": {
         "classes": "nav-item nav-[Page.Id]",
@@ -216,8 +218,10 @@
         // "hasNoChildren": "example",
         "isActive": "active",
         // "isNotActive": "example",
-        "isDisabled": "disabled"
+        "isDisabled": "disabled",
         //"isNotDisabled": "example",
+
+        // "active2": ["on-val", "off-val"],
       },
       "a": {
         "isActive": "active",
@@ -225,7 +229,8 @@
         "byLevel": {
           "1": "nav-link",
           "-1": "dropdown-item"
-        }
+        },
+        "active2": ["on-val-no-off-val"],
       }
     },
     "Mobile": {
