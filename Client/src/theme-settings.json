@@ -18,8 +18,8 @@
   // If "allowed" here, you can activate individually on each Theme and Menu
   "debug": {
     "allowed": true,    // The most important setting - if this is false, nothing else will happen
-    "admin": true,      // Enable everywhere for admin - unless set at another node
-    "anonymous": true,  // Enable everywhere for anonymous - unless set at another node
+    "admin": true,      // Enable everywhere for admin, unless disabled in a specific configuration
+    "anonymous": true,  // Enable everywhere for anonymous, unless disabled in a specific configuration
   },
 
   // ********************
@@ -85,9 +85,9 @@
         // Other Admin buttons
         "edit-icon": "to-shine-ui-buttons",
 
-        // Logo
+        // Logo & ToTop
         "logo": "logo",
-
+        "to-top": "to-shine-to-top",
       }
     }
   },
