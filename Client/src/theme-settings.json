@@ -183,7 +183,7 @@
   // Containers has properties / settings / values on containers which are not directly related to design
   "Containers": {
     "Default": {
-      "Values": {
+      "Custom": {
         "id": "module-[Module.Id]"
       }
     }
