@@ -15,10 +15,11 @@ Nice to know:
         {
             <li class='@Classes("li", lang)'>
                 <a href="#"
-                    @onclick="@(async _ => await SetLanguage(lang.Culture))"
-                    title="@lang.Description"
-                    >@lang.Label</a>
+                   @onclick="@(async _ => await SetLanguage(lang.Culture))"
+                   title="@lang.Description"
+                >@lang.Label</a>
             </li>
         }
     </ul>
+    <MagicLanguageDebug Show="Show == true" Languages="Languages" LanguageService="LanguageService" ></MagicLanguageDebug>
 }
