@@ -72,7 +72,7 @@
       // ID of the <div> tag which has the magic context classes on it
       // It's used in CSS rules, so it must match the value in your SCSS
       "MagicContextTagId": "cre8magic-root",
-      "Classes": {
+      "Custom": {
         // This config is used with sidebar-menu, places the body to the right, the menu to the left
         "sidebar-body": "col-12 col-lg-9 order-lg-2",
         "sidebar-menu": "col-12 col-lg-3 order-lg-1",
