@@ -86,7 +86,7 @@
 
         // Logo
         "logo": "logo",
-        
+
       }
     }
   },
@@ -166,9 +166,7 @@
   // Language Designs add classes for the language menus
   "LanguageDesigns": {
     "Default": {
-      "ul": {
-        "classes": "to-shine-page-language"
-      },
+      "ul": "to-shine-page-language",
       "li": {
         "isActive": "active",
       }
@@ -263,9 +261,7 @@
         "inBreadcrumb": [null, "collapsed"],
       },
       // Special target information (not really styling) usually on the span-tag
-      "data-bs-target": {
-        "value": ".to-shine-submenu-[Menu.Id]-[Page.Id]"
-      }
+      "data-bs-target": ".to-shine-submenu-[Menu.Id]-[Page.Id]",
     },
     "Sidebar": {
       "ul": {
@@ -289,14 +285,10 @@
         "classes": "nav-item-sub-opener",
         "inBreadcrumb": [null, "collapsed"],
       },
-      "data-bs-target": {
-        "value": ".to-shine-submenu-[Menu.Id]-[Page.Id]"
-      }
+      "data-bs-target": ".to-shine-submenu-[Menu.Id]-[Page.Id]",
     },
     "Footer": {
-      "ul": {
-        "classes": "navbar-nav test-wip-config"
-      }
+      "ul": "navbar-nav test-wip-config"
     }
   }
 }
