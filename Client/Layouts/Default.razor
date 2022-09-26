@@ -18,9 +18,13 @@ Nice to know:
 @* Stop here if Settings are not ready *@
 @{ if (Settings == null) return; }
 
-@* Make sure Settings are forwarded to all child controls *@
-@* Ensure the Magic Context (page-id, is-home, etc.) is available on the <body> or on a wrapper <div> depending on the config *@
-<CascadingValue Value="Settings"><MagicContext>
+@*
+    The MagicContextAndSettings wrapper does 2 things
+    1. It ensures that certain classes are added to the body or wrapper-div so that styles can be optimized by page, language, branch etc.
+       Note that the specifics are configured in the configuration
+    2. It will ensure that the object Settings are available on all child controls using <CascadingValue>
+*@
+<MagicContextAndSettings Settings="Settings">
 
     @* Show any errors to the admin if something went wrong like when loading settings *@
     <MagicExceptions></MagicExceptions>
@@ -29,7 +33,7 @@ Nice to know:
     <Header></Header>
     
     @* Header Pane *@
-    <div id="@ClassPrefix-page-header-pane" class="container-xxl px-0 @PaneClasses(PaneNameHeader)">
+    <div id="@ClassPrefix-page-header-pane" class="xx-container-xxl xx-px-0 @PaneClasses(PaneNameHeader)">
         <Pane Name="@PaneNameHeader"/>
     </div>
     
@@ -68,4 +72,4 @@ Nice to know:
         <ToTop></ToTop>
     </main>
     <Footer></Footer>
-</MagicContext></CascadingValue>
+</MagicContextAndSettings>
