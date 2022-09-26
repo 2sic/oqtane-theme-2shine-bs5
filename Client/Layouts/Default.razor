@@ -33,12 +33,12 @@ Nice to know:
     <Header></Header>
     
     @* Header Pane *@
-    <div id="@ClassPrefix-page-header-pane" class="xx-container-xxl xx-px-0 @PaneClasses(PaneNameHeader)">
+    <div id="@Id(PaneNameHeader)" class="@PaneClasses(PaneNameHeader)">
         <Pane Name="@PaneNameHeader"/>
     </div>
     
     @* Main Section *@
-    <main id="@ClassPrefix-page-main">
+    <main id="@Id("Main")">
 
         @* Show Breadcrumb if desired *@
         @if (ShowBreadcrumb)
@@ -56,7 +56,7 @@ Nice to know:
                         <DynComponentList Components="@DynComponents" Group="@PaneNames.Default"></DynComponentList>
                     </div>
                     <div class='@Classes("sidebar-menu")'>
-                        <div id="@ClassPrefix-nav-sub" class="d-none d-sm-block">
+                        <div id="@Id("sidebar-menu-inner")" class="@Classes("sidebar-menu-inner")">
                             <Menu ConfigName="@ThemeInfo.MenuSidebar"></Menu>
                         </div>
                     </div>
