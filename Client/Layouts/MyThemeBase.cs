@@ -38,10 +38,5 @@ public abstract class MyThemeBase : MagicTheme
     /// </summary>
     public override MagicPackageSettings ThemePackageSettings => ThemeInfo.ThemePackageDefaults;
 
-    public override string Panes => string.Join(",",
-        /*PaneNames.Admin,*/  // Note that we don't want the AdminPane to be in the default list, as people shouldn't add modules there
-        PaneNames.Default,
-        // PaneNameDefault,
-        PaneNameHeader);
-
+    public override string Panes => string.Join(",", PaneNames.Default, PaneNameHeader);
 }

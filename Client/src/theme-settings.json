@@ -200,12 +200,9 @@
 
   // ********************
   // Containers has properties / settings / values on containers which are not directly related to design
+  // As of now there is no use for this, but the infrastructure exists
   "Containers": {
     "Default": {
-      // Here you could add custom settings / keys etc. as needed - not used in the template though, so you would need to change the razor to use this
-      // "Custom": {
-      //   "id": "module-[Module.Id]"
-      // }
     }
   },
 
