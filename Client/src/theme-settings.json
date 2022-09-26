@@ -202,9 +202,10 @@
   // Containers has properties / settings / values on containers which are not directly related to design
   "Containers": {
     "Default": {
-      "Custom": {
-        "id": "module-[Module.Id]"
-      }
+      // Here you could add custom settings / keys etc. as needed - not used in the template though, so you would need to change the razor to use this
+      // "Custom": {
+      //   "id": "module-[Module.Id]"
+      // }
     }
   },
 
@@ -213,11 +214,19 @@
   // Container Designs determine CSS classes on containers
   "ContainerDesigns": {
     "Default": {
-      "div": {
+      // The default/normal container
+      "default": {
         "classes": "to-shine-background-container py-4 demo-module-[Module.Id] demo-page-[Page.Id]",
         "isPublished": [null, "module-unpublished"],
-        "isAdminModule": "to-shine-admin-container"
+        "id": "module-[Module.Id]"
+      },
+      // The system/admin container
+      "system": {
+        "classes": "to-shine-background-container py-4 demo-module-[Module.Id] demo-page-[Page.Id] to-shine-admin-container app-admin-modal",
+        // "isPublished": [null, "module-unpublished"],
+        // "isAdminModule": "to-shine-admin-container app-admin-modal",
         // "isAdminModule": [null, "to-shine-default-container"]
+        "id": "module-[Module.Id]"
       }
     }
   },
