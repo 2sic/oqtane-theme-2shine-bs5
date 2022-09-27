@@ -11,19 +11,19 @@ Nice to know:
     - The configurations are smart, so they change the class depending on active etc.
     - The `a` tag with the label is written in a way so there are no additional spaces
 *@
-@if (CurrentBranch.HasChildren)
+@if (Menu.HasChildren)
 {
-    <ul class='@CurrentBranch.Classes("ul")'>
-        @foreach(var subBranch in CurrentBranch.Children)
+    <ul class='@Menu.Classes("ul")'>
+        @foreach(var subMenu in Menu.Children)
         {
-            <li class='@subBranch.Classes("li")'>
-                <a class='@subBranch.Classes("a")' href='@GetUrl(subBranch)'
-                   data-bs-toggle='@(subBranch.Page.HasChildren && subBranch.Page.IsClickable == false ? "dropdown" : "")'
-                   >@subBranch.Page.Name</a>
+            <li class='@subMenu.Classes("li")'>
+                <a class='@subMenu.Classes("a")' href='@GetUrl(subMenu)'
+                   data-bs-toggle='@(subMenu.Page.HasChildren && subMenu.Page.IsClickable == false ? "dropdown" : "")'
+                   >@subMenu.Page.Name</a>
 
-                @if (subBranch.HasChildren)
+                @if (subMenu.HasChildren)
                 {
-                    <MenuDefault CurrentBranch="@subBranch"></MenuDefault>
+                    <MenuHorizontal Menu="@subMenu"></MenuHorizontal>
                 }
             </li>
         }

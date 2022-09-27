@@ -77,7 +77,7 @@
         // Panes - uses the Pane-name to find the configuration
         "Default": "",
         "Header": {
-          "classes": "container-xxl px-0",
+          "classes": "container px-0",
           "id": "to-shine-page-header-pane"
         },
 

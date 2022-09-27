@@ -11,14 +11,14 @@ Nice to know:
     - If necessary, you can create another type of menu and just add it to the list below
     - WIP: Later it will also be able to load a config from the page/theme settings
 *@
-@* Show the desired menu *@
-@if (ThemeInfo.MenuVertical.Equals(MenuTree.Settings.Template, StringComparison.InvariantCultureIgnoreCase))
+@* Show the desired menu - in this setup we have 2 options. If you need more, change the conditions to check for Menu?.Settings.Template *@
+@if (IsVertical)
 {
-    <MenuVertical CurrentBranch="@MenuTree"></MenuVertical>
+    <MenuVertical Menu="@Menu"></MenuVertical>
 }
 else
 {
-    <MenuDefault CurrentBranch="@MenuTree"></MenuDefault>
+    <MenuHorizontal Menu="@Menu"></MenuHorizontal>
 }
 @* Debug Information as things can get complex *@
-<MagicMenuDebug MenuTree="@MenuTree"></MagicMenuDebug>
+<MagicMenuDebug MenuTree="@Menu"></MagicMenuDebug>
