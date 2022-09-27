@@ -29,6 +29,6 @@
   },
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Recommended",
-  "include": ["src/scripts/ambient/*.ts"], // , "src/scripts/shared/*.ts", "src/scripts/ambient/constants.ts"]
+  "include": ["./src/scripts/ambient/*.ts", "./src/scripts/shared/*.ts"], // , "src/scripts/shared/*.ts", "src/scripts/ambient/constants.ts"]
 
 }

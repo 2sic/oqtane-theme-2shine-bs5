@@ -89,14 +89,16 @@ const commonConfig = {
           context: "src/assets",
         },
         // {
-        //   // TODO: unclear what this is for
+        //   // Temp - unclear what this is for - looks like experimental json copy from Daia, ignore for now
         //   from: "*.json",
         //   context: "ThemeSettingsUi",
         // },
       ],
     }),
     {
-      // triggers tsc build before webpack compile, needed for /interop js-files
+      // triggers tsc build the interop independently from before webpack compile
+      // needed for /interop js-files
+      // these basically bypass webpack and directly let TSC compile this
       apply: (compiler) => {
         compiler.hooks.beforeCompile.tap("BeforeCompilePlugin", () => {
           exec(
