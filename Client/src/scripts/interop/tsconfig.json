@@ -1,0 +1,16 @@
+{
+  // This is the TS Config to generate Oqtane compatible ES2015 Modules
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "module": "ES2015",
+    "sourceMap": true,
+    "target": "ES2015",
+    "allowJs": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "lib": ["es6", "dom"]
+  },
+  "include": ["./*.ts"] // , "src/scripts/shared/*.ts", "src/scripts/ambient/constants.ts"]
+}

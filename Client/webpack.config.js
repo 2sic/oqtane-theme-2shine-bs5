@@ -35,7 +35,7 @@ if (!path.isAbsolute(themeConfig.OqtaneWwwRoot)) {
 const commonConfig = {
   mode: "production",
   entry: {
-    styles: "./src/styles/theme.scss",
+    stylesX: "./src/styles/theme.scss",
     ambient: glob.sync("./src/scripts/ambient/*.ts"),
   },
   output: {
@@ -64,7 +64,7 @@ const commonConfig = {
     compression: "gzip",
   },
   resolve: {
-    extensions: [".scss"],
+    extensions: [".scss", ".ts", ".js"],
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -88,11 +88,11 @@ const commonConfig = {
           to: "Assets",
           context: "src/assets",
         },
-        {
-          // TODO: unclear what this is for
-          from: "*.json",
-          context: "ThemeSettingsUi",
-        },
+        // {
+        //   // TODO: unclear what this is for
+        //   from: "*.json",
+        //   context: "ThemeSettingsUi",
+        // },
       ],
     }),
     {
@@ -100,7 +100,7 @@ const commonConfig = {
       apply: (compiler) => {
         compiler.hooks.beforeCompile.tap("BeforeCompilePlugin", () => {
           exec(
-            `tsc --outDir dist/wwwroot/Themes/${themeConfig.ThemeName}/interop`,
+            `tsc -p ./src/scripts/interop/tsconfig.json --outDir dist/wwwroot/Themes/${themeConfig.ThemeName}/interop`,
             (err, stdout, stderr) => {
               if (stdout) process.stdout.write(stdout);
               if (stderr) process.stderr.write(stderr);

@@ -1,4 +1,10 @@
-﻿const prefix = "to-shine";
+﻿import { initToTop } from './to-top';
+
+initToTop();
+
+const prefix = "to-shine";
+
+
 
 /* Open all PDF links in a new window */
 document.querySelectorAll('a').forEach((linkElem: Element, index) => {
@@ -28,7 +34,7 @@ setTimeout(function () {
 // -----------------------------
 // Above is DNN below is Oqtane
 
-const ToShineBody = document.querySelector("body");
+const ToShineBody = document; //.querySelector("body");
 
 const observer = new MutationObserver(mutations => {
 
@@ -62,6 +68,7 @@ function toTopButtonVisibility() {
 function scrollTop(){
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
 
 /*Sticky breadcrumbs*/
 window.addEventListener("resize", breadcrumbsAttributes);
