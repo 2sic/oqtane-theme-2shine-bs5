@@ -73,7 +73,7 @@
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Release node src/build-scripts/clean.js &amp;&amp; webpack --env build" />
+    <Exec Command="if $(ConfigurationName) == Release node src/build-scripts/clean.js &amp;&amp; npx webpack --env build" />
   </Target>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
