@@ -4,25 +4,20 @@ File Purpose:       Show the Breadcrumb
 Recommendations:    -
 Nice to know:       Uses extension methods like GetHomePage() and GetBreadcrumb()
 *@
-@code {
-    // The home page - never changes during runtime, so we can cache it
-    private Page HomePage => _homePage ??= PageState.GetHomePage();
-    private Page _homePage;
-}
-<div class="@ClassPrefix-page-breadcrumb" aria-label="breadcrumb">
+<div class='@Classes("div")' aria-label="breadcrumb">
     <div class="container py-2">
-        <a class="@ClassPrefix-page-breadcrumb-link @ClassPrefix-page-breadcrumb-home" aria-current="page"
+        <a class='@Classes("a-home")' aria-current="page"
            href="@NavigateUrl(HomePage.Path)">@HomePage.Name</a>
         @* Show a ... ellipsis in mobile mode to toggle showing the rest of the breadcrumb *@
-        <span class="@ClassPrefix-page-breadcrumb-trigger">
+        <span class="@Classes("revealer")">
             @((MarkupString)Settings.Breadcrumbs.Revealer)
         </span>
 
         @* Show an > arrow and the page name with link to it for each page in the breadcrumb *@
-        @foreach (var p in PageState.Breadcrumb())
+        @foreach (var p in Breadcrumbs)
         {
             <span>@((MarkupString)Settings.Breadcrumbs.Separator)</span>
-            <a href="@NavigateUrl(p.Path)" class="@ClassPrefix-page-breadcrumb-link">@p.Name</a>
+            <a href="@NavigateUrl(p.Path)" class="@Classes("a")">@p.Name</a>
         }
     </div>
 </div>

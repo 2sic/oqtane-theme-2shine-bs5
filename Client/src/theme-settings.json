@@ -30,7 +30,7 @@
     "Default": {
       // Optional: Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
       "containerDesign": "=",
-      "logo": "[Theme.Url]/Assets/logo.svg",
+      "logo": "[Theme.Url]/assets/logo.svg",
       // Optional: Use the same languages configuration as this theme - in this case "Default" - not necessary
       "languages": "=",
       // very optional, just as example. will default to "=" meaning "Default"
@@ -107,10 +107,21 @@
       }
     }
   },
+
   "Breadcrumbs": {
     "Default": {
       "separator": "&nbsp;&rsaquo;&nbsp;", // a non-breaking space + >> + non-breaking space
       "revealer": "…" // this is an Ellipsis character
+    }
+  },
+
+  "BreadcrumbsDesigns": {
+    "Default": {
+      "div": "to-shine-page-breadcrumb",
+      "a-home": "to-shine-page-breadcrumb-link to-shine-page-breadcrumb-home",
+      "revealer": "to-shine-page-breadcrumb-trigger",
+      "a": "to-shine-page-breadcrumb-link", 
+
     }
   },
 
@@ -183,7 +194,7 @@
 
   // ********************
   // Language Designs add classes for the language menus
-  "LanguageDesigns": {
+  "LanguagesDesigns": {
     "Default": {
       "ul": "to-shine-page-language",
       "li": {
