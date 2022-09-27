@@ -3,6 +3,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const CopyPlugin = require("copy-webpack-plugin");
 const FileManagerPlugin = require("filemanager-webpack-plugin");
 
@@ -29,23 +30,25 @@ if (!path.isAbsolute(themeConfig.OqtaneRoot)) {
 }
 
 if (!path.isAbsolute(themeConfig.OqtaneWwwRoot)) {
-    themeConfig.OqtaneWwwRoot = `../${themeConfig.OqtaneWwwRoot}`;
+  themeConfig.OqtaneWwwRoot = `../${themeConfig.OqtaneWwwRoot}`;
 }
+
+const distFolder = `wwwroot/Themes/${themeConfig.ThemeName}`;
 
 const commonConfig = {
   mode: "production",
   entry: {
-    stylesX: "./src/styles/theme.scss",
+    styles: "./src/styles/theme.scss",
     ambient: glob.sync("./src/scripts/ambient/*.ts"),
   },
   output: {
     path: path.resolve(
       __dirname,
-      `dist/wwwroot/Themes/${themeConfig.ThemeName}`
+      distFolder,
     ),
-    // TODO: probably check this, we moved the images to src/assets
-    // unclear if this does anything...?
-    assetModuleFilename: "Images/[hash][ext][query]",
+    // // TODO: probably check this, we moved the images to src/assets
+    // // unclear if this does anything...?
+    // assetModuleFilename: "Images/[hash][ext][query]",
   },
   devtool: "source-map",
   performance: {
@@ -67,6 +70,7 @@ const commonConfig = {
     extensions: [".scss", ".ts", ".js"],
   },
   plugins: [
+    new RemoveEmptyScriptsPlugin(), // prevent empty styles.js from being created :( https://www.npmjs.com/package/webpack-remove-empty-scripts
     new MiniCssExtractPlugin({
       filename: "theme.min.css",
     }),
@@ -85,7 +89,7 @@ const commonConfig = {
         },
         {
           from: "**/*",
-          to: "Assets",
+          to: "assets",
           context: "src/assets",
         },
         // {
@@ -102,7 +106,7 @@ const commonConfig = {
       apply: (compiler) => {
         compiler.hooks.beforeCompile.tap("BeforeCompilePlugin", () => {
           exec(
-            `tsc -p ./src/scripts/interop/tsconfig.json --outDir dist/wwwroot/Themes/${themeConfig.ThemeName}/interop`,
+            `tsc -p ./src/scripts/interop/tsconfig.json --outDir ${distFolder}/interop`,
             (err, stdout, stderr) => {
               if (stdout) process.stdout.write(stdout);
               if (stderr) process.stderr.write(stderr);
@@ -173,8 +177,8 @@ const watchConfig = {
         onEnd: {
           copy: [
             {
-              source: "dist",
-                  destination: path.resolve(__dirname, themeConfig.OqtaneWwwRoot),
+              source: "wwwroot",
+                  destination: path.resolve(__dirname, themeConfig.OqtaneWwwRoot + "/wwwroot"),
             },
           ],
         },

@@ -1,0 +1,318 @@
+{
+  /* This file contains configuration for the menus in the layout. 
+   * It allows you to make most changes to menus without recompiling the source code, 
+   * thereby letting designers quickly build their theme
+   * It has three sections:
+   * - Version is simply a version number, to better control when the code expects a different structure
+   * - Menus which uses a string-key to identify a configuration, and determins which pages should be shown
+   * - Designs uses a string key as well, and determines look and feel through CSS-Classes added to the HTML
+   *
+   * Note: This is a JSON file but the parser will treat it as JSONC, so you can add comments
+  */
+  // ********************
+
+  // The version of this file, which helps the reader detect the format (or error if incompatible)
+  "version": 0.01,
+
+  // Global debug settings
+  // If "allowed" here, you can activate individually on each Theme and Menu
+  "debug": {
+    "allowed": true,    // The most important setting - if this is false, nothing else will happen
+    "admin": true,      // Enable everywhere for admin, unless disabled in a specific configuration
+    "anonymous": true,  // Enable everywhere for anonymous, unless disabled in a specific configuration
+  },
+
+  // ********************
+
+  // Layouts Configurations. In most cases you'll just use "Default"
+  // The example below shows how the "Sidebar" configuration switches to a different menu
+  "Themes": {
+    "Default": {
+      // Optional: Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
+      "containerDesign": "=",
+      "logo": "[Theme.Url]/Assets/logo.svg",
+      // Optional: Use the same languages configuration as this theme - in this case "Default" - not necessary
+      "languages": "=",
+      // very optional, just as example. will default to "=" meaning "Default"
+      // "languageMenuDesign": "custom-lang-design",
+      "languageMenuShow": true,
+      "languageMenuShowMin": 2,
+      // Determins if we should use the body (or a div) for the magic context
+      // As of now we feel that browser behavior is better if it's in the div-tag (false)
+      "magicContextInBody": false,
+      // "breadcrumbs": "=",         // Breadcrumb-config inherits name, so also "Default" - this is the default BTW
+      "debug": {
+        "admin": true,
+      }
+    },
+    // Layout showing the submenu in the sidebar, so we don't need to show more items in the main menu
+    "Sidebar": {
+      "@inherits": "Default",
+      "menus": {
+        "Main": "ToplevelOnly"
+      }
+    }
+  },
+
+
+  "ThemeDesigns": {
+    "Default": {
+      "MagicContext": [
+        "page-[Page.Id]",
+        "page-root-[Page.RootId]",
+        "page-parent-[Page.ParentId]",
+        "site-[Site.Id]",
+        "nav-level-[Menu.Level]",
+        "to-shine-mainnav-variation-right",
+        "to-shine-variation-[Layout.Variation]"
+      ],
+      "PageIsHome": "page-is-home",
+      "PaneIsEmpty": "pane-is-empty",
+      // ID of the <div> tag which has the magic context classes on it
+      // It's used in CSS rules, so it must match the value in your SCSS
+      "MagicContextTagId": "cre8magic-root",
+
+      // Custom values / classes as you need them in your code
+      "Custom": {
+        // Panes - uses the Pane-name to find the configuration
+        "Default": "",
+        "Header": {
+          "classes": "container px-0",
+          "id": "to-shine-page-header-pane"
+        },
+
+        // Sections - ATM "Main" only
+        "Main": {
+          "id": "to-shine-page-main"
+        },
+
+        // This config is used with sidebar-menu, places the body to the right, the menu to the left
+        "sidebar-body": "col-12 col-lg-9 order-lg-2",
+        "sidebar-menu": "col-12 col-lg-3 order-lg-1",
+        "sidebar-menu-inner": {
+          "classes": "d-none d-sm-block",
+          "id": "to-shine-nav-sub"
+        },
+
+        // Login classes
+        "login-icon": "to-shine-login-icon",
+        "login-invisible": "to-shine-login-invisible d-none d-lg-inline-flex",
+
+        // Other Admin buttons
+        "edit-icon": "to-shine-ui-buttons",
+
+        // Logo & ToTop
+        "logo": "logo",
+        "to-top": "to-shine-to-top",
+      }
+    }
+  },
+  "Breadcrumbs": {
+    "Default": {
+      "separator": "&nbsp;&rsaquo;&nbsp;", // a non-breaking space + >> + non-breaking space
+      "revealer": "…" // this is an Ellipsis character
+    }
+  },
+
+
+  // ********************
+  // Languages Configurations
+  "Languages": {
+    "Default": {
+      "hideOthers": false,
+      "Languages": {
+        "en": {
+          "label": "ENG",
+          "description": "English (from JSON config)"
+        },
+        "de-CH": {
+          "label": "DEU"
+        }
+      },
+      "Debug": {
+        // "anonymous": false,
+      }
+    },
+  },
+
+
+  // ********************
+  // Menus contain the configuration for each menu. The names used are specified in the Razor files.
+  "Menus": {
+    // The default configuration is taken if no other configuration is used
+    "Default": {
+      "start": "*",
+      "depth": 0,
+    },
+    // This is used as the main-menu in the navigation with sidebar submenu
+    "ToplevelOnly": {
+      "start": "*",
+      "depth": 0
+    },
+    // Main is usually used for the default, top-level menu
+    "Main": {
+      "start": "*",
+      "depth": 2,
+      // Example to enable debug just on this specific menu
+      "debug": {
+        "admin": false,
+      },
+    },
+    // Mobile is usually used for the default, top-level menu which only appears when the screen is too small
+    "Mobile": {
+      "template": "vertical",
+      "start": "*",
+      "depth": 2
+    },
+    // Sidebar is used in menus usually to the left of content
+    "Sidebar": {
+      "template": "vertical",
+      "start": ".",
+      "level": 1,
+      "children": true,
+      "depth": 2,
+      "design": "Sidebar"
+    },
+    // Footer menu, would usually show Imprint, Terms, Privacy etc.
+    // For the default values we're using Home "1" and Login (forced, even though it's set to not show in menus) "5!" as these are a few of the pages which always exist
+    "Footer": {
+      "start": "1, 5!",
+    }
+  },
+
+
+  // ********************
+  // Language Designs add classes for the language menus
+  "LanguageDesigns": {
+    "Default": {
+      "ul": "to-shine-page-language",
+      "li": {
+        "isActive": "active",
+      }
+    }
+    // Example of design specs with another name
+    // "custom-lang-design": {
+    //     "ul": { "classes": "to-shine-page-language custom" },
+    //     "li": { "isActive": "active custom", "isNotActive": "inactive custom" }
+    // }
+  },
+
+
+  // ********************
+  // Containers has properties / settings / values on containers which are not directly related to design
+  // As of now there is no use for this, but the infrastructure exists
+  "Containers": {
+    "Default": {
+    }
+  },
+
+
+  // ********************
+  // Container Designs determine CSS classes on containers
+  "ContainerDesigns": {
+    "Default": {
+      // The default/normal container
+      "default": {
+        "classes": "to-shine-background-container py-4 demo-module-[Module.Id] demo-page-[Page.Id]",
+        "isPublished": [null, "module-unpublished"],
+        "id": "module-[Module.Id]"
+      },
+      // The system/admin container
+      "system": {
+        "classes": "to-shine-background-container py-4 demo-module-[Module.Id] demo-page-[Page.Id] to-shine-admin-container app-admin-modal",
+        // "isPublished": [null, "module-unpublished"],
+        // "isAdminModule": "to-shine-admin-container app-admin-modal",
+        // "isAdminModule": [null, "to-shine-default-container"]
+        "id": "module-[Module.Id]"
+      }
+    }
+  },
+
+
+  // ********************
+  // MenuDesigns specify how the output is made, what classes added to each node etc.
+  // It's separate from the Menus, since it could be re-used
+  // It also supports two special placeholders [Page.Id] and [Menu.Id]
+  "MenuDesigns": {
+    // The default menu styling used for main and most menus
+    // (unless specified otherwise)
+    "Default": {
+      "ul": {
+        "byLevel": {
+          "0": "navbar-nav test-[Page.Id] test-[Theme.Path]",
+          "-1": "dropdown-menu"
+        },
+      },
+      "li": {
+        "classes": "nav-item nav-[Page.Id]",
+        "hasChildren": "has-child dropdown",
+        // "hasChildren": [null, "example"],
+        "isActive": "active",
+        //"isActive": ["active", "inactive"],
+        "isDisabled": "disabled",
+        // "isDisabled": ["disabled", "not-disabled"],
+      },
+      "a": {
+        "isActive": "active",
+        "hasChildren": "dropdown-toggle",
+        "byLevel": {
+          "1": "nav-link",
+          "-1": "dropdown-item"
+        },
+      }
+    },
+    "Mobile": {
+      "ul": {
+        "byLevel": {
+          "0": "navbar-nav",
+          "-1": "collapse to-shine-submenu-[Menu.Id]-[Page.Id]"
+        },
+        "inBreadcrumb": "show"
+      },
+      "li": {
+        "classes": "nav-item nav-[Page.Id] position-relative",
+        "hasChildren": "has-child",
+        "isActive": "active",
+        "isDisabled": "disabled"
+      },
+      "a": {
+        // NOTE: ATM this is the only difference to Sidebar
+        "classes": "nav-link mobile-navigation-link",
+        "isActive": "active"
+      },
+      "span": {
+        "classes": "nav-item-sub-opener",
+        "inBreadcrumb": [null, "collapsed"],
+      },
+      // Special target information (not really styling) usually on the span-tag
+      "data-bs-target": ".to-shine-submenu-[Menu.Id]-[Page.Id]",
+    },
+    "Sidebar": {
+      "ul": {
+        "byLevel": {
+          "0": "navbar-nav",
+          "-1": "collapse to-shine-submenu-[Menu.Id]-[Page.Id]"
+        },
+        "inBreadcrumb": "show"
+      },
+      "li": {
+        "classes": "nav-item nav-[Page.Id] position-relative",
+        "hasChildren": "has-child",
+        "isActive": "active",
+        "isDisabled": "disabled"
+      },
+      "a": {
+        "classes": "nav-link",
+        "isActive": "active"
+      },
+      "span": {
+        "classes": "nav-item-sub-opener",
+        "inBreadcrumb": [null, "collapsed"],
+      },
+      "data-bs-target": ".to-shine-submenu-[Menu.Id]-[Page.Id]",
+    },
+    "Footer": {
+      "ul": "navbar-nav test-wip-config"
+    }
+  }
+}

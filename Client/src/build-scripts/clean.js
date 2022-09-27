@@ -9,4 +9,4 @@ if (!themeConfig || !themeConfig.ThemeName) {
 }
 
 console.log(`cleaning dist directory`);
-shell.rm("-rf", `dist/*`);
+shell.rm("-rf", `wwwroot/*`);
