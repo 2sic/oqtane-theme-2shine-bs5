@@ -10,9 +10,9 @@
 global using System.Collections.Generic;
 global using System.Linq;
 
-global using ToSic.Oqt.Themes.ToShineBs5.Client;
-global using ToSic.Oqt.Themes.ToShineBs5.Client.Services;
-global using static ToSic.Oqt.Themes.ToShineBs5.Client.ThemeInfo;
+global using ToSic.Themes.ToShineBs5.Client;
+global using ToSic.Themes.ToShineBs5.Client.Services;
+global using static ToSic.Themes.ToShineBs5.Client.ThemeInfo;
 global using ToSic.Cre8Magic.Client;
 global using ToSic.Cre8Magic.Client.Languages;
 global using ToSic.Cre8Magic.Client.Languages.Settings;

@@ -3,7 +3,7 @@ using Oqtane.Themes;
 
 // Important: This must match the namespace of the layouts
 // otherwise the Oqtane registration won't work as expected. 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client;
+namespace ToSic.Themes.ToShineBs5.Client;
 
 /// <summary>
 /// This class / file serves a few purposes:
@@ -24,7 +24,7 @@ public class ThemeInfo : ITheme
         // Settings still very WIP
         //ThemeSettingsType = typeof(ThemeSettingsUi.Settings).AssemblyQualifiedName,
         //ContainerSettingsType = "Oqtane.Theme.ToSic.ContainerSettings, Oqtane.Theme.ToSic.Oqtane",
-        PackageName = "ToSic.Oqt.Themes.ToShineBs5",
+        PackageName = "ToSic.Themes.ToShineBs5",
     };
 
     #region Menu Names for this Theme, used in various Razor files

@@ -13,40 +13,45 @@
 
     <h2>Various Settings</h2>
     <h3>Only one specific page, no other params</h3>
+    <Menu Start="@TopLevelWithSubpagesId"></Menu>
     <Menu MenuSettings="new() { Start = TopLevelWithSubpagesId }"></Menu>
 
     <h3>Only one specific page, LevelDepth = 0</h3>
+    <Menu Start="@TopLevelWithSubpagesId" Depth="0" ></Menu>
     <Menu MenuSettings="new() { Start = TopLevelWithSubpagesId, Depth = 0 }"></Menu>
 
     <h3>Only one specific page @TopLevelWithSubpagesId, with Depth=1</h3>
+    <Menu Start="@TopLevelWithSubpagesId" Depth="1"></Menu>
     <Menu MenuSettings="new() { Start = TopLevelWithSubpagesId, Depth = 1 }"></Menu>
-    
+
     <hr/>
     <h2>Start at current level</h2>
     <h3>Current level only (should only show one page...)</h3>
-    <Menu Start="." Id="Start-At-Current-Level-NoChildren" MenuSettings='new() { Start = "." }'></Menu>
+    <Menu Start="." MenuId="Start-At-Current-Level-NoChildren"></Menu>
+    <Menu MenuSettings='new() { Start = ".", Id="test2" }'></Menu>
 
     <h3>Current level with children</h3>
-    <Menu Start="." Depth="1" Id="Start-At-Current-Level-Children" MenuSettings='new() { Start = ".", Depth = 1 }'></Menu>
+    <Menu Start="." Depth="1" MenuId="Start-At-Current-Level-Children"></Menu>
+    <Menu MenuSettings='new() { Start = ".", Depth = 1, Id="test3" }'></Menu>
 
     <h3>Current level children only</h3>
-    <Menu Start="." Children="true" Depth="0" Debug="true" MenuSettings='new() { Start = ".", Children = true, Depth = 0 }'></Menu>
+    <Menu Start="." Children="true" Depth="0" Debug="true"></Menu>
 
     <h3>Parent level only</h3>
-    <Menu Start="." Level="-1" Depth="0" Debug="true" MenuSettings='new() { Start = ".", Level = -1, Depth = 0 }'></Menu>
+    <Menu Start="." Level="-1" Depth="0" Debug="true"></Menu>
 
     <h3>Parent level children only</h3>
-    <Menu Start="." Level="-1" Children="true" Depth="0" Debug="true" MenuSettings='new() { Start = ".", Level = -1, Depth = 0, Children = true }'></Menu>
+    <Menu Start="." Level="-1" Children="true" Depth="0" Debug="true"></Menu>
 
     <h3>Current from Root Level 1, no children</h3>
-    <Menu Start="." Level="1" Children="false" Depth="0" Debug="true" MenuSettings='new() { Start = ".", Level = 1, Depth = 0, Children = false }'></Menu>
+    <Menu Start="." Level="1" Children="false" Depth="0" Debug="true"></Menu>
     <h3>Current from Root Level 1, children</h3>
-    <Menu Start="." Level="1" Children="true" Depth="0" Debug="true" MenuSettings='new() { Start = ".", Level = 1, Depth = 0, Children = true }'></Menu>
+    <Menu Start="." Level="1" Children="true" Depth="0" Debug="true"></Menu>
     <h3>Current from Root Level 1, no-children Depth 1</h3>
-    <Menu Start="." Level="1" Children="false" Depth="1" Debug="true" MenuSettings='new() { Start = ".", Level = 1, Depth = 1, Children = false }'></Menu>
+    <Menu Start="." Level="1" Children="false" Depth="1" Debug="true"></Menu>
 
     <h3>Current from Root Level 2</h3>
-    <Menu Start="." Level="2" Children="true" Depth="0" Debug="true" MenuSettings='new() { Start = ".", Level = 2, Depth = 0, Children = true }'></Menu>
+    <Menu Start="." Level="2" Children="true" Depth="0" Debug="true"></Menu>
 
     <hr/>
     <h2>Start with specific numbers</h2>

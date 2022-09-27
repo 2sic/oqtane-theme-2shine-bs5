@@ -135,7 +135,7 @@ The LanguageChanger control can be used to display Links to switch between diffe
 1. Many of our controls have an obvious name like `Menu` but it can be confused with the `Oqtane.Theme.Controls.Menu`.
 Since we rarely use the default Oqtane controls, we don't recommend having it in your `_imports.razor` but instead we reference them explicitly where we need them. 
 <!-- 1. Oqtane will save the full namespace of selected **Themes** and **Containers** in the DB. 
-Because of this, we highly recommend to always have a line like `@namespace ToSic.Oqt.Themes.ToShineBs5.Client.Layouts` at the beginning of these files,
+Because of this, we highly recommend to always have a line like `@namespace ToSic.Themes.ToShineBs5.Client.Layouts` at the beginning of these files,
 so it doesn't change as you move files around. -->
 
 See also [folder and namespace docs](./docs/folders-and-namespaces.md)

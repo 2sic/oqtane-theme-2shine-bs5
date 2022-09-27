@@ -18,7 +18,7 @@ if (!fs.existsSync("node_modules")) {
 function promptForRename() {
   const fs = require("fs");
 
-  if (!fs.existsSync("ToSic.Oqt.Themes.ToShineBs5.Client.csproj")) {
+  if (!fs.existsSync("ToSic.Themes.ToShineBs5.Client.csproj")) {
     console.log(
       "it appears you already renamed your theme, this can only be done once!"
     );
@@ -53,7 +53,7 @@ function promptForRename() {
 function renameTheme(newThemeName) {
   const replace = require("replace-in-file");
 
-  const defaultThemeName = "ToSic.Oqt.Themes.ToShineBs5";
+  const defaultThemeName = "ToSic.Themes.ToShineBs5";
   if (newThemeName === defaultThemeName) {
     console.log(
       "your theme name equals the default, please choose another name"
@@ -82,8 +82,8 @@ function renameTheme(newThemeName) {
     try {
       const results = replace.sync(options);
       console.log("Replacement results:", results);
-      const defaultCsharpProject = "ToSic.Oqt.Themes.ToShineBs5.Client.csproj";
-      const defaultVsSolution = "../ToSic.Oqt.Themes.ToShineBs5.sln";
+      const defaultCsharpProject = "ToSic.Themes.ToShineBs5.Client.csproj";
+      const defaultVsSolution = "../ToSic.Themes.ToShineBs5.sln";
       if (fs.existsSync(defaultCsharpProject))
         fs.renameSync(defaultCsharpProject, `${newThemeName}.Client.csproj`);
       if (fs.existsSync(defaultVsSolution))

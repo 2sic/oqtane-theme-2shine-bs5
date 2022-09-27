@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components;
-using ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettingsUi;
+using ToSic.Themes.ToShineBs5.Client.ThemeSettingsUi;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettingsUi;
+namespace ToSic.Themes.ToShineBs5.Client.ThemeSettingsUi;
 public partial class NavigationSettings
 {
     [Inject]

@@ -2,7 +2,7 @@
 using Microsoft.JSInterop;
 using ToSic.Cre8Magic.Client.JsModules;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+namespace ToSic.Themes.ToShineBs5.Client.Services;
 
 /// <summary>
 /// Constants and helpers related to JS calls from the Theme to it's own JS libraries

@@ -22,7 +22,7 @@ The `Layouts` folder contains the layout Razor files, but they explicitly don't 
 Instead, the use the same namespace as the root, which is why the all have
 
 ```razor
-@namespace ToSic.Oqt.Themes.ToShineBs5.Client
+@namespace ToSic.Themes.ToShineBs5.Client
 ```
 
 at the beginning. Once you've renamed your theme to your namespace, this will of course be different. 

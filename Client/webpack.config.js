@@ -13,13 +13,13 @@ const { merge } = require("webpack-merge");
 let themeConfig = require(path.resolve(process.cwd(), "build-theme.json"));
 if (!themeConfig) {
   themeConfig = {
-    ThemeName: "ToSic.Oqt.Themes.ToShineBs5",
+    ThemeName: "ToSic.Themes.ToShineBs5",
       OqtaneRoot: "../web",
       OqtaneWwwRoot: "../web",
   };
 } else {
   if (!themeConfig.ThemeName)
-    themeConfig.ThemeName = "ToSic.Oqt.Themes.ToShineBs5";
+    themeConfig.ThemeName = "ToSic.Themes.ToShineBs5";
     if (!themeConfig.OqtaneRoot) themeConfig.OqtaneRoot = "../web";
     if (!themeConfig.OqtaneWwwRoot) themeConfig.OqtaneWwwRoot = "../web";
 }

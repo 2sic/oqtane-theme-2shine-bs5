@@ -3,7 +3,7 @@ using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettingsUi;
+namespace ToSic.Themes.ToShineBs5.Client.ThemeSettingsUi;
 
 public class ThemeSettingsContainer
 {
@@ -54,7 +54,7 @@ public sealed class ThemeSettingsServiceWIPToDo
     Dictionary<string, ThemeSettingsContainer> CombinedSettings; 
 
     public ThemeSettingsContainer DeserializeData(string ConfigName){
-        var jsonString = File.ReadAllText("wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/settings.json");
+        var jsonString = File.ReadAllText("wwwroot/Themes/ToSic.Themes.ToShineBs5/settings.json");
         var options = new JsonSerializerOptions
         {
             IncludeFields = true,
@@ -77,6 +77,6 @@ public sealed class ThemeSettingsServiceWIPToDo
             IncludeFields = true,
         };
         var jsonString = JsonSerializer.Serialize(CombinedSettings, options);
-        await File.WriteAllTextAsync("wwwroot/Themes/ToSic.Oqt.Themes.ToShineBs5/settings.json", jsonString);
+        await File.WriteAllTextAsync("wwwroot/Themes/ToSic.Themes.ToShineBs5/settings.json", jsonString);
     }
 }

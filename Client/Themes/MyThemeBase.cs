@@ -2,7 +2,7 @@
 using Oqtane.Shared;
 using static Oqtane.Shared.ResourceType;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client;
+namespace ToSic.Themes.ToShineBs5.Client;
 
 /// <summary>
 /// Base class for our themes. It's responsible for

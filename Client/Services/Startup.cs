@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
+namespace ToSic.Themes.ToShineBs5.Client.Services;
 
 public class Startup : Oqtane.Services.IClientStartup
 {

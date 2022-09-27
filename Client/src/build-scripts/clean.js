@@ -4,7 +4,7 @@ let themeConfig = require("../../build-theme.json");
 
 if (!themeConfig || !themeConfig.ThemeName) {
   themeConfig = {
-    ThemeName: "ToSic.Oqt.Themes.ToShineBs5",
+    ThemeName: "ToSic.Themes.ToShineBs5",
   };
 }
 
