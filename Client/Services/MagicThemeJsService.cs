@@ -15,12 +15,9 @@ public class MagicThemeJsService : MagicJsServiceBase, IMagicThemeJsService
     {
     }
 
-    //private async Task ResetBodyClasses() => await InvokeAsync<string>("clearBodyClasses");
-
     /// <inheritdoc />
     public async Task SetBodyClasses(string classes)
     {
-        //await ResetBodyClasses();
         await InvokeAsync<string>("setBodyClass", classes);
     }
 }

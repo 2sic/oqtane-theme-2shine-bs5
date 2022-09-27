@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ToSic.Oqt.Themes.ToShineBs5.Client.ThemeSettingsUi;
 
 namespace ToSic.Oqt.Themes.ToShineBs5.Client.Services;
 
@@ -11,9 +10,7 @@ public class Startup : Oqtane.Services.IClientStartup
     /// <param name="services"></param>
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddSingleton<ThemeSettingsServiceWIPToDo>();
-
-        services.AddTransient<MagicThemeJsService>();
+        // TODO: MOVE this registration to Cre8Magic as soon as we can move the scripts
         services.AddTransient<IMagicThemeJsService, MagicThemeJsService>();
     }
 }
