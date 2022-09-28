@@ -4,6 +4,17 @@
 @import "../../node_modules/bootstrap/scss/mixins";
 
 
+// 1.2 Define prefixes for all generated classes
+
+// The prefix for all custom classes like theme-page-footer
+$prefix: 'theme';
+
+// Various prefixes for common parts of the page
+$prefixBreadcrumbs: '#{$prefix}-breadcrumbs';
+$prefixLanguages: '#{$prefix}-languages';
+$prefixFooter: '#{$prefix}-footer';
+
+
 // ----------------------------------------------------------------------------------------------------
 // 2. Set Bootstrap Core Variables Presets
 // These variables should be set before we load the standard bootstrap variables
@@ -17,10 +28,6 @@ $secondary: #001D38;
 $body-bg: #E5E5E5;
 $body-color: #222222;
 
-// The prefix for all custom classes like theme-page-footer
-$prefix: 'theme';
-$prefixBreadcrumbs: '#{$prefix}-breadcrumbs';
-$prefixLanguages: '#{$prefix}-languages';
 
 // Greys
 $gray-100: #f8f9fa;
@@ -82,7 +89,7 @@ $link-hover-decoration: none;
 
 
 // 2.3 Custom Bootstrap Instant 5 Theme variables - used in the variations of the themes */
-// TODO: should be renamed to toshine-*
+// TODO: should be renamed to theme-*
 $tosic-header-background: #fff;
 $tosic-footer-background: $secondary;
 $tosic-footer-color: #fff;
