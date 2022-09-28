@@ -8,6 +8,26 @@
 >
 > This theme template is made especially for passionate designers who wish to create awesome looking solutions using Oqtane. 
 
+---
+
+## Temp Instructions for 2sic only
+
+### Install
+
+1. Create a folder like `C:\2shine-oqtane\`
+1. In that, git-clone the following repos
+    1. https://github.com/2sic/cre8magic
+    1. https://github.com/2sic/oqtane-theme-2shine-bs5
+    1. https://github.com/oqtane/oqtane.framework
+1. Open Visual Studio with the solution in the project oqtane-theme-2shine-bs5
+1. Run once (make sure Oqtane-server is the primary project) - get it setup etc.
+1. Then build and run as you need
+1. For js/webpack ATM it's easiert to also open the `cre8magic/oqtane-cre8magic.code-workspace` in vs code
+    1. the code is then in the `oqtane-theme-2shine-bs5/Client/src`
+
+
+---
+
 ## Magic for Designers
 
 It has a bunch of magic baked into it, allowing for fast iterative design. 
