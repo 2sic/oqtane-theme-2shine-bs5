@@ -28,9 +28,9 @@ public abstract class MyThemeBase : MagicTheme
 
     public override List<Resource> Resources => new()
     {
-        new() { ResourceType = Stylesheet, Url = $"{ThemeInfo.ThemePath}/theme.min.css" },       // Bootstrap generated with Sass/Webpack
-        new() { ResourceType = Script, Url = $"{ThemeInfo.ThemePath}/bootstrap.bundle.min.js" }, // Bootstrap JS
-        new() { ResourceType = Script, Url = $"{ThemeInfo.ThemePath}/ambient.js", },             // Ambient JS for page Up-button etc.
+        new() { ResourceType = Stylesheet, Url = $"{ThemePath()}theme.min.css" },       // Bootstrap generated with Sass/Webpack
+        new() { ResourceType = Script, Url = $"{ThemePath()}bootstrap.bundle.min.js" }, // Bootstrap JS
+        new() { ResourceType = Script, Url = $"{ThemePath()}ambient.js", },             // Ambient JS for page Up-button etc.
     };
 
     /// <summary>

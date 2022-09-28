@@ -10,7 +10,7 @@ namespace ToSic.Themes.ToShineBs5.Client.Services;
 // TODO: SOME DAY move to Cre8Magic, as soon as we know how to reliably include the js-assets in the final distribution
 public class MagicThemeJsService : MagicJsServiceBase, IMagicThemeJsService
 {
-
+    // todo: find out if we can use ThemePath() somehow, inject?
     public MagicThemeJsService(IJSRuntime jsRuntime) : base(jsRuntime, $"./{ThemeInfo.ThemePath}/interop/page-control.js")
     {
     }
