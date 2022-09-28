@@ -10,6 +10,9 @@ import { prefix, debug } from '../shared/constants';
   - make sure it's in an export function and called from the background.ts
 */
 
+const baseName = `${prefix}-page-breadcrumb`;
+const baseSelector = `.${baseName}`;
+
 
 
 if (debug) console.log("init breadcrumbs - probably doesn't work!");
@@ -19,7 +22,7 @@ if (debug) console.log("init breadcrumbs - probably doesn't work!");
 
 const observer = new MutationObserver(mutations => {
   //ToShineBreadcrumbTrigger
-  var breadcrumbTrigger = document.querySelector(`.${prefix}-page-breadcrumb-trigger`);
+  var breadcrumbTrigger = document.querySelector(`${baseSelector}-trigger`);
   // TODO: something is missing here for the breadcrumb-trigger
   //ToShineBreadcrumbTrigger end
   
@@ -50,7 +53,7 @@ function breadcrumbsAttributes() {
   var headerPaneMarginTop = parseInt(headerPaneStyle.marginBottom);
   var totalHeight = headerPaneMarginBottom + headerPaneMarginTop + headerPaneHeight;
   
-  var breadcrumbs = document.querySelector(`.${prefix}-page-breadcrumb`);
+  var breadcrumbs = document.querySelector(`.${baseName}`);
 
   (breadcrumbs as HTMLElement).style["top"] = headerHeight + "px";
   
@@ -65,17 +68,17 @@ function breadcrumbsAttributes() {
   }
 }
 
-document.querySelector(`.${prefix}-page-breadcrumb-trigger`).addEventListener('click', () => {
-  document.querySelector(`.${prefix}-page-breadcrumb`).classList.toggle(`${prefix}-page-breadcrumb-shortened`)
+document.querySelector(`${baseSelector}-trigger`).addEventListener('click', () => {
+  document.querySelector(`${baseSelector}`).classList.toggle(`${baseName}-shortened`)
 })
 
-if (document.querySelector(`.${prefix}-page-breadcrumb`) != null) {
+if (document.querySelector(`.${baseName}`) != null) {
   //document.querySelector('.to-shine-page-breadcrumb span a:last-child').classList.add('last');
   //document.querySelector('.to-shine-page-breadcrumb span:last-child').classList.add('last');
   //if (document.querySelector('.to-shine-page-breadcrumb span .to-shine-page-breadcrumb-link:nth-last-child(3)') != null) {
   //    document.querySelector('.to-shine-page-breadcrumb span .to-shine-page-breadcrumb-link:nth-last-child(3)').classList.add('second-last');
   //}
   document
-    .querySelector(`.${prefix}-page-breadcrumb`)
-    .classList.toggle(`${prefix}-page-breadcrumb-shortened`, (document.querySelector(`.${prefix}-page-breadcrumb-link`) != null || document.querySelectorAll(`.${prefix}-page-breadcrumb-link`).length > 2))
+    .querySelector(baseSelector)
+    .classList.toggle(`${baseName}-shortened`, (document.querySelector(`${baseSelector}-link`) != null || document.querySelectorAll(`${baseSelector}-link`).length > 2))
 }

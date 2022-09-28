@@ -17,9 +17,9 @@ $secondary: #001D38;
 $body-bg: #E5E5E5;
 $body-color: #222222;
 
-// The prefix for all custom classes like to-shine-page-footer
-// 
-$prefix: 'to-shine';
+// The prefix for all custom classes like theme-page-footer
+$prefix: 'theme';
+$prefixBreadcrumb: '#{$prefix}-breadcrumbs';
 
 // Greys
 $gray-100: #f8f9fa;

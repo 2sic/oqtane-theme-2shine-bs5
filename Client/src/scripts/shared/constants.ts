@@ -2,4 +2,5 @@
 export const debug = true;
 export const debugDetailed = debug && false;
 
-export const prefix = "to-shine";
+export const prefix = 'theme';
+export const prefixBreadcrumbs = `${prefix}-breadcrumbs`;
