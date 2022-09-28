@@ -1,6 +1,6 @@
 .module-unpublished {
   position: relative;
-  &.#{$prefix}-admin-container {
+  &.#{$prefix-container}-admin {
     &:before, &:after {
       display: none;
     }

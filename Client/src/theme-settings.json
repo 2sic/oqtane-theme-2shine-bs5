@@ -111,9 +111,9 @@
         // Container Designs determine CSS classes on containers
         // The default/normal container
         "container": {
-          "classes": "theme-background-container py-4 demo-module-[Module.Id] demo-page-[Page.Id]",
+          "classes": "theme-container py-4 demo-module-[Module.Id] demo-page-[Page.Id]",
           "isPublished": [null, "module-unpublished"],
-          "isAdmin": ["theme-admin-container app-admin-modal", null],
+          "isAdmin": ["theme-container-admin app-admin-modal", null],
           "id": "module-[Module.Id]"
         },
       }
