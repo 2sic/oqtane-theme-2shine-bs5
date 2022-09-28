@@ -1,5 +1,5 @@
 ﻿@media all {
-    footer##{$prefixFooter} {
+    footer##{$prefix-footer} {
 
         ul {
             margin: 0;
@@ -39,11 +39,11 @@
             }
         }
 
-        .#{$prefixFooter}-address {
+        .#{$prefix-footer}-address {
 
         }
 
-        .#{$prefixFooter}-imprint {
+        .#{$prefix-footer}-imprint {
           
         }
     }

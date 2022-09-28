@@ -4,12 +4,12 @@
 // with the class theme-breadcrumbs (notice the trailing s)
 
 // Hide on Home
-.page-is-home .#{$prefixBreadcrumbs} {
+.page-is-home .#{$prefix-breadcrumbs} {
   display: none;
 }
 
 // General rules
-.#{$prefixBreadcrumbs} {
+.#{$prefix-breadcrumbs} {
   position: sticky;
   top: 82px;
   z-index: 10;
@@ -32,7 +32,7 @@
     // ??? always show home, even when collapsed?
     // TODO: @2ro / @2tl - change to use first-child, not more classes
     &:first-child
-        // &.#{$prefixBreadcrumbs}-home
+        // &.#{$prefix-breadcrumbs}-home
     {
       display: inline;
 
@@ -50,9 +50,9 @@
     }
   }
 
-  &.#{$prefixBreadcrumbs}-shortened {
+  &.#{$prefix-breadcrumbs}-shortened {
     a {
-      &.#{$prefixBreadcrumbs}-home {
+      &.#{$prefix-breadcrumbs}-home {
         display: none;
 
         @include media-breakpoint-up(md) {
@@ -62,7 +62,7 @@
     }
   }
 
-  .#{$prefixBreadcrumbs}-trigger {
+  .#{$prefix-breadcrumbs}-trigger {
     cursor: pointer;
     display: inline;
 
@@ -71,10 +71,10 @@
     }
   }
 
-  .#{$prefixBreadcrumbs}-separator::after {
+  .#{$prefix-breadcrumbs}-separator::after {
     content: ' › ';
   }
-  .#{$prefixBreadcrumbs}-trigger::after {
+  .#{$prefix-breadcrumbs}-trigger::after {
     content: '…';
   }
 }
