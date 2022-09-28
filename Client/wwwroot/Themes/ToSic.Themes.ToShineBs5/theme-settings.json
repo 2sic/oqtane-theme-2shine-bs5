@@ -17,7 +17,7 @@
   // Global debug settings
   // If "allowed" here, you can activate individually on each Theme and Menu
   "debug": {
-    "allowed": false,    // The most important setting - if this is false, nothing else will happen
+    "allowed": true,    // The most important setting - if this is false, nothing else will happen
     "admin": true,      // Enable everywhere for admin, unless disabled in a specific configuration
     "anonymous": true,  // Enable everywhere for anonymous, unless disabled in a specific configuration
   },
@@ -73,6 +73,7 @@
       // Custom values / classes as you need them in your code
       "Custom": {
         // Panes - uses the Pane-name to find the configuration
+        // TODO: 2DM - probably Pane-Default
         "Default": "",
         "Header": {
           "classes": "container px-0",
@@ -114,7 +115,7 @@
         "container": {
           "classes": "theme-container py-4 demo-module-[Module.Id] demo-page-[Page.Id]",
           "isPublished": [null, "module-unpublished"],
-          "isAdmin": ["theme-container-admin app-admin-modal", null],
+          "isAdmin": "theme-container-admin app-admin-modal",
           "id": "module-[Module.Id]"
         },
       }
@@ -149,12 +150,12 @@
     // The default configuration is taken if no other configuration is used
     "Default": {
       "start": "*",
-      "depth": 0,
+      "depth": 1,
     },
     // This is used as the main-menu in the navigation with sidebar submenu
     "ToplevelOnly": {
       "start": "*",
-      "depth": 0
+      "depth": 1
     },
     // Main is usually used for the default, top-level menu
     "Main": {
@@ -162,7 +163,7 @@
       "depth": 2,
       // Example to enable debug just on this specific menu
       "debug": {
-        "admin": false,
+        "admin": true,
       },
     },
     // Mobile is usually used for the default, top-level menu which only appears when the screen is too small
@@ -205,7 +206,7 @@
     "Default": {
       "ul": {
         "byLevel": {
-          "0": "navbar-nav test-[Page.Id] test-[Theme.Path]",
+          "1": "navbar-nav test-[Page.Id] test-[Theme.Path]",
           "-1": "dropdown-menu"
         },
       },
@@ -222,7 +223,7 @@
         "isActive": "active",
         "hasChildren": "dropdown-toggle",
         "byLevel": {
-          "1": "nav-link",
+          "2": "nav-link",
           "-1": "dropdown-item"
         },
       }
@@ -230,7 +231,7 @@
     "Mobile": {
       "ul": {
         "byLevel": {
-          "0": "navbar-nav",
+          "1": "navbar-nav",
           "-1": "collapse theme-submenu-[Menu.Id]-[Page.Id]"
         },
         "inBreadcrumb": "show"
@@ -256,7 +257,7 @@
     "Sidebar": {
       "ul": {
         "byLevel": {
-          "0": "navbar-nav",
+          "1": "navbar-nav",
           "-1": "collapse theme-submenu-[Menu.Id]-[Page.Id]"
         },
         "inBreadcrumb": "show"

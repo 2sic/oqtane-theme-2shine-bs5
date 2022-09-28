@@ -27,6 +27,13 @@ Nice to know:
                 }
             </li>
         }
+        @* Debug Information as things can get complex *@
+        <MagicMenuDebug Menu="@Menu"></MagicMenuDebug>
     </ul>
+}
+else
+{
+    @* Debug Information in cases where the menu doesn't even show *@
+    <MagicMenuDebug Menu="@Menu" Standalone="true"></MagicMenuDebug>
 }
 
