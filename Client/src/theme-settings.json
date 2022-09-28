@@ -17,7 +17,7 @@
   // Global debug settings
   // If "allowed" here, you can activate individually on each Theme and Menu
   "debug": {
-    "allowed": true,    // The most important setting - if this is false, nothing else will happen
+    "allowed": false,    // The most important setting - if this is false, nothing else will happen
     "admin": true,      // Enable everywhere for admin, unless disabled in a specific configuration
     "anonymous": true,  // Enable everywhere for anonymous, unless disabled in a specific configuration
   },
@@ -92,12 +92,11 @@
           "id": "theme-nav-sub"
         },
 
-        // Login classes
-        "login-icon": "theme-login-icon",
+        // Buttons / Icons and Logins
+        "edit-icon": "theme-ui-button edit",
+        "admin-icon": "theme-ui-button gear",
+        "login-icon": "theme-ui-button lock",
         "login-invisible": "theme-login-invisible d-none d-lg-inline-flex",
-
-        // Other Admin buttons
-        "edit-icon": "theme-ui-buttons",
 
         // Logo & ToTop
         "logo": "logo",
