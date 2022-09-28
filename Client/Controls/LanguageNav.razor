@@ -10,14 +10,11 @@ Nice to know:
 *@
 @if (Show == true)
 {
-    <ul class='@Classes("ul")'>
+    <ul class='@ClassesOrDefault("languages-ul", "theme-languages")'>
         @foreach (var lang in Languages)
         {
-            <li class='@Classes("li", lang)'>
-                <a href="#"
-                   @onclick="@(async _ => await SetLanguage(lang.Culture))"
-                   title="@lang.Description"
-                >@lang.Label</a>
+            <li class='@Classes(lang, "languages-li")'>
+                <a href="#" @onclick="@(async _ => await SetLanguage(lang.Culture))" title="@lang.Description">@lang.Label</a>
             </li>
         }
     </ul>

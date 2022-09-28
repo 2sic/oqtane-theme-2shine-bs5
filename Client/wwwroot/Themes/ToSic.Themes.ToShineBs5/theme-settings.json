@@ -34,7 +34,6 @@
       // Optional: Use the same languages configuration as this theme - in this case "Default" - not necessary
       "languages": "=",
       // very optional, just as example. will default to "=" meaning "Default"
-      // "languageMenuDesign": "custom-lang-design",
       "languageMenuShow": true,
       "languageMenuShowMin": 2,
       // Determins if we should use the body (or a div) for the magic context
@@ -104,6 +103,11 @@
         // Logo & ToTop
         "logo": "logo",
         "to-top": "theme-to-top",
+
+        // Languages - the li-node should be able to do active/passive if necessary
+        "languages-li": {
+          "isActive": "active"
+        }
       }
     }
   },
@@ -174,24 +178,6 @@
     }
   },
 
-
-  // ********************
-  // Language Designs add classes for the language menus
-  "LanguagesDesigns": {
-    "Default": {
-      "ul": "theme-page-language",
-      "li": {
-        "isActive": "active",
-      }
-    }
-    // Example of design specs with another name
-    // "custom-lang-design": {
-    //     "ul": { "classes": "theme-page-language custom" },
-    //     "li": { "isActive": "active custom", "isNotActive": "inactive custom" }
-    // }
-  },
-
-
   // ********************
   // Containers has properties / settings / values on containers which are not directly related to design
   // As of now there is no use for this, but the infrastructure exists
@@ -213,7 +199,7 @@
       },
       // The system/admin container
       "system": {
-        "classes": "theme-background-container py-4 demo-module-[Module.Id] demo-page-[Page.Id] theme-admin-container app-admin-modal",
+        "classes": "theme-background-container py-4 theme-admin-container app-admin-modal",
         // "isPublished": [null, "module-unpublished"],
         // "isAdminModule": "theme-admin-container app-admin-modal",
         // "isAdminModule": [null, "theme-default-container"]

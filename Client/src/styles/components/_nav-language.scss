@@ -1,6 +1,7 @@
 ﻿@media all {
+  // TODO: @2ro / @2tl - shouldn't this be in the variations?
     .#{$prefix}-mainnav-variation-left {
-        .#{$prefix}-page-language {
+        .#{$prefixLanguages} {
             li {
                 &:first-child {
                     padding-left: 0;
@@ -9,7 +10,7 @@
         }
     }
 
-    .#{$prefix}-page-language {
+    .#{$prefixLanguages} {
         margin: 0;
         padding: 0;
         display: flex;

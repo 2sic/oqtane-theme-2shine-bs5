@@ -1,77 +1,80 @@
 ﻿/* ---------- Breadcrumbs ---------- */
+// This defines everything about the breadcrumb.
+// It assumes that every breadcrumb will be wrapped in an element (usually <div>)
+// with the class theme-breadcrumbs (notice the trailing s)
 
 // Hide on Home
-.page-is-home .#{$prefixBreadcrumb} {
-    display: none;
+.page-is-home .#{$prefixBreadcrumbs} {
+  display: none;
 }
 
 // General rules
-.#{$prefixBreadcrumb} {
-    position: sticky;
-    top: 82px;
-    z-index: 10;
-    background: $white;
+.#{$prefixBreadcrumbs} {
+  position: sticky;
+  top: 82px;
+  z-index: 10;
+  background: $white;
 
-    @include media-breakpoint-down(lg) {
-        top: 58px;
+  @include media-breakpoint-down(lg) {
+    top: 58px;
+  }
+
+  a {
+    color: $gray-600;
+    white-space: pre-wrap;
+    font-size: 14px;
+    padding: 0 5px;
+
+    &:hover {
+      color: $primary;
     }
 
-    a /* .#{$prefixBreadcrumb}-link */ {
-        color: $gray-600;
-        white-space: pre-wrap;
-        font-size: 14px;
-        padding: 0 5px;
+    // ??? always show home, even when collapsed?
+    // TODO: @2ro / @2tl - change to use first-child, not more classes
+    &:first-child
+        // &.#{$prefixBreadcrumbs}-home
+    {
+      display: inline;
 
-        &:hover {
-            color: $primary;
-        }
-
-        // ??? always show home, even when collapsed?
-        // TODO: @2ro / @2tl - change to use first-child, not more classes
-        &:first-child
-        // &.#{$prefixBreadcrumb}-home
-        {
-            display: inline;
-
-            @include media-breakpoint-up(md) {
-                display: inline;
-            }
-        }
-    }
-
-    .last {
-        a /* .#{$prefixBreadcrumb}-link */ {
-            color: $primary;
-            display: inline-block;
-        }
-    }
-
-    &.#{$prefixBreadcrumb}-shortened {
-        .#{$prefixBreadcrumb}-link {
-            &.#{$prefixBreadcrumb}-home {
-                display: none;
-
-                @include media-breakpoint-up(md) {
-                    display: inline;
-                }
-            }
-        }
-    }
-
-    .#{$prefixBreadcrumb}-trigger {
-        cursor: pointer;
+      @include media-breakpoint-up(md) {
         display: inline;
+      }
+    }
+  }
+
+  // TODO: @2ro / @2tl - this looks wrong, .last is never set. Should we use :last-child ?
+  .last {
+    a {
+      color: $primary;
+      display: inline-block;
+    }
+  }
+
+  &.#{$prefixBreadcrumbs}-shortened {
+    a {
+      &.#{$prefixBreadcrumbs}-home {
+        display: none;
 
         @include media-breakpoint-up(md) {
-            display: none;
+          display: inline;
         }
+      }
     }
+  }
 
-    .#{$prefixBreadcrumb}-separator::after {
-      content: " › ";
+  .#{$prefixBreadcrumbs}-trigger {
+    cursor: pointer;
+    display: inline;
+
+    @include media-breakpoint-up(md) {
+      display: none;
     }
-    .#{$prefixBreadcrumb}-trigger::after {
-      content: "…";
-    }
-    
+  }
+
+  .#{$prefixBreadcrumbs}-separator::after {
+    content: ' › ';
+  }
+  .#{$prefixBreadcrumbs}-trigger::after {
+    content: '…';
+  }
 }
