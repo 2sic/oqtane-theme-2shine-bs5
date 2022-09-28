@@ -20,3 +20,8 @@ else
 {
     <MenuHorizontal Menu="@Menu"></MenuHorizontal>
 }
+@if (Menu?.HasChildren == false)
+{
+    @* Debug Information in cases where the menu doesn't even show *@
+    <MagicMenuDebug Menu="@Menu" Standalone="true"></MagicMenuDebug>
+}
