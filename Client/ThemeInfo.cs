@@ -38,8 +38,8 @@ public class ThemeInfo : ITheme
 
     #region Constants for generating CSS Classes
 
-    // Note: not "to-shine-" because we need the "-" as separator in razor files it must be @ThemeInfo.ClassPrefix-something-else
-    public const string ClassPrefix = "to-shine";
+    // Note: not "theme-" because we need the "-" as separator in razor files it must be @ThemeInfo.ClassPrefix-something-else
+    public const string ClassPrefix = "theme";
 
     #endregion
 

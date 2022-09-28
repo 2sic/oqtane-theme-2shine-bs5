@@ -108,23 +108,6 @@
     }
   },
 
-  "Breadcrumbs": {
-    "Default": {
-      "separator": "&nbsp;&rsaquo;&nbsp;", // a non-breaking space + >> + non-breaking space
-      "revealer": "…" // this is an Ellipsis character
-    }
-  },
-
-  "BreadcrumbsDesigns": {
-    "Default": {
-      "div": "theme-breadcrumbs",
-      "a-home": "theme-breadcrumbs-link theme-breadcrumbs-home",
-      "revealer": "theme-breadcrumbs-trigger",
-      "a": "theme-breadcrumbs-link", 
-
-    }
-  },
-
 
   // ********************
   // Languages Configurations

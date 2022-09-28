@@ -4,20 +4,18 @@ File Purpose:       Show the Breadcrumb
 Recommendations:    -
 Nice to know:       Uses extension methods like GetHomePage() and GetBreadcrumb()
 *@
-<div class='@Classes("div")' aria-label="breadcrumb">
+<div class="theme-breadcrumbs" aria-label="breadcrumb">
+    @* TODO: @2tl - combine with upper div? *@
     <div class="container py-2">
-        <a class='@Classes("a-home")' aria-current="page"
-           href="@NavigateUrl(HomePage.Path)">@HomePage.Name</a>
+        <a aria-current="page" href="@NavigateUrl(HomePage.Path)">@HomePage.Name</a>
         @* Show a ... ellipsis in mobile mode to toggle showing the rest of the breadcrumb *@
-        <span class="@Classes("revealer")">
-            @((MarkupString)Settings.Breadcrumbs.Revealer)
-        </span>
+        <span class="theme-breadcrumbs-trigger"></span>
 
         @* Show an > arrow and the page name with link to it for each page in the breadcrumb *@
         @foreach (var p in Breadcrumbs)
         {
-            <span>@((MarkupString)Settings.Breadcrumbs.Separator)</span>
-            <a href="@NavigateUrl(p.Path)" class="@Classes("a")">@p.Name</a>
+            <span class="theme-breadcrumbs-separator"></span>
+            <a href="@NavigateUrl(p.Path)">@p.Name</a>
         }
     </div>
 </div>

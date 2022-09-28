@@ -1,8 +1,11 @@
 ﻿/* ---------- Breadcrumbs ---------- */
+
+// Hide on Home
 .page-is-home .#{$prefixBreadcrumb} {
     display: none;
 }
 
+// General rules
 .#{$prefixBreadcrumb} {
     position: sticky;
     top: 82px;
@@ -13,7 +16,7 @@
         top: 58px;
     }
 
-    .#{$prefixBreadcrumb}-link {
+    a /* .#{$prefixBreadcrumb}-link */ {
         color: $gray-600;
         white-space: pre-wrap;
         font-size: 14px;
@@ -23,7 +26,11 @@
             color: $primary;
         }
 
-        &.#{$prefixBreadcrumb}-home {
+        // ??? always show home, even when collapsed?
+        // TODO: @2ro / @2tl - change to use first-child, not more classes
+        &:first-child
+        // &.#{$prefixBreadcrumb}-home
+        {
             display: inline;
 
             @include media-breakpoint-up(md) {
@@ -33,7 +40,7 @@
     }
 
     .last {
-        .#{$prefixBreadcrumb}-link {
+        a /* .#{$prefixBreadcrumb}-link */ {
             color: $primary;
             display: inline-block;
         }
@@ -59,4 +66,12 @@
             display: none;
         }
     }
+
+    .#{$prefixBreadcrumb}-separator::after {
+      content: " › ";
+    }
+    .#{$prefixBreadcrumb}-trigger::after {
+      content: "…";
+    }
+    
 }
