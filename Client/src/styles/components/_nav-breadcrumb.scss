@@ -1,9 +1,9 @@
 ﻿/* ---------- Breadcrumbs ---------- */
-.page-is-home .#{$prefix}-page-breadcrumb {
+.page-is-home .#{$prefixBreadcrumb} {
     display: none;
 }
 
-.#{$prefix}-page-breadcrumb {
+.#{$prefixBreadcrumb} {
     position: sticky;
     top: 82px;
     z-index: 10;
@@ -13,7 +13,7 @@
         top: 58px;
     }
 
-    .#{$prefix}-page-breadcrumb-link {
+    .#{$prefixBreadcrumb}-link {
         color: $gray-600;
         white-space: pre-wrap;
         font-size: 14px;
@@ -23,7 +23,7 @@
             color: $primary;
         }
 
-        &.#{$prefix}-page-breadcrumb-home {
+        &.#{$prefixBreadcrumb}-home {
             display: inline;
 
             @include media-breakpoint-up(md) {
@@ -33,15 +33,15 @@
     }
 
     .last {
-        .#{$prefix}-page-breadcrumb-link {
+        .#{$prefixBreadcrumb}-link {
             color: $primary;
             display: inline-block;
         }
     }
 
-    &.#{$prefix}-page-breadcrumb-shortened {
-        .#{$prefix}-page-breadcrumb-link {
-            &.#{$prefix}-page-breadcrumb-home {
+    &.#{$prefixBreadcrumb}-shortened {
+        .#{$prefixBreadcrumb}-link {
+            &.#{$prefixBreadcrumb}-home {
                 display: none;
 
                 @include media-breakpoint-up(md) {
@@ -51,7 +51,7 @@
         }
     }
 
-    .#{$prefix}-page-breadcrumb-trigger {
+    .#{$prefixBreadcrumb}-trigger {
         cursor: pointer;
         display: inline;
 

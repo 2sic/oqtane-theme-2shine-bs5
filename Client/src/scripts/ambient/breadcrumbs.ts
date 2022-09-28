@@ -1,4 +1,4 @@
-import { prefix, debug } from '../shared/constants';
+import { prefix, debug, prefixBreadcrumbs } from '../shared/constants';
 
 /* 
   IMPORTANT: this probably doesn't really work
@@ -10,8 +10,8 @@ import { prefix, debug } from '../shared/constants';
   - make sure it's in an export function and called from the background.ts
 */
 
-const baseName = `${prefix}-page-breadcrumb`;
-const baseSelector = `.${baseName}`;
+//const prefixBreadcrumbs = `${prefix}-page-breadcrumb`;
+const baseSelector = `.${prefixBreadcrumbs}`;
 
 
 
@@ -53,7 +53,7 @@ function breadcrumbsAttributes() {
   var headerPaneMarginTop = parseInt(headerPaneStyle.marginBottom);
   var totalHeight = headerPaneMarginBottom + headerPaneMarginTop + headerPaneHeight;
   
-  var breadcrumbs = document.querySelector(`.${baseName}`);
+  var breadcrumbs = document.querySelector(`.${prefixBreadcrumbs}`);
 
   (breadcrumbs as HTMLElement).style["top"] = headerHeight + "px";
   
@@ -69,10 +69,10 @@ function breadcrumbsAttributes() {
 }
 
 document.querySelector(`${baseSelector}-trigger`).addEventListener('click', () => {
-  document.querySelector(`${baseSelector}`).classList.toggle(`${baseName}-shortened`)
+  document.querySelector(`${baseSelector}`).classList.toggle(`${prefixBreadcrumbs}-shortened`)
 })
 
-if (document.querySelector(`.${baseName}`) != null) {
+if (document.querySelector(`.${prefixBreadcrumbs}`) != null) {
   //document.querySelector('.to-shine-page-breadcrumb span a:last-child').classList.add('last');
   //document.querySelector('.to-shine-page-breadcrumb span:last-child').classList.add('last');
   //if (document.querySelector('.to-shine-page-breadcrumb span .to-shine-page-breadcrumb-link:nth-last-child(3)') != null) {
@@ -80,5 +80,5 @@ if (document.querySelector(`.${baseName}`) != null) {
   //}
   document
     .querySelector(baseSelector)
-    .classList.toggle(`${baseName}-shortened`, (document.querySelector(`${baseSelector}-link`) != null || document.querySelectorAll(`${baseSelector}-link`).length > 2))
+    .classList.toggle(`${prefixBreadcrumbs}-shortened`, (document.querySelector(`${baseSelector}-link`) != null || document.querySelectorAll(`${baseSelector}-link`).length > 2))
 }

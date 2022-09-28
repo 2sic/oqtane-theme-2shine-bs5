@@ -117,10 +117,10 @@
 
   "BreadcrumbsDesigns": {
     "Default": {
-      "div": "theme-page-breadcrumb",
-      "a-home": "theme-page-breadcrumb-link theme-page-breadcrumb-home",
-      "revealer": "theme-page-breadcrumb-trigger",
-      "a": "theme-page-breadcrumb-link", 
+      "div": "theme-breadcrumbs",
+      "a-home": "theme-breadcrumbs-link theme-breadcrumbs-home",
+      "revealer": "theme-breadcrumbs-trigger",
+      "a": "theme-breadcrumbs-link", 
 
     }
   },
