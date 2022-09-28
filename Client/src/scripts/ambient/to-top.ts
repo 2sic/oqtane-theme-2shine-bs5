@@ -1,7 +1,7 @@
 import { debug, debugDetailed, prefix } from '../shared/constants';
 
 const toTopElementId = `${prefix}-to-top`;
-const visibleClass = `${prefix}-top-visible`;
+const visibleClass = `visible`;
 
 export function initToTop() {
   console.log('init to top');

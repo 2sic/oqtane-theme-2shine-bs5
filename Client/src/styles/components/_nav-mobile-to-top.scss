@@ -1,5 +1,5 @@
 ﻿@media all {
-    a##{$prefix}-to-top {
+    a##{$prefix-to-top} {
         position: fixed;
         bottom: 20px;
         right: 25px;
@@ -21,7 +21,7 @@
             transform: translate(-50%, -50%);
         }
 
-        &.#{$prefix}-top-visible {
+        &.visible {
             opacity: 1;
             pointer-events: auto;
         }
