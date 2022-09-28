@@ -107,6 +107,22 @@
         // Languages - the li-node should be able to do active/passive if necessary
         "languages-li": {
           "isActive": "active"
+        },
+
+        // Container Designs determine CSS classes on containers
+        // The default/normal container
+        "container-default": {
+          "classes": "theme-background-container py-4 demo-module-[Module.Id] demo-page-[Page.Id]",
+          "isPublished": [null, "module-unpublished"],
+          "id": "module-[Module.Id]"
+        },
+        // The system/admin container
+        "container-system": {
+          "classes": "theme-background-container py-4 theme-admin-container app-admin-modal",
+          // "isPublished": [null, "module-unpublished"],
+          // "isAdminModule": "theme-admin-container app-admin-modal",
+          // "isAdminModule": [null, "theme-default-container"]
+          "id": "module-[Module.Id]"
         }
       }
     }
@@ -189,24 +205,24 @@
 
   // ********************
   // Container Designs determine CSS classes on containers
-  "ContainerDesigns": {
-    "Default": {
-      // The default/normal container
-      "default": {
-        "classes": "theme-background-container py-4 demo-module-[Module.Id] demo-page-[Page.Id]",
-        "isPublished": [null, "module-unpublished"],
-        "id": "module-[Module.Id]"
-      },
-      // The system/admin container
-      "system": {
-        "classes": "theme-background-container py-4 theme-admin-container app-admin-modal",
-        // "isPublished": [null, "module-unpublished"],
-        // "isAdminModule": "theme-admin-container app-admin-modal",
-        // "isAdminModule": [null, "theme-default-container"]
-        "id": "module-[Module.Id]"
-      }
-    }
-  },
+  // "ContainerDesigns": {
+  //   "Default": {
+  //     // The default/normal container
+  //     "default": {
+  //       "classes": "theme-background-container py-4 demo-module-[Module.Id] demo-page-[Page.Id]",
+  //       "isPublished": [null, "module-unpublished"],
+  //       "id": "module-[Module.Id]"
+  //     },
+  //     // The system/admin container
+  //     "system": {
+  //       "classes": "theme-background-container py-4 theme-admin-container app-admin-modal",
+  //       // "isPublished": [null, "module-unpublished"],
+  //       // "isAdminModule": "theme-admin-container app-admin-modal",
+  //       // "isAdminModule": [null, "theme-default-container"]
+  //       "id": "module-[Module.Id]"
+  //     }
+  //   }
+  // },
 
 
   // ********************
