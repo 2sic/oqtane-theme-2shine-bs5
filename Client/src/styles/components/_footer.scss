@@ -1,50 +1,47 @@
-﻿@media all {
-    footer##{$prefix-footer} {
+﻿footer##{$prefix-footer} {
+  ul {
+    margin: 0;
+    padding: 0;
 
-        ul {
-            margin: 0;
-            padding: 0;
-
-            @include media-breakpoint-up(lg) {
-                display: flex;
-            }
-
-            li {
-                list-style-type: none;
-                margin-right: 6px;
-            }
-        }
-
-        a,
-        a:focus {
-            color: $tosic-footer-color;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-
-            &:hover,
-            &:active {
-                color: rgba($tosic-footer-color, 0.5);
-                text-decoration: underline;
-                text-underline-offset: 3px;
-            }
-
-            &.#{$prefix-login}-invisible {
-                font-size: 12px;
-                color: transparent;
-                cursor: pointer;
-
-                &:hover {
-                    color: $white;
-                }
-            }
-        }
-
-        .#{$prefix-footer}-address {
-
-        }
-
-        .#{$prefix-footer}-imprint {
-          
-        }
+    @include media-breakpoint-up(lg) {
+      display: flex;
     }
+
+    li {
+      list-style-type: none;
+      margin-right: 6px;
+    }
+  }
+
+  a,
+  a:focus {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover,
+    &:active {
+      color: rgba(#fff, 0.5);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    &.#{$prefix-login}-invisible {
+      font-size: 12px;
+      color: transparent;
+      cursor: pointer;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  .#{$prefix-footer}-address {
+
+  }
+
+  .#{$prefix-footer}-imprint {
+    
+  }
 }

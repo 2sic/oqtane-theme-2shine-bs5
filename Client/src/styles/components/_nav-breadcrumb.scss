@@ -5,13 +5,13 @@
 
 // Hide on Home
 .page-is-home .#{$prefix-breadcrumbs} {
-  display: none;
+  display: none !important;
 }
 
 // General rules
 .#{$prefix-breadcrumbs} {
   position: sticky;
-  top: 82px;
+  top: 111px;
   z-index: 10;
   background: $white;
 
@@ -19,62 +19,65 @@
     top: 58px;
   }
 
-  a {
-    color: $gray-600;
-    white-space: pre-wrap;
-    font-size: 14px;
-    padding: 0 5px;
-
-    &:hover {
-      color: $primary;
+  &.#{$prefix-breadcrumbs}-open {
+    .#{$prefix-breadcrumbs}-item {
+      display: block;
     }
+  }
 
-    // ??? always show home, even when collapsed?
-    // TODO: @2ro / @2tl - change to use first-child, not more classes
-    &:first-child
-        // &.#{$prefix-breadcrumbs}-home
-    {
-      display: inline;
-
-      @include media-breakpoint-up(md) {
-        display: inline;
+  .#{$prefix-breadcrumbs}-item {
+    &:first-child {
+      a {
+        padding-left: 0;
       }
     }
-  }
 
-  // TODO: @2ro / @2tl - this looks wrong, .last is never set. Should we use :last-child ?
-  .last {
-    a {
-      color: $primary;
-      display: inline-block;
+    &:last-child {
+      a {
+        color: $primary;
+        padding-right: 0;
+      }
     }
-  }
 
-  &.#{$prefix-breadcrumbs}-shortened {
+    @include media-breakpoint-down(md) {
+      display: none;
+
+      &:last-child,
+      &:nth-last-child(2) {
+        display: block;
+      }
+    }
+
     a {
-      &.#{$prefix-breadcrumbs}-home {
-        display: none;
-
-        @include media-breakpoint-up(md) {
-          display: inline;
-        }
+      color: $gray-600;
+      white-space: pre-wrap;
+      font-size: 14px;
+      padding: 0 5px;
+  
+      &:hover {
+        color: $primary;
       }
     }
   }
 
   .#{$prefix-breadcrumbs}-trigger {
     cursor: pointer;
-    display: inline;
+    padding: 0 5px;
+
+    &:after {
+      content: '…';
+    }
 
     @include media-breakpoint-up(md) {
       display: none;
     }
   }
 
-  .#{$prefix-breadcrumbs}-separator::after {
-    content: ' › ';
-  }
-  .#{$prefix-breadcrumbs}-trigger::after {
-    content: '…';
+  .#{$prefix-breadcrumbs}-separator {
+    padding-left: 5px;
+
+    &:after {
+      content: '›';
+    }
   }
 }

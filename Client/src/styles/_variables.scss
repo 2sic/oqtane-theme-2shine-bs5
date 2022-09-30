@@ -1,8 +1,6 @@
 ﻿// ----------------------------------------------------------------------------------------------------
-// 1. Load Bootstrap 5 Helpers
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../../node_modules/bootstrap/scss/functions";
-@import "../../node_modules/bootstrap/scss/mixins";
-
 
 // 1.2 Define prefixes for all generated classes
 
@@ -17,95 +15,53 @@ $prefix-container:    '#{$prefix}-container';
 $prefix-to-top:       '#{$prefix}-to-top';
 $prefix-login:        '#{$prefix}-login';
 
-
 // ----------------------------------------------------------------------------------------------------
-// 2. Set Bootstrap Core Variables Presets
+// 2. Include any default variable overrides here
 // These variables should be set before we load the standard bootstrap variables
 // Bootstrap will keep what we set here, and only set variables we have not defined yet
+// Unocmment the lines you want to change, or get more from the ../../node_modules/bootstrap/scss/variables.scss
 
 // 2.1 Set primary and secondary color - used all over the theme
-$primary: #0060AC;
-$secondary: #001D38;
+$primary:       #0060AC;
+$secondary:     #001D38;
 
 // 2.2 set Body colors
-$body-bg: #E5E5E5;
-$body-color: #222222;
-
+$body-bg:       #E5E5E5;
+$body-color:    #222222;
 
 // Greys
-$gray-100: #f8f9fa;
-$gray-200: #F8F8F4;
-$gray-300: #E8E1D6;
-$gray-400: #D6CBC4;
-$gray-500: #adb5bd;
-$gray-600: #6c757d;
-$gray-700: #495057;
-$gray-800: #343a40;
-$gray-900: #212529;
-
-//TODO: WHY IS THIS HERE?
-// $theme-colors: ();
-// $theme-colors: map-merge(
-//   (
-//     "primary":      $primary,
-//     "secondary":    $secondary,
-//     "danger":       #842029,
-//     "dark":         $gray-600
-//     //here you can add your own color to use BS Classes like .bg-yourcolor
-//   ),
-//   $theme-colors
-// );
+$gray-100:      #f8f9fa;
+$gray-200:      #F8F8F4;
+$gray-300:      #E8E1D6;
+$gray-400:      #D6CBC4;
+$gray-500:      #adb5bd;
+$gray-600:      #6c757d;
+$gray-700:      #495057;
+$gray-800:      #343a40;
+$gray-900:      #212529;
 
 // Gutter width:
-
-$grid-gutter-width: 30px;
-
-//TODO: WHY IS THIS HERE?
+$grid-gutter-width:           30px;
 
 // Container padding
-
 // $container-padding-x: $grid-gutter-width * 1.5;
 
-// Optimized and extended spacing for the use of paddings and margins like: px-5 or mb-2
-// $spacer:                      20px;
-// $spacers: ();
-// $spacers: map-merge(
-//   (
-//     0: 0,
-//     1: ($spacer * 1), // 20px
-//     2: ($spacer * 1.5), // 30px
-//     3: ($spacer * 2), // 40px
-//     4: ($spacer * 3), // 60px
-//     5: ($spacer * 4), // 80px
-//     6: ($spacer * 5), // 100px
-//     7: ($spacer * 6) // 120px
-//   ),
-//   $spacers
-// );
-// scss-docs-end theme-colors-map
+$link-color:                              $primary;
+$link-decoration:                         none;
+$link-shade-percentage:                   20%;
+$link-hover-color:                        shift-color($link-color, $link-shade-percentage);
+$link-hover-decoration:                   none;
 
-$link-color: $primary;
-$link-decoration: none;
-$link-shade-percentage: 20%;
-$link-hover-color: shift-color($link-color, $link-shade-percentage);
-$link-hover-decoration: none;
-
-
-// 2.3 Custom Bootstrap Instant 5 Theme variables - used in the variations of the themes */
-// TODO: should be renamed to theme-*
-$tosic-header-background: #fff;
-$tosic-footer-background: $secondary;
-$tosic-footer-color: #fff;
 
 // ----------------------------------------------------------------------------------------------------
-// 3. Special CSS for specific pages
+// Special CSS for specific pages
 // The body tag always has things like page-xx to say what page it's on. Use these to target special CSS.
 // Classes you can use are:
 // - page-##
 // - page-is-home (this class is only added on home)
 // - root-page-## the top level page which is activated, to allow different colors across an entire section
 // - page-parent-## the parent page of the current page - If available
-// - lang-en / lang-de etc.
+// - lang-en / lang-de etc. 
 
 // Set the width of the logo specifically for the home page only
 // .page-is-home {
@@ -117,17 +73,10 @@ $tosic-footer-color: #fff;
 // }
 
 
-// ----------------------------------------------------------------------------------------------------
-// 4. Variables we often override
-// These are placed after the bootstrap variables import, so that things like $gray already exist
-// Unocmment the lines you want to change, or get more from the ../../node_modules/bootstrap/scss/variables.scss
-
 // Fonts
-// stylelint-disable value-keyword-case
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans",sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 $font-family-base: $font-family-sans-serif;
-// stylelint-enable value-keyword-case
 
 // Links
 // Style anchor elements.
@@ -161,17 +110,53 @@ $headings-font-weight: 700;
 $headings-line-height: 1.2;
 $headings-color: $body-color;
 
-// scss-docs-start display-headings
-$display-font-sizes: ( 1: $font-size-base * 2.6, 2: $font-size-base * 2.2, 3: $font-size-base * 1.6, 4: $font-size-base * 1.2 );
+// display-headings
+$display-font-sizes: (
+  1: $font-size-base * 2.6,
+  2: $font-size-base * 2.2,
+  3: $font-size-base * 1.6,
+  4: $font-size-base * 1.2
+) ;
 
 $display-font-weight: 300 !default;
 $display-line-height: $headings-line-height !default;
 
-
 // $lead-font-size: ($font-size-base * 1.25);
 
+// ----------------------------------------------------------------------------------------------------
+// 3. Include remainder of required Bootstrap stylesheets
+@import "../../node_modules/bootstrap/scss/variables";
+
+// 4. Include any default map overrides here
+// Add custom colors depending on your style
+$custom-colors: (
+  "dark": $gray-600
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// Optimized and extended spacing for the use of paddings and margins like: px-5 or mb-2
+$spacer:                      20px;
+$custom-spacers: (
+  0: 0,
+  1: ($spacer * 1), // 20px
+  2: ($spacer * 1.5), // 30px
+  3: ($spacer * 2), // 40px
+  4: ($spacer * 3), // 60px
+  5: ($spacer * 4), // 80px
+  6: ($spacer * 5), // 100px
+  7: ($spacer * 6) // 120px
+);
+
+// Merge the maps
+$spacers: map-merge(
+  $custom-spacers,
+  $spacers
+);
 
 // ----------------------------------------------------------------------------------------------------
-// 5. Initialize the default bootstrap variables so they are ready
-// Tip: In VS-Code, Ctrl+Click on the link below to open the file
-@import "../../node_modules/bootstrap/scss/variables";
+// 5. Include remainder of required parts
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/utilities";

@@ -2,23 +2,21 @@ import { debug } from '../shared/constants';
 
 declare const bootstrap: any;
 
-// TODO: I (2dm) turned this off, as it appears to be completely not needed
-// @2ro pls verify
-export function initOffCanvasEvents() {
-
-  return;
+// Takes care of closing the offcanvas when clicking on a navigation link
+// The page is not reloaded, so the offcanvas does not close
+export function initOffCanvasEvents() {  
 
   if (debug) console.log('initOffCanvasEvents');
 
   //Offcanvas close on link click
-  var links = document.querySelectorAll(".mobile-navigation-link");
-  var myOffcanvas = document.getElementById('offcanvasNavbar')
-  var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+  var navLinks = document.querySelectorAll(".mobile-navigation-link");
+  var navOffcanvas = document.getElementById('offcanvasNavbar')
+  var bsNavOffcanvas = new bootstrap.Offcanvas(navOffcanvas)
   
-  links.forEach(element => {
-      element.addEventListener('click', () => {
-          bsOffcanvas.hide();
-      })
+  navLinks.forEach(element => {
+    element.addEventListener('click', () => {
+      bsNavOffcanvas.hide();
+    })
   });
 
 }

@@ -1,57 +1,44 @@
-﻿@media all {
-  // TODO: @2ro / @2tl - shouldn't this be in the variations?
-    .#{$prefix}-mainnav-variation-left {
-        .#{$prefix-languages} {
-            li {
-                &:first-child {
-                    padding-left: 0;
-                }
-            }
-        }
+﻿.#{$prefix-languages} {
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+  @include media-breakpoint-down(lg) {
+    padding: 1rem;
+    padding-right: 0;
+  }
+
+  li {
+    padding: 5px;
+    margin: 0;
+    list-style-type: none;
+    font-size: 11px;
+    font-weight: 700;
+
+    &:first-child {
+      @include media-breakpoint-down(lg) {
+        padding-left: 0;
+      }
     }
 
-    .#{$prefix-languages} {
-        margin: 0;
-        padding: 0;
-        display: flex;
+    a, a:focus {
+      color: $body-color;
 
-        @include media-breakpoint-down(lg) {
-            padding: 1rem;
-            padding-right: 0;
-        }
+      @include media-breakpoint-down(lg) {
+        color: rgba($white, 0.8);
+      }
 
-        li {
-            padding: 5px;
-            margin: 0;
-            list-style-type: none;
-            font-size: 11px;
-            font-weight: 700;
-
-            &:first-child {
-                @include media-breakpoint-down(lg) {
-                    padding-left: 0;
-                }
-            }
-
-            a, a:focus {
-                color: $body-color;
-
-                @include media-breakpoint-down(lg) {
-                    color: rgba($white, 0.8);
-                }
-
-                &:hover {
-                    color: $primary;
-                }
-            }
-
-            &.active a {
-                color: $primary;
-
-                @include media-breakpoint-down(lg) {
-                    color: #fff;
-                }
-            }
-        }
+      &:hover {
+        color: $primary;
+      }
     }
+
+    &.active a {
+      color: $primary;
+
+      @include media-breakpoint-down(lg) {
+        color: #fff;
+      }
+    }
+  }
 }

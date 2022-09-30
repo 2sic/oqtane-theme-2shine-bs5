@@ -1,53 +1,51 @@
-@media all {
-  /*layout floatwideheader*/
-  body.#{$prefix}-variation-floatwideheader,
-  // when using wrapper instead of body
-  div#cre8magic-root.#{$prefix}-variation-floatwideheader {
-    &.page-2650 {
-      main##{$prefix}-page-main {
-        @include media-breakpoint-up(xl) {
-          margin-top: -10vh!important;
-        }
-      }
-    }
+/*layout floatwideheader*/
+body.#{$prefix}-variation-floatwideheader,
+// when using wrapper instead of body
+div#cre8magic-root.#{$prefix}-variation-floatwideheader {
+  &.page-2650 {
     main##{$prefix}-page-main {
       @include media-breakpoint-up(xl) {
-        margin-top: -5vh!important;
+        margin-top: -10vh!important;
       }
     }
+  }
+  main##{$prefix}-page-main {
+    @include media-breakpoint-up(xl) {
+      margin-top: -5vh!important;
+    }
+  }
 
-    main##{$prefix}-page-main,
-    footer##{$prefix-footer} {
-      background: $white;
-      width: 100%;
-      margin: 0 auto;
-      position:relative;
-      @include media-breakpoint-up(xxl) {
-        max-width: 1320px;
-      }
+  main##{$prefix}-page-main,
+  footer##{$prefix-footer} {
+    background: $white;
+    width: 100%;
+    margin: 0 auto;
+    position:relative;
+    @include media-breakpoint-up(xxl) {
+      max-width: 1320px;
     }
-    nav##{$prefix}-page-navigation,
-    ##{$prefix}-page-header-pane {
-      max-width: 1600px;
-      width: 100%;
-      margin: 0 auto;
-      background: $white;
+  }
+  nav##{$prefix}-page-navigation,
+  ##{$prefix}-page-header-pane {
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    background: $white;
 
-      &.pane-is-empty {
-        @include media-breakpoint-up(lg) {
-          min-height: 300px;
-          background: $secondary;
-          background: linear-gradient(0deg, rgba($secondary, 0) 0%, rgba($secondary, 1) 100%);
-        }
+    &.pane-is-empty {
+      @include media-breakpoint-up(lg) {
+        min-height: 300px;
+        background: $secondary;
+        background: linear-gradient(0deg, rgba($secondary, 0) 0%, rgba($secondary, 1) 100%);
       }
     }
-    footer##{$prefix-footer} {
-      background: rgb(0,131,201);
-      background: linear-gradient(90deg, rgba(0,131,201,1) 0%, rgba(88,190,187,1) 100%);
-      
-      @include media-breakpoint-up(xxl) {
-        margin-bottom: 60px;
-      }
+  }
+  footer##{$prefix-footer} {
+    background: rgb(0,131,201);
+    background: linear-gradient(90deg, rgba(0,131,201,1) 0%, rgba(88,190,187,1) 100%);
+    
+    @include media-breakpoint-up(xxl) {
+      margin-bottom: 60px;
     }
   }
 }

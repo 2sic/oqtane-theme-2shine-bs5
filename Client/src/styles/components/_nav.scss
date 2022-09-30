@@ -1,232 +1,232 @@
 ﻿.#{$prefix}-mainnav-variation-left {
-    ##{$prefix}-page-navigation {
-        .offcanvas-body {
-            .align-items-end {
-                align-items: flex-start !important;
-            }
-        }
-
-        .navbar-nav {
-            > li:first-child() {
-                .nav-link {
-                    padding-left: 0;
-                }
-            }
-
-            > li:last-child() {
-                .nav-link {
-                    padding-right: $nav-link-padding-x;
-                }
-            }
-        }
-    }
-}
-
-##{$prefix}-page-navigation {
-    position: sticky;
-    top: 0;
-    z-index: 801;
-
+  ##{$prefix}-page-navigation {
     .offcanvas-body {
-        .align-items-end {
-            @include media-breakpoint-down(lg) {
-                align-items: flex-start !important;
-            }
-        }
-    }
-
-    .navbar-brand {
-        .logo {
-            display: block;
-            width: 130px;
-            height: auto;
-            transition: width 0.4s ease-in-out;
-
-            @include media-breakpoint-up(lg) {
-                width: 170px;
-            }
-        }
-
-        svg {
-            //If you use an SVG as Logo, you will have to give it a fixed height
-            //in this selector, orelse you may experience issues in IE */
-            height: 37px;
-
-            @include media-breakpoint-up(lg) {
-                height: 53px;
-            }
-        }
-    }
-
-    .navbar-toggler {
-        color: $primary;
-        border-color: $primary;
-        border: none;
-    }
-
-    .navbar-toggler-icon {
-        background-image: escape-svg($navbar-light-toggler-icon-bg);
-        stroke: $primary;
+      .align-items-end {
+        align-items: flex-start !important;
+      }
     }
 
     .navbar-nav {
-        @include media-breakpoint-down(lg) {
-            width: 100%;
-        }
-
-        > .nav-item {
-            @include media-breakpoint-down(lg) {
-                border-bottom: 1px solid #e5e5e5;
-            }
-        }
-
+      > li:first-child() {
         .nav-link {
-            @include media-breakpoint-down(lg) {
-                padding-left: 1rem;
-                padding-right: 1rem;
-                font-size: 20px;
-            }
+          padding-left: 0;
+        }
+      }
+
+      > li:last-child() {
+        .nav-link {
+          padding-right: $nav-link-padding-x;
+        }
+      }
+    }
+  }
+}
+
+##{$prefix}-page-navigation {
+  position: sticky;
+  top: 0;
+  z-index: 801;
+
+  .offcanvas-body {
+    .align-items-end {
+      @include media-breakpoint-down(lg) {
+        align-items: flex-start !important;
+      }
+    }
+  }
+
+  .navbar-brand {
+    .logo {
+      display: block;
+      width: 130px;
+      height: auto;
+      transition: width 0.4s ease-in-out;
+
+      @include media-breakpoint-up(lg) {
+        width: 170px;
+      }
+    }
+
+    svg {
+      //If you use an SVG as Logo, you will have to give it a fixed height
+      //in this selector, orelse you may experience issues in IE */
+      height: 37px;
+
+      @include media-breakpoint-up(lg) {
+        height: 53px;
+      }
+    }
+  }
+
+  .navbar-toggler {
+    color: $primary;
+    border-color: $primary;
+    border: none;
+  }
+
+  .navbar-toggler-icon {
+    background-image: escape-svg($navbar-light-toggler-icon-bg);
+    stroke: $primary;
+  }
+
+  .navbar-nav {
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+    }
+
+    > .nav-item {
+      @include media-breakpoint-down(lg) {
+        border-bottom: 1px solid #e5e5e5;
+      }
+    }
+
+    .nav-link {
+      @include media-breakpoint-down(lg) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        font-size: 20px;
+      }
+
+      &.active {
+        color: darken($primary, 15%);
+      }
+
+      @include media-breakpoint-down(lg) {
+        color: rgba($white, 0.8);
+
+        &.active {
+          color: #fff
+        }
+      }
+    }
+
+    > .last {
+      .nav-link {
+        padding-right: 0;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(lg) {
+    .offcanvas-body {
+      background-color: $primary;
+      padding: 0;
+      // Requires both collapse and collapsing,
+      // as that's the style that is applied during/open/close
+      ul.collapse, 
+      ul.collapsing {
+        background-color: rgba($black, 0.4);
+        border-radius: 0;
+        border-left: none;
+        padding: 0;
+        margin-top: 0;
+
+        .nav-item {
+          border-bottom: 1px solid rgba($primary, 1);
+
+          .dropdown-item {
+            color: rgba($white, 0.8);
+            font-size: 20px;
+            padding: .5rem 1rem;
 
             &.active {
-                color: darken($primary, 15%);
+              background-color: rgba($black, 0.4);
+              color: #fff;
             }
-
-            @include media-breakpoint-down(lg) {
-                color: rgba($white, 0.8);
-
-                &.active {
-                    color: #fff
-                }
-            }
+          }
         }
+      }
+    }
+  }
 
-        > .last {
-            .nav-link {
-                padding-right: 0;
-            }
-        }
+  // 2dm - removed this, may need to re-create later on with the newer button-classes (not ...-login)
+  // .#{$prefix-login}-icon {
+  //     @include media-breakpoint-down(lg) {
+  //         padding-top: 1rem;
+  //     }
+  // }
+
+  .nav-item-sub-opener {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    height: 46px;
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    background: rgba(0,0,0,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    //Slight changes from DNN for new Mobile structure
+    &:after {
+      content: "-";
+      border: none;
+      font-size: 20px;
+      font-family: sans-serif;
+      color: hsla(0,0%,100%,.8);
     }
 
-    @include media-breakpoint-down(lg) {
-        .offcanvas-body {
-            background-color: $primary;
-            padding: 0;
-            // Requires both collapse and collapsing,
-            // as that's the style that is applied during/open/close
-            ul.collapse, 
-            ul.collapsing {
-                background-color: rgba($black, 0.4);
-                border-radius: 0;
-                border-left: none;
-                padding: 0;
-                margin-top: 0;
-
-                .nav-item {
-                    border-bottom: 1px solid rgba($primary, 1);
-
-                    .dropdown-item {
-                        color: rgba($white, 0.8);
-                        font-size: 20px;
-                        padding: .5rem 1rem;
-
-                        &.active {
-                            background-color: rgba($black, 0.4);
-                            color: #fff;
-                        }
-                    }
-                }
-            }
-        }
+    //Slight changes from DNN for new Mobile structure
+    &.collapsed {
+      &:after {
+        content: "+";
+      }
     }
-
-    // 2dm - removed this, may need to re-create later on with the newer button-classes (not ...-login)
-    // .#{$prefix-login}-icon {
-    //     @include media-breakpoint-down(lg) {
-    //         padding-top: 1rem;
-    //     }
-    // }
-
-    .nav-item-sub-opener {
-        position: absolute;
-        top: 0px;
-        right: 0;
-        height: 46px;
-        width: 40px;
-        text-align: center;
-        cursor: pointer;
-        color: #fff;
-        background: rgba(0,0,0,.3);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        //Slight changes from DNN for new Mobile structure
-        &:after {
-            content: "-";
-            border: none;
-            font-size: 20px;
-            font-family: sans-serif;
-            color: hsla(0,0%,100%,.8);
-        }
-
-        //Slight changes from DNN for new Mobile structure
-        &.collapsed {
-            &:after {
-                content: "+";
-            }
-        }
-    }
+  }
 }
 
 ##{$prefix}-nav-sub {
-    .nav-item-sub-opener {
-        position: absolute;
-        top: 0px;
-        right: 0;
-        height: 46px;
-        width: 40px;
-        text-align: center;
-        cursor: pointer;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+  .nav-item-sub-opener {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    height: 46px;
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        &:not(.collapsed) {
-            &:after {
-                content: "-";
-            }
-        }
-
-        &:after {
-            content: "+";
-            color: $primary;
-        }
+    &:not(.collapsed) {
+      &:after {
+        content: "-";
+      }
     }
 
-    // Requires both collapse and collapsing,
-    // as that's the style that is applied during/open/close
-    ul.collapse,
-    ul.collapsing {
-        background-color: rgba($primary, 0.1);
-        list-style: none;
-        padding-left: 0;
-
-        .nav-link {
-            padding-left: 15px;
-        }
+    &:after {
+      content: "+";
+      color: $primary;
     }
+  }
+
+  // Requires both collapse and collapsing,
+  // as that's the style that is applied during/open/close
+  ul.collapse,
+  ul.collapsing {
+    background-color: rgba($primary, 0.1);
+    list-style: none;
+    padding-left: 0;
+
+    .nav-link {
+      padding-left: 15px;
+    }
+  }
 }
 
 @include media-breakpoint-up(lg) {
-    .navbar-nav .nav-item:not(.disabled) .dropdown-menu {
-        display: none;
-    }
+  .navbar-nav .nav-item:not(.disabled) .dropdown-menu {
+    display: none;
+  }
 
-    .navbar-nav .nav-item:not(.disabled):hover .nav-link {
-    }
+  .navbar-nav .nav-item:not(.disabled):hover .nav-link {
+  }
 
-    .navbar-nav .nav-item:not(.disabled):hover .dropdown-menu {
-        display: block;
-    }
+  .navbar-nav .nav-item:not(.disabled):hover .dropdown-menu {
+      display: block;
+  }
 }

@@ -1,35 +1,35 @@
 ﻿.#{$prefix}-ui-button {
-    margin-left: 5px;
-    margin-top: -2px;
+  margin-left: 5px;
+  margin-top: -2px;
 
-    &:hover {
-        cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
+  }
 
-    &:first-of-type {
-      margin-left: 15px;
-    }
+  &:first-of-type {
+    margin-left: 15px;
+  }
 
-    svg {
-        display: inline;
-        height: 15px;
-    }
-    
-    // The gear icon is a little weird in how it's spaced, so it needs some correction
-    &.gear {
-      margin-left: 0;
-    }
+  svg {
+    display: inline;
+    height: 15px;
+  }
+  
+  // The gear icon is a little weird in how it's spaced, so it needs some correction
+  &.gear {
+    margin-left: 0;
+  }
 
-    @include media-breakpoint-down(lg) {
-        display: none;
-    }
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
 }
 
 // This css is only needed to set the buttons that 
 // automatically come with the oqtane control panel cannot be disabled
 // and have to be set to display none
 #oqtane-control-panel{
-    > button{
-        display: none;
-    }
+  > button{
+    display: none;
+  }
 }

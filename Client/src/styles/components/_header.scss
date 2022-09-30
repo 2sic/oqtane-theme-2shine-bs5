@@ -1,39 +1,36 @@
-﻿// TODO: @2ro / 2tl - do we need @media all?
-@media all {
-  .role-admin {
-    nav##{$prefix}-page-navigation,
-    ##{$prefix}-page-header-pane {
-      .pane-is-empty {
-        min-height: 50px;
-      }
+﻿.role-admin {
+  nav##{$prefix}-page-navigation,
+  ##{$prefix}-page-header-pane {
+    .pane-is-empty {
+      min-height: 50px;
     }
   }
+}
 
-  nav##{$prefix}-page-navigation {
-    background: $tosic-header-background;
-    position: sticky;
-    top: 0;
-    z-index: 800;
+nav##{$prefix}-page-navigation {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 800;
 
-    .logo {
-      display: block;
-      width: 130px;
-      max-width: 80%;
-      height: auto;
-      transition: width 0.4s ease-in-out;
+  .logo {
+    display: block;
+    width: 130px;
+    max-width: 80%;
+    height: auto;
+    transition: width 0.4s ease-in-out;
+
+    @include media-breakpoint-up(lg) {
+      width: 170px;
+    }
+
+    svg {
+      //If you use an SVG as Logo, you will have to give it a fixed height
+      //in this selector, orelse you may experience issues in IE */
+      height: 37px;
 
       @include media-breakpoint-up(lg) {
-        width: 170px;
-      }
-
-      svg {
-        //If you use an SVG as Logo, you will have to give it a fixed height
-        //in this selector, orelse you may experience issues in IE */
-        height: 37px;
-
-        @include media-breakpoint-up(lg) {
-          height: 53px;
-        }
+        height: 53px;
       }
     }
   }

@@ -1,0 +1,9 @@
+.#{$prefix}-mainnav-variation-left {
+  .#{$prefix-languages} {
+    li {
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+}

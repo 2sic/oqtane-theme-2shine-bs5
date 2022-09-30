@@ -1,22 +1,19 @@
-﻿@media all {
-    html {
-        min-height: 100vh;
-        //Small changes because oqtane doesn't have a form wrapper like DNN but has a div wrapper
-        body {
-            overflow-y: scroll;
-            min-height: 100vh;
+﻿html {
+  min-height: 100vh;
+  //Small changes because oqtane doesn't have a form wrapper like DNN but has a div wrapper
+  body {
+    overflow-y: scroll;
+    min-height: 100vh;
 
-            main##{$prefix}-page-main {
-                flex: 1 0 auto;
-            }
-
-            .container {
-                @include media-breakpoint-up(xxl) {
-                    padding-left: 45px;
-                    padding-right: 45px;
-                }
-            //Removed Pane stylings for DNN
-            }
-        }
+    main##{$prefix}-page-main {
+      flex: 1 0 auto;
     }
+
+    .container {
+      @include media-breakpoint-up(xxl) {
+        padding-left: 45px;
+        padding-right: 45px;
+      }
+    }
+  }
 }

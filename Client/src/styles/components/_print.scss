@@ -1,9 +1,9 @@
 @media print {
-    a[href]:after {
-        content: "" !important;
-    }
+  a[href]:after {
+    content: "" !important;
+  }
 
-    .#{$prefix}-nav-mobile-trigger {
-        display: block;
-    }
+  .#{$prefix}-nav-mobile-trigger {
+    display: block;
+  }
 }
