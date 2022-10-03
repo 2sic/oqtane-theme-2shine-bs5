@@ -14,7 +14,7 @@
 
 ### Install
 
-1. Create a folder like `C:\2shine-oqtane\`
+1. Create a folder like `C:\projects\2shine-oqtane\`
 1. In that, git-clone the following repos
     1. https://github.com/2sic/cre8magic
     1. https://github.com/2sic/oqtane-theme-2shine-bs5

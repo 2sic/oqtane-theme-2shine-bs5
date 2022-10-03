@@ -10,12 +10,12 @@ Nice to know:
 *@
 @code
 {
-    public override string Name => "Default";
+    public override string Name => "Default (for Default and Admin modules)";
 }
 
 @if (UseAdminContainer)
 {
-    <Admin></Admin>
+    <SystemContainer></SystemContainer>
 }
 else
 {

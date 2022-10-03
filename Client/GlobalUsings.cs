@@ -1,3 +1,4 @@
+// ReSharper disable RedundantUsingDirective.Global
 /*
  * Global using directives
  *
@@ -10,9 +11,7 @@
 global using System.Collections.Generic;
 global using System.Linq;
 
-global using ToSic.Themes.ToShineBs5.Client;
-global using ToSic.Themes.ToShineBs5.Client.Services;
-global using static ToSic.Themes.ToShineBs5.Client.ThemeInfo;
+// Cre8Magic Namespaces
 global using ToSic.Cre8Magic.Client;
 global using ToSic.Cre8Magic.Client.Languages;
 global using ToSic.Cre8Magic.Client.Languages.Settings;
@@ -20,6 +19,10 @@ global using ToSic.Cre8Magic.Client.Menus;
 global using ToSic.Cre8Magic.Client.Menus.Settings;
 global using ToSic.Cre8Magic.Client.Settings;
 global using ToSic.Cre8Magic.Client.Services;
-global using ToSic.Cre8Magic.Client.DynComponents;
 global using ToSic.Cre8Magic.Client.Controls;
 global using ToSic.Cre8Magic.Client.Themes;
+
+
+// This themes namespaces
+global using ToSic.Themes.ToShineBs5.Client;
+global using static ToSic.Themes.ToShineBs5.Client.ThemeInfo;
