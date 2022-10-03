@@ -40,7 +40,7 @@
         // Don't show sidebar menu in the default configuration
         "menu-sidebar": false,
         // Example of a more detailed setting in case you want to control everything
-        "example-setting": {
+        "example-part-config": {
           "show": true,
           "design": "=",
           "configuration": "special-config",
