@@ -31,12 +31,12 @@ Nice to know:
     <Header></Header>
     
     @* Header Pane *@
-    <div id="@Id(PaneNameHeader)" class="@PaneClasses(PaneNameHeader)">
+    <div id="@Id($"Pane-{PaneNameHeader}")" class="@PaneClasses($"Pane-{PaneNameHeader}")">
         <Pane Name="@PaneNameHeader"/>
     </div>
     
     @* Main Section *@
-    <main id="@Id("Main")">
+    <main id="@Id("Main")" class="@Classes("Main")">
 
         @* Show Breadcrumb if desired *@
         @if (Settings.Show("Breadcrumbs"))
@@ -51,7 +51,7 @@ Nice to know:
                 <div class="row">
                     <div class='@Classes("sidebar-body")'>
                         <Pane Name="@PaneNames.Default"/>
-                        <MagicDynamicComponents Components="@MagicComponents" Group="@PaneNames.Default"></MagicDynamicComponents>
+                        <MagicDynamicComponents Components="@MagicComponents"></MagicDynamicComponents>
                     </div>
                     <div class='@Classes("menu-sidebar")'>
                         <div id="@Id("menu-sidebar-inner")" class="@Classes("menu-sidebar-inner")">
@@ -64,7 +64,7 @@ Nice to know:
         else
         {
             <Pane Name="@PaneNames.Default"/>
-            <MagicDynamicComponents Components="MagicComponents" Group="@PaneNames.Default"></MagicDynamicComponents>
+            <MagicDynamicComponents Components="MagicComponents"></MagicDynamicComponents>
         }
 
         <ToTop></ToTop>
