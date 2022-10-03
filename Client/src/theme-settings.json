@@ -9,7 +9,7 @@
    *
    * Note: This is a JSON file but the parser will treat it as JSONC, so you can add comments
   */
-  // ********************
+  // ********************************************************************************
 
   // The version of this file, which helps the reader detect the format (or error if incompatible)
   "version": 0.01,
@@ -22,19 +22,30 @@
     "anonymous": true,  // Enable everywhere for anonymous, unless disabled in a specific configuration
   },
 
-  // ********************
+  // ********************************************************************************
 
-  // Layouts Configurations. In most cases you'll just use "Default"
-  // The example below shows how the "Sidebar" configuration switches to a different menu
+  // Theme Configurations
   "Themes": {
+    // Default Theme - in most cases you'll just use this theme configuration
     "Default": {
       // Optional: Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
       "design": "=",
       "logo": "[Theme.Url]/assets/logo.svg",
-      // Optional: Use the same languages configuration as this theme - in this case "Default" - not necessary
-      "languages": "=",
-      "languagesShow": true,
-      "languagesMin": 2,
+      "languagesMin": 1,
+      "parts": {
+        // Show breadcrumbs. Note that on home it won't be visible due to CSS rules + MagicContext)
+        "breadcrumbs": true,
+        // Show languages menu and use the same languages configuration name as this theme - in this case "Default"
+        "languages": true,
+        // Don't show sidebar menu in the default configuration
+        "menu-sidebar": false,
+        // Example of a more detailed setting in case you want to control everything
+        "example-setting": {
+          "show": true,
+          "design": "=",
+          "configuration": "special-config",
+        }
+      },
       // Determins if we should use the body (or a div) for the magic context
       // As of now we feel that browser behavior is better if it's in the div-tag (false)
       "magicContextInBody": false,
@@ -42,17 +53,23 @@
         "admin": true,
       }
     },
+    // The example below shows how the "Sidebar" configuration switches to a different menu
     // Layout showing the submenu in the sidebar, so we don't need to show more items in the main menu
     "Sidebar": {
+      // Re-use all previous settings
       "@inherits": "Default",
-      // Change what menu configurations to use on named menus
-      "menus": {
-        "Main": "ToplevelOnly"
+      "parts": {
+        // Override showing the sidebar menu
+        "menu-sidebar": true,
+        // Example override showing how to switch to another language menu configuration
+        "languages": "EnglishOnly",
+        // Override main-menu settings to switch to another menu configuration and design
+        "menu-main": "TopLevelOnly",
       },
-      "breadcrumbsShow": false,
     }
   },
 
+  // ********************************************************************************
 
   "ThemeDesigns": {
     "Default": {
@@ -88,8 +105,8 @@
 
         // This config is used with sidebar-menu, places the body to the right, the menu to the left
         "sidebar-body": "col-12 col-lg-9 order-lg-2",
-        "sidebar-menu": "col-12 col-lg-3 order-lg-1",
-        "sidebar-menu-inner": {
+        "menu-sidebar": "col-12 col-lg-3 order-lg-1",
+        "menu-sidebar-inner": {
           "classes": "d-none d-sm-block",
           "id": "theme-nav-sub"
         },
@@ -142,6 +159,14 @@
         // "anonymous": false,
       }
     },
+    "EnglishOnly":{
+      "hideOthers": true,
+      "Languages": {
+        "en": {
+          "label": "English"
+        }
+      }
+    }
   },
 
 

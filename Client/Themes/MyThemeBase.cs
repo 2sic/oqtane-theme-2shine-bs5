@@ -17,11 +17,6 @@ namespace ToSic.Themes.ToShineBs5.Client;
 /// </remarks>
 public abstract class MyThemeBase : MagicTheme
 {
-    /// <summary>
-    /// Determines if we should show a Nav on the side of the layout in addition to top
-    /// </summary>
-    protected abstract bool ShowSidebarNavigation { get; }
-
     public override List<Resource> Resources => new()
     {
         new() { ResourceType = Stylesheet, Url = $"{ThemePath()}theme.min.css" },       // Bootstrap generated with Sass/Webpack
