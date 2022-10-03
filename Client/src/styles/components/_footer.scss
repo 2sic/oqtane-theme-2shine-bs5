@@ -11,16 +11,6 @@
     li {
       list-style-type: none;
       margin-right: 6px;
-
-      &:first-child {
-        &:before {
-          content: "";
-        }  
-      }
-
-      &:before {
-        content: " | ";
-      }
     }
   }
 
@@ -57,7 +47,21 @@
     align-items: center;
 
     ul {
-      margin-left: 8px;
+      @include media-breakpoint-up(lg) {
+        margin-left: 8px;
+
+        li {
+          &:first-child {
+            &:before {
+              content: "";
+            }  
+          }
+    
+          &:before {
+            content: " | ";
+          }
+        }
+      }
     }
   }
 }
