@@ -5,11 +5,22 @@
 
     @include media-breakpoint-up(lg) {
       display: flex;
+      flex-direction: row;
     }
 
     li {
       list-style-type: none;
       margin-right: 6px;
+
+      &:first-child {
+        &:before {
+          content: "";
+        }  
+      }
+
+      &:before {
+        content: " | ";
+      }
     }
   }
 
@@ -42,6 +53,11 @@
   }
 
   .#{$prefix-footer}-imprint {
-    
+    display: flex;
+    align-items: center;
+
+    ul {
+      margin-left: 8px;
+    }
   }
 }
