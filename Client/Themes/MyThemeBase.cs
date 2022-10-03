@@ -2,6 +2,7 @@
 using Oqtane.Shared;
 using static Oqtane.Shared.ResourceType;
 
+// ReSharper disable once CheckNamespace
 namespace ToSic.Themes.ToShineBs5.Client;
 
 /// <summary>
@@ -20,11 +21,6 @@ public abstract class MyThemeBase : MagicTheme
     /// Determines if we should show a Nav on the side of the layout in addition to top
     /// </summary>
     protected abstract bool ShowSidebarNavigation { get; }
-
-    /// <summary>
-    /// Show a breadcrumb on top?
-    /// </summary>
-    protected abstract bool ShowBreadcrumb { get; }
 
     public override List<Resource> Resources => new()
     {

@@ -13,7 +13,6 @@ Nice to know:
     public override string Layout => "Default";
     protected override string MagicClasses => "floatwideheader";
     protected override bool ShowSidebarNavigation => false;
-    protected override bool ShowBreadcrumb => true;
 }
 @* Stop here if Settings are not ready *@
 @{ if (Settings == null) return; }
@@ -41,7 +40,7 @@ Nice to know:
     <main id="@Id("Main")">
 
         @* Show Breadcrumb if desired *@
-        @if (ShowBreadcrumb)
+        @if (Settings.Theme.BreadcrumbsShow == true)
         {
             <Breadcrumbs></Breadcrumbs>
         }

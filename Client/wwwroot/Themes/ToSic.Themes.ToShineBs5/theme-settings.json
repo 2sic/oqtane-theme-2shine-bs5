@@ -48,7 +48,8 @@
       // Change what menu configurations to use on named menus
       "menus": {
         "Main": "ToplevelOnly"
-      }
+      },
+      "breadcrumbsShow": false,
     }
   },
 

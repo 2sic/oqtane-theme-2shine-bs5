@@ -3,7 +3,7 @@
 File Purpose:       Show the Login buttons / state using lock icons
 Recommendations:    If you want other icons, do use inline SVGs
 Nice to know:       Inherits the LoginBase, which contains ChangeLogin and i18n for the label
-See also:           LoginText.razor has the same feature but with text labels
+See also:           ButtonLoginTextInvisible.razor has the same feature but with text labels
 *@
 <a Title="@LocalizedLabel" class='@Classes("login-icon")' @onclick="ChangeLogin">
     @if (IsLoggedIn)
