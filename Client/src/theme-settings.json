@@ -91,7 +91,6 @@
       // Custom values / classes as you need them in your code
       "Custom": {
         // Panes - uses the Pane-name to find the configuration
-        // TODO: 2DM - probably Pane-Default
         "Pane-Default": "",
         "Pane-Header": {
           "classes": "container px-0",
