@@ -22,10 +22,13 @@ function buildPackPublish() {
     async: false,
   });
 
-  shell.exec("dotnet pack -c Release --no-build", {
-    silent: false,
-    async: false,
-  });
+  shell.exec(
+    "dotnet pack -c Release --no-build -p:NuspecFile=Package/Theme.nuspec",
+    {
+      silent: false,
+      async: false,
+    }
+  );
 
   shell.exec("node src/build-scripts/publish-build-pack.js", {
     silent: false,

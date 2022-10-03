@@ -3,7 +3,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
+const RemoveEmptyScriptsPlugin = require("webpack-remove-empty-scripts");
 const CopyPlugin = require("copy-webpack-plugin");
 const FileManagerPlugin = require("filemanager-webpack-plugin");
 
@@ -15,22 +15,15 @@ let themeConfig = require(path.resolve(process.cwd(), "build-theme.json"));
 if (!themeConfig) {
   themeConfig = {
     ThemeName: "ToSic.Themes.ToShineBs5",
-      OqtaneRoot: "../web",
-      OqtaneWwwRoot: "../web",
+    OqtaneRoot: "../web",
   };
 } else {
-  if (!themeConfig.ThemeName)
-    themeConfig.ThemeName = "ToSic.Themes.ToShineBs5";
-    if (!themeConfig.OqtaneRoot) themeConfig.OqtaneRoot = "../web";
-    if (!themeConfig.OqtaneWwwRoot) themeConfig.OqtaneWwwRoot = "../web";
+  if (!themeConfig.ThemeName) themeConfig.ThemeName = "ToSic.Themes.ToShineBs5";
+  if (!themeConfig.OqtaneRoot) themeConfig.OqtaneRoot = "../web";
 }
 
 if (!path.isAbsolute(themeConfig.OqtaneRoot)) {
   themeConfig.OqtaneRoot = `../${themeConfig.OqtaneRoot}`;
-}
-
-if (!path.isAbsolute(themeConfig.OqtaneWwwRoot)) {
-  themeConfig.OqtaneWwwRoot = `../${themeConfig.OqtaneWwwRoot}`;
 }
 
 const distFolder = `wwwroot/Themes/${themeConfig.ThemeName}`;
@@ -42,10 +35,7 @@ const commonConfig = {
     ambient: glob.sync("./src/scripts/ambient/*.ts"),
   },
   output: {
-    path: path.resolve(
-      __dirname,
-      distFolder,
-    ),
+    path: path.resolve(__dirname, distFolder),
     // // TODO: probably check this, we moved the images to src/assets
     // // unclear if this does anything...?
     // assetModuleFilename: "Images/[hash][ext][query]",
@@ -178,7 +168,10 @@ const watchConfig = {
           copy: [
             {
               source: "wwwroot",
-                  destination: path.resolve(__dirname, themeConfig.OqtaneWwwRoot + "/wwwroot"),
+              destination: path.resolve(
+                __dirname,
+                themeConfig.OqtaneRoot + "/wwwroot"
+              ),
             },
           ],
         },
