@@ -26,7 +26,7 @@ function promptForRename() {
     const prompt = require("prompt");
     const properties = [
       {
-        description: "theme name (namespace eg. MyCompany.Oqt.Themes.MyFancyTheme)",
+        description: "theme name (namespace eg. MyCompany.Themes.MyFancyTheme)",
         name: "newThemeName",
         required: true,
         validator: /^(@?[a-z_A-Z]\w+(?:\.@?[a-z_A-Z]\w+)*)+$/,
@@ -65,6 +65,7 @@ function renameTheme(newThemeName) {
         "**/*.cs",
         "**/*.csproj",
         "../*.sln",
+        "Package/Theme.nuspec",
         "build-theme.json",
       ],
       ignore: [
@@ -72,7 +73,7 @@ function renameTheme(newThemeName) {
         "bin/**",
         "node_modules/**",
         "src/build-scripts/**",
-        "dist/**",
+        "wwwroot/**",
         ".temp_cache/**",
         ".vscode/**",
       ],
@@ -83,9 +84,19 @@ function renameTheme(newThemeName) {
       const results = replace.sync(options);
       console.log("Replacement results:", results);
       const defaultCsharpProject = "ToSic.Themes.ToShineBs5.Client.csproj";
+      const defaultCsharpProjectSettings =
+        "ToSic.Themes.ToShineBs5.Client.csproj.DotSettings";
       const defaultVsSolution = "../ToSic.Themes.ToShineBs5.sln";
+
       if (fs.existsSync(defaultCsharpProject))
         fs.renameSync(defaultCsharpProject, `${newThemeName}.Client.csproj`);
+
+      if (fs.existsSync(defaultCsharpProjectSettings))
+        fs.renameSync(
+          defaultCsharpProjectSettings,
+          `${newThemeName}.Client.csproj.DotSettings`
+        );
+
       if (fs.existsSync(defaultVsSolution))
         fs.renameSync(defaultVsSolution, `../${newThemeName}.sln`);
 
