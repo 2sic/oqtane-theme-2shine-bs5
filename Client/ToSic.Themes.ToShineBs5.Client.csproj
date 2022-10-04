@@ -47,10 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="icon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
     <None Include="wwwroot\**\*.*">
       <Pack>True</Pack>
       <PackagePath>wwwroot</PackagePath>
@@ -77,6 +73,7 @@
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="if $(ConfigurationName) == Debug node src/build-scripts/publish-watch.js" />
+    <Exec Command="if $(ConfigurationName) == Release node src/build-scripts/dotnet-pack.js" />
   </Target>
 
 </Project>

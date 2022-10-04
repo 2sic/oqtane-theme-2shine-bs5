@@ -8,29 +8,16 @@ if (!fs.existsSync("node_modules")) {
     });
 
     npm.commands.ci([], function (er, data) {
-      buildPackPublish();
+      build();
     });
   });
 } else {
-  buildPackPublish();
+  build();
 }
 
-function buildPackPublish() {
+function build() {
   const shell = require("shelljs");
   shell.exec("dotnet build -c Release", {
-    silent: false,
-    async: false,
-  });
-
-  shell.exec(
-    "dotnet pack -c Release --no-build -p:NuspecFile=Package/Theme.nuspec",
-    {
-      silent: false,
-      async: false,
-    }
-  );
-
-  shell.exec("node src/build-scripts/publish-build-pack.js", {
     silent: false,
     async: false,
   });

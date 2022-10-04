@@ -5,7 +5,7 @@
   "main": "(none)",
   "scripts": {
     "rename-project": "node src/build-scripts/rename-project.js",
-    "build": "node src/build-scripts/dotnet-build-pack.js",
+    "build": "node src/build-scripts/dotnet-build.js",
     "webpack-watch": "node src/build-scripts/clean.js && webpack --env watch",
     "dotnet-watch": "node src/build-scripts/dotnet-watch.js"
   },
@@ -18,7 +18,7 @@
     "css-loader": "^6.7.1",
     "filemanager-webpack-plugin": "^7.0.0",
     "jsonc-require": "^1.0.1",
-    "mini-css-extract-plugin": "^2.6.0",
+    "mini-css-extract-plugin": "^2.6.1",
     "postcss-loader": "^7.0.0",
     "prompt": "^1.3.0",
     "replace-in-file": "^6.3.5",
