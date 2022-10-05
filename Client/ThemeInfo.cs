@@ -66,10 +66,6 @@ public class ThemeInfo : ITheme
 
         // The json file in the theme folder folder containing all kinds of settings etc.
         SettingsJsonFile = "theme-settings.json",
-
-        // Theme Settings Defaults, used to lookup things which the json file doesn't specify.
-        // Normally you don't want to change this, but just set everything in the json
-        //Defaults = new() { ... }
     };
 
     #endregion

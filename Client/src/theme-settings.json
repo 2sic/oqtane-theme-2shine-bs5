@@ -72,6 +72,7 @@
   // ********************************************************************************
 
   "ThemeDesigns": {
+    // This is the default design which is used unless explicitly specified
     "Default": {
       "MagicContext": [
         "page-[Page.Id]",

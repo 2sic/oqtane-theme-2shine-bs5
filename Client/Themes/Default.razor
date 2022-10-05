@@ -13,9 +13,6 @@ Nice to know:
     public override string Layout => "Default";
     protected override string MagicClasses => "floatwideheader";
 }
-@* Stop here if Settings are not ready *@
-@{ if (Settings == null) return; }
-
 @*
     The MagicContextAndSettings wrapper does 2 things
     1. It ensures that certain classes are added to the body or wrapper-div so that styles can be optimized by page, language, branch etc.
