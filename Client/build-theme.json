@@ -3,15 +3,15 @@
   "ThemeName": "ToSic.Themes.ToShineBs5",
 
   // path (relative or absolute) to your oqtane installation (iis physical path)
+  // no UNC paths allowed, FileManagerPlugin cant handle them atm
   "OqtaneRoot": "../oqtane.framework/Oqtane.Server",
-  //"OqtaneRoot": "\\\\my.server.local\\MyOqtaneWebApp\\",
+  //"OqtaneRoot": "O:\\MyOqtaneApp\\Web",
 
   /* 
   path (relative or absolute) to your oqtane binaries; 
   this equals your OqtaneRoot if you are using a release build from https://github.com/oqtane/oqtane.framework/releases 
   */
   "OqtaneBin": "../oqtane.framework/Oqtane.Server/bin/Debug/net6.0",
-  // "OqtaneBin": "\\\\my.server.local\\MyOqtaneWebApp\\",
 
   "Publish": {
     // publish after watch build

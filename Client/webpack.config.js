@@ -170,7 +170,8 @@ const watchConfig = {
               source: "wwwroot",
               destination: path.resolve(
                 __dirname,
-                themeConfig.OqtaneRoot + "/wwwroot"
+                themeConfig.OqtaneRoot,
+                "wwwroot"
               ),
             },
           ],
