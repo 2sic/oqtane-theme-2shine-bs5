@@ -1,5 +1,5 @@
 {
-  "$schema": "../json-schemas/theme-configurations-schema.json",
+  "$schema": "https://2sic.github.io/cre8magic/schemas/2022-10/theme-configurations.schema.json",
   /* This file contains configuration for the menus in the layout. 
    * It allows you to make most changes to menus without recompiling the source code, 
    * thereby letting designers quickly build their theme
