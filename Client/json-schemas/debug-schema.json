@@ -7,15 +7,16 @@
   "type": "object",
 
   "properties": {
-    "Admin": {
+    "admin": {
       "type": "boolean",
       "description": "Enable/disable debug buttons for admins.",
       "default": false
     },
-    "Anonymous": {
+    "anonymous": {
       "type": "boolean",
       "description": "Enable/disable debug buttons for anonymous users so you can see debug in the anonymous-user state.",
       "default": false
-    }
+    },
+    "additionalProperties": false
   }
 }

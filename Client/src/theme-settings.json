@@ -172,14 +172,14 @@
 
   // ********************
   // Menus contain the configuration for each menu. The names used are specified in the Razor files.
-  "Menus": {
+  "menus": {
     // The default configuration is taken if no other configuration is used
     "Default": {
       "start": "*",
       "depth": 1
     },
     // This is used as the main-menu in the navigation with sidebar submenu
-    "ToplevelOnly": {
+    "TopLevelOnly": {
       "start": "*",
       "depth": 1
     },
@@ -196,7 +196,7 @@
     "Mobile": {
       "template": "vertical",
       "start": "*",
-      "depth": 2
+      "depth": 1
     },
     // Sidebar is used in menus usually to the left of content
     "Sidebar": {
@@ -211,14 +211,6 @@
     // For the default values we're using Home "1" and Login (forced, even though it's set to not show in menus) "5!" as these are a few of the pages which always exist
     "Footer": {
       "start": "1, 5!"
-    }
-  },
-
-  // ********************
-  // Containers has properties / settings / values on containers which are not directly related to design
-  // As of now there is no use for this, but the infrastructure exists
-  "Containers": {
-    "Default": {
     }
   },
 

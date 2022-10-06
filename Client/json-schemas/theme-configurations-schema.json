@@ -87,6 +87,19 @@
         }
       },
       "required": ["Default"]
+    },
+
+
+    // 
+    "menus": {
+      "type": "object",
+      "title": "Menus configurations",
+      "description": "WIP",
+      "additionalProperties": {
+        "type": "object",
+        "$ref": "./menu.schema.json"
+      },
+      "required": ["Default"]
     }
   },
   "additionalProperties": false

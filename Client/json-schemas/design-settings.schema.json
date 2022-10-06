@@ -9,29 +9,31 @@
       "type": "string",
       "description": "custom design setting which is applied to classes and value"
     },
-    { "$ref": "#/$defs/design-settings-as-sealed" },
+    { "$ref": "#/$defs/design-settings-sealed" },
+    { "$ref": "#/$defs/design-settings-menu-sealed" },
     { "$ref": "#/$defs/design-container-sealed" }
   ],
 
 
   "$defs": {
+    // Base fields which all such objects could have
     "design-settings-fragment": {
       "type": "object",
       "title": "todo main title design settings",
       "properties": {
         "classes": {
           "type": "string",
-          "title": "classes to apply",
+          "title": "classes to apply when used in the Razor template",
           "description": "May contain tokens such as [Page.Id]"
         },
         "id": {
           "type": "string",
-          "title": "id to apply",
+          "title": "id to apply when used in the Razor template",
           "description": "May contain tokens such as [Page.Id]"
         },
         "value": {
           "type": "string",
-          "title": "value to use",
+          "title": "value to use when used in the Razor template",
           "description": "May contain tokens such as [Page.Id]"
         }, 
         "isActive": {
@@ -43,8 +45,29 @@
         }
       }
     },
-    "design-settings-as-sealed": {
+    "design-settings-sealed": {
       "anyOf": [{ "$ref": "#/$defs/design-settings-fragment" }],
+      "unevaluatedProperties": false
+    },
+    "design-settings-menu-sealed": {
+      "anyOf": [{ "$ref": "#/$defs/design-settings-fragment" }],
+      "properties": {
+        "byLevel": {
+          "type": "object",
+          "patternProperties": {
+            "^(-)?[0-9]{1}$": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "isDisabled": {
+          "$ref": "#/$defs/pair-on-off"
+        },
+        "inBreadcrumb": {
+          "$ref": "#/$defs/pair-on-off"
+        }
+      },
       "unevaluatedProperties": false
     },
     "design-container-sealed": {

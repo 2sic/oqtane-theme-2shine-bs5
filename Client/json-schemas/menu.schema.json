@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://schemas.cre8magic.org/2022-01/theme-schema.json",
+  "title": "Menu Configuration",
+
+  "type": "object",
+
+  // "allOf":[
+  //   { "$ref": "./inherits.schema.json"}
+  // ],
+  "properties": {
+    "start": {
+      "type": "string",
+      "title": "Starting point to create this menu.",
+      "default": "*",
+      "pattern": "^((\\*|\\.|([0-9]{1,4}(!)?))\\s?,?\\s?)+$"
+      // "enum": ["*", ".", "0", "1", "2", "3", "4", "5", "-1", "-2", "-3", "-4", "-5"]
+    },
+    "depth": {
+      "type": "number",
+      "title": "The depth of this menu - how many levels it will have. \n 1 is one level, 2 is two levels etc. \n 0 is not allowed as it would not show the menu.",
+      "default": 1,
+      "enum": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    },
+    "level": {
+      "type": "number",
+      "title": "The level this menu should start from. Only relevant if \"start\" is \".\"",
+      "description": "1 means root level, 2 means a level beneath that etc. \n -1 means up one level from current node, -2 up two levels etc.",
+      "default": 1
+    },
+    "children": {
+      "type": "boolean",
+      "title": "Start with Children true/false",
+      "description": "If true, whatever",
+      "default": true
+    },
+    "template": {
+      "type": "string",
+      "default": "horizontal"
+    },
+    "design": {
+      "type": "string"
+    },
+
+
+    "debug": {
+      "$ref": "./debug-schema.json"
+    }
+  },
+  "additionalProperties": false,
+
+  "$defs": {
+    // "parts": {
+    //   "description": "Theme part config",
+    //   "anyOf":[
+    //     {
+    //       "type": "boolean",
+    //       "description": "Enable/disable this part of the theme"
+    //     },
+    //     {
+    //       "type": "string",
+    //       "description": "Name of the configuration to use - if given, auto-enables this part."
+    //     },
+    //     {"$ref": "#/$defs/part-as-object"}
+    //   ]
+    // },
+    // "part-as-object": {
+    //   "type": "object",
+    //   "description": "Theme-Part configuration with detailed specs",
+    //   "properties": {
+    //     "Show": {
+    //       "type": "boolean",
+    //       "description": "Show or hide this part."
+    //     },
+    //     "Design": {
+    //       "type": "string",
+    //       "default": "=",
+    //       "description": "Name of the design configuration"
+    //     },
+    //     "Configuration": {
+    //       "type": "string",
+    //       "default": "=",
+    //       "description": "Name of the settings/configuration (not design)"
+    //     }
+    //   }
+    // }
+  }
+}
