@@ -65,7 +65,7 @@ public class ThemeInfo : ITheme
         PackageName = new ThemeInfo().Theme.PackageName,
 
         // The json file in the theme folder folder containing all kinds of settings etc.
-        SettingsJsonFile = "theme-settings.json",
+        SettingsJsonFile = "theme-configurations.json",
     };
 
     #endregion
