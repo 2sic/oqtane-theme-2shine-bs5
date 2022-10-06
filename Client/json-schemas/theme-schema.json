@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "$id": "https://schemas.cre8magic.org/2022-01/theme-schema.json",
+  "title": "DRAFT JSON Schema for the Theme object.",
+
+  "type": "object",
+
+  "properties": {
+    "Design": {
+      "type": "string",
+      "description": "What design to use from the \"ThemeDesigns\" section. If not set or set to \"=\" it will use the same name as the current configuration name.",
+      "default": "="
+    },
+    "Logo": {
+      "type": "string",
+      "description": "The logo, usually beginning with [Theme.Url]/assets/...svg"
+    },
+    "LanguagesMin": {
+      "type": "number"
+    },
+    "Parts": {
+      "type":"object",
+      "additionalProperties": {
+        "$ref": "#/$defs/experimental"
+        // "anyOf":[
+        //   {
+        //     "type": "boolean",
+        //     "description": "Enable/disable this part"
+        //   },
+        //   {
+        //     "type": "string",
+        //     "description": "Name of the configuration to use - if given, auto-enables this part."
+        //   },
+        //   {"$ref": "#/$defs/part-object"}
+        // ]
+      }
+    }
+  },
+
+  "$defs": {
+    "part-object": {
+      "type": "object",
+      "description": "Theme-Part configuration",
+      "properties": {
+        "Show": { "type": "boolean" },
+        "Design": {
+          "type": "string",
+          "default": "="
+        },
+        "configuration": {
+          "type": "string",
+          "default": "="
+        }
+      }
+    },
+    "experimental": {
+      "anyOf":[
+        {
+          "type": "boolean",
+          "description": "Enable/disable this part of the theme"
+        },
+        {
+          "type": "string",
+          "description": "Name of the configuration to use - if given, auto-enables this part."
+        },
+        {"$ref": "#/$defs/part-object"}
+      ]
+    }
+  }
+}

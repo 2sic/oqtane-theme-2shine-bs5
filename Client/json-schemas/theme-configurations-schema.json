@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "$id": "https://schemas.cre8magic.org/2022-01/theme-configurations-schema.json",
+  "title": "DRAFT JSON Schema for the theme-configurations.json file",
+
+  "type": "object",
+
+  "properties": {
+    "Version": {
+      "type": "number",
+      "description": "The version of this file, which helps the reader detect the format (or error if incompatible).",
+      "minimum": 0.01,
+      "maximum": 0.01
+    },
+    "Debug": {
+      "type": "object",
+      "description": "Global debug settings to enable/allow debug for admins or normal users.",
+      "properties": {
+        "Allowed": {
+          "type": "boolean",
+          "description": "Global toggle to allow/prevent debug to appear at all. If this is false, nothing else will happen. Turn this off for production. ",
+          "default": false
+        },
+        "Admin": {
+          "type": "boolean",
+          "description": "Enable debug buttons everywhere for admins.",
+          "default": false
+        },
+        "Anonymous": {
+          "type": "boolean",
+          "description": "Enable debug buttons everywhere for anonymous users so you can see debug in the anonymous-user state.",
+          "default": false
+        }
+      }
+    },
+
+    "Themes": {
+      "type": "object",
+      "description": "Main Theme Configurations.",
+      "additionalProperties": {
+        "$ref": "./theme-schema.json"
+      }
+    }
+  }
+
+}

@@ -1,4 +1,5 @@
 {
+  "$schema": "../json-schemas/theme-configurations-schema.json",
   /* This file contains configuration for the menus in the layout. 
    * It allows you to make most changes to menus without recompiling the source code, 
    * thereby letting designers quickly build their theme
@@ -11,15 +12,17 @@
   */
   // ********************************************************************************
 
-  // The version of this file, which helps the reader detect the format (or error if incompatible)
-  "version": 0.01,
+  /*
+    Important: We're dropping most of the comments in the file, 
+    since we're creating a schema which will give you more information on mouse-over.
+  */
 
-  // Global debug settings
-  // If "allowed" here, you can activate individually on each Theme and Menu
-  "debug": {
-    "allowed": true,    // The most important setting - if this is false, nothing else will happen
-    "admin": true,      // Enable everywhere for admin, unless disabled in a specific configuration
-    "anonymous": true,  // Enable everywhere for anonymous, unless disabled in a specific configuration
+  "Version": 0.01,
+
+  "Debug": {
+    "Allowed": true,
+    "Admin": true,
+    "Anonymous": true
   },
 
   // ********************************************************************************
@@ -29,28 +32,29 @@
     // Default Theme - in most cases you'll just use this theme configuration
     "Default": {
       // Optional: Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
-      "design": "=",
-      "logo": "[Theme.Url]/assets/logo.svg",
-      "languagesMin": 1,
-      "parts": {
+      "Design": "=",
+      "Logo": "[Theme.Url]/assets/logo.svg",
+      "LanguagesMin": 1,
+      "Parts": {
         // Show breadcrumbs. Note that on home it won't be visible due to CSS rules + MagicContext)
         "breadcrumbs": true,
         // Show languages menu and use the same languages configuration name as this theme - in this case "Default"
         "languages": true,
         // Don't show sidebar menu in the default configuration
         "menu-sidebar": false,
+        "example-with-name": "config-name",
         // Example of a more detailed setting in case you want to control everything
         "example-part-config": {
-          "show": true,
-          "design": "=",
-          "configuration": "special-config",
+          "Show": true,
+          "Design": "=",
+          "Configuration": "special-config"
         }
       },
       // Determins if we should use the body (or a div) for the magic context
       // As of now we feel that browser behavior is better if it's in the div-tag (false)
       "magicContextInBody": false,
       "debug": {
-        "admin": true,
+        "admin": true
       }
     },
     // The example below shows how the "Sidebar" configuration switches to a different menu
@@ -64,8 +68,8 @@
         // Example override showing how to switch to another language menu configuration
         "languages": "EnglishOnly",
         // Override main-menu settings to switch to another menu configuration and design
-        "menu-main": "TopLevelOnly",
-      },
+        "menu-main": "TopLevelOnly"
+      }
     }
   },
 
@@ -132,10 +136,10 @@
         // The default/normal container
         "container": {
           "classes": "theme-container py-4 demo-module-[Module.Id] demo-page-[Page.Id]",
-          "isPublished": [null, "module-unpublished"],
+          "isPublished": [ null, "module-unpublished" ],
           "isAdmin": "theme-container-admin app-admin-modal",
           "id": "module-[Module.Id]"
-        },
+        }
       }
     }
   },
@@ -159,7 +163,7 @@
         // "anonymous": false,
       }
     },
-    "EnglishOnly":{
+    "EnglishOnly": {
       "hideOthers": true,
       "Languages": {
         "en": {
@@ -176,7 +180,7 @@
     // The default configuration is taken if no other configuration is used
     "Default": {
       "start": "*",
-      "depth": 1,
+      "depth": 1
     },
     // This is used as the main-menu in the navigation with sidebar submenu
     "ToplevelOnly": {
@@ -189,8 +193,8 @@
       "depth": 2,
       // Example to enable debug just on this specific menu
       "debug": {
-        "admin": true,
-      },
+        "admin": true
+      }
     },
     // Mobile is usually used for the default, top-level menu which only appears when the screen is too small
     "Mobile": {
@@ -210,7 +214,7 @@
     // Footer menu, would usually show Imprint, Terms, Privacy etc.
     // For the default values we're using Home "1" and Login (forced, even though it's set to not show in menus) "5!" as these are a few of the pages which always exist
     "Footer": {
-      "start": "1, 5!",
+      "start": "1, 5!"
     }
   },
 
@@ -234,7 +238,7 @@
         "byLevel": {
           "1": "navbar-nav test-[Page.Id] test-[Theme.Path]",
           "-1": "dropdown-menu"
-        },
+        }
       },
       "li": {
         "classes": "nav-item nav-[Page.Id]",
@@ -242,7 +246,7 @@
         // "hasChildren": [null, "example"],
         "isActive": "active",
         //"isActive": ["active", "inactive"],
-        "isDisabled": "disabled",
+        "isDisabled": "disabled"
         // "isDisabled": ["disabled", "not-disabled"],
       },
       "a": {
@@ -251,7 +255,7 @@
         "byLevel": {
           "2": "nav-link",
           "-1": "dropdown-item"
-        },
+        }
       }
     },
     "Mobile": {
@@ -275,10 +279,10 @@
       },
       "span": {
         "classes": "nav-item-sub-opener",
-        "inBreadcrumb": [null, "collapsed"],
+        "inBreadcrumb": [ null, "collapsed" ]
       },
       // Special target information (not really styling) usually on the span-tag
-      "data-bs-target": ".theme-submenu-[Menu.Id]-[Page.Id]",
+      "data-bs-target": ".theme-submenu-[Menu.Id]-[Page.Id]"
     },
     "Sidebar": {
       "ul": {
@@ -300,9 +304,9 @@
       },
       "span": {
         "classes": "nav-item-sub-opener",
-        "inBreadcrumb": [null, "collapsed"],
+        "inBreadcrumb": [ null, "collapsed" ]
       },
-      "data-bs-target": ".theme-submenu-[Menu.Id]-[Page.Id]",
+      "data-bs-target": ".theme-submenu-[Menu.Id]-[Page.Id]"
     },
     "Footer": {
       "ul": "navbar-nav test-wip-config"
