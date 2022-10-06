@@ -257,7 +257,6 @@
         "isDisabled": "disabled"
       },
       "a": {
-        // NOTE: ATM this is the only difference to Sidebar
         "classes": "nav-link mobile-navigation-link",
         "isActive": "active"
       },
@@ -269,28 +268,11 @@
       "data-bs-target": ".theme-submenu-[Menu.Id]-[Page.Id]"
     },
     "Sidebar": {
-      "ul": {
-        "byLevel": {
-          "1": "navbar-nav",
-          "-1": "collapse theme-submenu-[Menu.Id]-[Page.Id]"
-        },
-        "inBreadcrumb": "show"
-      },
-      "li": {
-        "classes": "nav-item nav-[Page.Id] position-relative",
-        "hasChildren": "has-child",
-        "isActive": "active",
-        "isDisabled": "disabled"
-      },
+      "@inherits": "Mobile",
       "a": {
-        "classes": "nav-link",
-        "isActive": "active"
-      },
-      "span": {
-        "classes": "nav-item-sub-opener",
-        "inBreadcrumb": [ null, "collapsed" ]
-      },
-      "data-bs-target": ".theme-submenu-[Menu.Id]-[Page.Id]"
+        // This is the only difference to Mobile
+        "classes": "nav-link"
+      }
     },
     "Footer": {
       "ul": "navbar-nav test-wip-config"

@@ -75,19 +75,6 @@
       "required": ["Default"]
     },
 
-    "menuDesigns": {
-      "type": "object",
-      "title": "Name configuration packages to determine how menus are styled",
-      "additionalProperties": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "./design-settings.schema.json"
-        }
-      },
-      "required": ["Default"]
-    },
-
-
     // 
     "menus": {
       "type": "object",
@@ -98,7 +85,26 @@
         "$ref": "./menu.schema.json"
       },
       "required": ["Default"]
+    },
+
+    "menuDesigns": {
+      "type": "object",
+      "title": "Name configuration packages to determine how menus are styled",
+      "additionalProperties": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "./inherits.schema.json"
+          }
+        ],
+        "additionalProperties": {
+          "$ref": "./design-settings.schema.json"
+        }
+      },
+      "required": ["Default"]
     }
+
+
   },
   "additionalProperties": false
 

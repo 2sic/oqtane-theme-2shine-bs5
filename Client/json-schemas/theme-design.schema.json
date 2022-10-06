@@ -50,10 +50,6 @@
       "title": "Custom design settings",
       "description": "Any kind of setting - some are known/expected, others can be added as needed.",
       "properties": {
-        // "paneDefault": {
-        //   "$ref": "./design-settings.schema.json",
-        //   "title": "Default Pane Design Settings"
-        // },
         "sectionHeader": {
           "$ref": "./design-settings.schema.json",
           "title": "Header Pane Design Settings"
