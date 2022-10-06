@@ -39,9 +39,6 @@
         "isActive": {
           "title": "classes to apply if this thing is active - such as a menu for the current page",
           "$ref": "#/$defs/pair-on-off"
-        },
-        "hasChildren": {
-          "$ref": "#/$defs/pair-on-off"
         }
       }
     },
@@ -65,6 +62,9 @@
           "$ref": "#/$defs/pair-on-off"
         },
         "inBreadcrumb": {
+          "$ref": "#/$defs/pair-on-off"
+        },
+        "hasChildren": {
           "$ref": "#/$defs/pair-on-off"
         }
       },

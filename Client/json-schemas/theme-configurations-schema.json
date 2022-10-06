@@ -55,7 +55,7 @@
       "required": ["Default"]
     },
 
-    "ThemeDesigns":{
+    "themeDesigns":{
       "type": "object",
       "title": "All the configurations for the design of a theme",
       "description": "Contains various configuration bundles for how the theme can be designed (mainly CSS classes)",
@@ -65,9 +65,7 @@
       "required": ["Default"]
     },
 
-    // todo
-
-    "Languages": {
+    "languages": {
       "type": "object",
       "title": "All the configurations for languages",
       "description": "Contains various configuration bundles for what languages to show.",
@@ -77,7 +75,7 @@
       "required": ["Default"]
     },
 
-    "MenuDesigns": {
+    "menuDesigns": {
       "type": "object",
       "title": "Name configuration packages to determine how menus are styled",
       "additionalProperties": {

@@ -10,11 +10,11 @@
     { "$ref": "./inherits.schema.json"}
   ],
   "properties": {
-    "HideOthers": {
+    "hideOthers": {
       "type": "boolean",
       "description": "Hide languages which are not listed here, even if enabled in Oqtane."
     },
-    "Languages": {
+    "languages": {
       "type": "object",
       "title": "Languages to show in this scenario/menu",
       "patternProperties": {
@@ -23,25 +23,27 @@
       "additionalProperties": false
     },
 
-    "Debug": {
+    "debug": {
       "$ref": "./debug-schema.json"
     }
   },
+  "unevaluatedProperties": false,
 
   "$defs": {
     "language": {
       "title": "Language code of this language - usually \"en\" or \"de-CH\"",
       "description": "This is the identifier of the specific language as it's installed in Oqtane.",
       "properties": {
-        "Label": {
+        "label": {
           "type": "string",
           "description": "Label of the button in the menu, typically \"EN\" or something similar. \n If not provided, it will automatically use the 2 characters of the language name."         
         },
-        "Description": {
+        "description": {
           "type": "string",
           "description": "Long name of the language to show in the tooltip. \n If not given, will take the description of the .net framework for this language."
         }
-      }
+      },
+      "unevaluatedProperties": false
     }
   }
 }

@@ -30,7 +30,7 @@
     "children": {
       "type": "boolean",
       "title": "Start with Children true/false",
-      "description": "If true, whatever",
+      "description": "If true, will not start with the start page, but it's children",
       "default": true
     },
     "template": {

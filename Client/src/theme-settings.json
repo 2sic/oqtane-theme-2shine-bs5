@@ -32,26 +32,26 @@
     // Default Theme - in most cases you'll just use this theme configuration
     "Default": {
       // Optional: Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
-      "Design": "=",
-      "Logo": "[Theme.Url]/assets/logo.svg",
-      "LanguagesMin": 1,
-      "Parts": {
+      "design": "=",
+      "logo": "[Theme.Url]/assets/logo.svg",
+      "languagesMin": 1,
+      "parts": {
         // Show breadcrumbs. Note that on home it won't be visible due to CSS rules + MagicContext)
-        "Breadcrumbs": true,
+        "breadcrumbs": true,
         // Show languages menu and use the same languages configuration name as this theme - in this case "Default"
         "Languages": true,
         // Don't show sidebar menu in the default configuration
         "Menu-Sidebar": false,
-        "example-with-name": "config-name",
+        "example-just-name": "config-name",
         // Example of a more detailed setting in case you want to control everything
         "example-part-config": {
-          "Show": true,
-          "Design": "=",
-          "Configuration": "special-config"
+          "show": true,
+          "design": "=",
+          "configuration": "special-config"
         }
       },
-      "MagicContextInBody": false,
-      "Debug": {
+      "magicContextInBody": false,
+      "debug": {
         "Admin": true
       }
     },
@@ -60,11 +60,11 @@
     "Sidebar": {
       // Re-use all previous settings
       "@inherits": "Default",
-      "Parts": {
+      "parts": {
         // Override showing the sidebar menu
         "Menu-Sidebar": true,
         // Example override showing how to switch to another language menu configuration
-        "Languages": "EnglishOnly",
+        "languages": "EnglishOnly",
         // Override main-menu settings to switch to another menu configuration and design
         "Menu-Main": "TopLevelOnly"
       }
@@ -73,10 +73,10 @@
 
   // ********************************************************************************
 
-  "ThemeDesigns": {
+  "themeDesigns": {
     // This is the default design which is used unless explicitly specified
     "Default": {
-      "MagicContext": [
+      "magicContext": [
         "page-[Page.Id]",
         "page-root-[Page.RootId]",
         "page-parent-[Page.ParentId]",
@@ -85,12 +85,12 @@
         "theme-mainnav-variation-right",
         "theme-variation-[Layout.Variation]"
       ],
-      "PageIsHome": "page-is-home",
-      "PaneIsEmpty": "pane-is-empty",
-      "MagicContextTagId": "cre8magic-root",
+      "pageIsHome": "page-is-home",
+      "paneIsEmpty": "pane-is-empty",
+      "magicContextTagId": "cre8magic-root",
 
       // Custom values / classes as you need them in your code
-      "Custom": {
+      "custom": {
         // Panes - uses the Pane-name to find the configuration
         "Pane-Default": "",
         "Pane-Header": {
@@ -143,27 +143,27 @@
 
   // ********************
   // Languages Configurations
-  "Languages": {
+  "languages": {
     "Default": {
-      "HideOthers": false,
-      "Languages": {
+      "hideOthers": false,
+      "languages": {
         "en": {
-          "Label": "ENG",
-          "Description": "English (from JSON config)"
+          "label": "ENG",
+          "description": "English (from JSON config)"
         },
         "de-CH": {
-          "Label": "DEU"
+          "label": "DEU"
         }
       },
-      "Debug": {
+      "debug": {
         // "anonymous": false,
       }
     },
     "EnglishOnly": {
-      "HideOthers": true,
-      "Languages": {
+      "hideOthers": true,
+      "languages": {
         "en": {
-          "Label": "English"
+          "label": "English"
         }
       }
     }
@@ -218,7 +218,7 @@
   // MenuDesigns specify how the output is made, what classes added to each node etc.
   // It's separate from the Menus, since it could be re-used
   // It also supports two special placeholders [Page.Id] and [Menu.Id]
-  "MenuDesigns": {
+  "menuDesigns": {
     // The default menu styling used for main and most menus
     // (unless specified otherwise)
     "Default": {

@@ -9,7 +9,7 @@
     }
   ],
   "properties": {
-    "MagicContext": {
+    "magicContext": {
       "title": "The MagicContext classes which will be applied to the page or a wrapping div-tag",
       "anyOf": [
         {
@@ -32,20 +32,20 @@
         "theme-variation-[Layout.Variation]"
       ]
     },
-    "PageIsHome": {
+    "pageIsHome": {
       "type": "string",
       "description": "Class to add if the specified page is the Home page."
     },
-    "PaneIsEmpty": {
+    "paneIsEmpty": {
       "type": "string",
       "description": "Class to add to a pane if it has no modules inside it."
     },
-    "MagicContextTagId": {
+    "magicContextTagId": {
       "type": "string",
       "description": "The id attribute of the div-tag containing the magic context classes (if not applied to the body tag). \n It's used in CSS rules, so it must match the tag in the SCSS rules.",
       "default": "cre8magic-root"
     },
-    "Custom": {
+    "custom": {
       "type": "object",
       "title": "Custom design settings",
       "description": "Any kind of setting - some are known/expected, others can be added as needed.",
@@ -72,6 +72,7 @@
       }
     }
   },
+  "unevaluatedProperties": false,
   "$defs": {
     "parts": {
       "description": "Theme part config",
