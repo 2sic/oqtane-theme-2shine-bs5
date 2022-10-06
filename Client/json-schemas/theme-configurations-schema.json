@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-04/schema",
   "$id": "https://schemas.cre8magic.org/2022-01/theme-configurations-schema.json",
   "title": "DRAFT JSON Schema for the theme-configurations.json file",
+  "description": "todo",
 
   "type": "object",
 
@@ -23,12 +24,12 @@
         },
         "Admin": {
           "type": "boolean",
-          "description": "Enable debug buttons everywhere for admins.",
+          "description": "Enable/disable debug buttons everywhere for admins. \n This global setting can still be overriden at each part.",
           "default": false
         },
         "Anonymous": {
           "type": "boolean",
-          "description": "Enable debug buttons everywhere for anonymous users so you can see debug in the anonymous-user state.",
+          "description": "Enable/disable debug buttons everywhere for anonymous users so you can see debug in the anonymous-user state. \n This global setting can still be overriden at each part.",
           "default": false
         }
       }
@@ -39,6 +40,17 @@
       "description": "Main Theme Configurations.",
       "additionalProperties": {
         "$ref": "./theme-schema.json"
+      }
+    },
+
+    // todo
+
+    "Languages": {
+      "type": "object",
+      "title": "All the configurations for languages",
+      "description": "Contains various configuration bundles for what languages to show.",
+      "additionalProperties": {
+        "$ref": "./languages-schema.json"
       }
     }
   }

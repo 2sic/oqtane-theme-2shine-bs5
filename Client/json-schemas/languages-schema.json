@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "$id": "https://schemas.cre8magic.org/2022-01/theme-schema.json",
+  "title": "Languages Configuration",
+  "description": "There should always be a \"Default\" and all others can have any name you want.",
+
+  "type": "object",
+
+  "properties": {
+    "HideOthers": {
+      "type": "boolean",
+      "description": "Hide languages which are not listed here, even if enabled in Oqtane."
+    },
+    "Languages": {
+      "type": "object",
+      "title": "Languages to show in this scenario/menu",
+      "patternProperties": {
+        "^[a-z]{2}(-[A-Z]{2})?$": { "$ref": "#/$defs/language" }
+      },
+      "additionalProperties": false
+    },
+
+    "Debug": {
+      "$ref": "./debug-schema.json"
+    }
+  },
+
+  "$defs": {
+    "language": {
+      "title": "Language code of this language - usually \"en\" or \"de-CH\"",
+      "description": "This is the identifier of the specific language as it's installed in Oqtane.",
+      "properties": {
+        "Label": {
+          "type": "string",
+          "description": "Label of the button in the menu, typically \"EN\" or something similar. \n If not provided, it will automatically use the 2 characters of the language name."         
+        },
+        "Description": {
+          "type": "string",
+          "description": "Long name of the language to show in the tooltip. \n If not given, will take the description of the .net framework for this language."
+        }
+      }
+    }
+  }
+}

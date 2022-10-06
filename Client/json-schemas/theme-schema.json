@@ -1,11 +1,16 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema",
   "$id": "https://schemas.cre8magic.org/2022-01/theme-schema.json",
-  "title": "DRAFT JSON Schema for the Theme object.",
+  "title": "Theme Configuration",
 
   "type": "object",
 
   "properties": {
+    "@inherits": {
+      "type": "string",
+      "title": "Inherits instruction",
+      "description": "If specified, will inherit all the settings of the configuration named here."
+    },
     "Design": {
       "type": "string",
       "description": "What design to use from the \"ThemeDesigns\" section. If not set or set to \"=\" it will use the same name as the current configuration name.",
@@ -20,40 +25,36 @@
     },
     "Parts": {
       "type":"object",
+      "properties": {
+        "Breadcrumbs": {
+          "$ref": "#/$defs/parts"
+        },
+        "Languages": {
+          "$ref": "#/$defs/parts"
+        },
+        "Menu-Main": {
+          "$ref": "#/$defs/parts"
+        },
+        "Menu-Sidebar": {
+          "$ref": "#/$defs/parts"
+        }
+      },
       "additionalProperties": {
-        "$ref": "#/$defs/experimental"
-        // "anyOf":[
-        //   {
-        //     "type": "boolean",
-        //     "description": "Enable/disable this part"
-        //   },
-        //   {
-        //     "type": "string",
-        //     "description": "Name of the configuration to use - if given, auto-enables this part."
-        //   },
-        //   {"$ref": "#/$defs/part-object"}
-        // ]
+        "$ref": "#/$defs/parts"
       }
+    },
+    "MagicContextInBody": {
+      "type": "boolean",
+      "description": "Determines if we should use the body (or a div) for the magic context. As of now we feel that browser behavior is better if it's in the div-tag (false)"
+    },
+    "Debug": {
+      "$ref": "./debug-schema.json"
     }
   },
 
   "$defs": {
-    "part-object": {
-      "type": "object",
-      "description": "Theme-Part configuration",
-      "properties": {
-        "Show": { "type": "boolean" },
-        "Design": {
-          "type": "string",
-          "default": "="
-        },
-        "configuration": {
-          "type": "string",
-          "default": "="
-        }
-      }
-    },
-    "experimental": {
+    "parts": {
+      "description": "Theme part config",
       "anyOf":[
         {
           "type": "boolean",
@@ -63,8 +64,28 @@
           "type": "string",
           "description": "Name of the configuration to use - if given, auto-enables this part."
         },
-        {"$ref": "#/$defs/part-object"}
+        {"$ref": "#/$defs/part-as-object"}
       ]
+    },
+    "part-as-object": {
+      "type": "object",
+      "description": "Theme-Part configuration with detailed specs",
+      "properties": {
+        "Show": {
+          "type": "boolean",
+          "description": "Show or hide this part."
+        },
+        "Design": {
+          "type": "string",
+          "default": "=",
+          "description": "Name of the design configuration"
+        },
+        "Configuration": {
+          "type": "string",
+          "default": "=",
+          "description": "Name of the settings/configuration (not design)"
+        }
+      }
     }
   }
 }

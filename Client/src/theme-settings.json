@@ -37,11 +37,11 @@
       "LanguagesMin": 1,
       "Parts": {
         // Show breadcrumbs. Note that on home it won't be visible due to CSS rules + MagicContext)
-        "breadcrumbs": true,
+        "Breadcrumbs": true,
         // Show languages menu and use the same languages configuration name as this theme - in this case "Default"
-        "languages": true,
+        "Languages": true,
         // Don't show sidebar menu in the default configuration
-        "menu-sidebar": false,
+        "Menu-Sidebar": false,
         "example-with-name": "config-name",
         // Example of a more detailed setting in case you want to control everything
         "example-part-config": {
@@ -50,11 +50,9 @@
           "Configuration": "special-config"
         }
       },
-      // Determins if we should use the body (or a div) for the magic context
-      // As of now we feel that browser behavior is better if it's in the div-tag (false)
-      "magicContextInBody": false,
-      "debug": {
-        "admin": true
+      "MagicContextInBody": false,
+      "Debug": {
+        "Admin": true
       }
     },
     // The example below shows how the "Sidebar" configuration switches to a different menu
@@ -62,13 +60,13 @@
     "Sidebar": {
       // Re-use all previous settings
       "@inherits": "Default",
-      "parts": {
+      "Parts": {
         // Override showing the sidebar menu
-        "menu-sidebar": true,
+        "Menu-Sidebar": true,
         // Example override showing how to switch to another language menu configuration
-        "languages": "EnglishOnly",
+        "Languages": "EnglishOnly",
         // Override main-menu settings to switch to another menu configuration and design
-        "menu-main": "TopLevelOnly"
+        "Menu-Main": "TopLevelOnly"
       }
     }
   },
@@ -149,14 +147,14 @@
   // Languages Configurations
   "Languages": {
     "Default": {
-      "hideOthers": false,
+      "HideOthers": false,
       "Languages": {
         "en": {
-          "label": "ENG",
-          "description": "English (from JSON config)"
+          "Label": "ENG",
+          "Description": "English (from JSON config)"
         },
         "de-CH": {
-          "label": "DEU"
+          "Label": "DEU"
         }
       },
       "Debug": {
@@ -164,10 +162,10 @@
       }
     },
     "EnglishOnly": {
-      "hideOthers": true,
+      "HideOthers": true,
       "Languages": {
         "en": {
-          "label": "English"
+          "Label": "English"
         }
       }
     }
