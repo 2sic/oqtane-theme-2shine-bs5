@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "$id": "https://schemas.cre8magic.org/2022-01/theme-schema.json",
+  "title": "Configurations which can Inherit from others",
+
+  "type": "object",
+
+  "properties": {
+    "@inherits": {
+      "type": "string",
+      "title": "Special: Inherits instruction",
+      "description": "If specified, will inherit all the settings of the configuration named here.",
+      "default": "Default"
+    }
+  }
+}

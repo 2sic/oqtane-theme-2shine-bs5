@@ -5,12 +5,10 @@
 
   "type": "object",
 
+  "allOf":[
+    { "$ref": "./inherits-schema.json"}
+  ],
   "properties": {
-    "@inherits": {
-      "type": "string",
-      "title": "Inherits instruction",
-      "description": "If specified, will inherit all the settings of the configuration named here."
-    },
     "Design": {
       "type": "string",
       "description": "What design to use from the \"ThemeDesigns\" section. If not set or set to \"=\" it will use the same name as the current configuration name.",
