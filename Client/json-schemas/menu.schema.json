@@ -14,13 +14,12 @@
       "title": "Starting point to create this menu.",
       "default": "*",
       "pattern": "^((\\*|\\.|([0-9]{1,4}(!)?))\\s?,?\\s?)+$"
-      // "enum": ["*", ".", "0", "1", "2", "3", "4", "5", "-1", "-2", "-3", "-4", "-5"]
     },
     "depth": {
       "type": "number",
       "title": "The depth of this menu - how many levels it will have. \n 1 is one level, 2 is two levels etc. \n 0 is not allowed as it would not show the menu.",
       "default": 1,
-      "enum": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      "minimum": 1
     },
     "level": {
       "type": "number",
