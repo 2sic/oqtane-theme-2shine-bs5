@@ -1,4 +1,5 @@
 {
+  "$schema": "../json-schemas/theme-configurations-schema.json",
   /* This file contains configuration for the menus in the layout. 
    * It allows you to make most changes to menus without recompiling the source code, 
    * thereby letting designers quickly build their theme
@@ -11,21 +12,23 @@
   */
   // ********************************************************************************
 
-  // The version of this file, which helps the reader detect the format (or error if incompatible)
+  /*
+    Important: We're dropping most of the comments in the file, 
+    since we're creating a schema which will give you more information on mouse-over.
+  */
+
   "version": 0.01,
 
-  // Global debug settings
-  // If "allowed" here, you can activate individually on each Theme and Menu
   "debug": {
-    "allowed": true,    // The most important setting - if this is false, nothing else will happen
-    "admin": true,      // Enable everywhere for admin, unless disabled in a specific configuration
-    "anonymous": true,  // Enable everywhere for anonymous, unless disabled in a specific configuration
+    "allowed": true,
+    "admin": true,
+    "anonymous": true
   },
 
   // ********************************************************************************
 
   // Theme Configurations
-  "Themes": {
+  "themes": {
     // Default Theme - in most cases you'll just use this theme configuration
     "Default": {
       // Optional: Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
@@ -38,19 +41,18 @@
         // Show languages menu and use the same languages configuration name as this theme - in this case "Default"
         "languages": true,
         // Don't show sidebar menu in the default configuration
-        "menu-sidebar": false,
+        "menuSidebar": false,
+        "exampleJustName": "config-name",
         // Example of a more detailed setting in case you want to control everything
-        "example-setting": {
+        "exampleWithDetails": {
           "show": true,
           "design": "=",
-          "configuration": "special-config",
+          "configuration": "special-config"
         }
       },
-      // Determins if we should use the body (or a div) for the magic context
-      // As of now we feel that browser behavior is better if it's in the div-tag (false)
       "magicContextInBody": false,
       "debug": {
-        "admin": true,
+        "Admin": true
       }
     },
     // The example below shows how the "Sidebar" configuration switches to a different menu
@@ -60,20 +62,21 @@
       "@inherits": "Default",
       "parts": {
         // Override showing the sidebar menu
-        "menu-sidebar": true,
+        "menuSidebar": true,
         // Example override showing how to switch to another language menu configuration
         "languages": "EnglishOnly",
         // Override main-menu settings to switch to another menu configuration and design
-        "menu-main": "TopLevelOnly",
-      },
+        "menuMain": "TopLevelOnly"
+      }
     }
   },
 
   // ********************************************************************************
 
-  "ThemeDesigns": {
+  "themeDesigns": {
+    // This is the default design which is used unless explicitly specified
     "Default": {
-      "MagicContext": [
+      "magicContext": [
         "page-[Page.Id]",
         "page-root-[Page.RootId]",
         "page-parent-[Page.ParentId]",
@@ -82,43 +85,40 @@
         "theme-mainnav-variation-right",
         "theme-variation-[Layout.Variation]"
       ],
-      "PageIsHome": "page-is-home",
-      "PaneIsEmpty": "pane-is-empty",
-      // ID of the <div> tag which has the magic context classes on it
-      // It's used in CSS rules, so it must match the value in your SCSS
-      "MagicContextTagId": "cre8magic-root",
+      "pageIsHome": "page-is-home",
+      "paneIsEmpty": "pane-is-empty",
+      "magicContextTagId": "cre8magic-root",
 
       // Custom values / classes as you need them in your code
-      "Custom": {
+      "custom": {
         // Panes - uses the Pane-name to find the configuration
-        "Pane-Default": "",
-        "Pane-Header": {
+        "sectionHeader": {
           "classes": "container px-0",
           "id": "theme-page-header-pane"
         },
 
         // Sections - ATM "Main" only
-        "Main": {
+        "sectionMain": {
           "id": "theme-page-main"
         },
 
         // This config is used with sidebar-menu, places the body to the right, the menu to the left
-        "sidebar-body": "col-12 col-lg-9 order-lg-2",
-        "menu-sidebar": "col-12 col-lg-3 order-lg-1",
-        "menu-sidebar-inner": {
+        "sidebarBody": "col-12 col-lg-9 order-lg-2",
+        "sidebarMenu": "col-12 col-lg-3 order-lg-1",
+        "sidebarMenu-inner": {
           "classes": "d-none d-sm-block",
           "id": "theme-nav-sub"
         },
 
         // Buttons / Icons and Logins
-        "edit-icon": "theme-ui-button edit",
-        "admin-icon": "theme-ui-button gear",
-        "login-icon": "theme-ui-button lock",
-        "login-invisible": "theme-login-invisible d-none d-lg-inline-flex",
+        "iconEdit": "theme-ui-button edit",
+        "iconAdmin": "theme-ui-button gear",
+        "iconLogin": "theme-ui-button lock",
+        "linkLogin-invisible": "theme-login-invisible d-none d-lg-inline-flex",
 
         // Logo & ToTop
         "logo": "logo",
-        "to-top": {
+        "linkToTop": {
           "id": "theme-to-top"
         },
 
@@ -131,10 +131,10 @@
         // The default/normal container
         "container": {
           "classes": "theme-container py-4 demo-module-[Module.Id] demo-page-[Page.Id]",
-          "isPublished": [null, "module-unpublished"],
+          "isPublished": [ null, "module-unpublished" ],
           "isAdmin": "theme-container-admin app-admin-modal",
           "id": "module-[Module.Id]"
-        },
+        }
       }
     }
   },
@@ -142,10 +142,10 @@
 
   // ********************
   // Languages Configurations
-  "Languages": {
+  "languages": {
     "Default": {
       "hideOthers": false,
-      "Languages": {
+      "languages": {
         "en": {
           "label": "ENG",
           "description": "English (from JSON config)"
@@ -154,13 +154,13 @@
           "label": "DEU"
         }
       },
-      "Debug": {
+      "debug": {
         // "anonymous": false,
       }
     },
-    "EnglishOnly":{
+    "EnglishOnly": {
       "hideOthers": true,
-      "Languages": {
+      "languages": {
         "en": {
           "label": "English"
         }
@@ -171,14 +171,14 @@
 
   // ********************
   // Menus contain the configuration for each menu. The names used are specified in the Razor files.
-  "Menus": {
+  "menus": {
     // The default configuration is taken if no other configuration is used
     "Default": {
       "start": "*",
-      "depth": 1,
+      "depth": 1
     },
     // This is used as the main-menu in the navigation with sidebar submenu
-    "ToplevelOnly": {
+    "TopLevelOnly": {
       "start": "*",
       "depth": 1
     },
@@ -188,14 +188,14 @@
       "depth": 2,
       // Example to enable debug just on this specific menu
       "debug": {
-        "admin": true,
-      },
+        "admin": true
+      }
     },
     // Mobile is usually used for the default, top-level menu which only appears when the screen is too small
     "Mobile": {
       "template": "vertical",
       "start": "*",
-      "depth": 2
+      "depth": 1
     },
     // Sidebar is used in menus usually to the left of content
     "Sidebar": {
@@ -209,15 +209,7 @@
     // Footer menu, would usually show Imprint, Terms, Privacy etc.
     // For the default values we're using Home "1" and Login (forced, even though it's set to not show in menus) "5!" as these are a few of the pages which always exist
     "Footer": {
-      "start": "1, 5!",
-    }
-  },
-
-  // ********************
-  // Containers has properties / settings / values on containers which are not directly related to design
-  // As of now there is no use for this, but the infrastructure exists
-  "Containers": {
-    "Default": {
+      "start": "1, 5!"
     }
   },
 
@@ -225,7 +217,7 @@
   // MenuDesigns specify how the output is made, what classes added to each node etc.
   // It's separate from the Menus, since it could be re-used
   // It also supports two special placeholders [Page.Id] and [Menu.Id]
-  "MenuDesigns": {
+  "menuDesigns": {
     // The default menu styling used for main and most menus
     // (unless specified otherwise)
     "Default": {
@@ -233,16 +225,13 @@
         "byLevel": {
           "1": "navbar-nav test-[Page.Id] test-[Theme.Path]",
           "-1": "dropdown-menu"
-        },
+        }
       },
       "li": {
         "classes": "nav-item nav-[Page.Id]",
         "hasChildren": "has-child dropdown",
-        // "hasChildren": [null, "example"],
         "isActive": "active",
-        //"isActive": ["active", "inactive"],
-        "isDisabled": "disabled",
-        // "isDisabled": ["disabled", "not-disabled"],
+        "isDisabled": "disabled"
       },
       "a": {
         "isActive": "active",
@@ -250,7 +239,7 @@
         "byLevel": {
           "2": "nav-link",
           "-1": "dropdown-item"
-        },
+        }
       }
     },
     "Mobile": {
@@ -274,10 +263,10 @@
       },
       "span": {
         "classes": "nav-item-sub-opener",
-        "inBreadcrumb": [null, "collapsed"],
+        "inBreadcrumb": [ null, "collapsed" ]
       },
       // Special target information (not really styling) usually on the span-tag
-      "data-bs-target": ".theme-submenu-[Menu.Id]-[Page.Id]",
+      "data-bs-target": ".theme-submenu-[Menu.Id]-[Page.Id]"
     },
     "Sidebar": {
       "ul": {
@@ -299,9 +288,9 @@
       },
       "span": {
         "classes": "nav-item-sub-opener",
-        "inBreadcrumb": [null, "collapsed"],
+        "inBreadcrumb": [ null, "collapsed" ]
       },
-      "data-bs-target": ".theme-submenu-[Menu.Id]-[Page.Id]",
+      "data-bs-target": ".theme-submenu-[Menu.Id]-[Page.Id]"
     },
     "Footer": {
       "ul": "navbar-nav test-wip-config"

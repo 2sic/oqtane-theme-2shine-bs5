@@ -50,21 +50,21 @@
       "title": "Custom design settings",
       "description": "Any kind of setting - some are known/expected, others can be added as needed.",
       "properties": {
-        "Pane-Default": {
-          "$ref": "./design-settings.schema.json",
-          "title": "Default Pane Design Settings"
-        },
-        "Pane-Header": {
+        // "paneDefault": {
+        //   "$ref": "./design-settings.schema.json",
+        //   "title": "Default Pane Design Settings"
+        // },
+        "sectionHeader": {
           "$ref": "./design-settings.schema.json",
           "title": "Header Pane Design Settings"
         },
-        "Main": {
+        "sectionMain": {
           "$ref": "./design-settings.schema.json",
           "title": "Main div Design Settings"
         },
         "logo": {
           "$ref": "./design-settings.schema.json",
-          "title": "Logo Design Settings"
+          "title": "Logo Design Settings - use string or set property 'classes'"
         }
       },
       "additionalProperties": {

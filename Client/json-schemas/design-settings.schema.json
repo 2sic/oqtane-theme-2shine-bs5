@@ -19,7 +19,7 @@
     // Base fields which all such objects could have
     "design-settings-fragment": {
       "type": "object",
-      "title": "todo main title design settings",
+      "description": "design settings with all the properties as keys",
       "properties": {
         "classes": {
           "type": "string",
@@ -72,7 +72,7 @@
     },
     "design-container-sealed": {
       "type": "object",
-      "title": "todo main title container",
+      "description": "design settings with all the properties as keys",
       "anyOf": [{ "$ref": "#/$defs/design-settings-fragment" }],
       "properties": {
         "isPublished": {

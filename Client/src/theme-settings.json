@@ -39,12 +39,12 @@
         // Show breadcrumbs. Note that on home it won't be visible due to CSS rules + MagicContext)
         "breadcrumbs": true,
         // Show languages menu and use the same languages configuration name as this theme - in this case "Default"
-        "Languages": true,
+        "languages": true,
         // Don't show sidebar menu in the default configuration
-        "Menu-Sidebar": false,
-        "example-just-name": "config-name",
+        "menuSidebar": false,
+        "exampleJustName": "config-name",
         // Example of a more detailed setting in case you want to control everything
-        "example-part-config": {
+        "exampleWithDetails": {
           "show": true,
           "design": "=",
           "configuration": "special-config"
@@ -62,11 +62,11 @@
       "@inherits": "Default",
       "parts": {
         // Override showing the sidebar menu
-        "Menu-Sidebar": true,
+        "menuSidebar": true,
         // Example override showing how to switch to another language menu configuration
         "languages": "EnglishOnly",
         // Override main-menu settings to switch to another menu configuration and design
-        "Menu-Main": "TopLevelOnly"
+        "menuMain": "TopLevelOnly"
       }
     }
   },
@@ -92,34 +92,33 @@
       // Custom values / classes as you need them in your code
       "custom": {
         // Panes - uses the Pane-name to find the configuration
-        "Pane-Default": "",
-        "Pane-Header": {
+        "sectionHeader": {
           "classes": "container px-0",
           "id": "theme-page-header-pane"
         },
 
         // Sections - ATM "Main" only
-        "Main": {
+        "sectionMain": {
           "id": "theme-page-main"
         },
 
         // This config is used with sidebar-menu, places the body to the right, the menu to the left
-        "sidebar-body": "col-12 col-lg-9 order-lg-2",
-        "menu-sidebar": "col-12 col-lg-3 order-lg-1",
-        "menu-sidebar-inner": {
+        "sidebarBody": "col-12 col-lg-9 order-lg-2",
+        "sidebarMenu": "col-12 col-lg-3 order-lg-1",
+        "sidebarMenu-inner": {
           "classes": "d-none d-sm-block",
           "id": "theme-nav-sub"
         },
 
         // Buttons / Icons and Logins
-        "edit-icon": "theme-ui-button edit",
-        "admin-icon": "theme-ui-button gear",
-        "login-icon": "theme-ui-button lock",
-        "login-invisible": "theme-login-invisible d-none d-lg-inline-flex",
+        "iconEdit": "theme-ui-button edit",
+        "iconAdmin": "theme-ui-button gear",
+        "iconLogin": "theme-ui-button lock",
+        "linkLogin-invisible": "theme-login-invisible d-none d-lg-inline-flex",
 
         // Logo & ToTop
         "logo": "logo",
-        "to-top": {
+        "linkToTop": {
           "id": "theme-to-top"
         },
 
@@ -231,11 +230,8 @@
       "li": {
         "classes": "nav-item nav-[Page.Id]",
         "hasChildren": "has-child dropdown",
-        // "hasChildren": [null, "example"],
         "isActive": "active",
-        //"isActive": ["active", "inactive"],
         "isDisabled": "disabled"
-        // "isDisabled": ["disabled", "not-disabled"],
       },
       "a": {
         "isActive": "active",

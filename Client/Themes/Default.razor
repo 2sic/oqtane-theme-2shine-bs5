@@ -28,30 +28,30 @@ Nice to know:
     <Header></Header>
     
     @* Header Pane *@
-    <div id="@Id($"Pane-{PaneNameHeader}")" class="@PaneClasses($"Pane-{PaneNameHeader}")">
+    <div id="@Id("sectionHeader")" class="@Classes("sectionHeader") @PaneClasses(PaneNameHeader)">
         <Pane Name="@PaneNameHeader"/>
     </div>
     
     @* Main Section *@
-    <main id="@Id("Main")" class="@Classes("Main")">
+    <main id="@Id("sectionMain")" class="@Classes("sectionMain")">
 
         @* Show Breadcrumb if desired *@
-        @if (Settings.Show("Breadcrumbs"))
+        @if (Settings.Show("breadcrumbs"))
         {
             <Breadcrumbs></Breadcrumbs>
         }
 
         @* If we show the Sidebar, then it must be side-by-side with the Content *@
-        @if (Settings.Show("Menu-Sidebar"))
+        @if (Settings.Show("menuSidebar"))
         {
             <div class="container">
                 <div class="row">
-                    <div class='@Classes("sidebar-body")'>
+                    <div class='@Classes("sidebarBody")'>
                         <Pane Name="@PaneNames.Default"/>
                         <MagicDynamicComponents Components="@MagicComponents"></MagicDynamicComponents>
                     </div>
-                    <div class='@Classes("menu-sidebar")'>
-                        <div id="@Id("menu-sidebar-inner")" class="@Classes("menu-sidebar-inner")">
+                    <div class='@Classes("sidebarMenu")'>
+                        <div id="@Id("sidebarMenu-inner")" class="@Classes("sidebarMenu-inner")">
                             <Menu ConfigName="@ThemeInfo.MenuSidebar"></Menu>
                         </div>
                     </div>

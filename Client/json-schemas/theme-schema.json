@@ -32,10 +32,10 @@
           "$ref": "#/$defs/parts",
           "title": "Languages part"
         },
-        "menu-Main": {
+        "menuMain": {
           "$ref": "#/$defs/parts"
         },
-        "menu-Sidebar": {
+        "menuSidebar": {
           "$ref": "#/$defs/parts"
         }
       },
