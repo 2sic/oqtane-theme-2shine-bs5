@@ -54,6 +54,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\DO-NOT-WORK-IN-THIS-FOLDER.md" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="src\theme-settings.json" />
   </ItemGroup>
 
