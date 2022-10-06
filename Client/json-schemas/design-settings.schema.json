@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://schemas.cre8magic.org/2022-01/theme-schema.json",
+  "title": "Design Setting in a configuration",
+
+  "description": "Theme part config",
+  "anyOf":[
+    {
+      "type": "string",
+      "description": "custom design setting which is applied to classes and value"
+    },
+    { "$ref": "#/$defs/design-settings-as-sealed" },
+    { "$ref": "#/$defs/design-container-sealed" }
+  ],
+
+
+  "$defs": {
+    "design-settings-fragment": {
+      "type": "object",
+      "title": "todo main title design settings",
+      "properties": {
+        "classes": {
+          "type": "string",
+          "title": "classes to apply",
+          "description": "May contain tokens such as [Page.Id]"
+        },
+        "id": {
+          "type": "string",
+          "title": "id to apply",
+          "description": "May contain tokens such as [Page.Id]"
+        },
+        "value": {
+          "type": "string",
+          "title": "value to use",
+          "description": "May contain tokens such as [Page.Id]"
+        }, 
+        "isActive": {
+          "title": "classes to apply if this thing is active - such as a menu for the current page",
+          "$ref": "#/$defs/pair-on-off"
+        },
+        "hasChildren": {
+          "$ref": "#/$defs/pair-on-off"
+        }
+      }
+    },
+    "design-settings-as-sealed": {
+      "anyOf": [{ "$ref": "#/$defs/design-settings-fragment" }],
+      "unevaluatedProperties": false
+    },
+    "design-container-sealed": {
+      "type": "object",
+      "title": "todo main title container",
+      "anyOf": [{ "$ref": "#/$defs/design-settings-fragment" }],
+      "properties": {
+        "isPublished": {
+          "$ref": "#/$defs/pair-on-off"
+        },
+        "isAdmin": {
+          "$ref": "#/$defs/pair-on-off"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "pair-on-off": {
+      // Important: don't set a title on any of these properties
+      // as it should always show the title specified in the field which references this
+      "anyOf": [
+        {
+          "type": "string",
+          "description": "If value is string, it's the value used when true. \n May contain tokens such as [Page.Id]"
+        },
+        {
+          "type": "array",
+          "description": "If value is array, the first one for true, second for off. \n May contain tokens such as [Page.Id]",
+          "items": { "type": ["string", "null"], "maximum": 2 }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "on": {
+              "type": "string",
+              "description": "May contain tokens such as [Page.Id]"
+            },
+            "off": {
+              "type": "string",
+              "description": "May contain tokens such as [Page.Id]"
+            },
+            "additionalProperties": false
+          }
+        }
+      ]
+    }
+  }
+}

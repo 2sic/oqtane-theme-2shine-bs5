@@ -1,48 +1,58 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema",
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "$id": "https://schemas.cre8magic.org/2022-01/theme-configurations-schema.json",
   "title": "DRAFT JSON Schema for the theme-configurations.json file",
   "description": "todo",
 
   "type": "object",
 
-  // TODO: REQUIRE 'DEFAULT' ON ALL
-
   "properties": {
-    "Version": {
+    // allow $schema
+    "$schema": { "type": "string" },
+
+    "version": {
       "type": "number",
       "description": "The version of this file, which helps the reader detect the format (or error if incompatible).",
       "minimum": 0.01,
-      "maximum": 0.01
+      "maximum": 0.01,
+      "default": 0.01
     },
-    "Debug": {
+
+    "debug": {
       "type": "object",
       "description": "Global debug settings to enable/allow debug for admins or normal users.",
       "properties": {
-        "Allowed": {
+        "allowed": {
           "type": "boolean",
           "description": "Global toggle to allow/prevent debug to appear at all. If this is false, nothing else will happen. Turn this off for production. ",
           "default": false
         },
-        "Admin": {
+        "admin": {
           "type": "boolean",
           "description": "Enable/disable debug buttons everywhere for admins. \n This global setting can still be overriden at each part.",
           "default": false
         },
-        "Anonymous": {
+        "anonymous": {
           "type": "boolean",
           "description": "Enable/disable debug buttons everywhere for anonymous users so you can see debug in the anonymous-user state. \n This global setting can still be overriden at each part.",
           "default": false
         }
+      },
+      "additionalProperties": false,
+      "default": {
+        "allowed": false,
+        "admin": false,
+        "anonymous": false
       }
     },
 
-    "Themes": {
+    "themes": {
       "type": "object",
       "description": "Main Theme Configurations.",
       "additionalProperties": {
         "$ref": "./theme-schema.json"
-      }
+      },
+      "required": ["Default"]
     },
 
     "ThemeDesigns":{
@@ -51,7 +61,8 @@
       "description": "Contains various configuration bundles for how the theme can be designed (mainly CSS classes)",
       "additionalProperties": {
         "$ref": "./theme-design.schema.json"
-      }
+      },
+      "required": ["Default"]
     },
 
     // todo
@@ -62,8 +73,22 @@
       "description": "Contains various configuration bundles for what languages to show.",
       "additionalProperties": {
         "$ref": "./languages-schema.json"
-      }
+      },
+      "required": ["Default"]
+    },
+
+    "MenuDesigns": {
+      "type": "object",
+      "title": "Name configuration packages to determine how menus are styled",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "./design-settings.schema.json"
+        }
+      },
+      "required": ["Default"]
     }
-  }
+  },
+  "additionalProperties": false
 
 }

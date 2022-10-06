@@ -17,18 +17,18 @@
     since we're creating a schema which will give you more information on mouse-over.
   */
 
-  "Version": 0.01,
+  "version": 0.01,
 
-  "Debug": {
-    "Allowed": true,
-    "Admin": true,
-    "Anonymous": true
+  "debug": {
+    "allowed": true,
+    "admin": true,
+    "anonymous": true
   },
 
   // ********************************************************************************
 
   // Theme Configurations
-  "Themes": {
+  "themes": {
     // Default Theme - in most cases you'll just use this theme configuration
     "Default": {
       // Optional: Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
