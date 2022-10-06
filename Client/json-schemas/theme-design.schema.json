@@ -1,53 +1,47 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema",
   "$id": "https://schemas.cre8magic.org/2022-01/theme-schema.json",
-  "title": "Theme Configuration",
+  "title": "Theme Design Configuration",
 
   "type": "object",
 
   "allOf":[
-    { "$ref": "./inherits.schema.json"}
+    { "$ref": "./inherits-schema.json"}
   ],
   "properties": {
-    "Design": {
+    "MagicContext": {
+      "title": "The MagicContext classes which will be applied to the page or a wrapping div-tag",
+      "anyOf":[
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" }}
+      ],
+      "default": [
+        "page-[Page.Id]",
+        "page-root-[Page.RootId]",
+        "page-parent-[Page.ParentId]",
+        "site-[Site.Id]",
+        "nav-level-[Menu.Level]",
+        "theme-mainnav-variation-right",
+        "theme-variation-[Layout.Variation]"
+      ]
+    },
+    "PageIsHome": {
       "type": "string",
-      "description": "What design to use from the \"ThemeDesigns\" section. If not set or set to \"=\" it will use the same name as the current configuration name.",
-      "default": "="
+      "description": "Class to add if the specified page is the Home page."
     },
-    "Logo": {
+    "PaneIsEmpty": {
       "type": "string",
-      "description": "The logo, usually beginning with [Theme.Url]/assets/...svg"
+      "description": "Class to add to a pane if it has no modules inside it."
     },
-    "LanguagesMin": {
-      "type": "number"
-    },
-    "Parts": {
-      "type":"object",
-      "properties": {
-        "Breadcrumbs": {
-          "$ref": "#/$defs/parts"
-        },
-        "Languages": {
-          "$ref": "#/$defs/parts"
-        },
-        "Menu-Main": {
-          "$ref": "#/$defs/parts"
-        },
-        "Menu-Sidebar": {
-          "$ref": "#/$defs/parts"
-        }
-      },
-      "additionalProperties": {
-        "$ref": "#/$defs/parts"
-      }
-    },
-    "MagicContextInBody": {
-      "type": "boolean",
-      "description": "Determines if we should use the body (or a div) for the magic context. As of now we feel that browser behavior is better if it's in the div-tag (false)"
-    },
-    "Debug": {
-      "$ref": "./debug-schema.json"
+    "MagicContextTagId": {
+      "type": "string",
+      "description": "The id attribute of the div-tag containing the magic context classes (if not applied to the body tag). \n It's used in CSS rules, so it must match the tag in the SCSS rules.",
+      "default": "cre8magic-root"
     }
+   
+    // "Debug": {
+    //   "$ref": "./debug-schema.json"
+    // }
   },
 
   "$defs": {

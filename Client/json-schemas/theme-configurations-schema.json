@@ -6,6 +6,8 @@
 
   "type": "object",
 
+  // TODO: REQUIRE 'DEFAULT' ON ALL
+
   "properties": {
     "Version": {
       "type": "number",
@@ -40,6 +42,15 @@
       "description": "Main Theme Configurations.",
       "additionalProperties": {
         "$ref": "./theme-schema.json"
+      }
+    },
+
+    "ThemeDesigns":{
+      "type": "object",
+      "title": "All the configurations for the design of a theme",
+      "description": "Contains various configuration bundles for how the theme can be designed (mainly CSS classes)",
+      "additionalProperties": {
+        "$ref": "./theme-design.schema.json"
       }
     },
 
