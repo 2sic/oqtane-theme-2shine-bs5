@@ -6,6 +6,9 @@
 
   "type": "object",
 
+  "allOf":[
+    { "$ref": "./inherits-schema.json"}
+  ],
   "properties": {
     "HideOthers": {
       "type": "boolean",
