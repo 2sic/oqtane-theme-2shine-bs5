@@ -37,7 +37,7 @@
       // Optional: Design Names with "=" mean they inherit / use the name already existing - in this case "default"
       "design": "=",
       "logo": "[Theme.Url]/assets/logo.svg",
-      "languagesMin": 1,
+      "languagesMin": 2,
       "parts": {
         // Show breadcrumbs. Note that on home it won't be visible due to CSS rules + MagicContext)
         "breadcrumbs": true,
