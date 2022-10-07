@@ -226,7 +226,7 @@
     "Default": {
       "ul": {
         "byLevel": {
-          "1": "navbar-nav test-[Page.Id] test-[Theme.Path]",
+          "1": "navbar-nav",
           "-1": "dropdown-menu"
         }
       },
