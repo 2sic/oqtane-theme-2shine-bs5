@@ -1,7 +1,7 @@
 {
   // By specifying a schema we get intellisense in this JSON
   // "$schema": "https://2sic.github.io/cre8magic/schemas/2022-10/theme-configurations.schema.json",
-  "$schema": "../../../cre8magic/docs/schemas/2022-10/theme-configurations.schema.json",
+  "$schema": "../../../cre8magic/docs/schemas/2022-10/theme.json",
 
   /* This file contains configuration for the menus in the layout. 
    * It allows you to make most changes to menus without recompiling the source code, 
@@ -33,15 +33,15 @@
   // Theme Configurations
   "themes": {
     // Default Theme - in most cases you'll just use this theme configuration
-    "Default": {
-      // Optional: Design Names with "=" mean they inherit / use the name already existing - in this case "Default"
+    "default": {
+      // Optional: Design Names with "=" mean they inherit / use the name already existing - in this case "default"
       "design": "=",
       "logo": "[Theme.Url]/assets/logo.svg",
       "languagesMin": 1,
       "parts": {
         // Show breadcrumbs. Note that on home it won't be visible due to CSS rules + MagicContext)
         "breadcrumbs": true,
-        // Show languages menu and use the same languages configuration name as this theme - in this case "Default"
+        // Show languages menu and use the same languages configuration name as this theme - in this case "default"
         "languages": true,
         // Don't show sidebar menu in the default configuration
         "menuSidebar": false,
@@ -60,16 +60,16 @@
     },
     // The example below shows how the "Sidebar" configuration switches to a different menu
     // Layout showing the submenu in the sidebar, so we don't need to show more items in the main menu
-    "Sidebar": {
+    "sidebar": {
       // Re-use all previous settings
-      "@inherits": "Default",
+      "@inherits": "default",
       "parts": {
         // Override showing the sidebar menu
         "menuSidebar": true,
         // Example override showing how to switch to another language menu configuration
-        "languages": "EnglishOnly",
+        "languages": "englishOnly",
         // Override main-menu settings to switch to another menu configuration and design
-        "menuMain": "TopLevelOnly"
+        "menuMain": "topLevelOnly"
       }
     }
   },
@@ -78,7 +78,7 @@
 
   "themeDesigns": {
     // This is the default design which is used unless explicitly specified
-    "Default": {
+    "default": {
       "magicContext": [
         "page-[Page.Id]",
         "page-root-[Page.RootId]",
@@ -146,7 +146,7 @@
   // ********************
   // Languages Configurations
   "languages": {
-    "Default": {
+    "default": {
       "hideOthers": false,
       "languages": {
         "en": {
@@ -161,7 +161,7 @@
         // "anonymous": false,
       }
     },
-    "EnglishOnly": {
+    "englishOnly": {
       "hideOthers": true,
       "languages": {
         "en": {
@@ -176,17 +176,17 @@
   // Menus contain the configuration for each menu. The names used are specified in the Razor files.
   "menus": {
     // The default configuration is taken if no other configuration is used
-    "Default": {
+    "default": {
       "start": "*",
       "depth": 1
     },
     // This is used as the main-menu in the navigation with sidebar submenu
-    "TopLevelOnly": {
+    "topLevelOnly": {
       "start": "*",
       "depth": 1
     },
     // Main is usually used for the default, top-level menu
-    "Main": {
+    "main": {
       "start": "*",
       "depth": 2,
       // Example to enable debug just on this specific menu
@@ -195,13 +195,13 @@
       }
     },
     // Mobile is usually used for the default, top-level menu which only appears when the screen is too small
-    "Mobile": {
+    "mobile": {
       "template": "vertical",
       "start": "*",
       "depth": 1
     },
     // Sidebar is used in menus usually to the left of content
-    "Sidebar": {
+    "sidebar": {
       "template": "vertical",
       "start": ".",
       "level": 1,
@@ -211,7 +211,7 @@
     },
     // Footer menu, would usually show Imprint, Terms, Privacy etc.
     // For the default values we're using Home "1" and Login (forced, even though it's set to not show in menus) "5!" as these are a few of the pages which always exist
-    "Footer": {
+    "footer": {
       "start": "1, 5!"
     }
   },
@@ -223,7 +223,7 @@
   "menuDesigns": {
     // The default menu styling used for main and most menus
     // (unless specified otherwise)
-    "Default": {
+    "default": {
       "ul": {
         "byLevel": {
           "1": "navbar-nav",
@@ -245,7 +245,7 @@
         }
       }
     },
-    "Mobile": {
+    "mobile": {
       "ul": {
         "byLevel": {
           "1": "navbar-nav",
@@ -270,14 +270,14 @@
       // Special target information (not really styling) usually on the span-tag
       "data-bs-target": ".theme-submenu-[Menu.Id]-[Page.Id]"
     },
-    "Sidebar": {
+    "sidebar": {
       "@inherits": "Mobile",
       "a": {
         // This is the only difference to Mobile
         "classes": "nav-link"
       }
     },
-    "Footer": {
+    "footer": {
       "ul": "navbar-nav test-wip-config"
     }
   }

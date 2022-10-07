@@ -29,10 +29,10 @@ public class ThemeInfo : ITheme
 
     #region Menu Names for this Theme, used in various Razor files
 
-    public const string MenuMain = "Main";
-    public const string MenuMobile = "Mobile";
-    public const string MenuSidebar = "Sidebar";
-    public const string MenuFooter = "Footer";
+    public const string MenuMain = "main";
+    public const string MenuMobile = "mobile";
+    public const string MenuSidebar = "sidebar";
+    public const string MenuFooter = "footer";
 
     #endregion
 
@@ -65,7 +65,7 @@ public class ThemeInfo : ITheme
         PackageName = new ThemeInfo().Theme.PackageName,
 
         // The json file in the theme folder folder containing all kinds of settings etc.
-        SettingsJsonFile = "theme-configurations.json",
+        SettingsJsonFile = "theme.json",
     };
 
     #endregion
