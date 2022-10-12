@@ -191,7 +191,8 @@
       "depth": 2,
       // Example to enable debug just on this specific menu
       "debug": {
-        "admin": true
+        "admin": true,
+        "detailed": true
       }
     },
     // Mobile is usually used for the default, top-level menu which only appears when the screen is too small
