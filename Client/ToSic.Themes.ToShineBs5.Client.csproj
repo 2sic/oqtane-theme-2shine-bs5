@@ -54,6 +54,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\**" />
+    <Content Include="wwwroot\**" Watch="false" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\DO-NOT-WORK-IN-THIS-FOLDER.md" />
   </ItemGroup>
 
