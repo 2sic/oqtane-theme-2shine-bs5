@@ -2,12 +2,12 @@ using Oqtane.Models;
 using Oqtane.Themes;
 
 // Important: This must match the namespace of the layouts
-// otherwise the Oqtane registration won't work as expected. 
+// otherwise the Oqtane registration won't work as expected.
 namespace ToSic.Themes.ToShineBs5.Client;
 
 /// <summary>
 /// This class / file serves a few purposes:
-/// 
+///
 /// 1. The theme-info for registration in Oqtane - because it inherits <see cref="ITheme"/>
 /// 2. Contains names / constants like `MenuMobile` used in the theme
 /// 2. Contains the default configurations/settings in the static `PackageDefaults`
@@ -20,7 +20,7 @@ public class ThemeInfo : ITheme
     public Theme Theme => new()
     {
         Name = "ToShine Bootstrap 5",
-        Version = "2.0.0",
+        Version = "0.0.1",
         // Settings still very WIP
         //ThemeSettingsType = typeof(ThemeSettingsUi.Settings).AssemblyQualifiedName,
         //ContainerSettingsType = "Oqtane.Theme.ToSic.ContainerSettings, Oqtane.Theme.ToSic.Oqtane",
@@ -56,8 +56,8 @@ public class ThemeInfo : ITheme
     /// <summary>
     /// Default settings used in this package.
     /// They are defined here and given as initial values to the ThemeSettingsService in the Default Razor file.
-    /// 
-    /// You don't need to do much here, because all settings should then come from the json file. 
+    ///
+    /// You don't need to do much here, because all settings should then come from the json file.
     /// </summary>
     public static MagicPackageSettings ThemePackageDefaults = new()
     {

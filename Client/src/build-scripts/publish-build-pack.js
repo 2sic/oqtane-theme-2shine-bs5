@@ -37,6 +37,13 @@ function publish(restart = false) {
   if (restart)
     fs.writeFileSync(appOfflinePath, "2shine Theme update running ...");
 
+  // copy *.nupkg to InstallPackages
+  shell.cp(
+    "-Rf",
+    "bin/Release/*.nupkg",
+    "../InstallPackages"
+  );
+
   shell.cp(
     "-Rf",
     "bin/Release/*.nupkg",
