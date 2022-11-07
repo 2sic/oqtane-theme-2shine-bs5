@@ -4,9 +4,7 @@ import { initOffCanvasEvents } from './menu';
 import { initBreadcrumb } from './breadcrumbs';
 import { openPdfInNewWindow } from './pdf-in-new-window';
 import { initToTop } from './to-top';
-
-
-import './breadcrumbs';
+import { activateGtm } from './gtm';
 
 initToTop();
 
@@ -17,3 +15,5 @@ initMailDecrypt();
 initBreadcrumb();
 
 initOffCanvasEvents();
+
+// activateGtm('GTM-XYZ');
