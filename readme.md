@@ -16,9 +16,12 @@
 
 1. Create a folder like `C:\projects\2shine-oqtane\`
 1. In that, git-clone the following repos
-    1. https://github.com/2sic/cre8magic
+    1. ~~https://github.com/2sic/cre8magic~~
     1. https://github.com/2sic/oqtane-theme-2shine-bs5
     1. https://github.com/oqtane/oqtane.framework
+1. Prepare NPM - run `npm ci` in the folder `oqtane-theme-2shine-bs5/Client`
+1. Run Rename script
+1. Also rename the theme in the `ThemeInfo.cs`
 1. Open Visual Studio with the solution in the project oqtane-theme-2shine-bs5
 1. Run once (make sure Oqtane-server is the primary project) - get it setup etc.
 1. Then build and run as you need
