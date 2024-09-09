@@ -20,11 +20,12 @@ public class ThemeInfo : ITheme
     public Theme Theme => new()
     {
         Name = "ToShine Bootstrap 5",
-        Version = "0.0.1",
+        Version = "0.1.0",
         // Settings still very WIP
         //ThemeSettingsType = typeof(ThemeSettingsUi.Settings).AssemblyQualifiedName,
         //ContainerSettingsType = "Oqtane.Theme.ToSic.ContainerSettings, Oqtane.Theme.ToSic.Oqtane",
         PackageName = "ToSic.Themes.ToShineBs5",
+        Dependencies = typeof(MagicTheme).AssemblyQualifiedName
     };
 
     #region Menu Names for this Theme, used in various Razor files

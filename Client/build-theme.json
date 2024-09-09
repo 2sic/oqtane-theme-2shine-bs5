@@ -11,7 +11,7 @@
   path (relative or absolute) to your oqtane binaries; 
   this equals your OqtaneRoot if you are using a release build from https://github.com/oqtane/oqtane.framework/releases 
   */
-  "OqtaneBin": "../oqtane.framework/Oqtane.Server/bin/Debug/net6.0",
+  "OqtaneBin": "../oqtane.framework/Oqtane.Server/bin/Debug/net8.0",
 
   "Publish": {
     // publish after watch build

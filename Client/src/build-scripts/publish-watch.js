@@ -22,7 +22,7 @@ if (!themeConfig.OqtaneBin) {
     themeConfig.OqtaneRoot,
     "bin",
     "Debug",
-    "net6.0"
+    "net8.0"
   );
 }
 
@@ -49,7 +49,7 @@ function publish(restart = false) {
   if (restart)
     fs.writeFileSync(appOfflinePath, "2shine Theme update running ...");
 
-  shell.cp("-Rf", "bin/Debug/net6.0/*", themeConfig.OqtaneBin);
+  shell.cp("-Rf", "bin/Debug/net8.0/*", themeConfig.OqtaneBin);
 
   // remove app_offline.htm; restarts iis app
   if (restart) fs.unlinkSync(appOfflinePath);

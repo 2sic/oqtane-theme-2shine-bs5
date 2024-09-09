@@ -11,16 +11,16 @@
 global using System.Collections.Generic;
 global using System.Linq;
 
-// Cre8Magic Namespaces
-global using ToSic.Cre8Magic.Client;
-global using ToSic.Cre8Magic.Client.Languages;
-global using ToSic.Cre8Magic.Client.Languages.Settings;
-global using ToSic.Cre8Magic.Client.Menus;
-global using ToSic.Cre8Magic.Client.Menus.Settings;
-global using ToSic.Cre8Magic.Client.Settings;
-global using ToSic.Cre8Magic.Client.Services;
-global using ToSic.Cre8Magic.Client.Controls;
-global using ToSic.Cre8Magic.Client.Themes;
+// Cre8magic Namespaces
+global using ToSic.Cre8magic.Client;
+global using ToSic.Cre8magic.Client.Languages;
+global using ToSic.Cre8magic.Client.Languages.Settings;
+global using ToSic.Cre8magic.Client.Menus;
+global using ToSic.Cre8magic.Client.Menus.Settings;
+global using ToSic.Cre8magic.Client.Settings;
+global using ToSic.Cre8magic.Client.Services;
+global using ToSic.Cre8magic.Client.Controls;
+global using ToSic.Cre8magic.Client.Themes;
 
 
 // This themes namespaces

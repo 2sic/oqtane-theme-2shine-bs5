@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
-    <Version>0.0.1</Version>
+    <Version>0.1.0</Version>
     <Authors>2sic</Authors>
     <Company>2sic</Company>
     <Description>Template Theme for professional Bootstrap 5 Designs</Description>
@@ -18,12 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.5" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.2.0" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.3" PrivateAssets="all" />
-    <PackageReference Include="System.Net.Http.Json" Version="6.0.0" PrivateAssets="all" />
-    <PackageReference Include="Oqtane.Client" Version="3.2.0" PrivateAssets="all" />
-    <PackageReference Include="Oqtane.Shared" Version="3.2.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.5" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="8.0.0" PrivateAssets="all" />
+    <PackageReference Include="Oqtane.Client" Version="5.1.2" PrivateAssets="all" />
+    <PackageReference Include="Oqtane.Shared" Version="5.1.2" PrivateAssets="all" />
     <PackageReference Include="System.Runtime" Version="4.3.1" PrivateAssets="all" />
   </ItemGroup>
 
@@ -67,7 +67,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\cre8magic\ToSic.Cre8Magic.Client\ToSic.Cre8Magic.Client.csproj" />
+    <ProjectReference Include="..\..\cre8magic\ToSic.Cre8magic.Client\ToSic.Cre8magic.Client.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -10,7 +10,7 @@ public class Startup : Oqtane.Services.IClientStartup
     /// <param name="services"></param>
     public void ConfigureServices(IServiceCollection services)
     {
-        // TODO: MOVE this registration to Cre8Magic as soon as we can move the scripts
+        // TODO: MOVE this registration to Cre8magic as soon as we can move the scripts
         services.AddTransient<IMagicThemeJsService, MagicThemeJsService>();
     }
 }
